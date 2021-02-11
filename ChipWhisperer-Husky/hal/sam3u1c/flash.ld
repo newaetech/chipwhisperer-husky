@@ -48,17 +48,18 @@ SEARCH_DIR(.)
 /* Memory Spaces Definitions */
 MEMORY
 {
-	flash  (W!RX) : ORIGIN = 0x00080000, LENGTH = 0x00010000 /* Flash, 64K */
-	sram0  (W!RX) : ORIGIN = 0x20000000, LENGTH = 0x00002000 /* Sram0, 8K */
-	sram1  (W!RX) : ORIGIN = 0x20080000, LENGTH = 0x00002000 /* Sram1, 8K */
-/*	rom (rx)    : ORIGIN = ORIGIN(flash), LENGTH = LENGTH(flash) */ /* Flash, 64K */
-/*	ram (rwx)   : ORIGIN = ORIGIN( sram1)-LENGTH( sram0), LENGTH = LENGTH( sram0)+LENGTH( sram1) */ /* sram, 16K */
-	rom (rx)    : ORIGIN = 0x00080000, LENGTH = 0x00010000 /* Flash, 64K */
-	ram (rwx)   : ORIGIN = 0x2007E000, LENGTH = 0x00004000 /* sram, 16K */
+	flash0 (W!RX) : ORIGIN = 0x00080000, LENGTH = 0x00020000 /* Flash0, 128K */
+	flash1 (W!RX) : ORIGIN = 0x00100000, LENGTH = 0x00020000 /* Flash1, 128K */
+	sram0  (W!RX) : ORIGIN = 0x20000000, LENGTH = 0x00008000 /* Sram0, 32K */
+	sram1  (W!RX) : ORIGIN = 0x20080000, LENGTH = 0x00004000 /* Sram1, 16K */
+/*	rom (rx)    : ORIGIN = ORIGIN(flash1)-LENGTH(flash0), LENGTH = LENGTH(flash0)+LENGTH(flash1) */ /* Flash, 256K */
+/*	ram (rwx)   : ORIGIN = ORIGIN( sram1)-LENGTH( sram0), LENGTH = LENGTH( sram0)+LENGTH( sram1) */ /* sram, 48K */
+	rom (rx)    : ORIGIN = 0x000E0000, LENGTH = 0x00040000 /* Flash, 256K */
+	ram (rwx)   : ORIGIN = 0x20078000, LENGTH = 0x0000C000 /* sram, 48K */
 }
 
 /* The stack size used by the application. NOTE: you need to adjust  */
-__stack_size__ = DEFINED(__stack_size__) ? __stack_size__ : 0x0400;
+__stack_size__ = DEFINED(__stack_size__) ? __stack_size__ : 0x4000;
 __ram_end__ = ORIGIN(ram) + LENGTH(ram) - 4;
 
 /* Section Definitions */ 
@@ -111,14 +112,14 @@ SECTIONS
 
         . = ALIGN(4);
         _efixed = .;            /* End of text section */
-    } > flash
+    } > flash0
 
     /* .ARM.exidx is sorted, so has to go in its own output section.  */
     PROVIDE_HIDDEN (__exidx_start = .);
     .ARM.exidx :
     {
       *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-    } > flash
+    } > flash0
     PROVIDE_HIDDEN (__exidx_end = .);
 
     . = ALIGN(4); 
