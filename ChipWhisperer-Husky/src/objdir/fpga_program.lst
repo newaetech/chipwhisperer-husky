@@ -1,0 +1,1309 @@
+   1              	 .cpu cortex-m3
+   2              	 .eabi_attribute 20,1
+   3              	 .eabi_attribute 21,1
+   4              	 .eabi_attribute 23,3
+   5              	 .eabi_attribute 24,1
+   6              	 .eabi_attribute 25,1
+   7              	 .eabi_attribute 26,1
+   8              	 .eabi_attribute 30,6
+   9              	 .eabi_attribute 34,1
+  10              	 .eabi_attribute 18,4
+  11              	 .file "fpga_program.c"
+  12              	 .text
+  13              	.Ltext0:
+  14              	 .cfi_sections .debug_frame
+  15              	 .section .bss.cpu_irq_critical_section_counter,"aw",%nobits
+  16              	 .align 2
+  19              	cpu_irq_critical_section_counter:
+  20 0000 00000000 	 .space 4
+  21              	 .section .bss.cpu_irq_prev_interrupt_state,"aw",%nobits
+  24              	cpu_irq_prev_interrupt_state:
+  25 0000 00       	 .space 1
+  26              	 .section .text.osc_get_rate,"ax",%progbits
+  27              	 .align 1
+  28              	 .arch armv7-m
+  29              	 .syntax unified
+  30              	 .thumb
+  31              	 .thumb_func
+  32              	 .fpu softvfp
+  34              	osc_get_rate:
+  35              	.LFB72:
+  36              	 .file 1 ".././hal/sam3u1c/inc/sam3u/osc.h"
+   1:.././hal/sam3u1c/inc/sam3u/osc.h **** /**
+   2:.././hal/sam3u1c/inc/sam3u/osc.h ****  * \file
+   3:.././hal/sam3u1c/inc/sam3u/osc.h ****  *
+   4:.././hal/sam3u1c/inc/sam3u/osc.h ****  * \brief Chip-specific oscillator management functions.
+   5:.././hal/sam3u1c/inc/sam3u/osc.h ****  *
+   6:.././hal/sam3u1c/inc/sam3u/osc.h ****  * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+   7:.././hal/sam3u1c/inc/sam3u/osc.h ****  *
+   8:.././hal/sam3u1c/inc/sam3u/osc.h ****  * \asf_license_start
+   9:.././hal/sam3u1c/inc/sam3u/osc.h ****  *
+  10:.././hal/sam3u1c/inc/sam3u/osc.h ****  * \page License
+  11:.././hal/sam3u1c/inc/sam3u/osc.h ****  *
+  12:.././hal/sam3u1c/inc/sam3u/osc.h ****  * Redistribution and use in source and binary forms, with or without
+  13:.././hal/sam3u1c/inc/sam3u/osc.h ****  * modification, are permitted provided that the following conditions are met:
+  14:.././hal/sam3u1c/inc/sam3u/osc.h ****  *
+  15:.././hal/sam3u1c/inc/sam3u/osc.h ****  * 1. Redistributions of source code must retain the above copyright notice,
+  16:.././hal/sam3u1c/inc/sam3u/osc.h ****  *    this list of conditions and the following disclaimer.
+  17:.././hal/sam3u1c/inc/sam3u/osc.h ****  *
+  18:.././hal/sam3u1c/inc/sam3u/osc.h ****  * 2. Redistributions in binary form must reproduce the above copyright notice,
+  19:.././hal/sam3u1c/inc/sam3u/osc.h ****  *    this list of conditions and the following disclaimer in the documentation
+  20:.././hal/sam3u1c/inc/sam3u/osc.h ****  *    and/or other materials provided with the distribution.
+  21:.././hal/sam3u1c/inc/sam3u/osc.h ****  *
+  22:.././hal/sam3u1c/inc/sam3u/osc.h ****  * 3. The name of Atmel may not be used to endorse or promote products derived
+  23:.././hal/sam3u1c/inc/sam3u/osc.h ****  *    from this software without specific prior written permission.
+  24:.././hal/sam3u1c/inc/sam3u/osc.h ****  *
+  25:.././hal/sam3u1c/inc/sam3u/osc.h ****  * 4. This software may only be redistributed and used in connection with an
+  26:.././hal/sam3u1c/inc/sam3u/osc.h ****  *    Atmel microcontroller product.
+  27:.././hal/sam3u1c/inc/sam3u/osc.h ****  *
+  28:.././hal/sam3u1c/inc/sam3u/osc.h ****  * THIS SOFTWARE IS PROVIDED BY ATMEL "AS IS" AND ANY EXPRESS OR IMPLIED
+  29:.././hal/sam3u1c/inc/sam3u/osc.h ****  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  30:.././hal/sam3u1c/inc/sam3u/osc.h ****  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT ARE
+  31:.././hal/sam3u1c/inc/sam3u/osc.h ****  * EXPRESSLY AND SPECIFICALLY DISCLAIMED. IN NO EVENT SHALL ATMEL BE LIABLE FOR
+  32:.././hal/sam3u1c/inc/sam3u/osc.h ****  * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  33:.././hal/sam3u1c/inc/sam3u/osc.h ****  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+  34:.././hal/sam3u1c/inc/sam3u/osc.h ****  * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+  35:.././hal/sam3u1c/inc/sam3u/osc.h ****  * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+  36:.././hal/sam3u1c/inc/sam3u/osc.h ****  * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+  37:.././hal/sam3u1c/inc/sam3u/osc.h ****  * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  38:.././hal/sam3u1c/inc/sam3u/osc.h ****  * POSSIBILITY OF SUCH DAMAGE.
+  39:.././hal/sam3u1c/inc/sam3u/osc.h ****  *
+  40:.././hal/sam3u1c/inc/sam3u/osc.h ****  * \asf_license_stop
+  41:.././hal/sam3u1c/inc/sam3u/osc.h ****  *
+  42:.././hal/sam3u1c/inc/sam3u/osc.h ****  */
+  43:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+  44:.././hal/sam3u1c/inc/sam3u/osc.h **** #ifndef CHIP_OSC_H_INCLUDED
+  45:.././hal/sam3u1c/inc/sam3u/osc.h **** #define CHIP_OSC_H_INCLUDED
+  46:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+  47:.././hal/sam3u1c/inc/sam3u/osc.h **** #include "board.h"
+  48:.././hal/sam3u1c/inc/sam3u/osc.h **** #include "pmc.h"
+  49:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+  50:.././hal/sam3u1c/inc/sam3u/osc.h **** /// @cond 0
+  51:.././hal/sam3u1c/inc/sam3u/osc.h **** /**INDENT-OFF**/
+  52:.././hal/sam3u1c/inc/sam3u/osc.h **** #ifdef __cplusplus
+  53:.././hal/sam3u1c/inc/sam3u/osc.h **** extern "C" {
+  54:.././hal/sam3u1c/inc/sam3u/osc.h **** #endif
+  55:.././hal/sam3u1c/inc/sam3u/osc.h **** /**INDENT-ON**/
+  56:.././hal/sam3u1c/inc/sam3u/osc.h **** /// @endcond
+  57:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+  58:.././hal/sam3u1c/inc/sam3u/osc.h **** /*
+  59:.././hal/sam3u1c/inc/sam3u/osc.h ****  * Below BOARD_XXX macros are related to the specific board, and
+  60:.././hal/sam3u1c/inc/sam3u/osc.h ****  * should be defined by the board code, otherwise default value are used.
+  61:.././hal/sam3u1c/inc/sam3u/osc.h ****  */
+  62:.././hal/sam3u1c/inc/sam3u/osc.h **** #if !defined(BOARD_FREQ_SLCK_XTAL)
+  63:.././hal/sam3u1c/inc/sam3u/osc.h **** #  warning The board slow clock xtal frequency has not been defined.
+  64:.././hal/sam3u1c/inc/sam3u/osc.h **** #  define BOARD_FREQ_SLCK_XTAL      (32768UL)
+  65:.././hal/sam3u1c/inc/sam3u/osc.h **** #endif
+  66:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+  67:.././hal/sam3u1c/inc/sam3u/osc.h **** #if !defined(BOARD_FREQ_SLCK_BYPASS)
+  68:.././hal/sam3u1c/inc/sam3u/osc.h **** #  warning The board slow clock bypass frequency has not been defined.
+  69:.././hal/sam3u1c/inc/sam3u/osc.h **** #  define BOARD_FREQ_SLCK_BYPASS    (32768UL)
+  70:.././hal/sam3u1c/inc/sam3u/osc.h **** #endif
+  71:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+  72:.././hal/sam3u1c/inc/sam3u/osc.h **** #if !defined(BOARD_FREQ_MAINCK_XTAL)
+  73:.././hal/sam3u1c/inc/sam3u/osc.h **** #  warning The board main clock xtal frequency has not been defined.
+  74:.././hal/sam3u1c/inc/sam3u/osc.h **** #  define BOARD_FREQ_MAINCK_XTAL    (12000000UL)
+  75:.././hal/sam3u1c/inc/sam3u/osc.h **** #endif
+  76:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+  77:.././hal/sam3u1c/inc/sam3u/osc.h **** #if !defined(BOARD_FREQ_MAINCK_BYPASS)
+  78:.././hal/sam3u1c/inc/sam3u/osc.h **** #  warning The board main clock bypass frequency has not been defined.
+  79:.././hal/sam3u1c/inc/sam3u/osc.h **** #  define BOARD_FREQ_MAINCK_BYPASS  (12000000UL)
+  80:.././hal/sam3u1c/inc/sam3u/osc.h **** #endif
+  81:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+  82:.././hal/sam3u1c/inc/sam3u/osc.h **** #if !defined(BOARD_OSC_STARTUP_US)
+  83:.././hal/sam3u1c/inc/sam3u/osc.h **** #  warning The board main clock xtal startup time has not been defined.
+  84:.././hal/sam3u1c/inc/sam3u/osc.h **** #  define BOARD_OSC_STARTUP_US      (15625UL)
+  85:.././hal/sam3u1c/inc/sam3u/osc.h **** #endif
+  86:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+  87:.././hal/sam3u1c/inc/sam3u/osc.h **** /**
+  88:.././hal/sam3u1c/inc/sam3u/osc.h ****  * \weakgroup osc_group
+  89:.././hal/sam3u1c/inc/sam3u/osc.h ****  * @{
+  90:.././hal/sam3u1c/inc/sam3u/osc.h ****  */
+  91:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+  92:.././hal/sam3u1c/inc/sam3u/osc.h **** //! \name Oscillator identifiers
+  93:.././hal/sam3u1c/inc/sam3u/osc.h **** //@{
+  94:.././hal/sam3u1c/inc/sam3u/osc.h **** #define OSC_SLCK_32K_RC             0    //!< Internal 32kHz RC oscillator.
+  95:.././hal/sam3u1c/inc/sam3u/osc.h **** #define OSC_SLCK_32K_XTAL           1    //!< External 32kHz crystal oscillator.
+  96:.././hal/sam3u1c/inc/sam3u/osc.h **** #define OSC_SLCK_32K_BYPASS         2    //!< External 32kHz bypass oscillator.
+  97:.././hal/sam3u1c/inc/sam3u/osc.h **** #define OSC_MAINCK_4M_RC            3    //!< Internal 4MHz RC oscillator.
+  98:.././hal/sam3u1c/inc/sam3u/osc.h **** #define OSC_MAINCK_8M_RC            4    //!< Internal 8MHz RC oscillator.
+  99:.././hal/sam3u1c/inc/sam3u/osc.h **** #define OSC_MAINCK_12M_RC           5    //!< Internal 12MHz RC oscillator.
+ 100:.././hal/sam3u1c/inc/sam3u/osc.h **** #define OSC_MAINCK_XTAL             6    //!< External crystal oscillator.
+ 101:.././hal/sam3u1c/inc/sam3u/osc.h **** #define OSC_MAINCK_BYPASS           7    //!< External bypass oscillator.
+ 102:.././hal/sam3u1c/inc/sam3u/osc.h **** //@}
+ 103:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+ 104:.././hal/sam3u1c/inc/sam3u/osc.h **** //! \name Oscillator clock speed in hertz
+ 105:.././hal/sam3u1c/inc/sam3u/osc.h **** //@{
+ 106:.././hal/sam3u1c/inc/sam3u/osc.h **** #define OSC_SLCK_32K_RC_HZ          CHIP_FREQ_SLCK_RC               //!< Internal 32kHz RC oscillat
+ 107:.././hal/sam3u1c/inc/sam3u/osc.h **** #define OSC_SLCK_32K_XTAL_HZ        BOARD_FREQ_SLCK_XTAL            //!< External 32kHz crystal osc
+ 108:.././hal/sam3u1c/inc/sam3u/osc.h **** #define OSC_SLCK_32K_BYPASS_HZ      BOARD_FREQ_SLCK_BYPASS          //!< External 32kHz bypass osci
+ 109:.././hal/sam3u1c/inc/sam3u/osc.h **** #define OSC_MAINCK_4M_RC_HZ         CHIP_FREQ_MAINCK_RC_4MHZ        //!< Internal 4MHz RC oscillato
+ 110:.././hal/sam3u1c/inc/sam3u/osc.h **** #define OSC_MAINCK_8M_RC_HZ         CHIP_FREQ_MAINCK_RC_8MHZ        //!< Internal 8MHz RC oscillato
+ 111:.././hal/sam3u1c/inc/sam3u/osc.h **** #define OSC_MAINCK_12M_RC_HZ        CHIP_FREQ_MAINCK_RC_12MHZ       //!< Internal 12MHz RC oscillat
+ 112:.././hal/sam3u1c/inc/sam3u/osc.h **** #define OSC_MAINCK_XTAL_HZ          BOARD_FREQ_MAINCK_XTAL          //!< External crystal oscillato
+ 113:.././hal/sam3u1c/inc/sam3u/osc.h **** #define OSC_MAINCK_BYPASS_HZ        BOARD_FREQ_MAINCK_BYPASS        //!< External bypass oscillator
+ 114:.././hal/sam3u1c/inc/sam3u/osc.h **** //@}
+ 115:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+ 116:.././hal/sam3u1c/inc/sam3u/osc.h **** static inline void osc_enable(uint32_t ul_id)
+ 117:.././hal/sam3u1c/inc/sam3u/osc.h **** {
+ 118:.././hal/sam3u1c/inc/sam3u/osc.h **** 	switch (ul_id) {
+ 119:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_SLCK_32K_RC:
+ 120:.././hal/sam3u1c/inc/sam3u/osc.h **** 		break;
+ 121:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+ 122:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_SLCK_32K_XTAL:
+ 123:.././hal/sam3u1c/inc/sam3u/osc.h **** 		pmc_switch_sclk_to_32kxtal(PMC_OSC_XTAL);
+ 124:.././hal/sam3u1c/inc/sam3u/osc.h **** 		break;
+ 125:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+ 126:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_SLCK_32K_BYPASS:
+ 127:.././hal/sam3u1c/inc/sam3u/osc.h **** 		pmc_switch_sclk_to_32kxtal(PMC_OSC_BYPASS);
+ 128:.././hal/sam3u1c/inc/sam3u/osc.h **** 		break;
+ 129:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+ 130:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+ 131:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_MAINCK_4M_RC:
+ 132:.././hal/sam3u1c/inc/sam3u/osc.h **** 		pmc_osc_enable_fastrc(CKGR_MOR_MOSCRCF_4_MHz);
+ 133:.././hal/sam3u1c/inc/sam3u/osc.h **** 		break;
+ 134:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+ 135:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_MAINCK_8M_RC:
+ 136:.././hal/sam3u1c/inc/sam3u/osc.h **** 		pmc_osc_enable_fastrc(CKGR_MOR_MOSCRCF_8_MHz);
+ 137:.././hal/sam3u1c/inc/sam3u/osc.h **** 		break;
+ 138:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+ 139:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_MAINCK_12M_RC:
+ 140:.././hal/sam3u1c/inc/sam3u/osc.h **** 		pmc_osc_enable_fastrc(CKGR_MOR_MOSCRCF_12_MHz);
+ 141:.././hal/sam3u1c/inc/sam3u/osc.h **** 		break;
+ 142:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+ 143:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+ 144:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_MAINCK_XTAL:
+ 145:.././hal/sam3u1c/inc/sam3u/osc.h **** 		pmc_osc_enable_main_xtal(pmc_us_to_moscxtst(
+ 146:.././hal/sam3u1c/inc/sam3u/osc.h **** 				BOARD_OSC_STARTUP_US, OSC_SLCK_32K_RC_HZ));
+ 147:.././hal/sam3u1c/inc/sam3u/osc.h **** 		break;
+ 148:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+ 149:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_MAINCK_BYPASS:
+ 150:.././hal/sam3u1c/inc/sam3u/osc.h **** 		pmc_osc_bypass_main_xtal();
+ 151:.././hal/sam3u1c/inc/sam3u/osc.h **** 		break;
+ 152:.././hal/sam3u1c/inc/sam3u/osc.h **** 	}
+ 153:.././hal/sam3u1c/inc/sam3u/osc.h **** }
+ 154:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+ 155:.././hal/sam3u1c/inc/sam3u/osc.h **** static inline void osc_disable(uint32_t ul_id)
+ 156:.././hal/sam3u1c/inc/sam3u/osc.h **** {
+ 157:.././hal/sam3u1c/inc/sam3u/osc.h **** 	switch (ul_id) {
+ 158:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_SLCK_32K_RC:
+ 159:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_SLCK_32K_XTAL:
+ 160:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_SLCK_32K_BYPASS:
+ 161:.././hal/sam3u1c/inc/sam3u/osc.h **** 		break;
+ 162:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+ 163:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_MAINCK_4M_RC:
+ 164:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_MAINCK_8M_RC:
+ 165:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_MAINCK_12M_RC:
+ 166:.././hal/sam3u1c/inc/sam3u/osc.h **** 		pmc_osc_disable_fastrc();
+ 167:.././hal/sam3u1c/inc/sam3u/osc.h **** 		break;
+ 168:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+ 169:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_MAINCK_XTAL:
+ 170:.././hal/sam3u1c/inc/sam3u/osc.h **** 		pmc_osc_disable_xtal(PMC_OSC_XTAL);
+ 171:.././hal/sam3u1c/inc/sam3u/osc.h **** 		break;
+ 172:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+ 173:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_MAINCK_BYPASS:
+ 174:.././hal/sam3u1c/inc/sam3u/osc.h **** 		pmc_osc_disable_xtal(PMC_OSC_BYPASS);
+ 175:.././hal/sam3u1c/inc/sam3u/osc.h **** 		break;
+ 176:.././hal/sam3u1c/inc/sam3u/osc.h **** 	}
+ 177:.././hal/sam3u1c/inc/sam3u/osc.h **** }
+ 178:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+ 179:.././hal/sam3u1c/inc/sam3u/osc.h **** static inline bool osc_is_ready(uint32_t ul_id)
+ 180:.././hal/sam3u1c/inc/sam3u/osc.h **** {
+ 181:.././hal/sam3u1c/inc/sam3u/osc.h **** 	switch (ul_id) {
+ 182:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_SLCK_32K_RC:
+ 183:.././hal/sam3u1c/inc/sam3u/osc.h **** 		return 1;
+ 184:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+ 185:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_SLCK_32K_XTAL:
+ 186:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_SLCK_32K_BYPASS:
+ 187:.././hal/sam3u1c/inc/sam3u/osc.h **** 		return pmc_osc_is_ready_32kxtal();
+ 188:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+ 189:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_MAINCK_4M_RC:
+ 190:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_MAINCK_8M_RC:
+ 191:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_MAINCK_12M_RC:
+ 192:.././hal/sam3u1c/inc/sam3u/osc.h **** 		return pmc_osc_is_ready_fastrc();
+ 193:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+ 194:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_MAINCK_XTAL:
+ 195:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_MAINCK_BYPASS:
+ 196:.././hal/sam3u1c/inc/sam3u/osc.h **** 		return pmc_osc_is_ready_main_xtal();
+ 197:.././hal/sam3u1c/inc/sam3u/osc.h **** 	}
+ 198:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+ 199:.././hal/sam3u1c/inc/sam3u/osc.h **** 	return 0;
+ 200:.././hal/sam3u1c/inc/sam3u/osc.h **** }
+ 201:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+ 202:.././hal/sam3u1c/inc/sam3u/osc.h **** static inline uint32_t osc_get_rate(uint32_t ul_id)
+ 203:.././hal/sam3u1c/inc/sam3u/osc.h **** {
+  37              	 .loc 1 203 1
+  38              	 .cfi_startproc
+  39              	 
+  40              	 
+  41              	 
+  42 0000 80B4     	 push {r7}
+  43              	.LCFI0:
+  44              	 .cfi_def_cfa_offset 4
+  45              	 .cfi_offset 7,-4
+  46 0002 83B0     	 sub sp,sp,#12
+  47              	.LCFI1:
+  48              	 .cfi_def_cfa_offset 16
+  49 0004 00AF     	 add r7,sp,#0
+  50              	.LCFI2:
+  51              	 .cfi_def_cfa_register 7
+  52 0006 7860     	 str r0,[r7,#4]
+  53 0008 7B68     	 ldr r3,[r7,#4]
+  54 000a 072B     	 cmp r3,#7
+  55 000c 23D8     	 bhi .L2
+  56 000e 01A2     	 adr r2,.L4
+  57 0010 52F823F0 	 ldr pc,[r2,r3,lsl#2]
+  58              	 .p2align 2
+  59              	.L4:
+  60 0014 35000000 	 .word .L11+1
+  61 0018 3B000000 	 .word .L10+1
+  62 001c 3F000000 	 .word .L9+1
+  63 0020 43000000 	 .word .L8+1
+  64 0024 47000000 	 .word .L7+1
+  65 0028 4B000000 	 .word .L6+1
+  66 002c 4F000000 	 .word .L5+1
+  67 0030 53000000 	 .word .L3+1
+  68              	 .p2align 1
+  69              	.L11:
+ 204:.././hal/sam3u1c/inc/sam3u/osc.h **** 	switch (ul_id) {
+ 205:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_SLCK_32K_RC:
+ 206:.././hal/sam3u1c/inc/sam3u/osc.h **** 		return OSC_SLCK_32K_RC_HZ;
+  70              	 .loc 1 206 10
+  71 0034 4FF4FA43 	 mov r3,#32000
+  72 0038 0EE0     	 b .L12
+  73              	.L10:
+ 207:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+ 208:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_SLCK_32K_XTAL:
+ 209:.././hal/sam3u1c/inc/sam3u/osc.h **** 		return BOARD_FREQ_SLCK_XTAL;
+  74              	 .loc 1 209 10
+  75 003a 0023     	 movs r3,#0
+  76 003c 0CE0     	 b .L12
+  77              	.L9:
+ 210:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+ 211:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_SLCK_32K_BYPASS:
+ 212:.././hal/sam3u1c/inc/sam3u/osc.h **** 		return BOARD_FREQ_SLCK_BYPASS;
+  78              	 .loc 1 212 10
+  79 003e 0023     	 movs r3,#0
+  80 0040 0AE0     	 b .L12
+  81              	.L8:
+ 213:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+ 214:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_MAINCK_4M_RC:
+ 215:.././hal/sam3u1c/inc/sam3u/osc.h **** 		return OSC_MAINCK_4M_RC_HZ;
+  82              	 .loc 1 215 10
+  83 0042 084B     	 ldr r3,.L13
+  84 0044 08E0     	 b .L12
+  85              	.L7:
+ 216:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+ 217:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_MAINCK_8M_RC:
+ 218:.././hal/sam3u1c/inc/sam3u/osc.h **** 		return OSC_MAINCK_8M_RC_HZ;
+  86              	 .loc 1 218 10
+  87 0046 084B     	 ldr r3,.L13+4
+  88 0048 06E0     	 b .L12
+  89              	.L6:
+ 219:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+ 220:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_MAINCK_12M_RC:
+ 221:.././hal/sam3u1c/inc/sam3u/osc.h **** 		return OSC_MAINCK_12M_RC_HZ;
+  90              	 .loc 1 221 10
+  91 004a 084B     	 ldr r3,.L13+8
+  92 004c 04E0     	 b .L12
+  93              	.L5:
+ 222:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+ 223:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_MAINCK_XTAL:
+ 224:.././hal/sam3u1c/inc/sam3u/osc.h **** 		return BOARD_FREQ_MAINCK_XTAL;
+  94              	 .loc 1 224 10
+  95 004e 074B     	 ldr r3,.L13+8
+  96 0050 02E0     	 b .L12
+  97              	.L3:
+ 225:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+ 226:.././hal/sam3u1c/inc/sam3u/osc.h **** 	case OSC_MAINCK_BYPASS:
+ 227:.././hal/sam3u1c/inc/sam3u/osc.h **** 		return BOARD_FREQ_MAINCK_BYPASS;
+  98              	 .loc 1 227 10
+  99 0052 064B     	 ldr r3,.L13+8
+ 100 0054 00E0     	 b .L12
+ 101              	.L2:
+ 228:.././hal/sam3u1c/inc/sam3u/osc.h **** 	}
+ 229:.././hal/sam3u1c/inc/sam3u/osc.h **** 
+ 230:.././hal/sam3u1c/inc/sam3u/osc.h **** 	return 0;
+ 102              	 .loc 1 230 9
+ 103 0056 0023     	 movs r3,#0
+ 104              	.L12:
+ 231:.././hal/sam3u1c/inc/sam3u/osc.h **** }
+ 105              	 .loc 1 231 1
+ 106 0058 1846     	 mov r0,r3
+ 107 005a 0C37     	 adds r7,r7,#12
+ 108              	.LCFI3:
+ 109              	 .cfi_def_cfa_offset 4
+ 110 005c BD46     	 mov sp,r7
+ 111              	.LCFI4:
+ 112              	 .cfi_def_cfa_register 13
+ 113              	 
+ 114 005e 80BC     	 pop {r7}
+ 115              	.LCFI5:
+ 116              	 .cfi_restore 7
+ 117              	 .cfi_def_cfa_offset 0
+ 118 0060 7047     	 bx lr
+ 119              	.L14:
+ 120 0062 00BF     	 .align 2
+ 121              	.L13:
+ 122 0064 00093D00 	 .word 4000000
+ 123 0068 00127A00 	 .word 8000000
+ 124 006c 001BB700 	 .word 12000000
+ 125              	 .cfi_endproc
+ 126              	.LFE72:
+ 128              	 .section .text.sysclk_get_main_hz,"ax",%progbits
+ 129              	 .align 1
+ 130              	 .syntax unified
+ 131              	 .thumb
+ 132              	 .thumb_func
+ 133              	 .fpu softvfp
+ 135              	sysclk_get_main_hz:
+ 136              	.LFB83:
+ 137              	 .file 2 ".././hal/sam3u1c/inc/sam3u/sysclk.h"
+   1:.././hal/sam3u1c/inc/sam3u/sysclk.h **** /**
+   2:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \file
+   3:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+   4:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \brief Chip-specific system clock management functions.
+   5:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+   6:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
+   7:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+   8:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \asf_license_start
+   9:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+  10:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \page License
+  11:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+  12:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * Redistribution and use in source and binary forms, with or without
+  13:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * modification, are permitted provided that the following conditions are met:
+  14:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+  15:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * 1. Redistributions of source code must retain the above copyright notice,
+  16:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *    this list of conditions and the following disclaimer.
+  17:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+  18:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * 2. Redistributions in binary form must reproduce the above copyright notice,
+  19:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *    this list of conditions and the following disclaimer in the documentation
+  20:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *    and/or other materials provided with the distribution.
+  21:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+  22:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * 3. The name of Atmel may not be used to endorse or promote products derived
+  23:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *    from this software without specific prior written permission.
+  24:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+  25:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * 4. This software may only be redistributed and used in connection with an
+  26:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *    Atmel microcontroller product.
+  27:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+  28:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * THIS SOFTWARE IS PROVIDED BY ATMEL "AS IS" AND ANY EXPRESS OR IMPLIED
+  29:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  30:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT ARE
+  31:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * EXPRESSLY AND SPECIFICALLY DISCLAIMED. IN NO EVENT SHALL ATMEL BE LIABLE FOR
+  32:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  33:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+  34:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+  35:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+  36:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+  37:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  38:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * POSSIBILITY OF SUCH DAMAGE.
+  39:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+  40:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \asf_license_stop
+  41:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+  42:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  */
+  43:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 
+  44:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #ifndef CHIP_SYSCLK_H_INCLUDED
+  45:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #define CHIP_SYSCLK_H_INCLUDED
+  46:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 
+  47:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #include <osc.h>
+  48:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #include <pll.h>
+  49:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 
+  50:.././hal/sam3u1c/inc/sam3u/sysclk.h **** /**
+  51:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \page sysclk_quickstart Quick Start Guide for the System Clock Management service (SAM3U)
+  52:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+  53:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * This is the quick start guide for the \ref sysclk_group "System Clock Management"
+  54:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * service, with step-by-step instructions on how to configure and use the service for
+  55:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * specific use cases.
+  56:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+  57:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \section sysclk_quickstart_usecases System Clock Management use cases
+  58:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * - \ref sysclk_quickstart_basic
+  59:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+  60:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \section sysclk_quickstart_basic Basic usage of the System Clock Management service
+  61:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * This section will present a basic use case for the System Clock Management service.
+  62:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * This use case will configure the main system clock to 96MHz, using an internal PLL
+  63:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * module to multiply the frequency of a crystal attached to the microcontroller.
+  64:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+  65:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \subsection sysclk_quickstart_use_case_1_prereq Prerequisites
+  66:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *  - None
+  67:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+  68:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \subsection sysclk_quickstart_use_case_1_setup_steps Initialization code
+  69:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * Add to the application initialization code:
+  70:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \code
+  71:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	sysclk_init();
+  72:.././hal/sam3u1c/inc/sam3u/sysclk.h **** \endcode
+  73:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+  74:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \subsection sysclk_quickstart_use_case_1_setup_steps_workflow Workflow
+  75:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * -# Configure the system clocks according to the settings in conf_clock.h:
+  76:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *    \code sysclk_init(); \endcode
+  77:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+  78:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \subsection sysclk_quickstart_use_case_1_example_code Example code
+  79:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *   Add or uncomment the following in your conf_clock.h header file, commenting out all other
+  80:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *   definitions of the same symbol(s):
+  81:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *   \code
+  82:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	   #define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_PLLACK
+  83:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 
+  84:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	   // Fpll0 = (Fclk * PLL_mul) / PLL_div
+  85:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	   #define CONFIG_PLL0_SOURCE          PLL_SRC_MAINCK_XTAL
+  86:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	   #define CONFIG_PLL0_MUL             (96000000UL / BOARD_FREQ_MAINCK_XTAL)
+  87:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	   #define CONFIG_PLL0_DIV             1
+  88:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 
+  89:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	   // Fbus = Fsys / BUS_div
+  90:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	   #define CONFIG_SYSCLK_PRES          SYSCLK_PRES_1
+  91:.././hal/sam3u1c/inc/sam3u/sysclk.h **** \endcode
+  92:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+  93:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \subsection sysclk_quickstart_use_case_1_example_workflow Workflow
+  94:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *  -# Configure the main system clock to use the output of the PLL module as its source:
+  95:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *   \code #define CONFIG_SYSCLK_SOURCE          SYSCLK_SRC_PLLACK \endcode
+  96:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *  -# Configure the PLL module to use the fast external fast crystal oscillator as its source:
+  97:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *   \code #define CONFIG_PLL0_SOURCE            PLL_SRC_MAINCK_XTAL \endcode
+  98:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *  -# Configure the PLL module to multiply the external fast crystal oscillator frequency up to 96
+  99:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *   \code
+ 100:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	#define CONFIG_PLL0_MUL             (96000000UL / BOARD_FREQ_MAINCK_XTAL)
+ 101:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	#define CONFIG_PLL0_DIV             1
+ 102:.././hal/sam3u1c/inc/sam3u/sysclk.h **** \endcode
+ 103:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *   \note For user boards, \c BOARD_FREQ_MAINCK_XTAL should be defined in the board \c conf_board.
+ 104:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *         file as the frequency of the fast crystal attached to the microcontroller.
+ 105:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *  -# Configure the main clock to run at the full 96MHz, disable scaling of the main system clock 
+ 106:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *    \code
+ 107:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	#define CONFIG_SYSCLK_PRES         SYSCLK_PRES_1
+ 108:.././hal/sam3u1c/inc/sam3u/sysclk.h **** \endcode
+ 109:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *    \note Some dividers are powers of two, while others are integer division factors. Refer to th
+ 110:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *          formulas in the conf_clock.h template commented above each division define.
+ 111:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  */
+ 112:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 
+ 113:.././hal/sam3u1c/inc/sam3u/sysclk.h **** /// @cond 0
+ 114:.././hal/sam3u1c/inc/sam3u/sysclk.h **** /**INDENT-OFF**/
+ 115:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #ifdef __cplusplus
+ 116:.././hal/sam3u1c/inc/sam3u/sysclk.h **** extern "C" {
+ 117:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #endif
+ 118:.././hal/sam3u1c/inc/sam3u/sysclk.h **** /**INDENT-ON**/
+ 119:.././hal/sam3u1c/inc/sam3u/sysclk.h **** /// @endcond
+ 120:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 
+ 121:.././hal/sam3u1c/inc/sam3u/sysclk.h **** /**
+ 122:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \weakgroup sysclk_group
+ 123:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * @{
+ 124:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  */
+ 125:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 
+ 126:.././hal/sam3u1c/inc/sam3u/sysclk.h **** //! \name Configuration Symbols
+ 127:.././hal/sam3u1c/inc/sam3u/sysclk.h **** //@{
+ 128:.././hal/sam3u1c/inc/sam3u/sysclk.h **** /**
+ 129:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \def CONFIG_SYSCLK_SOURCE
+ 130:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \brief Initial/static main system clock source
+ 131:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+ 132:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * The main system clock will be configured to use this clock during
+ 133:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * initialization.
+ 134:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  */
+ 135:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #ifndef CONFIG_SYSCLK_SOURCE
+ 136:.././hal/sam3u1c/inc/sam3u/sysclk.h **** # define CONFIG_SYSCLK_SOURCE   SYSCLK_SRC_MAINCK_4M_RC
+ 137:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #endif
+ 138:.././hal/sam3u1c/inc/sam3u/sysclk.h **** /**
+ 139:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \def CONFIG_SYSCLK_PRES
+ 140:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \brief Initial CPU clock divider (mck)
+ 141:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+ 142:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * The MCK will run at
+ 143:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \f[
+ 144:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *   f_{MCK} = \frac{f_{sys}}{\mathrm{CONFIG\_SYSCLK\_PRES}}\,\mbox{Hz}
+ 145:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \f]
+ 146:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * after initialization.
+ 147:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  */
+ 148:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #ifndef CONFIG_SYSCLK_PRES
+ 149:.././hal/sam3u1c/inc/sam3u/sysclk.h **** # define CONFIG_SYSCLK_PRES  0
+ 150:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #endif
+ 151:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 
+ 152:.././hal/sam3u1c/inc/sam3u/sysclk.h **** //@}
+ 153:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 
+ 154:.././hal/sam3u1c/inc/sam3u/sysclk.h **** //! \name Master Clock Sources (MCK)
+ 155:.././hal/sam3u1c/inc/sam3u/sysclk.h **** //@{
+ 156:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #define SYSCLK_SRC_SLCK_RC              0       //!< Internal 32kHz RC oscillator as master source 
+ 157:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #define SYSCLK_SRC_SLCK_XTAL            1       //!< External 32kHz crystal oscillator as master so
+ 158:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #define SYSCLK_SRC_SLCK_BYPASS          2       //!< External 32kHz bypass oscillator as master sou
+ 159:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #define SYSCLK_SRC_MAINCK_4M_RC         3       //!< Internal 4MHz RC oscillator as master source c
+ 160:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #define SYSCLK_SRC_MAINCK_8M_RC         4       //!< Internal 8MHz RC oscillator as master source c
+ 161:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #define SYSCLK_SRC_MAINCK_12M_RC        5       //!< Internal 12MHz RC oscillator as master source 
+ 162:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #define SYSCLK_SRC_MAINCK_XTAL          6       //!< External crystal oscillator as master source c
+ 163:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #define SYSCLK_SRC_MAINCK_BYPASS        7       //!< External bypass oscillator as master source cl
+ 164:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #define SYSCLK_SRC_PLLACK               8       //!< Use PLLACK as master source clock
+ 165:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #define SYSCLK_SRC_UPLLCK               9       //!< Use UPLLCK as master source clock
+ 166:.././hal/sam3u1c/inc/sam3u/sysclk.h **** //@}
+ 167:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 
+ 168:.././hal/sam3u1c/inc/sam3u/sysclk.h **** //! \name Master Clock Prescalers (MCK)
+ 169:.././hal/sam3u1c/inc/sam3u/sysclk.h **** //@{
+ 170:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #define SYSCLK_PRES_1           PMC_MCKR_PRES_CLK_1     //!< Set master clock prescaler to 1
+ 171:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #define SYSCLK_PRES_2           PMC_MCKR_PRES_CLK_2     //!< Set master clock prescaler to 2
+ 172:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #define SYSCLK_PRES_4           PMC_MCKR_PRES_CLK_4     //!< Set master clock prescaler to 4
+ 173:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #define SYSCLK_PRES_8           PMC_MCKR_PRES_CLK_8     //!< Set master clock prescaler to 8
+ 174:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #define SYSCLK_PRES_16          PMC_MCKR_PRES_CLK_16    //!< Set master clock prescaler to 16
+ 175:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #define SYSCLK_PRES_32          PMC_MCKR_PRES_CLK_32    //!< Set master clock prescaler to 32
+ 176:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #define SYSCLK_PRES_64          PMC_MCKR_PRES_CLK_64    //!< Set master clock prescaler to 64
+ 177:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #define SYSCLK_PRES_3           PMC_MCKR_PRES_CLK_3     //!< Set master clock prescaler to 3
+ 178:.././hal/sam3u1c/inc/sam3u/sysclk.h **** //@}
+ 179:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 
+ 180:.././hal/sam3u1c/inc/sam3u/sysclk.h **** /**
+ 181:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \def CONFIG_USBCLK_SOURCE
+ 182:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \brief Configuration symbol for the USB generic clock source
+ 183:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+ 184:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * Sets the clock source to use for the USB. The source must also be properly
+ 185:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * configured.
+ 186:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+ 187:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * Define this to one of the \c USBCLK_SRC_xxx settings. Leave it undefined if
+ 188:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * USB is not required.
+ 189:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  */
+ 190:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #ifdef __DOXYGEN__
+ 191:.././hal/sam3u1c/inc/sam3u/sysclk.h **** # define CONFIG_USBCLK_SOURCE
+ 192:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #endif
+ 193:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 
+ 194:.././hal/sam3u1c/inc/sam3u/sysclk.h **** /**
+ 195:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \def CONFIG_USBCLK_DIV
+ 196:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \brief Configuration symbol for the USB generic clock divider setting
+ 197:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+ 198:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * Sets the clock division for the USB generic clock. If a USB clock source is
+ 199:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * selected with CONFIG_USBCLK_SOURCE, this configuration symbol must also be
+ 200:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * defined.
+ 201:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  */
+ 202:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #ifdef __DOXYGEN__
+ 203:.././hal/sam3u1c/inc/sam3u/sysclk.h **** # define CONFIG_USBCLK_DIV
+ 204:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #endif
+ 205:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 
+ 206:.././hal/sam3u1c/inc/sam3u/sysclk.h **** /**
+ 207:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \name Querying the system clock
+ 208:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+ 209:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * The following functions may be used to query the current frequency of
+ 210:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * the system clock and the CPU and bus clocks derived from it.
+ 211:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * sysclk_get_main_hz() and sysclk_get_cpu_hz() can be assumed to be
+ 212:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * available on all platforms, although some platforms may define
+ 213:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * additional accessors for various chip-internal bus clocks. These are
+ 214:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * usually not intended to be queried directly by generic code.
+ 215:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  */
+ 216:.././hal/sam3u1c/inc/sam3u/sysclk.h **** //@{
+ 217:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 
+ 218:.././hal/sam3u1c/inc/sam3u/sysclk.h **** /**
+ 219:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \brief Return the current rate in Hz of the main system clock
+ 220:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+ 221:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \todo This function assumes that the main clock source never changes
+ 222:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * once it's been set up, and that PLL0 always runs at the compile-time
+ 223:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * configured default rate. While this is probably the most common
+ 224:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * configuration, which we want to support as a special case for
+ 225:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * performance reasons, we will at some point need to support more
+ 226:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * dynamic setups as well.
+ 227:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  */
+ 228:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #if (defined CONFIG_SYSCLK_DEFAULT_RETURNS_SLOW_OSC)
+ 229:.././hal/sam3u1c/inc/sam3u/sysclk.h **** extern uint32_t sysclk_initialized;
+ 230:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #endif
+ 231:.././hal/sam3u1c/inc/sam3u/sysclk.h **** static inline uint32_t sysclk_get_main_hz(void)
+ 232:.././hal/sam3u1c/inc/sam3u/sysclk.h **** {
+ 138              	 .loc 2 232 1
+ 139              	 .cfi_startproc
+ 140              	 
+ 141              	 
+ 142 0000 80B5     	 push {r7,lr}
+ 143              	.LCFI6:
+ 144              	 .cfi_def_cfa_offset 8
+ 145              	 .cfi_offset 7,-8
+ 146              	 .cfi_offset 14,-4
+ 147 0002 00AF     	 add r7,sp,#0
+ 148              	.LCFI7:
+ 149              	 .cfi_def_cfa_register 7
+ 233:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #if (defined CONFIG_SYSCLK_DEFAULT_RETURNS_SLOW_OSC)
+ 234:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	if (!sysclk_initialized ) {
+ 235:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 		return OSC_MAINCK_4M_RC_HZ;
+ 236:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	}
+ 237:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #endif
+ 238:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 
+ 239:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	/* Config system clock setting */
+ 240:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_SLCK_RC) {
+ 241:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 		return OSC_SLCK_32K_RC_HZ;
+ 242:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	} else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_SLCK_XTAL) {
+ 243:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 		return OSC_SLCK_32K_XTAL_HZ;
+ 244:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	} else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_SLCK_BYPASS) {
+ 245:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 		return OSC_SLCK_32K_BYPASS_HZ;
+ 246:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	} else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_MAINCK_4M_RC) {
+ 247:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 		return OSC_MAINCK_4M_RC_HZ;
+ 248:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	} else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_MAINCK_8M_RC) {
+ 249:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 		return OSC_MAINCK_8M_RC_HZ;
+ 250:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	} else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_MAINCK_12M_RC) {
+ 251:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 		return OSC_MAINCK_12M_RC_HZ;
+ 252:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	} else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_MAINCK_XTAL) {
+ 253:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 		return OSC_MAINCK_XTAL_HZ;
+ 254:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	} else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_MAINCK_BYPASS) {
+ 255:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 		return OSC_MAINCK_BYPASS_HZ;
+ 256:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	}
+ 257:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #ifdef CONFIG_PLL0_SOURCE
+ 258:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_PLLACK) {
+ 259:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 		return pll_get_default_rate(0);
+ 150              	 .loc 2 259 10
+ 151 0004 0620     	 movs r0,#6
+ 152 0006 034B     	 ldr r3,.L17
+ 153 0008 9847     	 blx r3
+ 154              	.LVL0:
+ 155 000a 0346     	 mov r3,r0
+ 156 000c 1B01     	 lsls r3,r3,#4
+ 260:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	}
+ 261:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #endif
+ 262:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 
+ 263:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #ifdef CONFIG_PLL1_SOURCE
+ 264:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_UPLLCK) {
+ 265:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 		return PLL_UPLL_HZ;
+ 266:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	}
+ 267:.././hal/sam3u1c/inc/sam3u/sysclk.h **** #endif
+ 268:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	else {
+ 269:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 		/* unhandled_case(CONFIG_SYSCLK_SOURCE); */
+ 270:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 		return 0;
+ 271:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	}
+ 272:.././hal/sam3u1c/inc/sam3u/sysclk.h **** }
+ 157              	 .loc 2 272 1
+ 158 000e 1846     	 mov r0,r3
+ 159 0010 80BD     	 pop {r7,pc}
+ 160              	.L18:
+ 161 0012 00BF     	 .align 2
+ 162              	.L17:
+ 163 0014 00000000 	 .word osc_get_rate
+ 164              	 .cfi_endproc
+ 165              	.LFE83:
+ 167              	 .section .text.sysclk_get_cpu_hz,"ax",%progbits
+ 168              	 .align 1
+ 169              	 .syntax unified
+ 170              	 .thumb
+ 171              	 .thumb_func
+ 172              	 .fpu softvfp
+ 174              	sysclk_get_cpu_hz:
+ 175              	.LFB84:
+ 273:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 
+ 274:.././hal/sam3u1c/inc/sam3u/sysclk.h **** /**
+ 275:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \brief Return the current rate in Hz of the CPU clock
+ 276:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+ 277:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \todo This function assumes that the CPU always runs at the system
+ 278:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * clock frequency. We want to support at least two more scenarios:
+ 279:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * Fixed CPU/bus clock dividers (config symbols) and dynamic CPU/bus
+ 280:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * clock dividers (which may change at run time). Ditto for all the bus
+ 281:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * clocks.
+ 282:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+ 283:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \return Frequency of the CPU clock, in Hz.
+ 284:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  */
+ 285:.././hal/sam3u1c/inc/sam3u/sysclk.h **** static inline uint32_t sysclk_get_cpu_hz(void)
+ 286:.././hal/sam3u1c/inc/sam3u/sysclk.h **** {
+ 176              	 .loc 2 286 1
+ 177              	 .cfi_startproc
+ 178              	 
+ 179              	 
+ 180 0000 80B5     	 push {r7,lr}
+ 181              	.LCFI8:
+ 182              	 .cfi_def_cfa_offset 8
+ 183              	 .cfi_offset 7,-8
+ 184              	 .cfi_offset 14,-4
+ 185 0002 00AF     	 add r7,sp,#0
+ 186              	.LCFI9:
+ 187              	 .cfi_def_cfa_register 7
+ 287:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	/* CONFIG_SYSCLK_PRES is the register value for setting the expected */
+ 288:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	/* prescaler, not an immediate value. */
+ 289:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	return sysclk_get_main_hz() /
+ 188              	 .loc 2 289 9
+ 189 0004 024B     	 ldr r3,.L21
+ 190 0006 9847     	 blx r3
+ 191              	.LVL1:
+ 192 0008 0346     	 mov r3,r0
+ 193              	 .loc 2 289 30
+ 194 000a 5B08     	 lsrs r3,r3,#1
+ 290:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 		((CONFIG_SYSCLK_PRES == SYSCLK_PRES_3) ? 3 :
+ 291:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 			(1 << (CONFIG_SYSCLK_PRES >> PMC_MCKR_PRES_Pos)));
+ 292:.././hal/sam3u1c/inc/sam3u/sysclk.h **** }
+ 195              	 .loc 2 292 1
+ 196 000c 1846     	 mov r0,r3
+ 197 000e 80BD     	 pop {r7,pc}
+ 198              	.L22:
+ 199              	 .align 2
+ 200              	.L21:
+ 201 0010 00000000 	 .word sysclk_get_main_hz
+ 202              	 .cfi_endproc
+ 203              	.LFE84:
+ 205              	 .section .text.sysclk_enable_peripheral_clock,"ax",%progbits
+ 206              	 .align 1
+ 207              	 .syntax unified
+ 208              	 .thumb
+ 209              	 .thumb_func
+ 210              	 .fpu softvfp
+ 212              	sysclk_enable_peripheral_clock:
+ 213              	.LFB87:
+ 293:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 
+ 294:.././hal/sam3u1c/inc/sam3u/sysclk.h **** /**
+ 295:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \brief Retrieves the current rate in Hz of the peripheral clocks.
+ 296:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+ 297:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \return Frequency of the peripheral clocks, in Hz.
+ 298:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  */
+ 299:.././hal/sam3u1c/inc/sam3u/sysclk.h **** static inline uint32_t sysclk_get_peripheral_hz(void)
+ 300:.././hal/sam3u1c/inc/sam3u/sysclk.h **** {
+ 301:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	/* CONFIG_SYSCLK_PRES is the register value for setting the expected */
+ 302:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	/* prescaler, not an immediate value. */
+ 303:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	return sysclk_get_main_hz() /
+ 304:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 		((CONFIG_SYSCLK_PRES == SYSCLK_PRES_3) ? 3 :
+ 305:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 			(1 << (CONFIG_SYSCLK_PRES >> PMC_MCKR_PRES_Pos)));
+ 306:.././hal/sam3u1c/inc/sam3u/sysclk.h **** }
+ 307:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 
+ 308:.././hal/sam3u1c/inc/sam3u/sysclk.h **** /**
+ 309:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \brief Retrieves the current rate in Hz of the Peripheral Bus clock attached
+ 310:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *        to the specified peripheral.
+ 311:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+ 312:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \param module Pointer to the module's base address.
+ 313:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+ 314:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \return Frequency of the bus attached to the specified peripheral, in Hz.
+ 315:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  */
+ 316:.././hal/sam3u1c/inc/sam3u/sysclk.h **** static inline uint32_t sysclk_get_peripheral_bus_hz(const volatile void *module)
+ 317:.././hal/sam3u1c/inc/sam3u/sysclk.h **** {
+ 318:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	UNUSED(module);
+ 319:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	return sysclk_get_peripheral_hz();
+ 320:.././hal/sam3u1c/inc/sam3u/sysclk.h **** }
+ 321:.././hal/sam3u1c/inc/sam3u/sysclk.h **** //@}
+ 322:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 
+ 323:.././hal/sam3u1c/inc/sam3u/sysclk.h **** //! \name Enabling and disabling synchronous clocks
+ 324:.././hal/sam3u1c/inc/sam3u/sysclk.h **** //@{
+ 325:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 
+ 326:.././hal/sam3u1c/inc/sam3u/sysclk.h **** /**
+ 327:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \brief Enable a peripheral's clock.
+ 328:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  *
+ 329:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  * \param ul_id Id (number) of the peripheral clock.
+ 330:.././hal/sam3u1c/inc/sam3u/sysclk.h ****  */
+ 331:.././hal/sam3u1c/inc/sam3u/sysclk.h **** static inline void sysclk_enable_peripheral_clock(uint32_t ul_id)
+ 332:.././hal/sam3u1c/inc/sam3u/sysclk.h **** {
+ 214              	 .loc 2 332 1
+ 215              	 .cfi_startproc
+ 216              	 
+ 217              	 
+ 218 0000 80B5     	 push {r7,lr}
+ 219              	.LCFI10:
+ 220              	 .cfi_def_cfa_offset 8
+ 221              	 .cfi_offset 7,-8
+ 222              	 .cfi_offset 14,-4
+ 223 0002 82B0     	 sub sp,sp,#8
+ 224              	.LCFI11:
+ 225              	 .cfi_def_cfa_offset 16
+ 226 0004 00AF     	 add r7,sp,#0
+ 227              	.LCFI12:
+ 228              	 .cfi_def_cfa_register 7
+ 229 0006 7860     	 str r0,[r7,#4]
+ 333:.././hal/sam3u1c/inc/sam3u/sysclk.h **** 	pmc_enable_periph_clk(ul_id);
+ 230              	 .loc 2 333 2
+ 231 0008 7868     	 ldr r0,[r7,#4]
+ 232 000a 034B     	 ldr r3,.L24
+ 233 000c 9847     	 blx r3
+ 234              	.LVL2:
+ 334:.././hal/sam3u1c/inc/sam3u/sysclk.h **** }
+ 235              	 .loc 2 334 1
+ 236 000e 00BF     	 nop
+ 237 0010 0837     	 adds r7,r7,#8
+ 238              	.LCFI13:
+ 239              	 .cfi_def_cfa_offset 8
+ 240 0012 BD46     	 mov sp,r7
+ 241              	.LCFI14:
+ 242              	 .cfi_def_cfa_register 13
+ 243              	 
+ 244 0014 80BD     	 pop {r7,pc}
+ 245              	.L25:
+ 246 0016 00BF     	 .align 2
+ 247              	.L24:
+ 248 0018 00000000 	 .word pmc_enable_periph_clk
+ 249              	 .cfi_endproc
+ 250              	.LFE87:
+ 252              	 .section .text.fpga_program_init,"ax",%progbits
+ 253              	 .align 1
+ 254              	 .global fpga_program_init
+ 255              	 .syntax unified
+ 256              	 .thumb
+ 257              	 .thumb_func
+ 258              	 .fpu softvfp
+ 260              	fpga_program_init:
+ 261              	.LFB181:
+ 262              	 .file 3 "fpga_program.c"
+   1:fpga_program.c **** /*
+   2:fpga_program.c ****   Xilinx Spartan 6 FPGA Programming Routines
+   3:fpga_program.c **** 
+   4:fpga_program.c ****   Copyright (c) 2014-2015 NewAE Technology Inc.  All rights reserved.
+   5:fpga_program.c ****   Author: Colin O'Flynn, <coflynn@newae.com>
+   6:fpga_program.c **** 
+   7:fpga_program.c ****   This program is free software: you can redistribute it and/or modify
+   8:fpga_program.c ****   it under the terms of the GNU General Public License as published by
+   9:fpga_program.c ****   the Free Software Foundation, either version 3 of the License, or
+  10:fpga_program.c ****   (at your option) any later version.
+  11:fpga_program.c ****   This program is distributed in the hope that it will be useful,
+  12:fpga_program.c ****   but WITHOUT ANY WARRANTY; without even the implied warranty of
+  13:fpga_program.c ****   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  14:fpga_program.c ****   GNU General Public License for more details.
+  15:fpga_program.c ****   You should have received a copy of the GNU General Public License
+  16:fpga_program.c ****   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  17:fpga_program.c **** */
+  18:fpga_program.c **** 
+  19:fpga_program.c **** #include <asf.h>
+  20:fpga_program.c **** #include "fpga_program.h"
+  21:fpga_program.c **** #include "spi.h"
+  22:fpga_program.c **** 
+  23:fpga_program.c **** /* FPGA Programming: Init pins, set to standby state */
+  24:fpga_program.c **** void fpga_program_init(void)
+  25:fpga_program.c **** {
+ 263              	 .loc 3 25 1
+ 264              	 .cfi_startproc
+ 265              	 
+ 266              	 
+ 267 0000 80B5     	 push {r7,lr}
+ 268              	.LCFI15:
+ 269              	 .cfi_def_cfa_offset 8
+ 270              	 .cfi_offset 7,-8
+ 271              	 .cfi_offset 14,-4
+ 272 0002 00AF     	 add r7,sp,#0
+ 273              	.LCFI16:
+ 274              	 .cfi_def_cfa_register 7
+  26:fpga_program.c ****     FPGA_NPROG_SETUP();
+ 275              	 .loc 3 26 5
+ 276 0004 4FF06051 	 mov r1,#939524096
+ 277 0008 1420     	 movs r0,#20
+ 278 000a 034B     	 ldr r3,.L27
+ 279 000c 9847     	 blx r3
+ 280              	.LVL3:
+  27:fpga_program.c ****     FPGA_NPROG_HIGH();
+ 281              	 .loc 3 27 5
+ 282 000e 1420     	 movs r0,#20
+ 283 0010 024B     	 ldr r3,.L27+4
+ 284 0012 9847     	 blx r3
+ 285              	.LVL4:
+  28:fpga_program.c **** }
+ 286              	 .loc 3 28 1
+ 287 0014 00BF     	 nop
+ 288 0016 80BD     	 pop {r7,pc}
+ 289              	.L28:
+ 290              	 .align 2
+ 291              	.L27:
+ 292 0018 00000000 	 .word pio_configure_pin
+ 293 001c 00000000 	 .word pio_set_pin_high
+ 294              	 .cfi_endproc
+ 295              	.LFE181:
+ 297              	 .section .text.fpga_program_setup1,"ax",%progbits
+ 298              	 .align 1
+ 299              	 .global fpga_program_setup1
+ 300              	 .syntax unified
+ 301              	 .thumb
+ 302              	 .thumb_func
+ 303              	 .fpu softvfp
+ 305              	fpga_program_setup1:
+ 306              	.LFB182:
+  29:fpga_program.c **** 
+  30:fpga_program.c **** /* FPGA Programming Step 1: Erase FPGA, setup SPI interface */
+  31:fpga_program.c **** void fpga_program_setup1(void)
+  32:fpga_program.c **** {
+ 307              	 .loc 3 32 1
+ 308              	 .cfi_startproc
+ 309              	 
+ 310              	 
+ 311 0000 80B5     	 push {r7,lr}
+ 312              	.LCFI17:
+ 313              	 .cfi_def_cfa_offset 8
+ 314              	 .cfi_offset 7,-8
+ 315              	 .cfi_offset 14,-4
+ 316 0002 84B0     	 sub sp,sp,#16
+ 317              	.LCFI18:
+ 318              	 .cfi_def_cfa_offset 24
+ 319 0004 00AF     	 add r7,sp,#0
+ 320              	.LCFI19:
+ 321              	 .cfi_def_cfa_register 7
+  33:fpga_program.c ****     /* Init - set program low to erase FPGA */
+  34:fpga_program.c ****     FPGA_NPROG_LOW();
+ 322              	 .loc 3 34 5
+ 323 0006 1420     	 movs r0,#20
+ 324 0008 144B     	 ldr r3,.L30
+ 325 000a 9847     	 blx r3
+ 326              	.LVL5:
+  35:fpga_program.c **** 
+  36:fpga_program.c ****     usart_spi_opt_t spiopts;
+  37:fpga_program.c ****     spiopts.baudrate = 10000000UL;
+ 327              	 .loc 3 37 22
+ 328 000c 144B     	 ldr r3,.L30+4
+ 329 000e 3B60     	 str r3,[r7]
+  38:fpga_program.c ****     spiopts.char_length = US_MR_CHRL_8_BIT;
+ 330              	 .loc 3 38 25
+ 331 0010 C023     	 movs r3,#192
+ 332 0012 7B60     	 str r3,[r7,#4]
+  39:fpga_program.c ****     spiopts.channel_mode = US_MR_CHMODE_NORMAL;
+ 333              	 .loc 3 39 26
+ 334 0014 0023     	 movs r3,#0
+ 335 0016 FB60     	 str r3,[r7,#12]
+  40:fpga_program.c ****     spiopts.spi_mode = SPI_MODE_0;
+ 336              	 .loc 3 40 22
+ 337 0018 0023     	 movs r3,#0
+ 338 001a BB60     	 str r3,[r7,#8]
+  41:fpga_program.c **** 
+  42:fpga_program.c ****     sysclk_enable_peripheral_clock(FPGA_PROG_USART_ID);
+ 339              	 .loc 3 42 5
+ 340 001c 0D20     	 movs r0,#13
+ 341 001e 114B     	 ldr r3,.L30+8
+ 342 0020 9847     	 blx r3
+ 343              	.LVL6:
+  43:fpga_program.c ****     usart_init_spi_master(FPGA_PROG_USART, &spiopts, sysclk_get_cpu_hz());
+ 344              	 .loc 3 43 5
+ 345 0022 114B     	 ldr r3,.L30+12
+ 346 0024 9847     	 blx r3
+ 347              	.LVL7:
+ 348 0026 0246     	 mov r2,r0
+ 349 0028 3B46     	 mov r3,r7
+ 350 002a 1946     	 mov r1,r3
+ 351 002c 0F48     	 ldr r0,.L30+16
+ 352 002e 104B     	 ldr r3,.L30+20
+ 353 0030 9847     	 blx r3
+ 354              	.LVL8:
+  44:fpga_program.c ****     FPGA_DO_SETUP();
+ 355              	 .loc 3 44 5
+ 356 0032 4FF04051 	 mov r1,#805306368
+ 357 0036 1220     	 movs r0,#18
+ 358 0038 0E4B     	 ldr r3,.L30+24
+ 359 003a 9847     	 blx r3
+ 360              	.LVL9:
+  45:fpga_program.c ****     FPGA_CCLK_SETUP();
+ 361              	 .loc 3 45 5
+ 362 003c 4FF04051 	 mov r1,#805306368
+ 363 0040 1120     	 movs r0,#17
+ 364 0042 0C4B     	 ldr r3,.L30+24
+ 365 0044 9847     	 blx r3
+ 366              	.LVL10:
+  46:fpga_program.c **** 
+  47:fpga_program.c ****     //pin setup doesn't transfer control over to USART, so have to do it manually
+  48:fpga_program.c ****     PIOA->PIO_PDR = (1 << PIN_FPGA_DO_GPIO) | (1 << PIN_FPGA_CCLK_GPIO);
+ 367              	 .loc 3 48 9
+ 368 0046 0C4B     	 ldr r3,.L30+28
+ 369              	 .loc 3 48 19
+ 370 0048 4FF4C022 	 mov r2,#393216
+ 371 004c 5A60     	 str r2,[r3,#4]
+  49:fpga_program.c ****     usart_enable_tx(FPGA_PROG_USART);
+ 372              	 .loc 3 49 5
+ 373 004e 0748     	 ldr r0,.L30+16
+ 374 0050 0A4B     	 ldr r3,.L30+32
+ 375 0052 9847     	 blx r3
+ 376              	.LVL11:
+  50:fpga_program.c **** }
+ 377              	 .loc 3 50 1
+ 378 0054 00BF     	 nop
+ 379 0056 1037     	 adds r7,r7,#16
+ 380              	.LCFI20:
+ 381              	 .cfi_def_cfa_offset 8
+ 382 0058 BD46     	 mov sp,r7
+ 383              	.LCFI21:
+ 384              	 .cfi_def_cfa_register 13
+ 385              	 
+ 386 005a 80BD     	 pop {r7,pc}
+ 387              	.L31:
+ 388              	 .align 2
+ 389              	.L30:
+ 390 005c 00000000 	 .word pio_set_pin_low
+ 391 0060 80969800 	 .word 10000000
+ 392 0064 00000000 	 .word sysclk_enable_peripheral_clock
+ 393 0068 00000000 	 .word sysclk_get_cpu_hz
+ 394 006c 00000940 	 .word 1074331648
+ 395 0070 00000000 	 .word usart_init_spi_master
+ 396 0074 00000000 	 .word pio_configure_pin
+ 397 0078 000C0E40 	 .word 1074662400
+ 398 007c 00000000 	 .word usart_enable_tx
+ 399              	 .cfi_endproc
+ 400              	.LFE182:
+ 402              	 .section .text.fpga_program_setup2,"ax",%progbits
+ 403              	 .align 1
+ 404              	 .global fpga_program_setup2
+ 405              	 .syntax unified
+ 406              	 .thumb
+ 407              	 .thumb_func
+ 408              	 .fpu softvfp
+ 410              	fpga_program_setup2:
+ 411              	.LFB183:
+  51:fpga_program.c **** 
+  52:fpga_program.c **** /* FPGA Programming Step 2: Prepare FPGA for receiving programming data */
+  53:fpga_program.c **** void fpga_program_setup2(void)
+  54:fpga_program.c **** {
+ 412              	 .loc 3 54 1
+ 413              	 .cfi_startproc
+ 414              	 
+ 415              	 
+ 416 0000 80B5     	 push {r7,lr}
+ 417              	.LCFI22:
+ 418              	 .cfi_def_cfa_offset 8
+ 419              	 .cfi_offset 7,-8
+ 420              	 .cfi_offset 14,-4
+ 421 0002 00AF     	 add r7,sp,#0
+ 422              	.LCFI23:
+ 423              	 .cfi_def_cfa_register 7
+  55:fpga_program.c ****     FPGA_NPROG_HIGH();
+ 424              	 .loc 3 55 5
+ 425 0004 1420     	 movs r0,#20
+ 426 0006 024B     	 ldr r3,.L33
+ 427 0008 9847     	 blx r3
+ 428              	.LVL12:
+  56:fpga_program.c **** }
+ 429              	 .loc 3 56 1
+ 430 000a 00BF     	 nop
+ 431 000c 80BD     	 pop {r7,pc}
+ 432              	.L34:
+ 433 000e 00BF     	 .align 2
+ 434              	.L33:
+ 435 0010 00000000 	 .word pio_set_pin_high
+ 436              	 .cfi_endproc
+ 437              	.LFE183:
+ 439              	 .section .text.fpga_program_sendbyte,"ax",%progbits
+ 440              	 .align 1
+ 441              	 .global fpga_program_sendbyte
+ 442              	 .syntax unified
+ 443              	 .thumb
+ 444              	 .thumb_func
+ 445              	 .fpu softvfp
+ 447              	fpga_program_sendbyte:
+ 448              	.LFB184:
+  57:fpga_program.c **** 
+  58:fpga_program.c **** //For debug only
+  59:fpga_program.c **** //uint32_t fpga_total_bs_len;
+  60:fpga_program.c **** 
+  61:fpga_program.c **** /* FPGA Programming Step 3: Send data until done */
+  62:fpga_program.c **** void fpga_program_sendbyte(uint8_t databyte)
+  63:fpga_program.c **** {
+ 449              	 .loc 3 63 1
+ 450              	 .cfi_startproc
+ 451              	 
+ 452              	 
+ 453 0000 80B5     	 push {r7,lr}
+ 454              	.LCFI24:
+ 455              	 .cfi_def_cfa_offset 8
+ 456              	 .cfi_offset 7,-8
+ 457              	 .cfi_offset 14,-4
+ 458 0002 82B0     	 sub sp,sp,#8
+ 459              	.LCFI25:
+ 460              	 .cfi_def_cfa_offset 16
+ 461 0004 00AF     	 add r7,sp,#0
+ 462              	.LCFI26:
+ 463              	 .cfi_def_cfa_register 7
+ 464 0006 0346     	 mov r3,r0
+ 465 0008 FB71     	 strb r3,[r7,#7]
+  64:fpga_program.c ****     //For debug only
+  65:fpga_program.c ****     //fpga_total_bs_len++;
+  66:fpga_program.c ****     usart_putchar(FPGA_PROG_USART, databyte);
+ 466              	 .loc 3 66 5
+ 467 000a FB79     	 ldrb r3,[r7,#7]
+ 468 000c 1946     	 mov r1,r3
+ 469 000e 0348     	 ldr r0,.L36
+ 470 0010 034B     	 ldr r3,.L36+4
+ 471 0012 9847     	 blx r3
+ 472              	.LVL13:
+  67:fpga_program.c **** }
+ 473              	 .loc 3 67 1
+ 474 0014 00BF     	 nop
+ 475 0016 0837     	 adds r7,r7,#8
+ 476              	.LCFI27:
+ 477              	 .cfi_def_cfa_offset 8
+ 478 0018 BD46     	 mov sp,r7
+ 479              	.LCFI28:
+ 480              	 .cfi_def_cfa_register 13
+ 481              	 
+ 482 001a 80BD     	 pop {r7,pc}
+ 483              	.L37:
+ 484              	 .align 2
+ 485              	.L36:
+ 486 001c 00000940 	 .word 1074331648
+ 487 0020 00000000 	 .word usart_putchar
+ 488              	 .cfi_endproc
+ 489              	.LFE184:
+ 491              	 .text
+ 492              	.Letext0:
+ 493              	 .file 4 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 494              	 .file 5 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 495              	 .file 6 ".././hal/sam3u1c/inc/sam3u1c.h"
+ 496              	 .file 7 ".././hal/sam3u1c/inc/core_cm3.h"
+ 497              	 .file 8 ".././hal/sam3u1c/inc/system_sam3u.h"
+ 498              	 .file 9 ".././hal/sam3u1c/inc/component/component_pio.h"
+ 499              	 .file 10 ".././hal/sam3u1c/inc/component/component_usart.h"
+ 500              	 .file 11 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\lib\\gcc\\arm-none-eabi\\9.3.1\\include\\stddef.h"
+ 501              	 .file 12 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_types.h"
+ 502              	 .file 13 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\reent.h"
+ 503              	 .file 14 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\lock.h"
+ 504              	 .file 15 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\stdlib.h"
+ 505              	 .file 16 ".././hal/sam3u1c/inc/interrupt/interrupt_sam_nvic.h"
+ 506              	 .file 17 ".././hal/sam3u1c/inc/compiler.h"
+ 507              	 .file 18 ".././hal/sam3u1c/inc/sam/sleepmgr.h"
+ 508              	 .file 19 ".././hal/sam3u1c/inc/usart.h"
+ 509              	 .file 20 "./conf_usb.h"
+ 510              	 .file 21 ".././hal/sam3u1c/inc/usb_protocol.h"
+ 511              	 .file 22 ".././hal/sam3u1c/inc/udi.h"
+ 512              	 .file 23 ".././hal/sam3u1c/inc/udc_desc.h"
+ 513              	 .file 24 ".././hal/sam3u1c/inc/udd.h"
+ 514              	 .file 25 ".././hal/sam3u1c/inc/udi_vendor.h"
+ 515              	 .file 26 "fpga_program.h"
+ 516              	 .file 27 ".././hal/sam3u1c/inc/pio.h"
+ 517              	 .file 28 ".././hal/sam3u1c/inc/pmc.h"
+ 518              	 .file 29 ".././hal/sam3u1c/inc/sam3u/pll.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 fpga_program.c
+    {standard input}:16     .bss.cpu_irq_critical_section_counter:00000000 $d
+    {standard input}:19     .bss.cpu_irq_critical_section_counter:00000000 cpu_irq_critical_section_counter
+    {standard input}:24     .bss.cpu_irq_prev_interrupt_state:00000000 cpu_irq_prev_interrupt_state
+    {standard input}:25     .bss.cpu_irq_prev_interrupt_state:00000000 $d
+    {standard input}:27     .text.osc_get_rate:00000000 $t
+    {standard input}:34     .text.osc_get_rate:00000000 osc_get_rate
+    {standard input}:60     .text.osc_get_rate:00000014 $d
+    {standard input}:68     .text.osc_get_rate:00000034 $t
+    {standard input}:122    .text.osc_get_rate:00000064 $d
+    {standard input}:129    .text.sysclk_get_main_hz:00000000 $t
+    {standard input}:135    .text.sysclk_get_main_hz:00000000 sysclk_get_main_hz
+    {standard input}:163    .text.sysclk_get_main_hz:00000014 $d
+    {standard input}:168    .text.sysclk_get_cpu_hz:00000000 $t
+    {standard input}:174    .text.sysclk_get_cpu_hz:00000000 sysclk_get_cpu_hz
+    {standard input}:201    .text.sysclk_get_cpu_hz:00000010 $d
+    {standard input}:206    .text.sysclk_enable_peripheral_clock:00000000 $t
+    {standard input}:212    .text.sysclk_enable_peripheral_clock:00000000 sysclk_enable_peripheral_clock
+    {standard input}:248    .text.sysclk_enable_peripheral_clock:00000018 $d
+    {standard input}:253    .text.fpga_program_init:00000000 $t
+    {standard input}:260    .text.fpga_program_init:00000000 fpga_program_init
+    {standard input}:292    .text.fpga_program_init:00000018 $d
+    {standard input}:298    .text.fpga_program_setup1:00000000 $t
+    {standard input}:305    .text.fpga_program_setup1:00000000 fpga_program_setup1
+    {standard input}:390    .text.fpga_program_setup1:0000005c $d
+    {standard input}:403    .text.fpga_program_setup2:00000000 $t
+    {standard input}:410    .text.fpga_program_setup2:00000000 fpga_program_setup2
+    {standard input}:435    .text.fpga_program_setup2:00000010 $d
+    {standard input}:440    .text.fpga_program_sendbyte:00000000 $t
+    {standard input}:447    .text.fpga_program_sendbyte:00000000 fpga_program_sendbyte
+    {standard input}:486    .text.fpga_program_sendbyte:0000001c $d
+                           .group:00000000 wm4.0.2cd8a2cb7ff4c48cec7eeec776a1dd8c
+                           .group:00000000 wm4.stddef.h.39.27677723d43e5b5a7afdf8d798429f1d
+                           .group:00000000 wm4.parts.h.45.afc900689b2c82332e69d798acedc875
+                           .group:00000000 wm4.tpaste.h.45.af3ee36765243b162c88f7f944858426
+                           .group:00000000 wm4.stringz.h.45.c4f6cbe0005e6c1d2139bc6c0e4f4722
+                           .group:00000000 wm4.mrepeat.h.59.c5daaed201a4340b0edf435161d0b77f
+                           .group:00000000 wm4._newlib_version.h.4.1ef4e12f167f8b69d7c30054be56050d
+                           .group:00000000 wm4.features.h.33.5bd1eea2d80518b50f7af0b5ce6750e0
+                           .group:00000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:00000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:00000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:00000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:00000000 wm4.sam3u1c.h.220.c0b54b5a55bc87791749ae17b1487779
+                           .group:00000000 wm4.core_cm3.h.32.5c59c312db585622d253fdb887b0afb1
+                           .group:00000000 wm4.core_cmInstr.h.25.d8165482ef3061013a2fc83e2d85f3d9
+                           .group:00000000 wm4.core_cm3.h.127.b561404f2a159dc517b409bc244d16c1
+                           .group:00000000 wm4.component_adc.h.43.d49887380d07d1cd08cc4e37b3485e31
+                           .group:00000000 wm4.component_adc12b.h.43.eadc09f1073923fb91f1f393cc397dcb
+                           .group:00000000 wm4.component_chipid.h.43.15825c969b1cc9eeea3d9416499874c8
+                           .group:00000000 wm4.component_dmac.h.43.cc8187b1cf6bfeadc91b14fdd28b9e8b
+                           .group:00000000 wm4.component_efc.h.43.cb1b3997ad9ea3733ad421ecbfd02fdd
+                           .group:00000000 wm4.component_gpbr.h.43.49b7e13894fe38b29f2243bbbe530227
+                           .group:00000000 wm4.component_hsmci.h.43.7b7194c92e1480c038f3342f7cec440a
+                           .group:00000000 wm4.component_matrix.h.43.1d209838fb75b4827119203a357141ee
+                           .group:00000000 wm4.component_pdc.h.43.19528a5f9ef5a348234ea06f89069c55
+                           .group:00000000 wm4.component_pio.h.43.163b46c3683ccf92e8de39a5554f50e8
+                           .group:00000000 wm4.component_pmc.h.43.ee4f030602866917aeed15fb2b948de8
+                           .group:00000000 wm4.component_pwm.h.43.ab6262a86f0aea354b43fe6dce7e7eb3
+                           .group:00000000 wm4.component_rstc.h.43.4eb59dc2ddcf585fabf251d0c329fcdd
+                           .group:00000000 wm4.component_rtc.h.43.ba8ccafc772b11d562a3cceab8b95072
+                           .group:00000000 wm4.component_rtt.h.43.3206ef8f067e5e747c3c4c7e719c1429
+                           .group:00000000 wm4.component_smc.h.43.907847915f1a5616734199d7e34424fa
+                           .group:00000000 wm4.component_spi.h.43.a2a09df64ab768c0a32be55285c74ded
+                           .group:00000000 wm4.component_ssc.h.43.d7c78f990c13fc511671b64798c4bcd0
+                           .group:00000000 wm4.component_supc.h.43.7d17f8e5ed3ba815e84381152735062f
+                           .group:00000000 wm4.component_tc.h.43.662eac8137408372b4f9d26c0b5f8621
+                           .group:00000000 wm4.component_twi.h.43.eda18625bd851fc4605861f5b3240c0b
+                           .group:00000000 wm4.component_uart.h.43.2d92735c5ea05c973661e1ba99a2f37c
+                           .group:00000000 wm4.component_udphs.h.43.21cecd26a4e44df0013037f29f2716e4
+                           .group:00000000 wm4.component_usart.h.43.7872f8f455adb38b67b9fbdb15657fbe
+                           .group:00000000 wm4.component_wdt.h.43.e31e10a5469b62c3660b49ab250f802f
+                           .group:00000000 wm4.instance_hsmci.h.43.e233236cc7fd5a805539a7ecc0e1d8d2
+                           .group:00000000 wm4.instance_ssc.h.43.c0cfabc3b9f3bb60745c913111bce965
+                           .group:00000000 wm4.instance_spi.h.43.570ae46af19e4179d9796872b9a8b9bc
+                           .group:00000000 wm4.instance_tc0.h.43.049b3a82387d2961594190609e896a29
+                           .group:00000000 wm4.instance_twi0.h.43.255dc0afa9e0d45eaea0a935eca2f103
+                           .group:00000000 wm4.instance_twi1.h.43.652d1d407893f259f2a817544ba662c2
+                           .group:00000000 wm4.instance_pwm.h.43.88294acec3ca56d6fc521038521a1567
+                           .group:00000000 wm4.instance_usart0.h.43.e26677512aee3dd3bedd71d394410000
+                           .group:00000000 wm4.instance_usart1.h.43.1ba97dbc6610d9fb3132b9d845688201
+                           .group:00000000 wm4.instance_usart2.h.43.baa1bf30b3c5acdee90c4a1f50fe9ebd
+                           .group:00000000 wm4.instance_udphs.h.43.b1ce94181e0d1f22877b81c6040a4363
+                           .group:00000000 wm4.instance_adc12b.h.43.d73ed59e867ccdfdb846d9ef32a50c0c
+                           .group:00000000 wm4.instance_adc.h.43.2b7611a00afeb4c555339b844d4b8456
+                           .group:00000000 wm4.instance_dmac.h.43.ee72691d84889c8f285932be4a075ddb
+                           .group:00000000 wm4.instance_smc.h.43.29610fd00979caaaa65821ad40e9da06
+                           .group:00000000 wm4.instance_matrix.h.43.01ee474141594385374c41a29daeeefe
+                           .group:00000000 wm4.instance_pmc.h.43.37430325ed7b8b24c3fe640c41c29ef5
+                           .group:00000000 wm4.instance_uart.h.43.bd378395ba022bc8670c82ebe656fbbd
+                           .group:00000000 wm4.instance_chipid.h.43.29cd8fb600f149aa58830fcc78fe36f9
+                           .group:00000000 wm4.instance_efc0.h.43.6b85dba20721a7e9fc4350e78d193680
+                           .group:00000000 wm4.instance_efc1.h.43.2c5e94fc4d2742678318d73450d08d57
+                           .group:00000000 wm4.instance_pioa.h.43.eeb46cc3bfe01a1f28e67aa3a6851ed8
+                           .group:00000000 wm4.instance_piob.h.43.652ce26b6c37ac56f9ed42a9216d9aca
+                           .group:00000000 wm4.instance_rstc.h.43.c5de224364a50a85f237c0b864aa4c8f
+                           .group:00000000 wm4.instance_supc.h.43.a5f1a5ca08f468ccf34ed3653e045f1f
+                           .group:00000000 wm4.instance_rtt.h.43.8622b192c23334996132415e3095df7f
+                           .group:00000000 wm4.instance_wdt.h.43.407ea53e133eacf09acf2c7fcb6b7524
+                           .group:00000000 wm4.instance_rtc.h.43.f70b77f9180401c8d9d920cb4a1cd166
+                           .group:00000000 wm4.instance_gpbr.h.43.9066cb40d557f6755101368854272348
+                           .group:00000000 wm4.sam3u1c.h.312.ae446d8e874d34ca3df78faf190c678f
+                           .group:00000000 wm4.pio_sam3u1c.h.43.18b24f16e1710ff2a400d88fe33c5107
+                           .group:00000000 wm4.sam3u1c.h.442.cd4bbc3af493e98bc9b60c2905132ed0
+                           .group:00000000 wm4.newlib.h.8.7cb3972cd43265932d4782d5eb589854
+                           .group:00000000 wm4.ieeefp.h.77.f33a4dce62116f6f5175ff8bae57a54c
+                           .group:00000000 wm4.config.h.224.c701144a7b0518c6ee9b9b5465b79f81
+                           .group:00000000 wm4._ansi.h.31.de524f58584151836e90d8620a16f8e8
+                           .group:00000000 wm4.stdio.h.31.7c0e28c411445f3f9c5b11accf882760
+                           .group:00000000 wm4.stddef.h.155.ba788add86a0e365f264484f110c3c29
+                           .group:00000000 wm4.cdefs.h.49.2bf373aedffd8b393ccd11dc057e8547
+                           .group:00000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:00000000 wm4._types.h.20.dd0d04dca3800a0d2a6129b87f3adbb2
+                           .group:00000000 wm4.stddef.h.155.3588ebfdd1e8c7ede80509bb9c3b8009
+                           .group:00000000 wm4._types.h.127.34941de1b2539d59d5cac00e0dd27a45
+                           .group:00000000 wm4.reent.h.17.e292bf8b0bec6c96e131a54347145a30
+                           .group:00000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:00000000 wm4.reent.h.77.dcd6129ff07fe81bd5636db29abe53b2
+                           .group:00000000 wm4.types.h.40.8b6acba56cefbb11746718204edc8f5e
+                           .group:00000000 wm4._endian.h.31.65a10590763c3dde1ac4a7f66d7d4891
+                           .group:00000000 wm4.endian.h.9.49f3a4695c1b61e8a0808de3c4a106cb
+                           .group:00000000 wm4._timeval.h.32.bec3221fa7a9bb0bdde696c9c57e47d2
+                           .group:00000000 wm4.timespec.h.41.d855182eb0e690443ab8651bcedca6e1
+                           .group:00000000 wm4.select.h.19.97ca6fd0c752a0f3b6719fd314d361e6
+                           .group:00000000 wm4.types.h.51.5571ec98f267d17d3c670b7a3ba33afa
+                           .group:00000000 wm4.sched.h.22.c60982713a5c428609783c78f9c78d95
+                           .group:00000000 wm4._pthreadtypes.h.36.fcee9961c35163dde6267ef772ad1972
+                           .group:00000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:00000000 wm4.stdio.h.81.932d0c162786b883f622b8d05c120c78
+                           .group:00000000 wm4.stdbool.h.29.07dce69c3b78884144b7f7bd19483461
+                           .group:00000000 wm4.stdlib.h.13.4ed386f5c1a80d71e72172885d946ef2
+                           .group:00000000 wm4.alloca.h.8.dfc0c703c47ec3e69746825b17d9e66d
+                           .group:00000000 wm4.stdlib.h.56.f4862cfbf4363a1db01842d5bdf72c18
+                           .group:00000000 wm4.compiler.h.88.0e6ad966134fa012ce9a34053d3f48aa
+                           .group:00000000 wm4.interrupt_sam_nvic.h.45.4876da6c127868305d66389e87e0876f
+                           .group:00000000 wm4.compiler.h.425.66dd29c210af3287ed85ec3553a3e6b1
+                           .group:00000000 wm4.conf_clock.h.45.5dc276d21b4d793a62f1a9757cc18d5c
+                           .group:00000000 wm4.board.h.48.ce8d06c36cc583d9bf62738411f62e4d
+                           .group:00000000 wm4.cw521.h.62.d34c289ace4a92d90be8fb389db40479
+                           .group:00000000 wm4.pmc.h.45.bbe1bf97a811e3b283420b2eeadf0b35
+                           .group:00000000 wm4.osc.h.94.b766cddafe899eca01d775f7b2906680
+                           .group:00000000 wm4.pll.h.45.a605c31ca466ae25752a678e8572be48
+                           .group:00000000 wm4.sysclk.h.156.541a142b0016a365728ea1f7c0e3db84
+                           .group:00000000 wm4.cycle_counter.h.44.fde38fb1acfd6555d72e65fae6e86af5
+                           .group:00000000 wm4.delay.h.105.f2a8ab5e71eab0684cf6985b5c2fc9e8
+                           .group:00000000 wm4.efc.h.45.ec5734119c630498df26106bacf9a684
+                           .group:00000000 wm4.flash_efc.h.90.a4a39259055880dc10b861c5fe1b99e7
+                           .group:00000000 wm4.pio.h.45.95f22b0ea02ddc698ec54fc56bf6f38c
+                           .group:00000000 wm4.sam_gpio.h.50.76a45c51855d665134f8211cd601d693
+                           .group:00000000 wm4.ioport_pio.h.44.373b34364b4ef25fac62017cd942a761
+                           .group:00000000 wm4.sleep.h.45.ef10e1aee6f903405be19980a8333b7f
+                           .group:00000000 wm4.smc.h.45.17a94aa976bb62b1109d03e8a314a569
+                           .group:00000000 wm4.spi.h.45.712c66be09ffbac297c2e00923077297
+                           .group:00000000 wm4.conf_sleepmgr.h.44.d825b913294720022fefe7201514fca3
+                           .group:00000000 wm4.twi.h.45.ba70de99d200dafba570ce8f7058737a
+                           .group:00000000 wm4.twi_master.h.90.08c062d0fa8f8aeea342ceeb79263395
+                           .group:00000000 wm4.twi_slave.h.45.8b3d1a3d2e43ebc7d0161f4142989871
+                           .group:00000000 wm4.uart.h.45.a5af743b8064bd84d1a6438457096e18
+                           .group:00000000 wm4.usart.h.46.eae6fe592b7ea0768efef8d312e7f44f
+                           .group:00000000 wm4.conf_uart_serial.h.45.245cdceaa1a3811fd043bf660ce38054
+                           .group:00000000 wm4.conf_usb.h.45.2f7207bed7467dcf9cb11fbc6ebe572c
+                           .group:00000000 wm4.udi_vendor_conf.h.56.4348c8e521d040f44df868219dae6785
+                           .group:00000000 wm4.usb_atmel.h.45.c31b525dbe01f8d9e2022a03356ec174
+                           .group:00000000 wm4.usb_protocol.h.63.850c58f3469fce50a9ac9a6854f7594b
+                           .group:00000000 wm4.usb_protocol_vendor.h.45.83dfe073428ff799abc3ed1c7b04c77d
+                           .group:00000000 wm4.udc_desc.h.77.5fec235bd7553e7256e345e020840072
+                           .group:00000000 wm4.udd.h.103.3ccc59b50c14ec70568e6136eeb22d56
+                           .group:00000000 wm4.udi_vendor.h.125.7b9085237d4d4a9757f4c148fba1918d
+                           .group:00000000 wm4.fpga_program.h.36.ca9933fdd1528ae3419efe9d74ea4ee5
+
+UNDEFINED SYMBOLS
+pmc_enable_periph_clk
+pio_configure_pin
+pio_set_pin_high
+pio_set_pin_low
+usart_init_spi_master
+usart_enable_tx
+usart_putchar

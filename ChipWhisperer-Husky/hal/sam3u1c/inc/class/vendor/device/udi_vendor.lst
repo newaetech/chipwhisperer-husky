@@ -1,0 +1,691 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"udi_vendor.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.udi_vendor_getsetting,"ax",%progbits
+  19              		.align	2
+  20              		.global	udi_vendor_getsetting
+  21              		.thumb
+  22              		.thumb_func
+  24              	udi_vendor_getsetting:
+  25              	.LFB73:
+  26              		.file 1 "../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c"
+   1:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** /**
+   2:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * \file
+   3:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *
+   4:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * \brief USB Vendor class interface.
+   5:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *
+   6:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * Copyright (c) 2011 - 2012 Atmel Corporation. All rights reserved.
+   7:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *
+   8:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * \asf_license_start
+   9:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *
+  10:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * \page License
+  11:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *
+  12:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * Redistribution and use in source and binary forms, with or without
+  13:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * modification, are permitted provided that the following conditions are met:
+  14:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *
+  15:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * 1. Redistributions of source code must retain the above copyright notice,
+  16:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *    this list of conditions and the following disclaimer.
+  17:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *
+  18:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice,
+  19:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *    this list of conditions and the following disclaimer in the documentation
+  20:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *    and/or other materials provided with the distribution.
+  21:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *
+  22:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * 3. The name of Atmel may not be used to endorse or promote products derived
+  23:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *    from this software without specific prior written permission.
+  24:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *
+  25:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * 4. This software may only be redistributed and used in connection with an
+  26:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *    Atmel microcontroller product.
+  27:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *
+  28:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * THIS SOFTWARE IS PROVIDED BY ATMEL "AS IS" AND ANY EXPRESS OR IMPLIED
+  29:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  30:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT ARE
+  31:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * EXPRESSLY AND SPECIFICALLY DISCLAIMED. IN NO EVENT SHALL ATMEL BE LIABLE FOR
+  32:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  33:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+  34:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+  35:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+  36:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+  37:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  38:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * POSSIBILITY OF SUCH DAMAGE.
+  39:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *
+  40:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * \asf_license_stop
+  41:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *
+  42:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  */
+  43:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 
+  44:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** #include "conf_usb.h"
+  45:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** #include "usb_protocol.h"
+  46:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** #include "usb_protocol_vendor.h"
+  47:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** #include "udd.h"
+  48:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** #include "udc.h"
+  49:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** #include "udi_vendor.h"
+  50:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** #include <string.h>
+  51:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 
+  52:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** // Configuration check
+  53:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** #ifndef UDI_VENDOR_ENABLE_EXT
+  54:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** # error UDI_VENDOR_ENABLE_EXT must be defined in conf_usb.h file.
+  55:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** #endif
+  56:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** #ifndef UDI_VENDOR_DISABLE_EXT
+  57:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** # error UDI_VENDOR_DISABLE_EXT must be defined in conf_usb.h file.
+  58:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** #endif
+  59:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 
+  60:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** /**
+  61:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * \ingroup udi_vendor_group
+  62:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * \defgroup udi_vendor_group_udc Interface with USB Device Core (UDC)
+  63:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *
+  64:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * Structures and functions required by UDC.
+  65:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *
+  66:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * @{
+  67:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  */
+  68:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** bool udi_vendor_enable(void);
+  69:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** void udi_vendor_disable(void);
+  70:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** bool udi_vendor_setup(void);
+  71:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** uint8_t udi_vendor_getsetting(void);
+  72:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 
+  73:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** //! Global structure which contains standard UDI API for UDC
+  74:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** UDC_DESC_STORAGE udi_api_t udi_api_vendor = {
+  75:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 	.enable = udi_vendor_enable,
+  76:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 	.disable = udi_vendor_disable,
+  77:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 	.setup = udi_vendor_setup,
+  78:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 	.getsetting = udi_vendor_getsetting,
+  79:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 	.sof_notify = NULL,
+  80:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** };
+  81:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** //@}
+  82:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 
+  83:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 
+  84:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** /**
+  85:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * \ingroup udi_vendor_group
+  86:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * \defgroup udi_vendor_group_internal Implementation of UDI Vendor Class
+  87:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *
+  88:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * Class internal implementation
+  89:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * @{
+  90:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  */
+  91:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 
+  92:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** //! USB descriptor alternate setting used
+  93:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** static uint8_t udi_vendor_alternate_setting = 0;
+  94:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 
+  95:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** /**
+  96:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * \name Internal routines
+  97:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  */
+  98:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** //@{
+  99:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** bool udi_vendor_enable(void)
+ 100:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** {
+ 101:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 	udi_vendor_alternate_setting = udc_get_interface_desc()->bAlternateSetting;
+ 102:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 	if (0 == udi_vendor_alternate_setting) {
+ 103:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 		// Call application callback
+ 104:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 		// to notify that interface is enabled
+ 105:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 		if (!UDI_VENDOR_ENABLE_EXT()) {
+ 106:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 			return false;
+ 107:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 		}
+ 108:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 	}
+ 109:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 	return true;
+ 110:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** }
+ 111:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 
+ 112:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 
+ 113:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** void udi_vendor_disable(void)
+ 114:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** {
+ 115:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 	if (0 == udi_vendor_alternate_setting) {
+ 116:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 		UDI_VENDOR_DISABLE_EXT();
+ 117:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 	}
+ 118:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** }
+ 119:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 
+ 120:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** bool udi_vendor_setup(void)
+ 121:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** {
+ 122:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 	if (Udd_setup_is_in()) {
+ 123:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 		if (Udd_setup_type() == USB_REQ_TYPE_VENDOR) {
+ 124:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 			return UDI_VENDOR_SETUP_IN_RECEIVED();
+ 125:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 		}
+ 126:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 	}
+ 127:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 	if (Udd_setup_is_out()) {
+ 128:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 		if (Udd_setup_type() == USB_REQ_TYPE_VENDOR) {
+ 129:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 			return UDI_VENDOR_SETUP_OUT_RECEIVED();
+ 130:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 		}
+ 131:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 	}
+ 132:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 	return false; // Not supported request
+ 133:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** }
+ 134:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 
+ 135:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** uint8_t udi_vendor_getsetting(void)
+ 136:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** {
+  27              		.loc 1 136 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+ 137:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 	return udi_vendor_alternate_setting;
+ 138:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** }
+  32              		.loc 1 138 0
+  33 0000 014B     		ldr	r3, .L2
+  34 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+  35 0004 7047     		bx	lr
+  36              	.L3:
+  37 0006 00BF     		.align	2
+  38              	.L2:
+  39 0008 00000000 		.word	.LANCHOR0
+  40              		.cfi_endproc
+  41              	.LFE73:
+  43              		.section	.text.udi_vendor_enable,"ax",%progbits
+  44              		.align	2
+  45              		.global	udi_vendor_enable
+  46              		.thumb
+  47              		.thumb_func
+  49              	udi_vendor_enable:
+  50              	.LFB70:
+ 100:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 	udi_vendor_alternate_setting = udc_get_interface_desc()->bAlternateSetting;
+  51              		.loc 1 100 0
+  52              		.cfi_startproc
+  53              		@ args = 0, pretend = 0, frame = 0
+  54              		@ frame_needed = 0, uses_anonymous_args = 0
+  55 0000 08B5     		push	{r3, lr}
+  56              	.LCFI0:
+  57              		.cfi_def_cfa_offset 8
+  58              		.cfi_offset 3, -8
+  59              		.cfi_offset 14, -4
+ 101:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 	if (0 == udi_vendor_alternate_setting) {
+  60              		.loc 1 101 0
+  61 0002 054B     		ldr	r3, .L8
+  62 0004 9847     		blx	r3
+  63              	.LVL0:
+  64 0006 C378     		ldrb	r3, [r0, #3]	@ zero_extendqisi2
+  65 0008 044A     		ldr	r2, .L8+4
+  66 000a 1370     		strb	r3, [r2]
+ 102:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 		// Call application callback
+  67              		.loc 1 102 0
+  68 000c 13B9     		cbnz	r3, .L6
+ 105:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 			return false;
+  69              		.loc 1 105 0
+  70 000e 044B     		ldr	r3, .L8+8
+  71 0010 9847     		blx	r3
+  72              	.LVL1:
+  73 0012 08BD     		pop	{r3, pc}
+  74              	.L6:
+ 109:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** }
+  75              		.loc 1 109 0
+  76 0014 0120     		movs	r0, #1
+ 110:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 
+  77              		.loc 1 110 0
+  78 0016 08BD     		pop	{r3, pc}
+  79              	.L9:
+  80              		.align	2
+  81              	.L8:
+  82 0018 00000000 		.word	udc_get_interface_desc
+  83 001c 00000000 		.word	.LANCHOR0
+  84 0020 00000000 		.word	main_vendor_enable
+  85              		.cfi_endproc
+  86              	.LFE70:
+  88              		.section	.text.udi_vendor_disable,"ax",%progbits
+  89              		.align	2
+  90              		.global	udi_vendor_disable
+  91              		.thumb
+  92              		.thumb_func
+  94              	udi_vendor_disable:
+  95              	.LFB71:
+ 114:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 	if (0 == udi_vendor_alternate_setting) {
+  96              		.loc 1 114 0
+  97              		.cfi_startproc
+  98              		@ args = 0, pretend = 0, frame = 0
+  99              		@ frame_needed = 0, uses_anonymous_args = 0
+ 100 0000 08B5     		push	{r3, lr}
+ 101              	.LCFI1:
+ 102              		.cfi_def_cfa_offset 8
+ 103              		.cfi_offset 3, -8
+ 104              		.cfi_offset 14, -4
+ 115:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 		UDI_VENDOR_DISABLE_EXT();
+ 105              		.loc 1 115 0
+ 106 0002 034B     		ldr	r3, .L13
+ 107 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 108 0006 0BB9     		cbnz	r3, .L10
+ 116:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 	}
+ 109              		.loc 1 116 0
+ 110 0008 024B     		ldr	r3, .L13+4
+ 111 000a 9847     		blx	r3
+ 112              	.LVL2:
+ 113              	.L10:
+ 114 000c 08BD     		pop	{r3, pc}
+ 115              	.L14:
+ 116 000e 00BF     		.align	2
+ 117              	.L13:
+ 118 0010 00000000 		.word	.LANCHOR0
+ 119 0014 00000000 		.word	main_vendor_disable
+ 120              		.cfi_endproc
+ 121              	.LFE71:
+ 123              		.section	.text.udi_vendor_setup,"ax",%progbits
+ 124              		.align	2
+ 125              		.global	udi_vendor_setup
+ 126              		.thumb
+ 127              		.thumb_func
+ 129              	udi_vendor_setup:
+ 130              	.LFB72:
+ 121:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 	if (Udd_setup_is_in()) {
+ 131              		.loc 1 121 0
+ 132              		.cfi_startproc
+ 133              		@ args = 0, pretend = 0, frame = 0
+ 134              		@ frame_needed = 0, uses_anonymous_args = 0
+ 135 0000 08B5     		push	{r3, lr}
+ 136              	.LCFI2:
+ 137              		.cfi_def_cfa_offset 8
+ 138              		.cfi_offset 3, -8
+ 139              		.cfi_offset 14, -4
+ 122:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 		if (Udd_setup_type() == USB_REQ_TYPE_VENDOR) {
+ 140              		.loc 1 122 0
+ 141 0002 0B4B     		ldr	r3, .L21
+ 142 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 143 0006 13F0800F 		tst	r3, #128
+ 144 000a 06D0     		beq	.L16
+ 123:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 			return UDI_VENDOR_SETUP_IN_RECEIVED();
+ 145              		.loc 1 123 0
+ 146 000c 03F06003 		and	r3, r3, #96
+ 147 0010 402B     		cmp	r3, #64
+ 148 0012 09D1     		bne	.L18
+ 124:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 		}
+ 149              		.loc 1 124 0
+ 150 0014 074B     		ldr	r3, .L21+4
+ 151 0016 9847     		blx	r3
+ 152              	.LVL3:
+ 153 0018 08BD     		pop	{r3, pc}
+ 154              	.L16:
+ 128:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 			return UDI_VENDOR_SETUP_OUT_RECEIVED();
+ 155              		.loc 1 128 0
+ 156 001a 03F06003 		and	r3, r3, #96
+ 157 001e 402B     		cmp	r3, #64
+ 158 0020 04D1     		bne	.L19
+ 129:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 		}
+ 159              		.loc 1 129 0
+ 160 0022 054B     		ldr	r3, .L21+8
+ 161 0024 9847     		blx	r3
+ 162              	.LVL4:
+ 163 0026 08BD     		pop	{r3, pc}
+ 164              	.L18:
+ 132:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** }
+ 165              		.loc 1 132 0
+ 166 0028 0020     		movs	r0, #0
+ 167 002a 08BD     		pop	{r3, pc}
+ 168              	.L19:
+ 169 002c 0020     		movs	r0, #0
+ 133:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 
+ 170              		.loc 1 133 0
+ 171 002e 08BD     		pop	{r3, pc}
+ 172              	.L22:
+ 173              		.align	2
+ 174              	.L21:
+ 175 0030 00000000 		.word	udd_g_ctrlreq
+ 176 0034 00000000 		.word	main_setup_in_received
+ 177 0038 00000000 		.word	main_setup_out_received
+ 178              		.cfi_endproc
+ 179              	.LFE72:
+ 181              		.section	.text.udi_vendor_bulk_in_run,"ax",%progbits
+ 182              		.align	2
+ 183              		.global	udi_vendor_bulk_in_run
+ 184              		.thumb
+ 185              		.thumb_func
+ 187              	udi_vendor_bulk_in_run:
+ 188              	.LFB74:
+ 139:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** //@}
+ 140:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 
+ 141:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** #if UDI_VENDOR_EPS_SIZE_INT_FS
+ 142:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** /**
+ 143:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * \brief Start a transfer on interrupt IN
+ 144:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *
+ 145:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * When the transfer is finished or aborted (stall, reset, ...), the \a callback is called.
+ 146:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * The \a callback returns the transfer status and eventually the number of byte transfered.
+ 147:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *
+ 148:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * \param buf           Buffer on Internal RAM to send or fill.
+ 149:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *                      It must be align, then use COMPILER_WORD_ALIGNED.
+ 150:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * \param buf_size      Buffer size to send or fill
+ 151:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * \param callback      NULL or function to call at the end of transfer
+ 152:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *
+ 153:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * \return \c 1 if function was successfully done, otherwise \c 0.
+ 154:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  */
+ 155:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** bool udi_vendor_interrupt_in_run(uint8_t * buf, iram_size_t buf_size,
+ 156:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 		udd_callback_trans_t callback)
+ 157:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** {
+ 158:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 	return udd_ep_run(UDI_VENDOR_EP_INTERRUPT_IN,
+ 159:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 			false,
+ 160:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 			buf,
+ 161:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 			buf_size,
+ 162:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 			callback);
+ 163:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** }
+ 164:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 
+ 165:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 
+ 166:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** /**
+ 167:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * \brief Start a transfer on interrupt OUT
+ 168:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *
+ 169:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * When the transfer is finished or aborted (stall, reset, ...), the \a callback is called.
+ 170:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * The \a callback returns the transfer status and eventually the number of byte transfered.
+ 171:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *
+ 172:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * \param buf           Buffer on Internal RAM to send or fill.
+ 173:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *                      It must be align, then use COMPILER_WORD_ALIGNED.
+ 174:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * \param buf_size      Buffer size to send or fill
+ 175:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * \param callback      NULL or function to call at the end of transfer
+ 176:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *
+ 177:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * \return \c 1 if function was successfully done, otherwise \c 0.
+ 178:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  */
+ 179:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** bool udi_vendor_interrupt_out_run(uint8_t * buf, iram_size_t buf_size,
+ 180:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 		udd_callback_trans_t callback)
+ 181:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** {
+ 182:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 	return udd_ep_run(UDI_VENDOR_EP_INTERRUPT_OUT,
+ 183:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 			false,
+ 184:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 			buf,
+ 185:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 			buf_size,
+ 186:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 			callback);
+ 187:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** }
+ 188:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** #endif
+ 189:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 
+ 190:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** #if UDI_VENDOR_EPS_SIZE_BULK_FS
+ 191:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** /**
+ 192:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * \brief Start a transfer on bulk IN
+ 193:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *
+ 194:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * When the transfer is finished or aborted (stall, reset, ...), the \a callback is called.
+ 195:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * The \a callback returns the transfer status and eventually the number of byte transfered.
+ 196:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *
+ 197:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * \param buf           Buffer on Internal RAM to send or fill.
+ 198:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *                      It must be align, then use COMPILER_WORD_ALIGNED.
+ 199:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * \param buf_size      Buffer size to send or fill
+ 200:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * \param callback      NULL or function to call at the end of transfer
+ 201:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *
+ 202:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * \return \c 1 if function was successfully done, otherwise \c 0.
+ 203:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  */
+ 204:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** bool udi_vendor_bulk_in_run(uint8_t * buf, iram_size_t buf_size,
+ 205:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 		udd_callback_trans_t callback)
+ 206:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** {
+ 189              		.loc 1 206 0
+ 190              		.cfi_startproc
+ 191              		@ args = 0, pretend = 0, frame = 0
+ 192              		@ frame_needed = 0, uses_anonymous_args = 0
+ 193              	.LVL5:
+ 194 0000 10B5     		push	{r4, lr}
+ 195              	.LCFI3:
+ 196              		.cfi_def_cfa_offset 8
+ 197              		.cfi_offset 4, -8
+ 198              		.cfi_offset 14, -4
+ 199 0002 82B0     		sub	sp, sp, #8
+ 200              	.LCFI4:
+ 201              		.cfi_def_cfa_offset 16
+ 202 0004 0446     		mov	r4, r0
+ 203 0006 0B46     		mov	r3, r1
+ 207:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 	return udd_ep_run(UDI_VENDOR_EP_BULK_IN,
+ 204              		.loc 1 207 0
+ 205 0008 0092     		str	r2, [sp]
+ 206 000a 8120     		movs	r0, #129
+ 207              	.LVL6:
+ 208 000c 0021     		movs	r1, #0
+ 209              	.LVL7:
+ 210 000e 2246     		mov	r2, r4
+ 211              	.LVL8:
+ 212 0010 014C     		ldr	r4, .L25
+ 213              	.LVL9:
+ 214 0012 A047     		blx	r4
+ 215              	.LVL10:
+ 208:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 			false,
+ 209:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 			buf,
+ 210:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 			buf_size,
+ 211:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 			callback);
+ 212:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** }
+ 216              		.loc 1 212 0
+ 217 0014 02B0     		add	sp, sp, #8
+ 218              	.LCFI5:
+ 219              		.cfi_def_cfa_offset 8
+ 220              		@ sp needed
+ 221 0016 10BD     		pop	{r4, pc}
+ 222              	.L26:
+ 223              		.align	2
+ 224              	.L25:
+ 225 0018 00000000 		.word	udd_ep_run
+ 226              		.cfi_endproc
+ 227              	.LFE74:
+ 229              		.section	.text.udi_vendor_bulk_out_run,"ax",%progbits
+ 230              		.align	2
+ 231              		.global	udi_vendor_bulk_out_run
+ 232              		.thumb
+ 233              		.thumb_func
+ 235              	udi_vendor_bulk_out_run:
+ 236              	.LFB75:
+ 213:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 
+ 214:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 
+ 215:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** /**
+ 216:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * \brief Start a transfer on bulk OUT
+ 217:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *
+ 218:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * When the transfer is finished or aborted (stall, reset, ...), the \a callback is called.
+ 219:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * The \a callback returns the transfer status and eventually the number of byte transfered.
+ 220:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *
+ 221:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * \param buf           Buffer on Internal RAM to send or fill.
+ 222:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *                      It must be align, then use COMPILER_WORD_ALIGNED.
+ 223:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * \param buf_size      Buffer size to send or fill
+ 224:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * \param callback      NULL or function to call at the end of transfer
+ 225:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  *
+ 226:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  * \return \c 1 if function was successfully done, otherwise \c 0.
+ 227:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c ****  */
+ 228:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** bool udi_vendor_bulk_out_run(uint8_t * buf, iram_size_t buf_size,
+ 229:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 		udd_callback_trans_t callback)
+ 230:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** {
+ 237              		.loc 1 230 0
+ 238              		.cfi_startproc
+ 239              		@ args = 0, pretend = 0, frame = 0
+ 240              		@ frame_needed = 0, uses_anonymous_args = 0
+ 241              	.LVL11:
+ 242 0000 10B5     		push	{r4, lr}
+ 243              	.LCFI6:
+ 244              		.cfi_def_cfa_offset 8
+ 245              		.cfi_offset 4, -8
+ 246              		.cfi_offset 14, -4
+ 247 0002 82B0     		sub	sp, sp, #8
+ 248              	.LCFI7:
+ 249              		.cfi_def_cfa_offset 16
+ 250 0004 0446     		mov	r4, r0
+ 251 0006 0B46     		mov	r3, r1
+ 231:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 	return udd_ep_run(UDI_VENDOR_EP_BULK_OUT,
+ 252              		.loc 1 231 0
+ 253 0008 0092     		str	r2, [sp]
+ 254 000a 0220     		movs	r0, #2
+ 255              	.LVL12:
+ 256 000c 0021     		movs	r1, #0
+ 257              	.LVL13:
+ 258 000e 2246     		mov	r2, r4
+ 259              	.LVL14:
+ 260 0010 014C     		ldr	r4, .L29
+ 261              	.LVL15:
+ 262 0012 A047     		blx	r4
+ 263              	.LVL16:
+ 232:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 			false,
+ 233:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 			buf,
+ 234:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 			buf_size,
+ 235:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** 			callback);
+ 236:../src/ASF/common/services/usb/class/vendor/device/udi_vendor.c **** }
+ 264              		.loc 1 236 0
+ 265 0014 02B0     		add	sp, sp, #8
+ 266              	.LCFI8:
+ 267              		.cfi_def_cfa_offset 8
+ 268              		@ sp needed
+ 269 0016 10BD     		pop	{r4, pc}
+ 270              	.L30:
+ 271              		.align	2
+ 272              	.L29:
+ 273 0018 00000000 		.word	udd_ep_run
+ 274              		.cfi_endproc
+ 275              	.LFE75:
+ 277              		.global	udi_api_vendor
+ 278              		.section	.bss.udi_vendor_alternate_setting,"aw",%nobits
+ 279              		.set	.LANCHOR0,. + 0
+ 282              	udi_vendor_alternate_setting:
+ 283 0000 00       		.space	1
+ 284              		.section	.bss.cpu_irq_critical_section_counter,"aw",%nobits
+ 285              		.align	2
+ 288              	cpu_irq_critical_section_counter:
+ 289 0000 00000000 		.space	4
+ 290              		.section	.data.udi_api_vendor,"aw",%progbits
+ 291              		.align	2
+ 294              	udi_api_vendor:
+ 295 0000 00000000 		.word	udi_vendor_enable
+ 296 0004 00000000 		.word	udi_vendor_disable
+ 297 0008 00000000 		.word	udi_vendor_setup
+ 298 000c 00000000 		.word	udi_vendor_getsetting
+ 299 0010 00000000 		.word	0
+ 300              		.section	.bss.cpu_irq_prev_interrupt_state,"aw",%nobits
+ 303              	cpu_irq_prev_interrupt_state:
+ 304 0000 00       		.space	1
+ 305              		.text
+ 306              	.Letext0:
+ 307              		.file 2 "c:\\program files (x86)\\atmel\\studio\\7.0\\toolchain\\arm\\arm-gnu-toolchain\\arm-none-
+ 308              		.file 3 "c:\\program files (x86)\\atmel\\studio\\7.0\\toolchain\\arm\\arm-gnu-toolchain\\arm-none-
+ 309              		.file 4 "../src/ASF/sam/utils/compiler.h"
+ 310              		.file 5 "../src/ASF/common/services/usb/usb_protocol.h"
+ 311              		.file 6 "../src/ASF/common/services/usb/udc/udi.h"
+ 312              		.file 7 "../src/ASF/common/services/usb/udc/udd.h"
+ 313              		.file 8 "../src/ASF/common/utils/interrupt/interrupt_sam_nvic.h"
+ 314              		.file 9 "../src/ASF/thirdparty/CMSIS/Include/core_cm3.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 udi_vendor.c
+C:\Users\colin\AppData\Local\Temp\ccO9Sfbw.s:19     .text.udi_vendor_getsetting:00000000 $t
+C:\Users\colin\AppData\Local\Temp\ccO9Sfbw.s:24     .text.udi_vendor_getsetting:00000000 udi_vendor_getsetting
+C:\Users\colin\AppData\Local\Temp\ccO9Sfbw.s:39     .text.udi_vendor_getsetting:00000008 $d
+C:\Users\colin\AppData\Local\Temp\ccO9Sfbw.s:44     .text.udi_vendor_enable:00000000 $t
+C:\Users\colin\AppData\Local\Temp\ccO9Sfbw.s:49     .text.udi_vendor_enable:00000000 udi_vendor_enable
+C:\Users\colin\AppData\Local\Temp\ccO9Sfbw.s:82     .text.udi_vendor_enable:00000018 $d
+C:\Users\colin\AppData\Local\Temp\ccO9Sfbw.s:89     .text.udi_vendor_disable:00000000 $t
+C:\Users\colin\AppData\Local\Temp\ccO9Sfbw.s:94     .text.udi_vendor_disable:00000000 udi_vendor_disable
+C:\Users\colin\AppData\Local\Temp\ccO9Sfbw.s:118    .text.udi_vendor_disable:00000010 $d
+C:\Users\colin\AppData\Local\Temp\ccO9Sfbw.s:124    .text.udi_vendor_setup:00000000 $t
+C:\Users\colin\AppData\Local\Temp\ccO9Sfbw.s:129    .text.udi_vendor_setup:00000000 udi_vendor_setup
+C:\Users\colin\AppData\Local\Temp\ccO9Sfbw.s:175    .text.udi_vendor_setup:00000030 $d
+C:\Users\colin\AppData\Local\Temp\ccO9Sfbw.s:182    .text.udi_vendor_bulk_in_run:00000000 $t
+C:\Users\colin\AppData\Local\Temp\ccO9Sfbw.s:187    .text.udi_vendor_bulk_in_run:00000000 udi_vendor_bulk_in_run
+C:\Users\colin\AppData\Local\Temp\ccO9Sfbw.s:225    .text.udi_vendor_bulk_in_run:00000018 $d
+C:\Users\colin\AppData\Local\Temp\ccO9Sfbw.s:230    .text.udi_vendor_bulk_out_run:00000000 $t
+C:\Users\colin\AppData\Local\Temp\ccO9Sfbw.s:235    .text.udi_vendor_bulk_out_run:00000000 udi_vendor_bulk_out_run
+C:\Users\colin\AppData\Local\Temp\ccO9Sfbw.s:273    .text.udi_vendor_bulk_out_run:00000018 $d
+C:\Users\colin\AppData\Local\Temp\ccO9Sfbw.s:294    .data.udi_api_vendor:00000000 udi_api_vendor
+C:\Users\colin\AppData\Local\Temp\ccO9Sfbw.s:282    .bss.udi_vendor_alternate_setting:00000000 udi_vendor_alternate_setting
+C:\Users\colin\AppData\Local\Temp\ccO9Sfbw.s:283    .bss.udi_vendor_alternate_setting:00000000 $d
+C:\Users\colin\AppData\Local\Temp\ccO9Sfbw.s:285    .bss.cpu_irq_critical_section_counter:00000000 $d
+C:\Users\colin\AppData\Local\Temp\ccO9Sfbw.s:288    .bss.cpu_irq_critical_section_counter:00000000 cpu_irq_critical_section_counter
+C:\Users\colin\AppData\Local\Temp\ccO9Sfbw.s:291    .data.udi_api_vendor:00000000 $d
+C:\Users\colin\AppData\Local\Temp\ccO9Sfbw.s:303    .bss.cpu_irq_prev_interrupt_state:00000000 cpu_irq_prev_interrupt_state
+C:\Users\colin\AppData\Local\Temp\ccO9Sfbw.s:304    .bss.cpu_irq_prev_interrupt_state:00000000 $d
+                     .debug_frame:00000010 $d
+                           .group:00000000 wm4.0.738cd1dff6e476bef2e1e0b99fec4f4f
+                           .group:00000000 wm4.stddef.h.39.daafd3d79fe2f3a84d2d73d7d4e706f8
+                           .group:00000000 wm4.parts.h.45.afc900689b2c82332e69d798acedc875
+                           .group:00000000 wm4.tpaste.h.45.af3ee36765243b162c88f7f944858426
+                           .group:00000000 wm4.stringz.h.45.c4f6cbe0005e6c1d2139bc6c0e4f4722
+                           .group:00000000 wm4.mrepeat.h.59.c5daaed201a4340b0edf435161d0b77f
+                           .group:00000000 wm4.features.h.22.2e382148a0560adabf236cddd4e880f4
+                           .group:00000000 wm4._default_types.h.15.933e8edd27a65e0b69af4a865eb623d2
+                           .group:00000000 wm4._intsup.h.10.b2832a532eae49c14d45880be6d4ca65
+                           .group:00000000 wm4._stdint.h.10.f76354baea1c7088202064e6f3d4f5e3
+                           .group:00000000 wm4.stdint.h.23.373a9d32a9e4c2e88fd347156532d281
+                           .group:00000000 wm4.sam3u2e.h.224.0dd3d6dd7ebd015c591c55f903ce78e7
+                           .group:00000000 wm4.core_cm3.h.32.5c59c312db585622d253fdb887b0afb1
+                           .group:00000000 wm4.core_cmInstr.h.25.d8165482ef3061013a2fc83e2d85f3d9
+                           .group:00000000 wm4.core_cm3.h.127.b561404f2a159dc517b409bc244d16c1
+                           .group:00000000 wm4.component_adc.h.43.d49887380d07d1cd08cc4e37b3485e31
+                           .group:00000000 wm4.component_adc12b.h.43.eadc09f1073923fb91f1f393cc397dcb
+                           .group:00000000 wm4.component_chipid.h.43.15825c969b1cc9eeea3d9416499874c8
+                           .group:00000000 wm4.component_dmac.h.43.cc8187b1cf6bfeadc91b14fdd28b9e8b
+                           .group:00000000 wm4.component_efc.h.43.cb1b3997ad9ea3733ad421ecbfd02fdd
+                           .group:00000000 wm4.component_gpbr.h.43.49b7e13894fe38b29f2243bbbe530227
+                           .group:00000000 wm4.component_hsmci.h.43.7b7194c92e1480c038f3342f7cec440a
+                           .group:00000000 wm4.component_matrix.h.43.1d209838fb75b4827119203a357141ee
+                           .group:00000000 wm4.component_pdc.h.43.19528a5f9ef5a348234ea06f89069c55
+                           .group:00000000 wm4.component_pio.h.43.163b46c3683ccf92e8de39a5554f50e8
+                           .group:00000000 wm4.component_pmc.h.43.ee4f030602866917aeed15fb2b948de8
+                           .group:00000000 wm4.component_pwm.h.43.ab6262a86f0aea354b43fe6dce7e7eb3
+                           .group:00000000 wm4.component_rstc.h.43.4eb59dc2ddcf585fabf251d0c329fcdd
+                           .group:00000000 wm4.component_rtc.h.43.ba8ccafc772b11d562a3cceab8b95072
+                           .group:00000000 wm4.component_rtt.h.43.3206ef8f067e5e747c3c4c7e719c1429
+                           .group:00000000 wm4.component_smc.h.43.907847915f1a5616734199d7e34424fa
+                           .group:00000000 wm4.component_spi.h.43.a2a09df64ab768c0a32be55285c74ded
+                           .group:00000000 wm4.component_ssc.h.43.d7c78f990c13fc511671b64798c4bcd0
+                           .group:00000000 wm4.component_supc.h.43.7d17f8e5ed3ba815e84381152735062f
+                           .group:00000000 wm4.component_tc.h.43.662eac8137408372b4f9d26c0b5f8621
+                           .group:00000000 wm4.component_twi.h.43.eda18625bd851fc4605861f5b3240c0b
+                           .group:00000000 wm4.component_uart.h.43.2d92735c5ea05c973661e1ba99a2f37c
+                           .group:00000000 wm4.component_udphs.h.43.21cecd26a4e44df0013037f29f2716e4
+                           .group:00000000 wm4.component_usart.h.43.7872f8f455adb38b67b9fbdb15657fbe
+                           .group:00000000 wm4.component_wdt.h.43.e31e10a5469b62c3660b49ab250f802f
+                           .group:00000000 wm4.instance_hsmci.h.43.e233236cc7fd5a805539a7ecc0e1d8d2
+                           .group:00000000 wm4.instance_ssc.h.43.c0cfabc3b9f3bb60745c913111bce965
+                           .group:00000000 wm4.instance_spi.h.43.570ae46af19e4179d9796872b9a8b9bc
+                           .group:00000000 wm4.instance_tc0.h.43.049b3a82387d2961594190609e896a29
+                           .group:00000000 wm4.instance_twi0.h.43.255dc0afa9e0d45eaea0a935eca2f103
+                           .group:00000000 wm4.instance_twi1.h.43.652d1d407893f259f2a817544ba662c2
+                           .group:00000000 wm4.instance_pwm.h.43.88294acec3ca56d6fc521038521a1567
+                           .group:00000000 wm4.instance_usart0.h.43.e26677512aee3dd3bedd71d394410000
+                           .group:00000000 wm4.instance_usart1.h.43.1ba97dbc6610d9fb3132b9d845688201
+                           .group:00000000 wm4.instance_usart2.h.43.baa1bf30b3c5acdee90c4a1f50fe9ebd
+                           .group:00000000 wm4.instance_usart3.h.43.f6638d1b78bcba70ca95fca279d33914
+                           .group:00000000 wm4.instance_udphs.h.43.b1ce94181e0d1f22877b81c6040a4363
+                           .group:00000000 wm4.instance_adc12b.h.43.d73ed59e867ccdfdb846d9ef32a50c0c
+                           .group:00000000 wm4.instance_adc.h.43.2b7611a00afeb4c555339b844d4b8456
+                           .group:00000000 wm4.instance_dmac.h.43.ee72691d84889c8f285932be4a075ddb
+                           .group:00000000 wm4.instance_smc.h.43.29610fd00979caaaa65821ad40e9da06
+                           .group:00000000 wm4.instance_matrix.h.43.01ee474141594385374c41a29daeeefe
+                           .group:00000000 wm4.instance_pmc.h.43.37430325ed7b8b24c3fe640c41c29ef5
+                           .group:00000000 wm4.instance_uart.h.43.bd378395ba022bc8670c82ebe656fbbd
+                           .group:00000000 wm4.instance_chipid.h.43.29cd8fb600f149aa58830fcc78fe36f9
+                           .group:00000000 wm4.instance_efc0.h.43.6b85dba20721a7e9fc4350e78d193680
+                           .group:00000000 wm4.instance_efc1.h.43.2c5e94fc4d2742678318d73450d08d57
+                           .group:00000000 wm4.instance_pioa.h.43.eeb46cc3bfe01a1f28e67aa3a6851ed8
+                           .group:00000000 wm4.instance_piob.h.43.652ce26b6c37ac56f9ed42a9216d9aca
+                           .group:00000000 wm4.instance_pioc.h.43.d9706cf766637d6b3ed9886aa3ef7261
+                           .group:00000000 wm4.instance_rstc.h.43.c5de224364a50a85f237c0b864aa4c8f
+                           .group:00000000 wm4.instance_supc.h.43.a5f1a5ca08f468ccf34ed3653e045f1f
+                           .group:00000000 wm4.instance_rtt.h.43.8622b192c23334996132415e3095df7f
+                           .group:00000000 wm4.instance_wdt.h.43.407ea53e133eacf09acf2c7fcb6b7524
+                           .group:00000000 wm4.instance_rtc.h.43.f70b77f9180401c8d9d920cb4a1cd166
+                           .group:00000000 wm4.instance_gpbr.h.43.9066cb40d557f6755101368854272348
+                           .group:00000000 wm4.sam3u2e.h.318.b69dc6db89bb8a018eede87e67bbc95d
+                           .group:00000000 wm4.pio_sam3u2e.h.43.21412830fa1fb9ca8a54ce10fede3251
+                           .group:00000000 wm4.sam3u2e.h.456.687e75a22829f9ea89425dc4ee4ff5e3
+                           .group:00000000 wm4.newlib.h.8.2702bca278809460f0af6fba1d84eb68
+                           .group:00000000 wm4.config.h.220.a09b0b0de3c25be3f39d71990e617bff
+                           .group:00000000 wm4._ansi.h.23.9f8fcfa20193763fcf364fb91705c94b
+                           .group:00000000 wm4.stdio.h.31.7c0e28c411445f3f9c5b11accf882760
+                           .group:00000000 wm4.stddef.h.158.a7efb00f6cbc6f43213b50e183c9830c
+                           .group:00000000 wm4.cdefs.h.47.3052445825803de6c3a3b68ec8193866
+                           .group:00000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:00000000 wm4.lock.h.2.9bc98482741e5e2a9450b12934a684ea
+                           .group:00000000 wm4._types.h.54.d3d34a3b7f3cc230cd159baf022b4b08
+                           .group:00000000 wm4.stddef.h.158.61317cdbfb4026324507d123a50b0fd6
+                           .group:00000000 wm4.reent.h.17.8bd9e4098e0428508c282cad794fae43
+                           .group:00000000 wm4.types.h.23.0d949686bbcadd1621462d4fa1f884f9
+                           .group:00000000 wm4.types.h.2.e9cec8c90ab35f77d9f499e06ae02400
+                           .group:00000000 wm4.types.h.81.ded4e8fbe2d299b79c956dc834e43661
+                           .group:00000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:00000000 wm4.stdio.h.68.a99a2db1e55915cfd1b035cc1e9fcff1
+                           .group:00000000 wm4.stdbool.h.29.1c9ee6859ce8145f7838a4f2549ccec2
+                           .group:00000000 wm4.stdlib.h.13.4ed386f5c1a80d71e72172885d946ef2
+                           .group:00000000 wm4.alloca.h.8.dfc0c703c47ec3e69746825b17d9e66d
+                           .group:00000000 wm4.stdlib.h.54.cd3744e0b066087ec8fbb1bdc22d1043
+                           .group:00000000 wm4.compiler.h.88.e36be790b5e347a01e6762426f60e643
+                           .group:00000000 wm4.interrupt_sam_nvic.h.45.4876da6c127868305d66389e87e0876f
+                           .group:00000000 wm4.compiler.h.424.ee053ef8246023ebdcca352464bd827f
+                           .group:00000000 wm4.conf_usb.h.56.bdf92843ab8d547b018fb879360aac04
+                           .group:00000000 wm4.udi_vendor_conf.h.56.4348c8e521d040f44df868219dae6785
+                           .group:00000000 wm4.usb_atmel.h.45.c31b525dbe01f8d9e2022a03356ec174
+                           .group:00000000 wm4.usb_protocol.h.63.850c58f3469fce50a9ac9a6854f7594b
+                           .group:00000000 wm4.usb_protocol_vendor.h.45.83dfe073428ff799abc3ed1c7b04c77d
+                           .group:00000000 wm4.udc_desc.h.77.5fec235bd7553e7256e345e020840072
+                           .group:00000000 wm4.udd.h.103.3ccc59b50c14ec70568e6136eeb22d56
+                           .group:00000000 wm4.udi_vendor.h.125.7b9085237d4d4a9757f4c148fba1918d
+                           .group:00000000 wm4.string.h.8.c4b8571ce60dff2817f43fec8b86aecd
+
+UNDEFINED SYMBOLS
+udc_get_interface_desc
+main_vendor_enable
+main_vendor_disable
+udd_g_ctrlreq
+main_setup_in_received
+main_setup_out_received
+udd_ep_run

@@ -1,0 +1,1277 @@
+   1              	 .cpu cortex-m3
+   2              	 .eabi_attribute 20,1
+   3              	 .eabi_attribute 21,1
+   4              	 .eabi_attribute 23,3
+   5              	 .eabi_attribute 24,1
+   6              	 .eabi_attribute 25,1
+   7              	 .eabi_attribute 26,1
+   8              	 .eabi_attribute 30,6
+   9              	 .eabi_attribute 34,1
+  10              	 .eabi_attribute 18,4
+  11              	 .file "interrupt_sam_nvic.c"
+  12              	 .text
+  13              	.Ltext0:
+  14              	 .cfi_sections .debug_frame
+  15              	 .section .bss.cpu_irq_critical_section_counter,"aw",%nobits
+  16              	 .align 2
+  19              	cpu_irq_critical_section_counter:
+  20 0000 00000000 	 .space 4
+  21              	 .section .bss.cpu_irq_prev_interrupt_state,"aw",%nobits
+  24              	cpu_irq_prev_interrupt_state:
+  25 0000 00       	 .space 1
+  26              	 .global g_interrupt_enabled
+  27              	 .section .data.g_interrupt_enabled,"aw"
+  30              	g_interrupt_enabled:
+  31 0000 01       	 .byte 1
+  32              	 .section .text.cpu_irq_enter_critical,"ax",%progbits
+  33              	 .align 1
+  34              	 .global cpu_irq_enter_critical
+  35              	 .arch armv7-m
+  36              	 .syntax unified
+  37              	 .thumb
+  38              	 .thumb_func
+  39              	 .fpu softvfp
+  41              	cpu_irq_enter_critical:
+  42              	.LFB69:
+  43              	 .file 1 ".././hal/sam3u1c/interrupt_sam_nvic.c"
+   1:.././hal/sam3u1c/interrupt_sam_nvic.c **** /**
+   2:.././hal/sam3u1c/interrupt_sam_nvic.c ****  * \file
+   3:.././hal/sam3u1c/interrupt_sam_nvic.c ****  *
+   4:.././hal/sam3u1c/interrupt_sam_nvic.c ****  * \brief Global interrupt management for SAM D20, SAM3 and SAM4 (NVIC based)
+   5:.././hal/sam3u1c/interrupt_sam_nvic.c ****  *
+   6:.././hal/sam3u1c/interrupt_sam_nvic.c ****  * Copyright (c) 2012-2013 Atmel Corporation. All rights reserved.
+   7:.././hal/sam3u1c/interrupt_sam_nvic.c ****  *
+   8:.././hal/sam3u1c/interrupt_sam_nvic.c ****  * \asf_license_start
+   9:.././hal/sam3u1c/interrupt_sam_nvic.c ****  *
+  10:.././hal/sam3u1c/interrupt_sam_nvic.c ****  * \page License
+  11:.././hal/sam3u1c/interrupt_sam_nvic.c ****  *
+  12:.././hal/sam3u1c/interrupt_sam_nvic.c ****  * Redistribution and use in source and binary forms, with or without
+  13:.././hal/sam3u1c/interrupt_sam_nvic.c ****  * modification, are permitted provided that the following conditions are met:
+  14:.././hal/sam3u1c/interrupt_sam_nvic.c ****  *
+  15:.././hal/sam3u1c/interrupt_sam_nvic.c ****  * 1. Redistributions of source code must retain the above copyright notice,
+  16:.././hal/sam3u1c/interrupt_sam_nvic.c ****  *    this list of conditions and the following disclaimer.
+  17:.././hal/sam3u1c/interrupt_sam_nvic.c ****  *
+  18:.././hal/sam3u1c/interrupt_sam_nvic.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice,
+  19:.././hal/sam3u1c/interrupt_sam_nvic.c ****  *    this list of conditions and the following disclaimer in the documentation
+  20:.././hal/sam3u1c/interrupt_sam_nvic.c ****  *    and/or other materials provided with the distribution.
+  21:.././hal/sam3u1c/interrupt_sam_nvic.c ****  *
+  22:.././hal/sam3u1c/interrupt_sam_nvic.c ****  * 3. The name of Atmel may not be used to endorse or promote products derived
+  23:.././hal/sam3u1c/interrupt_sam_nvic.c ****  *    from this software without specific prior written permission.
+  24:.././hal/sam3u1c/interrupt_sam_nvic.c ****  *
+  25:.././hal/sam3u1c/interrupt_sam_nvic.c ****  * 4. This software may only be redistributed and used in connection with an
+  26:.././hal/sam3u1c/interrupt_sam_nvic.c ****  *    Atmel microcontroller product.
+  27:.././hal/sam3u1c/interrupt_sam_nvic.c ****  *
+  28:.././hal/sam3u1c/interrupt_sam_nvic.c ****  * THIS SOFTWARE IS PROVIDED BY ATMEL "AS IS" AND ANY EXPRESS OR IMPLIED
+  29:.././hal/sam3u1c/interrupt_sam_nvic.c ****  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  30:.././hal/sam3u1c/interrupt_sam_nvic.c ****  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT ARE
+  31:.././hal/sam3u1c/interrupt_sam_nvic.c ****  * EXPRESSLY AND SPECIFICALLY DISCLAIMED. IN NO EVENT SHALL ATMEL BE LIABLE FOR
+  32:.././hal/sam3u1c/interrupt_sam_nvic.c ****  * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  33:.././hal/sam3u1c/interrupt_sam_nvic.c ****  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+  34:.././hal/sam3u1c/interrupt_sam_nvic.c ****  * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+  35:.././hal/sam3u1c/interrupt_sam_nvic.c ****  * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+  36:.././hal/sam3u1c/interrupt_sam_nvic.c ****  * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+  37:.././hal/sam3u1c/interrupt_sam_nvic.c ****  * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  38:.././hal/sam3u1c/interrupt_sam_nvic.c ****  * POSSIBILITY OF SUCH DAMAGE.
+  39:.././hal/sam3u1c/interrupt_sam_nvic.c ****  *
+  40:.././hal/sam3u1c/interrupt_sam_nvic.c ****  * \asf_license_stop
+  41:.././hal/sam3u1c/interrupt_sam_nvic.c ****  *
+  42:.././hal/sam3u1c/interrupt_sam_nvic.c ****  */
+  43:.././hal/sam3u1c/interrupt_sam_nvic.c **** 
+  44:.././hal/sam3u1c/interrupt_sam_nvic.c **** #include "interrupt_sam_nvic.h"
+  45:.././hal/sam3u1c/interrupt_sam_nvic.c **** 
+  46:.././hal/sam3u1c/interrupt_sam_nvic.c **** #if !defined(__DOXYGEN__)
+  47:.././hal/sam3u1c/interrupt_sam_nvic.c **** /* Deprecated - global flag to determine the global interrupt state. Required by
+  48:.././hal/sam3u1c/interrupt_sam_nvic.c ****  * QTouch library, however new applications should use cpu_irq_is_enabled()
+  49:.././hal/sam3u1c/interrupt_sam_nvic.c ****  * which probes the true global interrupt state from the CPU special registers.
+  50:.././hal/sam3u1c/interrupt_sam_nvic.c ****  */
+  51:.././hal/sam3u1c/interrupt_sam_nvic.c **** volatile bool g_interrupt_enabled = true;
+  52:.././hal/sam3u1c/interrupt_sam_nvic.c **** #endif
+  53:.././hal/sam3u1c/interrupt_sam_nvic.c **** 
+  54:.././hal/sam3u1c/interrupt_sam_nvic.c **** void cpu_irq_enter_critical(void)
+  55:.././hal/sam3u1c/interrupt_sam_nvic.c **** {
+  44              	 .loc 1 55 1
+  45              	 .cfi_startproc
+  46              	 
+  47              	 
+  48              	 
+  49 0000 80B4     	 push {r7}
+  50              	.LCFI0:
+  51              	 .cfi_def_cfa_offset 4
+  52              	 .cfi_offset 7,-4
+  53 0002 83B0     	 sub sp,sp,#12
+  54              	.LCFI1:
+  55              	 .cfi_def_cfa_offset 16
+  56 0004 00AF     	 add r7,sp,#0
+  57              	.LCFI2:
+  58              	 .cfi_def_cfa_register 7
+  56:.././hal/sam3u1c/interrupt_sam_nvic.c **** 	if (cpu_irq_critical_section_counter == 0) {
+  59              	 .loc 1 56 39
+  60 0006 114B     	 ldr r3,.L5
+  61 0008 1B68     	 ldr r3,[r3]
+  62              	 .loc 1 56 5
+  63 000a 002B     	 cmp r3,#0
+  64 000c 14D1     	 bne .L2
+  65              	.LBB12:
+  66              	.LBB13:
+  67              	 .file 2 ".././hal/sam3u1c/inc/core_cmFunc.h"
+   1:.././hal/sam3u1c/inc/core_cmFunc.h **** /**************************************************************************//**
+   2:.././hal/sam3u1c/inc/core_cmFunc.h ****  * @file     core_cmFunc.h
+   3:.././hal/sam3u1c/inc/core_cmFunc.h ****  * @brief    CMSIS Cortex-M Core Function Access Header File
+   4:.././hal/sam3u1c/inc/core_cmFunc.h ****  * @version  V3.00
+   5:.././hal/sam3u1c/inc/core_cmFunc.h ****  * @date     19. January 2012
+   6:.././hal/sam3u1c/inc/core_cmFunc.h ****  *
+   7:.././hal/sam3u1c/inc/core_cmFunc.h ****  * @note
+   8:.././hal/sam3u1c/inc/core_cmFunc.h ****  * Copyright (C) 2009-2012 ARM Limited. All rights reserved.
+   9:.././hal/sam3u1c/inc/core_cmFunc.h ****  *
+  10:.././hal/sam3u1c/inc/core_cmFunc.h ****  * @par
+  11:.././hal/sam3u1c/inc/core_cmFunc.h ****  * ARM Limited (ARM) is supplying this software for use with Cortex-M 
+  12:.././hal/sam3u1c/inc/core_cmFunc.h ****  * processor based microcontrollers.  This file can be freely distributed 
+  13:.././hal/sam3u1c/inc/core_cmFunc.h ****  * within development tools that are supporting such ARM based processors. 
+  14:.././hal/sam3u1c/inc/core_cmFunc.h ****  *
+  15:.././hal/sam3u1c/inc/core_cmFunc.h ****  * @par
+  16:.././hal/sam3u1c/inc/core_cmFunc.h ****  * THIS SOFTWARE IS PROVIDED "AS IS".  NO WARRANTIES, WHETHER EXPRESS, IMPLIED
+  17:.././hal/sam3u1c/inc/core_cmFunc.h ****  * OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF
+  18:.././hal/sam3u1c/inc/core_cmFunc.h ****  * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE APPLY TO THIS SOFTWARE.
+  19:.././hal/sam3u1c/inc/core_cmFunc.h ****  * ARM SHALL NOT, IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR
+  20:.././hal/sam3u1c/inc/core_cmFunc.h ****  * CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
+  21:.././hal/sam3u1c/inc/core_cmFunc.h ****  *
+  22:.././hal/sam3u1c/inc/core_cmFunc.h ****  ******************************************************************************/
+  23:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+  24:.././hal/sam3u1c/inc/core_cmFunc.h **** #ifndef __CORE_CMFUNC_H
+  25:.././hal/sam3u1c/inc/core_cmFunc.h **** #define __CORE_CMFUNC_H
+  26:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+  27:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+  28:.././hal/sam3u1c/inc/core_cmFunc.h **** /* ###########################  Core Function Access  ########################### */
+  29:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \ingroup  CMSIS_Core_FunctionInterface   
+  30:.././hal/sam3u1c/inc/core_cmFunc.h ****     \defgroup CMSIS_Core_RegAccFunctions CMSIS Core Register Access Functions
+  31:.././hal/sam3u1c/inc/core_cmFunc.h ****   @{
+  32:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+  33:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+  34:.././hal/sam3u1c/inc/core_cmFunc.h **** #if   defined ( __CC_ARM ) /*------------------RealView Compiler -----------------*/
+  35:.././hal/sam3u1c/inc/core_cmFunc.h **** /* ARM armcc specific functions */
+  36:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+  37:.././hal/sam3u1c/inc/core_cmFunc.h **** #if (__ARMCC_VERSION < 400677)
+  38:.././hal/sam3u1c/inc/core_cmFunc.h ****   #error "Please use ARM Compiler Toolchain V4.0.677 or later!"
+  39:.././hal/sam3u1c/inc/core_cmFunc.h **** #endif
+  40:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+  41:.././hal/sam3u1c/inc/core_cmFunc.h **** /* intrinsic void __enable_irq();     */
+  42:.././hal/sam3u1c/inc/core_cmFunc.h **** /* intrinsic void __disable_irq();    */
+  43:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+  44:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \brief  Get Control Register
+  45:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+  46:.././hal/sam3u1c/inc/core_cmFunc.h ****     This function returns the content of the Control Register.
+  47:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+  48:.././hal/sam3u1c/inc/core_cmFunc.h ****     \return               Control Register value
+  49:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+  50:.././hal/sam3u1c/inc/core_cmFunc.h **** __STATIC_INLINE uint32_t __get_CONTROL(void)
+  51:.././hal/sam3u1c/inc/core_cmFunc.h **** {
+  52:.././hal/sam3u1c/inc/core_cmFunc.h ****   register uint32_t __regControl         __ASM("control");
+  53:.././hal/sam3u1c/inc/core_cmFunc.h ****   return(__regControl);
+  54:.././hal/sam3u1c/inc/core_cmFunc.h **** }
+  55:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+  56:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+  57:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \brief  Set Control Register
+  58:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+  59:.././hal/sam3u1c/inc/core_cmFunc.h ****     This function writes the given value to the Control Register.
+  60:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+  61:.././hal/sam3u1c/inc/core_cmFunc.h ****     \param [in]    control  Control Register value to set
+  62:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+  63:.././hal/sam3u1c/inc/core_cmFunc.h **** __STATIC_INLINE void __set_CONTROL(uint32_t control)
+  64:.././hal/sam3u1c/inc/core_cmFunc.h **** {
+  65:.././hal/sam3u1c/inc/core_cmFunc.h ****   register uint32_t __regControl         __ASM("control");
+  66:.././hal/sam3u1c/inc/core_cmFunc.h ****   __regControl = control;
+  67:.././hal/sam3u1c/inc/core_cmFunc.h **** }
+  68:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+  69:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+  70:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \brief  Get IPSR Register
+  71:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+  72:.././hal/sam3u1c/inc/core_cmFunc.h ****     This function returns the content of the IPSR Register.
+  73:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+  74:.././hal/sam3u1c/inc/core_cmFunc.h ****     \return               IPSR Register value
+  75:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+  76:.././hal/sam3u1c/inc/core_cmFunc.h **** __STATIC_INLINE uint32_t __get_IPSR(void)
+  77:.././hal/sam3u1c/inc/core_cmFunc.h **** {
+  78:.././hal/sam3u1c/inc/core_cmFunc.h ****   register uint32_t __regIPSR          __ASM("ipsr");
+  79:.././hal/sam3u1c/inc/core_cmFunc.h ****   return(__regIPSR);
+  80:.././hal/sam3u1c/inc/core_cmFunc.h **** }
+  81:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+  82:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+  83:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \brief  Get APSR Register
+  84:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+  85:.././hal/sam3u1c/inc/core_cmFunc.h ****     This function returns the content of the APSR Register.
+  86:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+  87:.././hal/sam3u1c/inc/core_cmFunc.h ****     \return               APSR Register value
+  88:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+  89:.././hal/sam3u1c/inc/core_cmFunc.h **** __STATIC_INLINE uint32_t __get_APSR(void)
+  90:.././hal/sam3u1c/inc/core_cmFunc.h **** {
+  91:.././hal/sam3u1c/inc/core_cmFunc.h ****   register uint32_t __regAPSR          __ASM("apsr");
+  92:.././hal/sam3u1c/inc/core_cmFunc.h ****   return(__regAPSR);
+  93:.././hal/sam3u1c/inc/core_cmFunc.h **** }
+  94:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+  95:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+  96:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \brief  Get xPSR Register
+  97:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+  98:.././hal/sam3u1c/inc/core_cmFunc.h ****     This function returns the content of the xPSR Register.
+  99:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 100:.././hal/sam3u1c/inc/core_cmFunc.h ****     \return               xPSR Register value
+ 101:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+ 102:.././hal/sam3u1c/inc/core_cmFunc.h **** __STATIC_INLINE uint32_t __get_xPSR(void)
+ 103:.././hal/sam3u1c/inc/core_cmFunc.h **** {
+ 104:.././hal/sam3u1c/inc/core_cmFunc.h ****   register uint32_t __regXPSR          __ASM("xpsr");
+ 105:.././hal/sam3u1c/inc/core_cmFunc.h ****   return(__regXPSR);
+ 106:.././hal/sam3u1c/inc/core_cmFunc.h **** }
+ 107:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 108:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 109:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \brief  Get Process Stack Pointer
+ 110:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 111:.././hal/sam3u1c/inc/core_cmFunc.h ****     This function returns the current value of the Process Stack Pointer (PSP).
+ 112:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 113:.././hal/sam3u1c/inc/core_cmFunc.h ****     \return               PSP Register value
+ 114:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+ 115:.././hal/sam3u1c/inc/core_cmFunc.h **** __STATIC_INLINE uint32_t __get_PSP(void)
+ 116:.././hal/sam3u1c/inc/core_cmFunc.h **** {
+ 117:.././hal/sam3u1c/inc/core_cmFunc.h ****   register uint32_t __regProcessStackPointer  __ASM("psp");
+ 118:.././hal/sam3u1c/inc/core_cmFunc.h ****   return(__regProcessStackPointer);
+ 119:.././hal/sam3u1c/inc/core_cmFunc.h **** }
+ 120:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 121:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 122:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \brief  Set Process Stack Pointer
+ 123:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 124:.././hal/sam3u1c/inc/core_cmFunc.h ****     This function assigns the given value to the Process Stack Pointer (PSP).
+ 125:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 126:.././hal/sam3u1c/inc/core_cmFunc.h ****     \param [in]    topOfProcStack  Process Stack Pointer value to set
+ 127:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+ 128:.././hal/sam3u1c/inc/core_cmFunc.h **** __STATIC_INLINE void __set_PSP(uint32_t topOfProcStack)
+ 129:.././hal/sam3u1c/inc/core_cmFunc.h **** {
+ 130:.././hal/sam3u1c/inc/core_cmFunc.h ****   register uint32_t __regProcessStackPointer  __ASM("psp");
+ 131:.././hal/sam3u1c/inc/core_cmFunc.h ****   __regProcessStackPointer = topOfProcStack;
+ 132:.././hal/sam3u1c/inc/core_cmFunc.h **** }
+ 133:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 134:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 135:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \brief  Get Main Stack Pointer
+ 136:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 137:.././hal/sam3u1c/inc/core_cmFunc.h ****     This function returns the current value of the Main Stack Pointer (MSP).
+ 138:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 139:.././hal/sam3u1c/inc/core_cmFunc.h ****     \return               MSP Register value
+ 140:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+ 141:.././hal/sam3u1c/inc/core_cmFunc.h **** __STATIC_INLINE uint32_t __get_MSP(void)
+ 142:.././hal/sam3u1c/inc/core_cmFunc.h **** {
+ 143:.././hal/sam3u1c/inc/core_cmFunc.h ****   register uint32_t __regMainStackPointer     __ASM("msp");
+ 144:.././hal/sam3u1c/inc/core_cmFunc.h ****   return(__regMainStackPointer);
+ 145:.././hal/sam3u1c/inc/core_cmFunc.h **** }
+ 146:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 147:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 148:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \brief  Set Main Stack Pointer
+ 149:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 150:.././hal/sam3u1c/inc/core_cmFunc.h ****     This function assigns the given value to the Main Stack Pointer (MSP).
+ 151:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 152:.././hal/sam3u1c/inc/core_cmFunc.h ****     \param [in]    topOfMainStack  Main Stack Pointer value to set
+ 153:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+ 154:.././hal/sam3u1c/inc/core_cmFunc.h **** __STATIC_INLINE void __set_MSP(uint32_t topOfMainStack)
+ 155:.././hal/sam3u1c/inc/core_cmFunc.h **** {
+ 156:.././hal/sam3u1c/inc/core_cmFunc.h ****   register uint32_t __regMainStackPointer     __ASM("msp");
+ 157:.././hal/sam3u1c/inc/core_cmFunc.h ****   __regMainStackPointer = topOfMainStack;
+ 158:.././hal/sam3u1c/inc/core_cmFunc.h **** }
+ 159:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 160:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 161:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \brief  Get Priority Mask
+ 162:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 163:.././hal/sam3u1c/inc/core_cmFunc.h ****     This function returns the current state of the priority mask bit from the Priority Mask Registe
+ 164:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 165:.././hal/sam3u1c/inc/core_cmFunc.h ****     \return               Priority Mask value
+ 166:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+ 167:.././hal/sam3u1c/inc/core_cmFunc.h **** __STATIC_INLINE uint32_t __get_PRIMASK(void)
+ 168:.././hal/sam3u1c/inc/core_cmFunc.h **** {
+ 169:.././hal/sam3u1c/inc/core_cmFunc.h ****   register uint32_t __regPriMask         __ASM("primask");
+ 170:.././hal/sam3u1c/inc/core_cmFunc.h ****   return(__regPriMask);
+ 171:.././hal/sam3u1c/inc/core_cmFunc.h **** }
+ 172:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 173:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 174:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \brief  Set Priority Mask
+ 175:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 176:.././hal/sam3u1c/inc/core_cmFunc.h ****     This function assigns the given value to the Priority Mask Register.
+ 177:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 178:.././hal/sam3u1c/inc/core_cmFunc.h ****     \param [in]    priMask  Priority Mask
+ 179:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+ 180:.././hal/sam3u1c/inc/core_cmFunc.h **** __STATIC_INLINE void __set_PRIMASK(uint32_t priMask)
+ 181:.././hal/sam3u1c/inc/core_cmFunc.h **** {
+ 182:.././hal/sam3u1c/inc/core_cmFunc.h ****   register uint32_t __regPriMask         __ASM("primask");
+ 183:.././hal/sam3u1c/inc/core_cmFunc.h ****   __regPriMask = (priMask);
+ 184:.././hal/sam3u1c/inc/core_cmFunc.h **** }
+ 185:.././hal/sam3u1c/inc/core_cmFunc.h ****  
+ 186:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 187:.././hal/sam3u1c/inc/core_cmFunc.h **** #if       (__CORTEX_M >= 0x03)
+ 188:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 189:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \brief  Enable FIQ
+ 190:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 191:.././hal/sam3u1c/inc/core_cmFunc.h ****     This function enables FIQ interrupts by clearing the F-bit in the CPSR.
+ 192:.././hal/sam3u1c/inc/core_cmFunc.h ****     Can only be executed in Privileged modes.
+ 193:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+ 194:.././hal/sam3u1c/inc/core_cmFunc.h **** #define __enable_fault_irq                __enable_fiq
+ 195:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 196:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 197:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \brief  Disable FIQ
+ 198:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 199:.././hal/sam3u1c/inc/core_cmFunc.h ****     This function disables FIQ interrupts by setting the F-bit in the CPSR.
+ 200:.././hal/sam3u1c/inc/core_cmFunc.h ****     Can only be executed in Privileged modes.
+ 201:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+ 202:.././hal/sam3u1c/inc/core_cmFunc.h **** #define __disable_fault_irq               __disable_fiq
+ 203:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 204:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 205:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \brief  Get Base Priority
+ 206:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 207:.././hal/sam3u1c/inc/core_cmFunc.h ****     This function returns the current value of the Base Priority register.
+ 208:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 209:.././hal/sam3u1c/inc/core_cmFunc.h ****     \return               Base Priority register value
+ 210:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+ 211:.././hal/sam3u1c/inc/core_cmFunc.h **** __STATIC_INLINE uint32_t  __get_BASEPRI(void)
+ 212:.././hal/sam3u1c/inc/core_cmFunc.h **** {
+ 213:.././hal/sam3u1c/inc/core_cmFunc.h ****   register uint32_t __regBasePri         __ASM("basepri");
+ 214:.././hal/sam3u1c/inc/core_cmFunc.h ****   return(__regBasePri);
+ 215:.././hal/sam3u1c/inc/core_cmFunc.h **** }
+ 216:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 217:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 218:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \brief  Set Base Priority
+ 219:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 220:.././hal/sam3u1c/inc/core_cmFunc.h ****     This function assigns the given value to the Base Priority register.
+ 221:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 222:.././hal/sam3u1c/inc/core_cmFunc.h ****     \param [in]    basePri  Base Priority value to set
+ 223:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+ 224:.././hal/sam3u1c/inc/core_cmFunc.h **** __STATIC_INLINE void __set_BASEPRI(uint32_t basePri)
+ 225:.././hal/sam3u1c/inc/core_cmFunc.h **** {
+ 226:.././hal/sam3u1c/inc/core_cmFunc.h ****   register uint32_t __regBasePri         __ASM("basepri");
+ 227:.././hal/sam3u1c/inc/core_cmFunc.h ****   __regBasePri = (basePri & 0xff);
+ 228:.././hal/sam3u1c/inc/core_cmFunc.h **** }
+ 229:.././hal/sam3u1c/inc/core_cmFunc.h ****  
+ 230:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 231:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \brief  Get Fault Mask
+ 232:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 233:.././hal/sam3u1c/inc/core_cmFunc.h ****     This function returns the current value of the Fault Mask register.
+ 234:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 235:.././hal/sam3u1c/inc/core_cmFunc.h ****     \return               Fault Mask register value
+ 236:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+ 237:.././hal/sam3u1c/inc/core_cmFunc.h **** __STATIC_INLINE uint32_t __get_FAULTMASK(void)
+ 238:.././hal/sam3u1c/inc/core_cmFunc.h **** {
+ 239:.././hal/sam3u1c/inc/core_cmFunc.h ****   register uint32_t __regFaultMask       __ASM("faultmask");
+ 240:.././hal/sam3u1c/inc/core_cmFunc.h ****   return(__regFaultMask);
+ 241:.././hal/sam3u1c/inc/core_cmFunc.h **** }
+ 242:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 243:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 244:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \brief  Set Fault Mask
+ 245:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 246:.././hal/sam3u1c/inc/core_cmFunc.h ****     This function assigns the given value to the Fault Mask register.
+ 247:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 248:.././hal/sam3u1c/inc/core_cmFunc.h ****     \param [in]    faultMask  Fault Mask value to set
+ 249:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+ 250:.././hal/sam3u1c/inc/core_cmFunc.h **** __STATIC_INLINE void __set_FAULTMASK(uint32_t faultMask)
+ 251:.././hal/sam3u1c/inc/core_cmFunc.h **** {
+ 252:.././hal/sam3u1c/inc/core_cmFunc.h ****   register uint32_t __regFaultMask       __ASM("faultmask");
+ 253:.././hal/sam3u1c/inc/core_cmFunc.h ****   __regFaultMask = (faultMask & (uint32_t)1);
+ 254:.././hal/sam3u1c/inc/core_cmFunc.h **** }
+ 255:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 256:.././hal/sam3u1c/inc/core_cmFunc.h **** #endif /* (__CORTEX_M >= 0x03) */
+ 257:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 258:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 259:.././hal/sam3u1c/inc/core_cmFunc.h **** #if       (__CORTEX_M == 0x04)
+ 260:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 261:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \brief  Get FPSCR
+ 262:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 263:.././hal/sam3u1c/inc/core_cmFunc.h ****     This function returns the current value of the Floating Point Status/Control register.
+ 264:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 265:.././hal/sam3u1c/inc/core_cmFunc.h ****     \return               Floating Point Status/Control register value
+ 266:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+ 267:.././hal/sam3u1c/inc/core_cmFunc.h **** __STATIC_INLINE uint32_t __get_FPSCR(void)
+ 268:.././hal/sam3u1c/inc/core_cmFunc.h **** {
+ 269:.././hal/sam3u1c/inc/core_cmFunc.h **** #if (__FPU_PRESENT == 1) && (__FPU_USED == 1)
+ 270:.././hal/sam3u1c/inc/core_cmFunc.h ****   register uint32_t __regfpscr         __ASM("fpscr");
+ 271:.././hal/sam3u1c/inc/core_cmFunc.h ****   return(__regfpscr);
+ 272:.././hal/sam3u1c/inc/core_cmFunc.h **** #else
+ 273:.././hal/sam3u1c/inc/core_cmFunc.h ****    return(0);
+ 274:.././hal/sam3u1c/inc/core_cmFunc.h **** #endif
+ 275:.././hal/sam3u1c/inc/core_cmFunc.h **** }
+ 276:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 277:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 278:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \brief  Set FPSCR
+ 279:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 280:.././hal/sam3u1c/inc/core_cmFunc.h ****     This function assigns the given value to the Floating Point Status/Control register.
+ 281:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 282:.././hal/sam3u1c/inc/core_cmFunc.h ****     \param [in]    fpscr  Floating Point Status/Control value to set
+ 283:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+ 284:.././hal/sam3u1c/inc/core_cmFunc.h **** __STATIC_INLINE void __set_FPSCR(uint32_t fpscr)
+ 285:.././hal/sam3u1c/inc/core_cmFunc.h **** {
+ 286:.././hal/sam3u1c/inc/core_cmFunc.h **** #if (__FPU_PRESENT == 1) && (__FPU_USED == 1)
+ 287:.././hal/sam3u1c/inc/core_cmFunc.h ****   register uint32_t __regfpscr         __ASM("fpscr");
+ 288:.././hal/sam3u1c/inc/core_cmFunc.h ****   __regfpscr = (fpscr);
+ 289:.././hal/sam3u1c/inc/core_cmFunc.h **** #endif
+ 290:.././hal/sam3u1c/inc/core_cmFunc.h **** }
+ 291:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 292:.././hal/sam3u1c/inc/core_cmFunc.h **** #endif /* (__CORTEX_M == 0x04) */
+ 293:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 294:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 295:.././hal/sam3u1c/inc/core_cmFunc.h **** #elif defined ( __ICCARM__ ) /*------------------ ICC Compiler -------------------*/
+ 296:.././hal/sam3u1c/inc/core_cmFunc.h **** /* IAR iccarm specific functions */
+ 297:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 298:.././hal/sam3u1c/inc/core_cmFunc.h **** #include <cmsis_iar.h>
+ 299:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 300:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 301:.././hal/sam3u1c/inc/core_cmFunc.h **** #elif defined ( __TMS470__ ) /*---------------- TI CCS Compiler ------------------*/
+ 302:.././hal/sam3u1c/inc/core_cmFunc.h **** /* TI CCS specific functions */
+ 303:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 304:.././hal/sam3u1c/inc/core_cmFunc.h **** #include <cmsis_ccs.h>
+ 305:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 306:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 307:.././hal/sam3u1c/inc/core_cmFunc.h **** #elif defined ( __GNUC__ ) /*------------------ GNU Compiler ---------------------*/
+ 308:.././hal/sam3u1c/inc/core_cmFunc.h **** /* GNU gcc specific functions */
+ 309:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 310:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \brief  Enable IRQ Interrupts
+ 311:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 312:.././hal/sam3u1c/inc/core_cmFunc.h ****   This function enables IRQ interrupts by clearing the I-bit in the CPSR.
+ 313:.././hal/sam3u1c/inc/core_cmFunc.h ****   Can only be executed in Privileged modes.
+ 314:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+ 315:.././hal/sam3u1c/inc/core_cmFunc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE void __enable_irq(void)
+ 316:.././hal/sam3u1c/inc/core_cmFunc.h **** {
+ 317:.././hal/sam3u1c/inc/core_cmFunc.h ****   __ASM volatile ("cpsie i");
+ 318:.././hal/sam3u1c/inc/core_cmFunc.h **** }
+ 319:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 320:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 321:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \brief  Disable IRQ Interrupts
+ 322:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 323:.././hal/sam3u1c/inc/core_cmFunc.h ****   This function disables IRQ interrupts by setting the I-bit in the CPSR.
+ 324:.././hal/sam3u1c/inc/core_cmFunc.h ****   Can only be executed in Privileged modes.
+ 325:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+ 326:.././hal/sam3u1c/inc/core_cmFunc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE void __disable_irq(void)
+ 327:.././hal/sam3u1c/inc/core_cmFunc.h **** {
+ 328:.././hal/sam3u1c/inc/core_cmFunc.h ****   __ASM volatile ("cpsid i");
+ 329:.././hal/sam3u1c/inc/core_cmFunc.h **** }
+ 330:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 331:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 332:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \brief  Get Control Register
+ 333:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 334:.././hal/sam3u1c/inc/core_cmFunc.h ****     This function returns the content of the Control Register.
+ 335:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 336:.././hal/sam3u1c/inc/core_cmFunc.h ****     \return               Control Register value
+ 337:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+ 338:.././hal/sam3u1c/inc/core_cmFunc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE uint32_t __get_CONTROL(void)
+ 339:.././hal/sam3u1c/inc/core_cmFunc.h **** {
+ 340:.././hal/sam3u1c/inc/core_cmFunc.h ****   uint32_t result;
+ 341:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 342:.././hal/sam3u1c/inc/core_cmFunc.h ****   __ASM volatile ("MRS %0, control" : "=r" (result) );
+ 343:.././hal/sam3u1c/inc/core_cmFunc.h ****   return(result);
+ 344:.././hal/sam3u1c/inc/core_cmFunc.h **** }
+ 345:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 346:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 347:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \brief  Set Control Register
+ 348:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 349:.././hal/sam3u1c/inc/core_cmFunc.h ****     This function writes the given value to the Control Register.
+ 350:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 351:.././hal/sam3u1c/inc/core_cmFunc.h ****     \param [in]    control  Control Register value to set
+ 352:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+ 353:.././hal/sam3u1c/inc/core_cmFunc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE void __set_CONTROL(uint32_t control)
+ 354:.././hal/sam3u1c/inc/core_cmFunc.h **** {
+ 355:.././hal/sam3u1c/inc/core_cmFunc.h ****   __ASM volatile ("MSR control, %0" : : "r" (control) );
+ 356:.././hal/sam3u1c/inc/core_cmFunc.h **** }
+ 357:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 358:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 359:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \brief  Get IPSR Register
+ 360:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 361:.././hal/sam3u1c/inc/core_cmFunc.h ****     This function returns the content of the IPSR Register.
+ 362:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 363:.././hal/sam3u1c/inc/core_cmFunc.h ****     \return               IPSR Register value
+ 364:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+ 365:.././hal/sam3u1c/inc/core_cmFunc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE uint32_t __get_IPSR(void)
+ 366:.././hal/sam3u1c/inc/core_cmFunc.h **** {
+ 367:.././hal/sam3u1c/inc/core_cmFunc.h ****   uint32_t result;
+ 368:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 369:.././hal/sam3u1c/inc/core_cmFunc.h ****   __ASM volatile ("MRS %0, ipsr" : "=r" (result) );
+ 370:.././hal/sam3u1c/inc/core_cmFunc.h ****   return(result);
+ 371:.././hal/sam3u1c/inc/core_cmFunc.h **** }
+ 372:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 373:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 374:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \brief  Get APSR Register
+ 375:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 376:.././hal/sam3u1c/inc/core_cmFunc.h ****     This function returns the content of the APSR Register.
+ 377:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 378:.././hal/sam3u1c/inc/core_cmFunc.h ****     \return               APSR Register value
+ 379:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+ 380:.././hal/sam3u1c/inc/core_cmFunc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE uint32_t __get_APSR(void)
+ 381:.././hal/sam3u1c/inc/core_cmFunc.h **** {
+ 382:.././hal/sam3u1c/inc/core_cmFunc.h ****   uint32_t result;
+ 383:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 384:.././hal/sam3u1c/inc/core_cmFunc.h ****   __ASM volatile ("MRS %0, apsr" : "=r" (result) );
+ 385:.././hal/sam3u1c/inc/core_cmFunc.h ****   return(result);
+ 386:.././hal/sam3u1c/inc/core_cmFunc.h **** }
+ 387:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 388:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 389:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \brief  Get xPSR Register
+ 390:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 391:.././hal/sam3u1c/inc/core_cmFunc.h ****     This function returns the content of the xPSR Register.
+ 392:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 393:.././hal/sam3u1c/inc/core_cmFunc.h ****     \return               xPSR Register value
+ 394:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+ 395:.././hal/sam3u1c/inc/core_cmFunc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE uint32_t __get_xPSR(void)
+ 396:.././hal/sam3u1c/inc/core_cmFunc.h **** {
+ 397:.././hal/sam3u1c/inc/core_cmFunc.h ****   uint32_t result;
+ 398:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 399:.././hal/sam3u1c/inc/core_cmFunc.h ****   __ASM volatile ("MRS %0, xpsr" : "=r" (result) );
+ 400:.././hal/sam3u1c/inc/core_cmFunc.h ****   return(result);
+ 401:.././hal/sam3u1c/inc/core_cmFunc.h **** }
+ 402:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 403:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 404:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \brief  Get Process Stack Pointer
+ 405:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 406:.././hal/sam3u1c/inc/core_cmFunc.h ****     This function returns the current value of the Process Stack Pointer (PSP).
+ 407:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 408:.././hal/sam3u1c/inc/core_cmFunc.h ****     \return               PSP Register value
+ 409:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+ 410:.././hal/sam3u1c/inc/core_cmFunc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE uint32_t __get_PSP(void)
+ 411:.././hal/sam3u1c/inc/core_cmFunc.h **** {
+ 412:.././hal/sam3u1c/inc/core_cmFunc.h ****   register uint32_t result;
+ 413:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 414:.././hal/sam3u1c/inc/core_cmFunc.h ****   __ASM volatile ("MRS %0, psp\n"  : "=r" (result) );
+ 415:.././hal/sam3u1c/inc/core_cmFunc.h ****   return(result);
+ 416:.././hal/sam3u1c/inc/core_cmFunc.h **** }
+ 417:.././hal/sam3u1c/inc/core_cmFunc.h ****  
+ 418:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 419:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \brief  Set Process Stack Pointer
+ 420:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 421:.././hal/sam3u1c/inc/core_cmFunc.h ****     This function assigns the given value to the Process Stack Pointer (PSP).
+ 422:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 423:.././hal/sam3u1c/inc/core_cmFunc.h ****     \param [in]    topOfProcStack  Process Stack Pointer value to set
+ 424:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+ 425:.././hal/sam3u1c/inc/core_cmFunc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE void __set_PSP(uint32_t topOfProcStack)
+ 426:.././hal/sam3u1c/inc/core_cmFunc.h **** {
+ 427:.././hal/sam3u1c/inc/core_cmFunc.h ****   __ASM volatile ("MSR psp, %0\n" : : "r" (topOfProcStack) );
+ 428:.././hal/sam3u1c/inc/core_cmFunc.h **** }
+ 429:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 430:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 431:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \brief  Get Main Stack Pointer
+ 432:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 433:.././hal/sam3u1c/inc/core_cmFunc.h ****     This function returns the current value of the Main Stack Pointer (MSP).
+ 434:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 435:.././hal/sam3u1c/inc/core_cmFunc.h ****     \return               MSP Register value
+ 436:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+ 437:.././hal/sam3u1c/inc/core_cmFunc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE uint32_t __get_MSP(void)
+ 438:.././hal/sam3u1c/inc/core_cmFunc.h **** {
+ 439:.././hal/sam3u1c/inc/core_cmFunc.h ****   register uint32_t result;
+ 440:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 441:.././hal/sam3u1c/inc/core_cmFunc.h ****   __ASM volatile ("MRS %0, msp\n" : "=r" (result) );
+ 442:.././hal/sam3u1c/inc/core_cmFunc.h ****   return(result);
+ 443:.././hal/sam3u1c/inc/core_cmFunc.h **** }
+ 444:.././hal/sam3u1c/inc/core_cmFunc.h ****  
+ 445:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 446:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \brief  Set Main Stack Pointer
+ 447:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 448:.././hal/sam3u1c/inc/core_cmFunc.h ****     This function assigns the given value to the Main Stack Pointer (MSP).
+ 449:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 450:.././hal/sam3u1c/inc/core_cmFunc.h ****     \param [in]    topOfMainStack  Main Stack Pointer value to set
+ 451:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+ 452:.././hal/sam3u1c/inc/core_cmFunc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE void __set_MSP(uint32_t topOfMainStack)
+ 453:.././hal/sam3u1c/inc/core_cmFunc.h **** {
+ 454:.././hal/sam3u1c/inc/core_cmFunc.h ****   __ASM volatile ("MSR msp, %0\n" : : "r" (topOfMainStack) );
+ 455:.././hal/sam3u1c/inc/core_cmFunc.h **** }
+ 456:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 457:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 458:.././hal/sam3u1c/inc/core_cmFunc.h **** /** \brief  Get Priority Mask
+ 459:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 460:.././hal/sam3u1c/inc/core_cmFunc.h ****     This function returns the current state of the priority mask bit from the Priority Mask Registe
+ 461:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 462:.././hal/sam3u1c/inc/core_cmFunc.h ****     \return               Priority Mask value
+ 463:.././hal/sam3u1c/inc/core_cmFunc.h ****  */
+ 464:.././hal/sam3u1c/inc/core_cmFunc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE uint32_t __get_PRIMASK(void)
+ 465:.././hal/sam3u1c/inc/core_cmFunc.h **** {
+ 466:.././hal/sam3u1c/inc/core_cmFunc.h ****   uint32_t result;
+ 467:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 468:.././hal/sam3u1c/inc/core_cmFunc.h ****   __ASM volatile ("MRS %0, primask" : "=r" (result) );
+  68              	 .loc 2 468 3
+  69              	 .syntax unified
+  70              	
+  71 000e EFF31083 	 MRS r3,primask
+  72              	
+  73              	 .thumb
+  74              	 .syntax unified
+  75 0012 7B60     	 str r3,[r7,#4]
+ 469:.././hal/sam3u1c/inc/core_cmFunc.h ****   return(result);
+  76              	 .loc 2 469 9
+  77 0014 7B68     	 ldr r3,[r7,#4]
+  78              	.LBE13:
+  79              	.LBE12:
+  57:.././hal/sam3u1c/interrupt_sam_nvic.c **** 		if (cpu_irq_is_enabled()) {
+  80              	 .loc 1 57 6
+  81 0016 002B     	 cmp r3,#0
+  82 0018 0BD1     	 bne .L4
+  83              	.LBB14:
+  84              	.LBB15:
+ 328:.././hal/sam3u1c/inc/core_cmFunc.h **** }
+  85              	 .loc 2 328 3
+  86              	 .syntax unified
+  87              	
+  88 001a 72B6     	 cpsid i
+  89              	
+ 329:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+  90              	 .loc 2 329 1
+  91              	 .thumb
+  92              	 .syntax unified
+  93 001c 00BF     	 nop
+  94              	.LBE15:
+  95              	.LBE14:
+  96              	.LBB16:
+  97              	.LBB17:
+  98              	 .file 3 ".././hal/sam3u1c/inc/core_cmInstr.h"
+   1:.././hal/sam3u1c/inc/core_cmInstr.h **** /**************************************************************************//**
+   2:.././hal/sam3u1c/inc/core_cmInstr.h ****  * @file     core_cmInstr.h
+   3:.././hal/sam3u1c/inc/core_cmInstr.h ****  * @brief    CMSIS Cortex-M Core Instruction Access Header File
+   4:.././hal/sam3u1c/inc/core_cmInstr.h ****  * @version  V3.00
+   5:.././hal/sam3u1c/inc/core_cmInstr.h ****  * @date     07. February 2012
+   6:.././hal/sam3u1c/inc/core_cmInstr.h ****  *
+   7:.././hal/sam3u1c/inc/core_cmInstr.h ****  * @note
+   8:.././hal/sam3u1c/inc/core_cmInstr.h ****  * Copyright (C) 2009-2012 ARM Limited. All rights reserved.
+   9:.././hal/sam3u1c/inc/core_cmInstr.h ****  *
+  10:.././hal/sam3u1c/inc/core_cmInstr.h ****  * @par
+  11:.././hal/sam3u1c/inc/core_cmInstr.h ****  * ARM Limited (ARM) is supplying this software for use with Cortex-M
+  12:.././hal/sam3u1c/inc/core_cmInstr.h ****  * processor based microcontrollers.  This file can be freely distributed
+  13:.././hal/sam3u1c/inc/core_cmInstr.h ****  * within development tools that are supporting such ARM based processors.
+  14:.././hal/sam3u1c/inc/core_cmInstr.h ****  *
+  15:.././hal/sam3u1c/inc/core_cmInstr.h ****  * @par
+  16:.././hal/sam3u1c/inc/core_cmInstr.h ****  * THIS SOFTWARE IS PROVIDED "AS IS".  NO WARRANTIES, WHETHER EXPRESS, IMPLIED
+  17:.././hal/sam3u1c/inc/core_cmInstr.h ****  * OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF
+  18:.././hal/sam3u1c/inc/core_cmInstr.h ****  * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE APPLY TO THIS SOFTWARE.
+  19:.././hal/sam3u1c/inc/core_cmInstr.h ****  * ARM SHALL NOT, IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR
+  20:.././hal/sam3u1c/inc/core_cmInstr.h ****  * CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
+  21:.././hal/sam3u1c/inc/core_cmInstr.h ****  *
+  22:.././hal/sam3u1c/inc/core_cmInstr.h ****  ******************************************************************************/
+  23:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+  24:.././hal/sam3u1c/inc/core_cmInstr.h **** #ifndef __CORE_CMINSTR_H
+  25:.././hal/sam3u1c/inc/core_cmInstr.h **** #define __CORE_CMINSTR_H
+  26:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+  27:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+  28:.././hal/sam3u1c/inc/core_cmInstr.h **** /* ##########################  Core Instruction Access  ######################### */
+  29:.././hal/sam3u1c/inc/core_cmInstr.h **** /** \defgroup CMSIS_Core_InstructionInterface CMSIS Core Instruction Interface
+  30:.././hal/sam3u1c/inc/core_cmInstr.h ****   Access to dedicated instructions
+  31:.././hal/sam3u1c/inc/core_cmInstr.h ****   @{
+  32:.././hal/sam3u1c/inc/core_cmInstr.h **** */
+  33:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+  34:.././hal/sam3u1c/inc/core_cmInstr.h **** #if   defined ( __CC_ARM ) /*------------------RealView Compiler -----------------*/
+  35:.././hal/sam3u1c/inc/core_cmInstr.h **** /* ARM armcc specific functions */
+  36:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+  37:.././hal/sam3u1c/inc/core_cmInstr.h **** #if (__ARMCC_VERSION < 400677)
+  38:.././hal/sam3u1c/inc/core_cmInstr.h ****   #error "Please use ARM Compiler Toolchain V4.0.677 or later!"
+  39:.././hal/sam3u1c/inc/core_cmInstr.h **** #endif
+  40:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+  41:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+  42:.././hal/sam3u1c/inc/core_cmInstr.h **** /** \brief  No Operation
+  43:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+  44:.././hal/sam3u1c/inc/core_cmInstr.h ****     No Operation does nothing. This instruction can be used for code alignment purposes.
+  45:.././hal/sam3u1c/inc/core_cmInstr.h ****  */
+  46:.././hal/sam3u1c/inc/core_cmInstr.h **** #define __NOP                             __nop
+  47:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+  48:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+  49:.././hal/sam3u1c/inc/core_cmInstr.h **** /** \brief  Wait For Interrupt
+  50:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+  51:.././hal/sam3u1c/inc/core_cmInstr.h ****     Wait For Interrupt is a hint instruction that suspends execution
+  52:.././hal/sam3u1c/inc/core_cmInstr.h ****     until one of a number of events occurs.
+  53:.././hal/sam3u1c/inc/core_cmInstr.h ****  */
+  54:.././hal/sam3u1c/inc/core_cmInstr.h **** #define __WFI                             __wfi
+  55:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+  56:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+  57:.././hal/sam3u1c/inc/core_cmInstr.h **** /** \brief  Wait For Event
+  58:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+  59:.././hal/sam3u1c/inc/core_cmInstr.h ****     Wait For Event is a hint instruction that permits the processor to enter
+  60:.././hal/sam3u1c/inc/core_cmInstr.h ****     a low-power state until one of a number of events occurs.
+  61:.././hal/sam3u1c/inc/core_cmInstr.h ****  */
+  62:.././hal/sam3u1c/inc/core_cmInstr.h **** #define __WFE                             __wfe
+  63:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+  64:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+  65:.././hal/sam3u1c/inc/core_cmInstr.h **** /** \brief  Send Event
+  66:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+  67:.././hal/sam3u1c/inc/core_cmInstr.h ****     Send Event is a hint instruction. It causes an event to be signaled to the CPU.
+  68:.././hal/sam3u1c/inc/core_cmInstr.h ****  */
+  69:.././hal/sam3u1c/inc/core_cmInstr.h **** #define __SEV                             __sev
+  70:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+  71:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+  72:.././hal/sam3u1c/inc/core_cmInstr.h **** /** \brief  Instruction Synchronization Barrier
+  73:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+  74:.././hal/sam3u1c/inc/core_cmInstr.h ****     Instruction Synchronization Barrier flushes the pipeline in the processor,
+  75:.././hal/sam3u1c/inc/core_cmInstr.h ****     so that all instructions following the ISB are fetched from cache or
+  76:.././hal/sam3u1c/inc/core_cmInstr.h ****     memory, after the instruction has been completed.
+  77:.././hal/sam3u1c/inc/core_cmInstr.h ****  */
+  78:.././hal/sam3u1c/inc/core_cmInstr.h **** #define __ISB()                           __isb(0xF)
+  79:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+  80:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+  81:.././hal/sam3u1c/inc/core_cmInstr.h **** /** \brief  Data Synchronization Barrier
+  82:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+  83:.././hal/sam3u1c/inc/core_cmInstr.h ****     This function acts as a special kind of Data Memory Barrier.
+  84:.././hal/sam3u1c/inc/core_cmInstr.h ****     It completes when all explicit memory accesses before this instruction complete.
+  85:.././hal/sam3u1c/inc/core_cmInstr.h ****  */
+  86:.././hal/sam3u1c/inc/core_cmInstr.h **** #define __DSB()                           __dsb(0xF)
+  87:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+  88:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+  89:.././hal/sam3u1c/inc/core_cmInstr.h **** /** \brief  Data Memory Barrier
+  90:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+  91:.././hal/sam3u1c/inc/core_cmInstr.h ****     This function ensures the apparent order of the explicit memory operations before
+  92:.././hal/sam3u1c/inc/core_cmInstr.h ****     and after the instruction, without ensuring their completion.
+  93:.././hal/sam3u1c/inc/core_cmInstr.h ****  */
+  94:.././hal/sam3u1c/inc/core_cmInstr.h **** #define __DMB()                           __dmb(0xF)
+  95:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+  96:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+  97:.././hal/sam3u1c/inc/core_cmInstr.h **** /** \brief  Reverse byte order (32 bit)
+  98:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+  99:.././hal/sam3u1c/inc/core_cmInstr.h ****     This function reverses the byte order in integer value.
+ 100:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 101:.././hal/sam3u1c/inc/core_cmInstr.h ****     \param [in]    value  Value to reverse
+ 102:.././hal/sam3u1c/inc/core_cmInstr.h ****     \return               Reversed value
+ 103:.././hal/sam3u1c/inc/core_cmInstr.h ****  */
+ 104:.././hal/sam3u1c/inc/core_cmInstr.h **** #define __REV                             __rev
+ 105:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 106:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 107:.././hal/sam3u1c/inc/core_cmInstr.h **** /** \brief  Reverse byte order (16 bit)
+ 108:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 109:.././hal/sam3u1c/inc/core_cmInstr.h ****     This function reverses the byte order in two unsigned short values.
+ 110:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 111:.././hal/sam3u1c/inc/core_cmInstr.h ****     \param [in]    value  Value to reverse
+ 112:.././hal/sam3u1c/inc/core_cmInstr.h ****     \return               Reversed value
+ 113:.././hal/sam3u1c/inc/core_cmInstr.h ****  */
+ 114:.././hal/sam3u1c/inc/core_cmInstr.h **** __attribute__((section(".rev16_text"))) __STATIC_INLINE __ASM uint32_t __REV16(uint32_t value)
+ 115:.././hal/sam3u1c/inc/core_cmInstr.h **** {
+ 116:.././hal/sam3u1c/inc/core_cmInstr.h ****   rev16 r0, r0
+ 117:.././hal/sam3u1c/inc/core_cmInstr.h ****   bx lr
+ 118:.././hal/sam3u1c/inc/core_cmInstr.h **** }
+ 119:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 120:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 121:.././hal/sam3u1c/inc/core_cmInstr.h **** /** \brief  Reverse byte order in signed short value
+ 122:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 123:.././hal/sam3u1c/inc/core_cmInstr.h ****     This function reverses the byte order in a signed short value with sign extension to integer.
+ 124:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 125:.././hal/sam3u1c/inc/core_cmInstr.h ****     \param [in]    value  Value to reverse
+ 126:.././hal/sam3u1c/inc/core_cmInstr.h ****     \return               Reversed value
+ 127:.././hal/sam3u1c/inc/core_cmInstr.h ****  */
+ 128:.././hal/sam3u1c/inc/core_cmInstr.h **** __attribute__((section(".revsh_text"))) __STATIC_INLINE __ASM int32_t __REVSH(int32_t value)
+ 129:.././hal/sam3u1c/inc/core_cmInstr.h **** {
+ 130:.././hal/sam3u1c/inc/core_cmInstr.h ****   revsh r0, r0
+ 131:.././hal/sam3u1c/inc/core_cmInstr.h ****   bx lr
+ 132:.././hal/sam3u1c/inc/core_cmInstr.h **** }
+ 133:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 134:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 135:.././hal/sam3u1c/inc/core_cmInstr.h **** /** \brief  Rotate Right in unsigned value (32 bit)
+ 136:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 137:.././hal/sam3u1c/inc/core_cmInstr.h ****     This function Rotate Right (immediate) provides the value of the contents of a register rotated
+ 138:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 139:.././hal/sam3u1c/inc/core_cmInstr.h ****     \param [in]    value  Value to rotate
+ 140:.././hal/sam3u1c/inc/core_cmInstr.h ****     \param [in]    value  Number of Bits to rotate
+ 141:.././hal/sam3u1c/inc/core_cmInstr.h ****     \return               Rotated value
+ 142:.././hal/sam3u1c/inc/core_cmInstr.h ****  */
+ 143:.././hal/sam3u1c/inc/core_cmInstr.h **** #define __ROR                             __ror
+ 144:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 145:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 146:.././hal/sam3u1c/inc/core_cmInstr.h **** #if       (__CORTEX_M >= 0x03)
+ 147:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 148:.././hal/sam3u1c/inc/core_cmInstr.h **** /** \brief  Reverse bit order of value
+ 149:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 150:.././hal/sam3u1c/inc/core_cmInstr.h ****     This function reverses the bit order of the given value.
+ 151:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 152:.././hal/sam3u1c/inc/core_cmInstr.h ****     \param [in]    value  Value to reverse
+ 153:.././hal/sam3u1c/inc/core_cmInstr.h ****     \return               Reversed value
+ 154:.././hal/sam3u1c/inc/core_cmInstr.h ****  */
+ 155:.././hal/sam3u1c/inc/core_cmInstr.h **** #define __RBIT                            __rbit
+ 156:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 157:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 158:.././hal/sam3u1c/inc/core_cmInstr.h **** /** \brief  LDR Exclusive (8 bit)
+ 159:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 160:.././hal/sam3u1c/inc/core_cmInstr.h ****     This function performs a exclusive LDR command for 8 bit value.
+ 161:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 162:.././hal/sam3u1c/inc/core_cmInstr.h ****     \param [in]    ptr  Pointer to data
+ 163:.././hal/sam3u1c/inc/core_cmInstr.h ****     \return             value of type uint8_t at (*ptr)
+ 164:.././hal/sam3u1c/inc/core_cmInstr.h ****  */
+ 165:.././hal/sam3u1c/inc/core_cmInstr.h **** #define __LDREXB(ptr)                     ((uint8_t ) __ldrex(ptr))
+ 166:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 167:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 168:.././hal/sam3u1c/inc/core_cmInstr.h **** /** \brief  LDR Exclusive (16 bit)
+ 169:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 170:.././hal/sam3u1c/inc/core_cmInstr.h ****     This function performs a exclusive LDR command for 16 bit values.
+ 171:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 172:.././hal/sam3u1c/inc/core_cmInstr.h ****     \param [in]    ptr  Pointer to data
+ 173:.././hal/sam3u1c/inc/core_cmInstr.h ****     \return        value of type uint16_t at (*ptr)
+ 174:.././hal/sam3u1c/inc/core_cmInstr.h ****  */
+ 175:.././hal/sam3u1c/inc/core_cmInstr.h **** #define __LDREXH(ptr)                     ((uint16_t) __ldrex(ptr))
+ 176:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 177:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 178:.././hal/sam3u1c/inc/core_cmInstr.h **** /** \brief  LDR Exclusive (32 bit)
+ 179:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 180:.././hal/sam3u1c/inc/core_cmInstr.h ****     This function performs a exclusive LDR command for 32 bit values.
+ 181:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 182:.././hal/sam3u1c/inc/core_cmInstr.h ****     \param [in]    ptr  Pointer to data
+ 183:.././hal/sam3u1c/inc/core_cmInstr.h ****     \return        value of type uint32_t at (*ptr)
+ 184:.././hal/sam3u1c/inc/core_cmInstr.h ****  */
+ 185:.././hal/sam3u1c/inc/core_cmInstr.h **** #define __LDREXW(ptr)                     ((uint32_t ) __ldrex(ptr))
+ 186:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 187:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 188:.././hal/sam3u1c/inc/core_cmInstr.h **** /** \brief  STR Exclusive (8 bit)
+ 189:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 190:.././hal/sam3u1c/inc/core_cmInstr.h ****     This function performs a exclusive STR command for 8 bit values.
+ 191:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 192:.././hal/sam3u1c/inc/core_cmInstr.h ****     \param [in]  value  Value to store
+ 193:.././hal/sam3u1c/inc/core_cmInstr.h ****     \param [in]    ptr  Pointer to location
+ 194:.././hal/sam3u1c/inc/core_cmInstr.h ****     \return          0  Function succeeded
+ 195:.././hal/sam3u1c/inc/core_cmInstr.h ****     \return          1  Function failed
+ 196:.././hal/sam3u1c/inc/core_cmInstr.h ****  */
+ 197:.././hal/sam3u1c/inc/core_cmInstr.h **** #define __STREXB(value, ptr)              __strex(value, ptr)
+ 198:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 199:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 200:.././hal/sam3u1c/inc/core_cmInstr.h **** /** \brief  STR Exclusive (16 bit)
+ 201:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 202:.././hal/sam3u1c/inc/core_cmInstr.h ****     This function performs a exclusive STR command for 16 bit values.
+ 203:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 204:.././hal/sam3u1c/inc/core_cmInstr.h ****     \param [in]  value  Value to store
+ 205:.././hal/sam3u1c/inc/core_cmInstr.h ****     \param [in]    ptr  Pointer to location
+ 206:.././hal/sam3u1c/inc/core_cmInstr.h ****     \return          0  Function succeeded
+ 207:.././hal/sam3u1c/inc/core_cmInstr.h ****     \return          1  Function failed
+ 208:.././hal/sam3u1c/inc/core_cmInstr.h ****  */
+ 209:.././hal/sam3u1c/inc/core_cmInstr.h **** #define __STREXH(value, ptr)              __strex(value, ptr)
+ 210:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 211:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 212:.././hal/sam3u1c/inc/core_cmInstr.h **** /** \brief  STR Exclusive (32 bit)
+ 213:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 214:.././hal/sam3u1c/inc/core_cmInstr.h ****     This function performs a exclusive STR command for 32 bit values.
+ 215:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 216:.././hal/sam3u1c/inc/core_cmInstr.h ****     \param [in]  value  Value to store
+ 217:.././hal/sam3u1c/inc/core_cmInstr.h ****     \param [in]    ptr  Pointer to location
+ 218:.././hal/sam3u1c/inc/core_cmInstr.h ****     \return          0  Function succeeded
+ 219:.././hal/sam3u1c/inc/core_cmInstr.h ****     \return          1  Function failed
+ 220:.././hal/sam3u1c/inc/core_cmInstr.h ****  */
+ 221:.././hal/sam3u1c/inc/core_cmInstr.h **** #define __STREXW(value, ptr)              __strex(value, ptr)
+ 222:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 223:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 224:.././hal/sam3u1c/inc/core_cmInstr.h **** /** \brief  Remove the exclusive lock
+ 225:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 226:.././hal/sam3u1c/inc/core_cmInstr.h ****     This function removes the exclusive lock which is created by LDREX.
+ 227:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 228:.././hal/sam3u1c/inc/core_cmInstr.h ****  */
+ 229:.././hal/sam3u1c/inc/core_cmInstr.h **** #define __CLREX                           __clrex
+ 230:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 231:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 232:.././hal/sam3u1c/inc/core_cmInstr.h **** /** \brief  Signed Saturate
+ 233:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 234:.././hal/sam3u1c/inc/core_cmInstr.h ****     This function saturates a signed value.
+ 235:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 236:.././hal/sam3u1c/inc/core_cmInstr.h ****     \param [in]  value  Value to be saturated
+ 237:.././hal/sam3u1c/inc/core_cmInstr.h ****     \param [in]    sat  Bit position to saturate to (1..32)
+ 238:.././hal/sam3u1c/inc/core_cmInstr.h ****     \return             Saturated value
+ 239:.././hal/sam3u1c/inc/core_cmInstr.h ****  */
+ 240:.././hal/sam3u1c/inc/core_cmInstr.h **** #define __SSAT                            __ssat
+ 241:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 242:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 243:.././hal/sam3u1c/inc/core_cmInstr.h **** /** \brief  Unsigned Saturate
+ 244:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 245:.././hal/sam3u1c/inc/core_cmInstr.h ****     This function saturates an unsigned value.
+ 246:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 247:.././hal/sam3u1c/inc/core_cmInstr.h ****     \param [in]  value  Value to be saturated
+ 248:.././hal/sam3u1c/inc/core_cmInstr.h ****     \param [in]    sat  Bit position to saturate to (0..31)
+ 249:.././hal/sam3u1c/inc/core_cmInstr.h ****     \return             Saturated value
+ 250:.././hal/sam3u1c/inc/core_cmInstr.h ****  */
+ 251:.././hal/sam3u1c/inc/core_cmInstr.h **** #define __USAT                            __usat
+ 252:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 253:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 254:.././hal/sam3u1c/inc/core_cmInstr.h **** /** \brief  Count leading zeros
+ 255:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 256:.././hal/sam3u1c/inc/core_cmInstr.h ****     This function counts the number of leading zeros of a data value.
+ 257:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 258:.././hal/sam3u1c/inc/core_cmInstr.h ****     \param [in]  value  Value to count the leading zeros
+ 259:.././hal/sam3u1c/inc/core_cmInstr.h ****     \return             number of leading zeros in value
+ 260:.././hal/sam3u1c/inc/core_cmInstr.h ****  */
+ 261:.././hal/sam3u1c/inc/core_cmInstr.h **** #define __CLZ                             __clz
+ 262:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 263:.././hal/sam3u1c/inc/core_cmInstr.h **** #endif /* (__CORTEX_M >= 0x03) */
+ 264:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 265:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 266:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 267:.././hal/sam3u1c/inc/core_cmInstr.h **** #elif defined ( __ICCARM__ ) /*------------------ ICC Compiler -------------------*/
+ 268:.././hal/sam3u1c/inc/core_cmInstr.h **** /* IAR iccarm specific functions */
+ 269:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 270:.././hal/sam3u1c/inc/core_cmInstr.h **** #include <cmsis_iar.h>
+ 271:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 272:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 273:.././hal/sam3u1c/inc/core_cmInstr.h **** #elif defined ( __TMS470__ ) /*---------------- TI CCS Compiler ------------------*/
+ 274:.././hal/sam3u1c/inc/core_cmInstr.h **** /* TI CCS specific functions */
+ 275:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 276:.././hal/sam3u1c/inc/core_cmInstr.h **** #include <cmsis_ccs.h>
+ 277:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 278:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 279:.././hal/sam3u1c/inc/core_cmInstr.h **** #elif defined ( __GNUC__ ) /*------------------ GNU Compiler ---------------------*/
+ 280:.././hal/sam3u1c/inc/core_cmInstr.h **** /* GNU gcc specific functions */
+ 281:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 282:.././hal/sam3u1c/inc/core_cmInstr.h **** /** \brief  No Operation
+ 283:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 284:.././hal/sam3u1c/inc/core_cmInstr.h ****     No Operation does nothing. This instruction can be used for code alignment purposes.
+ 285:.././hal/sam3u1c/inc/core_cmInstr.h ****  */
+ 286:.././hal/sam3u1c/inc/core_cmInstr.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE void __NOP(void)
+ 287:.././hal/sam3u1c/inc/core_cmInstr.h **** {
+ 288:.././hal/sam3u1c/inc/core_cmInstr.h ****   __ASM volatile ("nop");
+ 289:.././hal/sam3u1c/inc/core_cmInstr.h **** }
+ 290:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 291:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 292:.././hal/sam3u1c/inc/core_cmInstr.h **** /** \brief  Wait For Interrupt
+ 293:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 294:.././hal/sam3u1c/inc/core_cmInstr.h ****     Wait For Interrupt is a hint instruction that suspends execution
+ 295:.././hal/sam3u1c/inc/core_cmInstr.h ****     until one of a number of events occurs.
+ 296:.././hal/sam3u1c/inc/core_cmInstr.h ****  */
+ 297:.././hal/sam3u1c/inc/core_cmInstr.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE void __WFI(void)
+ 298:.././hal/sam3u1c/inc/core_cmInstr.h **** {
+ 299:.././hal/sam3u1c/inc/core_cmInstr.h ****   __ASM volatile ("wfi");
+ 300:.././hal/sam3u1c/inc/core_cmInstr.h **** }
+ 301:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 302:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 303:.././hal/sam3u1c/inc/core_cmInstr.h **** /** \brief  Wait For Event
+ 304:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 305:.././hal/sam3u1c/inc/core_cmInstr.h ****     Wait For Event is a hint instruction that permits the processor to enter
+ 306:.././hal/sam3u1c/inc/core_cmInstr.h ****     a low-power state until one of a number of events occurs.
+ 307:.././hal/sam3u1c/inc/core_cmInstr.h ****  */
+ 308:.././hal/sam3u1c/inc/core_cmInstr.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE void __WFE(void)
+ 309:.././hal/sam3u1c/inc/core_cmInstr.h **** {
+ 310:.././hal/sam3u1c/inc/core_cmInstr.h ****   __ASM volatile ("wfe");
+ 311:.././hal/sam3u1c/inc/core_cmInstr.h **** }
+ 312:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 313:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 314:.././hal/sam3u1c/inc/core_cmInstr.h **** /** \brief  Send Event
+ 315:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 316:.././hal/sam3u1c/inc/core_cmInstr.h ****     Send Event is a hint instruction. It causes an event to be signaled to the CPU.
+ 317:.././hal/sam3u1c/inc/core_cmInstr.h ****  */
+ 318:.././hal/sam3u1c/inc/core_cmInstr.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE void __SEV(void)
+ 319:.././hal/sam3u1c/inc/core_cmInstr.h **** {
+ 320:.././hal/sam3u1c/inc/core_cmInstr.h ****   __ASM volatile ("sev");
+ 321:.././hal/sam3u1c/inc/core_cmInstr.h **** }
+ 322:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 323:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 324:.././hal/sam3u1c/inc/core_cmInstr.h **** /** \brief  Instruction Synchronization Barrier
+ 325:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 326:.././hal/sam3u1c/inc/core_cmInstr.h ****     Instruction Synchronization Barrier flushes the pipeline in the processor,
+ 327:.././hal/sam3u1c/inc/core_cmInstr.h ****     so that all instructions following the ISB are fetched from cache or
+ 328:.././hal/sam3u1c/inc/core_cmInstr.h ****     memory, after the instruction has been completed.
+ 329:.././hal/sam3u1c/inc/core_cmInstr.h ****  */
+ 330:.././hal/sam3u1c/inc/core_cmInstr.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE void __ISB(void)
+ 331:.././hal/sam3u1c/inc/core_cmInstr.h **** {
+ 332:.././hal/sam3u1c/inc/core_cmInstr.h ****   __ASM volatile ("isb");
+ 333:.././hal/sam3u1c/inc/core_cmInstr.h **** }
+ 334:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 335:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 336:.././hal/sam3u1c/inc/core_cmInstr.h **** /** \brief  Data Synchronization Barrier
+ 337:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 338:.././hal/sam3u1c/inc/core_cmInstr.h ****     This function acts as a special kind of Data Memory Barrier.
+ 339:.././hal/sam3u1c/inc/core_cmInstr.h ****     It completes when all explicit memory accesses before this instruction complete.
+ 340:.././hal/sam3u1c/inc/core_cmInstr.h ****  */
+ 341:.././hal/sam3u1c/inc/core_cmInstr.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE void __DSB(void)
+ 342:.././hal/sam3u1c/inc/core_cmInstr.h **** {
+ 343:.././hal/sam3u1c/inc/core_cmInstr.h ****   __ASM volatile ("dsb");
+ 344:.././hal/sam3u1c/inc/core_cmInstr.h **** }
+ 345:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 346:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 347:.././hal/sam3u1c/inc/core_cmInstr.h **** /** \brief  Data Memory Barrier
+ 348:.././hal/sam3u1c/inc/core_cmInstr.h **** 
+ 349:.././hal/sam3u1c/inc/core_cmInstr.h ****     This function ensures the apparent order of the explicit memory operations before
+ 350:.././hal/sam3u1c/inc/core_cmInstr.h ****     and after the instruction, without ensuring their completion.
+ 351:.././hal/sam3u1c/inc/core_cmInstr.h ****  */
+ 352:.././hal/sam3u1c/inc/core_cmInstr.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE void __DMB(void)
+ 353:.././hal/sam3u1c/inc/core_cmInstr.h **** {
+ 354:.././hal/sam3u1c/inc/core_cmInstr.h ****   __ASM volatile ("dmb");
+  99              	 .loc 3 354 3
+ 100              	 .syntax unified
+ 101              	
+ 102 001e BFF35F8F 	 dmb
+ 103              	
+ 355:.././hal/sam3u1c/inc/core_cmInstr.h **** }
+ 104              	 .loc 3 355 1
+ 105              	 .thumb
+ 106              	 .syntax unified
+ 107 0022 00BF     	 nop
+ 108              	.LBE17:
+ 109              	.LBE16:
+  58:.././hal/sam3u1c/interrupt_sam_nvic.c **** 			cpu_irq_disable();
+ 110              	 .loc 1 58 4
+ 111 0024 0A4B     	 ldr r3,.L5+4
+ 112 0026 0022     	 movs r2,#0
+ 113 0028 1A70     	 strb r2,[r3]
+  59:.././hal/sam3u1c/interrupt_sam_nvic.c **** 			cpu_irq_prev_interrupt_state = true;
+ 114              	 .loc 1 59 33
+ 115 002a 0A4B     	 ldr r3,.L5+8
+ 116 002c 0122     	 movs r2,#1
+ 117 002e 1A70     	 strb r2,[r3]
+ 118 0030 02E0     	 b .L2
+ 119              	.L4:
+  60:.././hal/sam3u1c/interrupt_sam_nvic.c **** 		} else {
+  61:.././hal/sam3u1c/interrupt_sam_nvic.c **** 			/* Make sure the to save the prev state as false */
+  62:.././hal/sam3u1c/interrupt_sam_nvic.c **** 			cpu_irq_prev_interrupt_state = false;
+ 120              	 .loc 1 62 33
+ 121 0032 084B     	 ldr r3,.L5+8
+ 122 0034 0022     	 movs r2,#0
+ 123 0036 1A70     	 strb r2,[r3]
+ 124              	.L2:
+  63:.././hal/sam3u1c/interrupt_sam_nvic.c **** 		}
+  64:.././hal/sam3u1c/interrupt_sam_nvic.c **** 
+  65:.././hal/sam3u1c/interrupt_sam_nvic.c **** 	}
+  66:.././hal/sam3u1c/interrupt_sam_nvic.c **** 
+  67:.././hal/sam3u1c/interrupt_sam_nvic.c **** 	cpu_irq_critical_section_counter++;
+ 125              	 .loc 1 67 34
+ 126 0038 044B     	 ldr r3,.L5
+ 127 003a 1B68     	 ldr r3,[r3]
+ 128 003c 0133     	 adds r3,r3,#1
+ 129 003e 034A     	 ldr r2,.L5
+ 130 0040 1360     	 str r3,[r2]
+  68:.././hal/sam3u1c/interrupt_sam_nvic.c **** }
+ 131              	 .loc 1 68 1
+ 132 0042 00BF     	 nop
+ 133 0044 0C37     	 adds r7,r7,#12
+ 134              	.LCFI3:
+ 135              	 .cfi_def_cfa_offset 4
+ 136 0046 BD46     	 mov sp,r7
+ 137              	.LCFI4:
+ 138              	 .cfi_def_cfa_register 13
+ 139              	 
+ 140 0048 80BC     	 pop {r7}
+ 141              	.LCFI5:
+ 142              	 .cfi_restore 7
+ 143              	 .cfi_def_cfa_offset 0
+ 144 004a 7047     	 bx lr
+ 145              	.L6:
+ 146              	 .align 2
+ 147              	.L5:
+ 148 004c 00000000 	 .word cpu_irq_critical_section_counter
+ 149 0050 00000000 	 .word g_interrupt_enabled
+ 150 0054 00000000 	 .word cpu_irq_prev_interrupt_state
+ 151              	 .cfi_endproc
+ 152              	.LFE69:
+ 154              	 .section .text.cpu_irq_leave_critical,"ax",%progbits
+ 155              	 .align 1
+ 156              	 .global cpu_irq_leave_critical
+ 157              	 .syntax unified
+ 158              	 .thumb
+ 159              	 .thumb_func
+ 160              	 .fpu softvfp
+ 162              	cpu_irq_leave_critical:
+ 163              	.LFB70:
+  69:.././hal/sam3u1c/interrupt_sam_nvic.c **** 
+  70:.././hal/sam3u1c/interrupt_sam_nvic.c **** void cpu_irq_leave_critical(void)
+  71:.././hal/sam3u1c/interrupt_sam_nvic.c **** {
+ 164              	 .loc 1 71 1
+ 165              	 .cfi_startproc
+ 166              	 
+ 167              	 
+ 168              	 
+ 169 0000 80B4     	 push {r7}
+ 170              	.LCFI6:
+ 171              	 .cfi_def_cfa_offset 4
+ 172              	 .cfi_offset 7,-4
+ 173 0002 00AF     	 add r7,sp,#0
+ 174              	.LCFI7:
+ 175              	 .cfi_def_cfa_register 7
+  72:.././hal/sam3u1c/interrupt_sam_nvic.c **** 	/* Check if the user is trying to leave a critical section when not in a critical section */
+  73:.././hal/sam3u1c/interrupt_sam_nvic.c **** 	Assert(cpu_irq_critical_section_counter > 0);
+  74:.././hal/sam3u1c/interrupt_sam_nvic.c **** 
+  75:.././hal/sam3u1c/interrupt_sam_nvic.c **** 	cpu_irq_critical_section_counter--;
+ 176              	 .loc 1 75 34
+ 177 0004 0C4B     	 ldr r3,.L10
+ 178 0006 1B68     	 ldr r3,[r3]
+ 179 0008 013B     	 subs r3,r3,#1
+ 180 000a 0B4A     	 ldr r2,.L10
+ 181 000c 1360     	 str r3,[r2]
+  76:.././hal/sam3u1c/interrupt_sam_nvic.c **** 
+  77:.././hal/sam3u1c/interrupt_sam_nvic.c **** 	/* Only enable global interrupts when the counter reaches 0 and the state of the global interrupt 
+  78:.././hal/sam3u1c/interrupt_sam_nvic.c **** 	   was enabled when entering critical state */
+  79:.././hal/sam3u1c/interrupt_sam_nvic.c **** 	if ((cpu_irq_critical_section_counter == 0) && (cpu_irq_prev_interrupt_state)) {
+ 182              	 .loc 1 79 40
+ 183 000e 0A4B     	 ldr r3,.L10
+ 184 0010 1B68     	 ldr r3,[r3]
+ 185              	 .loc 1 79 5
+ 186 0012 002B     	 cmp r3,#0
+ 187 0014 0CD1     	 bne .L9
+ 188              	 .loc 1 79 46 discriminator 1
+ 189 0016 094B     	 ldr r3,.L10+4
+ 190 0018 1B78     	 ldrb r3,[r3]
+ 191 001a DBB2     	 uxtb r3,r3
+ 192 001c 002B     	 cmp r3,#0
+ 193 001e 07D0     	 beq .L9
+  80:.././hal/sam3u1c/interrupt_sam_nvic.c **** 		cpu_irq_enable();
+ 194              	 .loc 1 80 3
+ 195 0020 074B     	 ldr r3,.L10+8
+ 196 0022 0122     	 movs r2,#1
+ 197 0024 1A70     	 strb r2,[r3]
+ 198              	.LBB18:
+ 199              	.LBB19:
+ 354:.././hal/sam3u1c/inc/core_cmInstr.h **** }
+ 200              	 .loc 3 354 3
+ 201              	 .syntax unified
+ 202              	
+ 203 0026 BFF35F8F 	 dmb
+ 204              	
+ 205              	 .loc 3 355 1
+ 206              	 .thumb
+ 207              	 .syntax unified
+ 208 002a 00BF     	 nop
+ 209              	.LBE19:
+ 210              	.LBE18:
+ 211              	.LBB20:
+ 212              	.LBB21:
+ 317:.././hal/sam3u1c/inc/core_cmFunc.h **** }
+ 213              	 .loc 2 317 3
+ 214              	 .syntax unified
+ 215              	
+ 216 002c 62B6     	 cpsie i
+ 217              	
+ 318:.././hal/sam3u1c/inc/core_cmFunc.h **** 
+ 218              	 .loc 2 318 1
+ 219              	 .thumb
+ 220              	 .syntax unified
+ 221 002e 00BF     	 nop
+ 222              	.L9:
+ 223              	.LBE21:
+ 224              	.LBE20:
+  81:.././hal/sam3u1c/interrupt_sam_nvic.c **** 	}
+  82:.././hal/sam3u1c/interrupt_sam_nvic.c **** }
+ 225              	 .loc 1 82 1
+ 226 0030 00BF     	 nop
+ 227 0032 BD46     	 mov sp,r7
+ 228              	.LCFI8:
+ 229              	 .cfi_def_cfa_register 13
+ 230              	 
+ 231 0034 80BC     	 pop {r7}
+ 232              	.LCFI9:
+ 233              	 .cfi_restore 7
+ 234              	 .cfi_def_cfa_offset 0
+ 235 0036 7047     	 bx lr
+ 236              	.L11:
+ 237              	 .align 2
+ 238              	.L10:
+ 239 0038 00000000 	 .word cpu_irq_critical_section_counter
+ 240 003c 00000000 	 .word cpu_irq_prev_interrupt_state
+ 241 0040 00000000 	 .word g_interrupt_enabled
+ 242              	 .cfi_endproc
+ 243              	.LFE70:
+ 245              	 .text
+ 246              	.Letext0:
+ 247              	 .file 4 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 248              	 .file 5 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 249              	 .file 6 ".././hal/sam3u1c/inc/core_cm3.h"
+ 250              	 .file 7 ".././hal/sam3u1c/inc/system_sam3u.h"
+ 251              	 .file 8 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\lib\\gcc\\arm-none-eabi\\9.3.1\\include\\stddef.h"
+ 252              	 .file 9 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_types.h"
+ 253              	 .file 10 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\reent.h"
+ 254              	 .file 11 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\lock.h"
+ 255              	 .file 12 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\stdlib.h"
+ 256              	 .file 13 ".././hal/sam3u1c/inc/interrupt_sam_nvic.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 interrupt_sam_nvic.c
+    {standard input}:16     .bss.cpu_irq_critical_section_counter:00000000 $d
+    {standard input}:19     .bss.cpu_irq_critical_section_counter:00000000 cpu_irq_critical_section_counter
+    {standard input}:24     .bss.cpu_irq_prev_interrupt_state:00000000 cpu_irq_prev_interrupt_state
+    {standard input}:25     .bss.cpu_irq_prev_interrupt_state:00000000 $d
+    {standard input}:30     .data.g_interrupt_enabled:00000000 g_interrupt_enabled
+    {standard input}:33     .text.cpu_irq_enter_critical:00000000 $t
+    {standard input}:41     .text.cpu_irq_enter_critical:00000000 cpu_irq_enter_critical
+    {standard input}:148    .text.cpu_irq_enter_critical:0000004c $d
+    {standard input}:155    .text.cpu_irq_leave_critical:00000000 $t
+    {standard input}:162    .text.cpu_irq_leave_critical:00000000 cpu_irq_leave_critical
+    {standard input}:239    .text.cpu_irq_leave_critical:00000038 $d
+                           .group:00000000 wm4.0.2cd8a2cb7ff4c48cec7eeec776a1dd8c
+                           .group:00000000 wm4.stddef.h.39.27677723d43e5b5a7afdf8d798429f1d
+                           .group:00000000 wm4.parts.h.45.afc900689b2c82332e69d798acedc875
+                           .group:00000000 wm4.tpaste.h.45.af3ee36765243b162c88f7f944858426
+                           .group:00000000 wm4.stringz.h.45.c4f6cbe0005e6c1d2139bc6c0e4f4722
+                           .group:00000000 wm4.mrepeat.h.59.c5daaed201a4340b0edf435161d0b77f
+                           .group:00000000 wm4._newlib_version.h.4.1ef4e12f167f8b69d7c30054be56050d
+                           .group:00000000 wm4.features.h.33.5bd1eea2d80518b50f7af0b5ce6750e0
+                           .group:00000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:00000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:00000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:00000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:00000000 wm4.sam3u1c.h.220.c0b54b5a55bc87791749ae17b1487779
+                           .group:00000000 wm4.core_cm3.h.32.5c59c312db585622d253fdb887b0afb1
+                           .group:00000000 wm4.core_cmInstr.h.25.d8165482ef3061013a2fc83e2d85f3d9
+                           .group:00000000 wm4.core_cm3.h.127.b561404f2a159dc517b409bc244d16c1
+                           .group:00000000 wm4.component_adc.h.43.d49887380d07d1cd08cc4e37b3485e31
+                           .group:00000000 wm4.component_adc12b.h.43.eadc09f1073923fb91f1f393cc397dcb
+                           .group:00000000 wm4.component_chipid.h.43.15825c969b1cc9eeea3d9416499874c8
+                           .group:00000000 wm4.component_dmac.h.43.cc8187b1cf6bfeadc91b14fdd28b9e8b
+                           .group:00000000 wm4.component_efc.h.43.cb1b3997ad9ea3733ad421ecbfd02fdd
+                           .group:00000000 wm4.component_gpbr.h.43.49b7e13894fe38b29f2243bbbe530227
+                           .group:00000000 wm4.component_hsmci.h.43.7b7194c92e1480c038f3342f7cec440a
+                           .group:00000000 wm4.component_matrix.h.43.1d209838fb75b4827119203a357141ee
+                           .group:00000000 wm4.component_pdc.h.43.19528a5f9ef5a348234ea06f89069c55
+                           .group:00000000 wm4.component_pio.h.43.163b46c3683ccf92e8de39a5554f50e8
+                           .group:00000000 wm4.component_pmc.h.43.ee4f030602866917aeed15fb2b948de8
+                           .group:00000000 wm4.component_pwm.h.43.ab6262a86f0aea354b43fe6dce7e7eb3
+                           .group:00000000 wm4.component_rstc.h.43.4eb59dc2ddcf585fabf251d0c329fcdd
+                           .group:00000000 wm4.component_rtc.h.43.ba8ccafc772b11d562a3cceab8b95072
+                           .group:00000000 wm4.component_rtt.h.43.3206ef8f067e5e747c3c4c7e719c1429
+                           .group:00000000 wm4.component_smc.h.43.907847915f1a5616734199d7e34424fa
+                           .group:00000000 wm4.component_spi.h.43.a2a09df64ab768c0a32be55285c74ded
+                           .group:00000000 wm4.component_ssc.h.43.d7c78f990c13fc511671b64798c4bcd0
+                           .group:00000000 wm4.component_supc.h.43.7d17f8e5ed3ba815e84381152735062f
+                           .group:00000000 wm4.component_tc.h.43.662eac8137408372b4f9d26c0b5f8621
+                           .group:00000000 wm4.component_twi.h.43.eda18625bd851fc4605861f5b3240c0b
+                           .group:00000000 wm4.component_uart.h.43.2d92735c5ea05c973661e1ba99a2f37c
+                           .group:00000000 wm4.component_udphs.h.43.21cecd26a4e44df0013037f29f2716e4
+                           .group:00000000 wm4.component_usart.h.43.7872f8f455adb38b67b9fbdb15657fbe
+                           .group:00000000 wm4.component_wdt.h.43.e31e10a5469b62c3660b49ab250f802f
+                           .group:00000000 wm4.instance_hsmci.h.43.e233236cc7fd5a805539a7ecc0e1d8d2
+                           .group:00000000 wm4.instance_ssc.h.43.c0cfabc3b9f3bb60745c913111bce965
+                           .group:00000000 wm4.instance_spi.h.43.570ae46af19e4179d9796872b9a8b9bc
+                           .group:00000000 wm4.instance_tc0.h.43.049b3a82387d2961594190609e896a29
+                           .group:00000000 wm4.instance_twi0.h.43.255dc0afa9e0d45eaea0a935eca2f103
+                           .group:00000000 wm4.instance_twi1.h.43.652d1d407893f259f2a817544ba662c2
+                           .group:00000000 wm4.instance_pwm.h.43.88294acec3ca56d6fc521038521a1567
+                           .group:00000000 wm4.instance_usart0.h.43.e26677512aee3dd3bedd71d394410000
+                           .group:00000000 wm4.instance_usart1.h.43.1ba97dbc6610d9fb3132b9d845688201
+                           .group:00000000 wm4.instance_usart2.h.43.baa1bf30b3c5acdee90c4a1f50fe9ebd
+                           .group:00000000 wm4.instance_udphs.h.43.b1ce94181e0d1f22877b81c6040a4363
+                           .group:00000000 wm4.instance_adc12b.h.43.d73ed59e867ccdfdb846d9ef32a50c0c
+                           .group:00000000 wm4.instance_adc.h.43.2b7611a00afeb4c555339b844d4b8456
+                           .group:00000000 wm4.instance_dmac.h.43.ee72691d84889c8f285932be4a075ddb
+                           .group:00000000 wm4.instance_smc.h.43.29610fd00979caaaa65821ad40e9da06
+                           .group:00000000 wm4.instance_matrix.h.43.01ee474141594385374c41a29daeeefe
+                           .group:00000000 wm4.instance_pmc.h.43.37430325ed7b8b24c3fe640c41c29ef5
+                           .group:00000000 wm4.instance_uart.h.43.bd378395ba022bc8670c82ebe656fbbd
+                           .group:00000000 wm4.instance_chipid.h.43.29cd8fb600f149aa58830fcc78fe36f9
+                           .group:00000000 wm4.instance_efc0.h.43.6b85dba20721a7e9fc4350e78d193680
+                           .group:00000000 wm4.instance_efc1.h.43.2c5e94fc4d2742678318d73450d08d57
+                           .group:00000000 wm4.instance_pioa.h.43.eeb46cc3bfe01a1f28e67aa3a6851ed8
+                           .group:00000000 wm4.instance_piob.h.43.652ce26b6c37ac56f9ed42a9216d9aca
+                           .group:00000000 wm4.instance_rstc.h.43.c5de224364a50a85f237c0b864aa4c8f
+                           .group:00000000 wm4.instance_supc.h.43.a5f1a5ca08f468ccf34ed3653e045f1f
+                           .group:00000000 wm4.instance_rtt.h.43.8622b192c23334996132415e3095df7f
+                           .group:00000000 wm4.instance_wdt.h.43.407ea53e133eacf09acf2c7fcb6b7524
+                           .group:00000000 wm4.instance_rtc.h.43.f70b77f9180401c8d9d920cb4a1cd166
+                           .group:00000000 wm4.instance_gpbr.h.43.9066cb40d557f6755101368854272348
+                           .group:00000000 wm4.sam3u1c.h.312.ae446d8e874d34ca3df78faf190c678f
+                           .group:00000000 wm4.pio_sam3u1c.h.43.18b24f16e1710ff2a400d88fe33c5107
+                           .group:00000000 wm4.sam3u1c.h.442.cd4bbc3af493e98bc9b60c2905132ed0
+                           .group:00000000 wm4.newlib.h.8.7cb3972cd43265932d4782d5eb589854
+                           .group:00000000 wm4.ieeefp.h.77.f33a4dce62116f6f5175ff8bae57a54c
+                           .group:00000000 wm4.config.h.224.c701144a7b0518c6ee9b9b5465b79f81
+                           .group:00000000 wm4._ansi.h.31.de524f58584151836e90d8620a16f8e8
+                           .group:00000000 wm4.stdio.h.31.7c0e28c411445f3f9c5b11accf882760
+                           .group:00000000 wm4.stddef.h.155.ba788add86a0e365f264484f110c3c29
+                           .group:00000000 wm4.cdefs.h.49.2bf373aedffd8b393ccd11dc057e8547
+                           .group:00000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:00000000 wm4._types.h.20.dd0d04dca3800a0d2a6129b87f3adbb2
+                           .group:00000000 wm4.stddef.h.155.3588ebfdd1e8c7ede80509bb9c3b8009
+                           .group:00000000 wm4._types.h.127.34941de1b2539d59d5cac00e0dd27a45
+                           .group:00000000 wm4.reent.h.17.e292bf8b0bec6c96e131a54347145a30
+                           .group:00000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:00000000 wm4.reent.h.77.dcd6129ff07fe81bd5636db29abe53b2
+                           .group:00000000 wm4.types.h.40.8b6acba56cefbb11746718204edc8f5e
+                           .group:00000000 wm4._endian.h.31.65a10590763c3dde1ac4a7f66d7d4891
+                           .group:00000000 wm4.endian.h.9.49f3a4695c1b61e8a0808de3c4a106cb
+                           .group:00000000 wm4._timeval.h.32.bec3221fa7a9bb0bdde696c9c57e47d2
+                           .group:00000000 wm4.timespec.h.41.d855182eb0e690443ab8651bcedca6e1
+                           .group:00000000 wm4.select.h.19.97ca6fd0c752a0f3b6719fd314d361e6
+                           .group:00000000 wm4.types.h.51.5571ec98f267d17d3c670b7a3ba33afa
+                           .group:00000000 wm4.sched.h.22.c60982713a5c428609783c78f9c78d95
+                           .group:00000000 wm4._pthreadtypes.h.36.fcee9961c35163dde6267ef772ad1972
+                           .group:00000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:00000000 wm4.stdio.h.81.932d0c162786b883f622b8d05c120c78
+                           .group:00000000 wm4.stdbool.h.29.07dce69c3b78884144b7f7bd19483461
+                           .group:00000000 wm4.stdlib.h.13.4ed386f5c1a80d71e72172885d946ef2
+                           .group:00000000 wm4.alloca.h.8.dfc0c703c47ec3e69746825b17d9e66d
+                           .group:00000000 wm4.stdlib.h.56.f4862cfbf4363a1db01842d5bdf72c18
+                           .group:00000000 wm4.compiler.h.88.0e6ad966134fa012ce9a34053d3f48aa
+                           .group:00000000 wm4.compiler.h.425.66dd29c210af3287ed85ec3553a3e6b1
+                           .group:00000000 wm4.interrupt_sam_nvic.h.84.12b72da0cfda407ab49bd5ed390be386
+
+NO UNDEFINED SYMBOLS

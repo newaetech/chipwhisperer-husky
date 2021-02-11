@@ -1,0 +1,370 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"read.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text._read,"ax",%progbits
+  19              		.align	2
+  20              		.weak	_read
+  21              		.thumb
+  22              		.thumb_func
+  24              	_read:
+  25              	.LFB66:
+  26              		.file 1 "../src/ASF/common/utils/stdio/read.c"
+   1:../src/ASF/common/utils/stdio/read.c **** /**
+   2:../src/ASF/common/utils/stdio/read.c ****  * \file
+   3:../src/ASF/common/utils/stdio/read.c ****  *
+   4:../src/ASF/common/utils/stdio/read.c ****  * \brief System-specific implementation of the \ref _read function used by
+   5:../src/ASF/common/utils/stdio/read.c ****  *         the standard library.
+   6:../src/ASF/common/utils/stdio/read.c ****  *
+   7:../src/ASF/common/utils/stdio/read.c ****  * Copyright (c) 2009-2013 Atmel Corporation. All rights reserved.
+   8:../src/ASF/common/utils/stdio/read.c ****  *
+   9:../src/ASF/common/utils/stdio/read.c ****  * \asf_license_start
+  10:../src/ASF/common/utils/stdio/read.c ****  *
+  11:../src/ASF/common/utils/stdio/read.c ****  * \page License
+  12:../src/ASF/common/utils/stdio/read.c ****  *
+  13:../src/ASF/common/utils/stdio/read.c ****  * Redistribution and use in source and binary forms, with or without
+  14:../src/ASF/common/utils/stdio/read.c ****  * modification, are permitted provided that the following conditions are met:
+  15:../src/ASF/common/utils/stdio/read.c ****  *
+  16:../src/ASF/common/utils/stdio/read.c ****  * 1. Redistributions of source code must retain the above copyright notice,
+  17:../src/ASF/common/utils/stdio/read.c ****  *    this list of conditions and the following disclaimer.
+  18:../src/ASF/common/utils/stdio/read.c ****  *
+  19:../src/ASF/common/utils/stdio/read.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice,
+  20:../src/ASF/common/utils/stdio/read.c ****  *    this list of conditions and the following disclaimer in the documentation
+  21:../src/ASF/common/utils/stdio/read.c ****  *    and/or other materials provided with the distribution.
+  22:../src/ASF/common/utils/stdio/read.c ****  *
+  23:../src/ASF/common/utils/stdio/read.c ****  * 3. The name of Atmel may not be used to endorse or promote products derived
+  24:../src/ASF/common/utils/stdio/read.c ****  *    from this software without specific prior written permission.
+  25:../src/ASF/common/utils/stdio/read.c ****  *
+  26:../src/ASF/common/utils/stdio/read.c ****  * 4. This software may only be redistributed and used in connection with an
+  27:../src/ASF/common/utils/stdio/read.c ****  *    Atmel microcontroller product.
+  28:../src/ASF/common/utils/stdio/read.c ****  *
+  29:../src/ASF/common/utils/stdio/read.c ****  * THIS SOFTWARE IS PROVIDED BY ATMEL "AS IS" AND ANY EXPRESS OR IMPLIED
+  30:../src/ASF/common/utils/stdio/read.c ****  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  31:../src/ASF/common/utils/stdio/read.c ****  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT ARE
+  32:../src/ASF/common/utils/stdio/read.c ****  * EXPRESSLY AND SPECIFICALLY DISCLAIMED. IN NO EVENT SHALL ATMEL BE LIABLE FOR
+  33:../src/ASF/common/utils/stdio/read.c ****  * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  34:../src/ASF/common/utils/stdio/read.c ****  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+  35:../src/ASF/common/utils/stdio/read.c ****  * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+  36:../src/ASF/common/utils/stdio/read.c ****  * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+  37:../src/ASF/common/utils/stdio/read.c ****  * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+  38:../src/ASF/common/utils/stdio/read.c ****  * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  39:../src/ASF/common/utils/stdio/read.c ****  * POSSIBILITY OF SUCH DAMAGE.
+  40:../src/ASF/common/utils/stdio/read.c ****  *
+  41:../src/ASF/common/utils/stdio/read.c ****  * \asf_license_stop
+  42:../src/ASF/common/utils/stdio/read.c ****  *
+  43:../src/ASF/common/utils/stdio/read.c ****  */
+  44:../src/ASF/common/utils/stdio/read.c **** 
+  45:../src/ASF/common/utils/stdio/read.c **** #include "compiler.h"
+  46:../src/ASF/common/utils/stdio/read.c **** 
+  47:../src/ASF/common/utils/stdio/read.c **** /**
+  48:../src/ASF/common/utils/stdio/read.c ****  * \defgroup group_common_utils_stdio Standard I/O (stdio)
+  49:../src/ASF/common/utils/stdio/read.c ****  *
+  50:../src/ASF/common/utils/stdio/read.c ****  * Common standard I/O driver that implements the stdio
+  51:../src/ASF/common/utils/stdio/read.c ****  * read and write functions on AVR and SAM devices.
+  52:../src/ASF/common/utils/stdio/read.c ****  *
+  53:../src/ASF/common/utils/stdio/read.c ****  * \{
+  54:../src/ASF/common/utils/stdio/read.c ****  */
+  55:../src/ASF/common/utils/stdio/read.c **** 
+  56:../src/ASF/common/utils/stdio/read.c **** extern volatile void *volatile stdio_base;
+  57:../src/ASF/common/utils/stdio/read.c **** void (*ptr_get)(void volatile*, char*);
+  58:../src/ASF/common/utils/stdio/read.c **** 
+  59:../src/ASF/common/utils/stdio/read.c **** 
+  60:../src/ASF/common/utils/stdio/read.c **** // IAR common implementation
+  61:../src/ASF/common/utils/stdio/read.c **** #if ( defined(__ICCAVR32__) || defined(__ICCAVR__) || defined(__ICCARM__) )
+  62:../src/ASF/common/utils/stdio/read.c **** 
+  63:../src/ASF/common/utils/stdio/read.c **** #include <yfuns.h>
+  64:../src/ASF/common/utils/stdio/read.c **** 
+  65:../src/ASF/common/utils/stdio/read.c **** _STD_BEGIN
+  66:../src/ASF/common/utils/stdio/read.c **** 
+  67:../src/ASF/common/utils/stdio/read.c **** #pragma module_name = "?__read"
+  68:../src/ASF/common/utils/stdio/read.c **** 
+  69:../src/ASF/common/utils/stdio/read.c **** /*! \brief Reads a number of bytes, at most \a size, into the memory area
+  70:../src/ASF/common/utils/stdio/read.c ****  *         pointed to by \a buffer.
+  71:../src/ASF/common/utils/stdio/read.c ****  *
+  72:../src/ASF/common/utils/stdio/read.c ****  * \param handle File handle to read from.
+  73:../src/ASF/common/utils/stdio/read.c ****  * \param buffer Pointer to buffer to write read bytes to.
+  74:../src/ASF/common/utils/stdio/read.c ****  * \param size Number of bytes to read.
+  75:../src/ASF/common/utils/stdio/read.c ****  *
+  76:../src/ASF/common/utils/stdio/read.c ****  * \return The number of bytes read, \c 0 at the end of the file, or
+  77:../src/ASF/common/utils/stdio/read.c ****  *         \c _LLIO_ERROR on failure.
+  78:../src/ASF/common/utils/stdio/read.c ****  */
+  79:../src/ASF/common/utils/stdio/read.c **** size_t __read(int handle, unsigned char *buffer, size_t size)
+  80:../src/ASF/common/utils/stdio/read.c **** {
+  81:../src/ASF/common/utils/stdio/read.c **** 	int nChars = 0;
+  82:../src/ASF/common/utils/stdio/read.c **** 	// This implementation only reads from stdin.
+  83:../src/ASF/common/utils/stdio/read.c **** 	// For all other file handles, it returns failure.
+  84:../src/ASF/common/utils/stdio/read.c **** 	if (handle != _LLIO_STDIN) {
+  85:../src/ASF/common/utils/stdio/read.c **** 		return _LLIO_ERROR;
+  86:../src/ASF/common/utils/stdio/read.c **** 	}
+  87:../src/ASF/common/utils/stdio/read.c **** 	for (; size > 0; --size) {
+  88:../src/ASF/common/utils/stdio/read.c **** 		ptr_get(stdio_base, (char*)buffer);
+  89:../src/ASF/common/utils/stdio/read.c **** 		buffer++;
+  90:../src/ASF/common/utils/stdio/read.c **** 		nChars++;
+  91:../src/ASF/common/utils/stdio/read.c **** 	}
+  92:../src/ASF/common/utils/stdio/read.c **** 	return nChars;
+  93:../src/ASF/common/utils/stdio/read.c **** }
+  94:../src/ASF/common/utils/stdio/read.c **** 
+  95:../src/ASF/common/utils/stdio/read.c **** /*! \brief This routine is required by IAR DLIB library since EWAVR V6.10
+  96:../src/ASF/common/utils/stdio/read.c ****  * the implementation is empty to be compatible with old IAR version.
+  97:../src/ASF/common/utils/stdio/read.c ****  */
+  98:../src/ASF/common/utils/stdio/read.c **** int __close(int handle)
+  99:../src/ASF/common/utils/stdio/read.c **** {
+ 100:../src/ASF/common/utils/stdio/read.c **** 	UNUSED(handle);
+ 101:../src/ASF/common/utils/stdio/read.c **** 	return 0;
+ 102:../src/ASF/common/utils/stdio/read.c **** }
+ 103:../src/ASF/common/utils/stdio/read.c **** 
+ 104:../src/ASF/common/utils/stdio/read.c **** /*! \brief This routine is required by IAR DLIB library since EWAVR V6.10
+ 105:../src/ASF/common/utils/stdio/read.c ****  * the implementation is empty to be compatible with old IAR version.
+ 106:../src/ASF/common/utils/stdio/read.c ****  */
+ 107:../src/ASF/common/utils/stdio/read.c **** int remove(const char* val)
+ 108:../src/ASF/common/utils/stdio/read.c **** {
+ 109:../src/ASF/common/utils/stdio/read.c **** 	UNUSED(val);
+ 110:../src/ASF/common/utils/stdio/read.c **** 	return 0;
+ 111:../src/ASF/common/utils/stdio/read.c **** }
+ 112:../src/ASF/common/utils/stdio/read.c **** 
+ 113:../src/ASF/common/utils/stdio/read.c **** /*! \brief This routine is required by IAR DLIB library since EWAVR V6.10
+ 114:../src/ASF/common/utils/stdio/read.c ****  * the implementation is empty to be compatible with old IAR version.
+ 115:../src/ASF/common/utils/stdio/read.c ****  */
+ 116:../src/ASF/common/utils/stdio/read.c **** long __lseek(int handle, long val, int val2)
+ 117:../src/ASF/common/utils/stdio/read.c **** {
+ 118:../src/ASF/common/utils/stdio/read.c **** 	UNUSED(handle);
+ 119:../src/ASF/common/utils/stdio/read.c **** 	UNUSED(val2);
+ 120:../src/ASF/common/utils/stdio/read.c **** 	return val;
+ 121:../src/ASF/common/utils/stdio/read.c **** }
+ 122:../src/ASF/common/utils/stdio/read.c **** 
+ 123:../src/ASF/common/utils/stdio/read.c **** _STD_END
+ 124:../src/ASF/common/utils/stdio/read.c **** 
+ 125:../src/ASF/common/utils/stdio/read.c **** // GCC AVR32 and SAM implementation
+ 126:../src/ASF/common/utils/stdio/read.c **** #elif (defined(__GNUC__) && !XMEGA && !MEGA) 
+ 127:../src/ASF/common/utils/stdio/read.c **** 
+ 128:../src/ASF/common/utils/stdio/read.c **** int __attribute__((weak))
+ 129:../src/ASF/common/utils/stdio/read.c **** _read (int file, char * ptr, int len); // Remove GCC compiler warning
+ 130:../src/ASF/common/utils/stdio/read.c **** 
+ 131:../src/ASF/common/utils/stdio/read.c **** int __attribute__((weak))
+ 132:../src/ASF/common/utils/stdio/read.c **** _read (int file, char * ptr, int len)
+ 133:../src/ASF/common/utils/stdio/read.c **** {
+  27              		.loc 1 133 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              	.LVL0:
+ 134:../src/ASF/common/utils/stdio/read.c **** 	int nChars = 0;
+ 135:../src/ASF/common/utils/stdio/read.c **** 
+ 136:../src/ASF/common/utils/stdio/read.c **** 	if (file != 0) {
+  32              		.loc 1 136 0
+  33 0000 A8B9     		cbnz	r0, .L5
+ 133:../src/ASF/common/utils/stdio/read.c **** 	int nChars = 0;
+  34              		.loc 1 133 0 discriminator 1
+  35 0002 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 24
+  38              		.cfi_offset 4, -24
+  39              		.cfi_offset 5, -20
+  40              		.cfi_offset 6, -16
+  41              		.cfi_offset 7, -12
+  42              		.cfi_offset 8, -8
+  43              		.cfi_offset 14, -4
+  44 0006 0C46     		mov	r4, r1
+  45 0008 9046     		mov	r8, r2
+ 137:../src/ASF/common/utils/stdio/read.c **** 		return -1;
+ 138:../src/ASF/common/utils/stdio/read.c **** 	}
+ 139:../src/ASF/common/utils/stdio/read.c **** 
+ 140:../src/ASF/common/utils/stdio/read.c **** 	for (; len > 0; --len) {
+  46              		.loc 1 140 0 discriminator 1
+  47 000a 002A     		cmp	r2, #0
+  48 000c 0ADD     		ble	.L6
+  49 000e 8F18     		adds	r7, r1, r2
+ 141:../src/ASF/common/utils/stdio/read.c **** 		ptr_get(stdio_base, ptr);
+  50              		.loc 1 141 0
+  51 0010 084E     		ldr	r6, .L10
+  52 0012 094D     		ldr	r5, .L10+4
+  53              	.LVL1:
+  54              	.L4:
+  55              		.loc 1 141 0 is_stmt 0 discriminator 2
+  56 0014 3068     		ldr	r0, [r6]
+  57 0016 2146     		mov	r1, r4
+  58 0018 2B68     		ldr	r3, [r5]
+  59 001a 9847     		blx	r3
+  60              	.LVL2:
+ 142:../src/ASF/common/utils/stdio/read.c **** 		ptr++;
+  61              		.loc 1 142 0 is_stmt 1 discriminator 2
+  62 001c 0134     		adds	r4, r4, #1
+  63              	.LVL3:
+ 140:../src/ASF/common/utils/stdio/read.c **** 		ptr_get(stdio_base, ptr);
+  64              		.loc 1 140 0 discriminator 2
+  65 001e BC42     		cmp	r4, r7
+  66 0020 F8D1     		bne	.L4
+  67 0022 01E0     		b	.L3
+  68              	.LVL4:
+  69              	.L6:
+ 140:../src/ASF/common/utils/stdio/read.c **** 		ptr_get(stdio_base, ptr);
+  70              		.loc 1 140 0 is_stmt 0
+  71 0024 4FF00008 		mov	r8, #0
+  72              	.LVL5:
+  73              	.L3:
+ 143:../src/ASF/common/utils/stdio/read.c **** 		nChars++;
+ 144:../src/ASF/common/utils/stdio/read.c **** 	}
+ 145:../src/ASF/common/utils/stdio/read.c **** 	return nChars;
+  74              		.loc 1 145 0 is_stmt 1
+  75 0028 4046     		mov	r0, r8
+  76 002a BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+  77              	.LVL6:
+  78              	.L5:
+  79              	.LCFI1:
+  80              		.cfi_def_cfa_offset 0
+  81              		.cfi_restore 4
+  82              		.cfi_restore 5
+  83              		.cfi_restore 6
+  84              		.cfi_restore 7
+  85              		.cfi_restore 8
+  86              		.cfi_restore 14
+ 137:../src/ASF/common/utils/stdio/read.c **** 	}
+  87              		.loc 1 137 0
+  88 002e 4FF0FF30 		mov	r0, #-1
+  89              	.LVL7:
+  90 0032 7047     		bx	lr
+  91              	.L11:
+  92              		.align	2
+  93              	.L10:
+  94 0034 00000000 		.word	stdio_base
+  95 0038 00000000 		.word	ptr_get
+  96              		.cfi_endproc
+  97              	.LFE66:
+  99              		.comm	ptr_get,4,4
+ 100              		.section	.bss.cpu_irq_critical_section_counter,"aw",%nobits
+ 101              		.align	2
+ 104              	cpu_irq_critical_section_counter:
+ 105 0000 00000000 		.space	4
+ 106              		.section	.bss.cpu_irq_prev_interrupt_state,"aw",%nobits
+ 109              	cpu_irq_prev_interrupt_state:
+ 110 0000 00       		.space	1
+ 111              		.text
+ 112              	.Letext0:
+ 113              		.file 2 "c:\\program files (x86)\\atmel\\studio\\7.0\\toolchain\\arm\\arm-gnu-toolchain\\arm-none-
+ 114              		.file 3 "c:\\program files (x86)\\atmel\\studio\\7.0\\toolchain\\arm\\arm-gnu-toolchain\\arm-none-
+ 115              		.file 4 "../src/ASF/common/utils/interrupt/interrupt_sam_nvic.h"
+ 116              		.file 5 "../src/ASF/thirdparty/CMSIS/Include/core_cm3.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 read.c
+C:\Users\colin\AppData\Local\Temp\ccJVTERa.s:19     .text._read:00000000 $t
+C:\Users\colin\AppData\Local\Temp\ccJVTERa.s:24     .text._read:00000000 _read
+C:\Users\colin\AppData\Local\Temp\ccJVTERa.s:94     .text._read:00000034 $d
+                            *COM*:00000004 ptr_get
+C:\Users\colin\AppData\Local\Temp\ccJVTERa.s:101    .bss.cpu_irq_critical_section_counter:00000000 $d
+C:\Users\colin\AppData\Local\Temp\ccJVTERa.s:104    .bss.cpu_irq_critical_section_counter:00000000 cpu_irq_critical_section_counter
+C:\Users\colin\AppData\Local\Temp\ccJVTERa.s:109    .bss.cpu_irq_prev_interrupt_state:00000000 cpu_irq_prev_interrupt_state
+C:\Users\colin\AppData\Local\Temp\ccJVTERa.s:110    .bss.cpu_irq_prev_interrupt_state:00000000 $d
+                     .debug_frame:00000010 $d
+                           .group:00000000 wm4.0.738cd1dff6e476bef2e1e0b99fec4f4f
+                           .group:00000000 wm4.stddef.h.39.daafd3d79fe2f3a84d2d73d7d4e706f8
+                           .group:00000000 wm4.parts.h.45.afc900689b2c82332e69d798acedc875
+                           .group:00000000 wm4.tpaste.h.45.af3ee36765243b162c88f7f944858426
+                           .group:00000000 wm4.stringz.h.45.c4f6cbe0005e6c1d2139bc6c0e4f4722
+                           .group:00000000 wm4.mrepeat.h.59.c5daaed201a4340b0edf435161d0b77f
+                           .group:00000000 wm4.features.h.22.2e382148a0560adabf236cddd4e880f4
+                           .group:00000000 wm4._default_types.h.15.933e8edd27a65e0b69af4a865eb623d2
+                           .group:00000000 wm4._intsup.h.10.b2832a532eae49c14d45880be6d4ca65
+                           .group:00000000 wm4._stdint.h.10.f76354baea1c7088202064e6f3d4f5e3
+                           .group:00000000 wm4.stdint.h.23.373a9d32a9e4c2e88fd347156532d281
+                           .group:00000000 wm4.sam3u2e.h.224.0dd3d6dd7ebd015c591c55f903ce78e7
+                           .group:00000000 wm4.core_cm3.h.32.5c59c312db585622d253fdb887b0afb1
+                           .group:00000000 wm4.core_cmInstr.h.25.d8165482ef3061013a2fc83e2d85f3d9
+                           .group:00000000 wm4.core_cm3.h.127.b561404f2a159dc517b409bc244d16c1
+                           .group:00000000 wm4.component_adc.h.43.d49887380d07d1cd08cc4e37b3485e31
+                           .group:00000000 wm4.component_adc12b.h.43.eadc09f1073923fb91f1f393cc397dcb
+                           .group:00000000 wm4.component_chipid.h.43.15825c969b1cc9eeea3d9416499874c8
+                           .group:00000000 wm4.component_dmac.h.43.cc8187b1cf6bfeadc91b14fdd28b9e8b
+                           .group:00000000 wm4.component_efc.h.43.cb1b3997ad9ea3733ad421ecbfd02fdd
+                           .group:00000000 wm4.component_gpbr.h.43.49b7e13894fe38b29f2243bbbe530227
+                           .group:00000000 wm4.component_hsmci.h.43.7b7194c92e1480c038f3342f7cec440a
+                           .group:00000000 wm4.component_matrix.h.43.1d209838fb75b4827119203a357141ee
+                           .group:00000000 wm4.component_pdc.h.43.19528a5f9ef5a348234ea06f89069c55
+                           .group:00000000 wm4.component_pio.h.43.163b46c3683ccf92e8de39a5554f50e8
+                           .group:00000000 wm4.component_pmc.h.43.ee4f030602866917aeed15fb2b948de8
+                           .group:00000000 wm4.component_pwm.h.43.ab6262a86f0aea354b43fe6dce7e7eb3
+                           .group:00000000 wm4.component_rstc.h.43.4eb59dc2ddcf585fabf251d0c329fcdd
+                           .group:00000000 wm4.component_rtc.h.43.ba8ccafc772b11d562a3cceab8b95072
+                           .group:00000000 wm4.component_rtt.h.43.3206ef8f067e5e747c3c4c7e719c1429
+                           .group:00000000 wm4.component_smc.h.43.907847915f1a5616734199d7e34424fa
+                           .group:00000000 wm4.component_spi.h.43.a2a09df64ab768c0a32be55285c74ded
+                           .group:00000000 wm4.component_ssc.h.43.d7c78f990c13fc511671b64798c4bcd0
+                           .group:00000000 wm4.component_supc.h.43.7d17f8e5ed3ba815e84381152735062f
+                           .group:00000000 wm4.component_tc.h.43.662eac8137408372b4f9d26c0b5f8621
+                           .group:00000000 wm4.component_twi.h.43.eda18625bd851fc4605861f5b3240c0b
+                           .group:00000000 wm4.component_uart.h.43.2d92735c5ea05c973661e1ba99a2f37c
+                           .group:00000000 wm4.component_udphs.h.43.21cecd26a4e44df0013037f29f2716e4
+                           .group:00000000 wm4.component_usart.h.43.7872f8f455adb38b67b9fbdb15657fbe
+                           .group:00000000 wm4.component_wdt.h.43.e31e10a5469b62c3660b49ab250f802f
+                           .group:00000000 wm4.instance_hsmci.h.43.e233236cc7fd5a805539a7ecc0e1d8d2
+                           .group:00000000 wm4.instance_ssc.h.43.c0cfabc3b9f3bb60745c913111bce965
+                           .group:00000000 wm4.instance_spi.h.43.570ae46af19e4179d9796872b9a8b9bc
+                           .group:00000000 wm4.instance_tc0.h.43.049b3a82387d2961594190609e896a29
+                           .group:00000000 wm4.instance_twi0.h.43.255dc0afa9e0d45eaea0a935eca2f103
+                           .group:00000000 wm4.instance_twi1.h.43.652d1d407893f259f2a817544ba662c2
+                           .group:00000000 wm4.instance_pwm.h.43.88294acec3ca56d6fc521038521a1567
+                           .group:00000000 wm4.instance_usart0.h.43.e26677512aee3dd3bedd71d394410000
+                           .group:00000000 wm4.instance_usart1.h.43.1ba97dbc6610d9fb3132b9d845688201
+                           .group:00000000 wm4.instance_usart2.h.43.baa1bf30b3c5acdee90c4a1f50fe9ebd
+                           .group:00000000 wm4.instance_usart3.h.43.f6638d1b78bcba70ca95fca279d33914
+                           .group:00000000 wm4.instance_udphs.h.43.b1ce94181e0d1f22877b81c6040a4363
+                           .group:00000000 wm4.instance_adc12b.h.43.d73ed59e867ccdfdb846d9ef32a50c0c
+                           .group:00000000 wm4.instance_adc.h.43.2b7611a00afeb4c555339b844d4b8456
+                           .group:00000000 wm4.instance_dmac.h.43.ee72691d84889c8f285932be4a075ddb
+                           .group:00000000 wm4.instance_smc.h.43.29610fd00979caaaa65821ad40e9da06
+                           .group:00000000 wm4.instance_matrix.h.43.01ee474141594385374c41a29daeeefe
+                           .group:00000000 wm4.instance_pmc.h.43.37430325ed7b8b24c3fe640c41c29ef5
+                           .group:00000000 wm4.instance_uart.h.43.bd378395ba022bc8670c82ebe656fbbd
+                           .group:00000000 wm4.instance_chipid.h.43.29cd8fb600f149aa58830fcc78fe36f9
+                           .group:00000000 wm4.instance_efc0.h.43.6b85dba20721a7e9fc4350e78d193680
+                           .group:00000000 wm4.instance_efc1.h.43.2c5e94fc4d2742678318d73450d08d57
+                           .group:00000000 wm4.instance_pioa.h.43.eeb46cc3bfe01a1f28e67aa3a6851ed8
+                           .group:00000000 wm4.instance_piob.h.43.652ce26b6c37ac56f9ed42a9216d9aca
+                           .group:00000000 wm4.instance_pioc.h.43.d9706cf766637d6b3ed9886aa3ef7261
+                           .group:00000000 wm4.instance_rstc.h.43.c5de224364a50a85f237c0b864aa4c8f
+                           .group:00000000 wm4.instance_supc.h.43.a5f1a5ca08f468ccf34ed3653e045f1f
+                           .group:00000000 wm4.instance_rtt.h.43.8622b192c23334996132415e3095df7f
+                           .group:00000000 wm4.instance_wdt.h.43.407ea53e133eacf09acf2c7fcb6b7524
+                           .group:00000000 wm4.instance_rtc.h.43.f70b77f9180401c8d9d920cb4a1cd166
+                           .group:00000000 wm4.instance_gpbr.h.43.9066cb40d557f6755101368854272348
+                           .group:00000000 wm4.sam3u2e.h.318.b69dc6db89bb8a018eede87e67bbc95d
+                           .group:00000000 wm4.pio_sam3u2e.h.43.21412830fa1fb9ca8a54ce10fede3251
+                           .group:00000000 wm4.sam3u2e.h.456.687e75a22829f9ea89425dc4ee4ff5e3
+                           .group:00000000 wm4.newlib.h.8.2702bca278809460f0af6fba1d84eb68
+                           .group:00000000 wm4.config.h.220.a09b0b0de3c25be3f39d71990e617bff
+                           .group:00000000 wm4._ansi.h.23.9f8fcfa20193763fcf364fb91705c94b
+                           .group:00000000 wm4.stdio.h.31.7c0e28c411445f3f9c5b11accf882760
+                           .group:00000000 wm4.stddef.h.158.a7efb00f6cbc6f43213b50e183c9830c
+                           .group:00000000 wm4.cdefs.h.47.3052445825803de6c3a3b68ec8193866
+                           .group:00000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:00000000 wm4.lock.h.2.9bc98482741e5e2a9450b12934a684ea
+                           .group:00000000 wm4._types.h.54.d3d34a3b7f3cc230cd159baf022b4b08
+                           .group:00000000 wm4.stddef.h.158.61317cdbfb4026324507d123a50b0fd6
+                           .group:00000000 wm4.reent.h.17.8bd9e4098e0428508c282cad794fae43
+                           .group:00000000 wm4.types.h.23.0d949686bbcadd1621462d4fa1f884f9
+                           .group:00000000 wm4.types.h.2.e9cec8c90ab35f77d9f499e06ae02400
+                           .group:00000000 wm4.types.h.81.ded4e8fbe2d299b79c956dc834e43661
+                           .group:00000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:00000000 wm4.stdio.h.68.a99a2db1e55915cfd1b035cc1e9fcff1
+                           .group:00000000 wm4.stdbool.h.29.1c9ee6859ce8145f7838a4f2549ccec2
+                           .group:00000000 wm4.stdlib.h.13.4ed386f5c1a80d71e72172885d946ef2
+                           .group:00000000 wm4.alloca.h.8.dfc0c703c47ec3e69746825b17d9e66d
+                           .group:00000000 wm4.stdlib.h.54.cd3744e0b066087ec8fbb1bdc22d1043
+                           .group:00000000 wm4.compiler.h.88.e36be790b5e347a01e6762426f60e643
+                           .group:00000000 wm4.interrupt_sam_nvic.h.45.4876da6c127868305d66389e87e0876f
+                           .group:00000000 wm4.compiler.h.424.ee053ef8246023ebdcca352464bd827f
+
+UNDEFINED SYMBOLS
+stdio_base

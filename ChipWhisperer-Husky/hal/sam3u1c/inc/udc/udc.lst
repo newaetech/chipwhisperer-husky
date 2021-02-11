@@ -1,0 +1,3313 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"udc.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.udc_next_desc_in_iface,"ax",%progbits
+  19              		.align	2
+  20              		.thumb
+  21              		.thumb_func
+  23              	udc_next_desc_in_iface:
+  24              	.LFB73:
+  25              		.file 1 "../src/ASF/common/services/usb/udc/udc.c"
+   1:../src/ASF/common/services/usb/udc/udc.c **** /**
+   2:../src/ASF/common/services/usb/udc/udc.c ****  * \file
+   3:../src/ASF/common/services/usb/udc/udc.c ****  *
+   4:../src/ASF/common/services/usb/udc/udc.c ****  * \brief USB Device Controller (UDC)
+   5:../src/ASF/common/services/usb/udc/udc.c ****  *
+   6:../src/ASF/common/services/usb/udc/udc.c ****  * Copyright (c) 2009 - 2014 Atmel Corporation. All rights reserved.
+   7:../src/ASF/common/services/usb/udc/udc.c ****  *
+   8:../src/ASF/common/services/usb/udc/udc.c ****  * \asf_license_start
+   9:../src/ASF/common/services/usb/udc/udc.c ****  *
+  10:../src/ASF/common/services/usb/udc/udc.c ****  * \page License
+  11:../src/ASF/common/services/usb/udc/udc.c ****  *
+  12:../src/ASF/common/services/usb/udc/udc.c ****  * Redistribution and use in source and binary forms, with or without
+  13:../src/ASF/common/services/usb/udc/udc.c ****  * modification, are permitted provided that the following conditions are met:
+  14:../src/ASF/common/services/usb/udc/udc.c ****  *
+  15:../src/ASF/common/services/usb/udc/udc.c ****  * 1. Redistributions of source code must retain the above copyright notice,
+  16:../src/ASF/common/services/usb/udc/udc.c ****  *    this list of conditions and the following disclaimer.
+  17:../src/ASF/common/services/usb/udc/udc.c ****  *
+  18:../src/ASF/common/services/usb/udc/udc.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice,
+  19:../src/ASF/common/services/usb/udc/udc.c ****  *    this list of conditions and the following disclaimer in the documentation
+  20:../src/ASF/common/services/usb/udc/udc.c ****  *    and/or other materials provided with the distribution.
+  21:../src/ASF/common/services/usb/udc/udc.c ****  *
+  22:../src/ASF/common/services/usb/udc/udc.c ****  * 3. The name of Atmel may not be used to endorse or promote products derived
+  23:../src/ASF/common/services/usb/udc/udc.c ****  *    from this software without specific prior written permission.
+  24:../src/ASF/common/services/usb/udc/udc.c ****  *
+  25:../src/ASF/common/services/usb/udc/udc.c ****  * 4. This software may only be redistributed and used in connection with an
+  26:../src/ASF/common/services/usb/udc/udc.c ****  *    Atmel microcontroller product.
+  27:../src/ASF/common/services/usb/udc/udc.c ****  *
+  28:../src/ASF/common/services/usb/udc/udc.c ****  * THIS SOFTWARE IS PROVIDED BY ATMEL "AS IS" AND ANY EXPRESS OR IMPLIED
+  29:../src/ASF/common/services/usb/udc/udc.c ****  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  30:../src/ASF/common/services/usb/udc/udc.c ****  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT ARE
+  31:../src/ASF/common/services/usb/udc/udc.c ****  * EXPRESSLY AND SPECIFICALLY DISCLAIMED. IN NO EVENT SHALL ATMEL BE LIABLE FOR
+  32:../src/ASF/common/services/usb/udc/udc.c ****  * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  33:../src/ASF/common/services/usb/udc/udc.c ****  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+  34:../src/ASF/common/services/usb/udc/udc.c ****  * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+  35:../src/ASF/common/services/usb/udc/udc.c ****  * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+  36:../src/ASF/common/services/usb/udc/udc.c ****  * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+  37:../src/ASF/common/services/usb/udc/udc.c ****  * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  38:../src/ASF/common/services/usb/udc/udc.c ****  * POSSIBILITY OF SUCH DAMAGE.
+  39:../src/ASF/common/services/usb/udc/udc.c ****  *
+  40:../src/ASF/common/services/usb/udc/udc.c ****  * \asf_license_stop
+  41:../src/ASF/common/services/usb/udc/udc.c ****  *
+  42:../src/ASF/common/services/usb/udc/udc.c ****  */
+  43:../src/ASF/common/services/usb/udc/udc.c **** 
+  44:../src/ASF/common/services/usb/udc/udc.c **** #include "conf_usb.h"
+  45:../src/ASF/common/services/usb/udc/udc.c **** #include "usb_protocol.h"
+  46:../src/ASF/common/services/usb/udc/udc.c **** #include "udd.h"
+  47:../src/ASF/common/services/usb/udc/udc.c **** #include "udc_desc.h"
+  48:../src/ASF/common/services/usb/udc/udc.c **** #include "udi.h"
+  49:../src/ASF/common/services/usb/udc/udc.c **** #include "udc.h"
+  50:../src/ASF/common/services/usb/udc/udc.c **** 
+  51:../src/ASF/common/services/usb/udc/udc.c **** /**
+  52:../src/ASF/common/services/usb/udc/udc.c ****  * \ingroup udc_group
+  53:../src/ASF/common/services/usb/udc/udc.c ****  * \defgroup udc_group_interne Implementation of UDC
+  54:../src/ASF/common/services/usb/udc/udc.c ****  *
+  55:../src/ASF/common/services/usb/udc/udc.c ****  * Internal implementation
+  56:../src/ASF/common/services/usb/udc/udc.c ****  * @{
+  57:../src/ASF/common/services/usb/udc/udc.c ****  */
+  58:../src/ASF/common/services/usb/udc/udc.c **** 
+  59:../src/ASF/common/services/usb/udc/udc.c **** //! \name Internal variables to manage the USB device
+  60:../src/ASF/common/services/usb/udc/udc.c **** //! @{
+  61:../src/ASF/common/services/usb/udc/udc.c **** 
+  62:../src/ASF/common/services/usb/udc/udc.c **** //! Device status state (see enum usb_device_status in usb_protocol.h)
+  63:../src/ASF/common/services/usb/udc/udc.c **** static le16_t udc_device_status;
+  64:../src/ASF/common/services/usb/udc/udc.c **** 
+  65:../src/ASF/common/services/usb/udc/udc.c **** //! Device Configuration number selected by the USB host
+  66:../src/ASF/common/services/usb/udc/udc.c **** static uint8_t udc_num_configuration = 0;
+  67:../src/ASF/common/services/usb/udc/udc.c **** 
+  68:../src/ASF/common/services/usb/udc/udc.c **** //! Pointer on the selected speed device configuration
+  69:../src/ASF/common/services/usb/udc/udc.c **** static udc_config_speed_t UDC_DESC_STORAGE *udc_ptr_conf;
+  70:../src/ASF/common/services/usb/udc/udc.c **** 
+  71:../src/ASF/common/services/usb/udc/udc.c **** //! Pointer on interface descriptor used by SETUP request.
+  72:../src/ASF/common/services/usb/udc/udc.c **** static usb_iface_desc_t UDC_DESC_STORAGE *udc_ptr_iface;
+  73:../src/ASF/common/services/usb/udc/udc.c **** 
+  74:../src/ASF/common/services/usb/udc/udc.c **** //! @}
+  75:../src/ASF/common/services/usb/udc/udc.c **** 
+  76:../src/ASF/common/services/usb/udc/udc.c **** 
+  77:../src/ASF/common/services/usb/udc/udc.c **** //! \name Internal structure to store the USB device main strings
+  78:../src/ASF/common/services/usb/udc/udc.c **** //! @{
+  79:../src/ASF/common/services/usb/udc/udc.c **** 
+  80:../src/ASF/common/services/usb/udc/udc.c **** /**
+  81:../src/ASF/common/services/usb/udc/udc.c ****  * \brief Language ID of USB device (US ID by default)
+  82:../src/ASF/common/services/usb/udc/udc.c ****  */
+  83:../src/ASF/common/services/usb/udc/udc.c **** COMPILER_WORD_ALIGNED
+  84:../src/ASF/common/services/usb/udc/udc.c **** static UDC_DESC_STORAGE usb_str_lgid_desc_t udc_string_desc_languageid = {
+  85:../src/ASF/common/services/usb/udc/udc.c **** 	.desc.bLength = sizeof(usb_str_lgid_desc_t),
+  86:../src/ASF/common/services/usb/udc/udc.c **** 	.desc.bDescriptorType = USB_DT_STRING,
+  87:../src/ASF/common/services/usb/udc/udc.c **** 	.string = {LE16(USB_LANGID_EN_US)}
+  88:../src/ASF/common/services/usb/udc/udc.c **** };
+  89:../src/ASF/common/services/usb/udc/udc.c **** 
+  90:../src/ASF/common/services/usb/udc/udc.c **** /**
+  91:../src/ASF/common/services/usb/udc/udc.c ****  * \brief USB device manufacture name storage
+  92:../src/ASF/common/services/usb/udc/udc.c ****  * String is allocated only if USB_DEVICE_MANUFACTURE_NAME is declared
+  93:../src/ASF/common/services/usb/udc/udc.c ****  * by usb application configuration
+  94:../src/ASF/common/services/usb/udc/udc.c ****  */
+  95:../src/ASF/common/services/usb/udc/udc.c **** #ifdef USB_DEVICE_MANUFACTURE_NAME
+  96:../src/ASF/common/services/usb/udc/udc.c **** static uint8_t udc_string_manufacturer_name[] = USB_DEVICE_MANUFACTURE_NAME;
+  97:../src/ASF/common/services/usb/udc/udc.c **** #  define USB_DEVICE_MANUFACTURE_NAME_SIZE  \
+  98:../src/ASF/common/services/usb/udc/udc.c **** 	(sizeof(udc_string_manufacturer_name)-1)
+  99:../src/ASF/common/services/usb/udc/udc.c **** #else
+ 100:../src/ASF/common/services/usb/udc/udc.c **** #  define USB_DEVICE_MANUFACTURE_NAME_SIZE  0
+ 101:../src/ASF/common/services/usb/udc/udc.c **** #endif
+ 102:../src/ASF/common/services/usb/udc/udc.c **** 
+ 103:../src/ASF/common/services/usb/udc/udc.c **** /**
+ 104:../src/ASF/common/services/usb/udc/udc.c ****  * \brief USB device product name storage
+ 105:../src/ASF/common/services/usb/udc/udc.c ****  * String is allocated only if USB_DEVICE_PRODUCT_NAME is declared
+ 106:../src/ASF/common/services/usb/udc/udc.c ****  * by usb application configuration
+ 107:../src/ASF/common/services/usb/udc/udc.c ****  */
+ 108:../src/ASF/common/services/usb/udc/udc.c **** #ifdef USB_DEVICE_PRODUCT_NAME
+ 109:../src/ASF/common/services/usb/udc/udc.c **** static uint8_t udc_string_product_name[] = USB_DEVICE_PRODUCT_NAME;
+ 110:../src/ASF/common/services/usb/udc/udc.c **** #  define USB_DEVICE_PRODUCT_NAME_SIZE  (sizeof(udc_string_product_name)-1)
+ 111:../src/ASF/common/services/usb/udc/udc.c **** #else
+ 112:../src/ASF/common/services/usb/udc/udc.c **** #  define USB_DEVICE_PRODUCT_NAME_SIZE  0
+ 113:../src/ASF/common/services/usb/udc/udc.c **** #endif
+ 114:../src/ASF/common/services/usb/udc/udc.c **** 
+ 115:../src/ASF/common/services/usb/udc/udc.c **** /**
+ 116:../src/ASF/common/services/usb/udc/udc.c ****  * \brief Get USB device serial number
+ 117:../src/ASF/common/services/usb/udc/udc.c ****  *
+ 118:../src/ASF/common/services/usb/udc/udc.c ****  * Use the define USB_DEVICE_SERIAL_NAME to set static serial number.
+ 119:../src/ASF/common/services/usb/udc/udc.c ****  *
+ 120:../src/ASF/common/services/usb/udc/udc.c ****  * For dynamic serial number set the define USB_DEVICE_GET_SERIAL_NAME_POINTER
+ 121:../src/ASF/common/services/usb/udc/udc.c ****  * to a suitable pointer. This will also require the serial number length
+ 122:../src/ASF/common/services/usb/udc/udc.c ****  * define USB_DEVICE_GET_SERIAL_NAME_LENGTH.
+ 123:../src/ASF/common/services/usb/udc/udc.c ****  */
+ 124:../src/ASF/common/services/usb/udc/udc.c **** #if defined USB_DEVICE_GET_SERIAL_NAME_POINTER
+ 125:../src/ASF/common/services/usb/udc/udc.c **** 	static const uint8_t *udc_get_string_serial_name(void)
+ 126:../src/ASF/common/services/usb/udc/udc.c **** 	{
+ 127:../src/ASF/common/services/usb/udc/udc.c **** 		return (const uint8_t *)USB_DEVICE_GET_SERIAL_NAME_POINTER;
+ 128:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 129:../src/ASF/common/services/usb/udc/udc.c **** #  define USB_DEVICE_SERIAL_NAME_SIZE \
+ 130:../src/ASF/common/services/usb/udc/udc.c **** 	USB_DEVICE_GET_SERIAL_NAME_LENGTH
+ 131:../src/ASF/common/services/usb/udc/udc.c **** #elif defined USB_DEVICE_SERIAL_NAME
+ 132:../src/ASF/common/services/usb/udc/udc.c **** 	static const uint8_t *udc_get_string_serial_name(void)
+ 133:../src/ASF/common/services/usb/udc/udc.c **** 	{
+ 134:../src/ASF/common/services/usb/udc/udc.c **** 		return (const uint8_t *)USB_DEVICE_SERIAL_NAME;
+ 135:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 136:../src/ASF/common/services/usb/udc/udc.c **** #  define USB_DEVICE_SERIAL_NAME_SIZE \
+ 137:../src/ASF/common/services/usb/udc/udc.c **** 	(sizeof(USB_DEVICE_SERIAL_NAME)-1)
+ 138:../src/ASF/common/services/usb/udc/udc.c **** #else
+ 139:../src/ASF/common/services/usb/udc/udc.c **** #  define USB_DEVICE_SERIAL_NAME_SIZE  0
+ 140:../src/ASF/common/services/usb/udc/udc.c **** #endif
+ 141:../src/ASF/common/services/usb/udc/udc.c **** 
+ 142:../src/ASF/common/services/usb/udc/udc.c **** /**
+ 143:../src/ASF/common/services/usb/udc/udc.c ****  * \brief USB device string descriptor
+ 144:../src/ASF/common/services/usb/udc/udc.c ****  * Structure used to transfer ASCII strings to USB String descriptor structure.
+ 145:../src/ASF/common/services/usb/udc/udc.c ****  */
+ 146:../src/ASF/common/services/usb/udc/udc.c **** struct udc_string_desc_t {
+ 147:../src/ASF/common/services/usb/udc/udc.c **** 	usb_str_desc_t header;
+ 148:../src/ASF/common/services/usb/udc/udc.c **** 	le16_t string[Max(Max(USB_DEVICE_MANUFACTURE_NAME_SIZE, \
+ 149:../src/ASF/common/services/usb/udc/udc.c **** 			USB_DEVICE_PRODUCT_NAME_SIZE), USB_DEVICE_SERIAL_NAME_SIZE)];
+ 150:../src/ASF/common/services/usb/udc/udc.c **** };
+ 151:../src/ASF/common/services/usb/udc/udc.c **** COMPILER_WORD_ALIGNED
+ 152:../src/ASF/common/services/usb/udc/udc.c **** static UDC_DESC_STORAGE struct udc_string_desc_t udc_string_desc = {
+ 153:../src/ASF/common/services/usb/udc/udc.c **** 	.header.bDescriptorType = USB_DT_STRING
+ 154:../src/ASF/common/services/usb/udc/udc.c **** };
+ 155:../src/ASF/common/services/usb/udc/udc.c **** //! @}
+ 156:../src/ASF/common/services/usb/udc/udc.c **** 
+ 157:../src/ASF/common/services/usb/udc/udc.c **** usb_iface_desc_t UDC_DESC_STORAGE *udc_get_interface_desc(void)
+ 158:../src/ASF/common/services/usb/udc/udc.c **** {
+ 159:../src/ASF/common/services/usb/udc/udc.c **** 	return udc_ptr_iface;
+ 160:../src/ASF/common/services/usb/udc/udc.c **** }
+ 161:../src/ASF/common/services/usb/udc/udc.c **** 
+ 162:../src/ASF/common/services/usb/udc/udc.c **** /**
+ 163:../src/ASF/common/services/usb/udc/udc.c ****  * \brief Returns a value to check the end of USB Configuration descriptor
+ 164:../src/ASF/common/services/usb/udc/udc.c ****  *
+ 165:../src/ASF/common/services/usb/udc/udc.c ****  * \return address after the last byte of USB Configuration descriptor
+ 166:../src/ASF/common/services/usb/udc/udc.c ****  */
+ 167:../src/ASF/common/services/usb/udc/udc.c **** static usb_conf_desc_t UDC_DESC_STORAGE *udc_get_eof_conf(void)
+ 168:../src/ASF/common/services/usb/udc/udc.c **** {
+ 169:../src/ASF/common/services/usb/udc/udc.c **** 	return (UDC_DESC_STORAGE usb_conf_desc_t *) ((uint8_t *)
+ 170:../src/ASF/common/services/usb/udc/udc.c **** 			udc_ptr_conf->desc +
+ 171:../src/ASF/common/services/usb/udc/udc.c **** 			le16_to_cpu(udc_ptr_conf->desc->wTotalLength));
+ 172:../src/ASF/common/services/usb/udc/udc.c **** }
+ 173:../src/ASF/common/services/usb/udc/udc.c **** 
+ 174:../src/ASF/common/services/usb/udc/udc.c **** #if (0!=USB_DEVICE_MAX_EP)
+ 175:../src/ASF/common/services/usb/udc/udc.c **** /**
+ 176:../src/ASF/common/services/usb/udc/udc.c ****  * \brief Search specific descriptor in global interface descriptor
+ 177:../src/ASF/common/services/usb/udc/udc.c ****  *
+ 178:../src/ASF/common/services/usb/udc/udc.c ****  * \param desc       Address of interface descriptor
+ 179:../src/ASF/common/services/usb/udc/udc.c ****  *                   or previous specific descriptor found
+ 180:../src/ASF/common/services/usb/udc/udc.c ****  * \param desc_id    Descriptor ID to search
+ 181:../src/ASF/common/services/usb/udc/udc.c ****  *
+ 182:../src/ASF/common/services/usb/udc/udc.c ****  * \return address of specific descriptor found
+ 183:../src/ASF/common/services/usb/udc/udc.c ****  * \return NULL if it is the end of global interface descriptor
+ 184:../src/ASF/common/services/usb/udc/udc.c ****  */
+ 185:../src/ASF/common/services/usb/udc/udc.c **** static usb_conf_desc_t UDC_DESC_STORAGE *udc_next_desc_in_iface(usb_conf_desc_t
+ 186:../src/ASF/common/services/usb/udc/udc.c **** 		UDC_DESC_STORAGE * desc, uint8_t desc_id)
+ 187:../src/ASF/common/services/usb/udc/udc.c **** {
+  26              		.loc 1 187 0
+  27              		.cfi_startproc
+  28              		@ args = 0, pretend = 0, frame = 0
+  29              		@ frame_needed = 0, uses_anonymous_args = 0
+  30              		@ link register save eliminated.
+  31              	.LVL0:
+  32              	.LBB4:
+  33              	.LBB5:
+ 171:../src/ASF/common/services/usb/udc/udc.c **** }
+  34              		.loc 1 171 0
+  35 0000 0F4B     		ldr	r3, .L10
+  36 0002 1B68     		ldr	r3, [r3]
+  37 0004 1A68     		ldr	r2, [r3]
+ 169:../src/ASF/common/services/usb/udc/udc.c **** 			udc_ptr_conf->desc +
+  38              		.loc 1 169 0
+  39 0006 5388     		ldrh	r3, [r2, #2]	@ unaligned
+  40 0008 1A44     		add	r2, r2, r3
+  41              	.LBE5:
+  42              	.LBE4:
+ 188:../src/ASF/common/services/usb/udc/udc.c **** 	usb_conf_desc_t UDC_DESC_STORAGE *ptr_eof_desc;
+ 189:../src/ASF/common/services/usb/udc/udc.c **** 
+ 190:../src/ASF/common/services/usb/udc/udc.c **** 	ptr_eof_desc = udc_get_eof_conf();
+ 191:../src/ASF/common/services/usb/udc/udc.c **** 	// Go to next descriptor
+ 192:../src/ASF/common/services/usb/udc/udc.c **** 	desc = (UDC_DESC_STORAGE usb_conf_desc_t *) ((uint8_t *) desc +
+  43              		.loc 1 192 0
+  44 000a 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+  45 000c 1844     		add	r0, r0, r3
+  46              	.LVL1:
+ 193:../src/ASF/common/services/usb/udc/udc.c **** 			desc->bLength);
+ 194:../src/ASF/common/services/usb/udc/udc.c **** 	// Check the end of configuration descriptor
+ 195:../src/ASF/common/services/usb/udc/udc.c **** 	while (ptr_eof_desc > desc) {
+  47              		.loc 1 195 0
+  48 000e 9042     		cmp	r0, r2
+  49 0010 10D2     		bcs	.L6
+ 196:../src/ASF/common/services/usb/udc/udc.c **** 		// If new interface descriptor is found,
+ 197:../src/ASF/common/services/usb/udc/udc.c **** 		// then it is the end of the current global interface descriptor
+ 198:../src/ASF/common/services/usb/udc/udc.c **** 		if (USB_DT_INTERFACE == desc->bDescriptorType) {
+  50              		.loc 1 198 0
+  51 0012 4378     		ldrb	r3, [r0, #1]	@ zero_extendqisi2
+  52 0014 042B     		cmp	r3, #4
+  53 0016 0FD0     		beq	.L7
+ 199:../src/ASF/common/services/usb/udc/udc.c **** 			break; // End of global interface descriptor
+ 200:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 201:../src/ASF/common/services/usb/udc/udc.c **** 		if (desc_id == desc->bDescriptorType) {
+  54              		.loc 1 201 0
+  55 0018 8B42     		cmp	r3, r1
+  56 001a 05D1     		bne	.L4
+  57 001c 7047     		bx	lr
+  58              	.L5:
+ 198:../src/ASF/common/services/usb/udc/udc.c **** 			break; // End of global interface descriptor
+  59              		.loc 1 198 0
+  60 001e 4378     		ldrb	r3, [r0, #1]	@ zero_extendqisi2
+  61 0020 042B     		cmp	r3, #4
+  62 0022 0BD0     		beq	.L8
+  63              		.loc 1 201 0
+  64 0024 8B42     		cmp	r3, r1
+  65 0026 0AD0     		beq	.L2
+  66              	.L4:
+ 202:../src/ASF/common/services/usb/udc/udc.c **** 			return desc; // Specific descriptor found
+ 203:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 204:../src/ASF/common/services/usb/udc/udc.c **** 		// Go to next descriptor
+ 205:../src/ASF/common/services/usb/udc/udc.c **** 		desc = (UDC_DESC_STORAGE usb_conf_desc_t *) ((uint8_t *) desc +
+  67              		.loc 1 205 0
+  68 0028 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+  69 002a 1844     		add	r0, r0, r3
+  70              	.LVL2:
+ 195:../src/ASF/common/services/usb/udc/udc.c **** 		// If new interface descriptor is found,
+  71              		.loc 1 195 0
+  72 002c 9042     		cmp	r0, r2
+  73 002e F6D3     		bcc	.L5
+ 206:../src/ASF/common/services/usb/udc/udc.c **** 				desc->bLength);
+ 207:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 208:../src/ASF/common/services/usb/udc/udc.c **** 	return NULL; // No specific descriptor found
+  74              		.loc 1 208 0
+  75 0030 0020     		movs	r0, #0
+  76              	.LVL3:
+  77 0032 7047     		bx	lr
+  78              	.LVL4:
+  79              	.L6:
+  80 0034 0020     		movs	r0, #0
+  81              	.LVL5:
+  82 0036 7047     		bx	lr
+  83              	.LVL6:
+  84              	.L7:
+  85 0038 0020     		movs	r0, #0
+  86              	.LVL7:
+  87 003a 7047     		bx	lr
+  88              	.LVL8:
+  89              	.L8:
+  90 003c 0020     		movs	r0, #0
+  91              	.LVL9:
+  92              	.L2:
+ 209:../src/ASF/common/services/usb/udc/udc.c **** }
+  93              		.loc 1 209 0
+  94 003e 7047     		bx	lr
+  95              	.L11:
+  96              		.align	2
+  97              	.L10:
+  98 0040 00000000 		.word	.LANCHOR0
+  99              		.cfi_endproc
+ 100              	.LFE73:
+ 102              		.section	.text.udc_valid_address,"ax",%progbits
+ 103              		.align	2
+ 104              		.thumb
+ 105              		.thumb_func
+ 107              	udc_valid_address:
+ 108              	.LFB87:
+ 210:../src/ASF/common/services/usb/udc/udc.c **** #endif
+ 211:../src/ASF/common/services/usb/udc/udc.c **** 
+ 212:../src/ASF/common/services/usb/udc/udc.c **** /**
+ 213:../src/ASF/common/services/usb/udc/udc.c ****  * \brief Search an interface descriptor
+ 214:../src/ASF/common/services/usb/udc/udc.c ****  * This routine updates the internal pointer udc_ptr_iface.
+ 215:../src/ASF/common/services/usb/udc/udc.c ****  *
+ 216:../src/ASF/common/services/usb/udc/udc.c ****  * \param iface_num     Interface number to find in Configuration Descriptor
+ 217:../src/ASF/common/services/usb/udc/udc.c ****  * \param setting_num   Setting number of interface to find
+ 218:../src/ASF/common/services/usb/udc/udc.c ****  *
+ 219:../src/ASF/common/services/usb/udc/udc.c ****  * \return 1 if found or 0 if not found
+ 220:../src/ASF/common/services/usb/udc/udc.c ****  */
+ 221:../src/ASF/common/services/usb/udc/udc.c **** static bool udc_update_iface_desc(uint8_t iface_num, uint8_t setting_num)
+ 222:../src/ASF/common/services/usb/udc/udc.c **** {
+ 223:../src/ASF/common/services/usb/udc/udc.c **** 	usb_conf_desc_t UDC_DESC_STORAGE *ptr_end_desc;
+ 224:../src/ASF/common/services/usb/udc/udc.c **** 
+ 225:../src/ASF/common/services/usb/udc/udc.c **** 	if (0 == udc_num_configuration) {
+ 226:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 227:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 228:../src/ASF/common/services/usb/udc/udc.c **** 
+ 229:../src/ASF/common/services/usb/udc/udc.c **** 	if (iface_num >= udc_ptr_conf->desc->bNumInterfaces) {
+ 230:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 231:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 232:../src/ASF/common/services/usb/udc/udc.c **** 
+ 233:../src/ASF/common/services/usb/udc/udc.c **** 	// Start at the beginning of configuration descriptor
+ 234:../src/ASF/common/services/usb/udc/udc.c **** 	udc_ptr_iface = (UDC_DESC_STORAGE usb_iface_desc_t *)
+ 235:../src/ASF/common/services/usb/udc/udc.c **** 			udc_ptr_conf->desc;
+ 236:../src/ASF/common/services/usb/udc/udc.c **** 
+ 237:../src/ASF/common/services/usb/udc/udc.c **** 	// Check the end of configuration descriptor
+ 238:../src/ASF/common/services/usb/udc/udc.c **** 	ptr_end_desc = udc_get_eof_conf();
+ 239:../src/ASF/common/services/usb/udc/udc.c **** 	while (ptr_end_desc >
+ 240:../src/ASF/common/services/usb/udc/udc.c **** 			(UDC_DESC_STORAGE usb_conf_desc_t *) udc_ptr_iface) {
+ 241:../src/ASF/common/services/usb/udc/udc.c **** 		if (USB_DT_INTERFACE == udc_ptr_iface->bDescriptorType) {
+ 242:../src/ASF/common/services/usb/udc/udc.c **** 			// A interface descriptor is found
+ 243:../src/ASF/common/services/usb/udc/udc.c **** 			// Check interface and alternate setting number
+ 244:../src/ASF/common/services/usb/udc/udc.c **** 			if ((iface_num == udc_ptr_iface->bInterfaceNumber) &&
+ 245:../src/ASF/common/services/usb/udc/udc.c **** 					(setting_num ==
+ 246:../src/ASF/common/services/usb/udc/udc.c **** 					udc_ptr_iface->bAlternateSetting)) {
+ 247:../src/ASF/common/services/usb/udc/udc.c **** 				return true; // Interface found
+ 248:../src/ASF/common/services/usb/udc/udc.c **** 			}
+ 249:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 250:../src/ASF/common/services/usb/udc/udc.c **** 		// Go to next descriptor
+ 251:../src/ASF/common/services/usb/udc/udc.c **** 		udc_ptr_iface = (UDC_DESC_STORAGE usb_iface_desc_t *) (
+ 252:../src/ASF/common/services/usb/udc/udc.c **** 				(uint8_t *) udc_ptr_iface +
+ 253:../src/ASF/common/services/usb/udc/udc.c **** 				udc_ptr_iface->bLength);
+ 254:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 255:../src/ASF/common/services/usb/udc/udc.c **** 	return false; // Interface not found
+ 256:../src/ASF/common/services/usb/udc/udc.c **** }
+ 257:../src/ASF/common/services/usb/udc/udc.c **** 
+ 258:../src/ASF/common/services/usb/udc/udc.c **** /**
+ 259:../src/ASF/common/services/usb/udc/udc.c ****  * \brief Disables an usb device interface (UDI)
+ 260:../src/ASF/common/services/usb/udc/udc.c ****  * This routine call the UDI corresponding to interface number
+ 261:../src/ASF/common/services/usb/udc/udc.c ****  *
+ 262:../src/ASF/common/services/usb/udc/udc.c ****  * \param iface_num     Interface number to disable
+ 263:../src/ASF/common/services/usb/udc/udc.c ****  *
+ 264:../src/ASF/common/services/usb/udc/udc.c ****  * \return 1 if it is done or 0 if interface is not found
+ 265:../src/ASF/common/services/usb/udc/udc.c ****  */
+ 266:../src/ASF/common/services/usb/udc/udc.c **** static bool udc_iface_disable(uint8_t iface_num)
+ 267:../src/ASF/common/services/usb/udc/udc.c **** {
+ 268:../src/ASF/common/services/usb/udc/udc.c **** 	udi_api_t UDC_DESC_STORAGE *udi_api;
+ 269:../src/ASF/common/services/usb/udc/udc.c **** 
+ 270:../src/ASF/common/services/usb/udc/udc.c **** 	// Select first alternate setting of the interface
+ 271:../src/ASF/common/services/usb/udc/udc.c **** 	// to update udc_ptr_iface before call iface->getsetting()
+ 272:../src/ASF/common/services/usb/udc/udc.c **** 	if (!udc_update_iface_desc(iface_num, 0)) {
+ 273:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 274:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 275:../src/ASF/common/services/usb/udc/udc.c **** 
+ 276:../src/ASF/common/services/usb/udc/udc.c **** 	// Select the interface with the current alternate setting
+ 277:../src/ASF/common/services/usb/udc/udc.c **** 	udi_api = udc_ptr_conf->udi_apis[iface_num];
+ 278:../src/ASF/common/services/usb/udc/udc.c **** 
+ 279:../src/ASF/common/services/usb/udc/udc.c **** #if (0!=USB_DEVICE_MAX_EP)
+ 280:../src/ASF/common/services/usb/udc/udc.c **** 	if (!udc_update_iface_desc(iface_num, udi_api->getsetting())) {
+ 281:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 282:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 283:../src/ASF/common/services/usb/udc/udc.c **** 
+ 284:../src/ASF/common/services/usb/udc/udc.c **** 	// Start at the beginning of interface descriptor
+ 285:../src/ASF/common/services/usb/udc/udc.c **** 	{
+ 286:../src/ASF/common/services/usb/udc/udc.c **** 		usb_ep_desc_t UDC_DESC_STORAGE *ep_desc;
+ 287:../src/ASF/common/services/usb/udc/udc.c **** 		ep_desc = (UDC_DESC_STORAGE usb_ep_desc_t *) udc_ptr_iface;
+ 288:../src/ASF/common/services/usb/udc/udc.c **** 		while (1) {
+ 289:../src/ASF/common/services/usb/udc/udc.c **** 			// Search Endpoint descriptor included in global interface descriptor
+ 290:../src/ASF/common/services/usb/udc/udc.c **** 			ep_desc = (UDC_DESC_STORAGE usb_ep_desc_t *)
+ 291:../src/ASF/common/services/usb/udc/udc.c **** 					udc_next_desc_in_iface((UDC_DESC_STORAGE
+ 292:../src/ASF/common/services/usb/udc/udc.c **** 					usb_conf_desc_t *)
+ 293:../src/ASF/common/services/usb/udc/udc.c **** 					ep_desc, USB_DT_ENDPOINT);
+ 294:../src/ASF/common/services/usb/udc/udc.c **** 			if (NULL == ep_desc) {
+ 295:../src/ASF/common/services/usb/udc/udc.c **** 				break;
+ 296:../src/ASF/common/services/usb/udc/udc.c **** 			}
+ 297:../src/ASF/common/services/usb/udc/udc.c **** 			// Free the endpoint used by the interface
+ 298:../src/ASF/common/services/usb/udc/udc.c **** 			udd_ep_free(ep_desc->bEndpointAddress);
+ 299:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 300:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 301:../src/ASF/common/services/usb/udc/udc.c **** #endif
+ 302:../src/ASF/common/services/usb/udc/udc.c **** 
+ 303:../src/ASF/common/services/usb/udc/udc.c **** 	// Disable interface
+ 304:../src/ASF/common/services/usb/udc/udc.c **** 	udi_api->disable();
+ 305:../src/ASF/common/services/usb/udc/udc.c **** 	return true;
+ 306:../src/ASF/common/services/usb/udc/udc.c **** }
+ 307:../src/ASF/common/services/usb/udc/udc.c **** 
+ 308:../src/ASF/common/services/usb/udc/udc.c **** /**
+ 309:../src/ASF/common/services/usb/udc/udc.c ****  * \brief Enables an usb device interface (UDI)
+ 310:../src/ASF/common/services/usb/udc/udc.c ****  * This routine calls the UDI corresponding
+ 311:../src/ASF/common/services/usb/udc/udc.c ****  * to the interface and setting number.
+ 312:../src/ASF/common/services/usb/udc/udc.c ****  *
+ 313:../src/ASF/common/services/usb/udc/udc.c ****  * \param iface_num     Interface number to enable
+ 314:../src/ASF/common/services/usb/udc/udc.c ****  * \param setting_num   Setting number to enable
+ 315:../src/ASF/common/services/usb/udc/udc.c ****  *
+ 316:../src/ASF/common/services/usb/udc/udc.c ****  * \return 1 if it is done or 0 if interface is not found
+ 317:../src/ASF/common/services/usb/udc/udc.c ****  */
+ 318:../src/ASF/common/services/usb/udc/udc.c **** static bool udc_iface_enable(uint8_t iface_num, uint8_t setting_num)
+ 319:../src/ASF/common/services/usb/udc/udc.c **** {
+ 320:../src/ASF/common/services/usb/udc/udc.c **** 	// Select the interface descriptor
+ 321:../src/ASF/common/services/usb/udc/udc.c **** 	if (!udc_update_iface_desc(iface_num, setting_num)) {
+ 322:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 323:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 324:../src/ASF/common/services/usb/udc/udc.c **** 
+ 325:../src/ASF/common/services/usb/udc/udc.c **** #if (0!=USB_DEVICE_MAX_EP)
+ 326:../src/ASF/common/services/usb/udc/udc.c **** 	usb_ep_desc_t UDC_DESC_STORAGE *ep_desc;
+ 327:../src/ASF/common/services/usb/udc/udc.c **** 
+ 328:../src/ASF/common/services/usb/udc/udc.c **** 	// Start at the beginning of the global interface descriptor
+ 329:../src/ASF/common/services/usb/udc/udc.c **** 	ep_desc = (UDC_DESC_STORAGE usb_ep_desc_t *) udc_ptr_iface;
+ 330:../src/ASF/common/services/usb/udc/udc.c **** 	while (1) {
+ 331:../src/ASF/common/services/usb/udc/udc.c **** 		// Search Endpoint descriptor included in the global interface descriptor
+ 332:../src/ASF/common/services/usb/udc/udc.c **** 		ep_desc = (UDC_DESC_STORAGE usb_ep_desc_t *)
+ 333:../src/ASF/common/services/usb/udc/udc.c **** 				udc_next_desc_in_iface((UDC_DESC_STORAGE
+ 334:../src/ASF/common/services/usb/udc/udc.c **** 						usb_conf_desc_t *) ep_desc,
+ 335:../src/ASF/common/services/usb/udc/udc.c **** 				USB_DT_ENDPOINT);
+ 336:../src/ASF/common/services/usb/udc/udc.c **** 		if (NULL == ep_desc)
+ 337:../src/ASF/common/services/usb/udc/udc.c **** 			break;
+ 338:../src/ASF/common/services/usb/udc/udc.c **** 		// Alloc the endpoint used by the interface
+ 339:../src/ASF/common/services/usb/udc/udc.c **** 		if (!udd_ep_alloc(ep_desc->bEndpointAddress,
+ 340:../src/ASF/common/services/usb/udc/udc.c **** 				ep_desc->bmAttributes,
+ 341:../src/ASF/common/services/usb/udc/udc.c **** 				le16_to_cpu
+ 342:../src/ASF/common/services/usb/udc/udc.c **** 				(ep_desc->wMaxPacketSize))) {
+ 343:../src/ASF/common/services/usb/udc/udc.c **** 			return false;
+ 344:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 345:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 346:../src/ASF/common/services/usb/udc/udc.c **** #endif
+ 347:../src/ASF/common/services/usb/udc/udc.c **** 	// Enable the interface
+ 348:../src/ASF/common/services/usb/udc/udc.c **** 	return udc_ptr_conf->udi_apis[iface_num]->enable();
+ 349:../src/ASF/common/services/usb/udc/udc.c **** }
+ 350:../src/ASF/common/services/usb/udc/udc.c **** 
+ 351:../src/ASF/common/services/usb/udc/udc.c **** /*! \brief Start the USB Device stack
+ 352:../src/ASF/common/services/usb/udc/udc.c ****  */
+ 353:../src/ASF/common/services/usb/udc/udc.c **** void udc_start(void)
+ 354:../src/ASF/common/services/usb/udc/udc.c **** {
+ 355:../src/ASF/common/services/usb/udc/udc.c **** 	udd_enable();
+ 356:../src/ASF/common/services/usb/udc/udc.c **** }
+ 357:../src/ASF/common/services/usb/udc/udc.c **** 
+ 358:../src/ASF/common/services/usb/udc/udc.c **** /*! \brief Stop the USB Device stack
+ 359:../src/ASF/common/services/usb/udc/udc.c ****  */
+ 360:../src/ASF/common/services/usb/udc/udc.c **** void udc_stop(void)
+ 361:../src/ASF/common/services/usb/udc/udc.c **** {
+ 362:../src/ASF/common/services/usb/udc/udc.c **** 	udd_disable();
+ 363:../src/ASF/common/services/usb/udc/udc.c **** 	udc_reset();
+ 364:../src/ASF/common/services/usb/udc/udc.c **** }
+ 365:../src/ASF/common/services/usb/udc/udc.c **** 
+ 366:../src/ASF/common/services/usb/udc/udc.c **** /**
+ 367:../src/ASF/common/services/usb/udc/udc.c ****  * \brief Reset the current configuration of the USB device,
+ 368:../src/ASF/common/services/usb/udc/udc.c ****  * This routines can be called by UDD when a RESET on the USB line occurs.
+ 369:../src/ASF/common/services/usb/udc/udc.c ****  */
+ 370:../src/ASF/common/services/usb/udc/udc.c **** void udc_reset(void)
+ 371:../src/ASF/common/services/usb/udc/udc.c **** {
+ 372:../src/ASF/common/services/usb/udc/udc.c **** 	uint8_t iface_num;
+ 373:../src/ASF/common/services/usb/udc/udc.c **** 
+ 374:../src/ASF/common/services/usb/udc/udc.c **** 	if (udc_num_configuration) {
+ 375:../src/ASF/common/services/usb/udc/udc.c **** 		for (iface_num = 0;
+ 376:../src/ASF/common/services/usb/udc/udc.c **** 				iface_num < udc_ptr_conf->desc->bNumInterfaces;
+ 377:../src/ASF/common/services/usb/udc/udc.c **** 				iface_num++) {
+ 378:../src/ASF/common/services/usb/udc/udc.c **** 			udc_iface_disable(iface_num);
+ 379:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 380:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 381:../src/ASF/common/services/usb/udc/udc.c **** 	udc_num_configuration = 0;
+ 382:../src/ASF/common/services/usb/udc/udc.c **** #if (USB_CONFIG_ATTR_REMOTE_WAKEUP \
+ 383:../src/ASF/common/services/usb/udc/udc.c **** 	== (USB_DEVICE_ATTR & USB_CONFIG_ATTR_REMOTE_WAKEUP))
+ 384:../src/ASF/common/services/usb/udc/udc.c **** 	if (CPU_TO_LE16(USB_DEV_STATUS_REMOTEWAKEUP) & udc_device_status) {
+ 385:../src/ASF/common/services/usb/udc/udc.c **** 		// Remote wakeup is enabled then disable it
+ 386:../src/ASF/common/services/usb/udc/udc.c **** 		UDC_REMOTEWAKEUP_DISABLE();
+ 387:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 388:../src/ASF/common/services/usb/udc/udc.c **** #endif
+ 389:../src/ASF/common/services/usb/udc/udc.c **** 	udc_device_status =
+ 390:../src/ASF/common/services/usb/udc/udc.c **** #if (USB_DEVICE_ATTR & USB_CONFIG_ATTR_SELF_POWERED)
+ 391:../src/ASF/common/services/usb/udc/udc.c **** 			CPU_TO_LE16(USB_DEV_STATUS_SELF_POWERED);
+ 392:../src/ASF/common/services/usb/udc/udc.c **** #else
+ 393:../src/ASF/common/services/usb/udc/udc.c **** 			CPU_TO_LE16(USB_DEV_STATUS_BUS_POWERED);
+ 394:../src/ASF/common/services/usb/udc/udc.c **** #endif
+ 395:../src/ASF/common/services/usb/udc/udc.c **** }
+ 396:../src/ASF/common/services/usb/udc/udc.c **** 
+ 397:../src/ASF/common/services/usb/udc/udc.c **** void udc_sof_notify(void)
+ 398:../src/ASF/common/services/usb/udc/udc.c **** {
+ 399:../src/ASF/common/services/usb/udc/udc.c **** 	uint8_t iface_num;
+ 400:../src/ASF/common/services/usb/udc/udc.c **** 
+ 401:../src/ASF/common/services/usb/udc/udc.c **** 	if (udc_num_configuration) {
+ 402:../src/ASF/common/services/usb/udc/udc.c **** 		for (iface_num = 0;
+ 403:../src/ASF/common/services/usb/udc/udc.c **** 				iface_num < udc_ptr_conf->desc->bNumInterfaces;
+ 404:../src/ASF/common/services/usb/udc/udc.c **** 				iface_num++) {
+ 405:../src/ASF/common/services/usb/udc/udc.c **** 			if (udc_ptr_conf->udi_apis[iface_num]->sof_notify != NULL) {
+ 406:../src/ASF/common/services/usb/udc/udc.c **** 				udc_ptr_conf->udi_apis[iface_num]->sof_notify();
+ 407:../src/ASF/common/services/usb/udc/udc.c **** 			}
+ 408:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 409:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 410:../src/ASF/common/services/usb/udc/udc.c **** }
+ 411:../src/ASF/common/services/usb/udc/udc.c **** 
+ 412:../src/ASF/common/services/usb/udc/udc.c **** /**
+ 413:../src/ASF/common/services/usb/udc/udc.c ****  * \brief Standard device request to get device status
+ 414:../src/ASF/common/services/usb/udc/udc.c ****  *
+ 415:../src/ASF/common/services/usb/udc/udc.c ****  * \return true if success
+ 416:../src/ASF/common/services/usb/udc/udc.c ****  */
+ 417:../src/ASF/common/services/usb/udc/udc.c **** static bool udc_req_std_dev_get_status(void)
+ 418:../src/ASF/common/services/usb/udc/udc.c **** {
+ 419:../src/ASF/common/services/usb/udc/udc.c **** 	if (udd_g_ctrlreq.req.wLength != sizeof(udc_device_status)) {
+ 420:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 421:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 422:../src/ASF/common/services/usb/udc/udc.c **** 
+ 423:../src/ASF/common/services/usb/udc/udc.c **** 	udd_set_setup_payload( (uint8_t *) & udc_device_status,
+ 424:../src/ASF/common/services/usb/udc/udc.c **** 			sizeof(udc_device_status));
+ 425:../src/ASF/common/services/usb/udc/udc.c **** 	return true;
+ 426:../src/ASF/common/services/usb/udc/udc.c **** }
+ 427:../src/ASF/common/services/usb/udc/udc.c **** 
+ 428:../src/ASF/common/services/usb/udc/udc.c **** #if (0!=USB_DEVICE_MAX_EP)
+ 429:../src/ASF/common/services/usb/udc/udc.c **** /**
+ 430:../src/ASF/common/services/usb/udc/udc.c ****  * \brief Standard endpoint request to get endpoint status
+ 431:../src/ASF/common/services/usb/udc/udc.c ****  *
+ 432:../src/ASF/common/services/usb/udc/udc.c ****  * \return true if success
+ 433:../src/ASF/common/services/usb/udc/udc.c ****  */
+ 434:../src/ASF/common/services/usb/udc/udc.c **** static bool udc_req_std_ep_get_status(void)
+ 435:../src/ASF/common/services/usb/udc/udc.c **** {
+ 436:../src/ASF/common/services/usb/udc/udc.c **** 	static le16_t udc_ep_status;
+ 437:../src/ASF/common/services/usb/udc/udc.c **** 
+ 438:../src/ASF/common/services/usb/udc/udc.c **** 	if (udd_g_ctrlreq.req.wLength != sizeof(udc_ep_status)) {
+ 439:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 440:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 441:../src/ASF/common/services/usb/udc/udc.c **** 
+ 442:../src/ASF/common/services/usb/udc/udc.c **** 	udc_ep_status = udd_ep_is_halted(udd_g_ctrlreq.req.
+ 443:../src/ASF/common/services/usb/udc/udc.c **** 			wIndex & 0xFF) ? CPU_TO_LE16(USB_EP_STATUS_HALTED) : 0;
+ 444:../src/ASF/common/services/usb/udc/udc.c **** 
+ 445:../src/ASF/common/services/usb/udc/udc.c **** 	udd_set_setup_payload( (uint8_t *) & udc_ep_status,
+ 446:../src/ASF/common/services/usb/udc/udc.c **** 			sizeof(udc_ep_status));
+ 447:../src/ASF/common/services/usb/udc/udc.c **** 	return true;
+ 448:../src/ASF/common/services/usb/udc/udc.c **** }
+ 449:../src/ASF/common/services/usb/udc/udc.c **** #endif
+ 450:../src/ASF/common/services/usb/udc/udc.c **** 
+ 451:../src/ASF/common/services/usb/udc/udc.c **** /**
+ 452:../src/ASF/common/services/usb/udc/udc.c ****  * \brief Standard device request to change device status
+ 453:../src/ASF/common/services/usb/udc/udc.c ****  *
+ 454:../src/ASF/common/services/usb/udc/udc.c ****  * \return true if success
+ 455:../src/ASF/common/services/usb/udc/udc.c ****  */
+ 456:../src/ASF/common/services/usb/udc/udc.c **** static bool udc_req_std_dev_clear_feature(void)
+ 457:../src/ASF/common/services/usb/udc/udc.c **** {
+ 458:../src/ASF/common/services/usb/udc/udc.c **** 	if (udd_g_ctrlreq.req.wLength) {
+ 459:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 460:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 461:../src/ASF/common/services/usb/udc/udc.c **** 
+ 462:../src/ASF/common/services/usb/udc/udc.c **** 	if (udd_g_ctrlreq.req.wValue == USB_DEV_FEATURE_REMOTE_WAKEUP) {
+ 463:../src/ASF/common/services/usb/udc/udc.c **** 		udc_device_status &= CPU_TO_LE16(~(uint32_t)USB_DEV_STATUS_REMOTEWAKEUP);
+ 464:../src/ASF/common/services/usb/udc/udc.c **** #if (USB_CONFIG_ATTR_REMOTE_WAKEUP \
+ 465:../src/ASF/common/services/usb/udc/udc.c **** 	== (USB_DEVICE_ATTR & USB_CONFIG_ATTR_REMOTE_WAKEUP))
+ 466:../src/ASF/common/services/usb/udc/udc.c **** 		UDC_REMOTEWAKEUP_DISABLE();
+ 467:../src/ASF/common/services/usb/udc/udc.c **** #endif
+ 468:../src/ASF/common/services/usb/udc/udc.c **** 		return true;
+ 469:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 470:../src/ASF/common/services/usb/udc/udc.c **** 	return false;
+ 471:../src/ASF/common/services/usb/udc/udc.c **** }
+ 472:../src/ASF/common/services/usb/udc/udc.c **** 
+ 473:../src/ASF/common/services/usb/udc/udc.c **** #if (0!=USB_DEVICE_MAX_EP)
+ 474:../src/ASF/common/services/usb/udc/udc.c **** /**
+ 475:../src/ASF/common/services/usb/udc/udc.c ****  * \brief Standard endpoint request to clear endpoint feature
+ 476:../src/ASF/common/services/usb/udc/udc.c ****  *
+ 477:../src/ASF/common/services/usb/udc/udc.c ****  * \return true if success
+ 478:../src/ASF/common/services/usb/udc/udc.c ****  */
+ 479:../src/ASF/common/services/usb/udc/udc.c **** static bool udc_req_std_ep_clear_feature(void)
+ 480:../src/ASF/common/services/usb/udc/udc.c **** {
+ 481:../src/ASF/common/services/usb/udc/udc.c **** 	if (udd_g_ctrlreq.req.wLength) {
+ 482:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 483:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 484:../src/ASF/common/services/usb/udc/udc.c **** 
+ 485:../src/ASF/common/services/usb/udc/udc.c **** 	if (udd_g_ctrlreq.req.wValue == USB_EP_FEATURE_HALT) {
+ 486:../src/ASF/common/services/usb/udc/udc.c **** 		return udd_ep_clear_halt(udd_g_ctrlreq.req.wIndex & 0xFF);
+ 487:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 488:../src/ASF/common/services/usb/udc/udc.c **** 	return false;
+ 489:../src/ASF/common/services/usb/udc/udc.c **** }
+ 490:../src/ASF/common/services/usb/udc/udc.c **** #endif
+ 491:../src/ASF/common/services/usb/udc/udc.c **** 
+ 492:../src/ASF/common/services/usb/udc/udc.c **** /**
+ 493:../src/ASF/common/services/usb/udc/udc.c ****  * \brief Standard device request to set a feature
+ 494:../src/ASF/common/services/usb/udc/udc.c ****  *
+ 495:../src/ASF/common/services/usb/udc/udc.c ****  * \return true if success
+ 496:../src/ASF/common/services/usb/udc/udc.c ****  */
+ 497:../src/ASF/common/services/usb/udc/udc.c **** static bool udc_req_std_dev_set_feature(void)
+ 498:../src/ASF/common/services/usb/udc/udc.c **** {
+ 499:../src/ASF/common/services/usb/udc/udc.c **** 	if (udd_g_ctrlreq.req.wLength) {
+ 500:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 501:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 502:../src/ASF/common/services/usb/udc/udc.c **** 
+ 503:../src/ASF/common/services/usb/udc/udc.c **** 	switch (udd_g_ctrlreq.req.wValue) {
+ 504:../src/ASF/common/services/usb/udc/udc.c **** 
+ 505:../src/ASF/common/services/usb/udc/udc.c **** 	case USB_DEV_FEATURE_REMOTE_WAKEUP:
+ 506:../src/ASF/common/services/usb/udc/udc.c **** #if (USB_CONFIG_ATTR_REMOTE_WAKEUP \
+ 507:../src/ASF/common/services/usb/udc/udc.c **** 	== (USB_DEVICE_ATTR & USB_CONFIG_ATTR_REMOTE_WAKEUP))
+ 508:../src/ASF/common/services/usb/udc/udc.c **** 		udc_device_status |= CPU_TO_LE16(USB_DEV_STATUS_REMOTEWAKEUP);
+ 509:../src/ASF/common/services/usb/udc/udc.c **** 		UDC_REMOTEWAKEUP_ENABLE();
+ 510:../src/ASF/common/services/usb/udc/udc.c **** 		return true;
+ 511:../src/ASF/common/services/usb/udc/udc.c **** #else
+ 512:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 513:../src/ASF/common/services/usb/udc/udc.c **** #endif
+ 514:../src/ASF/common/services/usb/udc/udc.c **** 
+ 515:../src/ASF/common/services/usb/udc/udc.c **** #ifdef USB_DEVICE_HS_SUPPORT
+ 516:../src/ASF/common/services/usb/udc/udc.c **** 	case USB_DEV_FEATURE_TEST_MODE:
+ 517:../src/ASF/common/services/usb/udc/udc.c **** 		if (!udd_is_high_speed()) {
+ 518:../src/ASF/common/services/usb/udc/udc.c **** 			break;
+ 519:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 520:../src/ASF/common/services/usb/udc/udc.c **** 		if (udd_g_ctrlreq.req.wIndex & 0xff) {
+ 521:../src/ASF/common/services/usb/udc/udc.c **** 			break;
+ 522:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 523:../src/ASF/common/services/usb/udc/udc.c **** 		// Unconfigure the device, terminating all ongoing requests
+ 524:../src/ASF/common/services/usb/udc/udc.c **** 		udc_reset();
+ 525:../src/ASF/common/services/usb/udc/udc.c **** 		switch ((udd_g_ctrlreq.req.wIndex >> 8) & 0xFF) {
+ 526:../src/ASF/common/services/usb/udc/udc.c **** 		case USB_DEV_TEST_MODE_J:
+ 527:../src/ASF/common/services/usb/udc/udc.c **** 			udd_g_ctrlreq.callback = udd_test_mode_j;
+ 528:../src/ASF/common/services/usb/udc/udc.c **** 			return true;
+ 529:../src/ASF/common/services/usb/udc/udc.c **** 
+ 530:../src/ASF/common/services/usb/udc/udc.c **** 		case USB_DEV_TEST_MODE_K:
+ 531:../src/ASF/common/services/usb/udc/udc.c **** 			udd_g_ctrlreq.callback = udd_test_mode_k;
+ 532:../src/ASF/common/services/usb/udc/udc.c **** 			return true;
+ 533:../src/ASF/common/services/usb/udc/udc.c **** 
+ 534:../src/ASF/common/services/usb/udc/udc.c **** 		case USB_DEV_TEST_MODE_SE0_NAK:
+ 535:../src/ASF/common/services/usb/udc/udc.c **** 			udd_g_ctrlreq.callback = udd_test_mode_se0_nak;
+ 536:../src/ASF/common/services/usb/udc/udc.c **** 			return true;
+ 537:../src/ASF/common/services/usb/udc/udc.c **** 
+ 538:../src/ASF/common/services/usb/udc/udc.c **** 		case USB_DEV_TEST_MODE_PACKET:
+ 539:../src/ASF/common/services/usb/udc/udc.c **** 			udd_g_ctrlreq.callback = udd_test_mode_packet;
+ 540:../src/ASF/common/services/usb/udc/udc.c **** 			return true;
+ 541:../src/ASF/common/services/usb/udc/udc.c **** 
+ 542:../src/ASF/common/services/usb/udc/udc.c **** 		case USB_DEV_TEST_MODE_FORCE_ENABLE: // Only for downstream facing hub ports
+ 543:../src/ASF/common/services/usb/udc/udc.c **** 		default:
+ 544:../src/ASF/common/services/usb/udc/udc.c **** 			break;
+ 545:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 546:../src/ASF/common/services/usb/udc/udc.c **** 		break;
+ 547:../src/ASF/common/services/usb/udc/udc.c **** #endif
+ 548:../src/ASF/common/services/usb/udc/udc.c **** 	default:
+ 549:../src/ASF/common/services/usb/udc/udc.c **** 		break;
+ 550:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 551:../src/ASF/common/services/usb/udc/udc.c **** 	return false;
+ 552:../src/ASF/common/services/usb/udc/udc.c **** }
+ 553:../src/ASF/common/services/usb/udc/udc.c **** 
+ 554:../src/ASF/common/services/usb/udc/udc.c **** /**
+ 555:../src/ASF/common/services/usb/udc/udc.c ****  * \brief Standard endpoint request to halt an endpoint
+ 556:../src/ASF/common/services/usb/udc/udc.c ****  *
+ 557:../src/ASF/common/services/usb/udc/udc.c ****  * \return true if success
+ 558:../src/ASF/common/services/usb/udc/udc.c ****  */
+ 559:../src/ASF/common/services/usb/udc/udc.c **** #if (0!=USB_DEVICE_MAX_EP)
+ 560:../src/ASF/common/services/usb/udc/udc.c **** static bool udc_req_std_ep_set_feature(void)
+ 561:../src/ASF/common/services/usb/udc/udc.c **** {
+ 562:../src/ASF/common/services/usb/udc/udc.c **** 	if (udd_g_ctrlreq.req.wLength) {
+ 563:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 564:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 565:../src/ASF/common/services/usb/udc/udc.c **** 	if (udd_g_ctrlreq.req.wValue == USB_EP_FEATURE_HALT) {
+ 566:../src/ASF/common/services/usb/udc/udc.c **** 		udd_ep_abort(udd_g_ctrlreq.req.wIndex & 0xFF);
+ 567:../src/ASF/common/services/usb/udc/udc.c **** 		return udd_ep_set_halt(udd_g_ctrlreq.req.wIndex & 0xFF);
+ 568:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 569:../src/ASF/common/services/usb/udc/udc.c **** 	return false;
+ 570:../src/ASF/common/services/usb/udc/udc.c **** }
+ 571:../src/ASF/common/services/usb/udc/udc.c **** #endif
+ 572:../src/ASF/common/services/usb/udc/udc.c **** 
+ 573:../src/ASF/common/services/usb/udc/udc.c **** /**
+ 574:../src/ASF/common/services/usb/udc/udc.c ****  * \brief Change the address of device
+ 575:../src/ASF/common/services/usb/udc/udc.c ****  * Callback called at the end of request set address
+ 576:../src/ASF/common/services/usb/udc/udc.c ****  */
+ 577:../src/ASF/common/services/usb/udc/udc.c **** static void udc_valid_address(void)
+ 578:../src/ASF/common/services/usb/udc/udc.c **** {
+ 109              		.loc 1 578 0
+ 110              		.cfi_startproc
+ 111              		@ args = 0, pretend = 0, frame = 0
+ 112              		@ frame_needed = 0, uses_anonymous_args = 0
+ 113 0000 08B5     		push	{r3, lr}
+ 114              	.LCFI0:
+ 115              		.cfi_def_cfa_offset 8
+ 116              		.cfi_offset 3, -8
+ 117              		.cfi_offset 14, -4
+ 579:../src/ASF/common/services/usb/udc/udc.c **** 	udd_set_address(udd_g_ctrlreq.req.wValue & 0x7F);
+ 118              		.loc 1 579 0
+ 119 0002 034B     		ldr	r3, .L14
+ 120 0004 9878     		ldrb	r0, [r3, #2]	@ zero_extendqisi2
+ 121 0006 00F07F00 		and	r0, r0, #127
+ 122 000a 024B     		ldr	r3, .L14+4
+ 123 000c 9847     		blx	r3
+ 124              	.LVL10:
+ 125 000e 08BD     		pop	{r3, pc}
+ 126              	.L15:
+ 127              		.align	2
+ 128              	.L14:
+ 129 0010 00000000 		.word	udd_g_ctrlreq
+ 130 0014 00000000 		.word	udd_set_address
+ 131              		.cfi_endproc
+ 132              	.LFE87:
+ 134              		.section	.text.udc_update_iface_desc,"ax",%progbits
+ 135              		.align	2
+ 136              		.thumb
+ 137              		.thumb_func
+ 139              	udc_update_iface_desc:
+ 140              	.LFB74:
+ 222:../src/ASF/common/services/usb/udc/udc.c **** 	usb_conf_desc_t UDC_DESC_STORAGE *ptr_end_desc;
+ 141              		.loc 1 222 0
+ 142              		.cfi_startproc
+ 143              		@ args = 0, pretend = 0, frame = 0
+ 144              		@ frame_needed = 0, uses_anonymous_args = 0
+ 145              		@ link register save eliminated.
+ 146              	.LVL11:
+ 225:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 147              		.loc 1 225 0
+ 148 0000 164B     		ldr	r3, .L26
+ 149 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 150 0004 0BB3     		cbz	r3, .L20
+ 229:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 151              		.loc 1 229 0
+ 152 0006 164B     		ldr	r3, .L26+4
+ 153 0008 1B68     		ldr	r3, [r3]
+ 154 000a 1B68     		ldr	r3, [r3]
+ 155 000c 1A79     		ldrb	r2, [r3, #4]	@ zero_extendqisi2
+ 156 000e 8242     		cmp	r2, r0
+ 157 0010 1DD9     		bls	.L21
+ 222:../src/ASF/common/services/usb/udc/udc.c **** 	usb_conf_desc_t UDC_DESC_STORAGE *ptr_end_desc;
+ 158              		.loc 1 222 0
+ 159 0012 10B4     		push	{r4}
+ 160              	.LCFI1:
+ 161              		.cfi_def_cfa_offset 4
+ 162              		.cfi_offset 4, -4
+ 234:../src/ASF/common/services/usb/udc/udc.c **** 			udc_ptr_conf->desc;
+ 163              		.loc 1 234 0
+ 164 0014 134A     		ldr	r2, .L26+8
+ 165 0016 1360     		str	r3, [r2]
+ 166              	.LBB8:
+ 167              	.LBB9:
+ 169:../src/ASF/common/services/usb/udc/udc.c **** 			udc_ptr_conf->desc +
+ 168              		.loc 1 169 0
+ 169 0018 5C88     		ldrh	r4, [r3, #2]	@ unaligned
+ 170 001a 1C44     		add	r4, r4, r3
+ 171              	.LBE9:
+ 172              	.LBE8:
+ 239:../src/ASF/common/services/usb/udc/udc.c **** 			(UDC_DESC_STORAGE usb_conf_desc_t *) udc_ptr_iface) {
+ 173              		.loc 1 239 0
+ 174 001c A342     		cmp	r3, r4
+ 175 001e 18D2     		bcs	.L22
+ 176              	.L19:
+ 241:../src/ASF/common/services/usb/udc/udc.c **** 			// A interface descriptor is found
+ 177              		.loc 1 241 0
+ 178 0020 5A78     		ldrb	r2, [r3, #1]	@ zero_extendqisi2
+ 179 0022 042A     		cmp	r2, #4
+ 180 0024 09D1     		bne	.L18
+ 244:../src/ASF/common/services/usb/udc/udc.c **** 					(setting_num ==
+ 181              		.loc 1 244 0
+ 182 0026 9A78     		ldrb	r2, [r3, #2]	@ zero_extendqisi2
+ 183 0028 8242     		cmp	r2, r0
+ 184 002a 06D1     		bne	.L18
+ 244:../src/ASF/common/services/usb/udc/udc.c **** 					(setting_num ==
+ 185              		.loc 1 244 0 is_stmt 0 discriminator 1
+ 186 002c DA78     		ldrb	r2, [r3, #3]	@ zero_extendqisi2
+ 187 002e 8A42     		cmp	r2, r1
+ 188 0030 03D1     		bne	.L18
+ 189 0032 0C4A     		ldr	r2, .L26+8
+ 190 0034 1360     		str	r3, [r2]
+ 247:../src/ASF/common/services/usb/udc/udc.c **** 			}
+ 191              		.loc 1 247 0 is_stmt 1
+ 192 0036 0120     		movs	r0, #1
+ 193              	.LVL12:
+ 194 0038 0CE0     		b	.L17
+ 195              	.LVL13:
+ 196              	.L18:
+ 251:../src/ASF/common/services/usb/udc/udc.c **** 				(uint8_t *) udc_ptr_iface +
+ 197              		.loc 1 251 0
+ 198 003a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 199 003c 1344     		add	r3, r3, r2
+ 239:../src/ASF/common/services/usb/udc/udc.c **** 			(UDC_DESC_STORAGE usb_conf_desc_t *) udc_ptr_iface) {
+ 200              		.loc 1 239 0
+ 201 003e A342     		cmp	r3, r4
+ 202 0040 EED3     		bcc	.L19
+ 203 0042 084A     		ldr	r2, .L26+8
+ 204 0044 1360     		str	r3, [r2]
+ 255:../src/ASF/common/services/usb/udc/udc.c **** }
+ 205              		.loc 1 255 0
+ 206 0046 0020     		movs	r0, #0
+ 207              	.LVL14:
+ 208 0048 04E0     		b	.L17
+ 209              	.LVL15:
+ 210              	.L20:
+ 211              	.LCFI2:
+ 212              		.cfi_def_cfa_offset 0
+ 213              		.cfi_restore 4
+ 226:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 214              		.loc 1 226 0
+ 215 004a 0020     		movs	r0, #0
+ 216              	.LVL16:
+ 256:../src/ASF/common/services/usb/udc/udc.c **** 
+ 217              		.loc 1 256 0
+ 218 004c 7047     		bx	lr
+ 219              	.LVL17:
+ 220              	.L21:
+ 230:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 221              		.loc 1 230 0
+ 222 004e 0020     		movs	r0, #0
+ 223              	.LVL18:
+ 224 0050 7047     		bx	lr
+ 225              	.LVL19:
+ 226              	.L22:
+ 227              	.LCFI3:
+ 228              		.cfi_def_cfa_offset 4
+ 229              		.cfi_offset 4, -4
+ 255:../src/ASF/common/services/usb/udc/udc.c **** }
+ 230              		.loc 1 255 0
+ 231 0052 0020     		movs	r0, #0
+ 232              	.LVL20:
+ 233              	.L17:
+ 256:../src/ASF/common/services/usb/udc/udc.c **** 
+ 234              		.loc 1 256 0
+ 235 0054 5DF8044B 		ldr	r4, [sp], #4
+ 236              	.LCFI4:
+ 237              		.cfi_restore 4
+ 238              		.cfi_def_cfa_offset 0
+ 239 0058 7047     		bx	lr
+ 240              	.L27:
+ 241 005a 00BF     		.align	2
+ 242              	.L26:
+ 243 005c 00000000 		.word	.LANCHOR1
+ 244 0060 00000000 		.word	.LANCHOR0
+ 245 0064 00000000 		.word	.LANCHOR2
+ 246              		.cfi_endproc
+ 247              	.LFE74:
+ 249              		.section	.text.udc_iface_disable,"ax",%progbits
+ 250              		.align	2
+ 251              		.thumb
+ 252              		.thumb_func
+ 254              	udc_iface_disable:
+ 255              	.LFB75:
+ 267:../src/ASF/common/services/usb/udc/udc.c **** 	udi_api_t UDC_DESC_STORAGE *udi_api;
+ 256              		.loc 1 267 0
+ 257              		.cfi_startproc
+ 258              		@ args = 0, pretend = 0, frame = 0
+ 259              		@ frame_needed = 0, uses_anonymous_args = 0
+ 260              	.LVL21:
+ 261 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+ 262              	.LCFI5:
+ 263              		.cfi_def_cfa_offset 32
+ 264              		.cfi_offset 3, -32
+ 265              		.cfi_offset 4, -28
+ 266              		.cfi_offset 5, -24
+ 267              		.cfi_offset 6, -20
+ 268              		.cfi_offset 7, -16
+ 269              		.cfi_offset 8, -12
+ 270              		.cfi_offset 9, -8
+ 271              		.cfi_offset 14, -4
+ 272 0004 0446     		mov	r4, r0
+ 272:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 273              		.loc 1 272 0
+ 274 0006 0021     		movs	r1, #0
+ 275 0008 124B     		ldr	r3, .L33
+ 276 000a 9847     		blx	r3
+ 277              	.LVL22:
+ 278 000c 8046     		mov	r8, r0
+ 279 000e E8B1     		cbz	r0, .L29
+ 277:../src/ASF/common/services/usb/udc/udc.c **** 
+ 280              		.loc 1 277 0
+ 281 0010 114B     		ldr	r3, .L33+4
+ 282 0012 1B68     		ldr	r3, [r3]
+ 283 0014 5B68     		ldr	r3, [r3, #4]
+ 284 0016 53F82490 		ldr	r9, [r3, r4, lsl #2]
+ 285              	.LVL23:
+ 280:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 286              		.loc 1 280 0
+ 287 001a D9F80C30 		ldr	r3, [r9, #12]
+ 288 001e 9847     		blx	r3
+ 289              	.LVL24:
+ 290 0020 0146     		mov	r1, r0
+ 291 0022 2046     		mov	r0, r4
+ 292 0024 0B4B     		ldr	r3, .L33
+ 293 0026 9847     		blx	r3
+ 294              	.LVL25:
+ 295 0028 8046     		mov	r8, r0
+ 296 002a 78B1     		cbz	r0, .L29
+ 297              	.LBB10:
+ 287:../src/ASF/common/services/usb/udc/udc.c **** 		while (1) {
+ 298              		.loc 1 287 0
+ 299 002c 0B4B     		ldr	r3, .L33+8
+ 300 002e 1C68     		ldr	r4, [r3]
+ 301              	.LVL26:
+ 290:../src/ASF/common/services/usb/udc/udc.c **** 					udc_next_desc_in_iface((UDC_DESC_STORAGE
+ 302              		.loc 1 290 0
+ 303 0030 0526     		movs	r6, #5
+ 304 0032 0B4D     		ldr	r5, .L33+12
+ 298:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 305              		.loc 1 298 0
+ 306 0034 0B4F     		ldr	r7, .L33+16
+ 307              	.L31:
+ 290:../src/ASF/common/services/usb/udc/udc.c **** 					udc_next_desc_in_iface((UDC_DESC_STORAGE
+ 308              		.loc 1 290 0
+ 309 0036 2046     		mov	r0, r4
+ 310 0038 3146     		mov	r1, r6
+ 311 003a A847     		blx	r5
+ 312              	.LVL27:
+ 294:../src/ASF/common/services/usb/udc/udc.c **** 				break;
+ 313              		.loc 1 294 0
+ 314 003c 0446     		mov	r4, r0
+ 315 003e 10B1     		cbz	r0, .L30
+ 298:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 316              		.loc 1 298 0
+ 317 0040 8078     		ldrb	r0, [r0, #2]	@ zero_extendqisi2
+ 318              	.LVL28:
+ 319 0042 B847     		blx	r7
+ 320              	.LVL29:
+ 299:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 321              		.loc 1 299 0
+ 322 0044 F7E7     		b	.L31
+ 323              	.LVL30:
+ 324              	.L30:
+ 325              	.LBE10:
+ 304:../src/ASF/common/services/usb/udc/udc.c **** 	return true;
+ 326              		.loc 1 304 0
+ 327 0046 D9F80430 		ldr	r3, [r9, #4]
+ 328 004a 9847     		blx	r3
+ 329              	.LVL31:
+ 330              	.L29:
+ 306:../src/ASF/common/services/usb/udc/udc.c **** 
+ 331              		.loc 1 306 0
+ 332 004c 4046     		mov	r0, r8
+ 333 004e BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 334              	.L34:
+ 335 0052 00BF     		.align	2
+ 336              	.L33:
+ 337 0054 00000000 		.word	udc_update_iface_desc
+ 338 0058 00000000 		.word	.LANCHOR0
+ 339 005c 00000000 		.word	.LANCHOR2
+ 340 0060 00000000 		.word	udc_next_desc_in_iface
+ 341 0064 00000000 		.word	udd_ep_free
+ 342              		.cfi_endproc
+ 343              	.LFE75:
+ 345              		.section	.text.udc_iface_enable,"ax",%progbits
+ 346              		.align	2
+ 347              		.thumb
+ 348              		.thumb_func
+ 350              	udc_iface_enable:
+ 351              	.LFB76:
+ 319:../src/ASF/common/services/usb/udc/udc.c **** 	// Select the interface descriptor
+ 352              		.loc 1 319 0
+ 353              		.cfi_startproc
+ 354              		@ args = 0, pretend = 0, frame = 0
+ 355              		@ frame_needed = 0, uses_anonymous_args = 0
+ 356              	.LVL32:
+ 357 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 358              	.LCFI6:
+ 359              		.cfi_def_cfa_offset 24
+ 360              		.cfi_offset 4, -24
+ 361              		.cfi_offset 5, -20
+ 362              		.cfi_offset 6, -16
+ 363              		.cfi_offset 7, -12
+ 364              		.cfi_offset 8, -8
+ 365              		.cfi_offset 14, -4
+ 366 0004 8046     		mov	r8, r0
+ 321:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 367              		.loc 1 321 0
+ 368 0006 104B     		ldr	r3, .L41
+ 369 0008 9847     		blx	r3
+ 370              	.LVL33:
+ 371 000a 0346     		mov	r3, r0
+ 372 000c C8B1     		cbz	r0, .L36
+ 329:../src/ASF/common/services/usb/udc/udc.c **** 	while (1) {
+ 373              		.loc 1 329 0
+ 374 000e 0F4B     		ldr	r3, .L41+4
+ 375 0010 1C68     		ldr	r4, [r3]
+ 376              	.LVL34:
+ 332:../src/ASF/common/services/usb/udc/udc.c **** 				udc_next_desc_in_iface((UDC_DESC_STORAGE
+ 377              		.loc 1 332 0
+ 378 0012 0526     		movs	r6, #5
+ 379 0014 0E4D     		ldr	r5, .L41+8
+ 339:../src/ASF/common/services/usb/udc/udc.c **** 				ep_desc->bmAttributes,
+ 380              		.loc 1 339 0
+ 381 0016 0F4F     		ldr	r7, .L41+12
+ 382              	.L38:
+ 332:../src/ASF/common/services/usb/udc/udc.c **** 				udc_next_desc_in_iface((UDC_DESC_STORAGE
+ 383              		.loc 1 332 0
+ 384 0018 2046     		mov	r0, r4
+ 385 001a 3146     		mov	r1, r6
+ 386 001c A847     		blx	r5
+ 387              	.LVL35:
+ 336:../src/ASF/common/services/usb/udc/udc.c **** 			break;
+ 388              		.loc 1 336 0
+ 389 001e 0446     		mov	r4, r0
+ 390 0020 38B1     		cbz	r0, .L37
+ 339:../src/ASF/common/services/usb/udc/udc.c **** 				ep_desc->bmAttributes,
+ 391              		.loc 1 339 0
+ 392 0022 8078     		ldrb	r0, [r0, #2]	@ zero_extendqisi2
+ 393              	.LVL36:
+ 394 0024 E178     		ldrb	r1, [r4, #3]	@ zero_extendqisi2
+ 395 0026 A288     		ldrh	r2, [r4, #4]	@ unaligned
+ 396 0028 B847     		blx	r7
+ 397              	.LVL37:
+ 398 002a 0346     		mov	r3, r0
+ 399 002c 0028     		cmp	r0, #0
+ 400 002e F3D1     		bne	.L38
+ 401 0030 07E0     		b	.L36
+ 402              	.LVL38:
+ 403              	.L37:
+ 348:../src/ASF/common/services/usb/udc/udc.c **** }
+ 404              		.loc 1 348 0
+ 405 0032 094B     		ldr	r3, .L41+16
+ 406 0034 1B68     		ldr	r3, [r3]
+ 407 0036 5B68     		ldr	r3, [r3, #4]
+ 408 0038 53F82830 		ldr	r3, [r3, r8, lsl #2]
+ 409 003c 1B68     		ldr	r3, [r3]
+ 410 003e 9847     		blx	r3
+ 411              	.LVL39:
+ 412 0040 0346     		mov	r3, r0
+ 413              	.LVL40:
+ 414              	.L36:
+ 349:../src/ASF/common/services/usb/udc/udc.c **** 
+ 415              		.loc 1 349 0
+ 416 0042 1846     		mov	r0, r3
+ 417 0044 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 418              	.L42:
+ 419              		.align	2
+ 420              	.L41:
+ 421 0048 00000000 		.word	udc_update_iface_desc
+ 422 004c 00000000 		.word	.LANCHOR2
+ 423 0050 00000000 		.word	udc_next_desc_in_iface
+ 424 0054 00000000 		.word	udd_ep_alloc
+ 425 0058 00000000 		.word	.LANCHOR0
+ 426              		.cfi_endproc
+ 427              	.LFE76:
+ 429              		.section	.text.udc_get_interface_desc,"ax",%progbits
+ 430              		.align	2
+ 431              		.global	udc_get_interface_desc
+ 432              		.thumb
+ 433              		.thumb_func
+ 435              	udc_get_interface_desc:
+ 436              	.LFB71:
+ 158:../src/ASF/common/services/usb/udc/udc.c **** 	return udc_ptr_iface;
+ 437              		.loc 1 158 0
+ 438              		.cfi_startproc
+ 439              		@ args = 0, pretend = 0, frame = 0
+ 440              		@ frame_needed = 0, uses_anonymous_args = 0
+ 441              		@ link register save eliminated.
+ 160:../src/ASF/common/services/usb/udc/udc.c **** 
+ 442              		.loc 1 160 0
+ 443 0000 014B     		ldr	r3, .L44
+ 444 0002 1868     		ldr	r0, [r3]
+ 445 0004 7047     		bx	lr
+ 446              	.L45:
+ 447 0006 00BF     		.align	2
+ 448              	.L44:
+ 449 0008 00000000 		.word	.LANCHOR2
+ 450              		.cfi_endproc
+ 451              	.LFE71:
+ 453              		.section	.text.udc_start,"ax",%progbits
+ 454              		.align	2
+ 455              		.global	udc_start
+ 456              		.thumb
+ 457              		.thumb_func
+ 459              	udc_start:
+ 460              	.LFB77:
+ 354:../src/ASF/common/services/usb/udc/udc.c **** 	udd_enable();
+ 461              		.loc 1 354 0
+ 462              		.cfi_startproc
+ 463              		@ args = 0, pretend = 0, frame = 0
+ 464              		@ frame_needed = 0, uses_anonymous_args = 0
+ 465 0000 08B5     		push	{r3, lr}
+ 466              	.LCFI7:
+ 467              		.cfi_def_cfa_offset 8
+ 468              		.cfi_offset 3, -8
+ 469              		.cfi_offset 14, -4
+ 355:../src/ASF/common/services/usb/udc/udc.c **** }
+ 470              		.loc 1 355 0
+ 471 0002 014B     		ldr	r3, .L48
+ 472 0004 9847     		blx	r3
+ 473              	.LVL41:
+ 474 0006 08BD     		pop	{r3, pc}
+ 475              	.L49:
+ 476              		.align	2
+ 477              	.L48:
+ 478 0008 00000000 		.word	udd_enable
+ 479              		.cfi_endproc
+ 480              	.LFE77:
+ 482              		.section	.text.udc_reset,"ax",%progbits
+ 483              		.align	2
+ 484              		.global	udc_reset
+ 485              		.thumb
+ 486              		.thumb_func
+ 488              	udc_reset:
+ 489              	.LFB79:
+ 371:../src/ASF/common/services/usb/udc/udc.c **** 	uint8_t iface_num;
+ 490              		.loc 1 371 0
+ 491              		.cfi_startproc
+ 492              		@ args = 0, pretend = 0, frame = 0
+ 493              		@ frame_needed = 0, uses_anonymous_args = 0
+ 494 0000 70B5     		push	{r4, r5, r6, lr}
+ 495              	.LCFI8:
+ 496              		.cfi_def_cfa_offset 16
+ 497              		.cfi_offset 4, -16
+ 498              		.cfi_offset 5, -12
+ 499              		.cfi_offset 6, -8
+ 500              		.cfi_offset 14, -4
+ 374:../src/ASF/common/services/usb/udc/udc.c **** 		for (iface_num = 0;
+ 501              		.loc 1 374 0
+ 502 0002 0D4B     		ldr	r3, .L55
+ 503 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 504 0006 83B1     		cbz	r3, .L51
+ 505              	.LVL42:
+ 376:../src/ASF/common/services/usb/udc/udc.c **** 				iface_num++) {
+ 506              		.loc 1 376 0 discriminator 1
+ 507 0008 0C4B     		ldr	r3, .L55+4
+ 508 000a 1B68     		ldr	r3, [r3]
+ 509 000c 1B68     		ldr	r3, [r3]
+ 375:../src/ASF/common/services/usb/udc/udc.c **** 				iface_num < udc_ptr_conf->desc->bNumInterfaces;
+ 510              		.loc 1 375 0 discriminator 1
+ 511 000e 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
+ 512 0010 5BB1     		cbz	r3, .L51
+ 375:../src/ASF/common/services/usb/udc/udc.c **** 				iface_num < udc_ptr_conf->desc->bNumInterfaces;
+ 513              		.loc 1 375 0 is_stmt 0
+ 514 0012 0024     		movs	r4, #0
+ 378:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 515              		.loc 1 378 0 is_stmt 1
+ 516 0014 0A4E     		ldr	r6, .L55+8
+ 376:../src/ASF/common/services/usb/udc/udc.c **** 				iface_num++) {
+ 517              		.loc 1 376 0
+ 518 0016 094D     		ldr	r5, .L55+4
+ 519              	.LVL43:
+ 520              	.L52:
+ 378:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 521              		.loc 1 378 0
+ 522 0018 2046     		mov	r0, r4
+ 523 001a B047     		blx	r6
+ 524              	.LVL44:
+ 377:../src/ASF/common/services/usb/udc/udc.c **** 			udc_iface_disable(iface_num);
+ 525              		.loc 1 377 0
+ 526 001c 0134     		adds	r4, r4, #1
+ 527              	.LVL45:
+ 528 001e E4B2     		uxtb	r4, r4
+ 529              	.LVL46:
+ 376:../src/ASF/common/services/usb/udc/udc.c **** 				iface_num++) {
+ 530              		.loc 1 376 0
+ 531 0020 2B68     		ldr	r3, [r5]
+ 532 0022 1B68     		ldr	r3, [r3]
+ 375:../src/ASF/common/services/usb/udc/udc.c **** 				iface_num < udc_ptr_conf->desc->bNumInterfaces;
+ 533              		.loc 1 375 0
+ 534 0024 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
+ 535 0026 A342     		cmp	r3, r4
+ 536 0028 F6D8     		bhi	.L52
+ 537              	.LVL47:
+ 538              	.L51:
+ 381:../src/ASF/common/services/usb/udc/udc.c **** #if (USB_CONFIG_ATTR_REMOTE_WAKEUP \
+ 539              		.loc 1 381 0
+ 540 002a 0023     		movs	r3, #0
+ 541 002c 024A     		ldr	r2, .L55
+ 542 002e 1370     		strb	r3, [r2]
+ 389:../src/ASF/common/services/usb/udc/udc.c **** #if (USB_DEVICE_ATTR & USB_CONFIG_ATTR_SELF_POWERED)
+ 543              		.loc 1 389 0
+ 544 0030 044A     		ldr	r2, .L55+12
+ 545 0032 1380     		strh	r3, [r2]	@ movhi
+ 546 0034 70BD     		pop	{r4, r5, r6, pc}
+ 547              	.L56:
+ 548 0036 00BF     		.align	2
+ 549              	.L55:
+ 550 0038 00000000 		.word	.LANCHOR1
+ 551 003c 00000000 		.word	.LANCHOR0
+ 552 0040 00000000 		.word	udc_iface_disable
+ 553 0044 00000000 		.word	.LANCHOR3
+ 554              		.cfi_endproc
+ 555              	.LFE79:
+ 557              		.section	.text.udc_stop,"ax",%progbits
+ 558              		.align	2
+ 559              		.global	udc_stop
+ 560              		.thumb
+ 561              		.thumb_func
+ 563              	udc_stop:
+ 564              	.LFB78:
+ 361:../src/ASF/common/services/usb/udc/udc.c **** 	udd_disable();
+ 565              		.loc 1 361 0
+ 566              		.cfi_startproc
+ 567              		@ args = 0, pretend = 0, frame = 0
+ 568              		@ frame_needed = 0, uses_anonymous_args = 0
+ 569 0000 08B5     		push	{r3, lr}
+ 570              	.LCFI9:
+ 571              		.cfi_def_cfa_offset 8
+ 572              		.cfi_offset 3, -8
+ 573              		.cfi_offset 14, -4
+ 362:../src/ASF/common/services/usb/udc/udc.c **** 	udc_reset();
+ 574              		.loc 1 362 0
+ 575 0002 024B     		ldr	r3, .L59
+ 576 0004 9847     		blx	r3
+ 577              	.LVL48:
+ 363:../src/ASF/common/services/usb/udc/udc.c **** }
+ 578              		.loc 1 363 0
+ 579 0006 024B     		ldr	r3, .L59+4
+ 580 0008 9847     		blx	r3
+ 581              	.LVL49:
+ 582 000a 08BD     		pop	{r3, pc}
+ 583              	.L60:
+ 584              		.align	2
+ 585              	.L59:
+ 586 000c 00000000 		.word	udd_disable
+ 587 0010 00000000 		.word	udc_reset
+ 588              		.cfi_endproc
+ 589              	.LFE78:
+ 591              		.section	.text.udc_sof_notify,"ax",%progbits
+ 592              		.align	2
+ 593              		.global	udc_sof_notify
+ 594              		.thumb
+ 595              		.thumb_func
+ 597              	udc_sof_notify:
+ 598              	.LFB80:
+ 398:../src/ASF/common/services/usb/udc/udc.c **** 	uint8_t iface_num;
+ 599              		.loc 1 398 0
+ 600              		.cfi_startproc
+ 601              		@ args = 0, pretend = 0, frame = 0
+ 602              		@ frame_needed = 0, uses_anonymous_args = 0
+ 603 0000 38B5     		push	{r3, r4, r5, lr}
+ 604              	.LCFI10:
+ 605              		.cfi_def_cfa_offset 16
+ 606              		.cfi_offset 3, -16
+ 607              		.cfi_offset 4, -12
+ 608              		.cfi_offset 5, -8
+ 609              		.cfi_offset 14, -4
+ 401:../src/ASF/common/services/usb/udc/udc.c **** 		for (iface_num = 0;
+ 610              		.loc 1 401 0
+ 611 0002 0C4B     		ldr	r3, .L67
+ 612 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 613 0006 9BB1     		cbz	r3, .L61
+ 614              	.LVL50:
+ 403:../src/ASF/common/services/usb/udc/udc.c **** 				iface_num++) {
+ 615              		.loc 1 403 0 discriminator 1
+ 616 0008 0B4B     		ldr	r3, .L67+4
+ 617 000a 1B68     		ldr	r3, [r3]
+ 618 000c 1A68     		ldr	r2, [r3]
+ 402:../src/ASF/common/services/usb/udc/udc.c **** 				iface_num < udc_ptr_conf->desc->bNumInterfaces;
+ 619              		.loc 1 402 0 discriminator 1
+ 620 000e 1279     		ldrb	r2, [r2, #4]	@ zero_extendqisi2
+ 621 0010 72B1     		cbz	r2, .L61
+ 402:../src/ASF/common/services/usb/udc/udc.c **** 				iface_num < udc_ptr_conf->desc->bNumInterfaces;
+ 622              		.loc 1 402 0 is_stmt 0
+ 623 0012 0024     		movs	r4, #0
+ 403:../src/ASF/common/services/usb/udc/udc.c **** 				iface_num++) {
+ 624              		.loc 1 403 0 is_stmt 1
+ 625 0014 084D     		ldr	r5, .L67+4
+ 626              	.LVL51:
+ 627              	.L64:
+ 405:../src/ASF/common/services/usb/udc/udc.c **** 				udc_ptr_conf->udi_apis[iface_num]->sof_notify();
+ 628              		.loc 1 405 0
+ 629 0016 5B68     		ldr	r3, [r3, #4]
+ 630 0018 53F82430 		ldr	r3, [r3, r4, lsl #2]
+ 631 001c 1B69     		ldr	r3, [r3, #16]
+ 632 001e 03B1     		cbz	r3, .L63
+ 406:../src/ASF/common/services/usb/udc/udc.c **** 			}
+ 633              		.loc 1 406 0
+ 634 0020 9847     		blx	r3
+ 635              	.LVL52:
+ 636              	.L63:
+ 404:../src/ASF/common/services/usb/udc/udc.c **** 			if (udc_ptr_conf->udi_apis[iface_num]->sof_notify != NULL) {
+ 637              		.loc 1 404 0
+ 638 0022 0134     		adds	r4, r4, #1
+ 639              	.LVL53:
+ 640 0024 E4B2     		uxtb	r4, r4
+ 641              	.LVL54:
+ 403:../src/ASF/common/services/usb/udc/udc.c **** 				iface_num++) {
+ 642              		.loc 1 403 0
+ 643 0026 2B68     		ldr	r3, [r5]
+ 644 0028 1A68     		ldr	r2, [r3]
+ 402:../src/ASF/common/services/usb/udc/udc.c **** 				iface_num < udc_ptr_conf->desc->bNumInterfaces;
+ 645              		.loc 1 402 0
+ 646 002a 1279     		ldrb	r2, [r2, #4]	@ zero_extendqisi2
+ 647 002c A242     		cmp	r2, r4
+ 648 002e F2D8     		bhi	.L64
+ 649              	.LVL55:
+ 650              	.L61:
+ 651 0030 38BD     		pop	{r3, r4, r5, pc}
+ 652              	.L68:
+ 653 0032 00BF     		.align	2
+ 654              	.L67:
+ 655 0034 00000000 		.word	.LANCHOR1
+ 656 0038 00000000 		.word	.LANCHOR0
+ 657              		.cfi_endproc
+ 658              	.LFE80:
+ 660              		.section	.text.udc_process_setup,"ax",%progbits
+ 661              		.align	2
+ 662              		.global	udc_process_setup
+ 663              		.thumb
+ 664              		.thumb_func
+ 666              	udc_process_setup:
+ 667              	.LFB98:
+ 580:../src/ASF/common/services/usb/udc/udc.c **** }
+ 581:../src/ASF/common/services/usb/udc/udc.c **** 
+ 582:../src/ASF/common/services/usb/udc/udc.c **** /**
+ 583:../src/ASF/common/services/usb/udc/udc.c ****  * \brief Standard device request to set device address
+ 584:../src/ASF/common/services/usb/udc/udc.c ****  *
+ 585:../src/ASF/common/services/usb/udc/udc.c ****  * \return true if success
+ 586:../src/ASF/common/services/usb/udc/udc.c ****  */
+ 587:../src/ASF/common/services/usb/udc/udc.c **** static bool udc_req_std_dev_set_address(void)
+ 588:../src/ASF/common/services/usb/udc/udc.c **** {
+ 589:../src/ASF/common/services/usb/udc/udc.c **** 	if (udd_g_ctrlreq.req.wLength) {
+ 590:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 591:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 592:../src/ASF/common/services/usb/udc/udc.c **** 
+ 593:../src/ASF/common/services/usb/udc/udc.c **** 	// The address must be changed at the end of setup request after the handshake
+ 594:../src/ASF/common/services/usb/udc/udc.c **** 	// then we use a callback to change address
+ 595:../src/ASF/common/services/usb/udc/udc.c **** 	udd_g_ctrlreq.callback = udc_valid_address;
+ 596:../src/ASF/common/services/usb/udc/udc.c **** 	return true;
+ 597:../src/ASF/common/services/usb/udc/udc.c **** }
+ 598:../src/ASF/common/services/usb/udc/udc.c **** 
+ 599:../src/ASF/common/services/usb/udc/udc.c **** /**
+ 600:../src/ASF/common/services/usb/udc/udc.c ****  * \brief Standard device request to get device string descriptor
+ 601:../src/ASF/common/services/usb/udc/udc.c ****  *
+ 602:../src/ASF/common/services/usb/udc/udc.c ****  * \return true if success
+ 603:../src/ASF/common/services/usb/udc/udc.c ****  */
+ 604:../src/ASF/common/services/usb/udc/udc.c **** static bool udc_req_std_dev_get_str_desc(void)
+ 605:../src/ASF/common/services/usb/udc/udc.c **** {
+ 606:../src/ASF/common/services/usb/udc/udc.c **** 	uint8_t i;
+ 607:../src/ASF/common/services/usb/udc/udc.c **** 	const uint8_t *str;
+ 608:../src/ASF/common/services/usb/udc/udc.c **** 	uint8_t str_length = 0;
+ 609:../src/ASF/common/services/usb/udc/udc.c **** 
+ 610:../src/ASF/common/services/usb/udc/udc.c **** 	// Link payload pointer to the string corresponding at request
+ 611:../src/ASF/common/services/usb/udc/udc.c **** 	switch (udd_g_ctrlreq.req.wValue & 0xff) {
+ 612:../src/ASF/common/services/usb/udc/udc.c **** 	case 0:
+ 613:../src/ASF/common/services/usb/udc/udc.c **** 		udd_set_setup_payload((uint8_t *) &udc_string_desc_languageid,
+ 614:../src/ASF/common/services/usb/udc/udc.c **** 				sizeof(udc_string_desc_languageid));
+ 615:../src/ASF/common/services/usb/udc/udc.c **** 		break;
+ 616:../src/ASF/common/services/usb/udc/udc.c **** 
+ 617:../src/ASF/common/services/usb/udc/udc.c **** #ifdef USB_DEVICE_MANUFACTURE_NAME
+ 618:../src/ASF/common/services/usb/udc/udc.c **** 	case 1:
+ 619:../src/ASF/common/services/usb/udc/udc.c **** 		str_length = USB_DEVICE_MANUFACTURE_NAME_SIZE;
+ 620:../src/ASF/common/services/usb/udc/udc.c **** 		str = udc_string_manufacturer_name;
+ 621:../src/ASF/common/services/usb/udc/udc.c **** 		break;
+ 622:../src/ASF/common/services/usb/udc/udc.c **** #endif
+ 623:../src/ASF/common/services/usb/udc/udc.c **** #ifdef USB_DEVICE_PRODUCT_NAME
+ 624:../src/ASF/common/services/usb/udc/udc.c **** 	case 2:
+ 625:../src/ASF/common/services/usb/udc/udc.c **** 		str_length = USB_DEVICE_PRODUCT_NAME_SIZE;
+ 626:../src/ASF/common/services/usb/udc/udc.c **** 		str = udc_string_product_name;
+ 627:../src/ASF/common/services/usb/udc/udc.c **** 		break;
+ 628:../src/ASF/common/services/usb/udc/udc.c **** #endif
+ 629:../src/ASF/common/services/usb/udc/udc.c **** #if defined USB_DEVICE_SERIAL_NAME || defined USB_DEVICE_GET_SERIAL_NAME_POINTER
+ 630:../src/ASF/common/services/usb/udc/udc.c **** 	case 3:
+ 631:../src/ASF/common/services/usb/udc/udc.c **** 		str_length = USB_DEVICE_SERIAL_NAME_SIZE;
+ 632:../src/ASF/common/services/usb/udc/udc.c **** 		str = udc_get_string_serial_name();
+ 633:../src/ASF/common/services/usb/udc/udc.c **** 		break;
+ 634:../src/ASF/common/services/usb/udc/udc.c **** #endif
+ 635:../src/ASF/common/services/usb/udc/udc.c **** 	default:
+ 636:../src/ASF/common/services/usb/udc/udc.c **** #ifdef UDC_GET_EXTRA_STRING
+ 637:../src/ASF/common/services/usb/udc/udc.c **** 		if (UDC_GET_EXTRA_STRING()) {
+ 638:../src/ASF/common/services/usb/udc/udc.c **** 			break;
+ 639:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 640:../src/ASF/common/services/usb/udc/udc.c **** #endif
+ 641:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 642:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 643:../src/ASF/common/services/usb/udc/udc.c **** 
+ 644:../src/ASF/common/services/usb/udc/udc.c **** 	if (str_length) {
+ 645:../src/ASF/common/services/usb/udc/udc.c **** 		for(i = 0; i < str_length; i++) {
+ 646:../src/ASF/common/services/usb/udc/udc.c **** 			udc_string_desc.string[i] = cpu_to_le16((le16_t)str[i]);
+ 647:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 648:../src/ASF/common/services/usb/udc/udc.c **** 
+ 649:../src/ASF/common/services/usb/udc/udc.c **** 		udc_string_desc.header.bLength = 2 + (str_length) * 2;
+ 650:../src/ASF/common/services/usb/udc/udc.c **** 		udd_set_setup_payload(
+ 651:../src/ASF/common/services/usb/udc/udc.c **** 			(uint8_t *) &udc_string_desc,
+ 652:../src/ASF/common/services/usb/udc/udc.c **** 			udc_string_desc.header.bLength);
+ 653:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 654:../src/ASF/common/services/usb/udc/udc.c **** 
+ 655:../src/ASF/common/services/usb/udc/udc.c **** 	return true;
+ 656:../src/ASF/common/services/usb/udc/udc.c **** }
+ 657:../src/ASF/common/services/usb/udc/udc.c **** 
+ 658:../src/ASF/common/services/usb/udc/udc.c **** /**
+ 659:../src/ASF/common/services/usb/udc/udc.c ****  * \brief Standard device request to get descriptors about USB device
+ 660:../src/ASF/common/services/usb/udc/udc.c ****  *
+ 661:../src/ASF/common/services/usb/udc/udc.c ****  * \return true if success
+ 662:../src/ASF/common/services/usb/udc/udc.c ****  */
+ 663:../src/ASF/common/services/usb/udc/udc.c **** static bool udc_req_std_dev_get_descriptor(void)
+ 664:../src/ASF/common/services/usb/udc/udc.c **** {
+ 665:../src/ASF/common/services/usb/udc/udc.c **** 	uint8_t conf_num;
+ 666:../src/ASF/common/services/usb/udc/udc.c **** 
+ 667:../src/ASF/common/services/usb/udc/udc.c **** 	conf_num = udd_g_ctrlreq.req.wValue & 0xff;
+ 668:../src/ASF/common/services/usb/udc/udc.c **** 
+ 669:../src/ASF/common/services/usb/udc/udc.c **** 	// Check descriptor ID
+ 670:../src/ASF/common/services/usb/udc/udc.c **** 	switch ((uint8_t) (udd_g_ctrlreq.req.wValue >> 8)) {
+ 671:../src/ASF/common/services/usb/udc/udc.c **** 	case USB_DT_DEVICE:
+ 672:../src/ASF/common/services/usb/udc/udc.c **** 		// Device descriptor requested
+ 673:../src/ASF/common/services/usb/udc/udc.c **** #ifdef USB_DEVICE_HS_SUPPORT
+ 674:../src/ASF/common/services/usb/udc/udc.c **** 		if (!udd_is_high_speed()) {
+ 675:../src/ASF/common/services/usb/udc/udc.c **** 			udd_set_setup_payload(
+ 676:../src/ASF/common/services/usb/udc/udc.c **** 				(uint8_t *) udc_config.confdev_hs,
+ 677:../src/ASF/common/services/usb/udc/udc.c **** 				udc_config.confdev_hs->bLength);
+ 678:../src/ASF/common/services/usb/udc/udc.c **** 		} else
+ 679:../src/ASF/common/services/usb/udc/udc.c **** #endif
+ 680:../src/ASF/common/services/usb/udc/udc.c **** 		{
+ 681:../src/ASF/common/services/usb/udc/udc.c **** 			udd_set_setup_payload(
+ 682:../src/ASF/common/services/usb/udc/udc.c **** 				(uint8_t *) udc_config.confdev_lsfs,
+ 683:../src/ASF/common/services/usb/udc/udc.c **** 				udc_config.confdev_lsfs->bLength);
+ 684:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 685:../src/ASF/common/services/usb/udc/udc.c **** 		break;
+ 686:../src/ASF/common/services/usb/udc/udc.c **** 
+ 687:../src/ASF/common/services/usb/udc/udc.c **** 	case USB_DT_CONFIGURATION:
+ 688:../src/ASF/common/services/usb/udc/udc.c **** 		// Configuration descriptor requested
+ 689:../src/ASF/common/services/usb/udc/udc.c **** #ifdef USB_DEVICE_HS_SUPPORT
+ 690:../src/ASF/common/services/usb/udc/udc.c **** 		if (udd_is_high_speed()) {
+ 691:../src/ASF/common/services/usb/udc/udc.c **** 			// HS descriptor
+ 692:../src/ASF/common/services/usb/udc/udc.c **** 			if (conf_num >= udc_config.confdev_hs->
+ 693:../src/ASF/common/services/usb/udc/udc.c **** 					bNumConfigurations) {
+ 694:../src/ASF/common/services/usb/udc/udc.c **** 				return false;
+ 695:../src/ASF/common/services/usb/udc/udc.c **** 			}
+ 696:../src/ASF/common/services/usb/udc/udc.c **** 			udd_set_setup_payload(
+ 697:../src/ASF/common/services/usb/udc/udc.c **** 				(uint8_t *)udc_config.conf_hs[conf_num].desc,
+ 698:../src/ASF/common/services/usb/udc/udc.c **** 				le16_to_cpu(udc_config.conf_hs[conf_num].desc->wTotalLength));
+ 699:../src/ASF/common/services/usb/udc/udc.c **** 		} else
+ 700:../src/ASF/common/services/usb/udc/udc.c **** #endif
+ 701:../src/ASF/common/services/usb/udc/udc.c **** 		{
+ 702:../src/ASF/common/services/usb/udc/udc.c **** 			// FS descriptor
+ 703:../src/ASF/common/services/usb/udc/udc.c **** 			if (conf_num >= udc_config.confdev_lsfs->
+ 704:../src/ASF/common/services/usb/udc/udc.c **** 					bNumConfigurations) {
+ 705:../src/ASF/common/services/usb/udc/udc.c **** 				return false;
+ 706:../src/ASF/common/services/usb/udc/udc.c **** 			}
+ 707:../src/ASF/common/services/usb/udc/udc.c **** 			udd_set_setup_payload(
+ 708:../src/ASF/common/services/usb/udc/udc.c **** 				(uint8_t *)udc_config.conf_lsfs[conf_num].desc,
+ 709:../src/ASF/common/services/usb/udc/udc.c **** 				le16_to_cpu(udc_config.conf_lsfs[conf_num].desc->wTotalLength));
+ 710:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 711:../src/ASF/common/services/usb/udc/udc.c **** 		((usb_conf_desc_t *) udd_g_ctrlreq.payload)->bDescriptorType =
+ 712:../src/ASF/common/services/usb/udc/udc.c **** 				USB_DT_CONFIGURATION;
+ 713:../src/ASF/common/services/usb/udc/udc.c **** 		break;
+ 714:../src/ASF/common/services/usb/udc/udc.c **** 
+ 715:../src/ASF/common/services/usb/udc/udc.c **** #ifdef USB_DEVICE_HS_SUPPORT
+ 716:../src/ASF/common/services/usb/udc/udc.c **** 	case USB_DT_DEVICE_QUALIFIER:
+ 717:../src/ASF/common/services/usb/udc/udc.c **** 		// Device qualifier descriptor requested
+ 718:../src/ASF/common/services/usb/udc/udc.c **** 		udd_set_setup_payload( (uint8_t *) udc_config.qualifier,
+ 719:../src/ASF/common/services/usb/udc/udc.c **** 				udc_config.qualifier->bLength);
+ 720:../src/ASF/common/services/usb/udc/udc.c **** 		break;
+ 721:../src/ASF/common/services/usb/udc/udc.c **** 
+ 722:../src/ASF/common/services/usb/udc/udc.c **** 	case USB_DT_OTHER_SPEED_CONFIGURATION:
+ 723:../src/ASF/common/services/usb/udc/udc.c **** 		// Other configuration descriptor requested
+ 724:../src/ASF/common/services/usb/udc/udc.c **** 		if (!udd_is_high_speed()) {
+ 725:../src/ASF/common/services/usb/udc/udc.c **** 			// HS descriptor
+ 726:../src/ASF/common/services/usb/udc/udc.c **** 			if (conf_num >= udc_config.confdev_hs->
+ 727:../src/ASF/common/services/usb/udc/udc.c **** 					bNumConfigurations) {
+ 728:../src/ASF/common/services/usb/udc/udc.c **** 				return false;
+ 729:../src/ASF/common/services/usb/udc/udc.c **** 			}
+ 730:../src/ASF/common/services/usb/udc/udc.c **** 			udd_set_setup_payload(
+ 731:../src/ASF/common/services/usb/udc/udc.c **** 				(uint8_t *)udc_config.conf_hs[conf_num].desc,
+ 732:../src/ASF/common/services/usb/udc/udc.c **** 				le16_to_cpu(udc_config.conf_hs[conf_num].desc->wTotalLength));
+ 733:../src/ASF/common/services/usb/udc/udc.c **** 		} else {
+ 734:../src/ASF/common/services/usb/udc/udc.c **** 			// FS descriptor
+ 735:../src/ASF/common/services/usb/udc/udc.c **** 			if (conf_num >= udc_config.confdev_lsfs->
+ 736:../src/ASF/common/services/usb/udc/udc.c **** 					bNumConfigurations) {
+ 737:../src/ASF/common/services/usb/udc/udc.c **** 				return false;
+ 738:../src/ASF/common/services/usb/udc/udc.c **** 			}
+ 739:../src/ASF/common/services/usb/udc/udc.c **** 			udd_set_setup_payload(
+ 740:../src/ASF/common/services/usb/udc/udc.c **** 				(uint8_t *)udc_config.conf_lsfs[conf_num].desc,
+ 741:../src/ASF/common/services/usb/udc/udc.c **** 				le16_to_cpu(udc_config.conf_lsfs[conf_num].desc->wTotalLength));
+ 742:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 743:../src/ASF/common/services/usb/udc/udc.c **** 		((usb_conf_desc_t *) udd_g_ctrlreq.payload)->bDescriptorType =
+ 744:../src/ASF/common/services/usb/udc/udc.c **** 				USB_DT_OTHER_SPEED_CONFIGURATION;
+ 745:../src/ASF/common/services/usb/udc/udc.c **** 		break;
+ 746:../src/ASF/common/services/usb/udc/udc.c **** #endif
+ 747:../src/ASF/common/services/usb/udc/udc.c **** 
+ 748:../src/ASF/common/services/usb/udc/udc.c **** 	case USB_DT_BOS:
+ 749:../src/ASF/common/services/usb/udc/udc.c **** 		// Device BOS descriptor requested
+ 750:../src/ASF/common/services/usb/udc/udc.c **** 		if (udc_config.conf_bos == NULL) {
+ 751:../src/ASF/common/services/usb/udc/udc.c **** 			return false;
+ 752:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 753:../src/ASF/common/services/usb/udc/udc.c **** 		udd_set_setup_payload( (uint8_t *) udc_config.conf_bos,
+ 754:../src/ASF/common/services/usb/udc/udc.c **** 				udc_config.conf_bos->wTotalLength);
+ 755:../src/ASF/common/services/usb/udc/udc.c **** 		break;
+ 756:../src/ASF/common/services/usb/udc/udc.c **** 
+ 757:../src/ASF/common/services/usb/udc/udc.c **** 	case USB_DT_STRING:
+ 758:../src/ASF/common/services/usb/udc/udc.c **** 		// String descriptor requested
+ 759:../src/ASF/common/services/usb/udc/udc.c **** 		if (!udc_req_std_dev_get_str_desc()) {
+ 760:../src/ASF/common/services/usb/udc/udc.c **** 			return false;
+ 761:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 762:../src/ASF/common/services/usb/udc/udc.c **** 		break;
+ 763:../src/ASF/common/services/usb/udc/udc.c **** 
+ 764:../src/ASF/common/services/usb/udc/udc.c **** 	default:
+ 765:../src/ASF/common/services/usb/udc/udc.c **** 		// Unknown descriptor requested
+ 766:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 767:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 768:../src/ASF/common/services/usb/udc/udc.c **** 	// if the descriptor is larger than length requested, then reduce it
+ 769:../src/ASF/common/services/usb/udc/udc.c **** 	if (udd_g_ctrlreq.req.wLength < udd_g_ctrlreq.payload_size) {
+ 770:../src/ASF/common/services/usb/udc/udc.c **** 		udd_g_ctrlreq.payload_size = udd_g_ctrlreq.req.wLength;
+ 771:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 772:../src/ASF/common/services/usb/udc/udc.c **** 	return true;
+ 773:../src/ASF/common/services/usb/udc/udc.c **** }
+ 774:../src/ASF/common/services/usb/udc/udc.c **** 
+ 775:../src/ASF/common/services/usb/udc/udc.c **** /**
+ 776:../src/ASF/common/services/usb/udc/udc.c ****  * \brief Standard device request to get configuration number
+ 777:../src/ASF/common/services/usb/udc/udc.c ****  *
+ 778:../src/ASF/common/services/usb/udc/udc.c ****  * \return true if success
+ 779:../src/ASF/common/services/usb/udc/udc.c ****  */
+ 780:../src/ASF/common/services/usb/udc/udc.c **** static bool udc_req_std_dev_get_configuration(void)
+ 781:../src/ASF/common/services/usb/udc/udc.c **** {
+ 782:../src/ASF/common/services/usb/udc/udc.c **** 	if (udd_g_ctrlreq.req.wLength != 1) {
+ 783:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 784:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 785:../src/ASF/common/services/usb/udc/udc.c **** 
+ 786:../src/ASF/common/services/usb/udc/udc.c **** 	udd_set_setup_payload(&udc_num_configuration,1);
+ 787:../src/ASF/common/services/usb/udc/udc.c **** 	return true;
+ 788:../src/ASF/common/services/usb/udc/udc.c **** }
+ 789:../src/ASF/common/services/usb/udc/udc.c **** 
+ 790:../src/ASF/common/services/usb/udc/udc.c **** /**
+ 791:../src/ASF/common/services/usb/udc/udc.c ****  * \brief Standard device request to enable a configuration
+ 792:../src/ASF/common/services/usb/udc/udc.c ****  *
+ 793:../src/ASF/common/services/usb/udc/udc.c ****  * \return true if success
+ 794:../src/ASF/common/services/usb/udc/udc.c ****  */
+ 795:../src/ASF/common/services/usb/udc/udc.c **** static bool udc_req_std_dev_set_configuration(void)
+ 796:../src/ASF/common/services/usb/udc/udc.c **** {
+ 797:../src/ASF/common/services/usb/udc/udc.c **** 	uint8_t iface_num;
+ 798:../src/ASF/common/services/usb/udc/udc.c **** 
+ 799:../src/ASF/common/services/usb/udc/udc.c **** 	// Check request length
+ 800:../src/ASF/common/services/usb/udc/udc.c **** 	if (udd_g_ctrlreq.req.wLength) {
+ 801:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 802:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 803:../src/ASF/common/services/usb/udc/udc.c **** 	// Authorize configuration only if the address is valid
+ 804:../src/ASF/common/services/usb/udc/udc.c **** 	if (!udd_getaddress()) {
+ 805:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 806:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 807:../src/ASF/common/services/usb/udc/udc.c **** 	// Check the configuration number requested
+ 808:../src/ASF/common/services/usb/udc/udc.c **** #ifdef USB_DEVICE_HS_SUPPORT
+ 809:../src/ASF/common/services/usb/udc/udc.c **** 	if (udd_is_high_speed()) {
+ 810:../src/ASF/common/services/usb/udc/udc.c **** 		// HS descriptor
+ 811:../src/ASF/common/services/usb/udc/udc.c **** 		if ((udd_g_ctrlreq.req.wValue & 0xFF) >
+ 812:../src/ASF/common/services/usb/udc/udc.c **** 				udc_config.confdev_hs->bNumConfigurations) {
+ 813:../src/ASF/common/services/usb/udc/udc.c **** 			return false;
+ 814:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 815:../src/ASF/common/services/usb/udc/udc.c **** 	} else
+ 816:../src/ASF/common/services/usb/udc/udc.c **** #endif
+ 817:../src/ASF/common/services/usb/udc/udc.c **** 	{
+ 818:../src/ASF/common/services/usb/udc/udc.c **** 		// FS descriptor
+ 819:../src/ASF/common/services/usb/udc/udc.c **** 		if ((udd_g_ctrlreq.req.wValue & 0xFF) >
+ 820:../src/ASF/common/services/usb/udc/udc.c **** 				udc_config.confdev_lsfs->bNumConfigurations) {
+ 821:../src/ASF/common/services/usb/udc/udc.c **** 			return false;
+ 822:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 823:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 824:../src/ASF/common/services/usb/udc/udc.c **** 
+ 825:../src/ASF/common/services/usb/udc/udc.c **** 	// Reset current configuration
+ 826:../src/ASF/common/services/usb/udc/udc.c **** 	udc_reset();
+ 827:../src/ASF/common/services/usb/udc/udc.c **** 
+ 828:../src/ASF/common/services/usb/udc/udc.c **** 	// Enable new configuration
+ 829:../src/ASF/common/services/usb/udc/udc.c **** 	udc_num_configuration = udd_g_ctrlreq.req.wValue & 0xFF;
+ 830:../src/ASF/common/services/usb/udc/udc.c **** 	if (udc_num_configuration == 0) {
+ 831:../src/ASF/common/services/usb/udc/udc.c **** 		return true; // Default empty configuration requested
+ 832:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 833:../src/ASF/common/services/usb/udc/udc.c **** 	// Update pointer of the configuration descriptor
+ 834:../src/ASF/common/services/usb/udc/udc.c **** #ifdef USB_DEVICE_HS_SUPPORT
+ 835:../src/ASF/common/services/usb/udc/udc.c **** 	if (udd_is_high_speed()) {
+ 836:../src/ASF/common/services/usb/udc/udc.c **** 		// HS descriptor
+ 837:../src/ASF/common/services/usb/udc/udc.c **** 		udc_ptr_conf = &udc_config.conf_hs[udc_num_configuration - 1];
+ 838:../src/ASF/common/services/usb/udc/udc.c **** 	} else
+ 839:../src/ASF/common/services/usb/udc/udc.c **** #endif
+ 840:../src/ASF/common/services/usb/udc/udc.c **** 	{
+ 841:../src/ASF/common/services/usb/udc/udc.c **** 		// FS descriptor
+ 842:../src/ASF/common/services/usb/udc/udc.c **** 		udc_ptr_conf = &udc_config.conf_lsfs[udc_num_configuration - 1];
+ 843:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 844:../src/ASF/common/services/usb/udc/udc.c **** 	// Enable all interfaces of the selected configuration
+ 845:../src/ASF/common/services/usb/udc/udc.c **** 	for (iface_num = 0; iface_num < udc_ptr_conf->desc->bNumInterfaces;
+ 846:../src/ASF/common/services/usb/udc/udc.c **** 			iface_num++) {
+ 847:../src/ASF/common/services/usb/udc/udc.c **** 		if (!udc_iface_enable(iface_num, 0)) {
+ 848:../src/ASF/common/services/usb/udc/udc.c **** 			return false;
+ 849:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 850:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 851:../src/ASF/common/services/usb/udc/udc.c **** 	return true;
+ 852:../src/ASF/common/services/usb/udc/udc.c **** }
+ 853:../src/ASF/common/services/usb/udc/udc.c **** 
+ 854:../src/ASF/common/services/usb/udc/udc.c **** /**
+ 855:../src/ASF/common/services/usb/udc/udc.c ****  * \brief Standard interface request
+ 856:../src/ASF/common/services/usb/udc/udc.c ****  * to get the alternate setting number of an interface
+ 857:../src/ASF/common/services/usb/udc/udc.c ****  *
+ 858:../src/ASF/common/services/usb/udc/udc.c ****  * \return true if success
+ 859:../src/ASF/common/services/usb/udc/udc.c ****  */
+ 860:../src/ASF/common/services/usb/udc/udc.c **** static bool udc_req_std_iface_get_setting(void)
+ 861:../src/ASF/common/services/usb/udc/udc.c **** {
+ 862:../src/ASF/common/services/usb/udc/udc.c **** 	static uint8_t udc_iface_setting;
+ 863:../src/ASF/common/services/usb/udc/udc.c **** 	uint8_t iface_num;
+ 864:../src/ASF/common/services/usb/udc/udc.c **** 	udi_api_t UDC_DESC_STORAGE *udi_api;
+ 865:../src/ASF/common/services/usb/udc/udc.c **** 
+ 866:../src/ASF/common/services/usb/udc/udc.c **** 	if (udd_g_ctrlreq.req.wLength != 1) {
+ 867:../src/ASF/common/services/usb/udc/udc.c **** 		return false; // Error in request
+ 868:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 869:../src/ASF/common/services/usb/udc/udc.c **** 	if (!udc_num_configuration) {
+ 870:../src/ASF/common/services/usb/udc/udc.c **** 		return false; // The device is not is configured state yet
+ 871:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 872:../src/ASF/common/services/usb/udc/udc.c **** 
+ 873:../src/ASF/common/services/usb/udc/udc.c **** 	// Check the interface number included in the request
+ 874:../src/ASF/common/services/usb/udc/udc.c **** 	iface_num = udd_g_ctrlreq.req.wIndex & 0xFF;
+ 875:../src/ASF/common/services/usb/udc/udc.c **** 	if (iface_num >= udc_ptr_conf->desc->bNumInterfaces) {
+ 876:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 877:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 878:../src/ASF/common/services/usb/udc/udc.c **** 
+ 879:../src/ASF/common/services/usb/udc/udc.c **** 	// Select first alternate setting of the interface to update udc_ptr_iface
+ 880:../src/ASF/common/services/usb/udc/udc.c **** 	// before call iface->getsetting()
+ 881:../src/ASF/common/services/usb/udc/udc.c **** 	if (!udc_update_iface_desc(iface_num, 0)) {
+ 882:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 883:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 884:../src/ASF/common/services/usb/udc/udc.c **** 	// Get alternate setting from UDI
+ 885:../src/ASF/common/services/usb/udc/udc.c **** 	udi_api = udc_ptr_conf->udi_apis[iface_num];
+ 886:../src/ASF/common/services/usb/udc/udc.c **** 	udc_iface_setting = udi_api->getsetting();
+ 887:../src/ASF/common/services/usb/udc/udc.c **** 
+ 888:../src/ASF/common/services/usb/udc/udc.c **** 	// Link value to payload pointer of request
+ 889:../src/ASF/common/services/usb/udc/udc.c **** 	udd_set_setup_payload(&udc_iface_setting,1);
+ 890:../src/ASF/common/services/usb/udc/udc.c **** 	return true;
+ 891:../src/ASF/common/services/usb/udc/udc.c **** }
+ 892:../src/ASF/common/services/usb/udc/udc.c **** 
+ 893:../src/ASF/common/services/usb/udc/udc.c **** /**
+ 894:../src/ASF/common/services/usb/udc/udc.c ****  * \brief Standard interface request
+ 895:../src/ASF/common/services/usb/udc/udc.c ****  * to set an alternate setting of an interface
+ 896:../src/ASF/common/services/usb/udc/udc.c ****  *
+ 897:../src/ASF/common/services/usb/udc/udc.c ****  * \return true if success
+ 898:../src/ASF/common/services/usb/udc/udc.c ****  */
+ 899:../src/ASF/common/services/usb/udc/udc.c **** static bool udc_req_std_iface_set_setting(void)
+ 900:../src/ASF/common/services/usb/udc/udc.c **** {
+ 901:../src/ASF/common/services/usb/udc/udc.c **** 	uint8_t iface_num, setting_num;
+ 902:../src/ASF/common/services/usb/udc/udc.c **** 
+ 903:../src/ASF/common/services/usb/udc/udc.c **** 	if (udd_g_ctrlreq.req.wLength) {
+ 904:../src/ASF/common/services/usb/udc/udc.c **** 		return false; // Error in request
+ 905:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 906:../src/ASF/common/services/usb/udc/udc.c **** 	if (!udc_num_configuration) {
+ 907:../src/ASF/common/services/usb/udc/udc.c **** 		return false; // The device is not is configured state yet
+ 908:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 909:../src/ASF/common/services/usb/udc/udc.c **** 
+ 910:../src/ASF/common/services/usb/udc/udc.c **** 	iface_num = udd_g_ctrlreq.req.wIndex & 0xFF;
+ 911:../src/ASF/common/services/usb/udc/udc.c **** 	setting_num = udd_g_ctrlreq.req.wValue & 0xFF;
+ 912:../src/ASF/common/services/usb/udc/udc.c **** 
+ 913:../src/ASF/common/services/usb/udc/udc.c **** 	// Disable current setting
+ 914:../src/ASF/common/services/usb/udc/udc.c **** 	if (!udc_iface_disable(iface_num)) {
+ 915:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 916:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 917:../src/ASF/common/services/usb/udc/udc.c **** 
+ 918:../src/ASF/common/services/usb/udc/udc.c **** 	// Enable new setting
+ 919:../src/ASF/common/services/usb/udc/udc.c **** 	return udc_iface_enable(iface_num, setting_num);
+ 920:../src/ASF/common/services/usb/udc/udc.c **** }
+ 921:../src/ASF/common/services/usb/udc/udc.c **** 
+ 922:../src/ASF/common/services/usb/udc/udc.c **** /**
+ 923:../src/ASF/common/services/usb/udc/udc.c ****  * \brief Main routine to manage the standard USB SETUP request
+ 924:../src/ASF/common/services/usb/udc/udc.c ****  *
+ 925:../src/ASF/common/services/usb/udc/udc.c ****  * \return true if the request is supported
+ 926:../src/ASF/common/services/usb/udc/udc.c ****  */
+ 927:../src/ASF/common/services/usb/udc/udc.c **** static bool udc_reqstd(void)
+ 928:../src/ASF/common/services/usb/udc/udc.c **** {
+ 929:../src/ASF/common/services/usb/udc/udc.c **** 	if (Udd_setup_is_in()) {
+ 930:../src/ASF/common/services/usb/udc/udc.c **** 		// GET Standard Requests
+ 931:../src/ASF/common/services/usb/udc/udc.c **** 		if (udd_g_ctrlreq.req.wLength == 0) {
+ 932:../src/ASF/common/services/usb/udc/udc.c **** 			return false; // Error for USB host
+ 933:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 934:../src/ASF/common/services/usb/udc/udc.c **** 
+ 935:../src/ASF/common/services/usb/udc/udc.c **** 		if (USB_REQ_RECIP_DEVICE == Udd_setup_recipient()) {
+ 936:../src/ASF/common/services/usb/udc/udc.c **** 			// Standard Get Device request
+ 937:../src/ASF/common/services/usb/udc/udc.c **** 			switch (udd_g_ctrlreq.req.bRequest) {
+ 938:../src/ASF/common/services/usb/udc/udc.c **** 			case USB_REQ_GET_STATUS:
+ 939:../src/ASF/common/services/usb/udc/udc.c **** 				return udc_req_std_dev_get_status();
+ 940:../src/ASF/common/services/usb/udc/udc.c **** 			case USB_REQ_GET_DESCRIPTOR:
+ 941:../src/ASF/common/services/usb/udc/udc.c **** 				return udc_req_std_dev_get_descriptor();
+ 942:../src/ASF/common/services/usb/udc/udc.c **** 			case USB_REQ_GET_CONFIGURATION:
+ 943:../src/ASF/common/services/usb/udc/udc.c **** 				return udc_req_std_dev_get_configuration();
+ 944:../src/ASF/common/services/usb/udc/udc.c **** 			default:
+ 945:../src/ASF/common/services/usb/udc/udc.c **** 				break;
+ 946:../src/ASF/common/services/usb/udc/udc.c **** 			}
+ 947:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 948:../src/ASF/common/services/usb/udc/udc.c **** 
+ 949:../src/ASF/common/services/usb/udc/udc.c **** 		if (USB_REQ_RECIP_INTERFACE == Udd_setup_recipient()) {
+ 950:../src/ASF/common/services/usb/udc/udc.c **** 			// Standard Get Interface request
+ 951:../src/ASF/common/services/usb/udc/udc.c **** 			switch (udd_g_ctrlreq.req.bRequest) {
+ 952:../src/ASF/common/services/usb/udc/udc.c **** 			case USB_REQ_GET_INTERFACE:
+ 953:../src/ASF/common/services/usb/udc/udc.c **** 				return udc_req_std_iface_get_setting();
+ 954:../src/ASF/common/services/usb/udc/udc.c **** 			default:
+ 955:../src/ASF/common/services/usb/udc/udc.c **** 				break;
+ 956:../src/ASF/common/services/usb/udc/udc.c **** 			}
+ 957:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 958:../src/ASF/common/services/usb/udc/udc.c **** #if (0!=USB_DEVICE_MAX_EP)
+ 959:../src/ASF/common/services/usb/udc/udc.c **** 		if (USB_REQ_RECIP_ENDPOINT == Udd_setup_recipient()) {
+ 960:../src/ASF/common/services/usb/udc/udc.c **** 			// Standard Get Endpoint request
+ 961:../src/ASF/common/services/usb/udc/udc.c **** 			switch (udd_g_ctrlreq.req.bRequest) {
+ 962:../src/ASF/common/services/usb/udc/udc.c **** 			case USB_REQ_GET_STATUS:
+ 963:../src/ASF/common/services/usb/udc/udc.c **** 				return udc_req_std_ep_get_status();
+ 964:../src/ASF/common/services/usb/udc/udc.c **** 			default:
+ 965:../src/ASF/common/services/usb/udc/udc.c **** 				break;
+ 966:../src/ASF/common/services/usb/udc/udc.c **** 			}
+ 967:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 968:../src/ASF/common/services/usb/udc/udc.c **** #endif
+ 969:../src/ASF/common/services/usb/udc/udc.c **** 	} else {
+ 970:../src/ASF/common/services/usb/udc/udc.c **** 		// SET Standard Requests
+ 971:../src/ASF/common/services/usb/udc/udc.c **** 		if (USB_REQ_RECIP_DEVICE == Udd_setup_recipient()) {
+ 972:../src/ASF/common/services/usb/udc/udc.c **** 			// Standard Set Device request
+ 973:../src/ASF/common/services/usb/udc/udc.c **** 			switch (udd_g_ctrlreq.req.bRequest) {
+ 974:../src/ASF/common/services/usb/udc/udc.c **** 			case USB_REQ_SET_ADDRESS:
+ 975:../src/ASF/common/services/usb/udc/udc.c **** 				return udc_req_std_dev_set_address();
+ 976:../src/ASF/common/services/usb/udc/udc.c **** 			case USB_REQ_CLEAR_FEATURE:
+ 977:../src/ASF/common/services/usb/udc/udc.c **** 				return udc_req_std_dev_clear_feature();
+ 978:../src/ASF/common/services/usb/udc/udc.c **** 			case USB_REQ_SET_FEATURE:
+ 979:../src/ASF/common/services/usb/udc/udc.c **** 				return udc_req_std_dev_set_feature();
+ 980:../src/ASF/common/services/usb/udc/udc.c **** 			case USB_REQ_SET_CONFIGURATION:
+ 981:../src/ASF/common/services/usb/udc/udc.c **** 				return udc_req_std_dev_set_configuration();
+ 982:../src/ASF/common/services/usb/udc/udc.c **** 			case USB_REQ_SET_DESCRIPTOR:
+ 983:../src/ASF/common/services/usb/udc/udc.c **** 				/* Not supported (defined as optional by the USB 2.0 spec) */
+ 984:../src/ASF/common/services/usb/udc/udc.c **** 				break;
+ 985:../src/ASF/common/services/usb/udc/udc.c **** 			default:
+ 986:../src/ASF/common/services/usb/udc/udc.c **** 				break;
+ 987:../src/ASF/common/services/usb/udc/udc.c **** 			}
+ 988:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 989:../src/ASF/common/services/usb/udc/udc.c **** 
+ 990:../src/ASF/common/services/usb/udc/udc.c **** 		if (USB_REQ_RECIP_INTERFACE == Udd_setup_recipient()) {
+ 991:../src/ASF/common/services/usb/udc/udc.c **** 			// Standard Set Interface request
+ 992:../src/ASF/common/services/usb/udc/udc.c **** 			switch (udd_g_ctrlreq.req.bRequest) {
+ 993:../src/ASF/common/services/usb/udc/udc.c **** 			case USB_REQ_SET_INTERFACE:
+ 994:../src/ASF/common/services/usb/udc/udc.c **** 				return udc_req_std_iface_set_setting();
+ 995:../src/ASF/common/services/usb/udc/udc.c **** 			default:
+ 996:../src/ASF/common/services/usb/udc/udc.c **** 				break;
+ 997:../src/ASF/common/services/usb/udc/udc.c **** 			}
+ 998:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 999:../src/ASF/common/services/usb/udc/udc.c **** #if (0!=USB_DEVICE_MAX_EP)
+1000:../src/ASF/common/services/usb/udc/udc.c **** 		if (USB_REQ_RECIP_ENDPOINT == Udd_setup_recipient()) {
+1001:../src/ASF/common/services/usb/udc/udc.c **** 			// Standard Set Endpoint request
+1002:../src/ASF/common/services/usb/udc/udc.c **** 			switch (udd_g_ctrlreq.req.bRequest) {
+1003:../src/ASF/common/services/usb/udc/udc.c **** 			case USB_REQ_CLEAR_FEATURE:
+1004:../src/ASF/common/services/usb/udc/udc.c **** 				return udc_req_std_ep_clear_feature();
+1005:../src/ASF/common/services/usb/udc/udc.c **** 			case USB_REQ_SET_FEATURE:
+1006:../src/ASF/common/services/usb/udc/udc.c **** 				return udc_req_std_ep_set_feature();
+1007:../src/ASF/common/services/usb/udc/udc.c **** 			default:
+1008:../src/ASF/common/services/usb/udc/udc.c **** 				break;
+1009:../src/ASF/common/services/usb/udc/udc.c **** 			}
+1010:../src/ASF/common/services/usb/udc/udc.c **** 		}
+1011:../src/ASF/common/services/usb/udc/udc.c **** #endif
+1012:../src/ASF/common/services/usb/udc/udc.c **** 	}
+1013:../src/ASF/common/services/usb/udc/udc.c **** 	return false;
+1014:../src/ASF/common/services/usb/udc/udc.c **** }
+1015:../src/ASF/common/services/usb/udc/udc.c **** 
+1016:../src/ASF/common/services/usb/udc/udc.c **** /**
+1017:../src/ASF/common/services/usb/udc/udc.c ****  * \brief Send the SETUP interface request to UDI
+1018:../src/ASF/common/services/usb/udc/udc.c ****  *
+1019:../src/ASF/common/services/usb/udc/udc.c ****  * \return true if the request is supported
+1020:../src/ASF/common/services/usb/udc/udc.c ****  */
+1021:../src/ASF/common/services/usb/udc/udc.c **** static bool udc_req_iface(void)
+1022:../src/ASF/common/services/usb/udc/udc.c **** {
+1023:../src/ASF/common/services/usb/udc/udc.c **** 	uint8_t iface_num;
+1024:../src/ASF/common/services/usb/udc/udc.c **** 	udi_api_t UDC_DESC_STORAGE *udi_api;
+1025:../src/ASF/common/services/usb/udc/udc.c **** 
+1026:../src/ASF/common/services/usb/udc/udc.c **** 	if (0 == udc_num_configuration) {
+1027:../src/ASF/common/services/usb/udc/udc.c **** 		return false; // The device is not is configured state yet
+1028:../src/ASF/common/services/usb/udc/udc.c **** 	}
+1029:../src/ASF/common/services/usb/udc/udc.c **** 	// Check interface number
+1030:../src/ASF/common/services/usb/udc/udc.c **** 	iface_num = udd_g_ctrlreq.req.wIndex & 0xFF;
+1031:../src/ASF/common/services/usb/udc/udc.c **** 	if (iface_num >= udc_ptr_conf->desc->bNumInterfaces) {
+1032:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+1033:../src/ASF/common/services/usb/udc/udc.c **** 	}
+1034:../src/ASF/common/services/usb/udc/udc.c **** 
+1035:../src/ASF/common/services/usb/udc/udc.c **** 	//* To update udc_ptr_iface with the selected interface in request
+1036:../src/ASF/common/services/usb/udc/udc.c **** 	// Select first alternate setting of interface to update udc_ptr_iface
+1037:../src/ASF/common/services/usb/udc/udc.c **** 	// before calling udi_api->getsetting()
+1038:../src/ASF/common/services/usb/udc/udc.c **** 	if (!udc_update_iface_desc(iface_num, 0)) {
+1039:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+1040:../src/ASF/common/services/usb/udc/udc.c **** 	}
+1041:../src/ASF/common/services/usb/udc/udc.c **** 	// Select the interface with the current alternate setting
+1042:../src/ASF/common/services/usb/udc/udc.c **** 	udi_api = udc_ptr_conf->udi_apis[iface_num];
+1043:../src/ASF/common/services/usb/udc/udc.c **** 	if (!udc_update_iface_desc(iface_num, udi_api->getsetting())) {
+1044:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+1045:../src/ASF/common/services/usb/udc/udc.c **** 	}
+1046:../src/ASF/common/services/usb/udc/udc.c **** 
+1047:../src/ASF/common/services/usb/udc/udc.c **** 	// Send the SETUP request to the UDI corresponding to the interface number
+1048:../src/ASF/common/services/usb/udc/udc.c **** 	return udi_api->setup();
+1049:../src/ASF/common/services/usb/udc/udc.c **** }
+1050:../src/ASF/common/services/usb/udc/udc.c **** 
+1051:../src/ASF/common/services/usb/udc/udc.c **** /**
+1052:../src/ASF/common/services/usb/udc/udc.c ****  * \brief Send the SETUP interface request to UDI
+1053:../src/ASF/common/services/usb/udc/udc.c ****  *
+1054:../src/ASF/common/services/usb/udc/udc.c ****  * \return true if the request is supported
+1055:../src/ASF/common/services/usb/udc/udc.c ****  */
+1056:../src/ASF/common/services/usb/udc/udc.c **** static bool udc_req_ep(void)
+1057:../src/ASF/common/services/usb/udc/udc.c **** {
+1058:../src/ASF/common/services/usb/udc/udc.c **** 	uint8_t iface_num;
+1059:../src/ASF/common/services/usb/udc/udc.c **** 	udi_api_t UDC_DESC_STORAGE *udi_api;
+1060:../src/ASF/common/services/usb/udc/udc.c **** 
+1061:../src/ASF/common/services/usb/udc/udc.c **** 	if (0 == udc_num_configuration) {
+1062:../src/ASF/common/services/usb/udc/udc.c **** 		return false; // The device is not is configured state yet
+1063:../src/ASF/common/services/usb/udc/udc.c **** 	}
+1064:../src/ASF/common/services/usb/udc/udc.c **** 	// Send this request on all enabled interfaces
+1065:../src/ASF/common/services/usb/udc/udc.c **** 	iface_num = udd_g_ctrlreq.req.wIndex & 0xFF;
+1066:../src/ASF/common/services/usb/udc/udc.c **** 	for (iface_num = 0; iface_num < udc_ptr_conf->desc->bNumInterfaces;
+1067:../src/ASF/common/services/usb/udc/udc.c **** 			iface_num++) {
+1068:../src/ASF/common/services/usb/udc/udc.c **** 		// Select the interface with the current alternate setting
+1069:../src/ASF/common/services/usb/udc/udc.c **** 		udi_api = udc_ptr_conf->udi_apis[iface_num];
+1070:../src/ASF/common/services/usb/udc/udc.c **** 		if (!udc_update_iface_desc(iface_num, udi_api->getsetting())) {
+1071:../src/ASF/common/services/usb/udc/udc.c **** 			return false;
+1072:../src/ASF/common/services/usb/udc/udc.c **** 		}
+1073:../src/ASF/common/services/usb/udc/udc.c **** 
+1074:../src/ASF/common/services/usb/udc/udc.c **** 		// Send the SETUP request to the UDI
+1075:../src/ASF/common/services/usb/udc/udc.c **** 		if (udi_api->setup()) {
+1076:../src/ASF/common/services/usb/udc/udc.c **** 			return true;
+1077:../src/ASF/common/services/usb/udc/udc.c **** 		}
+1078:../src/ASF/common/services/usb/udc/udc.c **** 	}
+1079:../src/ASF/common/services/usb/udc/udc.c **** 	return false;
+1080:../src/ASF/common/services/usb/udc/udc.c **** }
+1081:../src/ASF/common/services/usb/udc/udc.c **** 
+1082:../src/ASF/common/services/usb/udc/udc.c **** /**
+1083:../src/ASF/common/services/usb/udc/udc.c ****  * \brief Main routine to manage the USB SETUP request.
+1084:../src/ASF/common/services/usb/udc/udc.c ****  *
+1085:../src/ASF/common/services/usb/udc/udc.c ****  * This function parses a USB SETUP request and submits an appropriate
+1086:../src/ASF/common/services/usb/udc/udc.c ****  * response back to the host or, in the case of SETUP OUT requests
+1087:../src/ASF/common/services/usb/udc/udc.c ****  * with data, sets up a buffer for receiving the data payload.
+1088:../src/ASF/common/services/usb/udc/udc.c ****  *
+1089:../src/ASF/common/services/usb/udc/udc.c ****  * The main standard requests defined by the USB 2.0 standard are handled
+1090:../src/ASF/common/services/usb/udc/udc.c ****  * internally. The interface requests are sent to UDI, and the specific request
+1091:../src/ASF/common/services/usb/udc/udc.c ****  * sent to a specific application callback.
+1092:../src/ASF/common/services/usb/udc/udc.c ****  *
+1093:../src/ASF/common/services/usb/udc/udc.c ****  * \return true if the request is supported, else the request is stalled by UDD
+1094:../src/ASF/common/services/usb/udc/udc.c ****  */
+1095:../src/ASF/common/services/usb/udc/udc.c **** bool udc_process_setup(void)
+1096:../src/ASF/common/services/usb/udc/udc.c **** {
+ 668              		.loc 1 1096 0
+ 669              		.cfi_startproc
+ 670              		@ args = 0, pretend = 0, frame = 0
+ 671              		@ frame_needed = 0, uses_anonymous_args = 0
+ 672 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 673              	.LCFI11:
+ 674              		.cfi_def_cfa_offset 24
+ 675              		.cfi_offset 3, -24
+ 676              		.cfi_offset 4, -20
+ 677              		.cfi_offset 5, -16
+ 678              		.cfi_offset 6, -12
+ 679              		.cfi_offset 7, -8
+ 680              		.cfi_offset 14, -4
+1097:../src/ASF/common/services/usb/udc/udc.c **** 	// By default no data (receive/send) and no callbacks registered
+1098:../src/ASF/common/services/usb/udc/udc.c **** 	udd_g_ctrlreq.payload_size = 0;
+ 681              		.loc 1 1098 0
+ 682 0002 9A4B     		ldr	r3, .L151
+ 683 0004 0022     		movs	r2, #0
+ 684 0006 9A81     		strh	r2, [r3, #12]	@ movhi
+1099:../src/ASF/common/services/usb/udc/udc.c **** 	udd_g_ctrlreq.callback = NULL;
+ 685              		.loc 1 1099 0
+ 686 0008 1A61     		str	r2, [r3, #16]
+1100:../src/ASF/common/services/usb/udc/udc.c **** 	udd_g_ctrlreq.over_under_run = NULL;
+ 687              		.loc 1 1100 0
+ 688 000a 5A61     		str	r2, [r3, #20]
+1101:../src/ASF/common/services/usb/udc/udc.c **** 
+1102:../src/ASF/common/services/usb/udc/udc.c **** 	if (Udd_setup_is_in()) {
+ 689              		.loc 1 1102 0
+ 690 000c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 691 000e 13F0800F 		tst	r3, #128
+ 692 0012 00F0B282 		beq	.L70
+1103:../src/ASF/common/services/usb/udc/udc.c **** 		if (udd_g_ctrlreq.req.wLength == 0) {
+ 693              		.loc 1 1103 0
+ 694 0016 954A     		ldr	r2, .L151
+ 695 0018 D288     		ldrh	r2, [r2, #6]
+ 696 001a 002A     		cmp	r2, #0
+ 697 001c 40F0B182 		bne	.L146
+ 698 0020 A7E2     		b	.L130
+ 699              	.L129:
+ 700              	.LBB45:
+ 701              	.LBB46:
+ 935:../src/ASF/common/services/usb/udc/udc.c **** 			// Standard Get Device request
+ 702              		.loc 1 935 0
+ 703 0022 13F01F03 		ands	r3, r3, #31
+ 704 0026 40F0CC80 		bne	.L73
+ 937:../src/ASF/common/services/usb/udc/udc.c **** 			case USB_REQ_GET_STATUS:
+ 705              		.loc 1 937 0
+ 706 002a 9049     		ldr	r1, .L151
+ 707 002c 4978     		ldrb	r1, [r1, #1]	@ zero_extendqisi2
+ 708 002e 0629     		cmp	r1, #6
+ 709 0030 0DD0     		beq	.L74
+ 710 0032 0829     		cmp	r1, #8
+ 711 0034 00F0BD80 		beq	.L75
+ 712 0038 0029     		cmp	r1, #0
+ 713 003a 40F0C280 		bne	.L73
+ 714              	.LBB47:
+ 715              	.LBB48:
+ 419:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 716              		.loc 1 419 0
+ 717 003e 022A     		cmp	r2, #2
+ 718 0040 40F04782 		bne	.L128
+ 423:../src/ASF/common/services/usb/udc/udc.c **** 			sizeof(udc_device_status));
+ 719              		.loc 1 423 0
+ 720 0044 8A48     		ldr	r0, .L151+4
+ 721 0046 0221     		movs	r1, #2
+ 722 0048 8A4B     		ldr	r3, .L151+8
+ 723 004a 9847     		blx	r3
+ 724              	.LVL56:
+ 725 004c A0E2     		b	.L78
+ 726              	.L74:
+ 727              	.LBE48:
+ 728              	.LBE47:
+ 729              	.LBB49:
+ 730              	.LBB50:
+ 667:../src/ASF/common/services/usb/udc/udc.c **** 
+ 731              		.loc 1 667 0
+ 732 004e 874B     		ldr	r3, .L151
+ 733 0050 5A88     		ldrh	r2, [r3, #2]
+ 734 0052 D4B2     		uxtb	r4, r2
+ 735              	.LVL57:
+ 670:../src/ASF/common/services/usb/udc/udc.c **** 	case USB_DT_DEVICE:
+ 736              		.loc 1 670 0
+ 737 0054 130A     		lsrs	r3, r2, #8
+ 738 0056 013B     		subs	r3, r3, #1
+ 739 0058 0E2B     		cmp	r3, #14
+ 740 005a 00F20A82 		bhi	.L131
+ 741 005e DFE813F0 		tbh	[pc, r3, lsl #1]
+ 742              	.L81:
+ 743 0062 0F00     		.2byte	(.L80-.L81)/2
+ 744 0064 2000     		.2byte	(.L82-.L81)/2
+ 745 0066 7B00     		.2byte	(.L83-.L81)/2
+ 746 0068 0802     		.2byte	(.L131-.L81)/2
+ 747 006a 0802     		.2byte	(.L131-.L81)/2
+ 748 006c 4500     		.2byte	(.L84-.L81)/2
+ 749 006e 4C00     		.2byte	(.L85-.L81)/2
+ 750 0070 0802     		.2byte	(.L131-.L81)/2
+ 751 0072 0802     		.2byte	(.L131-.L81)/2
+ 752 0074 0802     		.2byte	(.L131-.L81)/2
+ 753 0076 0802     		.2byte	(.L131-.L81)/2
+ 754 0078 0802     		.2byte	(.L131-.L81)/2
+ 755 007a 0802     		.2byte	(.L131-.L81)/2
+ 756 007c 0802     		.2byte	(.L131-.L81)/2
+ 757 007e 7100     		.2byte	(.L86-.L81)/2
+ 758              		.p2align 1
+ 759              	.L80:
+ 674:../src/ASF/common/services/usb/udc/udc.c **** 			udd_set_setup_payload(
+ 760              		.loc 1 674 0
+ 761 0080 7D4B     		ldr	r3, .L151+12
+ 762 0082 9847     		blx	r3
+ 763              	.LVL58:
+ 764 0084 30B9     		cbnz	r0, .L87
+ 677:../src/ASF/common/services/usb/udc/udc.c **** 		} else
+ 765              		.loc 1 677 0
+ 766 0086 7D4B     		ldr	r3, .L151+16
+ 767 0088 9B68     		ldr	r3, [r3, #8]
+ 675:../src/ASF/common/services/usb/udc/udc.c **** 				(uint8_t *) udc_config.confdev_hs,
+ 768              		.loc 1 675 0
+ 769 008a 1846     		mov	r0, r3
+ 770 008c 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 771 008e 794B     		ldr	r3, .L151+8
+ 772 0090 9847     		blx	r3
+ 773              	.LVL59:
+ 774 0092 85E0     		b	.L88
+ 775              	.L87:
+ 683:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 776              		.loc 1 683 0
+ 777 0094 794B     		ldr	r3, .L151+16
+ 778 0096 1B68     		ldr	r3, [r3]
+ 681:../src/ASF/common/services/usb/udc/udc.c **** 				(uint8_t *) udc_config.confdev_lsfs,
+ 779              		.loc 1 681 0
+ 780 0098 1846     		mov	r0, r3
+ 781 009a 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 782 009c 754B     		ldr	r3, .L151+8
+ 783 009e 9847     		blx	r3
+ 784              	.LVL60:
+ 785 00a0 7EE0     		b	.L88
+ 786              	.L82:
+ 690:../src/ASF/common/services/usb/udc/udc.c **** 			// HS descriptor
+ 787              		.loc 1 690 0
+ 788 00a2 754B     		ldr	r3, .L151+12
+ 789 00a4 9847     		blx	r3
+ 790              	.LVL61:
+ 791 00a6 70B1     		cbz	r0, .L89
+ 692:../src/ASF/common/services/usb/udc/udc.c **** 					bNumConfigurations) {
+ 792              		.loc 1 692 0
+ 793 00a8 744B     		ldr	r3, .L151+16
+ 794 00aa 9B68     		ldr	r3, [r3, #8]
+ 795 00ac 5B7C     		ldrb	r3, [r3, #17]	@ zero_extendqisi2
+ 796 00ae A342     		cmp	r3, r4
+ 797 00b0 40F20F82 		bls	.L128
+ 698:../src/ASF/common/services/usb/udc/udc.c **** 		} else
+ 798              		.loc 1 698 0
+ 799 00b4 714B     		ldr	r3, .L151+16
+ 800 00b6 1B69     		ldr	r3, [r3, #16]
+ 801 00b8 53F83430 		ldr	r3, [r3, r4, lsl #3]
+ 696:../src/ASF/common/services/usb/udc/udc.c **** 				(uint8_t *)udc_config.conf_hs[conf_num].desc,
+ 802              		.loc 1 696 0
+ 803 00bc 1846     		mov	r0, r3
+ 804 00be 5988     		ldrh	r1, [r3, #2]	@ unaligned
+ 805 00c0 6C4B     		ldr	r3, .L151+8
+ 806 00c2 9847     		blx	r3
+ 807              	.LVL62:
+ 808 00c4 0DE0     		b	.L90
+ 809              	.L89:
+ 703:../src/ASF/common/services/usb/udc/udc.c **** 					bNumConfigurations) {
+ 810              		.loc 1 703 0
+ 811 00c6 6D4B     		ldr	r3, .L151+16
+ 812 00c8 1B68     		ldr	r3, [r3]
+ 813 00ca 5B7C     		ldrb	r3, [r3, #17]	@ zero_extendqisi2
+ 814 00cc A342     		cmp	r3, r4
+ 815 00ce 40F20082 		bls	.L128
+ 709:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 816              		.loc 1 709 0
+ 817 00d2 6A4B     		ldr	r3, .L151+16
+ 818 00d4 5B68     		ldr	r3, [r3, #4]
+ 819 00d6 53F83430 		ldr	r3, [r3, r4, lsl #3]
+ 707:../src/ASF/common/services/usb/udc/udc.c **** 				(uint8_t *)udc_config.conf_lsfs[conf_num].desc,
+ 820              		.loc 1 707 0
+ 821 00da 1846     		mov	r0, r3
+ 822 00dc 5988     		ldrh	r1, [r3, #2]	@ unaligned
+ 823 00de 654B     		ldr	r3, .L151+8
+ 824 00e0 9847     		blx	r3
+ 825              	.LVL63:
+ 826              	.L90:
+ 711:../src/ASF/common/services/usb/udc/udc.c **** 				USB_DT_CONFIGURATION;
+ 827              		.loc 1 711 0
+ 828 00e2 624B     		ldr	r3, .L151
+ 829 00e4 9B68     		ldr	r3, [r3, #8]
+ 830 00e6 0222     		movs	r2, #2
+ 831 00e8 5A70     		strb	r2, [r3, #1]
+ 832 00ea 59E0     		b	.L88
+ 833              	.L84:
+ 719:../src/ASF/common/services/usb/udc/udc.c **** 		break;
+ 834              		.loc 1 719 0
+ 835 00ec 634B     		ldr	r3, .L151+16
+ 836 00ee DB68     		ldr	r3, [r3, #12]
+ 718:../src/ASF/common/services/usb/udc/udc.c **** 				udc_config.qualifier->bLength);
+ 837              		.loc 1 718 0
+ 838 00f0 1846     		mov	r0, r3
+ 839 00f2 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 840 00f4 5F4B     		ldr	r3, .L151+8
+ 841 00f6 9847     		blx	r3
+ 842              	.LVL64:
+ 843 00f8 52E0     		b	.L88
+ 844              	.L85:
+ 724:../src/ASF/common/services/usb/udc/udc.c **** 			// HS descriptor
+ 845              		.loc 1 724 0
+ 846 00fa 5F4B     		ldr	r3, .L151+12
+ 847 00fc 9847     		blx	r3
+ 848              	.LVL65:
+ 849 00fe 70B9     		cbnz	r0, .L91
+ 726:../src/ASF/common/services/usb/udc/udc.c **** 					bNumConfigurations) {
+ 850              		.loc 1 726 0
+ 851 0100 5E4B     		ldr	r3, .L151+16
+ 852 0102 9B68     		ldr	r3, [r3, #8]
+ 853 0104 5B7C     		ldrb	r3, [r3, #17]	@ zero_extendqisi2
+ 854 0106 A342     		cmp	r3, r4
+ 855 0108 40F2E381 		bls	.L128
+ 732:../src/ASF/common/services/usb/udc/udc.c **** 		} else {
+ 856              		.loc 1 732 0
+ 857 010c 5B4B     		ldr	r3, .L151+16
+ 858 010e 1B69     		ldr	r3, [r3, #16]
+ 859 0110 53F83430 		ldr	r3, [r3, r4, lsl #3]
+ 730:../src/ASF/common/services/usb/udc/udc.c **** 				(uint8_t *)udc_config.conf_hs[conf_num].desc,
+ 860              		.loc 1 730 0
+ 861 0114 1846     		mov	r0, r3
+ 862 0116 5988     		ldrh	r1, [r3, #2]	@ unaligned
+ 863 0118 564B     		ldr	r3, .L151+8
+ 864 011a 9847     		blx	r3
+ 865              	.LVL66:
+ 866 011c 0DE0     		b	.L92
+ 867              	.L91:
+ 735:../src/ASF/common/services/usb/udc/udc.c **** 					bNumConfigurations) {
+ 868              		.loc 1 735 0
+ 869 011e 574B     		ldr	r3, .L151+16
+ 870 0120 1B68     		ldr	r3, [r3]
+ 871 0122 5B7C     		ldrb	r3, [r3, #17]	@ zero_extendqisi2
+ 872 0124 A342     		cmp	r3, r4
+ 873 0126 40F2D481 		bls	.L128
+ 741:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 874              		.loc 1 741 0
+ 875 012a 544B     		ldr	r3, .L151+16
+ 876 012c 5B68     		ldr	r3, [r3, #4]
+ 877 012e 53F83430 		ldr	r3, [r3, r4, lsl #3]
+ 739:../src/ASF/common/services/usb/udc/udc.c **** 				(uint8_t *)udc_config.conf_lsfs[conf_num].desc,
+ 878              		.loc 1 739 0
+ 879 0132 1846     		mov	r0, r3
+ 880 0134 5988     		ldrh	r1, [r3, #2]	@ unaligned
+ 881 0136 4F4B     		ldr	r3, .L151+8
+ 882 0138 9847     		blx	r3
+ 883              	.LVL67:
+ 884              	.L92:
+ 743:../src/ASF/common/services/usb/udc/udc.c **** 				USB_DT_OTHER_SPEED_CONFIGURATION;
+ 885              		.loc 1 743 0
+ 886 013a 4C4B     		ldr	r3, .L151
+ 887 013c 9B68     		ldr	r3, [r3, #8]
+ 888 013e 0722     		movs	r2, #7
+ 889 0140 5A70     		strb	r2, [r3, #1]
+ 890 0142 2DE0     		b	.L88
+ 891              	.L86:
+ 750:../src/ASF/common/services/usb/udc/udc.c **** 			return false;
+ 892              		.loc 1 750 0
+ 893 0144 4D4B     		ldr	r3, .L151+16
+ 894 0146 5B69     		ldr	r3, [r3, #20]
+ 895 0148 002B     		cmp	r3, #0
+ 896 014a 00F0C281 		beq	.L128
+ 753:../src/ASF/common/services/usb/udc/udc.c **** 				udc_config.conf_bos->wTotalLength);
+ 897              		.loc 1 753 0
+ 898 014e 1846     		mov	r0, r3
+ 899 0150 5988     		ldrh	r1, [r3, #2]	@ unaligned
+ 900 0152 484B     		ldr	r3, .L151+8
+ 901 0154 9847     		blx	r3
+ 902              	.LVL68:
+ 903 0156 23E0     		b	.L88
+ 904              	.L83:
+ 905              	.LVL69:
+ 906              	.LBB51:
+ 907              	.LBB52:
+ 611:../src/ASF/common/services/usb/udc/udc.c **** 	case 0:
+ 908              		.loc 1 611 0
+ 909 0158 D2B2     		uxtb	r2, r2
+ 910 015a 032A     		cmp	r2, #3
+ 911 015c 00F2B981 		bhi	.L128
+ 912 0160 DFE812F0 		tbh	[pc, r2, lsl #1]
+ 913              	.L94:
+ 914 0164 0700     		.2byte	(.L93-.L94)/2
+ 915 0166 0C00     		.2byte	(.L132-.L94)/2
+ 916 0168 1302     		.2byte	(.L133-.L94)/2
+ 917 016a 0400     		.2byte	(.L97-.L94)/2
+ 918              		.p2align 1
+ 919              	.L97:
+ 631:../src/ASF/common/services/usb/udc/udc.c **** 		str = udc_get_string_serial_name();
+ 920              		.loc 1 631 0
+ 921 016c 2020     		movs	r0, #32
+ 632:../src/ASF/common/services/usb/udc/udc.c **** 		break;
+ 922              		.loc 1 632 0
+ 923 016e 444A     		ldr	r2, .L151+20
+ 924 0170 06E0     		b	.L95
+ 925              	.L93:
+ 613:../src/ASF/common/services/usb/udc/udc.c **** 				sizeof(udc_string_desc_languageid));
+ 926              		.loc 1 613 0
+ 927 0172 4448     		ldr	r0, .L151+24
+ 928 0174 0421     		movs	r1, #4
+ 929 0176 3F4B     		ldr	r3, .L151+8
+ 930 0178 9847     		blx	r3
+ 931              	.LVL70:
+ 932 017a 11E0     		b	.L88
+ 933              	.L132:
+ 620:../src/ASF/common/services/usb/udc/udc.c **** 		break;
+ 934              		.loc 1 620 0
+ 935 017c 424A     		ldr	r2, .L151+28
+ 619:../src/ASF/common/services/usb/udc/udc.c **** 		str = udc_string_manufacturer_name;
+ 936              		.loc 1 619 0
+ 937 017e 1520     		movs	r0, #21
+ 938              	.LVL71:
+ 939              	.L95:
+ 940 0180 1446     		mov	r4, r2
+ 941              	.LVL72:
+ 942 0182 4249     		ldr	r1, .L151+32
+ 943              	.LVL73:
+ 944              	.L98:
+ 646:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 945              		.loc 1 646 0
+ 946 0184 12F8013B 		ldrb	r3, [r2], #1	@ zero_extendqisi2
+ 947 0188 21F8023F 		strh	r3, [r1, #2]!	@ movhi
+ 948 018c 131B     		subs	r3, r2, r4
+ 645:../src/ASF/common/services/usb/udc/udc.c **** 			udc_string_desc.string[i] = cpu_to_le16((le16_t)str[i]);
+ 949              		.loc 1 645 0
+ 950 018e DBB2     		uxtb	r3, r3
+ 951 0190 8342     		cmp	r3, r0
+ 952 0192 F7D3     		bcc	.L98
+ 649:../src/ASF/common/services/usb/udc/udc.c **** 		udd_set_setup_payload(
+ 953              		.loc 1 649 0
+ 954 0194 4100     		lsls	r1, r0, #1
+ 955 0196 0231     		adds	r1, r1, #2
+ 956 0198 3C48     		ldr	r0, .L151+32
+ 957              	.LVL74:
+ 958 019a 0170     		strb	r1, [r0]
+ 650:../src/ASF/common/services/usb/udc/udc.c **** 			(uint8_t *) &udc_string_desc,
+ 959              		.loc 1 650 0
+ 960 019c 354B     		ldr	r3, .L151+8
+ 961 019e 9847     		blx	r3
+ 962              	.LVL75:
+ 963              	.L88:
+ 964              	.LBE52:
+ 965              	.LBE51:
+ 769:../src/ASF/common/services/usb/udc/udc.c **** 		udd_g_ctrlreq.payload_size = udd_g_ctrlreq.req.wLength;
+ 966              		.loc 1 769 0
+ 967 01a0 324B     		ldr	r3, .L151
+ 968 01a2 DA88     		ldrh	r2, [r3, #6]
+ 969 01a4 9B89     		ldrh	r3, [r3, #12]
+ 970 01a6 9342     		cmp	r3, r2
+ 971 01a8 40F2F281 		bls	.L78
+ 770:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 972              		.loc 1 770 0
+ 973 01ac 2F4B     		ldr	r3, .L151
+ 974 01ae 9A81     		strh	r2, [r3, #12]	@ movhi
+ 975 01b0 EEE1     		b	.L78
+ 976              	.L75:
+ 977              	.LBE50:
+ 978              	.LBE49:
+ 979              	.LBB57:
+ 980              	.LBB58:
+ 782:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 981              		.loc 1 782 0
+ 982 01b2 012A     		cmp	r2, #1
+ 983 01b4 40F08D81 		bne	.L128
+ 786:../src/ASF/common/services/usb/udc/udc.c **** 	return true;
+ 984              		.loc 1 786 0
+ 985 01b8 3548     		ldr	r0, .L151+36
+ 986 01ba 0121     		movs	r1, #1
+ 987 01bc 2D4B     		ldr	r3, .L151+8
+ 988 01be 9847     		blx	r3
+ 989              	.LVL76:
+ 990 01c0 E6E1     		b	.L78
+ 991              	.L73:
+ 992              	.LBE58:
+ 993              	.LBE57:
+ 949:../src/ASF/common/services/usb/udc/udc.c **** 			// Standard Get Interface request
+ 994              		.loc 1 949 0
+ 995 01c2 012B     		cmp	r3, #1
+ 996 01c4 27D1     		bne	.L99
+ 951:../src/ASF/common/services/usb/udc/udc.c **** 			case USB_REQ_GET_INTERFACE:
+ 997              		.loc 1 951 0
+ 998 01c6 2949     		ldr	r1, .L151
+ 999 01c8 4978     		ldrb	r1, [r1, #1]	@ zero_extendqisi2
+ 1000 01ca 0A29     		cmp	r1, #10
+ 1001 01cc 23D1     		bne	.L99
+ 1002              	.LBB59:
+ 1003              	.LBB60:
+ 866:../src/ASF/common/services/usb/udc/udc.c **** 		return false; // Error in request
+ 1004              		.loc 1 866 0
+ 1005 01ce 012A     		cmp	r2, #1
+ 1006 01d0 40F07F81 		bne	.L128
+ 869:../src/ASF/common/services/usb/udc/udc.c **** 		return false; // The device is not is configured state yet
+ 1007              		.loc 1 869 0
+ 1008 01d4 2E4B     		ldr	r3, .L151+36
+ 1009 01d6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1010 01d8 002B     		cmp	r3, #0
+ 1011 01da 00F07A81 		beq	.L128
+ 874:../src/ASF/common/services/usb/udc/udc.c **** 	if (iface_num >= udc_ptr_conf->desc->bNumInterfaces) {
+ 1012              		.loc 1 874 0
+ 1013 01de 234B     		ldr	r3, .L151
+ 1014 01e0 1C79     		ldrb	r4, [r3, #4]	@ zero_extendqisi2
+ 1015              	.LVL77:
+ 875:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 1016              		.loc 1 875 0
+ 1017 01e2 2C4B     		ldr	r3, .L151+40
+ 1018 01e4 1D68     		ldr	r5, [r3]
+ 1019 01e6 2B68     		ldr	r3, [r5]
+ 1020 01e8 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
+ 1021 01ea A342     		cmp	r3, r4
+ 1022 01ec 40F27181 		bls	.L128
+ 881:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 1023              		.loc 1 881 0
+ 1024 01f0 2046     		mov	r0, r4
+ 1025 01f2 0021     		movs	r1, #0
+ 1026 01f4 284B     		ldr	r3, .L151+44
+ 1027 01f6 9847     		blx	r3
+ 1028              	.LVL78:
+ 1029 01f8 0028     		cmp	r0, #0
+ 1030 01fa 00F06A81 		beq	.L128
+ 1031              	.LVL79:
+ 885:../src/ASF/common/services/usb/udc/udc.c **** 	udc_iface_setting = udi_api->getsetting();
+ 1032              		.loc 1 885 0
+ 1033 01fe 6B68     		ldr	r3, [r5, #4]
+ 886:../src/ASF/common/services/usb/udc/udc.c **** 
+ 1034              		.loc 1 886 0
+ 1035 0200 53F82430 		ldr	r3, [r3, r4, lsl #2]
+ 1036 0204 DB68     		ldr	r3, [r3, #12]
+ 1037 0206 9847     		blx	r3
+ 1038              	.LVL80:
+ 1039 0208 244B     		ldr	r3, .L151+48
+ 1040 020a 1870     		strb	r0, [r3]
+ 889:../src/ASF/common/services/usb/udc/udc.c **** 	return true;
+ 1041              		.loc 1 889 0
+ 1042 020c 1846     		mov	r0, r3
+ 1043 020e 0121     		movs	r1, #1
+ 1044 0210 184B     		ldr	r3, .L151+8
+ 1045 0212 9847     		blx	r3
+ 1046              	.LVL81:
+ 1047 0214 BCE1     		b	.L78
+ 1048              	.LVL82:
+ 1049              	.L99:
+ 1050              	.LBE60:
+ 1051              	.LBE59:
+ 959:../src/ASF/common/services/usb/udc/udc.c **** 			// Standard Get Endpoint request
+ 1052              		.loc 1 959 0
+ 1053 0216 022B     		cmp	r3, #2
+ 1054 0218 40F05B81 		bne	.L128
+ 961:../src/ASF/common/services/usb/udc/udc.c **** 			case USB_REQ_GET_STATUS:
+ 1055              		.loc 1 961 0
+ 1056 021c 134B     		ldr	r3, .L151
+ 1057 021e 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 1058 0220 002B     		cmp	r3, #0
+ 1059 0222 40F02881 		bne	.L147
+ 1060              	.LBB61:
+ 1061              	.LBB62:
+ 438:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 1062              		.loc 1 438 0
+ 1063 0226 022A     		cmp	r2, #2
+ 1064 0228 40F05381 		bne	.L128
+ 442:../src/ASF/common/services/usb/udc/udc.c **** 			wIndex & 0xFF) ? CPU_TO_LE16(USB_EP_STATUS_HALTED) : 0;
+ 1065              		.loc 1 442 0
+ 1066 022c 0F4B     		ldr	r3, .L151
+ 1067 022e 1879     		ldrb	r0, [r3, #4]	@ zero_extendqisi2
+ 1068 0230 1B4B     		ldr	r3, .L151+52
+ 1069 0232 9847     		blx	r3
+ 1070              	.LVL83:
+ 1071 0234 1B4B     		ldr	r3, .L151+56
+ 1072 0236 1880     		strh	r0, [r3]	@ movhi
+ 445:../src/ASF/common/services/usb/udc/udc.c **** 			sizeof(udc_ep_status));
+ 1073              		.loc 1 445 0
+ 1074 0238 1846     		mov	r0, r3
+ 1075 023a 0221     		movs	r1, #2
+ 1076 023c 0D4B     		ldr	r3, .L151+8
+ 1077 023e 9847     		blx	r3
+ 1078              	.LVL84:
+ 1079 0240 A6E1     		b	.L78
+ 1080              	.L127:
+ 1081              	.LBE62:
+ 1082              	.LBE61:
+ 971:../src/ASF/common/services/usb/udc/udc.c **** 			// Standard Set Device request
+ 1083              		.loc 1 971 0
+ 1084 0242 13F01F03 		ands	r3, r3, #31
+ 1085 0246 40F0D080 		bne	.L102
+ 973:../src/ASF/common/services/usb/udc/udc.c **** 			case USB_REQ_SET_ADDRESS:
+ 1086              		.loc 1 973 0
+ 1087 024a 084A     		ldr	r2, .L151
+ 1088 024c 5278     		ldrb	r2, [r2, #1]	@ zero_extendqisi2
+ 1089 024e 013A     		subs	r2, r2, #1
+ 1090 0250 082A     		cmp	r2, #8
+ 1091 0252 00F2CA80 		bhi	.L102
+ 1092 0256 DFE812F0 		tbh	[pc, r2, lsl #1]
+ 1093              	.L104:
+ 1094 025a 3000     		.2byte	(.L103-.L104)/2
+ 1095 025c C800     		.2byte	(.L102-.L104)/2
+ 1096 025e 4000     		.2byte	(.L105-.L104)/2
+ 1097 0260 C800     		.2byte	(.L102-.L104)/2
+ 1098 0262 2700     		.2byte	(.L106-.L104)/2
+ 1099 0264 C800     		.2byte	(.L102-.L104)/2
+ 1100 0266 C800     		.2byte	(.L102-.L104)/2
+ 1101 0268 C800     		.2byte	(.L102-.L104)/2
+ 1102 026a 7100     		.2byte	(.L107-.L104)/2
+ 1103              		.p2align 1
+ 1104              	.L152:
+ 1105              		.align	2
+ 1106              	.L151:
+ 1107 026c 00000000 		.word	udd_g_ctrlreq
+ 1108 0270 00000000 		.word	.LANCHOR3
+ 1109 0274 00000000 		.word	udd_set_setup_payload
+ 1110 0278 00000000 		.word	udd_is_high_speed
+ 1111 027c 00000000 		.word	udc_config
+ 1112 0280 00000000 		.word	usb_serial_number
+ 1113 0284 00000000 		.word	.LANCHOR6
+ 1114 0288 00000000 		.word	.LANCHOR4
+ 1115 028c 00000000 		.word	.LANCHOR7
+ 1116 0290 00000000 		.word	.LANCHOR1
+ 1117 0294 00000000 		.word	.LANCHOR0
+ 1118 0298 00000000 		.word	udc_update_iface_desc
+ 1119 029c 00000000 		.word	.LANCHOR8
+ 1120 02a0 00000000 		.word	udd_ep_is_halted
+ 1121 02a4 00000000 		.word	.LANCHOR9
+ 1122              	.L106:
+ 1123              	.LBB63:
+ 1124              	.LBB64:
+ 589:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 1125              		.loc 1 589 0
+ 1126 02a8 764B     		ldr	r3, .L153
+ 1127 02aa DB88     		ldrh	r3, [r3, #6]
+ 1128 02ac 002B     		cmp	r3, #0
+ 1129 02ae 40F01081 		bne	.L128
+ 595:../src/ASF/common/services/usb/udc/udc.c **** 	return true;
+ 1130              		.loc 1 595 0
+ 1131 02b2 754A     		ldr	r2, .L153+4
+ 1132 02b4 734B     		ldr	r3, .L153
+ 1133 02b6 1A61     		str	r2, [r3, #16]
+ 1134 02b8 6AE1     		b	.L78
+ 1135              	.L103:
+ 1136              	.LBE64:
+ 1137              	.LBE63:
+ 1138              	.LBB65:
+ 1139              	.LBB66:
+ 458:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 1140              		.loc 1 458 0
+ 1141 02ba 724B     		ldr	r3, .L153
+ 1142 02bc DB88     		ldrh	r3, [r3, #6]
+ 1143 02be 002B     		cmp	r3, #0
+ 1144 02c0 40F00781 		bne	.L128
+ 462:../src/ASF/common/services/usb/udc/udc.c **** 		udc_device_status &= CPU_TO_LE16(~(uint32_t)USB_DEV_STATUS_REMOTEWAKEUP);
+ 1145              		.loc 1 462 0
+ 1146 02c4 6F4B     		ldr	r3, .L153
+ 1147 02c6 5B88     		ldrh	r3, [r3, #2]
+ 1148 02c8 012B     		cmp	r3, #1
+ 1149 02ca 40F00281 		bne	.L128
+ 463:../src/ASF/common/services/usb/udc/udc.c **** #if (USB_CONFIG_ATTR_REMOTE_WAKEUP \
+ 1150              		.loc 1 463 0
+ 1151 02ce 6F4A     		ldr	r2, .L153+8
+ 1152 02d0 1388     		ldrh	r3, [r2]
+ 1153 02d2 23F00203 		bic	r3, r3, #2
+ 1154 02d6 1380     		strh	r3, [r2]	@ movhi
+ 1155 02d8 5AE1     		b	.L78
+ 1156              	.L105:
+ 1157              	.LBE66:
+ 1158              	.LBE65:
+ 1159              	.LBB67:
+ 1160              	.LBB68:
+ 499:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 1161              		.loc 1 499 0
+ 1162 02da 6A4B     		ldr	r3, .L153
+ 1163 02dc DB88     		ldrh	r3, [r3, #6]
+ 1164 02de 002B     		cmp	r3, #0
+ 1165 02e0 40F0F780 		bne	.L128
+ 503:../src/ASF/common/services/usb/udc/udc.c **** 
+ 1166              		.loc 1 503 0
+ 1167 02e4 674B     		ldr	r3, .L153
+ 1168 02e6 5B88     		ldrh	r3, [r3, #2]
+ 1169 02e8 022B     		cmp	r3, #2
+ 1170 02ea 40F0C680 		bne	.L148
+ 517:../src/ASF/common/services/usb/udc/udc.c **** 			break;
+ 1171              		.loc 1 517 0
+ 1172 02ee 684B     		ldr	r3, .L153+12
+ 1173 02f0 9847     		blx	r3
+ 1174              	.LVL85:
+ 1175 02f2 0028     		cmp	r0, #0
+ 1176 02f4 00F0ED80 		beq	.L128
+ 520:../src/ASF/common/services/usb/udc/udc.c **** 			break;
+ 1177              		.loc 1 520 0
+ 1178 02f8 624B     		ldr	r3, .L153
+ 1179 02fa 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
+ 1180 02fc 002B     		cmp	r3, #0
+ 1181 02fe 40F0E880 		bne	.L128
+ 524:../src/ASF/common/services/usb/udc/udc.c **** 		switch ((udd_g_ctrlreq.req.wIndex >> 8) & 0xFF) {
+ 1182              		.loc 1 524 0
+ 1183 0302 644B     		ldr	r3, .L153+16
+ 1184 0304 9847     		blx	r3
+ 1185              	.LVL86:
+ 525:../src/ASF/common/services/usb/udc/udc.c **** 		case USB_DEV_TEST_MODE_J:
+ 1186              		.loc 1 525 0
+ 1187 0306 5F4B     		ldr	r3, .L153
+ 1188 0308 9B88     		ldrh	r3, [r3, #4]
+ 1189 030a 1B0A     		lsrs	r3, r3, #8
+ 1190 030c 013B     		subs	r3, r3, #1
+ 1191 030e 032B     		cmp	r3, #3
+ 1192 0310 00F2B580 		bhi	.L136
+ 1193 0314 DFE803F0 		tbb	[pc, r3]
+ 1194              	.L110:
+ 1195 0318 02       		.byte	(.L109-.L110)/2
+ 1196 0319 06       		.byte	(.L111-.L110)/2
+ 1197 031a 0A       		.byte	(.L112-.L110)/2
+ 1198 031b 0E       		.byte	(.L113-.L110)/2
+ 1199              		.p2align 1
+ 1200              	.L109:
+ 527:../src/ASF/common/services/usb/udc/udc.c **** 			return true;
+ 1201              		.loc 1 527 0
+ 1202 031c 5E4A     		ldr	r2, .L153+20
+ 1203 031e 594B     		ldr	r3, .L153
+ 1204 0320 1A61     		str	r2, [r3, #16]
+ 1205 0322 35E1     		b	.L78
+ 1206              	.L111:
+ 531:../src/ASF/common/services/usb/udc/udc.c **** 			return true;
+ 1207              		.loc 1 531 0
+ 1208 0324 5D4A     		ldr	r2, .L153+24
+ 1209 0326 574B     		ldr	r3, .L153
+ 1210 0328 1A61     		str	r2, [r3, #16]
+ 1211 032a 31E1     		b	.L78
+ 1212              	.L112:
+ 535:../src/ASF/common/services/usb/udc/udc.c **** 			return true;
+ 1213              		.loc 1 535 0
+ 1214 032c 5C4A     		ldr	r2, .L153+28
+ 1215 032e 554B     		ldr	r3, .L153
+ 1216 0330 1A61     		str	r2, [r3, #16]
+ 1217 0332 2DE1     		b	.L78
+ 1218              	.L113:
+ 539:../src/ASF/common/services/usb/udc/udc.c **** 			return true;
+ 1219              		.loc 1 539 0
+ 1220 0334 5B4A     		ldr	r2, .L153+32
+ 1221 0336 534B     		ldr	r3, .L153
+ 1222 0338 1A61     		str	r2, [r3, #16]
+ 1223 033a 29E1     		b	.L78
+ 1224              	.L107:
+ 1225              	.LBE68:
+ 1226              	.LBE67:
+ 1227              	.LBB70:
+ 1228              	.LBB71:
+ 800:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 1229              		.loc 1 800 0
+ 1230 033c 514B     		ldr	r3, .L153
+ 1231 033e DB88     		ldrh	r3, [r3, #6]
+ 1232 0340 002B     		cmp	r3, #0
+ 1233 0342 40F0C680 		bne	.L128
+ 804:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 1234              		.loc 1 804 0
+ 1235 0346 584B     		ldr	r3, .L153+36
+ 1236 0348 9847     		blx	r3
+ 1237              	.LVL87:
+ 1238 034a 0028     		cmp	r0, #0
+ 1239 034c 00F0C180 		beq	.L128
+ 809:../src/ASF/common/services/usb/udc/udc.c **** 		// HS descriptor
+ 1240              		.loc 1 809 0
+ 1241 0350 4F4B     		ldr	r3, .L153+12
+ 1242 0352 9847     		blx	r3
+ 1243              	.LVL88:
+ 1244 0354 38B1     		cbz	r0, .L114
+ 811:../src/ASF/common/services/usb/udc/udc.c **** 				udc_config.confdev_hs->bNumConfigurations) {
+ 1245              		.loc 1 811 0
+ 1246 0356 4B4B     		ldr	r3, .L153
+ 1247 0358 9A78     		ldrb	r2, [r3, #2]	@ zero_extendqisi2
+ 812:../src/ASF/common/services/usb/udc/udc.c **** 			return false;
+ 1248              		.loc 1 812 0
+ 1249 035a 544B     		ldr	r3, .L153+40
+ 1250 035c 9B68     		ldr	r3, [r3, #8]
+ 811:../src/ASF/common/services/usb/udc/udc.c **** 				udc_config.confdev_hs->bNumConfigurations) {
+ 1251              		.loc 1 811 0
+ 1252 035e 5B7C     		ldrb	r3, [r3, #17]	@ zero_extendqisi2
+ 1253 0360 9A42     		cmp	r2, r3
+ 1254 0362 08DD     		ble	.L115
+ 1255 0364 B5E0     		b	.L128
+ 1256              	.L114:
+ 819:../src/ASF/common/services/usb/udc/udc.c **** 				udc_config.confdev_lsfs->bNumConfigurations) {
+ 1257              		.loc 1 819 0
+ 1258 0366 474B     		ldr	r3, .L153
+ 1259 0368 9A78     		ldrb	r2, [r3, #2]	@ zero_extendqisi2
+ 820:../src/ASF/common/services/usb/udc/udc.c **** 			return false;
+ 1260              		.loc 1 820 0
+ 1261 036a 504B     		ldr	r3, .L153+40
+ 1262 036c 1B68     		ldr	r3, [r3]
+ 819:../src/ASF/common/services/usb/udc/udc.c **** 				udc_config.confdev_lsfs->bNumConfigurations) {
+ 1263              		.loc 1 819 0
+ 1264 036e 5B7C     		ldrb	r3, [r3, #17]	@ zero_extendqisi2
+ 1265 0370 9A42     		cmp	r2, r3
+ 1266 0372 00F3AE80 		bgt	.L128
+ 1267              	.L115:
+ 826:../src/ASF/common/services/usb/udc/udc.c **** 
+ 1268              		.loc 1 826 0
+ 1269 0376 474B     		ldr	r3, .L153+16
+ 1270 0378 9847     		blx	r3
+ 1271              	.LVL89:
+ 829:../src/ASF/common/services/usb/udc/udc.c **** 	if (udc_num_configuration == 0) {
+ 1272              		.loc 1 829 0
+ 1273 037a 424B     		ldr	r3, .L153
+ 1274 037c 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 1275 037e 4C4A     		ldr	r2, .L153+44
+ 1276 0380 1370     		strb	r3, [r2]
+ 830:../src/ASF/common/services/usb/udc/udc.c **** 		return true; // Default empty configuration requested
+ 1277              		.loc 1 830 0
+ 1278 0382 002B     		cmp	r3, #0
+ 1279 0384 00F00481 		beq	.L78
+ 835:../src/ASF/common/services/usb/udc/udc.c **** 		// HS descriptor
+ 1280              		.loc 1 835 0
+ 1281 0388 414B     		ldr	r3, .L153+12
+ 1282 038a 9847     		blx	r3
+ 1283              	.LVL90:
+ 1284 038c 80B1     		cbz	r0, .L116
+ 837:../src/ASF/common/services/usb/udc/udc.c **** 	} else
+ 1285              		.loc 1 837 0
+ 1286 038e 484B     		ldr	r3, .L153+44
+ 1287 0390 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1288 0392 03F10053 		add	r3, r3, #536870912
+ 1289 0396 013B     		subs	r3, r3, #1
+ 1290 0398 444A     		ldr	r2, .L153+40
+ 1291 039a 1269     		ldr	r2, [r2, #16]
+ 1292 039c 02EBC303 		add	r3, r2, r3, lsl #3
+ 1293 03a0 444A     		ldr	r2, .L153+48
+ 1294 03a2 1360     		str	r3, [r2]
+ 1295              	.L118:
+ 1296              	.LVL91:
+ 845:../src/ASF/common/services/usb/udc/udc.c **** 			iface_num++) {
+ 1297              		.loc 1 845 0
+ 1298 03a4 434B     		ldr	r3, .L153+48
+ 1299 03a6 1B68     		ldr	r3, [r3]
+ 1300 03a8 1B68     		ldr	r3, [r3]
+ 1301 03aa 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
+ 1302 03ac 63B9     		cbnz	r3, .L137
+ 1303 03ae EFE0     		b	.L78
+ 1304              	.LVL92:
+ 1305              	.L116:
+ 842:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 1306              		.loc 1 842 0
+ 1307 03b0 3F4B     		ldr	r3, .L153+44
+ 1308 03b2 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1309 03b4 03F10053 		add	r3, r3, #536870912
+ 1310 03b8 013B     		subs	r3, r3, #1
+ 1311 03ba 3C4A     		ldr	r2, .L153+40
+ 1312 03bc 5268     		ldr	r2, [r2, #4]
+ 1313 03be 02EBC303 		add	r3, r2, r3, lsl #3
+ 1314 03c2 3C4A     		ldr	r2, .L153+48
+ 1315 03c4 1360     		str	r3, [r2]
+ 1316 03c6 EDE7     		b	.L118
+ 1317              	.LVL93:
+ 1318              	.L137:
+ 845:../src/ASF/common/services/usb/udc/udc.c **** 			iface_num++) {
+ 1319              		.loc 1 845 0
+ 1320 03c8 0024     		movs	r4, #0
+ 847:../src/ASF/common/services/usb/udc/udc.c **** 			return false;
+ 1321              		.loc 1 847 0
+ 1322 03ca 2646     		mov	r6, r4
+ 1323 03cc 3A4D     		ldr	r5, .L153+52
+ 845:../src/ASF/common/services/usb/udc/udc.c **** 			iface_num++) {
+ 1324              		.loc 1 845 0
+ 1325 03ce 394F     		ldr	r7, .L153+48
+ 1326              	.LVL94:
+ 1327              	.L117:
+ 847:../src/ASF/common/services/usb/udc/udc.c **** 			return false;
+ 1328              		.loc 1 847 0
+ 1329 03d0 2046     		mov	r0, r4
+ 1330 03d2 3146     		mov	r1, r6
+ 1331 03d4 A847     		blx	r5
+ 1332              	.LVL95:
+ 1333 03d6 0028     		cmp	r0, #0
+ 1334 03d8 7BD0     		beq	.L128
+ 846:../src/ASF/common/services/usb/udc/udc.c **** 		if (!udc_iface_enable(iface_num, 0)) {
+ 1335              		.loc 1 846 0
+ 1336 03da 0134     		adds	r4, r4, #1
+ 1337              	.LVL96:
+ 1338 03dc E4B2     		uxtb	r4, r4
+ 1339              	.LVL97:
+ 845:../src/ASF/common/services/usb/udc/udc.c **** 			iface_num++) {
+ 1340              		.loc 1 845 0
+ 1341 03de 3B68     		ldr	r3, [r7]
+ 1342 03e0 1B68     		ldr	r3, [r3]
+ 1343 03e2 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
+ 1344 03e4 A342     		cmp	r3, r4
+ 1345 03e6 F3D8     		bhi	.L117
+ 1346 03e8 D2E0     		b	.L78
+ 1347              	.LVL98:
+ 1348              	.L102:
+ 1349              	.LBE71:
+ 1350              	.LBE70:
+ 990:../src/ASF/common/services/usb/udc/udc.c **** 			// Standard Set Interface request
+ 1351              		.loc 1 990 0
+ 1352 03ea 012B     		cmp	r3, #1
+ 1353 03ec 19D1     		bne	.L119
+ 992:../src/ASF/common/services/usb/udc/udc.c **** 			case USB_REQ_SET_INTERFACE:
+ 1354              		.loc 1 992 0
+ 1355 03ee 254A     		ldr	r2, .L153
+ 1356 03f0 5278     		ldrb	r2, [r2, #1]	@ zero_extendqisi2
+ 1357 03f2 0B2A     		cmp	r2, #11
+ 1358 03f4 15D1     		bne	.L119
+ 1359              	.LBB72:
+ 1360              	.LBB73:
+ 903:../src/ASF/common/services/usb/udc/udc.c **** 		return false; // Error in request
+ 1361              		.loc 1 903 0
+ 1362 03f6 234B     		ldr	r3, .L153
+ 1363 03f8 DB88     		ldrh	r3, [r3, #6]
+ 1364 03fa 002B     		cmp	r3, #0
+ 1365 03fc 69D1     		bne	.L128
+ 906:../src/ASF/common/services/usb/udc/udc.c **** 		return false; // The device is not is configured state yet
+ 1366              		.loc 1 906 0
+ 1367 03fe 2C4B     		ldr	r3, .L153+44
+ 1368 0400 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1369 0402 002B     		cmp	r3, #0
+ 1370 0404 65D0     		beq	.L128
+ 910:../src/ASF/common/services/usb/udc/udc.c **** 	setting_num = udd_g_ctrlreq.req.wValue & 0xFF;
+ 1371              		.loc 1 910 0
+ 1372 0406 1F4B     		ldr	r3, .L153
+ 1373 0408 1C79     		ldrb	r4, [r3, #4]	@ zero_extendqisi2
+ 1374              	.LVL99:
+ 911:../src/ASF/common/services/usb/udc/udc.c **** 
+ 1375              		.loc 1 911 0
+ 1376 040a 5D88     		ldrh	r5, [r3, #2]
+ 1377              	.LVL100:
+ 914:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 1378              		.loc 1 914 0
+ 1379 040c 2046     		mov	r0, r4
+ 1380 040e 2B4B     		ldr	r3, .L153+56
+ 1381 0410 9847     		blx	r3
+ 1382              	.LVL101:
+ 1383 0412 0028     		cmp	r0, #0
+ 1384 0414 5DD0     		beq	.L128
+ 919:../src/ASF/common/services/usb/udc/udc.c **** }
+ 1385              		.loc 1 919 0
+ 1386 0416 2046     		mov	r0, r4
+ 1387 0418 E9B2     		uxtb	r1, r5
+ 1388 041a 274B     		ldr	r3, .L153+52
+ 1389 041c 9847     		blx	r3
+ 1390              	.LVL102:
+ 1391 041e 0346     		mov	r3, r0
+ 1392 0420 55E0     		b	.L79
+ 1393              	.LVL103:
+ 1394              	.L119:
+ 1395              	.LBE73:
+ 1396              	.LBE72:
+1000:../src/ASF/common/services/usb/udc/udc.c **** 			// Standard Set Endpoint request
+ 1397              		.loc 1 1000 0
+ 1398 0422 022B     		cmp	r3, #2
+ 1399 0424 55D1     		bne	.L128
+1002:../src/ASF/common/services/usb/udc/udc.c **** 			case USB_REQ_CLEAR_FEATURE:
+ 1400              		.loc 1 1002 0
+ 1401 0426 174B     		ldr	r3, .L153
+ 1402 0428 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 1403 042a 012B     		cmp	r3, #1
+ 1404 042c 02D0     		beq	.L121
+ 1405 042e 032B     		cmp	r3, #3
+ 1406 0430 0ED0     		beq	.L122
+ 1407 0432 4BE0     		b	.L149
+ 1408              	.L121:
+ 1409              	.LBB74:
+ 1410              	.LBB75:
+ 481:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 1411              		.loc 1 481 0
+ 1412 0434 134B     		ldr	r3, .L153
+ 1413 0436 DB88     		ldrh	r3, [r3, #6]
+ 1414 0438 002B     		cmp	r3, #0
+ 1415 043a 4AD1     		bne	.L128
+ 485:../src/ASF/common/services/usb/udc/udc.c **** 		return udd_ep_clear_halt(udd_g_ctrlreq.req.wIndex & 0xFF);
+ 1416              		.loc 1 485 0
+ 1417 043c 114B     		ldr	r3, .L153
+ 1418 043e 5B88     		ldrh	r3, [r3, #2]
+ 1419 0440 002B     		cmp	r3, #0
+ 1420 0442 46D1     		bne	.L128
+ 486:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 1421              		.loc 1 486 0
+ 1422 0444 0F4B     		ldr	r3, .L153
+ 1423 0446 1879     		ldrb	r0, [r3, #4]	@ zero_extendqisi2
+ 1424 0448 1D4B     		ldr	r3, .L153+60
+ 1425 044a 9847     		blx	r3
+ 1426              	.LVL104:
+ 1427 044c 0346     		mov	r3, r0
+ 1428 044e 3EE0     		b	.L79
+ 1429              	.L122:
+ 1430              	.LBE75:
+ 1431              	.LBE74:
+ 1432              	.LBB76:
+ 1433              	.LBB77:
+ 562:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 1434              		.loc 1 562 0
+ 1435 0450 0C4B     		ldr	r3, .L153
+ 1436 0452 DB88     		ldrh	r3, [r3, #6]
+ 1437 0454 002B     		cmp	r3, #0
+ 1438 0456 3CD1     		bne	.L128
+ 565:../src/ASF/common/services/usb/udc/udc.c **** 		udd_ep_abort(udd_g_ctrlreq.req.wIndex & 0xFF);
+ 1439              		.loc 1 565 0
+ 1440 0458 0A4B     		ldr	r3, .L153
+ 1441 045a 5B88     		ldrh	r3, [r3, #2]
+ 1442 045c 002B     		cmp	r3, #0
+ 1443 045e 38D1     		bne	.L128
+ 566:../src/ASF/common/services/usb/udc/udc.c **** 		return udd_ep_set_halt(udd_g_ctrlreq.req.wIndex & 0xFF);
+ 1444              		.loc 1 566 0
+ 1445 0460 084C     		ldr	r4, .L153
+ 1446 0462 2079     		ldrb	r0, [r4, #4]	@ zero_extendqisi2
+ 1447 0464 174B     		ldr	r3, .L153+64
+ 1448 0466 9847     		blx	r3
+ 1449              	.LVL105:
+ 567:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 1450              		.loc 1 567 0
+ 1451 0468 2079     		ldrb	r0, [r4, #4]	@ zero_extendqisi2
+ 1452 046a 174B     		ldr	r3, .L153+68
+ 1453 046c 9847     		blx	r3
+ 1454              	.LVL106:
+ 1455 046e 0346     		mov	r3, r0
+ 1456 0470 2DE0     		b	.L79
+ 1457              	.LVL107:
+ 1458              	.L131:
+ 1459              	.LBE77:
+ 1460              	.LBE76:
+ 1461              	.LBB78:
+ 1462              	.LBB55:
+ 766:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 1463              		.loc 1 766 0
+ 1464 0472 0023     		movs	r3, #0
+ 1465 0474 2BE0     		b	.L79
+ 1466              	.LVL108:
+ 1467              	.L147:
+ 1468              	.LBE55:
+ 1469              	.LBE78:
+1013:../src/ASF/common/services/usb/udc/udc.c **** }
+ 1470              		.loc 1 1013 0
+ 1471 0476 0023     		movs	r3, #0
+ 1472 0478 29E0     		b	.L79
+ 1473              	.L148:
+ 1474              	.LBB79:
+ 1475              	.LBB69:
+ 512:../src/ASF/common/services/usb/udc/udc.c **** #endif
+ 1476              		.loc 1 512 0
+ 1477 047a 0023     		movs	r3, #0
+ 1478 047c 27E0     		b	.L79
+ 1479              	.L136:
+ 551:../src/ASF/common/services/usb/udc/udc.c **** }
+ 1480              		.loc 1 551 0
+ 1481 047e 0023     		movs	r3, #0
+ 1482 0480 25E0     		b	.L79
+ 1483              	.L154:
+ 1484 0482 00BF     		.align	2
+ 1485              	.L153:
+ 1486 0484 00000000 		.word	udd_g_ctrlreq
+ 1487 0488 00000000 		.word	udc_valid_address
+ 1488 048c 00000000 		.word	.LANCHOR3
+ 1489 0490 00000000 		.word	udd_is_high_speed
+ 1490 0494 00000000 		.word	udc_reset
+ 1491 0498 00000000 		.word	udd_test_mode_j
+ 1492 049c 00000000 		.word	udd_test_mode_k
+ 1493 04a0 00000000 		.word	udd_test_mode_se0_nak
+ 1494 04a4 00000000 		.word	udd_test_mode_packet
+ 1495 04a8 00000000 		.word	udd_getaddress
+ 1496 04ac 00000000 		.word	udc_config
+ 1497 04b0 00000000 		.word	.LANCHOR1
+ 1498 04b4 00000000 		.word	.LANCHOR0
+ 1499 04b8 00000000 		.word	udc_iface_enable
+ 1500 04bc 00000000 		.word	udc_iface_disable
+ 1501 04c0 00000000 		.word	udd_ep_clear_halt
+ 1502 04c4 00000000 		.word	udd_ep_abort
+ 1503 04c8 00000000 		.word	udd_ep_set_halt
+ 1504              	.L149:
+ 1505              	.LBE69:
+ 1506              	.LBE79:
+1013:../src/ASF/common/services/usb/udc/udc.c **** }
+ 1507              		.loc 1 1013 0
+ 1508 04cc 0023     		movs	r3, #0
+ 1509              	.L79:
+ 1510              	.LBE46:
+ 1511              	.LBE45:
+1104:../src/ASF/common/services/usb/udc/udc.c **** 			return false; // Error from USB host
+1105:../src/ASF/common/services/usb/udc/udc.c **** 		}
+1106:../src/ASF/common/services/usb/udc/udc.c **** 	}
+1107:../src/ASF/common/services/usb/udc/udc.c **** 
+1108:../src/ASF/common/services/usb/udc/udc.c **** 	// If standard request then try to decode it in UDC
+1109:../src/ASF/common/services/usb/udc/udc.c **** 	if (Udd_setup_type() == USB_REQ_TYPE_STANDARD) {
+1110:../src/ASF/common/services/usb/udc/udc.c **** 		if (udc_reqstd()) {
+ 1512              		.loc 1 1110 0
+ 1513 04ce 002B     		cmp	r3, #0
+ 1514 04d0 5FD1     		bne	.L142
+ 1515              	.L128:
+1111:../src/ASF/common/services/usb/udc/udc.c **** 			return true;
+1112:../src/ASF/common/services/usb/udc/udc.c **** 		}
+1113:../src/ASF/common/services/usb/udc/udc.c **** 	}
+1114:../src/ASF/common/services/usb/udc/udc.c **** 
+1115:../src/ASF/common/services/usb/udc/udc.c **** 	// If interface request then try to decode it in UDI
+1116:../src/ASF/common/services/usb/udc/udc.c **** 	if (Udd_setup_recipient() == USB_REQ_RECIP_INTERFACE) {
+ 1516              		.loc 1 1116 0
+ 1517 04d2 314B     		ldr	r3, .L155
+ 1518 04d4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1519 04d6 03F01F03 		and	r3, r3, #31
+ 1520 04da 012B     		cmp	r3, #1
+ 1521 04dc 1ED1     		bne	.L123
+ 1522              	.LBB82:
+ 1523              	.LBB83:
+1026:../src/ASF/common/services/usb/udc/udc.c **** 		return false; // The device is not is configured state yet
+ 1524              		.loc 1 1026 0
+ 1525 04de 2F4B     		ldr	r3, .L155+4
+ 1526 04e0 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1527 04e2 DBB1     		cbz	r3, .L123
+1030:../src/ASF/common/services/usb/udc/udc.c **** 	if (iface_num >= udc_ptr_conf->desc->bNumInterfaces) {
+ 1528              		.loc 1 1030 0
+ 1529 04e4 2C4B     		ldr	r3, .L155
+ 1530 04e6 1C79     		ldrb	r4, [r3, #4]	@ zero_extendqisi2
+ 1531              	.LVL109:
+1031:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 1532              		.loc 1 1031 0
+ 1533 04e8 2D4B     		ldr	r3, .L155+8
+ 1534 04ea 1D68     		ldr	r5, [r3]
+ 1535 04ec 2B68     		ldr	r3, [r5]
+ 1536 04ee 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
+ 1537 04f0 A342     		cmp	r3, r4
+ 1538 04f2 13D9     		bls	.L123
+1038:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 1539              		.loc 1 1038 0
+ 1540 04f4 2046     		mov	r0, r4
+ 1541 04f6 0021     		movs	r1, #0
+ 1542 04f8 2A4B     		ldr	r3, .L155+12
+ 1543 04fa 9847     		blx	r3
+ 1544              	.LVL110:
+ 1545 04fc 70B1     		cbz	r0, .L123
+1042:../src/ASF/common/services/usb/udc/udc.c **** 	if (!udc_update_iface_desc(iface_num, udi_api->getsetting())) {
+ 1546              		.loc 1 1042 0
+ 1547 04fe 6B68     		ldr	r3, [r5, #4]
+ 1548 0500 53F82450 		ldr	r5, [r3, r4, lsl #2]
+ 1549              	.LVL111:
+1043:../src/ASF/common/services/usb/udc/udc.c **** 		return false;
+ 1550              		.loc 1 1043 0
+ 1551 0504 EB68     		ldr	r3, [r5, #12]
+ 1552 0506 9847     		blx	r3
+ 1553              	.LVL112:
+ 1554 0508 0146     		mov	r1, r0
+ 1555 050a 2046     		mov	r0, r4
+ 1556 050c 254B     		ldr	r3, .L155+12
+ 1557 050e 9847     		blx	r3
+ 1558              	.LVL113:
+ 1559 0510 20B1     		cbz	r0, .L123
+1048:../src/ASF/common/services/usb/udc/udc.c **** }
+ 1560              		.loc 1 1048 0
+ 1561 0512 AB68     		ldr	r3, [r5, #8]
+ 1562 0514 9847     		blx	r3
+ 1563              	.LVL114:
+ 1564              	.LBE83:
+ 1565              	.LBE82:
+1117:../src/ASF/common/services/usb/udc/udc.c **** 		if (udc_req_iface()) {
+ 1566              		.loc 1 1117 0
+ 1567 0516 0346     		mov	r3, r0
+ 1568 0518 0028     		cmp	r0, #0
+ 1569 051a 3AD1     		bne	.L142
+ 1570              	.LVL115:
+ 1571              	.L123:
+1118:../src/ASF/common/services/usb/udc/udc.c **** 			return true;
+1119:../src/ASF/common/services/usb/udc/udc.c **** 		}
+1120:../src/ASF/common/services/usb/udc/udc.c **** 	}
+1121:../src/ASF/common/services/usb/udc/udc.c **** 
+1122:../src/ASF/common/services/usb/udc/udc.c **** 	// If endpoint request then try to decode it in UDI
+1123:../src/ASF/common/services/usb/udc/udc.c **** 	if (Udd_setup_recipient() == USB_REQ_RECIP_ENDPOINT) {
+ 1572              		.loc 1 1123 0
+ 1573 051c 1E4B     		ldr	r3, .L155
+ 1574 051e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1575 0520 03F01F03 		and	r3, r3, #31
+ 1576 0524 022B     		cmp	r3, #2
+ 1577 0526 26D1     		bne	.L139
+ 1578              	.LBB84:
+ 1579              	.LBB85:
+1061:../src/ASF/common/services/usb/udc/udc.c **** 		return false; // The device is not is configured state yet
+ 1580              		.loc 1 1061 0
+ 1581 0528 1C4B     		ldr	r3, .L155+4
+ 1582 052a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1583 052c EBB1     		cbz	r3, .L140
+ 1584              	.LVL116:
+1066:../src/ASF/common/services/usb/udc/udc.c **** 			iface_num++) {
+ 1585              		.loc 1 1066 0
+ 1586 052e 1C4B     		ldr	r3, .L155+8
+ 1587 0530 1A68     		ldr	r2, [r3]
+ 1588 0532 1368     		ldr	r3, [r2]
+ 1589 0534 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
+ 1590 0536 D3B1     		cbz	r3, .L141
+ 1591 0538 0024     		movs	r4, #0
+1070:../src/ASF/common/services/usb/udc/udc.c **** 			return false;
+ 1592              		.loc 1 1070 0
+ 1593 053a 1A4E     		ldr	r6, .L155+12
+1066:../src/ASF/common/services/usb/udc/udc.c **** 			iface_num++) {
+ 1594              		.loc 1 1066 0
+ 1595 053c 184F     		ldr	r7, .L155+8
+ 1596              	.LVL117:
+ 1597              	.L126:
+1069:../src/ASF/common/services/usb/udc/udc.c **** 		if (!udc_update_iface_desc(iface_num, udi_api->getsetting())) {
+ 1598              		.loc 1 1069 0
+ 1599 053e 5368     		ldr	r3, [r2, #4]
+ 1600 0540 53F82450 		ldr	r5, [r3, r4, lsl #2]
+ 1601              	.LVL118:
+1070:../src/ASF/common/services/usb/udc/udc.c **** 			return false;
+ 1602              		.loc 1 1070 0
+ 1603 0544 EB68     		ldr	r3, [r5, #12]
+ 1604 0546 9847     		blx	r3
+ 1605              	.LVL119:
+ 1606 0548 0146     		mov	r1, r0
+ 1607 054a 2046     		mov	r0, r4
+ 1608 054c B047     		blx	r6
+ 1609              	.LVL120:
+ 1610 054e 0346     		mov	r3, r0
+ 1611 0550 F8B1     		cbz	r0, .L142
+1075:../src/ASF/common/services/usb/udc/udc.c **** 			return true;
+ 1612              		.loc 1 1075 0
+ 1613 0552 AB68     		ldr	r3, [r5, #8]
+ 1614 0554 9847     		blx	r3
+ 1615              	.LVL121:
+ 1616 0556 0346     		mov	r3, r0
+ 1617 0558 D8B9     		cbnz	r0, .L142
+1067:../src/ASF/common/services/usb/udc/udc.c **** 		// Select the interface with the current alternate setting
+ 1618              		.loc 1 1067 0
+ 1619 055a 0134     		adds	r4, r4, #1
+ 1620              	.LVL122:
+ 1621 055c E4B2     		uxtb	r4, r4
+ 1622              	.LVL123:
+1066:../src/ASF/common/services/usb/udc/udc.c **** 			iface_num++) {
+ 1623              		.loc 1 1066 0
+ 1624 055e 3A68     		ldr	r2, [r7]
+ 1625 0560 1168     		ldr	r1, [r2]
+ 1626 0562 0979     		ldrb	r1, [r1, #4]	@ zero_extendqisi2
+ 1627 0564 A142     		cmp	r1, r4
+ 1628 0566 EAD8     		bhi	.L126
+ 1629 0568 13E0     		b	.L142
+ 1630              	.LVL124:
+ 1631              	.L140:
+1062:../src/ASF/common/services/usb/udc/udc.c **** 	}
+ 1632              		.loc 1 1062 0
+ 1633 056a 0023     		movs	r3, #0
+ 1634 056c 11E0     		b	.L142
+ 1635              	.LVL125:
+ 1636              	.L141:
+1079:../src/ASF/common/services/usb/udc/udc.c **** }
+ 1637              		.loc 1 1079 0
+ 1638 056e 0023     		movs	r3, #0
+ 1639 0570 0FE0     		b	.L142
+ 1640              	.LVL126:
+ 1641              	.L130:
+ 1642              	.LBE85:
+ 1643              	.LBE84:
+1104:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 1644              		.loc 1 1104 0
+ 1645 0572 0023     		movs	r3, #0
+ 1646 0574 0DE0     		b	.L142
+ 1647              	.L139:
+1124:../src/ASF/common/services/usb/udc/udc.c **** 		if (udc_req_ep()) {
+1125:../src/ASF/common/services/usb/udc/udc.c **** 			return true;
+1126:../src/ASF/common/services/usb/udc/udc.c **** 		}
+1127:../src/ASF/common/services/usb/udc/udc.c **** 	}
+1128:../src/ASF/common/services/usb/udc/udc.c **** 
+1129:../src/ASF/common/services/usb/udc/udc.c **** 	// Here SETUP request unknown by UDC and UDIs
+1130:../src/ASF/common/services/usb/udc/udc.c **** #ifdef USB_DEVICE_SPECIFIC_REQUEST
+1131:../src/ASF/common/services/usb/udc/udc.c **** 	// Try to decode it in specific callback
+1132:../src/ASF/common/services/usb/udc/udc.c **** 	return USB_DEVICE_SPECIFIC_REQUEST(); // Ex: Vendor request,...
+1133:../src/ASF/common/services/usb/udc/udc.c **** #else
+1134:../src/ASF/common/services/usb/udc/udc.c **** 	return false;
+ 1648              		.loc 1 1134 0
+ 1649 0576 0023     		movs	r3, #0
+ 1650 0578 0BE0     		b	.L142
+ 1651              	.L70:
+1109:../src/ASF/common/services/usb/udc/udc.c **** 		if (udc_reqstd()) {
+ 1652              		.loc 1 1109 0
+ 1653 057a 13F0600F 		tst	r3, #96
+ 1654 057e A8D1     		bne	.L128
+ 1655 0580 5FE6     		b	.L127
+ 1656              	.L146:
+ 1657 0582 13F0600F 		tst	r3, #96
+ 1658 0586 A4D1     		bne	.L128
+ 1659 0588 4BE5     		b	.L129
+ 1660              	.LVL127:
+ 1661              	.L133:
+ 1662              	.LBB86:
+ 1663              	.LBB81:
+ 1664              	.LBB80:
+ 1665              	.LBB56:
+ 1666              	.LBB54:
+ 1667              	.LBB53:
+ 625:../src/ASF/common/services/usb/udc/udc.c **** 		str = udc_string_product_name;
+ 1668              		.loc 1 625 0
+ 1669 058a 1320     		movs	r0, #19
+ 626:../src/ASF/common/services/usb/udc/udc.c **** 		break;
+ 1670              		.loc 1 626 0
+ 1671 058c 064A     		ldr	r2, .L155+16
+ 1672              	.LVL128:
+ 1673 058e F7E5     		b	.L95
+ 1674              	.LVL129:
+ 1675              	.L78:
+ 1676              	.LBE53:
+ 1677              	.LBE54:
+ 1678              	.LBE56:
+ 1679              	.LBE80:
+ 1680              	.LBE81:
+ 1681              	.LBE86:
+1111:../src/ASF/common/services/usb/udc/udc.c **** 		}
+ 1682              		.loc 1 1111 0
+ 1683 0590 0123     		movs	r3, #1
+ 1684              	.L142:
+1135:../src/ASF/common/services/usb/udc/udc.c **** #endif
+1136:../src/ASF/common/services/usb/udc/udc.c **** }
+ 1685              		.loc 1 1136 0
+ 1686 0592 1846     		mov	r0, r3
+ 1687 0594 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1688              	.L156:
+ 1689 0596 00BF     		.align	2
+ 1690              	.L155:
+ 1691 0598 00000000 		.word	udd_g_ctrlreq
+ 1692 059c 00000000 		.word	.LANCHOR1
+ 1693 05a0 00000000 		.word	.LANCHOR0
+ 1694 05a4 00000000 		.word	udc_update_iface_desc
+ 1695 05a8 00000000 		.word	.LANCHOR5
+ 1696              		.cfi_endproc
+ 1697              	.LFE98:
+ 1699              		.section	.data.udc_string_product_name,"aw",%progbits
+ 1700              		.align	2
+ 1701              		.set	.LANCHOR5,. + 0
+ 1704              	udc_string_product_name:
+ 1705 0000 43686970 		.ascii	"ChipWhisperer CW305\000"
+ 1705      57686973 
+ 1705      70657265 
+ 1705      72204357 
+ 1705      33303500 
+ 1706              		.section	.bss.udc_ptr_conf,"aw",%nobits
+ 1707              		.align	2
+ 1708              		.set	.LANCHOR0,. + 0
+ 1711              	udc_ptr_conf:
+ 1712 0000 00000000 		.space	4
+ 1713              		.section	.data.udc_string_manufacturer_name,"aw",%progbits
+ 1714              		.align	2
+ 1715              		.set	.LANCHOR4,. + 0
+ 1718              	udc_string_manufacturer_name:
+ 1719 0000 4E657741 		.ascii	"NewAE Technology Inc.\000"
+ 1719      45205465 
+ 1719      63686E6F 
+ 1719      6C6F6779 
+ 1719      20496E63 
+ 1720              		.section	.bss.cpu_irq_critical_section_counter,"aw",%nobits
+ 1721              		.align	2
+ 1724              	cpu_irq_critical_section_counter:
+ 1725 0000 00000000 		.space	4
+ 1726              		.section	.data.udc_string_desc,"aw",%progbits
+ 1727              		.align	2
+ 1728              		.set	.LANCHOR7,. + 0
+ 1731              	udc_string_desc:
+ 1732 0000 00       		.space	1
+ 1733 0001 03       		.byte	3
+ 1734 0002 00000000 		.space	64
+ 1734      00000000 
+ 1734      00000000 
+ 1734      00000000 
+ 1734      00000000 
+ 1735              		.section	.data.udc_string_desc_languageid,"aw",%progbits
+ 1736              		.align	2
+ 1737              		.set	.LANCHOR6,. + 0
+ 1740              	udc_string_desc_languageid:
+ 1741 0000 04       		.byte	4
+ 1742 0001 03       		.byte	3
+ 1743 0002 0904     		.short	1033
+ 1744              		.section	.bss.udc_iface_setting.7282,"aw",%nobits
+ 1745              		.set	.LANCHOR8,. + 0
+ 1748              	udc_iface_setting.7282:
+ 1749 0000 00       		.space	1
+ 1750              		.section	.bss.cpu_irq_prev_interrupt_state,"aw",%nobits
+ 1753              	cpu_irq_prev_interrupt_state:
+ 1754 0000 00       		.space	1
+ 1755              		.section	.bss.udc_device_status,"aw",%nobits
+ 1756              		.align	1
+ 1757              		.set	.LANCHOR3,. + 0
+ 1760              	udc_device_status:
+ 1761 0000 0000     		.space	2
+ 1762              		.section	.bss.udc_ep_status.7212,"aw",%nobits
+ 1763              		.align	1
+ 1764              		.set	.LANCHOR9,. + 0
+ 1767              	udc_ep_status.7212:
+ 1768 0000 0000     		.space	2
+ 1769              		.section	.bss.udc_num_configuration,"aw",%nobits
+ 1770              		.set	.LANCHOR1,. + 0
+ 1773              	udc_num_configuration:
+ 1774 0000 00       		.space	1
+ 1775              		.section	.bss.udc_ptr_iface,"aw",%nobits
+ 1776              		.align	2
+ 1777              		.set	.LANCHOR2,. + 0
+ 1780              	udc_ptr_iface:
+ 1781 0000 00000000 		.space	4
+ 1782              		.text
+ 1783              	.Letext0:
+ 1784              		.file 2 "c:\\program files (x86)\\atmel\\studio\\7.0\\toolchain\\arm\\arm-gnu-toolchain\\arm-none-
+ 1785              		.file 3 "c:\\program files (x86)\\atmel\\studio\\7.0\\toolchain\\arm\\arm-gnu-toolchain\\arm-none-
+ 1786              		.file 4 "../src/ASF/sam/utils/compiler.h"
+ 1787              		.file 5 "../src/ASF/common/services/usb/usb_protocol.h"
+ 1788              		.file 6 "../src/ASF/common/services/usb/udc/udi.h"
+ 1789              		.file 7 "../src/ASF/common/services/usb/udc/udc_desc.h"
+ 1790              		.file 8 "../src/ASF/common/services/usb/udc/udd.h"
+ 1791              		.file 9 "../src/ASF/common/utils/interrupt/interrupt_sam_nvic.h"
+ 1792              		.file 10 "../src/ASF/thirdparty/CMSIS/Include/core_cm3.h"
+ 1793              		.file 11 "../src/config/conf_usb.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 udc.c
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:19     .text.udc_next_desc_in_iface:00000000 $t
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:23     .text.udc_next_desc_in_iface:00000000 udc_next_desc_in_iface
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:98     .text.udc_next_desc_in_iface:00000040 $d
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:103    .text.udc_valid_address:00000000 $t
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:107    .text.udc_valid_address:00000000 udc_valid_address
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:129    .text.udc_valid_address:00000010 $d
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:135    .text.udc_update_iface_desc:00000000 $t
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:139    .text.udc_update_iface_desc:00000000 udc_update_iface_desc
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:243    .text.udc_update_iface_desc:0000005c $d
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:250    .text.udc_iface_disable:00000000 $t
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:254    .text.udc_iface_disable:00000000 udc_iface_disable
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:337    .text.udc_iface_disable:00000054 $d
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:346    .text.udc_iface_enable:00000000 $t
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:350    .text.udc_iface_enable:00000000 udc_iface_enable
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:421    .text.udc_iface_enable:00000048 $d
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:430    .text.udc_get_interface_desc:00000000 $t
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:435    .text.udc_get_interface_desc:00000000 udc_get_interface_desc
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:449    .text.udc_get_interface_desc:00000008 $d
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:454    .text.udc_start:00000000 $t
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:459    .text.udc_start:00000000 udc_start
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:478    .text.udc_start:00000008 $d
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:483    .text.udc_reset:00000000 $t
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:488    .text.udc_reset:00000000 udc_reset
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:550    .text.udc_reset:00000038 $d
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:558    .text.udc_stop:00000000 $t
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:563    .text.udc_stop:00000000 udc_stop
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:586    .text.udc_stop:0000000c $d
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:592    .text.udc_sof_notify:00000000 $t
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:597    .text.udc_sof_notify:00000000 udc_sof_notify
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:655    .text.udc_sof_notify:00000034 $d
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:661    .text.udc_process_setup:00000000 $t
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:666    .text.udc_process_setup:00000000 udc_process_setup
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:743    .text.udc_process_setup:00000062 $d
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:758    .text.udc_process_setup:00000080 $t
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:914    .text.udc_process_setup:00000164 $d
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:918    .text.udc_process_setup:0000016c $t
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1094   .text.udc_process_setup:0000025a $d
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1107   .text.udc_process_setup:0000026c $d
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1126   .text.udc_process_setup:000002a8 $t
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1195   .text.udc_process_setup:00000318 $d
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1199   .text.udc_process_setup:0000031c $t
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1486   .text.udc_process_setup:00000484 $d
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1508   .text.udc_process_setup:000004cc $t
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1691   .text.udc_process_setup:00000598 $d
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1700   .data.udc_string_product_name:00000000 $d
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1704   .data.udc_string_product_name:00000000 udc_string_product_name
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1707   .bss.udc_ptr_conf:00000000 $d
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1711   .bss.udc_ptr_conf:00000000 udc_ptr_conf
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1714   .data.udc_string_manufacturer_name:00000000 $d
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1718   .data.udc_string_manufacturer_name:00000000 udc_string_manufacturer_name
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1721   .bss.cpu_irq_critical_section_counter:00000000 $d
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1724   .bss.cpu_irq_critical_section_counter:00000000 cpu_irq_critical_section_counter
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1727   .data.udc_string_desc:00000000 $d
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1731   .data.udc_string_desc:00000000 udc_string_desc
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1736   .data.udc_string_desc_languageid:00000000 $d
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1740   .data.udc_string_desc_languageid:00000000 udc_string_desc_languageid
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1748   .bss.udc_iface_setting.7282:00000000 udc_iface_setting.7282
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1749   .bss.udc_iface_setting.7282:00000000 $d
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1753   .bss.cpu_irq_prev_interrupt_state:00000000 cpu_irq_prev_interrupt_state
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1754   .bss.cpu_irq_prev_interrupt_state:00000000 $d
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1756   .bss.udc_device_status:00000000 $d
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1760   .bss.udc_device_status:00000000 udc_device_status
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1763   .bss.udc_ep_status.7212:00000000 $d
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1767   .bss.udc_ep_status.7212:00000000 udc_ep_status.7212
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1773   .bss.udc_num_configuration:00000000 udc_num_configuration
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1774   .bss.udc_num_configuration:00000000 $d
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1776   .bss.udc_ptr_iface:00000000 $d
+C:\Users\colin\AppData\Local\Temp\cczBVcRW.s:1780   .bss.udc_ptr_iface:00000000 udc_ptr_iface
+                     .debug_frame:00000010 $d
+                           .group:00000000 wm4.0.738cd1dff6e476bef2e1e0b99fec4f4f
+                           .group:00000000 wm4.stddef.h.39.daafd3d79fe2f3a84d2d73d7d4e706f8
+                           .group:00000000 wm4.parts.h.45.afc900689b2c82332e69d798acedc875
+                           .group:00000000 wm4.tpaste.h.45.af3ee36765243b162c88f7f944858426
+                           .group:00000000 wm4.stringz.h.45.c4f6cbe0005e6c1d2139bc6c0e4f4722
+                           .group:00000000 wm4.mrepeat.h.59.c5daaed201a4340b0edf435161d0b77f
+                           .group:00000000 wm4.features.h.22.2e382148a0560adabf236cddd4e880f4
+                           .group:00000000 wm4._default_types.h.15.933e8edd27a65e0b69af4a865eb623d2
+                           .group:00000000 wm4._intsup.h.10.b2832a532eae49c14d45880be6d4ca65
+                           .group:00000000 wm4._stdint.h.10.f76354baea1c7088202064e6f3d4f5e3
+                           .group:00000000 wm4.stdint.h.23.373a9d32a9e4c2e88fd347156532d281
+                           .group:00000000 wm4.sam3u2e.h.224.0dd3d6dd7ebd015c591c55f903ce78e7
+                           .group:00000000 wm4.core_cm3.h.32.5c59c312db585622d253fdb887b0afb1
+                           .group:00000000 wm4.core_cmInstr.h.25.d8165482ef3061013a2fc83e2d85f3d9
+                           .group:00000000 wm4.core_cm3.h.127.b561404f2a159dc517b409bc244d16c1
+                           .group:00000000 wm4.component_adc.h.43.d49887380d07d1cd08cc4e37b3485e31
+                           .group:00000000 wm4.component_adc12b.h.43.eadc09f1073923fb91f1f393cc397dcb
+                           .group:00000000 wm4.component_chipid.h.43.15825c969b1cc9eeea3d9416499874c8
+                           .group:00000000 wm4.component_dmac.h.43.cc8187b1cf6bfeadc91b14fdd28b9e8b
+                           .group:00000000 wm4.component_efc.h.43.cb1b3997ad9ea3733ad421ecbfd02fdd
+                           .group:00000000 wm4.component_gpbr.h.43.49b7e13894fe38b29f2243bbbe530227
+                           .group:00000000 wm4.component_hsmci.h.43.7b7194c92e1480c038f3342f7cec440a
+                           .group:00000000 wm4.component_matrix.h.43.1d209838fb75b4827119203a357141ee
+                           .group:00000000 wm4.component_pdc.h.43.19528a5f9ef5a348234ea06f89069c55
+                           .group:00000000 wm4.component_pio.h.43.163b46c3683ccf92e8de39a5554f50e8
+                           .group:00000000 wm4.component_pmc.h.43.ee4f030602866917aeed15fb2b948de8
+                           .group:00000000 wm4.component_pwm.h.43.ab6262a86f0aea354b43fe6dce7e7eb3
+                           .group:00000000 wm4.component_rstc.h.43.4eb59dc2ddcf585fabf251d0c329fcdd
+                           .group:00000000 wm4.component_rtc.h.43.ba8ccafc772b11d562a3cceab8b95072
+                           .group:00000000 wm4.component_rtt.h.43.3206ef8f067e5e747c3c4c7e719c1429
+                           .group:00000000 wm4.component_smc.h.43.907847915f1a5616734199d7e34424fa
+                           .group:00000000 wm4.component_spi.h.43.a2a09df64ab768c0a32be55285c74ded
+                           .group:00000000 wm4.component_ssc.h.43.d7c78f990c13fc511671b64798c4bcd0
+                           .group:00000000 wm4.component_supc.h.43.7d17f8e5ed3ba815e84381152735062f
+                           .group:00000000 wm4.component_tc.h.43.662eac8137408372b4f9d26c0b5f8621
+                           .group:00000000 wm4.component_twi.h.43.eda18625bd851fc4605861f5b3240c0b
+                           .group:00000000 wm4.component_uart.h.43.2d92735c5ea05c973661e1ba99a2f37c
+                           .group:00000000 wm4.component_udphs.h.43.21cecd26a4e44df0013037f29f2716e4
+                           .group:00000000 wm4.component_usart.h.43.7872f8f455adb38b67b9fbdb15657fbe
+                           .group:00000000 wm4.component_wdt.h.43.e31e10a5469b62c3660b49ab250f802f
+                           .group:00000000 wm4.instance_hsmci.h.43.e233236cc7fd5a805539a7ecc0e1d8d2
+                           .group:00000000 wm4.instance_ssc.h.43.c0cfabc3b9f3bb60745c913111bce965
+                           .group:00000000 wm4.instance_spi.h.43.570ae46af19e4179d9796872b9a8b9bc
+                           .group:00000000 wm4.instance_tc0.h.43.049b3a82387d2961594190609e896a29
+                           .group:00000000 wm4.instance_twi0.h.43.255dc0afa9e0d45eaea0a935eca2f103
+                           .group:00000000 wm4.instance_twi1.h.43.652d1d407893f259f2a817544ba662c2
+                           .group:00000000 wm4.instance_pwm.h.43.88294acec3ca56d6fc521038521a1567
+                           .group:00000000 wm4.instance_usart0.h.43.e26677512aee3dd3bedd71d394410000
+                           .group:00000000 wm4.instance_usart1.h.43.1ba97dbc6610d9fb3132b9d845688201
+                           .group:00000000 wm4.instance_usart2.h.43.baa1bf30b3c5acdee90c4a1f50fe9ebd
+                           .group:00000000 wm4.instance_usart3.h.43.f6638d1b78bcba70ca95fca279d33914
+                           .group:00000000 wm4.instance_udphs.h.43.b1ce94181e0d1f22877b81c6040a4363
+                           .group:00000000 wm4.instance_adc12b.h.43.d73ed59e867ccdfdb846d9ef32a50c0c
+                           .group:00000000 wm4.instance_adc.h.43.2b7611a00afeb4c555339b844d4b8456
+                           .group:00000000 wm4.instance_dmac.h.43.ee72691d84889c8f285932be4a075ddb
+                           .group:00000000 wm4.instance_smc.h.43.29610fd00979caaaa65821ad40e9da06
+                           .group:00000000 wm4.instance_matrix.h.43.01ee474141594385374c41a29daeeefe
+                           .group:00000000 wm4.instance_pmc.h.43.37430325ed7b8b24c3fe640c41c29ef5
+                           .group:00000000 wm4.instance_uart.h.43.bd378395ba022bc8670c82ebe656fbbd
+                           .group:00000000 wm4.instance_chipid.h.43.29cd8fb600f149aa58830fcc78fe36f9
+                           .group:00000000 wm4.instance_efc0.h.43.6b85dba20721a7e9fc4350e78d193680
+                           .group:00000000 wm4.instance_efc1.h.43.2c5e94fc4d2742678318d73450d08d57
+                           .group:00000000 wm4.instance_pioa.h.43.eeb46cc3bfe01a1f28e67aa3a6851ed8
+                           .group:00000000 wm4.instance_piob.h.43.652ce26b6c37ac56f9ed42a9216d9aca
+                           .group:00000000 wm4.instance_pioc.h.43.d9706cf766637d6b3ed9886aa3ef7261
+                           .group:00000000 wm4.instance_rstc.h.43.c5de224364a50a85f237c0b864aa4c8f
+                           .group:00000000 wm4.instance_supc.h.43.a5f1a5ca08f468ccf34ed3653e045f1f
+                           .group:00000000 wm4.instance_rtt.h.43.8622b192c23334996132415e3095df7f
+                           .group:00000000 wm4.instance_wdt.h.43.407ea53e133eacf09acf2c7fcb6b7524
+                           .group:00000000 wm4.instance_rtc.h.43.f70b77f9180401c8d9d920cb4a1cd166
+                           .group:00000000 wm4.instance_gpbr.h.43.9066cb40d557f6755101368854272348
+                           .group:00000000 wm4.sam3u2e.h.318.b69dc6db89bb8a018eede87e67bbc95d
+                           .group:00000000 wm4.pio_sam3u2e.h.43.21412830fa1fb9ca8a54ce10fede3251
+                           .group:00000000 wm4.sam3u2e.h.456.687e75a22829f9ea89425dc4ee4ff5e3
+                           .group:00000000 wm4.newlib.h.8.2702bca278809460f0af6fba1d84eb68
+                           .group:00000000 wm4.config.h.220.a09b0b0de3c25be3f39d71990e617bff
+                           .group:00000000 wm4._ansi.h.23.9f8fcfa20193763fcf364fb91705c94b
+                           .group:00000000 wm4.stdio.h.31.7c0e28c411445f3f9c5b11accf882760
+                           .group:00000000 wm4.stddef.h.158.a7efb00f6cbc6f43213b50e183c9830c
+                           .group:00000000 wm4.cdefs.h.47.3052445825803de6c3a3b68ec8193866
+                           .group:00000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:00000000 wm4.lock.h.2.9bc98482741e5e2a9450b12934a684ea
+                           .group:00000000 wm4._types.h.54.d3d34a3b7f3cc230cd159baf022b4b08
+                           .group:00000000 wm4.stddef.h.158.61317cdbfb4026324507d123a50b0fd6
+                           .group:00000000 wm4.reent.h.17.8bd9e4098e0428508c282cad794fae43
+                           .group:00000000 wm4.types.h.23.0d949686bbcadd1621462d4fa1f884f9
+                           .group:00000000 wm4.types.h.2.e9cec8c90ab35f77d9f499e06ae02400
+                           .group:00000000 wm4.types.h.81.ded4e8fbe2d299b79c956dc834e43661
+                           .group:00000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:00000000 wm4.stdio.h.68.a99a2db1e55915cfd1b035cc1e9fcff1
+                           .group:00000000 wm4.stdbool.h.29.1c9ee6859ce8145f7838a4f2549ccec2
+                           .group:00000000 wm4.stdlib.h.13.4ed386f5c1a80d71e72172885d946ef2
+                           .group:00000000 wm4.alloca.h.8.dfc0c703c47ec3e69746825b17d9e66d
+                           .group:00000000 wm4.stdlib.h.54.cd3744e0b066087ec8fbb1bdc22d1043
+                           .group:00000000 wm4.compiler.h.88.e36be790b5e347a01e6762426f60e643
+                           .group:00000000 wm4.interrupt_sam_nvic.h.45.4876da6c127868305d66389e87e0876f
+                           .group:00000000 wm4.compiler.h.424.ee053ef8246023ebdcca352464bd827f
+                           .group:00000000 wm4.conf_usb.h.56.bdf92843ab8d547b018fb879360aac04
+                           .group:00000000 wm4.udi_vendor_conf.h.56.4348c8e521d040f44df868219dae6785
+                           .group:00000000 wm4.usb_atmel.h.45.c31b525dbe01f8d9e2022a03356ec174
+                           .group:00000000 wm4.usb_protocol.h.63.850c58f3469fce50a9ac9a6854f7594b
+                           .group:00000000 wm4.usb_protocol_vendor.h.45.83dfe073428ff799abc3ed1c7b04c77d
+                           .group:00000000 wm4.udc_desc.h.77.5fec235bd7553e7256e345e020840072
+                           .group:00000000 wm4.udd.h.103.3ccc59b50c14ec70568e6136eeb22d56
+                           .group:00000000 wm4.udi_vendor.h.125.7b9085237d4d4a9757f4c148fba1918d
+
+UNDEFINED SYMBOLS
+udd_g_ctrlreq
+udd_set_address
+udd_ep_free
+udd_ep_alloc
+udd_enable
+udd_disable
+udd_set_setup_payload
+udd_is_high_speed
+udc_config
+usb_serial_number
+udd_ep_is_halted
+udd_test_mode_j
+udd_test_mode_k
+udd_test_mode_se0_nak
+udd_test_mode_packet
+udd_getaddress
+udd_ep_clear_halt
+udd_ep_abort
+udd_ep_set_halt

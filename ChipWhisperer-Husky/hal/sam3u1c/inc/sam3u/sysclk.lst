@@ -1,0 +1,1661 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"sysclk.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.sysclk_set_prescalers,"ax",%progbits
+  19              		.align	2
+  20              		.global	sysclk_set_prescalers
+  21              		.thumb
+  22              		.thumb_func
+  24              	sysclk_set_prescalers:
+  25              	.LFB86:
+  26              		.file 1 "../src/ASF/common/services/clock/sam3u/sysclk.c"
+   1:../src/ASF/common/services/clock/sam3u/sysclk.c **** /**
+   2:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * \file
+   3:../src/ASF/common/services/clock/sam3u/sysclk.c ****  *
+   4:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * \brief Chip-specific system clock management functions.
+   5:../src/ASF/common/services/clock/sam3u/sysclk.c ****  *
+   6:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
+   7:../src/ASF/common/services/clock/sam3u/sysclk.c ****  *
+   8:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * \asf_license_start
+   9:../src/ASF/common/services/clock/sam3u/sysclk.c ****  *
+  10:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * \page License
+  11:../src/ASF/common/services/clock/sam3u/sysclk.c ****  *
+  12:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * Redistribution and use in source and binary forms, with or without
+  13:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * modification, are permitted provided that the following conditions are met:
+  14:../src/ASF/common/services/clock/sam3u/sysclk.c ****  *
+  15:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * 1. Redistributions of source code must retain the above copyright notice,
+  16:../src/ASF/common/services/clock/sam3u/sysclk.c ****  *    this list of conditions and the following disclaimer.
+  17:../src/ASF/common/services/clock/sam3u/sysclk.c ****  *
+  18:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice,
+  19:../src/ASF/common/services/clock/sam3u/sysclk.c ****  *    this list of conditions and the following disclaimer in the documentation
+  20:../src/ASF/common/services/clock/sam3u/sysclk.c ****  *    and/or other materials provided with the distribution.
+  21:../src/ASF/common/services/clock/sam3u/sysclk.c ****  *
+  22:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * 3. The name of Atmel may not be used to endorse or promote products derived
+  23:../src/ASF/common/services/clock/sam3u/sysclk.c ****  *    from this software without specific prior written permission.
+  24:../src/ASF/common/services/clock/sam3u/sysclk.c ****  *
+  25:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * 4. This software may only be redistributed and used in connection with an
+  26:../src/ASF/common/services/clock/sam3u/sysclk.c ****  *    Atmel microcontroller product.
+  27:../src/ASF/common/services/clock/sam3u/sysclk.c ****  *
+  28:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * THIS SOFTWARE IS PROVIDED BY ATMEL "AS IS" AND ANY EXPRESS OR IMPLIED
+  29:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  30:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT ARE
+  31:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * EXPRESSLY AND SPECIFICALLY DISCLAIMED. IN NO EVENT SHALL ATMEL BE LIABLE FOR
+  32:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  33:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+  34:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+  35:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+  36:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+  37:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  38:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * POSSIBILITY OF SUCH DAMAGE.
+  39:../src/ASF/common/services/clock/sam3u/sysclk.c ****  *
+  40:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * \asf_license_stop
+  41:../src/ASF/common/services/clock/sam3u/sysclk.c ****  *
+  42:../src/ASF/common/services/clock/sam3u/sysclk.c ****  */
+  43:../src/ASF/common/services/clock/sam3u/sysclk.c **** 
+  44:../src/ASF/common/services/clock/sam3u/sysclk.c **** #include <sysclk.h>
+  45:../src/ASF/common/services/clock/sam3u/sysclk.c **** 
+  46:../src/ASF/common/services/clock/sam3u/sysclk.c **** /// @cond 0
+  47:../src/ASF/common/services/clock/sam3u/sysclk.c **** /**INDENT-OFF**/
+  48:../src/ASF/common/services/clock/sam3u/sysclk.c **** #ifdef __cplusplus
+  49:../src/ASF/common/services/clock/sam3u/sysclk.c **** extern "C" {
+  50:../src/ASF/common/services/clock/sam3u/sysclk.c **** #endif
+  51:../src/ASF/common/services/clock/sam3u/sysclk.c **** /**INDENT-ON**/
+  52:../src/ASF/common/services/clock/sam3u/sysclk.c **** /// @endcond
+  53:../src/ASF/common/services/clock/sam3u/sysclk.c **** 
+  54:../src/ASF/common/services/clock/sam3u/sysclk.c **** /**
+  55:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * \weakgroup sysclk_group
+  56:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * @{
+  57:../src/ASF/common/services/clock/sam3u/sysclk.c ****  */
+  58:../src/ASF/common/services/clock/sam3u/sysclk.c **** 
+  59:../src/ASF/common/services/clock/sam3u/sysclk.c **** #if defined(CONFIG_SYSCLK_DEFAULT_RETURNS_SLOW_OSC)
+  60:../src/ASF/common/services/clock/sam3u/sysclk.c **** /**
+  61:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * \brief boolean signalling that the sysclk_init is done.
+  62:../src/ASF/common/services/clock/sam3u/sysclk.c ****  */
+  63:../src/ASF/common/services/clock/sam3u/sysclk.c **** uint32_t sysclk_initialized = 0;
+  64:../src/ASF/common/services/clock/sam3u/sysclk.c **** #endif
+  65:../src/ASF/common/services/clock/sam3u/sysclk.c **** 
+  66:../src/ASF/common/services/clock/sam3u/sysclk.c **** /**
+  67:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * \brief Set system clock prescaler configuration
+  68:../src/ASF/common/services/clock/sam3u/sysclk.c ****  *
+  69:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * This function will change the system clock prescaler configuration to
+  70:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * match the parameters.
+  71:../src/ASF/common/services/clock/sam3u/sysclk.c ****  *
+  72:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * \note The parameters to this function are device-specific.
+  73:../src/ASF/common/services/clock/sam3u/sysclk.c ****  *
+  74:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * \param cpu_shift The CPU clock will be divided by \f$2^{mck\_pres}\f$
+  75:../src/ASF/common/services/clock/sam3u/sysclk.c ****  */
+  76:../src/ASF/common/services/clock/sam3u/sysclk.c **** void sysclk_set_prescalers(uint32_t ul_pres)
+  77:../src/ASF/common/services/clock/sam3u/sysclk.c **** {
+  27              		.loc 1 77 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              	.LVL0:
+  32 0000 08B5     		push	{r3, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 3, -8
+  36              		.cfi_offset 14, -4
+  78:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	pmc_mck_set_prescaler(ul_pres);
+  37              		.loc 1 78 0
+  38 0002 024B     		ldr	r3, .L3
+  39 0004 9847     		blx	r3
+  40              	.LVL1:
+  79:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	SystemCoreClockUpdate();
+  41              		.loc 1 79 0
+  42 0006 024B     		ldr	r3, .L3+4
+  43 0008 9847     		blx	r3
+  44              	.LVL2:
+  45 000a 08BD     		pop	{r3, pc}
+  46              	.L4:
+  47              		.align	2
+  48              	.L3:
+  49 000c 00000000 		.word	pmc_mck_set_prescaler
+  50 0010 00000000 		.word	SystemCoreClockUpdate
+  51              		.cfi_endproc
+  52              	.LFE86:
+  54              		.section	.text.sysclk_set_source,"ax",%progbits
+  55              		.align	2
+  56              		.global	sysclk_set_source
+  57              		.thumb
+  58              		.thumb_func
+  60              	sysclk_set_source:
+  61              	.LFB87:
+  80:../src/ASF/common/services/clock/sam3u/sysclk.c **** }
+  81:../src/ASF/common/services/clock/sam3u/sysclk.c **** 
+  82:../src/ASF/common/services/clock/sam3u/sysclk.c **** /**
+  83:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * \brief Change the source of the main system clock.
+  84:../src/ASF/common/services/clock/sam3u/sysclk.c ****  *
+  85:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * \param src The new system clock source. Must be one of the constants
+  86:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * from the <em>System Clock Sources</em> section.
+  87:../src/ASF/common/services/clock/sam3u/sysclk.c ****  */
+  88:../src/ASF/common/services/clock/sam3u/sysclk.c **** void sysclk_set_source(uint32_t ul_src)
+  89:../src/ASF/common/services/clock/sam3u/sysclk.c **** {
+  62              		.loc 1 89 0
+  63              		.cfi_startproc
+  64              		@ args = 0, pretend = 0, frame = 0
+  65              		@ frame_needed = 0, uses_anonymous_args = 0
+  66              	.LVL3:
+  67 0000 08B5     		push	{r3, lr}
+  68              	.LCFI1:
+  69              		.cfi_def_cfa_offset 8
+  70              		.cfi_offset 3, -8
+  71              		.cfi_offset 14, -4
+  90:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	switch (ul_src) {
+  72              		.loc 1 90 0
+  73 0002 0928     		cmp	r0, #9
+  74 0004 15D8     		bhi	.L6
+  75 0006 DFE800F0 		tbb	[pc, r0]
+  76              	.L8:
+  77 000a 05       		.byte	(.L7-.L8)/2
+  78 000b 05       		.byte	(.L7-.L8)/2
+  79 000c 05       		.byte	(.L7-.L8)/2
+  80 000d 09       		.byte	(.L9-.L8)/2
+  81 000e 09       		.byte	(.L9-.L8)/2
+  82 000f 09       		.byte	(.L9-.L8)/2
+  83 0010 09       		.byte	(.L9-.L8)/2
+  84 0011 09       		.byte	(.L9-.L8)/2
+  85 0012 0D       		.byte	(.L10-.L8)/2
+  86 0013 11       		.byte	(.L11-.L8)/2
+  87              		.p2align 1
+  88              	.L7:
+  91:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	case SYSCLK_SRC_SLCK_RC:
+  92:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	case SYSCLK_SRC_SLCK_XTAL:
+  93:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	case SYSCLK_SRC_SLCK_BYPASS:
+  94:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		pmc_mck_set_source(PMC_MCKR_CSS_SLOW_CLK);
+  89              		.loc 1 94 0
+  90 0014 0020     		movs	r0, #0
+  91              	.LVL4:
+  92 0016 084B     		ldr	r3, .L13
+  93 0018 9847     		blx	r3
+  94              	.LVL5:
+  95:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		break;
+  95              		.loc 1 95 0
+  96 001a 0AE0     		b	.L6
+  97              	.LVL6:
+  98              	.L9:
+  96:../src/ASF/common/services/clock/sam3u/sysclk.c **** 
+  97:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	case SYSCLK_SRC_MAINCK_4M_RC:
+  98:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	case SYSCLK_SRC_MAINCK_8M_RC:
+  99:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	case SYSCLK_SRC_MAINCK_12M_RC:
+ 100:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	case SYSCLK_SRC_MAINCK_XTAL:
+ 101:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	case SYSCLK_SRC_MAINCK_BYPASS:
+ 102:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		pmc_mck_set_source(PMC_MCKR_CSS_MAIN_CLK);
+  99              		.loc 1 102 0
+ 100 001c 0120     		movs	r0, #1
+ 101              	.LVL7:
+ 102 001e 064B     		ldr	r3, .L13
+ 103 0020 9847     		blx	r3
+ 104              	.LVL8:
+ 103:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		break;
+ 105              		.loc 1 103 0
+ 106 0022 06E0     		b	.L6
+ 107              	.LVL9:
+ 108              	.L10:
+ 104:../src/ASF/common/services/clock/sam3u/sysclk.c **** 
+ 105:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	case SYSCLK_SRC_PLLACK:
+ 106:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		pmc_mck_set_source(PMC_MCKR_CSS_PLLA_CLK);
+ 109              		.loc 1 106 0
+ 110 0024 0220     		movs	r0, #2
+ 111              	.LVL10:
+ 112 0026 044B     		ldr	r3, .L13
+ 113 0028 9847     		blx	r3
+ 114              	.LVL11:
+ 107:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		break;
+ 115              		.loc 1 107 0
+ 116 002a 02E0     		b	.L6
+ 117              	.LVL12:
+ 118              	.L11:
+ 108:../src/ASF/common/services/clock/sam3u/sysclk.c **** 
+ 109:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	case SYSCLK_SRC_UPLLCK:
+ 110:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		pmc_mck_set_source(PMC_MCKR_CSS_UPLL_CLK);
+ 119              		.loc 1 110 0
+ 120 002c 0320     		movs	r0, #3
+ 121              	.LVL13:
+ 122 002e 024B     		ldr	r3, .L13
+ 123 0030 9847     		blx	r3
+ 124              	.LVL14:
+ 125              	.L6:
+ 111:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		break;
+ 112:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	}
+ 113:../src/ASF/common/services/clock/sam3u/sysclk.c **** 
+ 114:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	SystemCoreClockUpdate();
+ 126              		.loc 1 114 0
+ 127 0032 024B     		ldr	r3, .L13+4
+ 128 0034 9847     		blx	r3
+ 129              	.LVL15:
+ 130 0036 08BD     		pop	{r3, pc}
+ 131              	.L14:
+ 132              		.align	2
+ 133              	.L13:
+ 134 0038 00000000 		.word	pmc_mck_set_source
+ 135 003c 00000000 		.word	SystemCoreClockUpdate
+ 136              		.cfi_endproc
+ 137              	.LFE87:
+ 139              		.section	.text.sysclk_enable_usb,"ax",%progbits
+ 140              		.align	2
+ 141              		.global	sysclk_enable_usb
+ 142              		.thumb
+ 143              		.thumb_func
+ 145              	sysclk_enable_usb:
+ 146              	.LFB88:
+ 115:../src/ASF/common/services/clock/sam3u/sysclk.c **** }
+ 116:../src/ASF/common/services/clock/sam3u/sysclk.c **** 
+ 117:../src/ASF/common/services/clock/sam3u/sysclk.c **** /**
+ 118:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * \brief Enable USB clock.
+ 119:../src/ASF/common/services/clock/sam3u/sysclk.c ****  *
+ 120:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * \note The SAM3U UDP hardware interprets div as div+1. For readability the
+ 121:../src/ASF/common/services/clock/sam3u/sysclk.c ****  *       hardware div+1 is hidden in this implementation. Use div as div
+ 122:../src/ASF/common/services/clock/sam3u/sysclk.c ****  *       effective value.
+ 123:../src/ASF/common/services/clock/sam3u/sysclk.c ****  *
+ 124:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * \param pll_id Source of the USB clock.
+ 125:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * \param div Actual clock divisor. Must be superior to 0.
+ 126:../src/ASF/common/services/clock/sam3u/sysclk.c ****  */
+ 127:../src/ASF/common/services/clock/sam3u/sysclk.c **** void sysclk_enable_usb(void)
+ 128:../src/ASF/common/services/clock/sam3u/sysclk.c **** {
+ 147              		.loc 1 128 0
+ 148              		.cfi_startproc
+ 149              		@ args = 0, pretend = 0, frame = 0
+ 150              		@ frame_needed = 0, uses_anonymous_args = 0
+ 151 0000 10B5     		push	{r4, lr}
+ 152              	.LCFI2:
+ 153              		.cfi_def_cfa_offset 8
+ 154              		.cfi_offset 4, -8
+ 155              		.cfi_offset 14, -4
+ 156              	.LVL16:
+ 157              	.LBB36:
+ 158              	.LBB37:
+ 159              	.LBB38:
+ 160              		.file 2 "../src/ASF/common/services/clock/sam3u/osc.h"
+   1:../src/ASF/common/services/clock/sam3u/osc.h **** /**
+   2:../src/ASF/common/services/clock/sam3u/osc.h ****  * \file
+   3:../src/ASF/common/services/clock/sam3u/osc.h ****  *
+   4:../src/ASF/common/services/clock/sam3u/osc.h ****  * \brief Chip-specific oscillator management functions.
+   5:../src/ASF/common/services/clock/sam3u/osc.h ****  *
+   6:../src/ASF/common/services/clock/sam3u/osc.h ****  * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+   7:../src/ASF/common/services/clock/sam3u/osc.h ****  *
+   8:../src/ASF/common/services/clock/sam3u/osc.h ****  * \asf_license_start
+   9:../src/ASF/common/services/clock/sam3u/osc.h ****  *
+  10:../src/ASF/common/services/clock/sam3u/osc.h ****  * \page License
+  11:../src/ASF/common/services/clock/sam3u/osc.h ****  *
+  12:../src/ASF/common/services/clock/sam3u/osc.h ****  * Redistribution and use in source and binary forms, with or without
+  13:../src/ASF/common/services/clock/sam3u/osc.h ****  * modification, are permitted provided that the following conditions are met:
+  14:../src/ASF/common/services/clock/sam3u/osc.h ****  *
+  15:../src/ASF/common/services/clock/sam3u/osc.h ****  * 1. Redistributions of source code must retain the above copyright notice,
+  16:../src/ASF/common/services/clock/sam3u/osc.h ****  *    this list of conditions and the following disclaimer.
+  17:../src/ASF/common/services/clock/sam3u/osc.h ****  *
+  18:../src/ASF/common/services/clock/sam3u/osc.h ****  * 2. Redistributions in binary form must reproduce the above copyright notice,
+  19:../src/ASF/common/services/clock/sam3u/osc.h ****  *    this list of conditions and the following disclaimer in the documentation
+  20:../src/ASF/common/services/clock/sam3u/osc.h ****  *    and/or other materials provided with the distribution.
+  21:../src/ASF/common/services/clock/sam3u/osc.h ****  *
+  22:../src/ASF/common/services/clock/sam3u/osc.h ****  * 3. The name of Atmel may not be used to endorse or promote products derived
+  23:../src/ASF/common/services/clock/sam3u/osc.h ****  *    from this software without specific prior written permission.
+  24:../src/ASF/common/services/clock/sam3u/osc.h ****  *
+  25:../src/ASF/common/services/clock/sam3u/osc.h ****  * 4. This software may only be redistributed and used in connection with an
+  26:../src/ASF/common/services/clock/sam3u/osc.h ****  *    Atmel microcontroller product.
+  27:../src/ASF/common/services/clock/sam3u/osc.h ****  *
+  28:../src/ASF/common/services/clock/sam3u/osc.h ****  * THIS SOFTWARE IS PROVIDED BY ATMEL "AS IS" AND ANY EXPRESS OR IMPLIED
+  29:../src/ASF/common/services/clock/sam3u/osc.h ****  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  30:../src/ASF/common/services/clock/sam3u/osc.h ****  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT ARE
+  31:../src/ASF/common/services/clock/sam3u/osc.h ****  * EXPRESSLY AND SPECIFICALLY DISCLAIMED. IN NO EVENT SHALL ATMEL BE LIABLE FOR
+  32:../src/ASF/common/services/clock/sam3u/osc.h ****  * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  33:../src/ASF/common/services/clock/sam3u/osc.h ****  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+  34:../src/ASF/common/services/clock/sam3u/osc.h ****  * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+  35:../src/ASF/common/services/clock/sam3u/osc.h ****  * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+  36:../src/ASF/common/services/clock/sam3u/osc.h ****  * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+  37:../src/ASF/common/services/clock/sam3u/osc.h ****  * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  38:../src/ASF/common/services/clock/sam3u/osc.h ****  * POSSIBILITY OF SUCH DAMAGE.
+  39:../src/ASF/common/services/clock/sam3u/osc.h ****  *
+  40:../src/ASF/common/services/clock/sam3u/osc.h ****  * \asf_license_stop
+  41:../src/ASF/common/services/clock/sam3u/osc.h ****  *
+  42:../src/ASF/common/services/clock/sam3u/osc.h ****  */
+  43:../src/ASF/common/services/clock/sam3u/osc.h **** 
+  44:../src/ASF/common/services/clock/sam3u/osc.h **** #ifndef CHIP_OSC_H_INCLUDED
+  45:../src/ASF/common/services/clock/sam3u/osc.h **** #define CHIP_OSC_H_INCLUDED
+  46:../src/ASF/common/services/clock/sam3u/osc.h **** 
+  47:../src/ASF/common/services/clock/sam3u/osc.h **** #include "board.h"
+  48:../src/ASF/common/services/clock/sam3u/osc.h **** #include "pmc.h"
+  49:../src/ASF/common/services/clock/sam3u/osc.h **** 
+  50:../src/ASF/common/services/clock/sam3u/osc.h **** /// @cond 0
+  51:../src/ASF/common/services/clock/sam3u/osc.h **** /**INDENT-OFF**/
+  52:../src/ASF/common/services/clock/sam3u/osc.h **** #ifdef __cplusplus
+  53:../src/ASF/common/services/clock/sam3u/osc.h **** extern "C" {
+  54:../src/ASF/common/services/clock/sam3u/osc.h **** #endif
+  55:../src/ASF/common/services/clock/sam3u/osc.h **** /**INDENT-ON**/
+  56:../src/ASF/common/services/clock/sam3u/osc.h **** /// @endcond
+  57:../src/ASF/common/services/clock/sam3u/osc.h **** 
+  58:../src/ASF/common/services/clock/sam3u/osc.h **** /*
+  59:../src/ASF/common/services/clock/sam3u/osc.h ****  * Below BOARD_XXX macros are related to the specific board, and
+  60:../src/ASF/common/services/clock/sam3u/osc.h ****  * should be defined by the board code, otherwise default value are used.
+  61:../src/ASF/common/services/clock/sam3u/osc.h ****  */
+  62:../src/ASF/common/services/clock/sam3u/osc.h **** #if !defined(BOARD_FREQ_SLCK_XTAL)
+  63:../src/ASF/common/services/clock/sam3u/osc.h **** #  warning The board slow clock xtal frequency has not been defined.
+  64:../src/ASF/common/services/clock/sam3u/osc.h **** #  define BOARD_FREQ_SLCK_XTAL      (32768UL)
+  65:../src/ASF/common/services/clock/sam3u/osc.h **** #endif
+  66:../src/ASF/common/services/clock/sam3u/osc.h **** 
+  67:../src/ASF/common/services/clock/sam3u/osc.h **** #if !defined(BOARD_FREQ_SLCK_BYPASS)
+  68:../src/ASF/common/services/clock/sam3u/osc.h **** #  warning The board slow clock bypass frequency has not been defined.
+  69:../src/ASF/common/services/clock/sam3u/osc.h **** #  define BOARD_FREQ_SLCK_BYPASS    (32768UL)
+  70:../src/ASF/common/services/clock/sam3u/osc.h **** #endif
+  71:../src/ASF/common/services/clock/sam3u/osc.h **** 
+  72:../src/ASF/common/services/clock/sam3u/osc.h **** #if !defined(BOARD_FREQ_MAINCK_XTAL)
+  73:../src/ASF/common/services/clock/sam3u/osc.h **** #  warning The board main clock xtal frequency has not been defined.
+  74:../src/ASF/common/services/clock/sam3u/osc.h **** #  define BOARD_FREQ_MAINCK_XTAL    (12000000UL)
+  75:../src/ASF/common/services/clock/sam3u/osc.h **** #endif
+  76:../src/ASF/common/services/clock/sam3u/osc.h **** 
+  77:../src/ASF/common/services/clock/sam3u/osc.h **** #if !defined(BOARD_FREQ_MAINCK_BYPASS)
+  78:../src/ASF/common/services/clock/sam3u/osc.h **** #  warning The board main clock bypass frequency has not been defined.
+  79:../src/ASF/common/services/clock/sam3u/osc.h **** #  define BOARD_FREQ_MAINCK_BYPASS  (12000000UL)
+  80:../src/ASF/common/services/clock/sam3u/osc.h **** #endif
+  81:../src/ASF/common/services/clock/sam3u/osc.h **** 
+  82:../src/ASF/common/services/clock/sam3u/osc.h **** #if !defined(BOARD_OSC_STARTUP_US)
+  83:../src/ASF/common/services/clock/sam3u/osc.h **** #  warning The board main clock xtal startup time has not been defined.
+  84:../src/ASF/common/services/clock/sam3u/osc.h **** #  define BOARD_OSC_STARTUP_US      (15625UL)
+  85:../src/ASF/common/services/clock/sam3u/osc.h **** #endif
+  86:../src/ASF/common/services/clock/sam3u/osc.h **** 
+  87:../src/ASF/common/services/clock/sam3u/osc.h **** /**
+  88:../src/ASF/common/services/clock/sam3u/osc.h ****  * \weakgroup osc_group
+  89:../src/ASF/common/services/clock/sam3u/osc.h ****  * @{
+  90:../src/ASF/common/services/clock/sam3u/osc.h ****  */
+  91:../src/ASF/common/services/clock/sam3u/osc.h **** 
+  92:../src/ASF/common/services/clock/sam3u/osc.h **** //! \name Oscillator identifiers
+  93:../src/ASF/common/services/clock/sam3u/osc.h **** //@{
+  94:../src/ASF/common/services/clock/sam3u/osc.h **** #define OSC_SLCK_32K_RC             0    //!< Internal 32kHz RC oscillator.
+  95:../src/ASF/common/services/clock/sam3u/osc.h **** #define OSC_SLCK_32K_XTAL           1    //!< External 32kHz crystal oscillator.
+  96:../src/ASF/common/services/clock/sam3u/osc.h **** #define OSC_SLCK_32K_BYPASS         2    //!< External 32kHz bypass oscillator.
+  97:../src/ASF/common/services/clock/sam3u/osc.h **** #define OSC_MAINCK_4M_RC            3    //!< Internal 4MHz RC oscillator.
+  98:../src/ASF/common/services/clock/sam3u/osc.h **** #define OSC_MAINCK_8M_RC            4    //!< Internal 8MHz RC oscillator.
+  99:../src/ASF/common/services/clock/sam3u/osc.h **** #define OSC_MAINCK_12M_RC           5    //!< Internal 12MHz RC oscillator.
+ 100:../src/ASF/common/services/clock/sam3u/osc.h **** #define OSC_MAINCK_XTAL             6    //!< External crystal oscillator.
+ 101:../src/ASF/common/services/clock/sam3u/osc.h **** #define OSC_MAINCK_BYPASS           7    //!< External bypass oscillator.
+ 102:../src/ASF/common/services/clock/sam3u/osc.h **** //@}
+ 103:../src/ASF/common/services/clock/sam3u/osc.h **** 
+ 104:../src/ASF/common/services/clock/sam3u/osc.h **** //! \name Oscillator clock speed in hertz
+ 105:../src/ASF/common/services/clock/sam3u/osc.h **** //@{
+ 106:../src/ASF/common/services/clock/sam3u/osc.h **** #define OSC_SLCK_32K_RC_HZ          CHIP_FREQ_SLCK_RC               //!< Internal 32kHz RC oscillat
+ 107:../src/ASF/common/services/clock/sam3u/osc.h **** #define OSC_SLCK_32K_XTAL_HZ        BOARD_FREQ_SLCK_XTAL            //!< External 32kHz crystal osc
+ 108:../src/ASF/common/services/clock/sam3u/osc.h **** #define OSC_SLCK_32K_BYPASS_HZ      BOARD_FREQ_SLCK_BYPASS          //!< External 32kHz bypass osci
+ 109:../src/ASF/common/services/clock/sam3u/osc.h **** #define OSC_MAINCK_4M_RC_HZ         CHIP_FREQ_MAINCK_RC_4MHZ        //!< Internal 4MHz RC oscillato
+ 110:../src/ASF/common/services/clock/sam3u/osc.h **** #define OSC_MAINCK_8M_RC_HZ         CHIP_FREQ_MAINCK_RC_8MHZ        //!< Internal 8MHz RC oscillato
+ 111:../src/ASF/common/services/clock/sam3u/osc.h **** #define OSC_MAINCK_12M_RC_HZ        CHIP_FREQ_MAINCK_RC_12MHZ       //!< Internal 12MHz RC oscillat
+ 112:../src/ASF/common/services/clock/sam3u/osc.h **** #define OSC_MAINCK_XTAL_HZ          BOARD_FREQ_MAINCK_XTAL          //!< External crystal oscillato
+ 113:../src/ASF/common/services/clock/sam3u/osc.h **** #define OSC_MAINCK_BYPASS_HZ        BOARD_FREQ_MAINCK_BYPASS        //!< External bypass oscillator
+ 114:../src/ASF/common/services/clock/sam3u/osc.h **** //@}
+ 115:../src/ASF/common/services/clock/sam3u/osc.h **** 
+ 116:../src/ASF/common/services/clock/sam3u/osc.h **** static inline void osc_enable(uint32_t ul_id)
+ 117:../src/ASF/common/services/clock/sam3u/osc.h **** {
+ 118:../src/ASF/common/services/clock/sam3u/osc.h **** 	switch (ul_id) {
+ 119:../src/ASF/common/services/clock/sam3u/osc.h **** 	case OSC_SLCK_32K_RC:
+ 120:../src/ASF/common/services/clock/sam3u/osc.h **** 		break;
+ 121:../src/ASF/common/services/clock/sam3u/osc.h **** 
+ 122:../src/ASF/common/services/clock/sam3u/osc.h **** 	case OSC_SLCK_32K_XTAL:
+ 123:../src/ASF/common/services/clock/sam3u/osc.h **** 		pmc_switch_sclk_to_32kxtal(PMC_OSC_XTAL);
+ 124:../src/ASF/common/services/clock/sam3u/osc.h **** 		break;
+ 125:../src/ASF/common/services/clock/sam3u/osc.h **** 
+ 126:../src/ASF/common/services/clock/sam3u/osc.h **** 	case OSC_SLCK_32K_BYPASS:
+ 127:../src/ASF/common/services/clock/sam3u/osc.h **** 		pmc_switch_sclk_to_32kxtal(PMC_OSC_BYPASS);
+ 128:../src/ASF/common/services/clock/sam3u/osc.h **** 		break;
+ 129:../src/ASF/common/services/clock/sam3u/osc.h **** 
+ 130:../src/ASF/common/services/clock/sam3u/osc.h **** 
+ 131:../src/ASF/common/services/clock/sam3u/osc.h **** 	case OSC_MAINCK_4M_RC:
+ 132:../src/ASF/common/services/clock/sam3u/osc.h **** 		pmc_osc_enable_fastrc(CKGR_MOR_MOSCRCF_4_MHz);
+ 133:../src/ASF/common/services/clock/sam3u/osc.h **** 		break;
+ 134:../src/ASF/common/services/clock/sam3u/osc.h **** 
+ 135:../src/ASF/common/services/clock/sam3u/osc.h **** 	case OSC_MAINCK_8M_RC:
+ 136:../src/ASF/common/services/clock/sam3u/osc.h **** 		pmc_osc_enable_fastrc(CKGR_MOR_MOSCRCF_8_MHz);
+ 137:../src/ASF/common/services/clock/sam3u/osc.h **** 		break;
+ 138:../src/ASF/common/services/clock/sam3u/osc.h **** 
+ 139:../src/ASF/common/services/clock/sam3u/osc.h **** 	case OSC_MAINCK_12M_RC:
+ 140:../src/ASF/common/services/clock/sam3u/osc.h **** 		pmc_osc_enable_fastrc(CKGR_MOR_MOSCRCF_12_MHz);
+ 141:../src/ASF/common/services/clock/sam3u/osc.h **** 		break;
+ 142:../src/ASF/common/services/clock/sam3u/osc.h **** 
+ 143:../src/ASF/common/services/clock/sam3u/osc.h **** 
+ 144:../src/ASF/common/services/clock/sam3u/osc.h **** 	case OSC_MAINCK_XTAL:
+ 145:../src/ASF/common/services/clock/sam3u/osc.h **** 		pmc_osc_enable_main_xtal(pmc_us_to_moscxtst(
+ 161              		.loc 2 145 0
+ 162 0002 3E20     		movs	r0, #62
+ 163 0004 074B     		ldr	r3, .L21
+ 164 0006 9847     		blx	r3
+ 165              	.LVL17:
+ 166              	.LBE38:
+ 167              	.LBE37:
+ 168              	.LBB39:
+ 169              	.LBB40:
+ 170              	.LBB41:
+ 171              	.LBB42:
+ 146:../src/ASF/common/services/clock/sam3u/osc.h **** 				BOARD_OSC_STARTUP_US, OSC_SLCK_32K_RC_HZ));
+ 147:../src/ASF/common/services/clock/sam3u/osc.h **** 		break;
+ 148:../src/ASF/common/services/clock/sam3u/osc.h **** 
+ 149:../src/ASF/common/services/clock/sam3u/osc.h **** 	case OSC_MAINCK_BYPASS:
+ 150:../src/ASF/common/services/clock/sam3u/osc.h **** 		pmc_osc_bypass_main_xtal();
+ 151:../src/ASF/common/services/clock/sam3u/osc.h **** 		break;
+ 152:../src/ASF/common/services/clock/sam3u/osc.h **** 	}
+ 153:../src/ASF/common/services/clock/sam3u/osc.h **** }
+ 154:../src/ASF/common/services/clock/sam3u/osc.h **** 
+ 155:../src/ASF/common/services/clock/sam3u/osc.h **** static inline void osc_disable(uint32_t ul_id)
+ 156:../src/ASF/common/services/clock/sam3u/osc.h **** {
+ 157:../src/ASF/common/services/clock/sam3u/osc.h **** 	switch (ul_id) {
+ 158:../src/ASF/common/services/clock/sam3u/osc.h **** 	case OSC_SLCK_32K_RC:
+ 159:../src/ASF/common/services/clock/sam3u/osc.h **** 	case OSC_SLCK_32K_XTAL:
+ 160:../src/ASF/common/services/clock/sam3u/osc.h **** 	case OSC_SLCK_32K_BYPASS:
+ 161:../src/ASF/common/services/clock/sam3u/osc.h **** 		break;
+ 162:../src/ASF/common/services/clock/sam3u/osc.h **** 
+ 163:../src/ASF/common/services/clock/sam3u/osc.h **** 	case OSC_MAINCK_4M_RC:
+ 164:../src/ASF/common/services/clock/sam3u/osc.h **** 	case OSC_MAINCK_8M_RC:
+ 165:../src/ASF/common/services/clock/sam3u/osc.h **** 	case OSC_MAINCK_12M_RC:
+ 166:../src/ASF/common/services/clock/sam3u/osc.h **** 		pmc_osc_disable_fastrc();
+ 167:../src/ASF/common/services/clock/sam3u/osc.h **** 		break;
+ 168:../src/ASF/common/services/clock/sam3u/osc.h **** 
+ 169:../src/ASF/common/services/clock/sam3u/osc.h **** 	case OSC_MAINCK_XTAL:
+ 170:../src/ASF/common/services/clock/sam3u/osc.h **** 		pmc_osc_disable_xtal(PMC_OSC_XTAL);
+ 171:../src/ASF/common/services/clock/sam3u/osc.h **** 		break;
+ 172:../src/ASF/common/services/clock/sam3u/osc.h **** 
+ 173:../src/ASF/common/services/clock/sam3u/osc.h **** 	case OSC_MAINCK_BYPASS:
+ 174:../src/ASF/common/services/clock/sam3u/osc.h **** 		pmc_osc_disable_xtal(PMC_OSC_BYPASS);
+ 175:../src/ASF/common/services/clock/sam3u/osc.h **** 		break;
+ 176:../src/ASF/common/services/clock/sam3u/osc.h **** 	}
+ 177:../src/ASF/common/services/clock/sam3u/osc.h **** }
+ 178:../src/ASF/common/services/clock/sam3u/osc.h **** 
+ 179:../src/ASF/common/services/clock/sam3u/osc.h **** static inline bool osc_is_ready(uint32_t ul_id)
+ 180:../src/ASF/common/services/clock/sam3u/osc.h **** {
+ 181:../src/ASF/common/services/clock/sam3u/osc.h **** 	switch (ul_id) {
+ 182:../src/ASF/common/services/clock/sam3u/osc.h **** 	case OSC_SLCK_32K_RC:
+ 183:../src/ASF/common/services/clock/sam3u/osc.h **** 		return 1;
+ 184:../src/ASF/common/services/clock/sam3u/osc.h **** 
+ 185:../src/ASF/common/services/clock/sam3u/osc.h **** 	case OSC_SLCK_32K_XTAL:
+ 186:../src/ASF/common/services/clock/sam3u/osc.h **** 	case OSC_SLCK_32K_BYPASS:
+ 187:../src/ASF/common/services/clock/sam3u/osc.h **** 		return pmc_osc_is_ready_32kxtal();
+ 188:../src/ASF/common/services/clock/sam3u/osc.h **** 
+ 189:../src/ASF/common/services/clock/sam3u/osc.h **** 	case OSC_MAINCK_4M_RC:
+ 190:../src/ASF/common/services/clock/sam3u/osc.h **** 	case OSC_MAINCK_8M_RC:
+ 191:../src/ASF/common/services/clock/sam3u/osc.h **** 	case OSC_MAINCK_12M_RC:
+ 192:../src/ASF/common/services/clock/sam3u/osc.h **** 		return pmc_osc_is_ready_fastrc();
+ 193:../src/ASF/common/services/clock/sam3u/osc.h **** 
+ 194:../src/ASF/common/services/clock/sam3u/osc.h **** 	case OSC_MAINCK_XTAL:
+ 195:../src/ASF/common/services/clock/sam3u/osc.h **** 	case OSC_MAINCK_BYPASS:
+ 196:../src/ASF/common/services/clock/sam3u/osc.h **** 		return pmc_osc_is_ready_main_xtal();
+ 172              		.loc 2 196 0
+ 173 0008 074C     		ldr	r4, .L21+4
+ 174              	.L16:
+ 175              	.LVL18:
+ 176 000a A047     		blx	r4
+ 177              	.LVL19:
+ 178              	.LBE42:
+ 179              	.LBE41:
+ 180              		.file 3 "../src/ASF/common/services/clock/osc.h"
+   1:../src/ASF/common/services/clock/osc.h **** /**
+   2:../src/ASF/common/services/clock/osc.h ****  * \file
+   3:../src/ASF/common/services/clock/osc.h ****  *
+   4:../src/ASF/common/services/clock/osc.h ****  * \brief Oscillator management
+   5:../src/ASF/common/services/clock/osc.h ****  *
+   6:../src/ASF/common/services/clock/osc.h ****  * Copyright (c) 2010-2014 Atmel Corporation. All rights reserved.
+   7:../src/ASF/common/services/clock/osc.h ****  *
+   8:../src/ASF/common/services/clock/osc.h ****  * \asf_license_start
+   9:../src/ASF/common/services/clock/osc.h ****  *
+  10:../src/ASF/common/services/clock/osc.h ****  * \page License
+  11:../src/ASF/common/services/clock/osc.h ****  *
+  12:../src/ASF/common/services/clock/osc.h ****  * Redistribution and use in source and binary forms, with or without
+  13:../src/ASF/common/services/clock/osc.h ****  * modification, are permitted provided that the following conditions are met:
+  14:../src/ASF/common/services/clock/osc.h ****  *
+  15:../src/ASF/common/services/clock/osc.h ****  * 1. Redistributions of source code must retain the above copyright notice,
+  16:../src/ASF/common/services/clock/osc.h ****  *    this list of conditions and the following disclaimer.
+  17:../src/ASF/common/services/clock/osc.h ****  *
+  18:../src/ASF/common/services/clock/osc.h ****  * 2. Redistributions in binary form must reproduce the above copyright notice,
+  19:../src/ASF/common/services/clock/osc.h ****  *    this list of conditions and the following disclaimer in the documentation
+  20:../src/ASF/common/services/clock/osc.h ****  *    and/or other materials provided with the distribution.
+  21:../src/ASF/common/services/clock/osc.h ****  *
+  22:../src/ASF/common/services/clock/osc.h ****  * 3. The name of Atmel may not be used to endorse or promote products derived
+  23:../src/ASF/common/services/clock/osc.h ****  *    from this software without specific prior written permission.
+  24:../src/ASF/common/services/clock/osc.h ****  *
+  25:../src/ASF/common/services/clock/osc.h ****  * 4. This software may only be redistributed and used in connection with an
+  26:../src/ASF/common/services/clock/osc.h ****  *    Atmel microcontroller product.
+  27:../src/ASF/common/services/clock/osc.h ****  *
+  28:../src/ASF/common/services/clock/osc.h ****  * THIS SOFTWARE IS PROVIDED BY ATMEL "AS IS" AND ANY EXPRESS OR IMPLIED
+  29:../src/ASF/common/services/clock/osc.h ****  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  30:../src/ASF/common/services/clock/osc.h ****  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT ARE
+  31:../src/ASF/common/services/clock/osc.h ****  * EXPRESSLY AND SPECIFICALLY DISCLAIMED. IN NO EVENT SHALL ATMEL BE LIABLE FOR
+  32:../src/ASF/common/services/clock/osc.h ****  * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  33:../src/ASF/common/services/clock/osc.h ****  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+  34:../src/ASF/common/services/clock/osc.h ****  * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+  35:../src/ASF/common/services/clock/osc.h ****  * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+  36:../src/ASF/common/services/clock/osc.h ****  * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+  37:../src/ASF/common/services/clock/osc.h ****  * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  38:../src/ASF/common/services/clock/osc.h ****  * POSSIBILITY OF SUCH DAMAGE.
+  39:../src/ASF/common/services/clock/osc.h ****  *
+  40:../src/ASF/common/services/clock/osc.h ****  * \asf_license_stop
+  41:../src/ASF/common/services/clock/osc.h ****  *
+  42:../src/ASF/common/services/clock/osc.h ****  */
+  43:../src/ASF/common/services/clock/osc.h **** #ifndef OSC_H_INCLUDED
+  44:../src/ASF/common/services/clock/osc.h **** #define OSC_H_INCLUDED
+  45:../src/ASF/common/services/clock/osc.h **** 
+  46:../src/ASF/common/services/clock/osc.h **** #include "parts.h"
+  47:../src/ASF/common/services/clock/osc.h **** #include "conf_clock.h"
+  48:../src/ASF/common/services/clock/osc.h **** 
+  49:../src/ASF/common/services/clock/osc.h **** #if SAM3S
+  50:../src/ASF/common/services/clock/osc.h **** # include "sam3s/osc.h"
+  51:../src/ASF/common/services/clock/osc.h **** #elif SAM3XA
+  52:../src/ASF/common/services/clock/osc.h **** # include "sam3x/osc.h"
+  53:../src/ASF/common/services/clock/osc.h **** #elif SAM3U
+  54:../src/ASF/common/services/clock/osc.h **** # include "sam3u/osc.h"
+  55:../src/ASF/common/services/clock/osc.h **** #elif SAM3N
+  56:../src/ASF/common/services/clock/osc.h **** # include "sam3n/osc.h"
+  57:../src/ASF/common/services/clock/osc.h **** #elif SAM4S
+  58:../src/ASF/common/services/clock/osc.h **** # include "sam4s/osc.h"
+  59:../src/ASF/common/services/clock/osc.h **** #elif SAM4E
+  60:../src/ASF/common/services/clock/osc.h **** # include "sam4e/osc.h"
+  61:../src/ASF/common/services/clock/osc.h **** #elif SAM4C
+  62:../src/ASF/common/services/clock/osc.h **** # include "sam4c/osc.h"
+  63:../src/ASF/common/services/clock/osc.h **** #elif SAM4CM
+  64:../src/ASF/common/services/clock/osc.h **** # include "sam4cm/osc.h"
+  65:../src/ASF/common/services/clock/osc.h **** #elif SAM4CP
+  66:../src/ASF/common/services/clock/osc.h **** # include "sam4cp/osc.h"
+  67:../src/ASF/common/services/clock/osc.h **** #elif SAM4L
+  68:../src/ASF/common/services/clock/osc.h **** # include "sam4l/osc.h"
+  69:../src/ASF/common/services/clock/osc.h **** #elif SAM4N
+  70:../src/ASF/common/services/clock/osc.h **** # include "sam4n/osc.h"
+  71:../src/ASF/common/services/clock/osc.h **** #elif SAMG
+  72:../src/ASF/common/services/clock/osc.h **** # include "samg/osc.h"
+  73:../src/ASF/common/services/clock/osc.h **** #elif (UC3A0 || UC3A1)
+  74:../src/ASF/common/services/clock/osc.h **** # include "uc3a0_a1/osc.h"
+  75:../src/ASF/common/services/clock/osc.h **** #elif UC3A3
+  76:../src/ASF/common/services/clock/osc.h **** # include "uc3a3_a4/osc.h"
+  77:../src/ASF/common/services/clock/osc.h **** #elif UC3B
+  78:../src/ASF/common/services/clock/osc.h **** # include "uc3b0_b1/osc.h"
+  79:../src/ASF/common/services/clock/osc.h **** #elif UC3C
+  80:../src/ASF/common/services/clock/osc.h **** # include "uc3c/osc.h"
+  81:../src/ASF/common/services/clock/osc.h **** #elif UC3D
+  82:../src/ASF/common/services/clock/osc.h **** # include "uc3d/osc.h"
+  83:../src/ASF/common/services/clock/osc.h **** #elif UC3L
+  84:../src/ASF/common/services/clock/osc.h **** # include "uc3l/osc.h"
+  85:../src/ASF/common/services/clock/osc.h **** #elif XMEGA
+  86:../src/ASF/common/services/clock/osc.h **** # include "xmega/osc.h"
+  87:../src/ASF/common/services/clock/osc.h **** #else
+  88:../src/ASF/common/services/clock/osc.h **** # error Unsupported chip type
+  89:../src/ASF/common/services/clock/osc.h **** #endif
+  90:../src/ASF/common/services/clock/osc.h **** 
+  91:../src/ASF/common/services/clock/osc.h **** /**
+  92:../src/ASF/common/services/clock/osc.h ****  * \ingroup clk_group
+  93:../src/ASF/common/services/clock/osc.h ****  * \defgroup osc_group Oscillator Management
+  94:../src/ASF/common/services/clock/osc.h ****  *
+  95:../src/ASF/common/services/clock/osc.h ****  * This group contains functions and definitions related to configuring
+  96:../src/ASF/common/services/clock/osc.h ****  * and enabling/disabling on-chip oscillators. Internal RC-oscillators,
+  97:../src/ASF/common/services/clock/osc.h ****  * external crystal oscillators and external clock generators are
+  98:../src/ASF/common/services/clock/osc.h ****  * supported by this module. What all of these have in common is that
+  99:../src/ASF/common/services/clock/osc.h ****  * they swing at a fixed, nominal frequency which is normally not
+ 100:../src/ASF/common/services/clock/osc.h ****  * adjustable.
+ 101:../src/ASF/common/services/clock/osc.h ****  *
+ 102:../src/ASF/common/services/clock/osc.h ****  * \par Example: Enabling an oscillator
+ 103:../src/ASF/common/services/clock/osc.h ****  *
+ 104:../src/ASF/common/services/clock/osc.h ****  * The following example demonstrates how to enable the external
+ 105:../src/ASF/common/services/clock/osc.h ****  * oscillator on XMEGA A and wait for it to be ready to use. The
+ 106:../src/ASF/common/services/clock/osc.h ****  * oscillator identifiers are platform-specific, so while the same
+ 107:../src/ASF/common/services/clock/osc.h ****  * procedure is used on all platforms, the parameter to osc_enable()
+ 108:../src/ASF/common/services/clock/osc.h ****  * will be different from device to device.
+ 109:../src/ASF/common/services/clock/osc.h ****  * \code
+ 110:../src/ASF/common/services/clock/osc.h **** 	osc_enable(OSC_ID_XOSC);
+ 111:../src/ASF/common/services/clock/osc.h **** 	osc_wait_ready(OSC_ID_XOSC); \endcode
+ 112:../src/ASF/common/services/clock/osc.h ****  *
+ 113:../src/ASF/common/services/clock/osc.h ****  * \section osc_group_board Board-specific Definitions
+ 114:../src/ASF/common/services/clock/osc.h ****  * If external oscillators are used, the board code must provide the
+ 115:../src/ASF/common/services/clock/osc.h ****  * following definitions for each of those:
+ 116:../src/ASF/common/services/clock/osc.h ****  *   - \b BOARD_<osc name>_HZ: The nominal frequency of the oscillator.
+ 117:../src/ASF/common/services/clock/osc.h ****  *   - \b BOARD_<osc name>_STARTUP_US: The startup time of the
+ 118:../src/ASF/common/services/clock/osc.h ****  *     oscillator in microseconds.
+ 119:../src/ASF/common/services/clock/osc.h ****  *   - \b BOARD_<osc name>_TYPE: The type of oscillator connected, i.e.
+ 120:../src/ASF/common/services/clock/osc.h ****  *     whether it's a crystal or external clock, and sometimes what kind
+ 121:../src/ASF/common/services/clock/osc.h ****  *     of crystal it is. The meaning of this value is platform-specific.
+ 122:../src/ASF/common/services/clock/osc.h ****  *
+ 123:../src/ASF/common/services/clock/osc.h ****  * @{
+ 124:../src/ASF/common/services/clock/osc.h ****  */
+ 125:../src/ASF/common/services/clock/osc.h **** 
+ 126:../src/ASF/common/services/clock/osc.h **** //! \name Oscillator Management
+ 127:../src/ASF/common/services/clock/osc.h **** //@{
+ 128:../src/ASF/common/services/clock/osc.h **** /**
+ 129:../src/ASF/common/services/clock/osc.h ****  * \fn void osc_enable(uint8_t id)
+ 130:../src/ASF/common/services/clock/osc.h ****  * \brief Enable oscillator \a id
+ 131:../src/ASF/common/services/clock/osc.h ****  *
+ 132:../src/ASF/common/services/clock/osc.h ****  * The startup time and mode value is automatically determined based on
+ 133:../src/ASF/common/services/clock/osc.h ****  * definitions in the board code.
+ 134:../src/ASF/common/services/clock/osc.h ****  */
+ 135:../src/ASF/common/services/clock/osc.h **** /**
+ 136:../src/ASF/common/services/clock/osc.h ****  * \fn void osc_disable(uint8_t id)
+ 137:../src/ASF/common/services/clock/osc.h ****  * \brief Disable oscillator \a id
+ 138:../src/ASF/common/services/clock/osc.h ****  */
+ 139:../src/ASF/common/services/clock/osc.h **** /**
+ 140:../src/ASF/common/services/clock/osc.h ****  * \fn osc_is_ready(uint8_t id)
+ 141:../src/ASF/common/services/clock/osc.h ****  * \brief Determine whether oscillator \a id is ready.
+ 142:../src/ASF/common/services/clock/osc.h ****  * \retval true Oscillator \a id is running and ready to use as a clock
+ 143:../src/ASF/common/services/clock/osc.h ****  * source.
+ 144:../src/ASF/common/services/clock/osc.h ****  * \retval false Oscillator \a id is not running.
+ 145:../src/ASF/common/services/clock/osc.h ****  */
+ 146:../src/ASF/common/services/clock/osc.h **** /**
+ 147:../src/ASF/common/services/clock/osc.h ****  * \fn uint32_t osc_get_rate(uint8_t id)
+ 148:../src/ASF/common/services/clock/osc.h ****  * \brief Return the frequency of oscillator \a id in Hz
+ 149:../src/ASF/common/services/clock/osc.h ****  */
+ 150:../src/ASF/common/services/clock/osc.h **** 
+ 151:../src/ASF/common/services/clock/osc.h **** #ifndef __ASSEMBLY__
+ 152:../src/ASF/common/services/clock/osc.h **** 
+ 153:../src/ASF/common/services/clock/osc.h **** /**
+ 154:../src/ASF/common/services/clock/osc.h ****  * \brief Wait until the oscillator identified by \a id is ready
+ 155:../src/ASF/common/services/clock/osc.h ****  *
+ 156:../src/ASF/common/services/clock/osc.h ****  * This function will busy-wait for the oscillator identified by \a id
+ 157:../src/ASF/common/services/clock/osc.h ****  * to become stable and ready to use as a clock source.
+ 158:../src/ASF/common/services/clock/osc.h ****  *
+ 159:../src/ASF/common/services/clock/osc.h ****  * \param id A number identifying the oscillator to wait for.
+ 160:../src/ASF/common/services/clock/osc.h ****  */
+ 161:../src/ASF/common/services/clock/osc.h **** static inline void osc_wait_ready(uint8_t id)
+ 162:../src/ASF/common/services/clock/osc.h **** {
+ 163:../src/ASF/common/services/clock/osc.h **** 	while (!osc_is_ready(id)) {
+ 181              		.loc 3 163 0
+ 182 000c 0028     		cmp	r0, #0
+ 183 000e FCD0     		beq	.L16
+ 184              	.LVL20:
+ 185              	.LBE40:
+ 186              	.LBE39:
+ 187              	.LBE36:
+ 188              	.LBB43:
+ 189              	.LBB44:
+ 190              		.file 4 "../src/ASF/common/services/clock/sam3u/pll.h"
+   1:../src/ASF/common/services/clock/sam3u/pll.h **** /**
+   2:../src/ASF/common/services/clock/sam3u/pll.h ****  * \file
+   3:../src/ASF/common/services/clock/sam3u/pll.h ****  *
+   4:../src/ASF/common/services/clock/sam3u/pll.h ****  * \brief Chip-specific PLL definitions.
+   5:../src/ASF/common/services/clock/sam3u/pll.h ****  *
+   6:../src/ASF/common/services/clock/sam3u/pll.h ****  * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+   7:../src/ASF/common/services/clock/sam3u/pll.h ****  *
+   8:../src/ASF/common/services/clock/sam3u/pll.h ****  * \asf_license_start
+   9:../src/ASF/common/services/clock/sam3u/pll.h ****  *
+  10:../src/ASF/common/services/clock/sam3u/pll.h ****  * \page License
+  11:../src/ASF/common/services/clock/sam3u/pll.h ****  *
+  12:../src/ASF/common/services/clock/sam3u/pll.h ****  * Redistribution and use in source and binary forms, with or without
+  13:../src/ASF/common/services/clock/sam3u/pll.h ****  * modification, are permitted provided that the following conditions are met:
+  14:../src/ASF/common/services/clock/sam3u/pll.h ****  *
+  15:../src/ASF/common/services/clock/sam3u/pll.h ****  * 1. Redistributions of source code must retain the above copyright notice,
+  16:../src/ASF/common/services/clock/sam3u/pll.h ****  *    this list of conditions and the following disclaimer.
+  17:../src/ASF/common/services/clock/sam3u/pll.h ****  *
+  18:../src/ASF/common/services/clock/sam3u/pll.h ****  * 2. Redistributions in binary form must reproduce the above copyright notice,
+  19:../src/ASF/common/services/clock/sam3u/pll.h ****  *    this list of conditions and the following disclaimer in the documentation
+  20:../src/ASF/common/services/clock/sam3u/pll.h ****  *    and/or other materials provided with the distribution.
+  21:../src/ASF/common/services/clock/sam3u/pll.h ****  *
+  22:../src/ASF/common/services/clock/sam3u/pll.h ****  * 3. The name of Atmel may not be used to endorse or promote products derived
+  23:../src/ASF/common/services/clock/sam3u/pll.h ****  *    from this software without specific prior written permission.
+  24:../src/ASF/common/services/clock/sam3u/pll.h ****  *
+  25:../src/ASF/common/services/clock/sam3u/pll.h ****  * 4. This software may only be redistributed and used in connection with an
+  26:../src/ASF/common/services/clock/sam3u/pll.h ****  *    Atmel microcontroller product.
+  27:../src/ASF/common/services/clock/sam3u/pll.h ****  *
+  28:../src/ASF/common/services/clock/sam3u/pll.h ****  * THIS SOFTWARE IS PROVIDED BY ATMEL "AS IS" AND ANY EXPRESS OR IMPLIED
+  29:../src/ASF/common/services/clock/sam3u/pll.h ****  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  30:../src/ASF/common/services/clock/sam3u/pll.h ****  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT ARE
+  31:../src/ASF/common/services/clock/sam3u/pll.h ****  * EXPRESSLY AND SPECIFICALLY DISCLAIMED. IN NO EVENT SHALL ATMEL BE LIABLE FOR
+  32:../src/ASF/common/services/clock/sam3u/pll.h ****  * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  33:../src/ASF/common/services/clock/sam3u/pll.h ****  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+  34:../src/ASF/common/services/clock/sam3u/pll.h ****  * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+  35:../src/ASF/common/services/clock/sam3u/pll.h ****  * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+  36:../src/ASF/common/services/clock/sam3u/pll.h ****  * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+  37:../src/ASF/common/services/clock/sam3u/pll.h ****  * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  38:../src/ASF/common/services/clock/sam3u/pll.h ****  * POSSIBILITY OF SUCH DAMAGE.
+  39:../src/ASF/common/services/clock/sam3u/pll.h ****  *
+  40:../src/ASF/common/services/clock/sam3u/pll.h ****  * \asf_license_stop
+  41:../src/ASF/common/services/clock/sam3u/pll.h ****  *
+  42:../src/ASF/common/services/clock/sam3u/pll.h ****  */
+  43:../src/ASF/common/services/clock/sam3u/pll.h **** 
+  44:../src/ASF/common/services/clock/sam3u/pll.h **** #ifndef CHIP_PLL_H_INCLUDED
+  45:../src/ASF/common/services/clock/sam3u/pll.h **** #define CHIP_PLL_H_INCLUDED
+  46:../src/ASF/common/services/clock/sam3u/pll.h **** 
+  47:../src/ASF/common/services/clock/sam3u/pll.h **** #include <osc.h>
+  48:../src/ASF/common/services/clock/sam3u/pll.h **** 
+  49:../src/ASF/common/services/clock/sam3u/pll.h **** /// @cond 0
+  50:../src/ASF/common/services/clock/sam3u/pll.h **** /**INDENT-OFF**/
+  51:../src/ASF/common/services/clock/sam3u/pll.h **** #ifdef __cplusplus
+  52:../src/ASF/common/services/clock/sam3u/pll.h **** extern "C" {
+  53:../src/ASF/common/services/clock/sam3u/pll.h **** #endif
+  54:../src/ASF/common/services/clock/sam3u/pll.h **** /**INDENT-ON**/
+  55:../src/ASF/common/services/clock/sam3u/pll.h **** /// @endcond
+  56:../src/ASF/common/services/clock/sam3u/pll.h **** 
+  57:../src/ASF/common/services/clock/sam3u/pll.h **** /**
+  58:../src/ASF/common/services/clock/sam3u/pll.h ****  * \weakgroup pll_group
+  59:../src/ASF/common/services/clock/sam3u/pll.h ****  * @{
+  60:../src/ASF/common/services/clock/sam3u/pll.h ****  */
+  61:../src/ASF/common/services/clock/sam3u/pll.h **** 
+  62:../src/ASF/common/services/clock/sam3u/pll.h **** #define PLL_OUTPUT_MIN_HZ   96000000
+  63:../src/ASF/common/services/clock/sam3u/pll.h **** #define PLL_OUTPUT_MAX_HZ   192000000
+  64:../src/ASF/common/services/clock/sam3u/pll.h **** 
+  65:../src/ASF/common/services/clock/sam3u/pll.h **** #define PLL_INPUT_MIN_HZ    8000000
+  66:../src/ASF/common/services/clock/sam3u/pll.h **** #define PLL_INPUT_MAX_HZ    16000000
+  67:../src/ASF/common/services/clock/sam3u/pll.h **** 
+  68:../src/ASF/common/services/clock/sam3u/pll.h **** #define NR_PLLS             2
+  69:../src/ASF/common/services/clock/sam3u/pll.h **** #define PLLA_ID             0
+  70:../src/ASF/common/services/clock/sam3u/pll.h **** #define UPLL_ID             1   //!< USB UTMI PLL.
+  71:../src/ASF/common/services/clock/sam3u/pll.h **** 
+  72:../src/ASF/common/services/clock/sam3u/pll.h **** #define PLL_UPLL_HZ         480000000
+  73:../src/ASF/common/services/clock/sam3u/pll.h **** 
+  74:../src/ASF/common/services/clock/sam3u/pll.h **** #define PLL_COUNT           0x3fU
+  75:../src/ASF/common/services/clock/sam3u/pll.h **** 
+  76:../src/ASF/common/services/clock/sam3u/pll.h **** enum pll_source {
+  77:../src/ASF/common/services/clock/sam3u/pll.h **** 	PLL_SRC_MAINCK_4M_RC  = OSC_MAINCK_4M_RC,     //!< Internal 4MHz RC oscillator.
+  78:../src/ASF/common/services/clock/sam3u/pll.h **** 	PLL_SRC_MAINCK_8M_RC  = OSC_MAINCK_8M_RC,     //!< Internal 8MHz RC oscillator.
+  79:../src/ASF/common/services/clock/sam3u/pll.h **** 	PLL_SRC_MAINCK_12M_RC = OSC_MAINCK_12M_RC,    //!< Internal 12MHz RC oscillator.
+  80:../src/ASF/common/services/clock/sam3u/pll.h **** 	PLL_SRC_MAINCK_XTAL   = OSC_MAINCK_XTAL,      //!< External crystal oscillator.
+  81:../src/ASF/common/services/clock/sam3u/pll.h **** 	PLL_SRC_MAINCK_BYPASS = OSC_MAINCK_BYPASS,    //!< External bypass oscillator.
+  82:../src/ASF/common/services/clock/sam3u/pll.h **** 	PLL_NR_SOURCES,                               //!< Number of PLL sources.
+  83:../src/ASF/common/services/clock/sam3u/pll.h **** };
+  84:../src/ASF/common/services/clock/sam3u/pll.h **** 
+  85:../src/ASF/common/services/clock/sam3u/pll.h **** struct pll_config {
+  86:../src/ASF/common/services/clock/sam3u/pll.h **** 	uint32_t ctrl;
+  87:../src/ASF/common/services/clock/sam3u/pll.h **** };
+  88:../src/ASF/common/services/clock/sam3u/pll.h **** 
+  89:../src/ASF/common/services/clock/sam3u/pll.h **** #define pll_get_default_rate(pll_id)                                       \
+  90:../src/ASF/common/services/clock/sam3u/pll.h **** 	((osc_get_rate(CONFIG_PLL##pll_id##_SOURCE)                        \
+  91:../src/ASF/common/services/clock/sam3u/pll.h **** 			* CONFIG_PLL##pll_id##_MUL)                        \
+  92:../src/ASF/common/services/clock/sam3u/pll.h **** 			/ CONFIG_PLL##pll_id##_DIV)
+  93:../src/ASF/common/services/clock/sam3u/pll.h **** 
+  94:../src/ASF/common/services/clock/sam3u/pll.h **** /* Force UTMI PLL parameters (Hardware defined) */
+  95:../src/ASF/common/services/clock/sam3u/pll.h **** #ifdef CONFIG_PLL1_SOURCE
+  96:../src/ASF/common/services/clock/sam3u/pll.h **** # undef CONFIG_PLL1_SOURCE
+  97:../src/ASF/common/services/clock/sam3u/pll.h **** #endif
+  98:../src/ASF/common/services/clock/sam3u/pll.h **** #ifdef CONFIG_PLL1_MUL
+  99:../src/ASF/common/services/clock/sam3u/pll.h **** # undef CONFIG_PLL1_MUL
+ 100:../src/ASF/common/services/clock/sam3u/pll.h **** #endif
+ 101:../src/ASF/common/services/clock/sam3u/pll.h **** #ifdef CONFIG_PLL1_DIV
+ 102:../src/ASF/common/services/clock/sam3u/pll.h **** # undef CONFIG_PLL1_DIV
+ 103:../src/ASF/common/services/clock/sam3u/pll.h **** #endif
+ 104:../src/ASF/common/services/clock/sam3u/pll.h **** #define CONFIG_PLL1_SOURCE  PLL_SRC_MAINCK_XTAL
+ 105:../src/ASF/common/services/clock/sam3u/pll.h **** #define CONFIG_PLL1_MUL     0
+ 106:../src/ASF/common/services/clock/sam3u/pll.h **** #define CONFIG_PLL1_DIV     0
+ 107:../src/ASF/common/services/clock/sam3u/pll.h **** 
+ 108:../src/ASF/common/services/clock/sam3u/pll.h **** /**
+ 109:../src/ASF/common/services/clock/sam3u/pll.h ****  * \note The SAM3U PLL hardware interprets mul as mul+1. For readability the
+ 110:../src/ASF/common/services/clock/sam3u/pll.h ****  *       hardware mul+1 is hidden in this implementation. Use mul as mul
+ 111:../src/ASF/common/services/clock/sam3u/pll.h ****  *       effective value.
+ 112:../src/ASF/common/services/clock/sam3u/pll.h ****  */
+ 113:../src/ASF/common/services/clock/sam3u/pll.h **** static inline void pll_config_init(struct pll_config *p_cfg,
+ 114:../src/ASF/common/services/clock/sam3u/pll.h **** 		enum pll_source e_src, uint32_t ul_div, uint32_t ul_mul)
+ 115:../src/ASF/common/services/clock/sam3u/pll.h **** {
+ 116:../src/ASF/common/services/clock/sam3u/pll.h **** 	uint32_t vco_hz;
+ 117:../src/ASF/common/services/clock/sam3u/pll.h **** 
+ 118:../src/ASF/common/services/clock/sam3u/pll.h **** 	Assert(e_src < PLL_NR_SOURCES);
+ 119:../src/ASF/common/services/clock/sam3u/pll.h **** 
+ 120:../src/ASF/common/services/clock/sam3u/pll.h **** 	if (ul_div == 0 && ul_mul == 0) { /* Must only be true for UTMI PLL */
+ 121:../src/ASF/common/services/clock/sam3u/pll.h **** 		p_cfg->ctrl = CKGR_UCKR_UPLLCOUNT(PLL_COUNT);
+ 122:../src/ASF/common/services/clock/sam3u/pll.h **** 	} else { /* PLLA */
+ 123:../src/ASF/common/services/clock/sam3u/pll.h **** 		/* Calculate internal VCO frequency */
+ 124:../src/ASF/common/services/clock/sam3u/pll.h **** 		vco_hz = osc_get_rate(e_src) / ul_div;
+ 125:../src/ASF/common/services/clock/sam3u/pll.h **** 		Assert(vco_hz >= PLL_INPUT_MIN_HZ);
+ 126:../src/ASF/common/services/clock/sam3u/pll.h **** 		Assert(vco_hz <= PLL_INPUT_MAX_HZ);
+ 127:../src/ASF/common/services/clock/sam3u/pll.h **** 
+ 128:../src/ASF/common/services/clock/sam3u/pll.h **** 		vco_hz *= ul_mul;
+ 129:../src/ASF/common/services/clock/sam3u/pll.h **** 		Assert(vco_hz >= PLL_OUTPUT_MIN_HZ);
+ 130:../src/ASF/common/services/clock/sam3u/pll.h **** 		Assert(vco_hz <= PLL_OUTPUT_MAX_HZ);
+ 131:../src/ASF/common/services/clock/sam3u/pll.h **** 
+ 132:../src/ASF/common/services/clock/sam3u/pll.h **** 		/* PMC hardware will automatically make it mul+1 */
+ 133:../src/ASF/common/services/clock/sam3u/pll.h **** 		p_cfg->ctrl = CKGR_PLLAR_MULA(ul_mul - 1) |
+ 134:../src/ASF/common/services/clock/sam3u/pll.h **** 			CKGR_PLLAR_DIVA(ul_div) |
+ 135:../src/ASF/common/services/clock/sam3u/pll.h **** 			CKGR_PLLAR_PLLACOUNT(PLL_COUNT);
+ 136:../src/ASF/common/services/clock/sam3u/pll.h **** 	}
+ 137:../src/ASF/common/services/clock/sam3u/pll.h **** }
+ 138:../src/ASF/common/services/clock/sam3u/pll.h **** 
+ 139:../src/ASF/common/services/clock/sam3u/pll.h **** #define pll_config_defaults(cfg, pll_id)                                   \
+ 140:../src/ASF/common/services/clock/sam3u/pll.h **** 	pll_config_init(cfg,                                               \
+ 141:../src/ASF/common/services/clock/sam3u/pll.h **** 			CONFIG_PLL##pll_id##_SOURCE,                       \
+ 142:../src/ASF/common/services/clock/sam3u/pll.h **** 			CONFIG_PLL##pll_id##_DIV,                          \
+ 143:../src/ASF/common/services/clock/sam3u/pll.h **** 			CONFIG_PLL##pll_id##_MUL)
+ 144:../src/ASF/common/services/clock/sam3u/pll.h **** 
+ 145:../src/ASF/common/services/clock/sam3u/pll.h **** static inline void pll_config_read(struct pll_config *p_cfg, uint32_t ul_pll_id)
+ 146:../src/ASF/common/services/clock/sam3u/pll.h **** {
+ 147:../src/ASF/common/services/clock/sam3u/pll.h **** 	Assert(ul_pll_id < NR_PLLS);
+ 148:../src/ASF/common/services/clock/sam3u/pll.h **** 
+ 149:../src/ASF/common/services/clock/sam3u/pll.h **** 	if (ul_pll_id == PLLA_ID) {
+ 150:../src/ASF/common/services/clock/sam3u/pll.h **** 		p_cfg->ctrl = PMC->CKGR_PLLAR;
+ 151:../src/ASF/common/services/clock/sam3u/pll.h **** 	} else {
+ 152:../src/ASF/common/services/clock/sam3u/pll.h **** 		p_cfg->ctrl = PMC->CKGR_UCKR;
+ 153:../src/ASF/common/services/clock/sam3u/pll.h **** 	}
+ 154:../src/ASF/common/services/clock/sam3u/pll.h **** }
+ 155:../src/ASF/common/services/clock/sam3u/pll.h **** 
+ 156:../src/ASF/common/services/clock/sam3u/pll.h **** static inline void pll_config_write(const struct pll_config *p_cfg,
+ 157:../src/ASF/common/services/clock/sam3u/pll.h **** 		uint32_t ul_pll_id)
+ 158:../src/ASF/common/services/clock/sam3u/pll.h **** {
+ 159:../src/ASF/common/services/clock/sam3u/pll.h **** 	Assert(ul_pll_id < NR_PLLS);
+ 160:../src/ASF/common/services/clock/sam3u/pll.h **** 
+ 161:../src/ASF/common/services/clock/sam3u/pll.h **** 	if (ul_pll_id == PLLA_ID) {
+ 162:../src/ASF/common/services/clock/sam3u/pll.h **** 		pmc_disable_pllack(); // Always stop PLL first!
+ 163:../src/ASF/common/services/clock/sam3u/pll.h **** 		PMC->CKGR_PLLAR = CKGR_PLLAR_ONE | p_cfg->ctrl;
+ 164:../src/ASF/common/services/clock/sam3u/pll.h **** 	} else {
+ 165:../src/ASF/common/services/clock/sam3u/pll.h **** 		PMC->CKGR_UCKR = p_cfg->ctrl;
+ 166:../src/ASF/common/services/clock/sam3u/pll.h **** 	}
+ 167:../src/ASF/common/services/clock/sam3u/pll.h **** }
+ 168:../src/ASF/common/services/clock/sam3u/pll.h **** 
+ 169:../src/ASF/common/services/clock/sam3u/pll.h **** static inline void pll_enable(const struct pll_config *p_cfg,
+ 170:../src/ASF/common/services/clock/sam3u/pll.h **** 		uint32_t ul_pll_id)
+ 171:../src/ASF/common/services/clock/sam3u/pll.h **** {
+ 172:../src/ASF/common/services/clock/sam3u/pll.h **** 	Assert(ul_pll_id < NR_PLLS);
+ 173:../src/ASF/common/services/clock/sam3u/pll.h **** 
+ 174:../src/ASF/common/services/clock/sam3u/pll.h **** 	if (ul_pll_id == PLLA_ID) {
+ 175:../src/ASF/common/services/clock/sam3u/pll.h **** 		pmc_disable_pllack(); // Always stop PLL first!
+ 176:../src/ASF/common/services/clock/sam3u/pll.h **** 		PMC->CKGR_PLLAR = CKGR_PLLAR_ONE | p_cfg->ctrl;
+ 177:../src/ASF/common/services/clock/sam3u/pll.h **** 	} else {
+ 178:../src/ASF/common/services/clock/sam3u/pll.h **** 		PMC->CKGR_UCKR = p_cfg->ctrl | CKGR_UCKR_UPLLEN;
+ 191              		.loc 4 178 0
+ 192 0010 4FF47102 		mov	r2, #15794176
+ 193 0014 054B     		ldr	r3, .L21+8
+ 194 0016 DA61     		str	r2, [r3, #28]
+ 195              	.LVL21:
+ 196              	.LBE44:
+ 197              	.LBE43:
+ 198              	.LBB45:
+ 199              	.LBB46:
+ 200              	.LBB47:
+ 201              	.LBB48:
+ 179:../src/ASF/common/services/clock/sam3u/pll.h **** 	}
+ 180:../src/ASF/common/services/clock/sam3u/pll.h **** }
+ 181:../src/ASF/common/services/clock/sam3u/pll.h **** 
+ 182:../src/ASF/common/services/clock/sam3u/pll.h **** /**
+ 183:../src/ASF/common/services/clock/sam3u/pll.h ****  * \note This will only disable the selected PLL, not the underlying oscillator
+ 184:../src/ASF/common/services/clock/sam3u/pll.h ****  *       (mainck).
+ 185:../src/ASF/common/services/clock/sam3u/pll.h ****  */
+ 186:../src/ASF/common/services/clock/sam3u/pll.h **** static inline void pll_disable(uint32_t ul_pll_id)
+ 187:../src/ASF/common/services/clock/sam3u/pll.h **** {
+ 188:../src/ASF/common/services/clock/sam3u/pll.h **** 	Assert(ul_pll_id < NR_PLLS);
+ 189:../src/ASF/common/services/clock/sam3u/pll.h **** 
+ 190:../src/ASF/common/services/clock/sam3u/pll.h **** 	if (ul_pll_id == PLLA_ID) {
+ 191:../src/ASF/common/services/clock/sam3u/pll.h **** 		pmc_disable_pllack();
+ 192:../src/ASF/common/services/clock/sam3u/pll.h **** 	} else {
+ 193:../src/ASF/common/services/clock/sam3u/pll.h **** 		PMC->CKGR_UCKR &= ~CKGR_UCKR_UPLLEN;
+ 194:../src/ASF/common/services/clock/sam3u/pll.h **** 	}
+ 195:../src/ASF/common/services/clock/sam3u/pll.h **** }
+ 196:../src/ASF/common/services/clock/sam3u/pll.h **** 
+ 197:../src/ASF/common/services/clock/sam3u/pll.h **** static inline uint32_t pll_is_locked(uint32_t ul_pll_id)
+ 198:../src/ASF/common/services/clock/sam3u/pll.h **** {
+ 199:../src/ASF/common/services/clock/sam3u/pll.h **** 	Assert(ul_pll_id < NR_PLLS);
+ 200:../src/ASF/common/services/clock/sam3u/pll.h **** 
+ 201:../src/ASF/common/services/clock/sam3u/pll.h **** 	if (ul_pll_id == PLLA_ID) {
+ 202:../src/ASF/common/services/clock/sam3u/pll.h **** 		return pmc_is_locked_pllack();
+ 203:../src/ASF/common/services/clock/sam3u/pll.h **** 	} else {
+ 204:../src/ASF/common/services/clock/sam3u/pll.h **** 		return pmc_is_locked_upll();
+ 202              		.loc 4 204 0
+ 203 0018 054C     		ldr	r4, .L21+12
+ 204              	.L17:
+ 205              	.LVL22:
+ 206 001a A047     		blx	r4
+ 207              	.LVL23:
+ 208              	.LBE48:
+ 209              	.LBE47:
+ 210              		.file 5 "../src/ASF/common/services/clock/pll.h"
+   1:../src/ASF/common/services/clock/pll.h **** /**
+   2:../src/ASF/common/services/clock/pll.h ****  * \file
+   3:../src/ASF/common/services/clock/pll.h ****  *
+   4:../src/ASF/common/services/clock/pll.h ****  * \brief PLL management
+   5:../src/ASF/common/services/clock/pll.h ****  *
+   6:../src/ASF/common/services/clock/pll.h ****  * Copyright (c) 2010-2014 Atmel Corporation. All rights reserved.
+   7:../src/ASF/common/services/clock/pll.h ****  *
+   8:../src/ASF/common/services/clock/pll.h ****  * \asf_license_start
+   9:../src/ASF/common/services/clock/pll.h ****  *
+  10:../src/ASF/common/services/clock/pll.h ****  * \page License
+  11:../src/ASF/common/services/clock/pll.h ****  *
+  12:../src/ASF/common/services/clock/pll.h ****  * Redistribution and use in source and binary forms, with or without
+  13:../src/ASF/common/services/clock/pll.h ****  * modification, are permitted provided that the following conditions are met:
+  14:../src/ASF/common/services/clock/pll.h ****  *
+  15:../src/ASF/common/services/clock/pll.h ****  * 1. Redistributions of source code must retain the above copyright notice,
+  16:../src/ASF/common/services/clock/pll.h ****  *    this list of conditions and the following disclaimer.
+  17:../src/ASF/common/services/clock/pll.h ****  *
+  18:../src/ASF/common/services/clock/pll.h ****  * 2. Redistributions in binary form must reproduce the above copyright notice,
+  19:../src/ASF/common/services/clock/pll.h ****  *    this list of conditions and the following disclaimer in the documentation
+  20:../src/ASF/common/services/clock/pll.h ****  *    and/or other materials provided with the distribution.
+  21:../src/ASF/common/services/clock/pll.h ****  *
+  22:../src/ASF/common/services/clock/pll.h ****  * 3. The name of Atmel may not be used to endorse or promote products derived
+  23:../src/ASF/common/services/clock/pll.h ****  *    from this software without specific prior written permission.
+  24:../src/ASF/common/services/clock/pll.h ****  *
+  25:../src/ASF/common/services/clock/pll.h ****  * 4. This software may only be redistributed and used in connection with an
+  26:../src/ASF/common/services/clock/pll.h ****  *    Atmel microcontroller product.
+  27:../src/ASF/common/services/clock/pll.h ****  *
+  28:../src/ASF/common/services/clock/pll.h ****  * THIS SOFTWARE IS PROVIDED BY ATMEL "AS IS" AND ANY EXPRESS OR IMPLIED
+  29:../src/ASF/common/services/clock/pll.h ****  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  30:../src/ASF/common/services/clock/pll.h ****  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT ARE
+  31:../src/ASF/common/services/clock/pll.h ****  * EXPRESSLY AND SPECIFICALLY DISCLAIMED. IN NO EVENT SHALL ATMEL BE LIABLE FOR
+  32:../src/ASF/common/services/clock/pll.h ****  * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  33:../src/ASF/common/services/clock/pll.h ****  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+  34:../src/ASF/common/services/clock/pll.h ****  * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+  35:../src/ASF/common/services/clock/pll.h ****  * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+  36:../src/ASF/common/services/clock/pll.h ****  * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+  37:../src/ASF/common/services/clock/pll.h ****  * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  38:../src/ASF/common/services/clock/pll.h ****  * POSSIBILITY OF SUCH DAMAGE.
+  39:../src/ASF/common/services/clock/pll.h ****  *
+  40:../src/ASF/common/services/clock/pll.h ****  * \asf_license_stop
+  41:../src/ASF/common/services/clock/pll.h ****  *
+  42:../src/ASF/common/services/clock/pll.h ****  */
+  43:../src/ASF/common/services/clock/pll.h **** #ifndef CLK_PLL_H_INCLUDED
+  44:../src/ASF/common/services/clock/pll.h **** #define CLK_PLL_H_INCLUDED
+  45:../src/ASF/common/services/clock/pll.h **** 
+  46:../src/ASF/common/services/clock/pll.h **** #include "parts.h"
+  47:../src/ASF/common/services/clock/pll.h **** #include "conf_clock.h"
+  48:../src/ASF/common/services/clock/pll.h **** 
+  49:../src/ASF/common/services/clock/pll.h **** #if SAM3S
+  50:../src/ASF/common/services/clock/pll.h **** # include "sam3s/pll.h"
+  51:../src/ASF/common/services/clock/pll.h **** #elif SAM3XA
+  52:../src/ASF/common/services/clock/pll.h **** # include "sam3x/pll.h"
+  53:../src/ASF/common/services/clock/pll.h **** #elif SAM3U
+  54:../src/ASF/common/services/clock/pll.h **** # include "sam3u/pll.h"
+  55:../src/ASF/common/services/clock/pll.h **** #elif SAM3N
+  56:../src/ASF/common/services/clock/pll.h **** # include "sam3n/pll.h"
+  57:../src/ASF/common/services/clock/pll.h **** #elif SAM4S
+  58:../src/ASF/common/services/clock/pll.h **** # include "sam4s/pll.h"
+  59:../src/ASF/common/services/clock/pll.h **** #elif SAM4E
+  60:../src/ASF/common/services/clock/pll.h **** # include "sam4e/pll.h"
+  61:../src/ASF/common/services/clock/pll.h **** #elif SAM4C
+  62:../src/ASF/common/services/clock/pll.h **** # include "sam4c/pll.h"
+  63:../src/ASF/common/services/clock/pll.h **** #elif SAM4CM
+  64:../src/ASF/common/services/clock/pll.h **** # include "sam4cm/pll.h"
+  65:../src/ASF/common/services/clock/pll.h **** #elif SAM4CP
+  66:../src/ASF/common/services/clock/pll.h **** # include "sam4cp/pll.h"
+  67:../src/ASF/common/services/clock/pll.h **** #elif SAM4L
+  68:../src/ASF/common/services/clock/pll.h **** # include "sam4l/pll.h"
+  69:../src/ASF/common/services/clock/pll.h **** #elif SAM4N
+  70:../src/ASF/common/services/clock/pll.h **** # include "sam4n/pll.h"
+  71:../src/ASF/common/services/clock/pll.h **** #elif SAMG
+  72:../src/ASF/common/services/clock/pll.h **** # include "samg/pll.h"
+  73:../src/ASF/common/services/clock/pll.h **** #elif (UC3A0 || UC3A1)
+  74:../src/ASF/common/services/clock/pll.h **** # include "uc3a0_a1/pll.h"
+  75:../src/ASF/common/services/clock/pll.h **** #elif UC3A3
+  76:../src/ASF/common/services/clock/pll.h **** # include "uc3a3_a4/pll.h"
+  77:../src/ASF/common/services/clock/pll.h **** #elif UC3B
+  78:../src/ASF/common/services/clock/pll.h **** # include "uc3b0_b1/pll.h"
+  79:../src/ASF/common/services/clock/pll.h **** #elif UC3C
+  80:../src/ASF/common/services/clock/pll.h **** # include "uc3c/pll.h"
+  81:../src/ASF/common/services/clock/pll.h **** #elif UC3D
+  82:../src/ASF/common/services/clock/pll.h **** # include "uc3d/pll.h"
+  83:../src/ASF/common/services/clock/pll.h **** #elif (UC3L0128 || UC3L0256 || UC3L3_L4)
+  84:../src/ASF/common/services/clock/pll.h **** # include "uc3l/pll.h"
+  85:../src/ASF/common/services/clock/pll.h **** #elif XMEGA
+  86:../src/ASF/common/services/clock/pll.h **** # include "xmega/pll.h"
+  87:../src/ASF/common/services/clock/pll.h **** #else
+  88:../src/ASF/common/services/clock/pll.h **** # error Unsupported chip type
+  89:../src/ASF/common/services/clock/pll.h **** #endif
+  90:../src/ASF/common/services/clock/pll.h **** 
+  91:../src/ASF/common/services/clock/pll.h **** /**
+  92:../src/ASF/common/services/clock/pll.h ****  * \ingroup clk_group
+  93:../src/ASF/common/services/clock/pll.h ****  * \defgroup pll_group PLL Management
+  94:../src/ASF/common/services/clock/pll.h ****  *
+  95:../src/ASF/common/services/clock/pll.h ****  * This group contains functions and definitions related to configuring
+  96:../src/ASF/common/services/clock/pll.h ****  * and enabling/disabling on-chip PLLs. A PLL will take an input signal
+  97:../src/ASF/common/services/clock/pll.h ****  * (the \em source), optionally divide the frequency by a configurable
+  98:../src/ASF/common/services/clock/pll.h ****  * \em divider, and then multiply the frequency by a configurable \em
+  99:../src/ASF/common/services/clock/pll.h ****  * multiplier.
+ 100:../src/ASF/common/services/clock/pll.h ****  *
+ 101:../src/ASF/common/services/clock/pll.h ****  * Some devices don't support input dividers; specifying any other
+ 102:../src/ASF/common/services/clock/pll.h ****  * divisor than 1 on these devices will result in an assertion failure.
+ 103:../src/ASF/common/services/clock/pll.h ****  * Other devices may have various restrictions to the frequency range of
+ 104:../src/ASF/common/services/clock/pll.h ****  * the input and output signals.
+ 105:../src/ASF/common/services/clock/pll.h ****  *
+ 106:../src/ASF/common/services/clock/pll.h ****  * \par Example: Setting up PLL0 with default parameters
+ 107:../src/ASF/common/services/clock/pll.h ****  *
+ 108:../src/ASF/common/services/clock/pll.h ****  * The following example shows how to configure and enable PLL0 using
+ 109:../src/ASF/common/services/clock/pll.h ****  * the default parameters specified using the configuration symbols
+ 110:../src/ASF/common/services/clock/pll.h ****  * listed above.
+ 111:../src/ASF/common/services/clock/pll.h ****  * \code
+ 112:../src/ASF/common/services/clock/pll.h **** 	pll_enable_config_defaults(0); \endcode
+ 113:../src/ASF/common/services/clock/pll.h ****  *
+ 114:../src/ASF/common/services/clock/pll.h ****  * To configure, enable PLL0 using the default parameters and to disable
+ 115:../src/ASF/common/services/clock/pll.h ****  * a specific feature like Wide Bandwidth Mode (a UC3A3-specific
+ 116:../src/ASF/common/services/clock/pll.h ****  * PLL option.), you can use this initialization process.
+ 117:../src/ASF/common/services/clock/pll.h ****  * \code
+ 118:../src/ASF/common/services/clock/pll.h **** 	struct pll_config pllcfg;
+ 119:../src/ASF/common/services/clock/pll.h **** 	if (pll_is_locked(pll_id)) {
+ 120:../src/ASF/common/services/clock/pll.h **** 		return; // Pll already running
+ 121:../src/ASF/common/services/clock/pll.h **** 	}
+ 122:../src/ASF/common/services/clock/pll.h **** 	pll_enable_source(CONFIG_PLL0_SOURCE);
+ 123:../src/ASF/common/services/clock/pll.h **** 	pll_config_defaults(&pllcfg, 0);
+ 124:../src/ASF/common/services/clock/pll.h **** 	pll_config_set_option(&pllcfg, PLL_OPT_WBM_DISABLE);
+ 125:../src/ASF/common/services/clock/pll.h **** 	pll_enable(&pllcfg, 0);
+ 126:../src/ASF/common/services/clock/pll.h **** 	pll_wait_for_lock(0); \endcode
+ 127:../src/ASF/common/services/clock/pll.h ****  *
+ 128:../src/ASF/common/services/clock/pll.h ****  * When the last function call returns, PLL0 is ready to be used as the
+ 129:../src/ASF/common/services/clock/pll.h ****  * main system clock source.
+ 130:../src/ASF/common/services/clock/pll.h ****  *
+ 131:../src/ASF/common/services/clock/pll.h ****  * \section pll_group_config Configuration Symbols
+ 132:../src/ASF/common/services/clock/pll.h ****  *
+ 133:../src/ASF/common/services/clock/pll.h ****  * Each PLL has a set of default parameters determined by the following
+ 134:../src/ASF/common/services/clock/pll.h ****  * configuration symbols in the application's configuration file:
+ 135:../src/ASF/common/services/clock/pll.h ****  *   - \b CONFIG_PLLn_SOURCE: The default clock source connected to the
+ 136:../src/ASF/common/services/clock/pll.h ****  *     input of PLL \a n. Must be one of the values defined by the
+ 137:../src/ASF/common/services/clock/pll.h ****  *     #pll_source enum.
+ 138:../src/ASF/common/services/clock/pll.h ****  *   - \b CONFIG_PLLn_MUL: The default multiplier (loop divider) of PLL
+ 139:../src/ASF/common/services/clock/pll.h ****  *     \a n.
+ 140:../src/ASF/common/services/clock/pll.h ****  *   - \b CONFIG_PLLn_DIV: The default input divider of PLL \a n.
+ 141:../src/ASF/common/services/clock/pll.h ****  *
+ 142:../src/ASF/common/services/clock/pll.h ****  * These configuration symbols determine the result of calling
+ 143:../src/ASF/common/services/clock/pll.h ****  * pll_config_defaults() and pll_get_default_rate().
+ 144:../src/ASF/common/services/clock/pll.h ****  *
+ 145:../src/ASF/common/services/clock/pll.h ****  * @{
+ 146:../src/ASF/common/services/clock/pll.h ****  */
+ 147:../src/ASF/common/services/clock/pll.h **** 
+ 148:../src/ASF/common/services/clock/pll.h **** //! \name Chip-specific PLL characteristics
+ 149:../src/ASF/common/services/clock/pll.h **** //@{
+ 150:../src/ASF/common/services/clock/pll.h **** /**
+ 151:../src/ASF/common/services/clock/pll.h ****  * \def PLL_MAX_STARTUP_CYCLES
+ 152:../src/ASF/common/services/clock/pll.h ****  * \brief Maximum PLL startup time in number of slow clock cycles
+ 153:../src/ASF/common/services/clock/pll.h ****  */
+ 154:../src/ASF/common/services/clock/pll.h **** /**
+ 155:../src/ASF/common/services/clock/pll.h ****  * \def NR_PLLS
+ 156:../src/ASF/common/services/clock/pll.h ****  * \brief Number of on-chip PLLs
+ 157:../src/ASF/common/services/clock/pll.h ****  */
+ 158:../src/ASF/common/services/clock/pll.h **** 
+ 159:../src/ASF/common/services/clock/pll.h **** /**
+ 160:../src/ASF/common/services/clock/pll.h ****  * \def PLL_MIN_HZ
+ 161:../src/ASF/common/services/clock/pll.h ****  * \brief Minimum frequency that the PLL can generate
+ 162:../src/ASF/common/services/clock/pll.h ****  */
+ 163:../src/ASF/common/services/clock/pll.h **** /**
+ 164:../src/ASF/common/services/clock/pll.h ****  * \def PLL_MAX_HZ
+ 165:../src/ASF/common/services/clock/pll.h ****  * \brief Maximum frequency that the PLL can generate
+ 166:../src/ASF/common/services/clock/pll.h ****  */
+ 167:../src/ASF/common/services/clock/pll.h **** /**
+ 168:../src/ASF/common/services/clock/pll.h ****  * \def PLL_NR_OPTIONS
+ 169:../src/ASF/common/services/clock/pll.h ****  * \brief Number of PLL option bits
+ 170:../src/ASF/common/services/clock/pll.h ****  */
+ 171:../src/ASF/common/services/clock/pll.h **** //@}
+ 172:../src/ASF/common/services/clock/pll.h **** 
+ 173:../src/ASF/common/services/clock/pll.h **** /**
+ 174:../src/ASF/common/services/clock/pll.h ****  * \enum pll_source
+ 175:../src/ASF/common/services/clock/pll.h ****  * \brief PLL clock source
+ 176:../src/ASF/common/services/clock/pll.h ****  */
+ 177:../src/ASF/common/services/clock/pll.h **** 
+ 178:../src/ASF/common/services/clock/pll.h **** //! \name PLL configuration
+ 179:../src/ASF/common/services/clock/pll.h **** //@{
+ 180:../src/ASF/common/services/clock/pll.h **** 
+ 181:../src/ASF/common/services/clock/pll.h **** /**
+ 182:../src/ASF/common/services/clock/pll.h ****  * \struct pll_config
+ 183:../src/ASF/common/services/clock/pll.h ****  * \brief Hardware-specific representation of PLL configuration.
+ 184:../src/ASF/common/services/clock/pll.h ****  *
+ 185:../src/ASF/common/services/clock/pll.h ****  * This structure contains one or more device-specific values
+ 186:../src/ASF/common/services/clock/pll.h ****  * representing the current PLL configuration. The contents of this
+ 187:../src/ASF/common/services/clock/pll.h ****  * structure is typically different from platform to platform, and the
+ 188:../src/ASF/common/services/clock/pll.h ****  * user should not access any fields except through the PLL
+ 189:../src/ASF/common/services/clock/pll.h ****  * configuration API.
+ 190:../src/ASF/common/services/clock/pll.h ****  */
+ 191:../src/ASF/common/services/clock/pll.h **** 
+ 192:../src/ASF/common/services/clock/pll.h **** /**
+ 193:../src/ASF/common/services/clock/pll.h ****  * \fn void pll_config_init(struct pll_config *cfg,
+ 194:../src/ASF/common/services/clock/pll.h ****  *              enum pll_source src, unsigned int div, unsigned int mul)
+ 195:../src/ASF/common/services/clock/pll.h ****  * \brief Initialize PLL configuration from standard parameters.
+ 196:../src/ASF/common/services/clock/pll.h ****  *
+ 197:../src/ASF/common/services/clock/pll.h ****  * \note This function may be defined inline because it is assumed to be
+ 198:../src/ASF/common/services/clock/pll.h ****  * called very few times, and usually with constant parameters. Inlining
+ 199:../src/ASF/common/services/clock/pll.h ****  * it will in such cases reduce the code size significantly.
+ 200:../src/ASF/common/services/clock/pll.h ****  *
+ 201:../src/ASF/common/services/clock/pll.h ****  * \param cfg The PLL configuration to be initialized.
+ 202:../src/ASF/common/services/clock/pll.h ****  * \param src The oscillator to be used as input to the PLL.
+ 203:../src/ASF/common/services/clock/pll.h ****  * \param div PLL input divider.
+ 204:../src/ASF/common/services/clock/pll.h ****  * \param mul PLL loop divider (i.e. multiplier).
+ 205:../src/ASF/common/services/clock/pll.h ****  *
+ 206:../src/ASF/common/services/clock/pll.h ****  * \return A configuration which will make the PLL run at
+ 207:../src/ASF/common/services/clock/pll.h ****  * (\a mul / \a div) times the frequency of \a src
+ 208:../src/ASF/common/services/clock/pll.h ****  */
+ 209:../src/ASF/common/services/clock/pll.h **** /**
+ 210:../src/ASF/common/services/clock/pll.h ****  * \def pll_config_defaults(cfg, pll_id)
+ 211:../src/ASF/common/services/clock/pll.h ****  * \brief Initialize PLL configuration using default parameters.
+ 212:../src/ASF/common/services/clock/pll.h ****  *
+ 213:../src/ASF/common/services/clock/pll.h ****  * After this function returns, \a cfg will contain a configuration
+ 214:../src/ASF/common/services/clock/pll.h ****  * which will make the PLL run at (CONFIG_PLLx_MUL / CONFIG_PLLx_DIV)
+ 215:../src/ASF/common/services/clock/pll.h ****  * times the frequency of CONFIG_PLLx_SOURCE.
+ 216:../src/ASF/common/services/clock/pll.h ****  *
+ 217:../src/ASF/common/services/clock/pll.h ****  * \param cfg The PLL configuration to be initialized.
+ 218:../src/ASF/common/services/clock/pll.h ****  * \param pll_id Use defaults for this PLL.
+ 219:../src/ASF/common/services/clock/pll.h ****  */
+ 220:../src/ASF/common/services/clock/pll.h **** /**
+ 221:../src/ASF/common/services/clock/pll.h ****  * \def pll_get_default_rate(pll_id)
+ 222:../src/ASF/common/services/clock/pll.h ****  * \brief Get the default rate in Hz of \a pll_id
+ 223:../src/ASF/common/services/clock/pll.h ****  */
+ 224:../src/ASF/common/services/clock/pll.h **** /**
+ 225:../src/ASF/common/services/clock/pll.h ****  * \fn void pll_config_set_option(struct pll_config *cfg,
+ 226:../src/ASF/common/services/clock/pll.h ****  *              unsigned int option)
+ 227:../src/ASF/common/services/clock/pll.h ****  * \brief Set the PLL option bit \a option in the configuration \a cfg.
+ 228:../src/ASF/common/services/clock/pll.h ****  *
+ 229:../src/ASF/common/services/clock/pll.h ****  * \param cfg The PLL configuration to be changed.
+ 230:../src/ASF/common/services/clock/pll.h ****  * \param option The PLL option bit to be set.
+ 231:../src/ASF/common/services/clock/pll.h ****  */
+ 232:../src/ASF/common/services/clock/pll.h **** /**
+ 233:../src/ASF/common/services/clock/pll.h ****  * \fn void pll_config_clear_option(struct pll_config *cfg,
+ 234:../src/ASF/common/services/clock/pll.h ****  *              unsigned int option)
+ 235:../src/ASF/common/services/clock/pll.h ****  * \brief Clear the PLL option bit \a option in the configuration \a cfg.
+ 236:../src/ASF/common/services/clock/pll.h ****  *
+ 237:../src/ASF/common/services/clock/pll.h ****  * \param cfg The PLL configuration to be changed.
+ 238:../src/ASF/common/services/clock/pll.h ****  * \param option The PLL option bit to be cleared.
+ 239:../src/ASF/common/services/clock/pll.h ****  */
+ 240:../src/ASF/common/services/clock/pll.h **** /**
+ 241:../src/ASF/common/services/clock/pll.h ****  * \fn void pll_config_read(struct pll_config *cfg, unsigned int pll_id)
+ 242:../src/ASF/common/services/clock/pll.h ****  * \brief Read the currently active configuration of \a pll_id.
+ 243:../src/ASF/common/services/clock/pll.h ****  *
+ 244:../src/ASF/common/services/clock/pll.h ****  * \param cfg The configuration object into which to store the currently
+ 245:../src/ASF/common/services/clock/pll.h ****  * active configuration.
+ 246:../src/ASF/common/services/clock/pll.h ****  * \param pll_id The ID of the PLL to be accessed.
+ 247:../src/ASF/common/services/clock/pll.h ****  */
+ 248:../src/ASF/common/services/clock/pll.h **** /**
+ 249:../src/ASF/common/services/clock/pll.h ****  * \fn void pll_config_write(const struct pll_config *cfg,
+ 250:../src/ASF/common/services/clock/pll.h ****  *              unsigned int pll_id)
+ 251:../src/ASF/common/services/clock/pll.h ****  * \brief Activate the configuration \a cfg on \a pll_id
+ 252:../src/ASF/common/services/clock/pll.h ****  *
+ 253:../src/ASF/common/services/clock/pll.h ****  * \param cfg The configuration object representing the PLL
+ 254:../src/ASF/common/services/clock/pll.h ****  * configuration to be activated.
+ 255:../src/ASF/common/services/clock/pll.h ****  * \param pll_id The ID of the PLL to be updated.
+ 256:../src/ASF/common/services/clock/pll.h ****  */
+ 257:../src/ASF/common/services/clock/pll.h **** 
+ 258:../src/ASF/common/services/clock/pll.h **** //@}
+ 259:../src/ASF/common/services/clock/pll.h **** 
+ 260:../src/ASF/common/services/clock/pll.h **** //! \name Interaction with the PLL hardware
+ 261:../src/ASF/common/services/clock/pll.h **** //@{
+ 262:../src/ASF/common/services/clock/pll.h **** /**
+ 263:../src/ASF/common/services/clock/pll.h ****  * \fn void pll_enable(const struct pll_config *cfg,
+ 264:../src/ASF/common/services/clock/pll.h ****  *              unsigned int pll_id)
+ 265:../src/ASF/common/services/clock/pll.h ****  * \brief Activate the configuration \a cfg and enable PLL \a pll_id.
+ 266:../src/ASF/common/services/clock/pll.h ****  *
+ 267:../src/ASF/common/services/clock/pll.h ****  * \param cfg The PLL configuration to be activated.
+ 268:../src/ASF/common/services/clock/pll.h ****  * \param pll_id The ID of the PLL to be enabled.
+ 269:../src/ASF/common/services/clock/pll.h ****  */
+ 270:../src/ASF/common/services/clock/pll.h **** /**
+ 271:../src/ASF/common/services/clock/pll.h ****  * \fn void pll_disable(unsigned int pll_id)
+ 272:../src/ASF/common/services/clock/pll.h ****  * \brief Disable the PLL identified by \a pll_id.
+ 273:../src/ASF/common/services/clock/pll.h ****  *
+ 274:../src/ASF/common/services/clock/pll.h ****  * After this function is called, the PLL identified by \a pll_id will
+ 275:../src/ASF/common/services/clock/pll.h ****  * be disabled. The PLL configuration stored in hardware may be affected
+ 276:../src/ASF/common/services/clock/pll.h ****  * by this, so if the caller needs to restore the same configuration
+ 277:../src/ASF/common/services/clock/pll.h ****  * later, it should either do a pll_config_read() before disabling the
+ 278:../src/ASF/common/services/clock/pll.h ****  * PLL, or remember the last configuration written to the PLL.
+ 279:../src/ASF/common/services/clock/pll.h ****  *
+ 280:../src/ASF/common/services/clock/pll.h ****  * \param pll_id The ID of the PLL to be disabled.
+ 281:../src/ASF/common/services/clock/pll.h ****  */
+ 282:../src/ASF/common/services/clock/pll.h **** /**
+ 283:../src/ASF/common/services/clock/pll.h ****  * \fn bool pll_is_locked(unsigned int pll_id)
+ 284:../src/ASF/common/services/clock/pll.h ****  * \brief Determine whether the PLL is locked or not.
+ 285:../src/ASF/common/services/clock/pll.h ****  *
+ 286:../src/ASF/common/services/clock/pll.h ****  * \param pll_id The ID of the PLL to check.
+ 287:../src/ASF/common/services/clock/pll.h ****  *
+ 288:../src/ASF/common/services/clock/pll.h ****  * \retval true The PLL is locked and ready to use as a clock source
+ 289:../src/ASF/common/services/clock/pll.h ****  * \retval false The PLL is not yet locked, or has not been enabled.
+ 290:../src/ASF/common/services/clock/pll.h ****  */
+ 291:../src/ASF/common/services/clock/pll.h **** /**
+ 292:../src/ASF/common/services/clock/pll.h ****  * \fn void pll_enable_source(enum pll_source src)
+ 293:../src/ASF/common/services/clock/pll.h ****  * \brief Enable the source of the pll.
+ 294:../src/ASF/common/services/clock/pll.h ****  * The source is enabled, if the source is not already running.
+ 295:../src/ASF/common/services/clock/pll.h ****  *
+ 296:../src/ASF/common/services/clock/pll.h ****  * \param src The ID of the PLL source to enable.
+ 297:../src/ASF/common/services/clock/pll.h ****  */
+ 298:../src/ASF/common/services/clock/pll.h **** /**
+ 299:../src/ASF/common/services/clock/pll.h ****  * \fn void pll_enable_config_defaults(unsigned int pll_id)
+ 300:../src/ASF/common/services/clock/pll.h ****  * \brief Enable the pll with the default configuration.
+ 301:../src/ASF/common/services/clock/pll.h ****  * PLL is enabled, if the PLL is not already locked.
+ 302:../src/ASF/common/services/clock/pll.h ****  *
+ 303:../src/ASF/common/services/clock/pll.h ****  * \param pll_id The ID of the PLL to enable.
+ 304:../src/ASF/common/services/clock/pll.h ****  */
+ 305:../src/ASF/common/services/clock/pll.h **** 
+ 306:../src/ASF/common/services/clock/pll.h **** /**
+ 307:../src/ASF/common/services/clock/pll.h ****  * \brief Wait for PLL \a pll_id to become locked
+ 308:../src/ASF/common/services/clock/pll.h ****  *
+ 309:../src/ASF/common/services/clock/pll.h ****  * \todo Use a timeout to avoid waiting forever and hanging the system
+ 310:../src/ASF/common/services/clock/pll.h ****  *
+ 311:../src/ASF/common/services/clock/pll.h ****  * \param pll_id The ID of the PLL to wait for.
+ 312:../src/ASF/common/services/clock/pll.h ****  *
+ 313:../src/ASF/common/services/clock/pll.h ****  * \retval STATUS_OK The PLL is now locked.
+ 314:../src/ASF/common/services/clock/pll.h ****  * \retval ERR_TIMEOUT Timed out waiting for PLL to become locked.
+ 315:../src/ASF/common/services/clock/pll.h ****  */
+ 316:../src/ASF/common/services/clock/pll.h **** static inline int pll_wait_for_lock(unsigned int pll_id)
+ 317:../src/ASF/common/services/clock/pll.h **** {
+ 318:../src/ASF/common/services/clock/pll.h **** 	Assert(pll_id < NR_PLLS);
+ 319:../src/ASF/common/services/clock/pll.h **** 
+ 320:../src/ASF/common/services/clock/pll.h **** 	while (!pll_is_locked(pll_id)) {
+ 211              		.loc 5 320 0
+ 212 001c 0028     		cmp	r0, #0
+ 213 001e FCD0     		beq	.L17
+ 214              	.LBE46:
+ 215              	.LBE45:
+ 129:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	struct pll_config pllcfg;
+ 130:../src/ASF/common/services/clock/sam3u/sysclk.c **** 
+ 131:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	pll_enable_source(CONFIG_PLL1_SOURCE);
+ 132:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	pll_config_defaults(&pllcfg, 1);
+ 133:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	pll_enable(&pllcfg, 1);
+ 134:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	pll_wait_for_lock(1);
+ 135:../src/ASF/common/services/clock/sam3u/sysclk.c **** }
+ 216              		.loc 1 135 0
+ 217 0020 10BD     		pop	{r4, pc}
+ 218              	.L22:
+ 219 0022 00BF     		.align	2
+ 220              	.L21:
+ 221 0024 00000000 		.word	pmc_osc_enable_main_xtal
+ 222 0028 00000000 		.word	pmc_osc_is_ready_main_xtal
+ 223 002c 00040E40 		.word	1074660352
+ 224 0030 00000000 		.word	pmc_is_locked_upll
+ 225              		.cfi_endproc
+ 226              	.LFE88:
+ 228              		.section	.text.sysclk_disable_usb,"ax",%progbits
+ 229              		.align	2
+ 230              		.global	sysclk_disable_usb
+ 231              		.thumb
+ 232              		.thumb_func
+ 234              	sysclk_disable_usb:
+ 235              	.LFB89:
+ 136:../src/ASF/common/services/clock/sam3u/sysclk.c **** 
+ 137:../src/ASF/common/services/clock/sam3u/sysclk.c **** /**
+ 138:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * \brief Disable the USB clock.
+ 139:../src/ASF/common/services/clock/sam3u/sysclk.c ****  *
+ 140:../src/ASF/common/services/clock/sam3u/sysclk.c ****  * \note This implementation does not switch off the PLL, it just turns off the
+ 141:../src/ASF/common/services/clock/sam3u/sysclk.c ****  *       USB clock.
+ 142:../src/ASF/common/services/clock/sam3u/sysclk.c ****  */
+ 143:../src/ASF/common/services/clock/sam3u/sysclk.c **** void sysclk_disable_usb(void)
+ 144:../src/ASF/common/services/clock/sam3u/sysclk.c **** {
+ 236              		.loc 1 144 0
+ 237              		.cfi_startproc
+ 238              		@ args = 0, pretend = 0, frame = 0
+ 239              		@ frame_needed = 0, uses_anonymous_args = 0
+ 240              		@ link register save eliminated.
+ 241              	.LVL24:
+ 242              	.LBB49:
+ 243              	.LBB50:
+ 193:../src/ASF/common/services/clock/sam3u/pll.h **** 	}
+ 244              		.loc 4 193 0
+ 245 0000 024A     		ldr	r2, .L24
+ 246 0002 D369     		ldr	r3, [r2, #28]
+ 247 0004 23F48033 		bic	r3, r3, #65536
+ 248 0008 D361     		str	r3, [r2, #28]
+ 249 000a 7047     		bx	lr
+ 250              	.L25:
+ 251              		.align	2
+ 252              	.L24:
+ 253 000c 00040E40 		.word	1074660352
+ 254              	.LBE50:
+ 255              	.LBE49:
+ 256              		.cfi_endproc
+ 257              	.LFE89:
+ 259              		.section	.text.sysclk_init,"ax",%progbits
+ 260              		.align	2
+ 261              		.global	sysclk_init
+ 262              		.thumb
+ 263              		.thumb_func
+ 265              	sysclk_init:
+ 266              	.LFB90:
+ 145:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	if (CONFIG_SYSCLK_SOURCE != SYSCLK_SRC_UPLLCK) {
+ 146:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		pll_disable(1);
+ 147:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	}
+ 148:../src/ASF/common/services/clock/sam3u/sysclk.c **** }
+ 149:../src/ASF/common/services/clock/sam3u/sysclk.c **** 
+ 150:../src/ASF/common/services/clock/sam3u/sysclk.c **** void sysclk_init(void)
+ 151:../src/ASF/common/services/clock/sam3u/sysclk.c **** {
+ 267              		.loc 1 151 0
+ 268              		.cfi_startproc
+ 269              		@ args = 0, pretend = 0, frame = 0
+ 270              		@ frame_needed = 0, uses_anonymous_args = 0
+ 271 0000 10B5     		push	{r4, lr}
+ 272              	.LCFI3:
+ 273              		.cfi_def_cfa_offset 8
+ 274              		.cfi_offset 4, -8
+ 275              		.cfi_offset 14, -4
+ 152:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	struct pll_config pllcfg;
+ 153:../src/ASF/common/services/clock/sam3u/sysclk.c **** 
+ 154:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	/* Set flash wait state to max in case the below clock switching. */
+ 155:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	system_init_flash(CHIP_FREQ_CPU_MAX);
+ 276              		.loc 1 155 0
+ 277 0002 1248     		ldr	r0, .L34
+ 278 0004 124B     		ldr	r3, .L34+4
+ 279 0006 9847     		blx	r3
+ 280              	.LVL25:
+ 281              	.LBB71:
+ 282              	.LBB72:
+ 283              	.LBB73:
+ 145:../src/ASF/common/services/clock/sam3u/osc.h **** 				BOARD_OSC_STARTUP_US, OSC_SLCK_32K_RC_HZ));
+ 284              		.loc 2 145 0
+ 285 0008 3E20     		movs	r0, #62
+ 286 000a 124B     		ldr	r3, .L34+8
+ 287 000c 9847     		blx	r3
+ 288              	.LVL26:
+ 289              	.LBE73:
+ 290              	.LBE72:
+ 291              	.LBB74:
+ 292              	.LBB75:
+ 293              	.LBB76:
+ 294              	.LBB77:
+ 295              		.loc 2 196 0
+ 296 000e 124C     		ldr	r4, .L34+12
+ 297              	.L27:
+ 298              	.LVL27:
+ 299 0010 A047     		blx	r4
+ 300              	.LVL28:
+ 301              	.LBE77:
+ 302              	.LBE76:
+ 303              		.loc 3 163 0
+ 304 0012 0028     		cmp	r0, #0
+ 305 0014 FCD0     		beq	.L27
+ 306              	.LBE75:
+ 307              	.LBE74:
+ 308              	.LBE71:
+ 156:../src/ASF/common/services/clock/sam3u/sysclk.c **** 
+ 157:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	/* Config system clock setting */
+ 158:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_SLCK_RC) {
+ 159:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		osc_enable(OSC_SLCK_32K_RC);
+ 160:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		osc_wait_ready(OSC_SLCK_32K_RC);
+ 161:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		pmc_switch_mck_to_sclk(CONFIG_SYSCLK_PRES);
+ 162:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	}
+ 163:../src/ASF/common/services/clock/sam3u/sysclk.c **** 
+ 164:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_SLCK_XTAL) {
+ 165:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		osc_enable(OSC_SLCK_32K_XTAL);
+ 166:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		osc_wait_ready(OSC_SLCK_32K_XTAL);
+ 167:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		pmc_switch_mck_to_sclk(CONFIG_SYSCLK_PRES);
+ 168:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	}
+ 169:../src/ASF/common/services/clock/sam3u/sysclk.c **** 
+ 170:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_SLCK_BYPASS) {
+ 171:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		osc_enable(OSC_SLCK_32K_BYPASS);
+ 172:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		osc_wait_ready(OSC_SLCK_32K_BYPASS);
+ 173:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		pmc_switch_mck_to_sclk(CONFIG_SYSCLK_PRES);
+ 174:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	}
+ 175:../src/ASF/common/services/clock/sam3u/sysclk.c **** 
+ 176:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_MAINCK_4M_RC) {
+ 177:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		/* Already running from SYSCLK_SRC_MAINCK_4M_RC */
+ 178:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	}
+ 179:../src/ASF/common/services/clock/sam3u/sysclk.c **** 
+ 180:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_MAINCK_8M_RC) {
+ 181:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		osc_enable(OSC_MAINCK_8M_RC);
+ 182:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		osc_wait_ready(OSC_MAINCK_8M_RC);
+ 183:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		pmc_switch_mck_to_mainck(CONFIG_SYSCLK_PRES);
+ 184:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	}
+ 185:../src/ASF/common/services/clock/sam3u/sysclk.c **** 
+ 186:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_MAINCK_12M_RC) {
+ 187:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		osc_enable(OSC_MAINCK_12M_RC);
+ 188:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		osc_wait_ready(OSC_MAINCK_12M_RC);
+ 189:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		pmc_switch_mck_to_mainck(CONFIG_SYSCLK_PRES);
+ 190:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	}
+ 191:../src/ASF/common/services/clock/sam3u/sysclk.c **** 
+ 192:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_MAINCK_XTAL) {
+ 193:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		osc_enable(OSC_MAINCK_XTAL);
+ 194:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		osc_wait_ready(OSC_MAINCK_XTAL);
+ 195:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		pmc_switch_mck_to_mainck(CONFIG_SYSCLK_PRES);
+ 196:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	}
+ 197:../src/ASF/common/services/clock/sam3u/sysclk.c **** 
+ 198:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_MAINCK_BYPASS) {
+ 199:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		osc_enable(OSC_MAINCK_BYPASS);
+ 200:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		osc_wait_ready(OSC_MAINCK_BYPASS);
+ 201:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		pmc_switch_mck_to_mainck(CONFIG_SYSCLK_PRES);
+ 202:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	}
+ 203:../src/ASF/common/services/clock/sam3u/sysclk.c **** 
+ 204:../src/ASF/common/services/clock/sam3u/sysclk.c **** #ifdef CONFIG_PLL0_SOURCE
+ 205:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_PLLACK) {
+ 206:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		pll_enable_source(CONFIG_PLL0_SOURCE);
+ 207:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		// Source is mainck, select source for mainck
+ 208:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		if (CONFIG_PLL0_SOURCE == PLL_SRC_MAINCK_4M_RC ||
+ 209:../src/ASF/common/services/clock/sam3u/sysclk.c **** 				CONFIG_PLL0_SOURCE == PLL_SRC_MAINCK_8M_RC ||
+ 210:../src/ASF/common/services/clock/sam3u/sysclk.c **** 				CONFIG_PLL0_SOURCE == PLL_SRC_MAINCK_12M_RC) {
+ 211:../src/ASF/common/services/clock/sam3u/sysclk.c **** 			pmc_mainck_osc_select(0);
+ 212:../src/ASF/common/services/clock/sam3u/sysclk.c **** 			while(!pmc_osc_is_ready_mainck());
+ 213:../src/ASF/common/services/clock/sam3u/sysclk.c **** #  ifndef CONFIG_PLL1_SOURCE
+ 214:../src/ASF/common/services/clock/sam3u/sysclk.c **** 			pmc_osc_disable_main_xtal();
+ 215:../src/ASF/common/services/clock/sam3u/sysclk.c **** #  endif
+ 216:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		} else if (CONFIG_PLL0_SOURCE == PLL_SRC_MAINCK_XTAL ||
+ 217:../src/ASF/common/services/clock/sam3u/sysclk.c **** 				CONFIG_PLL0_SOURCE == PLL_SRC_MAINCK_BYPASS) {
+ 218:../src/ASF/common/services/clock/sam3u/sysclk.c **** 			pmc_mainck_osc_select(CKGR_MOR_MOSCSEL);
+ 309              		.loc 1 218 0
+ 310 0016 4FF08070 		mov	r0, #16777216
+ 311 001a 104B     		ldr	r3, .L34+16
+ 312 001c 9847     		blx	r3
+ 313              	.LVL29:
+ 219:../src/ASF/common/services/clock/sam3u/sysclk.c **** 			while(!pmc_osc_is_ready_mainck());
+ 314              		.loc 1 219 0
+ 315 001e 104C     		ldr	r4, .L34+20
+ 316              	.L28:
+ 317              		.loc 1 219 0 is_stmt 0 discriminator 1
+ 318 0020 A047     		blx	r4
+ 319              	.LVL30:
+ 320 0022 0028     		cmp	r0, #0
+ 321 0024 FCD0     		beq	.L28
+ 322              	.LVL31:
+ 323              	.LBB78:
+ 324              	.LBB79:
+ 175:../src/ASF/common/services/clock/sam3u/pll.h **** 		PMC->CKGR_PLLAR = CKGR_PLLAR_ONE | p_cfg->ctrl;
+ 325              		.loc 4 175 0 is_stmt 1
+ 326 0026 0F4B     		ldr	r3, .L34+24
+ 327 0028 9847     		blx	r3
+ 328              	.LVL32:
+ 176:../src/ASF/common/services/clock/sam3u/pll.h **** 	} else {
+ 329              		.loc 4 176 0
+ 330 002a 0F4A     		ldr	r2, .L34+28
+ 331 002c 0F4B     		ldr	r3, .L34+32
+ 332 002e 9A62     		str	r2, [r3, #40]
+ 333              	.LVL33:
+ 334              	.LBE79:
+ 335              	.LBE78:
+ 336              	.LBB80:
+ 337              	.LBB81:
+ 338              	.LBB82:
+ 339              	.LBB83:
+ 202:../src/ASF/common/services/clock/sam3u/pll.h **** 	} else {
+ 340              		.loc 4 202 0
+ 341 0030 0F4C     		ldr	r4, .L34+36
+ 342              	.L29:
+ 343              	.LVL34:
+ 344 0032 A047     		blx	r4
+ 345              	.LVL35:
+ 346              	.LBE83:
+ 347              	.LBE82:
+ 348              		.loc 5 320 0
+ 349 0034 0028     		cmp	r0, #0
+ 350 0036 FCD0     		beq	.L29
+ 351              	.LBE81:
+ 352              	.LBE80:
+ 220:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		}
+ 221:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		pll_config_defaults(&pllcfg, 0);
+ 222:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		pll_enable(&pllcfg, 0);
+ 223:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		pll_wait_for_lock(0);
+ 224:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		pmc_switch_mck_to_pllack(CONFIG_SYSCLK_PRES);
+ 353              		.loc 1 224 0
+ 354 0038 1020     		movs	r0, #16
+ 355 003a 0E4B     		ldr	r3, .L34+40
+ 356 003c 9847     		blx	r3
+ 357              	.LVL36:
+ 225:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	}
+ 226:../src/ASF/common/services/clock/sam3u/sysclk.c **** #endif
+ 227:../src/ASF/common/services/clock/sam3u/sysclk.c **** 
+ 228:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_UPLLCK) {
+ 229:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		pll_enable_source(CONFIG_PLL1_SOURCE);
+ 230:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		pll_config_defaults(&pllcfg, 1);
+ 231:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		pll_enable(&pllcfg, 1);
+ 232:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		pll_wait_for_lock(1);
+ 233:../src/ASF/common/services/clock/sam3u/sysclk.c **** 		pmc_switch_mck_to_upllck(CONFIG_SYSCLK_PRES);
+ 234:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	}
+ 235:../src/ASF/common/services/clock/sam3u/sysclk.c **** 
+ 236:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	/* Update the SystemFrequency variable */
+ 237:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	SystemCoreClockUpdate();
+ 358              		.loc 1 237 0
+ 359 003e 0E4B     		ldr	r3, .L34+44
+ 360 0040 9847     		blx	r3
+ 361              	.LVL37:
+ 238:../src/ASF/common/services/clock/sam3u/sysclk.c **** 
+ 239:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	/* Set a flash wait state depending on the new cpu frequency */
+ 240:../src/ASF/common/services/clock/sam3u/sysclk.c **** 	system_init_flash(sysclk_get_cpu_hz());
+ 362              		.loc 1 240 0
+ 363 0042 0248     		ldr	r0, .L34
+ 364 0044 024B     		ldr	r3, .L34+4
+ 365 0046 9847     		blx	r3
+ 366              	.LVL38:
+ 367 0048 10BD     		pop	{r4, pc}
+ 368              	.L35:
+ 369 004a 00BF     		.align	2
+ 370              	.L34:
+ 371 004c 00D8B805 		.word	96000000
+ 372 0050 00000000 		.word	system_init_flash
+ 373 0054 00000000 		.word	pmc_osc_enable_main_xtal
+ 374 0058 00000000 		.word	pmc_osc_is_ready_main_xtal
+ 375 005c 00000000 		.word	pmc_mainck_osc_select
+ 376 0060 00000000 		.word	pmc_osc_is_ready_mainck
+ 377 0064 00000000 		.word	pmc_disable_pllack
+ 378 0068 013F0F20 		.word	537870081
+ 379 006c 00040E40 		.word	1074660352
+ 380 0070 00000000 		.word	pmc_is_locked_pllack
+ 381 0074 00000000 		.word	pmc_switch_mck_to_pllack
+ 382 0078 00000000 		.word	SystemCoreClockUpdate
+ 383              		.cfi_endproc
+ 384              	.LFE90:
+ 386              		.section	.bss.cpu_irq_critical_section_counter,"aw",%nobits
+ 387              		.align	2
+ 390              	cpu_irq_critical_section_counter:
+ 391 0000 00000000 		.space	4
+ 392              		.section	.bss.cpu_irq_prev_interrupt_state,"aw",%nobits
+ 395              	cpu_irq_prev_interrupt_state:
+ 396 0000 00       		.space	1
+ 397              		.text
+ 398              	.Letext0:
+ 399              		.file 6 "c:\\program files (x86)\\atmel\\studio\\7.0\\toolchain\\arm\\arm-gnu-toolchain\\arm-none-
+ 400              		.file 7 "c:\\program files (x86)\\atmel\\studio\\7.0\\toolchain\\arm\\arm-gnu-toolchain\\arm-none-
+ 401              		.file 8 "../src/ASF/sam/utils/cmsis/sam3u/include/sam3u2e.h"
+ 402              		.file 9 "../src/ASF/sam/utils/cmsis/sam3u/include/component/component_pmc.h"
+ 403              		.file 10 "../src/ASF/common/services/clock/sam3u/sysclk.h"
+ 404              		.file 11 "../src/ASF/common/utils/interrupt/interrupt_sam_nvic.h"
+ 405              		.file 12 "../src/ASF/thirdparty/CMSIS/Include/core_cm3.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 sysclk.c
+C:\Users\colin\AppData\Local\Temp\ccNfc3em.s:19     .text.sysclk_set_prescalers:00000000 $t
+C:\Users\colin\AppData\Local\Temp\ccNfc3em.s:24     .text.sysclk_set_prescalers:00000000 sysclk_set_prescalers
+C:\Users\colin\AppData\Local\Temp\ccNfc3em.s:49     .text.sysclk_set_prescalers:0000000c $d
+C:\Users\colin\AppData\Local\Temp\ccNfc3em.s:55     .text.sysclk_set_source:00000000 $t
+C:\Users\colin\AppData\Local\Temp\ccNfc3em.s:60     .text.sysclk_set_source:00000000 sysclk_set_source
+C:\Users\colin\AppData\Local\Temp\ccNfc3em.s:77     .text.sysclk_set_source:0000000a $d
+C:\Users\colin\AppData\Local\Temp\ccNfc3em.s:87     .text.sysclk_set_source:00000014 $t
+C:\Users\colin\AppData\Local\Temp\ccNfc3em.s:134    .text.sysclk_set_source:00000038 $d
+C:\Users\colin\AppData\Local\Temp\ccNfc3em.s:140    .text.sysclk_enable_usb:00000000 $t
+C:\Users\colin\AppData\Local\Temp\ccNfc3em.s:145    .text.sysclk_enable_usb:00000000 sysclk_enable_usb
+C:\Users\colin\AppData\Local\Temp\ccNfc3em.s:221    .text.sysclk_enable_usb:00000024 $d
+C:\Users\colin\AppData\Local\Temp\ccNfc3em.s:229    .text.sysclk_disable_usb:00000000 $t
+C:\Users\colin\AppData\Local\Temp\ccNfc3em.s:234    .text.sysclk_disable_usb:00000000 sysclk_disable_usb
+C:\Users\colin\AppData\Local\Temp\ccNfc3em.s:253    .text.sysclk_disable_usb:0000000c $d
+C:\Users\colin\AppData\Local\Temp\ccNfc3em.s:260    .text.sysclk_init:00000000 $t
+C:\Users\colin\AppData\Local\Temp\ccNfc3em.s:265    .text.sysclk_init:00000000 sysclk_init
+C:\Users\colin\AppData\Local\Temp\ccNfc3em.s:371    .text.sysclk_init:0000004c $d
+C:\Users\colin\AppData\Local\Temp\ccNfc3em.s:387    .bss.cpu_irq_critical_section_counter:00000000 $d
+C:\Users\colin\AppData\Local\Temp\ccNfc3em.s:390    .bss.cpu_irq_critical_section_counter:00000000 cpu_irq_critical_section_counter
+C:\Users\colin\AppData\Local\Temp\ccNfc3em.s:395    .bss.cpu_irq_prev_interrupt_state:00000000 cpu_irq_prev_interrupt_state
+C:\Users\colin\AppData\Local\Temp\ccNfc3em.s:396    .bss.cpu_irq_prev_interrupt_state:00000000 $d
+                     .debug_frame:00000010 $d
+                           .group:00000000 wm4.0.738cd1dff6e476bef2e1e0b99fec4f4f
+                           .group:00000000 wm4.parts.h.45.afc900689b2c82332e69d798acedc875
+                           .group:00000000 wm4.conf_clock.h.45.5dc276d21b4d793a62f1a9757cc18d5c
+                           .group:00000000 wm4.stddef.h.39.daafd3d79fe2f3a84d2d73d7d4e706f8
+                           .group:00000000 wm4.tpaste.h.45.af3ee36765243b162c88f7f944858426
+                           .group:00000000 wm4.stringz.h.45.c4f6cbe0005e6c1d2139bc6c0e4f4722
+                           .group:00000000 wm4.mrepeat.h.59.c5daaed201a4340b0edf435161d0b77f
+                           .group:00000000 wm4.features.h.22.2e382148a0560adabf236cddd4e880f4
+                           .group:00000000 wm4._default_types.h.15.933e8edd27a65e0b69af4a865eb623d2
+                           .group:00000000 wm4._intsup.h.10.b2832a532eae49c14d45880be6d4ca65
+                           .group:00000000 wm4._stdint.h.10.f76354baea1c7088202064e6f3d4f5e3
+                           .group:00000000 wm4.stdint.h.23.373a9d32a9e4c2e88fd347156532d281
+                           .group:00000000 wm4.sam3u2e.h.224.0dd3d6dd7ebd015c591c55f903ce78e7
+                           .group:00000000 wm4.core_cm3.h.32.5c59c312db585622d253fdb887b0afb1
+                           .group:00000000 wm4.core_cmInstr.h.25.d8165482ef3061013a2fc83e2d85f3d9
+                           .group:00000000 wm4.core_cm3.h.127.b561404f2a159dc517b409bc244d16c1
+                           .group:00000000 wm4.component_adc.h.43.d49887380d07d1cd08cc4e37b3485e31
+                           .group:00000000 wm4.component_adc12b.h.43.eadc09f1073923fb91f1f393cc397dcb
+                           .group:00000000 wm4.component_chipid.h.43.15825c969b1cc9eeea3d9416499874c8
+                           .group:00000000 wm4.component_dmac.h.43.cc8187b1cf6bfeadc91b14fdd28b9e8b
+                           .group:00000000 wm4.component_efc.h.43.cb1b3997ad9ea3733ad421ecbfd02fdd
+                           .group:00000000 wm4.component_gpbr.h.43.49b7e13894fe38b29f2243bbbe530227
+                           .group:00000000 wm4.component_hsmci.h.43.7b7194c92e1480c038f3342f7cec440a
+                           .group:00000000 wm4.component_matrix.h.43.1d209838fb75b4827119203a357141ee
+                           .group:00000000 wm4.component_pdc.h.43.19528a5f9ef5a348234ea06f89069c55
+                           .group:00000000 wm4.component_pio.h.43.163b46c3683ccf92e8de39a5554f50e8
+                           .group:00000000 wm4.component_pmc.h.43.ee4f030602866917aeed15fb2b948de8
+                           .group:00000000 wm4.component_pwm.h.43.ab6262a86f0aea354b43fe6dce7e7eb3
+                           .group:00000000 wm4.component_rstc.h.43.4eb59dc2ddcf585fabf251d0c329fcdd
+                           .group:00000000 wm4.component_rtc.h.43.ba8ccafc772b11d562a3cceab8b95072
+                           .group:00000000 wm4.component_rtt.h.43.3206ef8f067e5e747c3c4c7e719c1429
+                           .group:00000000 wm4.component_smc.h.43.907847915f1a5616734199d7e34424fa
+                           .group:00000000 wm4.component_spi.h.43.a2a09df64ab768c0a32be55285c74ded
+                           .group:00000000 wm4.component_ssc.h.43.d7c78f990c13fc511671b64798c4bcd0
+                           .group:00000000 wm4.component_supc.h.43.7d17f8e5ed3ba815e84381152735062f
+                           .group:00000000 wm4.component_tc.h.43.662eac8137408372b4f9d26c0b5f8621
+                           .group:00000000 wm4.component_twi.h.43.eda18625bd851fc4605861f5b3240c0b
+                           .group:00000000 wm4.component_uart.h.43.2d92735c5ea05c973661e1ba99a2f37c
+                           .group:00000000 wm4.component_udphs.h.43.21cecd26a4e44df0013037f29f2716e4
+                           .group:00000000 wm4.component_usart.h.43.7872f8f455adb38b67b9fbdb15657fbe
+                           .group:00000000 wm4.component_wdt.h.43.e31e10a5469b62c3660b49ab250f802f
+                           .group:00000000 wm4.instance_hsmci.h.43.e233236cc7fd5a805539a7ecc0e1d8d2
+                           .group:00000000 wm4.instance_ssc.h.43.c0cfabc3b9f3bb60745c913111bce965
+                           .group:00000000 wm4.instance_spi.h.43.570ae46af19e4179d9796872b9a8b9bc
+                           .group:00000000 wm4.instance_tc0.h.43.049b3a82387d2961594190609e896a29
+                           .group:00000000 wm4.instance_twi0.h.43.255dc0afa9e0d45eaea0a935eca2f103
+                           .group:00000000 wm4.instance_twi1.h.43.652d1d407893f259f2a817544ba662c2
+                           .group:00000000 wm4.instance_pwm.h.43.88294acec3ca56d6fc521038521a1567
+                           .group:00000000 wm4.instance_usart0.h.43.e26677512aee3dd3bedd71d394410000
+                           .group:00000000 wm4.instance_usart1.h.43.1ba97dbc6610d9fb3132b9d845688201
+                           .group:00000000 wm4.instance_usart2.h.43.baa1bf30b3c5acdee90c4a1f50fe9ebd
+                           .group:00000000 wm4.instance_usart3.h.43.f6638d1b78bcba70ca95fca279d33914
+                           .group:00000000 wm4.instance_udphs.h.43.b1ce94181e0d1f22877b81c6040a4363
+                           .group:00000000 wm4.instance_adc12b.h.43.d73ed59e867ccdfdb846d9ef32a50c0c
+                           .group:00000000 wm4.instance_adc.h.43.2b7611a00afeb4c555339b844d4b8456
+                           .group:00000000 wm4.instance_dmac.h.43.ee72691d84889c8f285932be4a075ddb
+                           .group:00000000 wm4.instance_smc.h.43.29610fd00979caaaa65821ad40e9da06
+                           .group:00000000 wm4.instance_matrix.h.43.01ee474141594385374c41a29daeeefe
+                           .group:00000000 wm4.instance_pmc.h.43.37430325ed7b8b24c3fe640c41c29ef5
+                           .group:00000000 wm4.instance_uart.h.43.bd378395ba022bc8670c82ebe656fbbd
+                           .group:00000000 wm4.instance_chipid.h.43.29cd8fb600f149aa58830fcc78fe36f9
+                           .group:00000000 wm4.instance_efc0.h.43.6b85dba20721a7e9fc4350e78d193680
+                           .group:00000000 wm4.instance_efc1.h.43.2c5e94fc4d2742678318d73450d08d57
+                           .group:00000000 wm4.instance_pioa.h.43.eeb46cc3bfe01a1f28e67aa3a6851ed8
+                           .group:00000000 wm4.instance_piob.h.43.652ce26b6c37ac56f9ed42a9216d9aca
+                           .group:00000000 wm4.instance_pioc.h.43.d9706cf766637d6b3ed9886aa3ef7261
+                           .group:00000000 wm4.instance_rstc.h.43.c5de224364a50a85f237c0b864aa4c8f
+                           .group:00000000 wm4.instance_supc.h.43.a5f1a5ca08f468ccf34ed3653e045f1f
+                           .group:00000000 wm4.instance_rtt.h.43.8622b192c23334996132415e3095df7f
+                           .group:00000000 wm4.instance_wdt.h.43.407ea53e133eacf09acf2c7fcb6b7524
+                           .group:00000000 wm4.instance_rtc.h.43.f70b77f9180401c8d9d920cb4a1cd166
+                           .group:00000000 wm4.instance_gpbr.h.43.9066cb40d557f6755101368854272348
+                           .group:00000000 wm4.sam3u2e.h.318.b69dc6db89bb8a018eede87e67bbc95d
+                           .group:00000000 wm4.pio_sam3u2e.h.43.21412830fa1fb9ca8a54ce10fede3251
+                           .group:00000000 wm4.sam3u2e.h.456.687e75a22829f9ea89425dc4ee4ff5e3
+                           .group:00000000 wm4.newlib.h.8.2702bca278809460f0af6fba1d84eb68
+                           .group:00000000 wm4.config.h.220.a09b0b0de3c25be3f39d71990e617bff
+                           .group:00000000 wm4._ansi.h.23.9f8fcfa20193763fcf364fb91705c94b
+                           .group:00000000 wm4.stdio.h.31.7c0e28c411445f3f9c5b11accf882760
+                           .group:00000000 wm4.stddef.h.158.a7efb00f6cbc6f43213b50e183c9830c
+                           .group:00000000 wm4.cdefs.h.47.3052445825803de6c3a3b68ec8193866
+                           .group:00000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:00000000 wm4.lock.h.2.9bc98482741e5e2a9450b12934a684ea
+                           .group:00000000 wm4._types.h.54.d3d34a3b7f3cc230cd159baf022b4b08
+                           .group:00000000 wm4.stddef.h.158.61317cdbfb4026324507d123a50b0fd6
+                           .group:00000000 wm4.reent.h.17.8bd9e4098e0428508c282cad794fae43
+                           .group:00000000 wm4.types.h.23.0d949686bbcadd1621462d4fa1f884f9
+                           .group:00000000 wm4.types.h.2.e9cec8c90ab35f77d9f499e06ae02400
+                           .group:00000000 wm4.types.h.81.ded4e8fbe2d299b79c956dc834e43661
+                           .group:00000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:00000000 wm4.stdio.h.68.a99a2db1e55915cfd1b035cc1e9fcff1
+                           .group:00000000 wm4.stdbool.h.29.1c9ee6859ce8145f7838a4f2549ccec2
+                           .group:00000000 wm4.stdlib.h.13.4ed386f5c1a80d71e72172885d946ef2
+                           .group:00000000 wm4.alloca.h.8.dfc0c703c47ec3e69746825b17d9e66d
+                           .group:00000000 wm4.stdlib.h.54.cd3744e0b066087ec8fbb1bdc22d1043
+                           .group:00000000 wm4.compiler.h.88.e36be790b5e347a01e6762426f60e643
+                           .group:00000000 wm4.interrupt_sam_nvic.h.45.4876da6c127868305d66389e87e0876f
+                           .group:00000000 wm4.compiler.h.424.ee053ef8246023ebdcca352464bd827f
+                           .group:00000000 wm4.board.h.69.d07c7cef83d71bd4e2867b2e1c379311
+                           .group:00000000 wm4.cw305.h.62.dac9fb9dfce9a952db76825701f7d0e3
+                           .group:00000000 wm4.pmc.h.45.bbe1bf97a811e3b283420b2eeadf0b35
+                           .group:00000000 wm4.osc.h.94.b766cddafe899eca01d775f7b2906680
+                           .group:00000000 wm4.pll.h.45.a605c31ca466ae25752a678e8572be48
+                           .group:00000000 wm4.sysclk.h.156.541a142b0016a365728ea1f7c0e3db84
+
+UNDEFINED SYMBOLS
+pmc_mck_set_prescaler
+SystemCoreClockUpdate
+pmc_mck_set_source
+pmc_osc_enable_main_xtal
+pmc_osc_is_ready_main_xtal
+pmc_is_locked_upll
+system_init_flash
+pmc_mainck_osc_select
+pmc_osc_is_ready_mainck
+pmc_disable_pllack
+pmc_is_locked_pllack
+pmc_switch_mck_to_pllack

@@ -1,0 +1,290 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"udi_vendor_desc.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global	udc_config
+  19              		.global	udc_config_hs
+  20              		.global	udc_config_lsfs
+  21              		.global	udi_apis
+  22              		.global	udc_desc_hs
+  23              		.global	udc_desc_fs
+  24              		.global	udc_device_qual
+  25              		.global	udc_device_desc
+  26              		.section	.data.udc_config_hs,"aw",%progbits
+  27              		.align	2
+  30              	udc_config_hs:
+  31 0000 00000000 		.word	udc_desc_hs
+  32 0004 00000000 		.word	udi_apis
+  33              		.section	.data.udc_config_lsfs,"aw",%progbits
+  34              		.align	2
+  37              	udc_config_lsfs:
+  38 0000 00000000 		.word	udc_desc_fs
+  39 0004 00000000 		.word	udi_apis
+  40              		.section	.data.udc_desc_hs,"aw",%progbits
+  41              		.align	2
+  44              	udc_desc_hs:
+  45 0000 09       		.byte	9
+  46 0001 02       		.byte	2
+  47 0002 2000     		.short	32
+  48 0004 01       		.byte	1
+  49 0005 01       		.byte	1
+  50 0006 00       		.byte	0
+  51 0007 80       		.byte	-128
+  52 0008 FA       		.byte	-6
+  53 0009 09       		.byte	9
+  54 000a 04       		.byte	4
+  55 000b 00       		.byte	0
+  56 000c 00       		.byte	0
+  57 000d 02       		.byte	2
+  58 000e FF       		.byte	-1
+  59 000f FF       		.byte	-1
+  60 0010 FF       		.byte	-1
+  61 0011 00       		.byte	0
+  62 0012 07       		.byte	7
+  63 0013 05       		.byte	5
+  64 0014 81       		.byte	-127
+  65 0015 02       		.byte	2
+  66 0016 0002     		.2byte	512
+  67 0018 00       		.byte	0
+  68 0019 07       		.byte	7
+  69 001a 05       		.byte	5
+  70 001b 02       		.byte	2
+  71 001c 02       		.byte	2
+  72 001d 0002     		.2byte	512
+  73 001f 00       		.byte	0
+  74              		.section	.data.udc_config,"aw",%progbits
+  75              		.align	2
+  78              	udc_config:
+  79 0000 00000000 		.word	udc_device_desc
+  80 0004 00000000 		.word	udc_config_lsfs
+  81 0008 00000000 		.word	udc_device_desc
+  82 000c 00000000 		.word	udc_device_qual
+  83 0010 00000000 		.word	udc_config_hs
+  84 0014 00000000 		.space	4
+  85              		.section	.bss.cpu_irq_critical_section_counter,"aw",%nobits
+  86              		.align	2
+  89              	cpu_irq_critical_section_counter:
+  90 0000 00000000 		.space	4
+  91              		.section	.data.udc_device_qual,"aw",%progbits
+  92              		.align	2
+  95              	udc_device_qual:
+  96 0000 0A       		.byte	10
+  97 0001 06       		.byte	6
+  98 0002 0002     		.short	512
+  99 0004 00       		.byte	0
+ 100 0005 00       		.byte	0
+ 101 0006 00       		.byte	0
+ 102 0007 40       		.byte	64
+ 103 0008 01       		.byte	1
+ 104 0009 00       		.space	1
+ 105              		.section	.bss.cpu_irq_prev_interrupt_state,"aw",%nobits
+ 108              	cpu_irq_prev_interrupt_state:
+ 109 0000 00       		.space	1
+ 110              		.section	.data.udi_apis,"aw",%progbits
+ 111              		.align	2
+ 114              	udi_apis:
+ 115 0000 00000000 		.word	udi_api_vendor
+ 116              		.section	.data.udc_device_desc,"aw",%progbits
+ 117              		.align	2
+ 120              	udc_device_desc:
+ 121 0000 12       		.byte	18
+ 122 0001 01       		.byte	1
+ 123 0002 0002     		.short	512
+ 124 0004 00       		.byte	0
+ 125 0005 00       		.byte	0
+ 126 0006 00       		.byte	0
+ 127 0007 40       		.byte	64
+ 128 0008 3E2B     		.short	11070
+ 129 000a E2AC     		.short	-21278
+ 130 000c 0001     		.short	256
+ 131 000e 01       		.byte	1
+ 132 000f 02       		.byte	2
+ 133 0010 03       		.byte	3
+ 134 0011 01       		.byte	1
+ 135              		.section	.data.udc_desc_fs,"aw",%progbits
+ 136              		.align	2
+ 139              	udc_desc_fs:
+ 140 0000 09       		.byte	9
+ 141 0001 02       		.byte	2
+ 142 0002 2000     		.short	32
+ 143 0004 01       		.byte	1
+ 144 0005 01       		.byte	1
+ 145 0006 00       		.byte	0
+ 146 0007 80       		.byte	-128
+ 147 0008 FA       		.byte	-6
+ 148 0009 09       		.byte	9
+ 149 000a 04       		.byte	4
+ 150 000b 00       		.byte	0
+ 151 000c 00       		.byte	0
+ 152 000d 02       		.byte	2
+ 153 000e FF       		.byte	-1
+ 154 000f FF       		.byte	-1
+ 155 0010 FF       		.byte	-1
+ 156 0011 00       		.byte	0
+ 157 0012 07       		.byte	7
+ 158 0013 05       		.byte	5
+ 159 0014 81       		.byte	-127
+ 160 0015 02       		.byte	2
+ 161 0016 4000     		.2byte	64
+ 162 0018 00       		.byte	0
+ 163 0019 07       		.byte	7
+ 164 001a 05       		.byte	5
+ 165 001b 02       		.byte	2
+ 166 001c 02       		.byte	2
+ 167 001d 4000     		.2byte	64
+ 168 001f 00       		.byte	0
+ 169              		.text
+ 170              	.Letext0:
+ 171              		.file 1 "c:\\program files (x86)\\atmel\\studio\\7.0\\toolchain\\arm\\arm-gnu-toolchain\\arm-none-
+ 172              		.file 2 "c:\\program files (x86)\\atmel\\studio\\7.0\\toolchain\\arm\\arm-gnu-toolchain\\arm-none-
+ 173              		.file 3 "../src/ASF/sam/utils/compiler.h"
+ 174              		.file 4 "../src/ASF/common/services/usb/usb_protocol.h"
+ 175              		.file 5 "../src/ASF/common/services/usb/udc/udi.h"
+ 176              		.file 6 "../src/ASF/common/services/usb/udc/udc_desc.h"
+ 177              		.file 7 "../src/ASF/common/services/usb/class/vendor/device/udi_vendor.h"
+ 178              		.file 8 "../src/ASF/common/services/usb/class/vendor/device/udi_vendor_desc.c"
+ 179              		.file 9 "../src/ASF/common/utils/interrupt/interrupt_sam_nvic.h"
+ 180              		.file 10 "../src/ASF/thirdparty/CMSIS/Include/core_cm3.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 udi_vendor_desc.c
+C:\Users\colin\AppData\Local\Temp\ccVcMQgc.s:78     .data.udc_config:00000000 udc_config
+C:\Users\colin\AppData\Local\Temp\ccVcMQgc.s:30     .data.udc_config_hs:00000000 udc_config_hs
+C:\Users\colin\AppData\Local\Temp\ccVcMQgc.s:37     .data.udc_config_lsfs:00000000 udc_config_lsfs
+C:\Users\colin\AppData\Local\Temp\ccVcMQgc.s:114    .data.udi_apis:00000000 udi_apis
+C:\Users\colin\AppData\Local\Temp\ccVcMQgc.s:44     .data.udc_desc_hs:00000000 udc_desc_hs
+C:\Users\colin\AppData\Local\Temp\ccVcMQgc.s:139    .data.udc_desc_fs:00000000 udc_desc_fs
+C:\Users\colin\AppData\Local\Temp\ccVcMQgc.s:95     .data.udc_device_qual:00000000 udc_device_qual
+C:\Users\colin\AppData\Local\Temp\ccVcMQgc.s:120    .data.udc_device_desc:00000000 udc_device_desc
+C:\Users\colin\AppData\Local\Temp\ccVcMQgc.s:27     .data.udc_config_hs:00000000 $d
+C:\Users\colin\AppData\Local\Temp\ccVcMQgc.s:34     .data.udc_config_lsfs:00000000 $d
+C:\Users\colin\AppData\Local\Temp\ccVcMQgc.s:41     .data.udc_desc_hs:00000000 $d
+C:\Users\colin\AppData\Local\Temp\ccVcMQgc.s:75     .data.udc_config:00000000 $d
+C:\Users\colin\AppData\Local\Temp\ccVcMQgc.s:86     .bss.cpu_irq_critical_section_counter:00000000 $d
+C:\Users\colin\AppData\Local\Temp\ccVcMQgc.s:89     .bss.cpu_irq_critical_section_counter:00000000 cpu_irq_critical_section_counter
+C:\Users\colin\AppData\Local\Temp\ccVcMQgc.s:92     .data.udc_device_qual:00000000 $d
+C:\Users\colin\AppData\Local\Temp\ccVcMQgc.s:108    .bss.cpu_irq_prev_interrupt_state:00000000 cpu_irq_prev_interrupt_state
+C:\Users\colin\AppData\Local\Temp\ccVcMQgc.s:109    .bss.cpu_irq_prev_interrupt_state:00000000 $d
+C:\Users\colin\AppData\Local\Temp\ccVcMQgc.s:111    .data.udi_apis:00000000 $d
+C:\Users\colin\AppData\Local\Temp\ccVcMQgc.s:117    .data.udc_device_desc:00000000 $d
+C:\Users\colin\AppData\Local\Temp\ccVcMQgc.s:136    .data.udc_desc_fs:00000000 $d
+                           .group:00000000 wm4.0.738cd1dff6e476bef2e1e0b99fec4f4f
+                           .group:00000000 wm4.stddef.h.39.daafd3d79fe2f3a84d2d73d7d4e706f8
+                           .group:00000000 wm4.parts.h.45.afc900689b2c82332e69d798acedc875
+                           .group:00000000 wm4.tpaste.h.45.af3ee36765243b162c88f7f944858426
+                           .group:00000000 wm4.stringz.h.45.c4f6cbe0005e6c1d2139bc6c0e4f4722
+                           .group:00000000 wm4.mrepeat.h.59.c5daaed201a4340b0edf435161d0b77f
+                           .group:00000000 wm4.features.h.22.2e382148a0560adabf236cddd4e880f4
+                           .group:00000000 wm4._default_types.h.15.933e8edd27a65e0b69af4a865eb623d2
+                           .group:00000000 wm4._intsup.h.10.b2832a532eae49c14d45880be6d4ca65
+                           .group:00000000 wm4._stdint.h.10.f76354baea1c7088202064e6f3d4f5e3
+                           .group:00000000 wm4.stdint.h.23.373a9d32a9e4c2e88fd347156532d281
+                           .group:00000000 wm4.sam3u2e.h.224.0dd3d6dd7ebd015c591c55f903ce78e7
+                           .group:00000000 wm4.core_cm3.h.32.5c59c312db585622d253fdb887b0afb1
+                           .group:00000000 wm4.core_cmInstr.h.25.d8165482ef3061013a2fc83e2d85f3d9
+                           .group:00000000 wm4.core_cm3.h.127.b561404f2a159dc517b409bc244d16c1
+                           .group:00000000 wm4.component_adc.h.43.d49887380d07d1cd08cc4e37b3485e31
+                           .group:00000000 wm4.component_adc12b.h.43.eadc09f1073923fb91f1f393cc397dcb
+                           .group:00000000 wm4.component_chipid.h.43.15825c969b1cc9eeea3d9416499874c8
+                           .group:00000000 wm4.component_dmac.h.43.cc8187b1cf6bfeadc91b14fdd28b9e8b
+                           .group:00000000 wm4.component_efc.h.43.cb1b3997ad9ea3733ad421ecbfd02fdd
+                           .group:00000000 wm4.component_gpbr.h.43.49b7e13894fe38b29f2243bbbe530227
+                           .group:00000000 wm4.component_hsmci.h.43.7b7194c92e1480c038f3342f7cec440a
+                           .group:00000000 wm4.component_matrix.h.43.1d209838fb75b4827119203a357141ee
+                           .group:00000000 wm4.component_pdc.h.43.19528a5f9ef5a348234ea06f89069c55
+                           .group:00000000 wm4.component_pio.h.43.163b46c3683ccf92e8de39a5554f50e8
+                           .group:00000000 wm4.component_pmc.h.43.ee4f030602866917aeed15fb2b948de8
+                           .group:00000000 wm4.component_pwm.h.43.ab6262a86f0aea354b43fe6dce7e7eb3
+                           .group:00000000 wm4.component_rstc.h.43.4eb59dc2ddcf585fabf251d0c329fcdd
+                           .group:00000000 wm4.component_rtc.h.43.ba8ccafc772b11d562a3cceab8b95072
+                           .group:00000000 wm4.component_rtt.h.43.3206ef8f067e5e747c3c4c7e719c1429
+                           .group:00000000 wm4.component_smc.h.43.907847915f1a5616734199d7e34424fa
+                           .group:00000000 wm4.component_spi.h.43.a2a09df64ab768c0a32be55285c74ded
+                           .group:00000000 wm4.component_ssc.h.43.d7c78f990c13fc511671b64798c4bcd0
+                           .group:00000000 wm4.component_supc.h.43.7d17f8e5ed3ba815e84381152735062f
+                           .group:00000000 wm4.component_tc.h.43.662eac8137408372b4f9d26c0b5f8621
+                           .group:00000000 wm4.component_twi.h.43.eda18625bd851fc4605861f5b3240c0b
+                           .group:00000000 wm4.component_uart.h.43.2d92735c5ea05c973661e1ba99a2f37c
+                           .group:00000000 wm4.component_udphs.h.43.21cecd26a4e44df0013037f29f2716e4
+                           .group:00000000 wm4.component_usart.h.43.7872f8f455adb38b67b9fbdb15657fbe
+                           .group:00000000 wm4.component_wdt.h.43.e31e10a5469b62c3660b49ab250f802f
+                           .group:00000000 wm4.instance_hsmci.h.43.e233236cc7fd5a805539a7ecc0e1d8d2
+                           .group:00000000 wm4.instance_ssc.h.43.c0cfabc3b9f3bb60745c913111bce965
+                           .group:00000000 wm4.instance_spi.h.43.570ae46af19e4179d9796872b9a8b9bc
+                           .group:00000000 wm4.instance_tc0.h.43.049b3a82387d2961594190609e896a29
+                           .group:00000000 wm4.instance_twi0.h.43.255dc0afa9e0d45eaea0a935eca2f103
+                           .group:00000000 wm4.instance_twi1.h.43.652d1d407893f259f2a817544ba662c2
+                           .group:00000000 wm4.instance_pwm.h.43.88294acec3ca56d6fc521038521a1567
+                           .group:00000000 wm4.instance_usart0.h.43.e26677512aee3dd3bedd71d394410000
+                           .group:00000000 wm4.instance_usart1.h.43.1ba97dbc6610d9fb3132b9d845688201
+                           .group:00000000 wm4.instance_usart2.h.43.baa1bf30b3c5acdee90c4a1f50fe9ebd
+                           .group:00000000 wm4.instance_usart3.h.43.f6638d1b78bcba70ca95fca279d33914
+                           .group:00000000 wm4.instance_udphs.h.43.b1ce94181e0d1f22877b81c6040a4363
+                           .group:00000000 wm4.instance_adc12b.h.43.d73ed59e867ccdfdb846d9ef32a50c0c
+                           .group:00000000 wm4.instance_adc.h.43.2b7611a00afeb4c555339b844d4b8456
+                           .group:00000000 wm4.instance_dmac.h.43.ee72691d84889c8f285932be4a075ddb
+                           .group:00000000 wm4.instance_smc.h.43.29610fd00979caaaa65821ad40e9da06
+                           .group:00000000 wm4.instance_matrix.h.43.01ee474141594385374c41a29daeeefe
+                           .group:00000000 wm4.instance_pmc.h.43.37430325ed7b8b24c3fe640c41c29ef5
+                           .group:00000000 wm4.instance_uart.h.43.bd378395ba022bc8670c82ebe656fbbd
+                           .group:00000000 wm4.instance_chipid.h.43.29cd8fb600f149aa58830fcc78fe36f9
+                           .group:00000000 wm4.instance_efc0.h.43.6b85dba20721a7e9fc4350e78d193680
+                           .group:00000000 wm4.instance_efc1.h.43.2c5e94fc4d2742678318d73450d08d57
+                           .group:00000000 wm4.instance_pioa.h.43.eeb46cc3bfe01a1f28e67aa3a6851ed8
+                           .group:00000000 wm4.instance_piob.h.43.652ce26b6c37ac56f9ed42a9216d9aca
+                           .group:00000000 wm4.instance_pioc.h.43.d9706cf766637d6b3ed9886aa3ef7261
+                           .group:00000000 wm4.instance_rstc.h.43.c5de224364a50a85f237c0b864aa4c8f
+                           .group:00000000 wm4.instance_supc.h.43.a5f1a5ca08f468ccf34ed3653e045f1f
+                           .group:00000000 wm4.instance_rtt.h.43.8622b192c23334996132415e3095df7f
+                           .group:00000000 wm4.instance_wdt.h.43.407ea53e133eacf09acf2c7fcb6b7524
+                           .group:00000000 wm4.instance_rtc.h.43.f70b77f9180401c8d9d920cb4a1cd166
+                           .group:00000000 wm4.instance_gpbr.h.43.9066cb40d557f6755101368854272348
+                           .group:00000000 wm4.sam3u2e.h.318.b69dc6db89bb8a018eede87e67bbc95d
+                           .group:00000000 wm4.pio_sam3u2e.h.43.21412830fa1fb9ca8a54ce10fede3251
+                           .group:00000000 wm4.sam3u2e.h.456.687e75a22829f9ea89425dc4ee4ff5e3
+                           .group:00000000 wm4.newlib.h.8.2702bca278809460f0af6fba1d84eb68
+                           .group:00000000 wm4.config.h.220.a09b0b0de3c25be3f39d71990e617bff
+                           .group:00000000 wm4._ansi.h.23.9f8fcfa20193763fcf364fb91705c94b
+                           .group:00000000 wm4.stdio.h.31.7c0e28c411445f3f9c5b11accf882760
+                           .group:00000000 wm4.stddef.h.158.a7efb00f6cbc6f43213b50e183c9830c
+                           .group:00000000 wm4.cdefs.h.47.3052445825803de6c3a3b68ec8193866
+                           .group:00000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:00000000 wm4.lock.h.2.9bc98482741e5e2a9450b12934a684ea
+                           .group:00000000 wm4._types.h.54.d3d34a3b7f3cc230cd159baf022b4b08
+                           .group:00000000 wm4.stddef.h.158.61317cdbfb4026324507d123a50b0fd6
+                           .group:00000000 wm4.reent.h.17.8bd9e4098e0428508c282cad794fae43
+                           .group:00000000 wm4.types.h.23.0d949686bbcadd1621462d4fa1f884f9
+                           .group:00000000 wm4.types.h.2.e9cec8c90ab35f77d9f499e06ae02400
+                           .group:00000000 wm4.types.h.81.ded4e8fbe2d299b79c956dc834e43661
+                           .group:00000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:00000000 wm4.stdio.h.68.a99a2db1e55915cfd1b035cc1e9fcff1
+                           .group:00000000 wm4.stdbool.h.29.1c9ee6859ce8145f7838a4f2549ccec2
+                           .group:00000000 wm4.stdlib.h.13.4ed386f5c1a80d71e72172885d946ef2
+                           .group:00000000 wm4.alloca.h.8.dfc0c703c47ec3e69746825b17d9e66d
+                           .group:00000000 wm4.stdlib.h.54.cd3744e0b066087ec8fbb1bdc22d1043
+                           .group:00000000 wm4.compiler.h.88.e36be790b5e347a01e6762426f60e643
+                           .group:00000000 wm4.interrupt_sam_nvic.h.45.4876da6c127868305d66389e87e0876f
+                           .group:00000000 wm4.compiler.h.424.ee053ef8246023ebdcca352464bd827f
+                           .group:00000000 wm4.conf_usb.h.56.bdf92843ab8d547b018fb879360aac04
+                           .group:00000000 wm4.udi_vendor_conf.h.56.4348c8e521d040f44df868219dae6785
+                           .group:00000000 wm4.usb_atmel.h.45.c31b525dbe01f8d9e2022a03356ec174
+                           .group:00000000 wm4.usb_protocol.h.63.850c58f3469fce50a9ac9a6854f7594b
+                           .group:00000000 wm4.usb_protocol_vendor.h.45.83dfe073428ff799abc3ed1c7b04c77d
+                           .group:00000000 wm4.udc_desc.h.77.5fec235bd7553e7256e345e020840072
+                           .group:00000000 wm4.udd.h.103.3ccc59b50c14ec70568e6136eeb22d56
+                           .group:00000000 wm4.udi_vendor.h.125.7b9085237d4d4a9757f4c148fba1918d
+
+UNDEFINED SYMBOLS
+udi_api_vendor

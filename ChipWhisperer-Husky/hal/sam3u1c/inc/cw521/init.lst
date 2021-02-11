@@ -1,0 +1,934 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"init.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.iopins_sleep,"ax",%progbits
+  19              		.align	2
+  20              		.global	iopins_sleep
+  21              		.thumb
+  22              		.thumb_func
+  24              	iopins_sleep:
+  25              	.LFB128:
+  26              		.file 1 "../src/ASF/sam/boards/cw305/init.c"
+   1:../src/ASF/sam/boards/cw305/init.c **** /**
+   2:../src/ASF/sam/boards/cw305/init.c ****  * \file
+   3:../src/ASF/sam/boards/cw305/init.c ****  *
+   4:../src/ASF/sam/boards/cw305/init.c ****  * \brief SAM3U-EK board init.
+   5:../src/ASF/sam/boards/cw305/init.c ****  *
+   6:../src/ASF/sam/boards/cw305/init.c ****  * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+   7:../src/ASF/sam/boards/cw305/init.c ****  *
+   8:../src/ASF/sam/boards/cw305/init.c ****  * \asf_license_start
+   9:../src/ASF/sam/boards/cw305/init.c ****  *
+  10:../src/ASF/sam/boards/cw305/init.c ****  * \page License
+  11:../src/ASF/sam/boards/cw305/init.c ****  *
+  12:../src/ASF/sam/boards/cw305/init.c ****  * Redistribution and use in source and binary forms, with or without
+  13:../src/ASF/sam/boards/cw305/init.c ****  * modification, are permitted provided that the following conditions are met:
+  14:../src/ASF/sam/boards/cw305/init.c ****  *
+  15:../src/ASF/sam/boards/cw305/init.c ****  * 1. Redistributions of source code must retain the above copyright notice,
+  16:../src/ASF/sam/boards/cw305/init.c ****  *    this list of conditions and the following disclaimer.
+  17:../src/ASF/sam/boards/cw305/init.c ****  *
+  18:../src/ASF/sam/boards/cw305/init.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice,
+  19:../src/ASF/sam/boards/cw305/init.c ****  *    this list of conditions and the following disclaimer in the documentation
+  20:../src/ASF/sam/boards/cw305/init.c ****  *    and/or other materials provided with the distribution.
+  21:../src/ASF/sam/boards/cw305/init.c ****  *
+  22:../src/ASF/sam/boards/cw305/init.c ****  * 3. The name of Atmel may not be used to endorse or promote products derived
+  23:../src/ASF/sam/boards/cw305/init.c ****  *    from this software without specific prior written permission.
+  24:../src/ASF/sam/boards/cw305/init.c ****  *
+  25:../src/ASF/sam/boards/cw305/init.c ****  * 4. This software may only be redistributed and used in connection with an
+  26:../src/ASF/sam/boards/cw305/init.c ****  *    Atmel microcontroller product.
+  27:../src/ASF/sam/boards/cw305/init.c ****  *
+  28:../src/ASF/sam/boards/cw305/init.c ****  * THIS SOFTWARE IS PROVIDED BY ATMEL "AS IS" AND ANY EXPRESS OR IMPLIED
+  29:../src/ASF/sam/boards/cw305/init.c ****  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  30:../src/ASF/sam/boards/cw305/init.c ****  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT ARE
+  31:../src/ASF/sam/boards/cw305/init.c ****  * EXPRESSLY AND SPECIFICALLY DISCLAIMED. IN NO EVENT SHALL ATMEL BE LIABLE FOR
+  32:../src/ASF/sam/boards/cw305/init.c ****  * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  33:../src/ASF/sam/boards/cw305/init.c ****  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+  34:../src/ASF/sam/boards/cw305/init.c ****  * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+  35:../src/ASF/sam/boards/cw305/init.c ****  * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+  36:../src/ASF/sam/boards/cw305/init.c ****  * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+  37:../src/ASF/sam/boards/cw305/init.c ****  * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  38:../src/ASF/sam/boards/cw305/init.c ****  * POSSIBILITY OF SUCH DAMAGE.
+  39:../src/ASF/sam/boards/cw305/init.c ****  *
+  40:../src/ASF/sam/boards/cw305/init.c ****  * \asf_license_stop
+  41:../src/ASF/sam/boards/cw305/init.c ****  *
+  42:../src/ASF/sam/boards/cw305/init.c ****  */
+  43:../src/ASF/sam/boards/cw305/init.c **** 
+  44:../src/ASF/sam/boards/cw305/init.c **** #include "compiler.h"
+  45:../src/ASF/sam/boards/cw305/init.c **** #include "board.h"
+  46:../src/ASF/sam/boards/cw305/init.c **** #include "conf_board.h"
+  47:../src/ASF/sam/boards/cw305/init.c **** #include "gpio.h"
+  48:../src/ASF/sam/boards/cw305/init.c **** #include "ioport.h"
+  49:../src/ASF/sam/boards/cw305/init.c **** #include "fpga_program.h"
+  50:../src/ASF/sam/boards/cw305/init.c **** 
+  51:../src/ASF/sam/boards/cw305/init.c **** void iopins_sleep(void);
+  52:../src/ASF/sam/boards/cw305/init.c **** void iopins_normal(void);
+  53:../src/ASF/sam/boards/cw305/init.c **** 
+  54:../src/ASF/sam/boards/cw305/init.c **** void iopins_sleep(void)
+  55:../src/ASF/sam/boards/cw305/init.c **** {
+  27              		.loc 1 55 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 08B5     		push	{r3, lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 3, -8
+  35              		.cfi_offset 14, -4
+  56:../src/ASF/sam/boards/cw305/init.c **** 	/* LEDs Off */
+  57:../src/ASF/sam/boards/cw305/init.c **** 	
+  58:../src/ASF/sam/boards/cw305/init.c **** 	/* FPGA Program low */
+  59:../src/ASF/sam/boards/cw305/init.c **** 	FPGA_NPROG_LOW();
+  36              		.loc 1 59 0
+  37 0002 0820     		movs	r0, #8
+  38 0004 014B     		ldr	r3, .L3
+  39 0006 9847     		blx	r3
+  40              	.LVL0:
+  41 0008 08BD     		pop	{r3, pc}
+  42              	.L4:
+  43 000a 00BF     		.align	2
+  44              	.L3:
+  45 000c 00000000 		.word	pio_set_pin_low
+  46              		.cfi_endproc
+  47              	.LFE128:
+  49              		.section	.text.iopins_normal,"ax",%progbits
+  50              		.align	2
+  51              		.global	iopins_normal
+  52              		.thumb
+  53              		.thumb_func
+  55              	iopins_normal:
+  56              	.LFB129:
+  60:../src/ASF/sam/boards/cw305/init.c **** 	
+  61:../src/ASF/sam/boards/cw305/init.c **** 	/* */
+  62:../src/ASF/sam/boards/cw305/init.c **** }
+  63:../src/ASF/sam/boards/cw305/init.c **** 
+  64:../src/ASF/sam/boards/cw305/init.c **** void iopins_normal(void)
+  65:../src/ASF/sam/boards/cw305/init.c **** {
+  57              		.loc 1 65 0
+  58              		.cfi_startproc
+  59              		@ args = 0, pretend = 0, frame = 0
+  60              		@ frame_needed = 0, uses_anonymous_args = 0
+  61 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+  62              	.LCFI1:
+  63              		.cfi_def_cfa_offset 24
+  64              		.cfi_offset 3, -24
+  65              		.cfi_offset 4, -20
+  66              		.cfi_offset 5, -16
+  67              		.cfi_offset 6, -12
+  68              		.cfi_offset 7, -8
+  69              		.cfi_offset 14, -4
+  66:../src/ASF/sam/boards/cw305/init.c **** 	/* Configure LED pins */
+  67:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(LED0_GPIO, LED0_FLAGS);
+  70              		.loc 1 67 0
+  71 0002 4F20     		movs	r0, #79
+  72 0004 4FF06051 		mov	r1, #939524096
+  73 0008 1B4C     		ldr	r4, .L7
+  74 000a A047     		blx	r4
+  75              	.LVL1:
+  68:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(LED1_GPIO, LED1_FLAGS);
+  76              		.loc 1 68 0
+  77 000c 5020     		movs	r0, #80
+  78 000e 4FF06051 		mov	r1, #939524096
+  79 0012 A047     		blx	r4
+  80              	.LVL2:
+  69:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(LED2_GPIO, LED2_FLAGS);
+  81              		.loc 1 69 0
+  82 0014 5120     		movs	r0, #81
+  83 0016 4FF06051 		mov	r1, #939524096
+  84 001a A047     		blx	r4
+  85              	.LVL3:
+  70:../src/ASF/sam/boards/cw305/init.c **** 	
+  71:../src/ASF/sam/boards/cw305/init.c **** 	/* Configure MOSFET for turning on-off system */
+  72:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_PWRON_GPIO, PIN_PWRON_FLAGS);
+  86              		.loc 1 72 0
+  87 001c 3F20     		movs	r0, #63
+  88 001e 4FF04051 		mov	r1, #805306368
+  89 0022 A047     		blx	r4
+  90              	.LVL4:
+  73:../src/ASF/sam/boards/cw305/init.c **** 	board_power(0);
+  91              		.loc 1 73 0
+  92 0024 3F20     		movs	r0, #63
+  93 0026 154B     		ldr	r3, .L7+4
+  94 0028 9847     		blx	r3
+  95              	.LVL5:
+  74:../src/ASF/sam/boards/cw305/init.c **** 	
+  75:../src/ASF/sam/boards/cw305/init.c **** 	/* FPGA Programming pins */
+  76:../src/ASF/sam/boards/cw305/init.c **** 	FPGA_NPROG_SETUP();
+  96              		.loc 1 76 0
+  97 002a 0820     		movs	r0, #8
+  98 002c 4FF06051 		mov	r1, #939524096
+  99 0030 A047     		blx	r4
+ 100              	.LVL6:
+  77:../src/ASF/sam/boards/cw305/init.c **** 	FPGA_NPROG_HIGH();
+ 101              		.loc 1 77 0
+ 102 0032 0820     		movs	r0, #8
+ 103 0034 124E     		ldr	r6, .L7+8
+ 104 0036 B047     		blx	r6
+ 105              	.LVL7:
+  78:../src/ASF/sam/boards/cw305/init.c **** 	
+  79:../src/ASF/sam/boards/cw305/init.c **** 	/* FPGA External memory interface */
+  80:../src/ASF/sam/boards/cw305/init.c **** 	//Allow sync writing to address pins
+  81:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_group(FPGA_ADDR_PORT, FPGA_ADDR_PINS, (PIO_TYPE_PIO_OUTPUT_0 | PIO_DEFAULT));
+ 106              		.loc 1 81 0
+ 107 0038 124F     		ldr	r7, .L7+12
+ 108 003a 3846     		mov	r0, r7
+ 109 003c FF21     		movs	r1, #255
+ 110 003e 4FF04052 		mov	r2, #805306368
+ 111 0042 114D     		ldr	r5, .L7+16
+ 112 0044 A847     		blx	r5
+ 113              	.LVL8:
+  82:../src/ASF/sam/boards/cw305/init.c **** 	pio_enable_output_write(FPGA_ADDR_PORT, FPGA_ADDR_PINS);
+ 114              		.loc 1 82 0
+ 115 0046 3846     		mov	r0, r7
+ 116 0048 FF21     		movs	r1, #255
+ 117 004a 104B     		ldr	r3, .L7+20
+ 118 004c 9847     		blx	r3
+ 119              	.LVL9:
+  83:../src/ASF/sam/boards/cw305/init.c **** 	
+  84:../src/ASF/sam/boards/cw305/init.c **** 	//ALE pin under SW control
+  85:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(FPGA_ALE_GPIO, FPGA_ALE_FLAGS);
+ 120              		.loc 1 85 0
+ 121 004e 3520     		movs	r0, #53
+ 122 0050 4FF06051 		mov	r1, #939524096
+ 123 0054 A047     		blx	r4
+ 124              	.LVL10:
+  86:../src/ASF/sam/boards/cw305/init.c **** 	gpio_set_pin_high(FPGA_ALE_GPIO);
+ 125              		.loc 1 86 0
+ 126 0056 3520     		movs	r0, #53
+ 127 0058 B047     		blx	r6
+ 128              	.LVL11:
+  87:../src/ASF/sam/boards/cw305/init.c **** 	
+  88:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(FPGA_TRIGGER_GPIO, FPGA_TRIGGER_FLAGS);
+ 129              		.loc 1 88 0
+ 130 005a 3120     		movs	r0, #49
+ 131 005c 4FF04051 		mov	r1, #805306368
+ 132 0060 A047     		blx	r4
+ 133              	.LVL12:
+  89:../src/ASF/sam/boards/cw305/init.c **** 
+  90:../src/ASF/sam/boards/cw305/init.c **** #ifdef CONF_BOARD_UART_CONSOLE
+  91:../src/ASF/sam/boards/cw305/init.c **** 	/* Configure UART pins */
+  92:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_group(PINS_UART_PIO, PINS_UART, PINS_UART_FLAGS);
+ 134              		.loc 1 92 0
+ 135 0062 0B48     		ldr	r0, .L7+24
+ 136 0064 4FF4C051 		mov	r1, #6144
+ 137 0068 4FF00062 		mov	r2, #134217728
+ 138 006c A847     		blx	r5
+ 139              	.LVL13:
+  93:../src/ASF/sam/boards/cw305/init.c **** #endif
+  94:../src/ASF/sam/boards/cw305/init.c **** 
+  95:../src/ASF/sam/boards/cw305/init.c **** #ifdef CONF_BOARD_PWM_LED0
+  96:../src/ASF/sam/boards/cw305/init.c **** 	/* Configure PWM LED0 pin */
+  97:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_PWM_LED0_GPIO, PIN_PWM_LED0_FLAGS);
+  98:../src/ASF/sam/boards/cw305/init.c **** #endif
+  99:../src/ASF/sam/boards/cw305/init.c **** 
+ 100:../src/ASF/sam/boards/cw305/init.c **** #ifdef CONF_BOARD_PWM_LED1
+ 101:../src/ASF/sam/boards/cw305/init.c **** 	/* Configure PWM LED1 pin */
+ 102:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_PWM_LED1_GPIO, PIN_PWM_LED1_FLAGS);
+ 103:../src/ASF/sam/boards/cw305/init.c **** #endif
+ 104:../src/ASF/sam/boards/cw305/init.c **** 
+ 105:../src/ASF/sam/boards/cw305/init.c **** #ifdef CONF_BOARD_TWI0
+ 106:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(TWI0_DATA_GPIO, TWI0_DATA_FLAGS);
+ 107:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(TWI0_CLK_GPIO, TWI0_CLK_FLAGS);
+ 108:../src/ASF/sam/boards/cw305/init.c **** #endif
+ 109:../src/ASF/sam/boards/cw305/init.c **** 
+ 110:../src/ASF/sam/boards/cw305/init.c **** 	/* Configure SPI pins */
+ 111:../src/ASF/sam/boards/cw305/init.c **** #ifdef CONF_BOARD_SPI
+ 112:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(SPI_MISO_GPIO, SPI_MISO_FLAGS);
+ 113:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(SPI_MOSI_GPIO, SPI_MOSI_FLAGS);
+ 114:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(SPI_SPCK_GPIO, SPI_SPCK_FLAGS);
+ 115:../src/ASF/sam/boards/cw305/init.c **** 
+ 116:../src/ASF/sam/boards/cw305/init.c **** 	/**
+ 117:../src/ASF/sam/boards/cw305/init.c **** 	 * For NPCS 1, 2, and 3, different PINs can be used to access the same NPCS line.
+ 118:../src/ASF/sam/boards/cw305/init.c **** 	 * Depending on the application requirements, the default PIN may not be available.
+ 119:../src/ASF/sam/boards/cw305/init.c **** 	 * Hence a different PIN should be selected using the CONF_BOARD_SPI_NPCS_GPIO and
+ 120:../src/ASF/sam/boards/cw305/init.c **** 	 * CONF_BOARD_SPI_NPCS_FLAGS macros.
+ 121:../src/ASF/sam/boards/cw305/init.c **** 	 */
+ 122:../src/ASF/sam/boards/cw305/init.c **** 
+ 123:../src/ASF/sam/boards/cw305/init.c **** #  ifdef CONF_BOARD_SPI_NPCS0
+ 124:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(SPI_NPCS0_GPIO, SPI_NPCS0_FLAGS);
+ 125:../src/ASF/sam/boards/cw305/init.c **** #  endif
+ 126:../src/ASF/sam/boards/cw305/init.c **** 
+ 127:../src/ASF/sam/boards/cw305/init.c **** #endif /* CONF_BOARD_SPI */
+ 128:../src/ASF/sam/boards/cw305/init.c **** 
+ 129:../src/ASF/sam/boards/cw305/init.c **** #ifdef CONF_BOARD_USART_RXD
+ 130:../src/ASF/sam/boards/cw305/init.c **** 	/* Configure USART RXD pin */
+ 131:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_USART1_RXD_IDX, PIN_USART1_RXD_FLAGS);
+ 132:../src/ASF/sam/boards/cw305/init.c **** #endif
+ 133:../src/ASF/sam/boards/cw305/init.c **** 
+ 134:../src/ASF/sam/boards/cw305/init.c **** #ifdef CONF_BOARD_USART_TXD
+ 135:../src/ASF/sam/boards/cw305/init.c **** 	/* Configure USART TXD pin */
+ 136:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_USART1_TXD_IDX, PIN_USART1_TXD_FLAGS);
+ 137:../src/ASF/sam/boards/cw305/init.c **** #endif
+ 138:../src/ASF/sam/boards/cw305/init.c **** 
+ 139:../src/ASF/sam/boards/cw305/init.c **** #ifdef CONF_BOARD_USART_SCK
+ 140:../src/ASF/sam/boards/cw305/init.c **** 	/* Configure USART synchronous communication SCK pin */
+ 141:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_USART1_SCK_IDX, PIN_USART1_SCK_FLAGS);
+ 142:../src/ASF/sam/boards/cw305/init.c **** #endif
+ 143:../src/ASF/sam/boards/cw305/init.c **** 
+ 144:../src/ASF/sam/boards/cw305/init.c **** #ifdef CONF_BOARD_SMC_PSRAM
+ 145:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_DATA_BUS_D0, PIN_EBI_DATA_BUS_FLAG1);
+ 146:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_DATA_BUS_D1, PIN_EBI_DATA_BUS_FLAG1);
+ 147:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_DATA_BUS_D2, PIN_EBI_DATA_BUS_FLAG1);
+ 148:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_DATA_BUS_D3, PIN_EBI_DATA_BUS_FLAG1);
+ 149:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_DATA_BUS_D4, PIN_EBI_DATA_BUS_FLAG1);
+ 150:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_DATA_BUS_D5, PIN_EBI_DATA_BUS_FLAG1);
+ 151:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_DATA_BUS_D6, PIN_EBI_DATA_BUS_FLAG1);
+ 152:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_DATA_BUS_D7, PIN_EBI_DATA_BUS_FLAG1);
+ 153:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_DATA_BUS_D8, PIN_EBI_DATA_BUS_FLAG1);
+ 154:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_DATA_BUS_D9, PIN_EBI_DATA_BUS_FLAG1);
+ 155:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_DATA_BUS_D10, PIN_EBI_DATA_BUS_FLAG1);
+ 156:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_DATA_BUS_D11, PIN_EBI_DATA_BUS_FLAG1);
+ 157:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_DATA_BUS_D12, PIN_EBI_DATA_BUS_FLAG1);
+ 158:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_DATA_BUS_D13, PIN_EBI_DATA_BUS_FLAG1);
+ 159:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_DATA_BUS_D14, PIN_EBI_DATA_BUS_FLAG1);
+ 160:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_DATA_BUS_D15, PIN_EBI_DATA_BUS_FLAG2);
+ 161:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_NRD, PIN_EBI_NRD_FLAGS);
+ 162:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_NWE, PIN_EBI_NWE_FLAGS);
+ 163:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_NCS0, PIN_EBI_NCS0_FLAGS);
+ 164:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_ADDR_BUS_NBS0, PIN_EBI_ADDR_BUS_FLAG1);
+ 165:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_ADDR_BUS_NBS1, PIN_EBI_ADDR_BUS_FLAG2);
+ 166:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_ADDR_BUS_A1, PIN_EBI_ADDR_BUS_FLAG1);
+ 167:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_ADDR_BUS_A2, PIN_EBI_ADDR_BUS_FLAG2);
+ 168:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_ADDR_BUS_A3, PIN_EBI_ADDR_BUS_FLAG2);
+ 169:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_ADDR_BUS_A4, PIN_EBI_ADDR_BUS_FLAG2);
+ 170:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_ADDR_BUS_A5, PIN_EBI_ADDR_BUS_FLAG2);
+ 171:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_ADDR_BUS_A6, PIN_EBI_ADDR_BUS_FLAG2);
+ 172:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_ADDR_BUS_A7, PIN_EBI_ADDR_BUS_FLAG2);
+ 173:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_ADDR_BUS_A8, PIN_EBI_ADDR_BUS_FLAG2);
+ 174:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_ADDR_BUS_A9, PIN_EBI_ADDR_BUS_FLAG2);
+ 175:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_ADDR_BUS_A10, PIN_EBI_ADDR_BUS_FLAG2);
+ 176:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_ADDR_BUS_A11, PIN_EBI_ADDR_BUS_FLAG2);
+ 177:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_ADDR_BUS_A12, PIN_EBI_ADDR_BUS_FLAG2);
+ 178:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_ADDR_BUS_A13, PIN_EBI_ADDR_BUS_FLAG2);
+ 179:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_ADDR_BUS_A14, PIN_EBI_ADDR_BUS_FLAG2);
+ 180:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_ADDR_BUS_A15, PIN_EBI_ADDR_BUS_FLAG2);
+ 181:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_ADDR_BUS_A16, PIN_EBI_ADDR_BUS_FLAG2);
+ 182:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_ADDR_BUS_A17, PIN_EBI_ADDR_BUS_FLAG2);
+ 183:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_ADDR_BUS_A18, PIN_EBI_ADDR_BUS_FLAG2);
+ 184:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_ADDR_BUS_A19, PIN_EBI_ADDR_BUS_FLAG2);
+ 185:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_EBI_ADDR_BUS_A20, PIN_EBI_ADDR_BUS_FLAG2);
+ 186:../src/ASF/sam/boards/cw305/init.c **** #endif
+ 187:../src/ASF/sam/boards/cw305/init.c **** 
+ 188:../src/ASF/sam/boards/cw305/init.c **** 
+ 189:../src/ASF/sam/boards/cw305/init.c **** #ifdef CONF_BOARD_ISO7816_RST
+ 190:../src/ASF/sam/boards/cw305/init.c **** 	/* Configure ISO7816 card reset pin */
+ 191:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_ISO7816_RST_IDX, PIN_ISO7816_RST_FLAG);
+ 192:../src/ASF/sam/boards/cw305/init.c **** #endif
+ 193:../src/ASF/sam/boards/cw305/init.c **** 
+ 194:../src/ASF/sam/boards/cw305/init.c **** #ifdef CONF_BOARD_ISO7816
+ 195:../src/ASF/sam/boards/cw305/init.c **** 	/* Configure ISO7816 interface TXD & SCK pin */
+ 196:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_USART0_TXD_IDX, PIN_USART0_TXD_FLAGS);
+ 197:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_USART0_SCK_IDX, PIN_USART0_SCK_FLAGS);
+ 198:../src/ASF/sam/boards/cw305/init.c **** #endif
+ 199:../src/ASF/sam/boards/cw305/init.c **** 
+ 200:../src/ASF/sam/boards/cw305/init.c **** #ifdef CONF_BOARD_TWI0
+ 201:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(TWI0_DATA_GPIO, TWI0_DATA_FLAGS);
+ 202:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(TWI0_CLK_GPIO, TWI0_CLK_FLAGS);
+ 203:../src/ASF/sam/boards/cw305/init.c **** #endif
+ 204:../src/ASF/sam/boards/cw305/init.c **** 
+ 205:../src/ASF/sam/boards/cw305/init.c **** #ifdef CONF_BOARD_PCK0
+ 206:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(PIN_PCK0, PIN_PCK0_FLAGS);
+ 140              		.loc 1 206 0
+ 141 006e 1B20     		movs	r0, #27
+ 142 0070 4FF08051 		mov	r1, #268435456
+ 143 0074 A047     		blx	r4
+ 144              	.LVL14:
+ 145 0076 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 146              	.L8:
+ 147              		.align	2
+ 148              	.L7:
+ 149 0078 00000000 		.word	pio_configure_pin
+ 150 007c 00000000 		.word	pio_set_pin_low
+ 151 0080 00000000 		.word	pio_set_pin_high
+ 152 0084 000E0E40 		.word	1074662912
+ 153 0088 00000000 		.word	pio_configure_pin_group
+ 154 008c 00000000 		.word	pio_enable_output_write
+ 155 0090 000C0E40 		.word	1074662400
+ 156              		.cfi_endproc
+ 157              	.LFE129:
+ 159              		.section	.text.board_init,"ax",%progbits
+ 160              		.align	2
+ 161              		.global	board_init
+ 162              		.thumb
+ 163              		.thumb_func
+ 165              	board_init:
+ 166              	.LFB130:
+ 207:../src/ASF/sam/boards/cw305/init.c **** #endif
+ 208:../src/ASF/sam/boards/cw305/init.c **** 
+ 209:../src/ASF/sam/boards/cw305/init.c **** #ifdef CONF_BOARD_PCK1
+ 210:../src/ASF/sam/boards/cw305/init.c **** gpio_configure_pin(PIN_PCK1, PIN_PCK1_FLAGS);
+ 211:../src/ASF/sam/boards/cw305/init.c **** #endif
+ 212:../src/ASF/sam/boards/cw305/init.c **** 
+ 213:../src/ASF/sam/boards/cw305/init.c **** #if defined(CONF_BOARD_USB_PORT)
+ 214:../src/ASF/sam/boards/cw305/init.c **** #  if defined(CONF_BOARD_USB_VBUS_DETECT)
+ 215:../src/ASF/sam/boards/cw305/init.c **** 	gpio_configure_pin(USB_VBUS_PIN, USB_VBUS_FLAGS);
+ 216:../src/ASF/sam/boards/cw305/init.c **** #  endif
+ 217:../src/ASF/sam/boards/cw305/init.c **** #endif	
+ 218:../src/ASF/sam/boards/cw305/init.c **** }
+ 219:../src/ASF/sam/boards/cw305/init.c **** 
+ 220:../src/ASF/sam/boards/cw305/init.c **** void board_init(void)
+ 221:../src/ASF/sam/boards/cw305/init.c **** {
+ 167              		.loc 1 221 0
+ 168              		.cfi_startproc
+ 169              		@ args = 0, pretend = 0, frame = 0
+ 170              		@ frame_needed = 0, uses_anonymous_args = 0
+ 171 0000 10B5     		push	{r4, lr}
+ 172              	.LCFI2:
+ 173              		.cfi_def_cfa_offset 8
+ 174              		.cfi_offset 4, -8
+ 175              		.cfi_offset 14, -4
+ 222:../src/ASF/sam/boards/cw305/init.c **** #ifndef CONF_BOARD_KEEP_WATCHDOG_AT_INIT
+ 223:../src/ASF/sam/boards/cw305/init.c **** 	/* Disable the watchdog */
+ 224:../src/ASF/sam/boards/cw305/init.c **** 	WDT->WDT_MR = WDT_MR_WDDIS;
+ 176              		.loc 1 224 0
+ 177 0002 4FF40042 		mov	r2, #32768
+ 178 0006 064B     		ldr	r3, .L11
+ 179 0008 5A60     		str	r2, [r3, #4]
+ 180              	.LVL15:
+ 181              	.LBB14:
+ 182              	.LBB15:
+ 183              	.LBB16:
+ 184              	.LBB17:
+ 185              		.file 2 "../src/ASF/common/services/clock/sam3u/sysclk.h"
+   1:../src/ASF/common/services/clock/sam3u/sysclk.h **** /**
+   2:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \file
+   3:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+   4:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \brief Chip-specific system clock management functions.
+   5:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+   6:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
+   7:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+   8:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \asf_license_start
+   9:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+  10:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \page License
+  11:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+  12:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * Redistribution and use in source and binary forms, with or without
+  13:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * modification, are permitted provided that the following conditions are met:
+  14:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+  15:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * 1. Redistributions of source code must retain the above copyright notice,
+  16:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *    this list of conditions and the following disclaimer.
+  17:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+  18:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * 2. Redistributions in binary form must reproduce the above copyright notice,
+  19:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *    this list of conditions and the following disclaimer in the documentation
+  20:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *    and/or other materials provided with the distribution.
+  21:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+  22:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * 3. The name of Atmel may not be used to endorse or promote products derived
+  23:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *    from this software without specific prior written permission.
+  24:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+  25:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * 4. This software may only be redistributed and used in connection with an
+  26:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *    Atmel microcontroller product.
+  27:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+  28:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * THIS SOFTWARE IS PROVIDED BY ATMEL "AS IS" AND ANY EXPRESS OR IMPLIED
+  29:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  30:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT ARE
+  31:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * EXPRESSLY AND SPECIFICALLY DISCLAIMED. IN NO EVENT SHALL ATMEL BE LIABLE FOR
+  32:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  33:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+  34:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+  35:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+  36:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+  37:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  38:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * POSSIBILITY OF SUCH DAMAGE.
+  39:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+  40:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \asf_license_stop
+  41:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+  42:../src/ASF/common/services/clock/sam3u/sysclk.h ****  */
+  43:../src/ASF/common/services/clock/sam3u/sysclk.h **** 
+  44:../src/ASF/common/services/clock/sam3u/sysclk.h **** #ifndef CHIP_SYSCLK_H_INCLUDED
+  45:../src/ASF/common/services/clock/sam3u/sysclk.h **** #define CHIP_SYSCLK_H_INCLUDED
+  46:../src/ASF/common/services/clock/sam3u/sysclk.h **** 
+  47:../src/ASF/common/services/clock/sam3u/sysclk.h **** #include <osc.h>
+  48:../src/ASF/common/services/clock/sam3u/sysclk.h **** #include <pll.h>
+  49:../src/ASF/common/services/clock/sam3u/sysclk.h **** 
+  50:../src/ASF/common/services/clock/sam3u/sysclk.h **** /**
+  51:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \page sysclk_quickstart Quick Start Guide for the System Clock Management service (SAM3U)
+  52:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+  53:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * This is the quick start guide for the \ref sysclk_group "System Clock Management"
+  54:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * service, with step-by-step instructions on how to configure and use the service for
+  55:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * specific use cases.
+  56:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+  57:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \section sysclk_quickstart_usecases System Clock Management use cases
+  58:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * - \ref sysclk_quickstart_basic
+  59:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+  60:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \section sysclk_quickstart_basic Basic usage of the System Clock Management service
+  61:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * This section will present a basic use case for the System Clock Management service.
+  62:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * This use case will configure the main system clock to 96MHz, using an internal PLL
+  63:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * module to multiply the frequency of a crystal attached to the microcontroller.
+  64:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+  65:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \subsection sysclk_quickstart_use_case_1_prereq Prerequisites
+  66:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *  - None
+  67:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+  68:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \subsection sysclk_quickstart_use_case_1_setup_steps Initialization code
+  69:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * Add to the application initialization code:
+  70:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \code
+  71:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	sysclk_init();
+  72:../src/ASF/common/services/clock/sam3u/sysclk.h **** \endcode
+  73:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+  74:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \subsection sysclk_quickstart_use_case_1_setup_steps_workflow Workflow
+  75:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * -# Configure the system clocks according to the settings in conf_clock.h:
+  76:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *    \code sysclk_init(); \endcode
+  77:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+  78:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \subsection sysclk_quickstart_use_case_1_example_code Example code
+  79:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *   Add or uncomment the following in your conf_clock.h header file, commenting out all other
+  80:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *   definitions of the same symbol(s):
+  81:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *   \code
+  82:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	   #define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_PLLACK
+  83:../src/ASF/common/services/clock/sam3u/sysclk.h **** 
+  84:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	   // Fpll0 = (Fclk * PLL_mul) / PLL_div
+  85:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	   #define CONFIG_PLL0_SOURCE          PLL_SRC_MAINCK_XTAL
+  86:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	   #define CONFIG_PLL0_MUL             (96000000UL / BOARD_FREQ_MAINCK_XTAL)
+  87:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	   #define CONFIG_PLL0_DIV             1
+  88:../src/ASF/common/services/clock/sam3u/sysclk.h **** 
+  89:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	   // Fbus = Fsys / BUS_div
+  90:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	   #define CONFIG_SYSCLK_PRES          SYSCLK_PRES_1
+  91:../src/ASF/common/services/clock/sam3u/sysclk.h **** \endcode
+  92:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+  93:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \subsection sysclk_quickstart_use_case_1_example_workflow Workflow
+  94:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *  -# Configure the main system clock to use the output of the PLL module as its source:
+  95:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *   \code #define CONFIG_SYSCLK_SOURCE          SYSCLK_SRC_PLLACK \endcode
+  96:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *  -# Configure the PLL module to use the fast external fast crystal oscillator as its source:
+  97:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *   \code #define CONFIG_PLL0_SOURCE            PLL_SRC_MAINCK_XTAL \endcode
+  98:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *  -# Configure the PLL module to multiply the external fast crystal oscillator frequency up to 96
+  99:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *   \code
+ 100:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	#define CONFIG_PLL0_MUL             (96000000UL / BOARD_FREQ_MAINCK_XTAL)
+ 101:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	#define CONFIG_PLL0_DIV             1
+ 102:../src/ASF/common/services/clock/sam3u/sysclk.h **** \endcode
+ 103:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *   \note For user boards, \c BOARD_FREQ_MAINCK_XTAL should be defined in the board \c conf_board.
+ 104:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *         file as the frequency of the fast crystal attached to the microcontroller.
+ 105:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *  -# Configure the main clock to run at the full 96MHz, disable scaling of the main system clock 
+ 106:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *    \code
+ 107:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	#define CONFIG_SYSCLK_PRES         SYSCLK_PRES_1
+ 108:../src/ASF/common/services/clock/sam3u/sysclk.h **** \endcode
+ 109:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *    \note Some dividers are powers of two, while others are integer division factors. Refer to th
+ 110:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *          formulas in the conf_clock.h template commented above each division define.
+ 111:../src/ASF/common/services/clock/sam3u/sysclk.h ****  */
+ 112:../src/ASF/common/services/clock/sam3u/sysclk.h **** 
+ 113:../src/ASF/common/services/clock/sam3u/sysclk.h **** /// @cond 0
+ 114:../src/ASF/common/services/clock/sam3u/sysclk.h **** /**INDENT-OFF**/
+ 115:../src/ASF/common/services/clock/sam3u/sysclk.h **** #ifdef __cplusplus
+ 116:../src/ASF/common/services/clock/sam3u/sysclk.h **** extern "C" {
+ 117:../src/ASF/common/services/clock/sam3u/sysclk.h **** #endif
+ 118:../src/ASF/common/services/clock/sam3u/sysclk.h **** /**INDENT-ON**/
+ 119:../src/ASF/common/services/clock/sam3u/sysclk.h **** /// @endcond
+ 120:../src/ASF/common/services/clock/sam3u/sysclk.h **** 
+ 121:../src/ASF/common/services/clock/sam3u/sysclk.h **** /**
+ 122:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \weakgroup sysclk_group
+ 123:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * @{
+ 124:../src/ASF/common/services/clock/sam3u/sysclk.h ****  */
+ 125:../src/ASF/common/services/clock/sam3u/sysclk.h **** 
+ 126:../src/ASF/common/services/clock/sam3u/sysclk.h **** //! \name Configuration Symbols
+ 127:../src/ASF/common/services/clock/sam3u/sysclk.h **** //@{
+ 128:../src/ASF/common/services/clock/sam3u/sysclk.h **** /**
+ 129:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \def CONFIG_SYSCLK_SOURCE
+ 130:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \brief Initial/static main system clock source
+ 131:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+ 132:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * The main system clock will be configured to use this clock during
+ 133:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * initialization.
+ 134:../src/ASF/common/services/clock/sam3u/sysclk.h ****  */
+ 135:../src/ASF/common/services/clock/sam3u/sysclk.h **** #ifndef CONFIG_SYSCLK_SOURCE
+ 136:../src/ASF/common/services/clock/sam3u/sysclk.h **** # define CONFIG_SYSCLK_SOURCE   SYSCLK_SRC_MAINCK_4M_RC
+ 137:../src/ASF/common/services/clock/sam3u/sysclk.h **** #endif
+ 138:../src/ASF/common/services/clock/sam3u/sysclk.h **** /**
+ 139:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \def CONFIG_SYSCLK_PRES
+ 140:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \brief Initial CPU clock divider (mck)
+ 141:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+ 142:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * The MCK will run at
+ 143:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \f[
+ 144:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *   f_{MCK} = \frac{f_{sys}}{\mathrm{CONFIG\_SYSCLK\_PRES}}\,\mbox{Hz}
+ 145:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \f]
+ 146:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * after initialization.
+ 147:../src/ASF/common/services/clock/sam3u/sysclk.h ****  */
+ 148:../src/ASF/common/services/clock/sam3u/sysclk.h **** #ifndef CONFIG_SYSCLK_PRES
+ 149:../src/ASF/common/services/clock/sam3u/sysclk.h **** # define CONFIG_SYSCLK_PRES  0
+ 150:../src/ASF/common/services/clock/sam3u/sysclk.h **** #endif
+ 151:../src/ASF/common/services/clock/sam3u/sysclk.h **** 
+ 152:../src/ASF/common/services/clock/sam3u/sysclk.h **** //@}
+ 153:../src/ASF/common/services/clock/sam3u/sysclk.h **** 
+ 154:../src/ASF/common/services/clock/sam3u/sysclk.h **** //! \name Master Clock Sources (MCK)
+ 155:../src/ASF/common/services/clock/sam3u/sysclk.h **** //@{
+ 156:../src/ASF/common/services/clock/sam3u/sysclk.h **** #define SYSCLK_SRC_SLCK_RC              0       //!< Internal 32kHz RC oscillator as master source 
+ 157:../src/ASF/common/services/clock/sam3u/sysclk.h **** #define SYSCLK_SRC_SLCK_XTAL            1       //!< External 32kHz crystal oscillator as master so
+ 158:../src/ASF/common/services/clock/sam3u/sysclk.h **** #define SYSCLK_SRC_SLCK_BYPASS          2       //!< External 32kHz bypass oscillator as master sou
+ 159:../src/ASF/common/services/clock/sam3u/sysclk.h **** #define SYSCLK_SRC_MAINCK_4M_RC         3       //!< Internal 4MHz RC oscillator as master source c
+ 160:../src/ASF/common/services/clock/sam3u/sysclk.h **** #define SYSCLK_SRC_MAINCK_8M_RC         4       //!< Internal 8MHz RC oscillator as master source c
+ 161:../src/ASF/common/services/clock/sam3u/sysclk.h **** #define SYSCLK_SRC_MAINCK_12M_RC        5       //!< Internal 12MHz RC oscillator as master source 
+ 162:../src/ASF/common/services/clock/sam3u/sysclk.h **** #define SYSCLK_SRC_MAINCK_XTAL          6       //!< External crystal oscillator as master source c
+ 163:../src/ASF/common/services/clock/sam3u/sysclk.h **** #define SYSCLK_SRC_MAINCK_BYPASS        7       //!< External bypass oscillator as master source cl
+ 164:../src/ASF/common/services/clock/sam3u/sysclk.h **** #define SYSCLK_SRC_PLLACK               8       //!< Use PLLACK as master source clock
+ 165:../src/ASF/common/services/clock/sam3u/sysclk.h **** #define SYSCLK_SRC_UPLLCK               9       //!< Use UPLLCK as master source clock
+ 166:../src/ASF/common/services/clock/sam3u/sysclk.h **** //@}
+ 167:../src/ASF/common/services/clock/sam3u/sysclk.h **** 
+ 168:../src/ASF/common/services/clock/sam3u/sysclk.h **** //! \name Master Clock Prescalers (MCK)
+ 169:../src/ASF/common/services/clock/sam3u/sysclk.h **** //@{
+ 170:../src/ASF/common/services/clock/sam3u/sysclk.h **** #define SYSCLK_PRES_1           PMC_MCKR_PRES_CLK_1     //!< Set master clock prescaler to 1
+ 171:../src/ASF/common/services/clock/sam3u/sysclk.h **** #define SYSCLK_PRES_2           PMC_MCKR_PRES_CLK_2     //!< Set master clock prescaler to 2
+ 172:../src/ASF/common/services/clock/sam3u/sysclk.h **** #define SYSCLK_PRES_4           PMC_MCKR_PRES_CLK_4     //!< Set master clock prescaler to 4
+ 173:../src/ASF/common/services/clock/sam3u/sysclk.h **** #define SYSCLK_PRES_8           PMC_MCKR_PRES_CLK_8     //!< Set master clock prescaler to 8
+ 174:../src/ASF/common/services/clock/sam3u/sysclk.h **** #define SYSCLK_PRES_16          PMC_MCKR_PRES_CLK_16    //!< Set master clock prescaler to 16
+ 175:../src/ASF/common/services/clock/sam3u/sysclk.h **** #define SYSCLK_PRES_32          PMC_MCKR_PRES_CLK_32    //!< Set master clock prescaler to 32
+ 176:../src/ASF/common/services/clock/sam3u/sysclk.h **** #define SYSCLK_PRES_64          PMC_MCKR_PRES_CLK_64    //!< Set master clock prescaler to 64
+ 177:../src/ASF/common/services/clock/sam3u/sysclk.h **** #define SYSCLK_PRES_3           PMC_MCKR_PRES_CLK_3     //!< Set master clock prescaler to 3
+ 178:../src/ASF/common/services/clock/sam3u/sysclk.h **** //@}
+ 179:../src/ASF/common/services/clock/sam3u/sysclk.h **** 
+ 180:../src/ASF/common/services/clock/sam3u/sysclk.h **** /**
+ 181:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \def CONFIG_USBCLK_SOURCE
+ 182:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \brief Configuration symbol for the USB generic clock source
+ 183:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+ 184:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * Sets the clock source to use for the USB. The source must also be properly
+ 185:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * configured.
+ 186:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+ 187:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * Define this to one of the \c USBCLK_SRC_xxx settings. Leave it undefined if
+ 188:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * USB is not required.
+ 189:../src/ASF/common/services/clock/sam3u/sysclk.h ****  */
+ 190:../src/ASF/common/services/clock/sam3u/sysclk.h **** #ifdef __DOXYGEN__
+ 191:../src/ASF/common/services/clock/sam3u/sysclk.h **** # define CONFIG_USBCLK_SOURCE
+ 192:../src/ASF/common/services/clock/sam3u/sysclk.h **** #endif
+ 193:../src/ASF/common/services/clock/sam3u/sysclk.h **** 
+ 194:../src/ASF/common/services/clock/sam3u/sysclk.h **** /**
+ 195:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \def CONFIG_USBCLK_DIV
+ 196:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \brief Configuration symbol for the USB generic clock divider setting
+ 197:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+ 198:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * Sets the clock division for the USB generic clock. If a USB clock source is
+ 199:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * selected with CONFIG_USBCLK_SOURCE, this configuration symbol must also be
+ 200:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * defined.
+ 201:../src/ASF/common/services/clock/sam3u/sysclk.h ****  */
+ 202:../src/ASF/common/services/clock/sam3u/sysclk.h **** #ifdef __DOXYGEN__
+ 203:../src/ASF/common/services/clock/sam3u/sysclk.h **** # define CONFIG_USBCLK_DIV
+ 204:../src/ASF/common/services/clock/sam3u/sysclk.h **** #endif
+ 205:../src/ASF/common/services/clock/sam3u/sysclk.h **** 
+ 206:../src/ASF/common/services/clock/sam3u/sysclk.h **** /**
+ 207:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \name Querying the system clock
+ 208:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+ 209:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * The following functions may be used to query the current frequency of
+ 210:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * the system clock and the CPU and bus clocks derived from it.
+ 211:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * sysclk_get_main_hz() and sysclk_get_cpu_hz() can be assumed to be
+ 212:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * available on all platforms, although some platforms may define
+ 213:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * additional accessors for various chip-internal bus clocks. These are
+ 214:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * usually not intended to be queried directly by generic code.
+ 215:../src/ASF/common/services/clock/sam3u/sysclk.h ****  */
+ 216:../src/ASF/common/services/clock/sam3u/sysclk.h **** //@{
+ 217:../src/ASF/common/services/clock/sam3u/sysclk.h **** 
+ 218:../src/ASF/common/services/clock/sam3u/sysclk.h **** /**
+ 219:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \brief Return the current rate in Hz of the main system clock
+ 220:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+ 221:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \todo This function assumes that the main clock source never changes
+ 222:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * once it's been set up, and that PLL0 always runs at the compile-time
+ 223:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * configured default rate. While this is probably the most common
+ 224:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * configuration, which we want to support as a special case for
+ 225:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * performance reasons, we will at some point need to support more
+ 226:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * dynamic setups as well.
+ 227:../src/ASF/common/services/clock/sam3u/sysclk.h ****  */
+ 228:../src/ASF/common/services/clock/sam3u/sysclk.h **** #if (defined CONFIG_SYSCLK_DEFAULT_RETURNS_SLOW_OSC)
+ 229:../src/ASF/common/services/clock/sam3u/sysclk.h **** extern uint32_t sysclk_initialized;
+ 230:../src/ASF/common/services/clock/sam3u/sysclk.h **** #endif
+ 231:../src/ASF/common/services/clock/sam3u/sysclk.h **** static inline uint32_t sysclk_get_main_hz(void)
+ 232:../src/ASF/common/services/clock/sam3u/sysclk.h **** {
+ 233:../src/ASF/common/services/clock/sam3u/sysclk.h **** #if (defined CONFIG_SYSCLK_DEFAULT_RETURNS_SLOW_OSC)
+ 234:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	if (!sysclk_initialized ) {
+ 235:../src/ASF/common/services/clock/sam3u/sysclk.h **** 		return OSC_MAINCK_4M_RC_HZ;
+ 236:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	}
+ 237:../src/ASF/common/services/clock/sam3u/sysclk.h **** #endif
+ 238:../src/ASF/common/services/clock/sam3u/sysclk.h **** 
+ 239:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	/* Config system clock setting */
+ 240:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_SLCK_RC) {
+ 241:../src/ASF/common/services/clock/sam3u/sysclk.h **** 		return OSC_SLCK_32K_RC_HZ;
+ 242:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	} else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_SLCK_XTAL) {
+ 243:../src/ASF/common/services/clock/sam3u/sysclk.h **** 		return OSC_SLCK_32K_XTAL_HZ;
+ 244:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	} else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_SLCK_BYPASS) {
+ 245:../src/ASF/common/services/clock/sam3u/sysclk.h **** 		return OSC_SLCK_32K_BYPASS_HZ;
+ 246:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	} else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_MAINCK_4M_RC) {
+ 247:../src/ASF/common/services/clock/sam3u/sysclk.h **** 		return OSC_MAINCK_4M_RC_HZ;
+ 248:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	} else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_MAINCK_8M_RC) {
+ 249:../src/ASF/common/services/clock/sam3u/sysclk.h **** 		return OSC_MAINCK_8M_RC_HZ;
+ 250:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	} else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_MAINCK_12M_RC) {
+ 251:../src/ASF/common/services/clock/sam3u/sysclk.h **** 		return OSC_MAINCK_12M_RC_HZ;
+ 252:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	} else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_MAINCK_XTAL) {
+ 253:../src/ASF/common/services/clock/sam3u/sysclk.h **** 		return OSC_MAINCK_XTAL_HZ;
+ 254:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	} else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_MAINCK_BYPASS) {
+ 255:../src/ASF/common/services/clock/sam3u/sysclk.h **** 		return OSC_MAINCK_BYPASS_HZ;
+ 256:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	}
+ 257:../src/ASF/common/services/clock/sam3u/sysclk.h **** #ifdef CONFIG_PLL0_SOURCE
+ 258:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_PLLACK) {
+ 259:../src/ASF/common/services/clock/sam3u/sysclk.h **** 		return pll_get_default_rate(0);
+ 260:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	}
+ 261:../src/ASF/common/services/clock/sam3u/sysclk.h **** #endif
+ 262:../src/ASF/common/services/clock/sam3u/sysclk.h **** 
+ 263:../src/ASF/common/services/clock/sam3u/sysclk.h **** #ifdef CONFIG_PLL1_SOURCE
+ 264:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_UPLLCK) {
+ 265:../src/ASF/common/services/clock/sam3u/sysclk.h **** 		return PLL_UPLL_HZ;
+ 266:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	}
+ 267:../src/ASF/common/services/clock/sam3u/sysclk.h **** #endif
+ 268:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	else {
+ 269:../src/ASF/common/services/clock/sam3u/sysclk.h **** 		/* unhandled_case(CONFIG_SYSCLK_SOURCE); */
+ 270:../src/ASF/common/services/clock/sam3u/sysclk.h **** 		return 0;
+ 271:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	}
+ 272:../src/ASF/common/services/clock/sam3u/sysclk.h **** }
+ 273:../src/ASF/common/services/clock/sam3u/sysclk.h **** 
+ 274:../src/ASF/common/services/clock/sam3u/sysclk.h **** /**
+ 275:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \brief Return the current rate in Hz of the CPU clock
+ 276:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+ 277:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \todo This function assumes that the CPU always runs at the system
+ 278:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * clock frequency. We want to support at least two more scenarios:
+ 279:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * Fixed CPU/bus clock dividers (config symbols) and dynamic CPU/bus
+ 280:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * clock dividers (which may change at run time). Ditto for all the bus
+ 281:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * clocks.
+ 282:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+ 283:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \return Frequency of the CPU clock, in Hz.
+ 284:../src/ASF/common/services/clock/sam3u/sysclk.h ****  */
+ 285:../src/ASF/common/services/clock/sam3u/sysclk.h **** static inline uint32_t sysclk_get_cpu_hz(void)
+ 286:../src/ASF/common/services/clock/sam3u/sysclk.h **** {
+ 287:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	/* CONFIG_SYSCLK_PRES is the register value for setting the expected */
+ 288:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	/* prescaler, not an immediate value. */
+ 289:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	return sysclk_get_main_hz() /
+ 290:../src/ASF/common/services/clock/sam3u/sysclk.h **** 		((CONFIG_SYSCLK_PRES == SYSCLK_PRES_3) ? 3 :
+ 291:../src/ASF/common/services/clock/sam3u/sysclk.h **** 			(1 << (CONFIG_SYSCLK_PRES >> PMC_MCKR_PRES_Pos)));
+ 292:../src/ASF/common/services/clock/sam3u/sysclk.h **** }
+ 293:../src/ASF/common/services/clock/sam3u/sysclk.h **** 
+ 294:../src/ASF/common/services/clock/sam3u/sysclk.h **** /**
+ 295:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \brief Retrieves the current rate in Hz of the peripheral clocks.
+ 296:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+ 297:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \return Frequency of the peripheral clocks, in Hz.
+ 298:../src/ASF/common/services/clock/sam3u/sysclk.h ****  */
+ 299:../src/ASF/common/services/clock/sam3u/sysclk.h **** static inline uint32_t sysclk_get_peripheral_hz(void)
+ 300:../src/ASF/common/services/clock/sam3u/sysclk.h **** {
+ 301:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	/* CONFIG_SYSCLK_PRES is the register value for setting the expected */
+ 302:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	/* prescaler, not an immediate value. */
+ 303:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	return sysclk_get_main_hz() /
+ 304:../src/ASF/common/services/clock/sam3u/sysclk.h **** 		((CONFIG_SYSCLK_PRES == SYSCLK_PRES_3) ? 3 :
+ 305:../src/ASF/common/services/clock/sam3u/sysclk.h **** 			(1 << (CONFIG_SYSCLK_PRES >> PMC_MCKR_PRES_Pos)));
+ 306:../src/ASF/common/services/clock/sam3u/sysclk.h **** }
+ 307:../src/ASF/common/services/clock/sam3u/sysclk.h **** 
+ 308:../src/ASF/common/services/clock/sam3u/sysclk.h **** /**
+ 309:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \brief Retrieves the current rate in Hz of the Peripheral Bus clock attached
+ 310:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *        to the specified peripheral.
+ 311:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+ 312:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \param module Pointer to the module's base address.
+ 313:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+ 314:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \return Frequency of the bus attached to the specified peripheral, in Hz.
+ 315:../src/ASF/common/services/clock/sam3u/sysclk.h ****  */
+ 316:../src/ASF/common/services/clock/sam3u/sysclk.h **** static inline uint32_t sysclk_get_peripheral_bus_hz(const volatile void *module)
+ 317:../src/ASF/common/services/clock/sam3u/sysclk.h **** {
+ 318:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	UNUSED(module);
+ 319:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	return sysclk_get_peripheral_hz();
+ 320:../src/ASF/common/services/clock/sam3u/sysclk.h **** }
+ 321:../src/ASF/common/services/clock/sam3u/sysclk.h **** //@}
+ 322:../src/ASF/common/services/clock/sam3u/sysclk.h **** 
+ 323:../src/ASF/common/services/clock/sam3u/sysclk.h **** //! \name Enabling and disabling synchronous clocks
+ 324:../src/ASF/common/services/clock/sam3u/sysclk.h **** //@{
+ 325:../src/ASF/common/services/clock/sam3u/sysclk.h **** 
+ 326:../src/ASF/common/services/clock/sam3u/sysclk.h **** /**
+ 327:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \brief Enable a peripheral's clock.
+ 328:../src/ASF/common/services/clock/sam3u/sysclk.h ****  *
+ 329:../src/ASF/common/services/clock/sam3u/sysclk.h ****  * \param ul_id Id (number) of the peripheral clock.
+ 330:../src/ASF/common/services/clock/sam3u/sysclk.h ****  */
+ 331:../src/ASF/common/services/clock/sam3u/sysclk.h **** static inline void sysclk_enable_peripheral_clock(uint32_t ul_id)
+ 332:../src/ASF/common/services/clock/sam3u/sysclk.h **** {
+ 333:../src/ASF/common/services/clock/sam3u/sysclk.h **** 	pmc_enable_periph_clk(ul_id);
+ 186              		.loc 2 333 0
+ 187 000a 0A20     		movs	r0, #10
+ 188 000c 054C     		ldr	r4, .L11+4
+ 189 000e A047     		blx	r4
+ 190              	.LVL16:
+ 191              	.LBE17:
+ 192              	.LBE16:
+ 193              	.LBB18:
+ 194              	.LBB19:
+ 195 0010 0B20     		movs	r0, #11
+ 196 0012 A047     		blx	r4
+ 197              	.LVL17:
+ 198              	.LBE19:
+ 199              	.LBE18:
+ 200              	.LBB20:
+ 201              	.LBB21:
+ 202 0014 0C20     		movs	r0, #12
+ 203 0016 A047     		blx	r4
+ 204              	.LVL18:
+ 205              	.LBE21:
+ 206              	.LBE20:
+ 207              	.LBE15:
+ 208              	.LBE14:
+ 225:../src/ASF/sam/boards/cw305/init.c **** #endif
+ 226:../src/ASF/sam/boards/cw305/init.c **** 
+ 227:../src/ASF/sam/boards/cw305/init.c **** 	/* GPIO has been deprecated, the old code just keeps it for compatibility.
+ 228:../src/ASF/sam/boards/cw305/init.c **** 	 * In new designs IOPORT is used instead.
+ 229:../src/ASF/sam/boards/cw305/init.c **** 	 * Here IOPORT must be initialized for others to use before setting up IO.
+ 230:../src/ASF/sam/boards/cw305/init.c **** 	 */
+ 231:../src/ASF/sam/boards/cw305/init.c **** 	ioport_init();
+ 232:../src/ASF/sam/boards/cw305/init.c **** 
+ 233:../src/ASF/sam/boards/cw305/init.c **** 	iopins_normal();
+ 209              		.loc 1 233 0
+ 210 0018 034B     		ldr	r3, .L11+8
+ 211 001a 9847     		blx	r3
+ 212              	.LVL19:
+ 213 001c 10BD     		pop	{r4, pc}
+ 214              	.L12:
+ 215 001e 00BF     		.align	2
+ 216              	.L11:
+ 217 0020 50120E40 		.word	1074664016
+ 218 0024 00000000 		.word	pmc_enable_periph_clk
+ 219 0028 00000000 		.word	iopins_normal
+ 220              		.cfi_endproc
+ 221              	.LFE130:
+ 223              		.section	.bss.cpu_irq_critical_section_counter,"aw",%nobits
+ 224              		.align	2
+ 227              	cpu_irq_critical_section_counter:
+ 228 0000 00000000 		.space	4
+ 229              		.section	.bss.cpu_irq_prev_interrupt_state,"aw",%nobits
+ 232              	cpu_irq_prev_interrupt_state:
+ 233 0000 00       		.space	1
+ 234              		.text
+ 235              	.Letext0:
+ 236              		.file 3 "c:\\program files (x86)\\atmel\\studio\\7.0\\toolchain\\arm\\arm-gnu-toolchain\\arm-none-
+ 237              		.file 4 "c:\\program files (x86)\\atmel\\studio\\7.0\\toolchain\\arm\\arm-gnu-toolchain\\arm-none-
+ 238              		.file 5 "../src/ASF/sam/utils/cmsis/sam3u/include/sam3u2e.h"
+ 239              		.file 6 "../src/ASF/sam/utils/cmsis/sam3u/include/component/component_pio.h"
+ 240              		.file 7 "../src/ASF/sam/utils/cmsis/sam3u/include/component/component_wdt.h"
+ 241              		.file 8 "../src/ASF/common/services/ioport/sam/ioport_pio.h"
+ 242              		.file 9 "../src/ASF/common/services/ioport/ioport.h"
+ 243              		.file 10 "../src/ASF/common/utils/interrupt/interrupt_sam_nvic.h"
+ 244              		.file 11 "../src/ASF/thirdparty/CMSIS/Include/core_cm3.h"
+ 245              		.file 12 "../src/ASF/sam/drivers/pio/pio.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 init.c
+C:\Users\colin\AppData\Local\Temp\ccYPgVsy.s:19     .text.iopins_sleep:00000000 $t
+C:\Users\colin\AppData\Local\Temp\ccYPgVsy.s:24     .text.iopins_sleep:00000000 iopins_sleep
+C:\Users\colin\AppData\Local\Temp\ccYPgVsy.s:45     .text.iopins_sleep:0000000c $d
+C:\Users\colin\AppData\Local\Temp\ccYPgVsy.s:50     .text.iopins_normal:00000000 $t
+C:\Users\colin\AppData\Local\Temp\ccYPgVsy.s:55     .text.iopins_normal:00000000 iopins_normal
+C:\Users\colin\AppData\Local\Temp\ccYPgVsy.s:149    .text.iopins_normal:00000078 $d
+C:\Users\colin\AppData\Local\Temp\ccYPgVsy.s:160    .text.board_init:00000000 $t
+C:\Users\colin\AppData\Local\Temp\ccYPgVsy.s:165    .text.board_init:00000000 board_init
+C:\Users\colin\AppData\Local\Temp\ccYPgVsy.s:217    .text.board_init:00000020 $d
+C:\Users\colin\AppData\Local\Temp\ccYPgVsy.s:224    .bss.cpu_irq_critical_section_counter:00000000 $d
+C:\Users\colin\AppData\Local\Temp\ccYPgVsy.s:227    .bss.cpu_irq_critical_section_counter:00000000 cpu_irq_critical_section_counter
+C:\Users\colin\AppData\Local\Temp\ccYPgVsy.s:232    .bss.cpu_irq_prev_interrupt_state:00000000 cpu_irq_prev_interrupt_state
+C:\Users\colin\AppData\Local\Temp\ccYPgVsy.s:233    .bss.cpu_irq_prev_interrupt_state:00000000 $d
+                     .debug_frame:00000010 $d
+                           .group:00000000 wm4.0.738cd1dff6e476bef2e1e0b99fec4f4f
+                           .group:00000000 wm4.stddef.h.39.daafd3d79fe2f3a84d2d73d7d4e706f8
+                           .group:00000000 wm4.parts.h.45.afc900689b2c82332e69d798acedc875
+                           .group:00000000 wm4.tpaste.h.45.af3ee36765243b162c88f7f944858426
+                           .group:00000000 wm4.stringz.h.45.c4f6cbe0005e6c1d2139bc6c0e4f4722
+                           .group:00000000 wm4.mrepeat.h.59.c5daaed201a4340b0edf435161d0b77f
+                           .group:00000000 wm4.features.h.22.2e382148a0560adabf236cddd4e880f4
+                           .group:00000000 wm4._default_types.h.15.933e8edd27a65e0b69af4a865eb623d2
+                           .group:00000000 wm4._intsup.h.10.b2832a532eae49c14d45880be6d4ca65
+                           .group:00000000 wm4._stdint.h.10.f76354baea1c7088202064e6f3d4f5e3
+                           .group:00000000 wm4.stdint.h.23.373a9d32a9e4c2e88fd347156532d281
+                           .group:00000000 wm4.sam3u2e.h.224.0dd3d6dd7ebd015c591c55f903ce78e7
+                           .group:00000000 wm4.core_cm3.h.32.5c59c312db585622d253fdb887b0afb1
+                           .group:00000000 wm4.core_cmInstr.h.25.d8165482ef3061013a2fc83e2d85f3d9
+                           .group:00000000 wm4.core_cm3.h.127.b561404f2a159dc517b409bc244d16c1
+                           .group:00000000 wm4.component_adc.h.43.d49887380d07d1cd08cc4e37b3485e31
+                           .group:00000000 wm4.component_adc12b.h.43.eadc09f1073923fb91f1f393cc397dcb
+                           .group:00000000 wm4.component_chipid.h.43.15825c969b1cc9eeea3d9416499874c8
+                           .group:00000000 wm4.component_dmac.h.43.cc8187b1cf6bfeadc91b14fdd28b9e8b
+                           .group:00000000 wm4.component_efc.h.43.cb1b3997ad9ea3733ad421ecbfd02fdd
+                           .group:00000000 wm4.component_gpbr.h.43.49b7e13894fe38b29f2243bbbe530227
+                           .group:00000000 wm4.component_hsmci.h.43.7b7194c92e1480c038f3342f7cec440a
+                           .group:00000000 wm4.component_matrix.h.43.1d209838fb75b4827119203a357141ee
+                           .group:00000000 wm4.component_pdc.h.43.19528a5f9ef5a348234ea06f89069c55
+                           .group:00000000 wm4.component_pio.h.43.163b46c3683ccf92e8de39a5554f50e8
+                           .group:00000000 wm4.component_pmc.h.43.ee4f030602866917aeed15fb2b948de8
+                           .group:00000000 wm4.component_pwm.h.43.ab6262a86f0aea354b43fe6dce7e7eb3
+                           .group:00000000 wm4.component_rstc.h.43.4eb59dc2ddcf585fabf251d0c329fcdd
+                           .group:00000000 wm4.component_rtc.h.43.ba8ccafc772b11d562a3cceab8b95072
+                           .group:00000000 wm4.component_rtt.h.43.3206ef8f067e5e747c3c4c7e719c1429
+                           .group:00000000 wm4.component_smc.h.43.907847915f1a5616734199d7e34424fa
+                           .group:00000000 wm4.component_spi.h.43.a2a09df64ab768c0a32be55285c74ded
+                           .group:00000000 wm4.component_ssc.h.43.d7c78f990c13fc511671b64798c4bcd0
+                           .group:00000000 wm4.component_supc.h.43.7d17f8e5ed3ba815e84381152735062f
+                           .group:00000000 wm4.component_tc.h.43.662eac8137408372b4f9d26c0b5f8621
+                           .group:00000000 wm4.component_twi.h.43.eda18625bd851fc4605861f5b3240c0b
+                           .group:00000000 wm4.component_uart.h.43.2d92735c5ea05c973661e1ba99a2f37c
+                           .group:00000000 wm4.component_udphs.h.43.21cecd26a4e44df0013037f29f2716e4
+                           .group:00000000 wm4.component_usart.h.43.7872f8f455adb38b67b9fbdb15657fbe
+                           .group:00000000 wm4.component_wdt.h.43.e31e10a5469b62c3660b49ab250f802f
+                           .group:00000000 wm4.instance_hsmci.h.43.e233236cc7fd5a805539a7ecc0e1d8d2
+                           .group:00000000 wm4.instance_ssc.h.43.c0cfabc3b9f3bb60745c913111bce965
+                           .group:00000000 wm4.instance_spi.h.43.570ae46af19e4179d9796872b9a8b9bc
+                           .group:00000000 wm4.instance_tc0.h.43.049b3a82387d2961594190609e896a29
+                           .group:00000000 wm4.instance_twi0.h.43.255dc0afa9e0d45eaea0a935eca2f103
+                           .group:00000000 wm4.instance_twi1.h.43.652d1d407893f259f2a817544ba662c2
+                           .group:00000000 wm4.instance_pwm.h.43.88294acec3ca56d6fc521038521a1567
+                           .group:00000000 wm4.instance_usart0.h.43.e26677512aee3dd3bedd71d394410000
+                           .group:00000000 wm4.instance_usart1.h.43.1ba97dbc6610d9fb3132b9d845688201
+                           .group:00000000 wm4.instance_usart2.h.43.baa1bf30b3c5acdee90c4a1f50fe9ebd
+                           .group:00000000 wm4.instance_usart3.h.43.f6638d1b78bcba70ca95fca279d33914
+                           .group:00000000 wm4.instance_udphs.h.43.b1ce94181e0d1f22877b81c6040a4363
+                           .group:00000000 wm4.instance_adc12b.h.43.d73ed59e867ccdfdb846d9ef32a50c0c
+                           .group:00000000 wm4.instance_adc.h.43.2b7611a00afeb4c555339b844d4b8456
+                           .group:00000000 wm4.instance_dmac.h.43.ee72691d84889c8f285932be4a075ddb
+                           .group:00000000 wm4.instance_smc.h.43.29610fd00979caaaa65821ad40e9da06
+                           .group:00000000 wm4.instance_matrix.h.43.01ee474141594385374c41a29daeeefe
+                           .group:00000000 wm4.instance_pmc.h.43.37430325ed7b8b24c3fe640c41c29ef5
+                           .group:00000000 wm4.instance_uart.h.43.bd378395ba022bc8670c82ebe656fbbd
+                           .group:00000000 wm4.instance_chipid.h.43.29cd8fb600f149aa58830fcc78fe36f9
+                           .group:00000000 wm4.instance_efc0.h.43.6b85dba20721a7e9fc4350e78d193680
+                           .group:00000000 wm4.instance_efc1.h.43.2c5e94fc4d2742678318d73450d08d57
+                           .group:00000000 wm4.instance_pioa.h.43.eeb46cc3bfe01a1f28e67aa3a6851ed8
+                           .group:00000000 wm4.instance_piob.h.43.652ce26b6c37ac56f9ed42a9216d9aca
+                           .group:00000000 wm4.instance_pioc.h.43.d9706cf766637d6b3ed9886aa3ef7261
+                           .group:00000000 wm4.instance_rstc.h.43.c5de224364a50a85f237c0b864aa4c8f
+                           .group:00000000 wm4.instance_supc.h.43.a5f1a5ca08f468ccf34ed3653e045f1f
+                           .group:00000000 wm4.instance_rtt.h.43.8622b192c23334996132415e3095df7f
+                           .group:00000000 wm4.instance_wdt.h.43.407ea53e133eacf09acf2c7fcb6b7524
+                           .group:00000000 wm4.instance_rtc.h.43.f70b77f9180401c8d9d920cb4a1cd166
+                           .group:00000000 wm4.instance_gpbr.h.43.9066cb40d557f6755101368854272348
+                           .group:00000000 wm4.sam3u2e.h.318.b69dc6db89bb8a018eede87e67bbc95d
+                           .group:00000000 wm4.pio_sam3u2e.h.43.21412830fa1fb9ca8a54ce10fede3251
+                           .group:00000000 wm4.sam3u2e.h.456.687e75a22829f9ea89425dc4ee4ff5e3
+                           .group:00000000 wm4.newlib.h.8.2702bca278809460f0af6fba1d84eb68
+                           .group:00000000 wm4.config.h.220.a09b0b0de3c25be3f39d71990e617bff
+                           .group:00000000 wm4._ansi.h.23.9f8fcfa20193763fcf364fb91705c94b
+                           .group:00000000 wm4.stdio.h.31.7c0e28c411445f3f9c5b11accf882760
+                           .group:00000000 wm4.stddef.h.158.a7efb00f6cbc6f43213b50e183c9830c
+                           .group:00000000 wm4.cdefs.h.47.3052445825803de6c3a3b68ec8193866
+                           .group:00000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:00000000 wm4.lock.h.2.9bc98482741e5e2a9450b12934a684ea
+                           .group:00000000 wm4._types.h.54.d3d34a3b7f3cc230cd159baf022b4b08
+                           .group:00000000 wm4.stddef.h.158.61317cdbfb4026324507d123a50b0fd6
+                           .group:00000000 wm4.reent.h.17.8bd9e4098e0428508c282cad794fae43
+                           .group:00000000 wm4.types.h.23.0d949686bbcadd1621462d4fa1f884f9
+                           .group:00000000 wm4.types.h.2.e9cec8c90ab35f77d9f499e06ae02400
+                           .group:00000000 wm4.types.h.81.ded4e8fbe2d299b79c956dc834e43661
+                           .group:00000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:00000000 wm4.stdio.h.68.a99a2db1e55915cfd1b035cc1e9fcff1
+                           .group:00000000 wm4.stdbool.h.29.1c9ee6859ce8145f7838a4f2549ccec2
+                           .group:00000000 wm4.stdlib.h.13.4ed386f5c1a80d71e72172885d946ef2
+                           .group:00000000 wm4.alloca.h.8.dfc0c703c47ec3e69746825b17d9e66d
+                           .group:00000000 wm4.stdlib.h.54.cd3744e0b066087ec8fbb1bdc22d1043
+                           .group:00000000 wm4.compiler.h.88.e36be790b5e347a01e6762426f60e643
+                           .group:00000000 wm4.interrupt_sam_nvic.h.45.4876da6c127868305d66389e87e0876f
+                           .group:00000000 wm4.compiler.h.424.ee053ef8246023ebdcca352464bd827f
+                           .group:00000000 wm4.board.h.48.65a1121757770b1f35082f441cf76a80
+                           .group:00000000 wm4.cw305.h.62.dac9fb9dfce9a952db76825701f7d0e3
+                           .group:00000000 wm4.conf_board.h.45.70bf2c00e4b6207ed20025d19fb3f7df
+                           .group:00000000 wm4.pio.h.45.95f22b0ea02ddc698ec54fc56bf6f38c
+                           .group:00000000 wm4.sam_gpio.h.50.76a45c51855d665134f8211cd601d693
+                           .group:00000000 wm4.conf_clock.h.45.5dc276d21b4d793a62f1a9757cc18d5c
+                           .group:00000000 wm4.pmc.h.45.bbe1bf97a811e3b283420b2eeadf0b35
+                           .group:00000000 wm4.osc.h.94.b766cddafe899eca01d775f7b2906680
+                           .group:00000000 wm4.pll.h.45.a605c31ca466ae25752a678e8572be48
+                           .group:00000000 wm4.sysclk.h.156.541a142b0016a365728ea1f7c0e3db84
+                           .group:00000000 wm4.ioport_pio.h.48.ed5d46e6d54e52a0d911701ea78aab96
+                           .group:00000000 wm4.fpga_program.h.36.3c32ac607aaf9f094bbaf86380e99537
+
+UNDEFINED SYMBOLS
+pio_set_pin_low
+pio_configure_pin
+pio_set_pin_high
+pio_configure_pin_group
+pio_enable_output_write
+pmc_enable_periph_clk
