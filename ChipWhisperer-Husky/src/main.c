@@ -17,12 +17,6 @@ char usb_serial_number[33] = "000000000000DEADBEEF";
 void phywhisperer_setup_pins(void)
 {
     board_init();
-    ioport_set_pin_mode(BUTTON_IN, IOPORT_MODE_PULLUP); //(1 << 2) = PULL UP
-    PIOA->PIO_ODR = (1 << BUTTON_IN);
-    PIOA->PIO_PUER = (1 << BUTTON_IN); // enable pullup
-    PIOA->PIO_DIFSR = (1 << BUTTON_IN); //enable debounce
-
-    PIOA->PIO_OER = (1 << F_VB5V) | (1 << F_VBHOST); //enable output mode on VBHOST/VBSNIFF pins
 
     
     //Configure FPGA to allow programming via USB
