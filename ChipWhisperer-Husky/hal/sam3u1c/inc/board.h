@@ -143,6 +143,7 @@ extern "C" {
 #define DUMMY_BOARD               100  //!< Dummy board to support board-independent applications (e.g. bootloader)
 #define CWLITE                    101  //!<ChipWhisperer Lite
 #define CW521                     106  //!<ChipWhisperer CW521
+#define CW1190                    107  //!<ChipWhisperer CW Husky
 //! @}
 
 /*! \name Extension Boards
@@ -326,6 +327,8 @@ extern "C" {
 #  include "cwlite/cw_lite.h"
 #elif BOARD == CW521
 #  include "cw521/cw521.h"
+#elif BOARD == CW1190
+#  include "cw1190/cw1190.h"
 #elif BOARD == DUMMY_BOARD
 #  include "dummy/dummy_board.h"
 #else
