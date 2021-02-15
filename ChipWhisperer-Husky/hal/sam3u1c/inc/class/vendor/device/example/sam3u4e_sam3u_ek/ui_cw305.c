@@ -45,6 +45,8 @@
 #include "ui.h"
 #include "tasks.h"
 
+#error("This file should not be pulled in I think")
+
 void ui_init(void)
 {
 	// Initialize LEDs

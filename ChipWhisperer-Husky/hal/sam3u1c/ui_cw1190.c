@@ -53,15 +53,14 @@ void ui_init(void)
 	//LED_Off(LED2_GPIO);
 }
 
+
 void ui_powerdown(void)
 {
 	LED_Off(LED0_GPIO);
 	LED_Off(LED1_GPIO);
-	//LED_Off(LED2_GPIO);
 	
 	// Power off FPGA
 	//board_sram_pwroff();
-		
 }
 
 void ui_wakeup(void)
