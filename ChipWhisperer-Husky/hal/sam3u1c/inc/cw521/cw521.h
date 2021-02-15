@@ -83,9 +83,9 @@
  */
 
 /** Name of the board */
-#define BOARD_NAME "ChipWhisperer-CW521"
+#define BOARD_NAME "ChipWhisperer-Husky"
 /** Board definition */
-#define cw521
+#define cw1190
 /** Family definition (already defined) */
 #define sam3u
 /** Core definition */
@@ -144,8 +144,6 @@
 #define PIN_EBI_ADDR_BUS_A6        PIO_PB4_IDX
 #define PIN_EBI_ADDR_BUS_A7        PIO_PB5_IDX
 
-
-
 /** EBI NRD pin */
 #define PIN_EBI_NRD                 PIO_PB19_IDX
 #define PIN_EBI_NRD_FLAGS       PIO_PERIPH_A | PIO_PULLUP
@@ -186,10 +184,10 @@
 #define BOARD_NUM_OF_LED 2
 
 //! General Pins
-#define PIN_PWRON_GPIO	  PIO_PA24_IDX
-#define PIN_PWRON_FLAGS  (PIO_TYPE_PIO_OUTPUT_0 | PIO_DEFAULT) 
-#define board_pwron()     gpio_set_pin_low(PIN_PWRON_GPIO)
-#define board_pwroff()    gpio_set_pin_high(PIN_PWRON_GPIO)
+#define PIN_PWRON_GPIO	  PIO_PB18_IDX
+#define PIN_PWRON_FLAGS  (PIO_TYPE_PIO_OUTPUT_1 | PIO_DEFAULT) 
+#define board_pwron()     gpio_set_pin_high(PIN_PWRON_GPIO)
+#define board_pwroff()    gpio_set_pin_low(PIN_PWRON_GPIO)
 
 	
 /** Base address of PSRAM */
