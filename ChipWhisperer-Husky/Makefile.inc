@@ -482,7 +482,7 @@ extcoff: $(TARGET-PLAT).elf
 
 
 # Compile: create object files from C source files.
-$(OBJDIR)/%.o : %.c clean_objs $(OBJDIR) .dep begin gccversion
+$(OBJDIR)/%.o : %.c $(OBJDIR) .dep begin gccversion
 	@$(ECHO_BLANK)
 	@echo $(MSG_COMPILING) $<
 	$(CC) -c $(ALL_CFLAGS) $< -o $@
@@ -490,7 +490,7 @@ $(OBJDIR)/%.o : %.c clean_objs $(OBJDIR) .dep begin gccversion
 
 
 # Compile: create object files from C++ source files.
-$(OBJDIR)/%.o : %.cpp clean_objs $(OBJDIR) .dep begin gccversion
+$(OBJDIR)/%.o : %.cpp $(OBJDIR) .dep begin gccversion
 	@$(ECHO_BLANK)
 	@echo $(MSG_COMPILING_CPP) $<
 	$(CC) -c $(ALL_CPPFLAGS) $< -o $@ 
@@ -507,7 +507,7 @@ $(OBJDIR)/%.o : %.cpp clean_objs $(OBJDIR) .dep begin gccversion
 
 
 # Assemble: create object files from assembler source files.
-$(OBJDIR)/%.o : %.S clean_objs $(OBJDIR) .dep begin gccversion
+$(OBJDIR)/%.o : %.S $(OBJDIR) .dep begin gccversion
 	@$(ECHO_BLANK)
 	@echo $(MSG_ASSEMBLING) $<
 	$(CC) -c $(ALL_ASFLAGS) $< -o $@

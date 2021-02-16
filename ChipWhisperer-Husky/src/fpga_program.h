@@ -50,9 +50,9 @@
 #define SPI_SPCK_FLAGS (PIO_PERIPH_A | PIO_DEFAULT)
 */
 
-#define PIN_FPGA_PROGRAM_GPIO PIO_PA20_IDX
-#define PIN_FPGA_INITB_GPIO PIO_PA21_IDX
-#define PIN_FPGA_DONE_GPIO PIO_PA19_IDX
+#define PIN_FPGA_PROGRAM_GPIO PIO_PA25_IDX
+#define PIN_FPGA_INITB_GPIO PIO_PA26_IDX
+#define PIN_FPGA_DONE_GPIO PIO_PA7_IDX
 #define FPGA_PROG_USART USART0
 #define PIN_FPGA_CCLK_GPIO PIO_PA17_IDX
 #define PIN_FPGA_DO_GPIO PIO_PA18_IDX
@@ -74,31 +74,29 @@
 #define PIN_FPGA_DONE_FLAGS     (PIO_TYPE_PIO_INPUT | PIO_DEFAULT)
 #define	FPGA_ISDONE()			gpio_pin_is_high(PIN_FPGA_DONE_GPIO)
 
-#define PIN_FPGA_CCLK_FLAGS		(PIO_TYPE_PIO_OUTPUT_0 | PIO_DEFAULT)
-#define FPGA_CCLK_LOW()			gpio_set_pin_low(PIN_FPGA_CCLK_GPIO)
-#define FPGA_CCLK_HIGH()		gpio_set_pin_high(PIN_FPGA_CCLK_GPIO)
-#define FPGA_CCLK_SETUP()		gpio_configure_pin(PIN_FPGA_CCLK_GPIO, PIN_FPGA_CCLK_FLAGS)
-
-#define PIN_FPGA_DO_FLAGS		(PIO_TYPE_PIO_OUTPUT_0 | PIO_DEFAULT)
-#define FPGA_DO_LOW()			gpio_set_pin_low(PIN_FPGA_DO_GPIO)
-#define FPGA_DO_HIGH()			gpio_set_pin_high(PIN_FPGA_DO_GPIO)
-#define FPGA_DO_SETUP()			gpio_configure_pin(PIN_FPGA_DO_GPIO, PIN_FPGA_DO_FLAGS)
-
 #ifndef FPGA_USE_BITBANG
 #define FPGA_USE_BITBANG 0
 #endif
 
 #if FPGA_USE_BITBANG
 #error "Bit-Bang mode might be broken currently"
+
+#define PIN_FPGA_CCLK_FLAGS		(PIO_TYPE_PIO_OUTPUT_0 | PIO_DEFAULT)
+#define FPGA_CCLK_LOW()			gpio_set_pin_low(PIN_FPGA_CCLK_GPIO)
+#define FPGA_CCLK_HIGH()		gpio_set_pin_high(PIN_FPGA_CCLK_GPIO)
+
+#define PIN_FPGA_DO_FLAGS		(PIO_TYPE_PIO_OUTPUT_0 | PIO_DEFAULT)
+#define FPGA_DO_LOW()			gpio_set_pin_low(PIN_FPGA_DO_GPIO)
+#define FPGA_DO_HIGH()			gpio_set_pin_high(PIN_FPGA_DO_GPIO)
+
 #endif
 
 #ifndef FPGA_USE_USART
 #define FPGA_USE_USART 0
 #endif
 
-#define BUTTON_IN PIO_PA24_IDX
-#define F_VB5V PIO_PA26_IDX
-#define F_VBHOST PIO_PA25_IDX
+#define FPGA_CCLK_SETUP()		gpio_configure_pin(PIN_FPGA_CCLK_GPIO, PIN_FPGA_CCLK_FLAGS)
+#define FPGA_DO_SETUP()			gpio_configure_pin(PIN_FPGA_DO_GPIO, PIN_FPGA_DO_FLAGS)
 
 extern uint8_t USB_PWR_STATE;
 /**
