@@ -462,7 +462,7 @@ DEFINED SYMBOLS
                            .group:00000000 wm4.compiler.h.425.66dd29c210af3287ed85ec3553a3e6b1
                            .group:00000000 wm4.conf_clock.h.45.5dc276d21b4d793a62f1a9757cc18d5c
                            .group:00000000 wm4.board.h.48.ce8d06c36cc583d9bf62738411f62e4d
-                           .group:00000000 wm4.cw521.h.62.d34c289ace4a92d90be8fb389db40479
+                           .group:00000000 wm4.cw521.h.62.1727e9a463c60d459e36c42a4e5a0f86
                            .group:00000000 wm4.pmc.h.45.bbe1bf97a811e3b283420b2eeadf0b35
                            .group:00000000 wm4.osc.h.94.b766cddafe899eca01d775f7b2906680
                            .group:00000000 wm4.pll.h.45.a605c31ca466ae25752a678e8572be48

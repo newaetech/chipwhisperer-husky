@@ -65,9 +65,9 @@ objdir/sysclk.o.s: .././hal/sam3u1c/sysclk.c \
  .././hal/sam3u1c/inc/instance/instance_gpbr.h \
  .././hal/sam3u1c/inc/pio/pio_sam3u1c.h .././hal/sam3u1c/inc/interrupt.h \
  .././hal/sam3u1c/inc/interrupt/interrupt_sam_nvic.h \
- .././hal/sam3u1c/inc/cw521/cw521.h .././hal/sam3u1c/inc/system_sam3u.h \
- .././hal/sam3u1c/inc/exceptions.h .././hal/sam3u1c/inc/pmc.h \
- .././hal/sam3u1c/inc/pll.h .././hal/sam3u1c/inc/sam3u/pll.h
+ .././hal/sam3u1c/inc/cw521.h .././hal/sam3u1c/inc/exceptions.h \
+ .././hal/sam3u1c/inc/pmc.h .././hal/sam3u1c/inc/pll.h \
+ .././hal/sam3u1c/inc/sam3u/pll.h
 
 .././hal/sam3u1c/inc/sysclk.h:
 
@@ -225,9 +225,7 @@ conf_clock.h:
 
 .././hal/sam3u1c/inc/interrupt/interrupt_sam_nvic.h:
 
-.././hal/sam3u1c/inc/cw521/cw521.h:
-
-.././hal/sam3u1c/inc/system_sam3u.h:
+.././hal/sam3u1c/inc/cw521.h:
 
 .././hal/sam3u1c/inc/exceptions.h:
 

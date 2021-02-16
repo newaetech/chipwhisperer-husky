@@ -151,6 +151,19 @@
 #define PIN_EBI_DATA_BUS_FLAG1   PIO_PERIPH_A | PIO_PULLUP
 #define PIN_EBI_DATA_BUS_FLAG2   PIO_PERIPH_B | PIO_PULLUP
 
+#define USART_PDI                 USART1
+#define USART_PDI_ID              ID_USART1
+
+#define PIN_TARG_NRST_GPIO      PIO_PA17_IDX
+/** SPI MISO pin definition */
+#define SPI_MISO_GPIO       (PIO_PA13_IDX)
+#define SPI_MISO_FLAGS (PIO_PERIPH_A | PIO_DEFAULT)
+/** SPI MOSI pin definition. */
+#define SPI_MOSI_GPIO       (PIO_PA14_IDX)
+#define SPI_MOSI_FLAGS (PIO_PERIPH_A | PIO_DEFAULT)
+/** SPI SPCK pin definition. */
+#define SPI_SPCK_GPIO       (PIO_PA15_IDX)
+#define SPI_SPCK_FLAGS (PIO_PERIPH_A | PIO_DEFAULT)
 /* NBS0 = A0 = LB# */
 /* NBS1      = UB# */
 #define PIN_EBI_ADDR_BUS_NBS0 PIO_PB7_IDX
@@ -182,6 +195,25 @@
 #define PIN_EBI_ADDR_BUS_A20       PIO_PC26_IDX
 #define PIN_EBI_ADDR_BUS_A21       PIO_PB21_IDX
 
+#define PIN_EBI_USB_SPARE0          PIO_PB6_IDX
+#define PIN_EBI_USB_SPARE1          PIO_PB17_IDX
+
+#define PIN_EBI_USB_SPARE0_FLAGS    (PIO_TYPE_PIO_OUTPUT_0 | PIO_DEFAULT)
+#define PIN_EBI_USB_SPARE1_FLAGS    (PIO_TYPE_PIO_OUTPUT_1 | PIO_DEFAULT)
+//! XMEGA PDI Programming Pins
+#define PIN_PDIDTX_GPIO			  (PIO_PA20_IDX)
+#define PIN_PDIDTX_OUT_FLAGS	  (PIO_TYPE_PIO_OUTPUT_0 | PIO_DEFAULT)
+#define PIN_PDIDTX_IN_FLAGS		  (PIO_TYPE_PIO_INPUT | PIO_DEFAULT)
+#define PIN_PDIDTX_USART_FLAGS    (PIO_PERIPH_A | PIO_DEFAULT)
+
+#define PIN_PDIDRX_GPIO			  (PIO_PA21_IDX)
+#define PIN_PDIDRX_FLAGS		  (PIO_TYPE_PIO_INPUT | PIO_DEFAULT)
+#define PIN_PDIDRX_USART_FLAGS    (PIO_PERIPH_A | PIO_DEFAULT)
+
+#define PIN_PDIC_GPIO			  (PIO_PA24_IDX)
+#define PIN_PDIC_OUT_FLAGS		  (PIO_TYPE_PIO_OUTPUT_0 | PIO_DEFAULT)
+#define PIN_PDIC_IN_FLAGS		  (PIO_TYPE_PIO_INPUT | PIO_DEFAULT)
+#define PIN_PDIC_USART_FLAGS	  (PIO_PERIPH_B | PIO_DEFAULT)
 
 /** EBI NRD pin */
 #define PIN_EBI_NRD                 PIO_PB19_IDX
@@ -220,17 +252,18 @@
 #define LED1_FLAGS    (PIO_TYPE_PIO_OUTPUT_1 | PIO_DEFAULT)
 #define LED1_ACTIVE_LEVEL 1
 
-//! LED #1 pin definition
-#define LED_2_NAME    "red RX"
-#define LED2_GPIO     (PIO_PC12_IDX)
-#define LED2_FLAGS    (PIO_TYPE_PIO_OUTPUT_1 | PIO_DEFAULT)
-#define LED2_ACTIVE_LEVEL 1
+// //! LED #1 pin definition
+// #define LED_2_NAME    "red RX"
+// #define LED2_GPIO     (PIO_PC12_IDX)
+// #define LED2_FLAGS    (PIO_TYPE_PIO_OUTPUT_1 | PIO_DEFAULT)
+// #define LED2_ACTIVE_LEVEL 1
 
-#define BOARD_NUM_OF_LED 3
+#define BOARD_NUM_OF_LED 2
 
 //! General Pins
-#define PIN_PWRON_GPIO	  PIO_PC19_IDX
+#define PIN_PWRON_GPIO	  PIO_PA29_IDX
 #define PIN_PWRON_FLAGS  (PIO_TYPE_PIO_OUTPUT_0 | PIO_DEFAULT) 
+#define board_power(a)	 if (a){gpio_set_pin_high(PIN_PWRON_GPIO);} else {gpio_set_pin_low(PIN_PWRON_GPIO);}
 #define board_sram_pwron() gpio_set_pin_low(PIN_PWRON_GPIO)
 #define board_sram_pwroff() gpio_set_pin_high(PIN_PWRON_GPIO)
 

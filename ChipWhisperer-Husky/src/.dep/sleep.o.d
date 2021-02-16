@@ -64,8 +64,7 @@ objdir/sleep.o.s: .././hal/sam3u1c/sleep.c \
  .././hal/sam3u1c/inc/interrupt/interrupt_sam_nvic.h \
  .././hal/sam3u1c/inc/sleep.h .././hal/sam3u1c/inc/pmc.h \
  .././hal/sam3u1c/inc/compiler.h .././hal/sam3u1c/inc/board.h \
- .././hal/sam3u1c/inc/cw521/cw521.h .././hal/sam3u1c/inc/system_sam3u.h \
- .././hal/sam3u1c/inc/exceptions.h
+ .././hal/sam3u1c/inc/cw521.h .././hal/sam3u1c/inc/exceptions.h
 
 .././hal/sam3u1c/inc/compiler.h:
 
@@ -215,8 +214,6 @@ objdir/sleep.o.s: .././hal/sam3u1c/sleep.c \
 
 .././hal/sam3u1c/inc/board.h:
 
-.././hal/sam3u1c/inc/cw521/cw521.h:
-
-.././hal/sam3u1c/inc/system_sam3u.h:
+.././hal/sam3u1c/inc/cw521.h:
 
 .././hal/sam3u1c/inc/exceptions.h:

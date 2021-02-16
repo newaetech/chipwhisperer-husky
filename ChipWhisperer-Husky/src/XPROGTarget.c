@@ -34,6 +34,7 @@
  */
 
 #define  INCLUDE_FROM_XPROGTARGET_C
+#include <asf.h>
 #include "XPROGTarget.h"
 #include "board.h"
 #include "usart.h"
@@ -42,6 +43,7 @@
 #include "ioport.h"
 #include "delay.h"
 
+#include "cw521.h"
 /** Flag to indicate if the USART is currently in Tx or Rx mode. */
 static bool IsSending;
 

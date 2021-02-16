@@ -2483,7 +2483,7 @@ DEFINED SYMBOLS
                            .group:00000000 wm4.sleep.h.45.ef10e1aee6f903405be19980a8333b7f
                            .group:00000000 wm4.pmc.h.58.e82ab76d364abd9761d4d0905e15fc60
                            .group:00000000 wm4.board.h.48.ce8d06c36cc583d9bf62738411f62e4d
-                           .group:00000000 wm4.cw521.h.62.d34c289ace4a92d90be8fb389db40479
+                           .group:00000000 wm4.cw521.h.62.1727e9a463c60d459e36c42a4e5a0f86
 
 UNDEFINED SYMBOLS
 g_interrupt_enabled

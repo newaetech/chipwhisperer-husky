@@ -1,0 +1,1871 @@
+   1              	 .cpu cortex-m3
+   2              	 .eabi_attribute 20,1
+   3              	 .eabi_attribute 21,1
+   4              	 .eabi_attribute 23,3
+   5              	 .eabi_attribute 24,1
+   6              	 .eabi_attribute 25,1
+   7              	 .eabi_attribute 26,1
+   8              	 .eabi_attribute 30,6
+   9              	 .eabi_attribute 34,1
+  10              	 .eabi_attribute 18,4
+  11              	 .file "XPROGNewAE.c"
+  12              	 .text
+  13              	.Ltext0:
+  14              	 .cfi_sections .debug_frame
+  15              	 .section .bss.cpu_irq_critical_section_counter,"aw",%nobits
+  16              	 .align 2
+  19              	cpu_irq_critical_section_counter:
+  20 0000 00000000 	 .space 4
+  21              	 .section .bss.cpu_irq_prev_interrupt_state,"aw",%nobits
+  24              	cpu_irq_prev_interrupt_state:
+  25 0000 00       	 .space 1
+  26              	 .global XPROG_Param_NVMBase
+  27              	 .section .data.XPROG_Param_NVMBase,"aw"
+  28              	 .align 2
+  31              	XPROG_Param_NVMBase:
+  32 0000 C0010001 	 .word 16777664
+  33              	 .global XPROG_Param_EEPageSize
+  34              	 .section .data.XPROG_Param_EEPageSize,"aw"
+  35              	 .align 1
+  38              	XPROG_Param_EEPageSize:
+  39 0000 2000     	 .short 32
+  40              	 .global XPROG_Param_NVMCMDRegAddr
+  41              	 .section .data.XPROG_Param_NVMCMDRegAddr,"aw"
+  44              	XPROG_Param_NVMCMDRegAddr:
+  45 0000 33       	 .byte 51
+  46              	 .global XPROG_Param_NVMCSRRegAddr
+  47              	 .section .data.XPROG_Param_NVMCSRRegAddr,"aw"
+  50              	XPROG_Param_NVMCSRRegAddr:
+  51 0000 32       	 .byte 50
+  52              	 .comm XPROG_Status,1,1
+  53              	 .section .text.XPROGProtocol_Command,"ax",%progbits
+  54              	 .align 1
+  55              	 .global XPROGProtocol_Command
+  56              	 .arch armv7-m
+  57              	 .syntax unified
+  58              	 .thumb
+  59              	 .thumb_func
+  60              	 .fpu softvfp
+  62              	XPROGProtocol_Command:
+  63              	.LFB181:
+  64              	 .file 1 "XPROGNewAE.c"
+   1:XPROGNewAE.c  **** /*
+   2:XPROGNewAE.c  ****      PDI Programming
+   3:XPROGNewAE.c  ****      Copyright (C) NewAE Technology Inc., 2014
+   4:XPROGNewAE.c  **** */
+   5:XPROGNewAE.c  **** 
+   6:XPROGNewAE.c  **** /*
+   7:XPROGNewAE.c  ****   Copyright 2014  NewAE Technology Inc. Based on LUFA which is:
+   8:XPROGNewAE.c  ****   Copyright 2014  Dean Camera (dean [at] fourwalledcubicle [dot] com)
+   9:XPROGNewAE.c  **** 
+  10:XPROGNewAE.c  ****   Permission to use, copy, modify, distribute, and sell this
+  11:XPROGNewAE.c  ****   software and its documentation for any purpose is hereby granted
+  12:XPROGNewAE.c  ****   without fee, provided that the above copyright notice appear in
+  13:XPROGNewAE.c  ****   all copies and that both that the copyright notice and this
+  14:XPROGNewAE.c  ****   permission notice and warranty disclaimer appear in supporting
+  15:XPROGNewAE.c  ****   documentation, and that the name of the author not be used in
+  16:XPROGNewAE.c  ****   advertising or publicity pertaining to distribution of the
+  17:XPROGNewAE.c  ****   software without specific, written prior permission.
+  18:XPROGNewAE.c  **** 
+  19:XPROGNewAE.c  ****   The author disclaims all warranties with regard to this
+  20:XPROGNewAE.c  ****   software, including all implied warranties of merchantability
+  21:XPROGNewAE.c  ****   and fitness.  In no event shall the author be liable for any
+  22:XPROGNewAE.c  ****   special, indirect or consequential damages or any damages
+  23:XPROGNewAE.c  ****   whatsoever resulting from loss of use, data or profits, whether
+  24:XPROGNewAE.c  ****   in an action of contract, negligence or other tortious action,
+  25:XPROGNewAE.c  ****   arising out of or in connection with the use or performance of
+  26:XPROGNewAE.c  ****   this software.
+  27:XPROGNewAE.c  **** */
+  28:XPROGNewAE.c  **** 
+  29:XPROGNewAE.c  **** /** \file
+  30:XPROGNewAE.c  ****  *
+  31:XPROGNewAE.c  ****  *  XPROG Protocol handler, to process V2 Protocol wrapped XPROG commands used in Atmel programmer 
+  32:XPROGNewAE.c  ****  */
+  33:XPROGNewAE.c  **** 
+  34:XPROGNewAE.c  **** #define INCLUDE_FROM_XPROGPROTOCOL_C
+  35:XPROGNewAE.c  **** #include "XPROGNewAE.h"
+  36:XPROGNewAE.c  **** #undef INCLUDE_FROM_XPROGPROTOCOL_C
+  37:XPROGNewAE.c  **** #include "conf_usb.h"
+  38:XPROGNewAE.c  **** #include <string.h>
+  39:XPROGNewAE.c  **** #include "XPROGTimeout.h"
+  40:XPROGNewAE.c  **** 
+  41:XPROGNewAE.c  **** #include "cw521.h"
+  42:XPROGNewAE.c  **** /** Base absolute address for the target's NVM controller for PDI programming */
+  43:XPROGNewAE.c  **** uint32_t XPROG_Param_NVMBase       = 0x010001C0;
+  44:XPROGNewAE.c  **** 
+  45:XPROGNewAE.c  **** /** Size in bytes of the target's EEPROM page */
+  46:XPROGNewAE.c  **** uint16_t XPROG_Param_EEPageSize    = 32;
+  47:XPROGNewAE.c  **** 
+  48:XPROGNewAE.c  **** /** Address of the TPI device's NVMCMD register for TPI programming */
+  49:XPROGNewAE.c  **** uint8_t  XPROG_Param_NVMCMDRegAddr = 0x33;
+  50:XPROGNewAE.c  **** 
+  51:XPROGNewAE.c  **** /** Address of the TPI device's NVMCSR register for TPI programming */
+  52:XPROGNewAE.c  **** uint8_t  XPROG_Param_NVMCSRRegAddr = 0x32;
+  53:XPROGNewAE.c  **** 
+  54:XPROGNewAE.c  **** /* Status of last executed command */
+  55:XPROGNewAE.c  **** uint8_t XPROG_Status;
+  56:XPROGNewAE.c  **** 
+  57:XPROGNewAE.c  **** /** Handler for the CMD_XPROG command, which wraps up XPROG commands in a V2 wrapper which need to 
+  58:XPROGNewAE.c  ****  *  removed and processed so that the underlying XPROG command can be handled.
+  59:XPROGNewAE.c  ****  */
+  60:XPROGNewAE.c  **** #define XMEGA_BUF_SIZE 256
+  61:XPROGNewAE.c  **** bool XPROGProtocol_Command(void)
+  62:XPROGNewAE.c  **** {
+  65              	 .loc 1 62 1
+  66              	 .cfi_startproc
+  67              	 
+  68              	 
+  69 0000 80B5     	 push {r7,lr}
+  70              	.LCFI0:
+  71              	 .cfi_def_cfa_offset 8
+  72              	 .cfi_offset 7,-8
+  73              	 .cfi_offset 14,-4
+  74 0002 82B0     	 sub sp,sp,#8
+  75              	.LCFI1:
+  76              	 .cfi_def_cfa_offset 16
+  77 0004 00AF     	 add r7,sp,#0
+  78              	.LCFI2:
+  79              	 .cfi_def_cfa_register 7
+  63:XPROGNewAE.c  **** 	static uint8_t status_payload[4];
+  64:XPROGNewAE.c  **** 	status_payload[0] = udd_g_ctrlreq.req.wValue & 0xff;	
+  80              	 .loc 1 64 39
+  81 0006 634B     	 ldr r3,.L17
+  82 0008 5B88     	 ldrh r3,[r3,#2]
+  83              	 .loc 1 64 20
+  84 000a DAB2     	 uxtb r2,r3
+  85 000c 624B     	 ldr r3,.L17+4
+  86 000e 1A70     	 strb r2,[r3]
+  65:XPROGNewAE.c  **** 	
+  66:XPROGNewAE.c  **** 	static uint8_t xprog_rambuf[XMEGA_BUF_SIZE];
+  67:XPROGNewAE.c  **** 	uint8_t offset;
+  68:XPROGNewAE.c  **** 	
+  69:XPROGNewAE.c  **** 	switch (status_payload[0])
+  87              	 .loc 1 69 24
+  88 0010 614B     	 ldr r3,.L17+4
+  89 0012 1B78     	 ldrb r3,[r3]
+  90 0014 013B     	 subs r3,r3,#1
+  91 0016 212B     	 cmp r3,#33
+  92 0018 00F2B480 	 bhi .L2
+  93 001c 01A2     	 adr r2,.L4
+  94 001e 52F823F0 	 ldr pc,[r2,r3,lsl#2]
+  95 0022 00BF     	 .p2align 2
+  96              	.L4:
+  97 0024 AD000000 	 .word .L13+1
+  98 0028 B7000000 	 .word .L12+1
+  99 002c C1000000 	 .word .L11+1
+ 100 0030 CB000000 	 .word .L10+1
+ 101 0034 D7000000 	 .word .L9+1
+ 102 0038 E3000000 	 .word .L8+1
+ 103 003c E9000000 	 .word .L7+1
+ 104 0040 85010000 	 .word .L2+1
+ 105 0044 85010000 	 .word .L2+1
+ 106 0048 85010000 	 .word .L2+1
+ 107 004c 85010000 	 .word .L2+1
+ 108 0050 85010000 	 .word .L2+1
+ 109 0054 85010000 	 .word .L2+1
+ 110 0058 85010000 	 .word .L2+1
+ 111 005c 85010000 	 .word .L2+1
+ 112 0060 85010000 	 .word .L2+1
+ 113 0064 85010000 	 .word .L2+1
+ 114 0068 85010000 	 .word .L2+1
+ 115 006c 85010000 	 .word .L2+1
+ 116 0070 85010000 	 .word .L2+1
+ 117 0074 85010000 	 .word .L2+1
+ 118 0078 85010000 	 .word .L2+1
+ 119 007c 85010000 	 .word .L2+1
+ 120 0080 85010000 	 .word .L2+1
+ 121 0084 85010000 	 .word .L2+1
+ 122 0088 85010000 	 .word .L2+1
+ 123 008c 85010000 	 .word .L2+1
+ 124 0090 85010000 	 .word .L2+1
+ 125 0094 85010000 	 .word .L2+1
+ 126 0098 85010000 	 .word .L2+1
+ 127 009c 85010000 	 .word .L2+1
+ 128 00a0 59010000 	 .word .L6+1
+ 129 00a4 F3000000 	 .word .L5+1
+ 130 00a8 25010000 	 .word .L3+1
+ 131              	 .p2align 1
+ 132              	.L13:
+  70:XPROGNewAE.c  **** 	{
+  71:XPROGNewAE.c  **** 		case XPROG_CMD_ENTER_PROGMODE:
+  72:XPROGNewAE.c  **** 			start_timeoutcnt();
+ 133              	 .loc 1 72 4
+ 134 00ac 3B4B     	 ldr r3,.L17+8
+ 135 00ae 9847     	 blx r3
+ 136              	.LVL0:
+  73:XPROGNewAE.c  **** 			XPROGProtocol_EnterXPROGMode();
+ 137              	 .loc 1 73 4
+ 138 00b0 3B4B     	 ldr r3,.L17+12
+ 139 00b2 9847     	 blx r3
+ 140              	.LVL1:
+  74:XPROGNewAE.c  **** 			break;
+ 141              	 .loc 1 74 4
+ 142 00b4 66E0     	 b .L2
+ 143              	.L12:
+  75:XPROGNewAE.c  **** 		case XPROG_CMD_LEAVE_PROGMODE:
+  76:XPROGNewAE.c  **** 			start_timeoutcnt();
+ 144              	 .loc 1 76 4
+ 145 00b6 394B     	 ldr r3,.L17+8
+ 146 00b8 9847     	 blx r3
+ 147              	.LVL2:
+  77:XPROGNewAE.c  **** 			XPROGProtocol_LeaveXPROGMode();
+ 148              	 .loc 1 77 4
+ 149 00ba 3A4B     	 ldr r3,.L17+16
+ 150 00bc 9847     	 blx r3
+ 151              	.LVL3:
+  78:XPROGNewAE.c  **** 			break;
+ 152              	 .loc 1 78 4
+ 153 00be 61E0     	 b .L2
+ 154              	.L11:
+  79:XPROGNewAE.c  **** 		case XPROG_CMD_ERASE:
+  80:XPROGNewAE.c  **** 			start_timeoutcnt();
+ 155              	 .loc 1 80 4
+ 156 00c0 364B     	 ldr r3,.L17+8
+ 157 00c2 9847     	 blx r3
+ 158              	.LVL4:
+  81:XPROGNewAE.c  **** 			XPROGProtocol_Erase();
+ 159              	 .loc 1 81 4
+ 160 00c4 384B     	 ldr r3,.L17+20
+ 161 00c6 9847     	 blx r3
+ 162              	.LVL5:
+  82:XPROGNewAE.c  **** 			break;
+ 163              	 .loc 1 82 4
+ 164 00c8 5CE0     	 b .L2
+ 165              	.L10:
+  83:XPROGNewAE.c  **** 		case XPROG_CMD_WRITE_MEM:
+  84:XPROGNewAE.c  **** 			start_timeoutcnt();
+ 166              	 .loc 1 84 4
+ 167 00ca 344B     	 ldr r3,.L17+8
+ 168 00cc 9847     	 blx r3
+ 169              	.LVL6:
+  85:XPROGNewAE.c  **** 			XPROGProtocol_WriteMemory(xprog_rambuf);
+ 170              	 .loc 1 85 4
+ 171 00ce 3748     	 ldr r0,.L17+24
+ 172 00d0 374B     	 ldr r3,.L17+28
+ 173 00d2 9847     	 blx r3
+ 174              	.LVL7:
+  86:XPROGNewAE.c  **** 			break;
+ 175              	 .loc 1 86 4
+ 176 00d4 56E0     	 b .L2
+ 177              	.L9:
+  87:XPROGNewAE.c  **** 		case XPROG_CMD_READ_MEM:
+  88:XPROGNewAE.c  **** 			start_timeoutcnt();
+ 178              	 .loc 1 88 4
+ 179 00d6 314B     	 ldr r3,.L17+8
+ 180 00d8 9847     	 blx r3
+ 181              	.LVL8:
+  89:XPROGNewAE.c  **** 			XPROGProtocol_ReadMemory(xprog_rambuf);
+ 182              	 .loc 1 89 4
+ 183 00da 3448     	 ldr r0,.L17+24
+ 184 00dc 354B     	 ldr r3,.L17+32
+ 185 00de 9847     	 blx r3
+ 186              	.LVL9:
+  90:XPROGNewAE.c  **** 			break;
+ 187              	 .loc 1 90 4
+ 188 00e0 50E0     	 b .L2
+ 189              	.L8:
+  91:XPROGNewAE.c  **** 			
+  92:XPROGNewAE.c  **** 		case XPROG_CMD_CRC:
+  93:XPROGNewAE.c  **** 			start_timeoutcnt();
+ 190              	 .loc 1 93 4
+ 191 00e2 2E4B     	 ldr r3,.L17+8
+ 192 00e4 9847     	 blx r3
+ 193              	.LVL10:
+  94:XPROGNewAE.c  **** 			//XPROGProtocol_ReadCRC();
+  95:XPROGNewAE.c  **** 			break;
+ 194              	 .loc 1 95 4
+ 195 00e6 4DE0     	 b .L2
+ 196              	.L7:
+  96:XPROGNewAE.c  **** 		case XPROG_CMD_SET_PARAM:
+  97:XPROGNewAE.c  **** 			start_timeoutcnt();
+ 197              	 .loc 1 97 4
+ 198 00e8 2C4B     	 ldr r3,.L17+8
+ 199 00ea 9847     	 blx r3
+ 200              	.LVL11:
+  98:XPROGNewAE.c  **** 			XPROGProtocol_SetParam();
+ 201              	 .loc 1 98 4
+ 202 00ec 324B     	 ldr r3,.L17+36
+ 203 00ee 9847     	 blx r3
+ 204              	.LVL12:
+  99:XPROGNewAE.c  **** 			break;
+ 205              	 .loc 1 99 4
+ 206 00f0 48E0     	 b .L2
+ 207              	.L5:
+ 100:XPROGNewAE.c  **** 			
+ 101:XPROGNewAE.c  **** 		//Read data from internal RAM buffer
+ 102:XPROGNewAE.c  **** 		case XPROG_GET_RAMBUF:
+ 103:XPROGNewAE.c  **** 			offset = (udd_g_ctrlreq.req.wValue >> 8) & 0xff;
+ 208              	 .loc 1 103 31
+ 209 00f2 284B     	 ldr r3,.L17
+ 210 00f4 5B88     	 ldrh r3,[r3,#2]
+ 211              	 .loc 1 103 11
+ 212 00f6 1B0A     	 lsrs r3,r3,#8
+ 213 00f8 9BB2     	 uxth r3,r3
+ 214 00fa FB71     	 strb r3,[r7,#7]
+ 104:XPROGNewAE.c  **** 			if ((offset + udd_g_ctrlreq.req.wLength) > XMEGA_BUF_SIZE){
+ 215              	 .loc 1 104 16
+ 216 00fc FB79     	 ldrb r3,[r7,#7]
+ 217              	 .loc 1 104 35
+ 218 00fe 254A     	 ldr r2,.L17
+ 219 0100 D288     	 ldrh r2,[r2,#6]
+ 220              	 .loc 1 104 16
+ 221 0102 1344     	 add r3,r3,r2
+ 222              	 .loc 1 104 7
+ 223 0104 B3F5807F 	 cmp r3,#256
+ 224 0108 01DD     	 ble .L14
+ 105:XPROGNewAE.c  **** 				//nice try!
+ 106:XPROGNewAE.c  **** 				return false;
+ 225              	 .loc 1 106 12
+ 226 010a 0023     	 movs r3,#0
+ 227 010c 3DE0     	 b .L15
+ 228              	.L14:
+ 107:XPROGNewAE.c  **** 			}
+ 108:XPROGNewAE.c  **** 		
+ 109:XPROGNewAE.c  **** 			udd_g_ctrlreq.payload = xprog_rambuf + offset;
+ 229              	 .loc 1 109 41
+ 230 010e FB79     	 ldrb r3,[r7,#7]
+ 231 0110 264A     	 ldr r2,.L17+24
+ 232 0112 1344     	 add r3,r3,r2
+ 233              	 .loc 1 109 26
+ 234 0114 1F4A     	 ldr r2,.L17
+ 235 0116 9360     	 str r3,[r2,#8]
+ 110:XPROGNewAE.c  **** 			udd_g_ctrlreq.payload_size = udd_g_ctrlreq.req.wLength;
+ 236              	 .loc 1 110 50
+ 237 0118 1E4B     	 ldr r3,.L17
+ 238 011a DA88     	 ldrh r2,[r3,#6]
+ 239              	 .loc 1 110 31
+ 240 011c 1D4B     	 ldr r3,.L17
+ 241 011e 9A81     	 strh r2,[r3,#12]
+ 111:XPROGNewAE.c  **** 			return true;
+ 242              	 .loc 1 111 11
+ 243 0120 0123     	 movs r3,#1
+ 244 0122 32E0     	 b .L15
+ 245              	.L3:
+ 112:XPROGNewAE.c  **** 			break;
+ 113:XPROGNewAE.c  **** 			
+ 114:XPROGNewAE.c  **** 		//Write data to intername RAM buffer
+ 115:XPROGNewAE.c  **** 		case XPROG_SET_RAMBUF:
+ 116:XPROGNewAE.c  **** 			offset = (udd_g_ctrlreq.req.wValue >> 8) & 0xff;
+ 246              	 .loc 1 116 31
+ 247 0124 1B4B     	 ldr r3,.L17
+ 248 0126 5B88     	 ldrh r3,[r3,#2]
+ 249              	 .loc 1 116 11
+ 250 0128 1B0A     	 lsrs r3,r3,#8
+ 251 012a 9BB2     	 uxth r3,r3
+ 252 012c FB71     	 strb r3,[r7,#7]
+ 117:XPROGNewAE.c  **** 			if ((offset + udd_g_ctrlreq.req.wLength) > XMEGA_BUF_SIZE){
+ 253              	 .loc 1 117 16
+ 254 012e FB79     	 ldrb r3,[r7,#7]
+ 255              	 .loc 1 117 35
+ 256 0130 184A     	 ldr r2,.L17
+ 257 0132 D288     	 ldrh r2,[r2,#6]
+ 258              	 .loc 1 117 16
+ 259 0134 1344     	 add r3,r3,r2
+ 260              	 .loc 1 117 7
+ 261 0136 B3F5807F 	 cmp r3,#256
+ 262 013a 01DD     	 ble .L16
+ 118:XPROGNewAE.c  **** 				//nice try!
+ 119:XPROGNewAE.c  **** 				return false;
+ 263              	 .loc 1 119 12
+ 264 013c 0023     	 movs r3,#0
+ 265 013e 24E0     	 b .L15
+ 266              	.L16:
+ 120:XPROGNewAE.c  **** 			}
+ 121:XPROGNewAE.c  **** 			
+ 122:XPROGNewAE.c  **** 			memcpy(xprog_rambuf + offset, udd_g_ctrlreq.payload, udd_g_ctrlreq.req.wLength);
+ 267              	 .loc 1 122 4
+ 268 0140 FB79     	 ldrb r3,[r7,#7]
+ 269 0142 1A4A     	 ldr r2,.L17+24
+ 270 0144 1344     	 add r3,r3,r2
+ 271              	 .loc 1 122 47
+ 272 0146 134A     	 ldr r2,.L17
+ 273 0148 9168     	 ldr r1,[r2,#8]
+ 274              	 .loc 1 122 74
+ 275 014a 124A     	 ldr r2,.L17
+ 276 014c D288     	 ldrh r2,[r2,#6]
+ 277              	 .loc 1 122 4
+ 278 014e 1846     	 mov r0,r3
+ 279 0150 1A4B     	 ldr r3,.L17+40
+ 280 0152 9847     	 blx r3
+ 281              	.LVL13:
+ 123:XPROGNewAE.c  **** 			return true;
+ 282              	 .loc 1 123 11
+ 283 0154 0123     	 movs r3,#1
+ 284 0156 18E0     	 b .L15
+ 285              	.L6:
+ 124:XPROGNewAE.c  **** 			break;		
+ 125:XPROGNewAE.c  **** 			
+ 126:XPROGNewAE.c  **** 		case XPROG_GET_STATUS:
+ 127:XPROGNewAE.c  **** 			status_payload[1] = XPROG_Status;
+ 286              	 .loc 1 127 22
+ 287 0158 194B     	 ldr r3,.L17+44
+ 288 015a 1A78     	 ldrb r2,[r3]
+ 289 015c 0E4B     	 ldr r3,.L17+4
+ 290 015e 5A70     	 strb r2,[r3,#1]
+ 128:XPROGNewAE.c  **** 			status_payload[2] = (uint8_t)(TimeoutTicksRemaining == 0);
+ 291              	 .loc 1 128 24
+ 292 0160 184B     	 ldr r3,.L17+48
+ 293 0162 1B68     	 ldr r3,[r3]
+ 294 0164 002B     	 cmp r3,#0
+ 295 0166 0CBF     	 ite eq
+ 296 0168 0123     	 moveq r3,#1
+ 297 016a 0023     	 movne r3,#0
+ 298 016c DBB2     	 uxtb r3,r3
+ 299 016e 1A46     	 mov r2,r3
+ 300              	 .loc 1 128 22
+ 301 0170 094B     	 ldr r3,.L17+4
+ 302 0172 9A70     	 strb r2,[r3,#2]
+ 129:XPROGNewAE.c  **** 			udd_g_ctrlreq.payload = status_payload;
+ 303              	 .loc 1 129 26
+ 304 0174 074B     	 ldr r3,.L17
+ 305 0176 084A     	 ldr r2,.L17+4
+ 306 0178 9A60     	 str r2,[r3,#8]
+ 130:XPROGNewAE.c  **** 			udd_g_ctrlreq.payload_size = 3;
+ 307              	 .loc 1 130 31
+ 308 017a 064B     	 ldr r3,.L17
+ 309 017c 0322     	 movs r2,#3
+ 310 017e 9A81     	 strh r2,[r3,#12]
+ 131:XPROGNewAE.c  **** 			return true;
+ 311              	 .loc 1 131 11
+ 312 0180 0123     	 movs r3,#1
+ 313 0182 02E0     	 b .L15
+ 314              	.L2:
+ 132:XPROGNewAE.c  **** 			break;
+ 133:XPROGNewAE.c  **** 	}
+ 134:XPROGNewAE.c  **** 	
+ 135:XPROGNewAE.c  **** 	stop_timeoutcnt();
+ 315              	 .loc 1 135 2
+ 316 0184 104B     	 ldr r3,.L17+52
+ 317 0186 9847     	 blx r3
+ 318              	.LVL14:
+ 136:XPROGNewAE.c  **** 	
+ 137:XPROGNewAE.c  **** 	return false;
+ 319              	 .loc 1 137 9
+ 320 0188 0023     	 movs r3,#0
+ 321              	.L15:
+ 138:XPROGNewAE.c  **** }
+ 322              	 .loc 1 138 1
+ 323 018a 1846     	 mov r0,r3
+ 324 018c 0837     	 adds r7,r7,#8
+ 325              	.LCFI3:
+ 326              	 .cfi_def_cfa_offset 8
+ 327 018e BD46     	 mov sp,r7
+ 328              	.LCFI4:
+ 329              	 .cfi_def_cfa_register 13
+ 330              	 
+ 331 0190 80BD     	 pop {r7,pc}
+ 332              	.L18:
+ 333 0192 00BF     	 .align 2
+ 334              	.L17:
+ 335 0194 00000000 	 .word udd_g_ctrlreq
+ 336 0198 00000000 	 .word status_payload.9087
+ 337 019c 00000000 	 .word start_timeoutcnt
+ 338 01a0 00000000 	 .word XPROGProtocol_EnterXPROGMode
+ 339 01a4 00000000 	 .word XPROGProtocol_LeaveXPROGMode
+ 340 01a8 00000000 	 .word XPROGProtocol_Erase
+ 341 01ac 00000000 	 .word xprog_rambuf.9088
+ 342 01b0 00000000 	 .word XPROGProtocol_WriteMemory
+ 343 01b4 00000000 	 .word XPROGProtocol_ReadMemory
+ 344 01b8 00000000 	 .word XPROGProtocol_SetParam
+ 345 01bc 00000000 	 .word memcpy
+ 346 01c0 00000000 	 .word XPROG_Status
+ 347 01c4 00000000 	 .word TimeoutTicksRemaining
+ 348 01c8 00000000 	 .word stop_timeoutcnt
+ 349              	 .cfi_endproc
+ 350              	.LFE181:
+ 352              	 .section .text.XPROGProtocol_EnterXPROGMode,"ax",%progbits
+ 353              	 .align 1
+ 354              	 .syntax unified
+ 355              	 .thumb
+ 356              	 .thumb_func
+ 357              	 .fpu softvfp
+ 359              	XPROGProtocol_EnterXPROGMode:
+ 360              	.LFB182:
+ 139:XPROGNewAE.c  **** /** Handler for the XPROG ENTER_PROGMODE command to establish a connection with the attached device
+ 140:XPROGNewAE.c  **** static void XPROGProtocol_EnterXPROGMode(void)
+ 141:XPROGNewAE.c  **** {	
+ 361              	 .loc 1 141 1
+ 362              	 .cfi_startproc
+ 363              	 
+ 364              	 
+ 365 0000 80B5     	 push {r7,lr}
+ 366              	.LCFI5:
+ 367              	 .cfi_def_cfa_offset 8
+ 368              	 .cfi_offset 7,-8
+ 369              	 .cfi_offset 14,-4
+ 370 0002 82B0     	 sub sp,sp,#8
+ 371              	.LCFI6:
+ 372              	 .cfi_def_cfa_offset 16
+ 373 0004 00AF     	 add r7,sp,#0
+ 374              	.LCFI7:
+ 375              	 .cfi_def_cfa_register 7
+ 142:XPROGNewAE.c  **** 	bool NVMBusEnabled = XMEGANVM_EnablePDI();
+ 376              	 .loc 1 142 23
+ 377 0006 074B     	 ldr r3,.L20
+ 378 0008 9847     	 blx r3
+ 379              	.LVL15:
+ 380 000a 0346     	 mov r3,r0
+ 381 000c FB71     	 strb r3,[r7,#7]
+ 143:XPROGNewAE.c  **** 	XPROG_Status = NVMBusEnabled ? XPROG_ERR_OK : XPROG_ERR_FAILED;
+ 382              	 .loc 1 143 46
+ 383 000e FB79     	 ldrb r3,[r7,#7]
+ 384 0010 83F00103 	 eor r3,r3,#1
+ 385 0014 DBB2     	 uxtb r3,r3
+ 386 0016 1A46     	 mov r2,r3
+ 387              	 .loc 1 143 15
+ 388 0018 034B     	 ldr r3,.L20+4
+ 389 001a 1A70     	 strb r2,[r3]
+ 144:XPROGNewAE.c  **** }
+ 390              	 .loc 1 144 1
+ 391 001c 00BF     	 nop
+ 392 001e 0837     	 adds r7,r7,#8
+ 393              	.LCFI8:
+ 394              	 .cfi_def_cfa_offset 8
+ 395 0020 BD46     	 mov sp,r7
+ 396              	.LCFI9:
+ 397              	 .cfi_def_cfa_register 13
+ 398              	 
+ 399 0022 80BD     	 pop {r7,pc}
+ 400              	.L21:
+ 401              	 .align 2
+ 402              	.L20:
+ 403 0024 00000000 	 .word XMEGANVM_EnablePDI
+ 404 0028 00000000 	 .word XPROG_Status
+ 405              	 .cfi_endproc
+ 406              	.LFE182:
+ 408              	 .section .text.XPROGProtocol_LeaveXPROGMode,"ax",%progbits
+ 409              	 .align 1
+ 410              	 .syntax unified
+ 411              	 .thumb
+ 412              	 .thumb_func
+ 413              	 .fpu softvfp
+ 415              	XPROGProtocol_LeaveXPROGMode:
+ 416              	.LFB183:
+ 145:XPROGNewAE.c  **** 
+ 146:XPROGNewAE.c  **** /** Handler for the XPROG LEAVE_PROGMODE command to terminate the PDI programming connection with
+ 147:XPROGNewAE.c  ****  *  the attached device.
+ 148:XPROGNewAE.c  ****  */
+ 149:XPROGNewAE.c  **** static void XPROGProtocol_LeaveXPROGMode(void)
+ 150:XPROGNewAE.c  **** {
+ 417              	 .loc 1 150 1
+ 418              	 .cfi_startproc
+ 419              	 
+ 420              	 
+ 421 0000 80B5     	 push {r7,lr}
+ 422              	.LCFI10:
+ 423              	 .cfi_def_cfa_offset 8
+ 424              	 .cfi_offset 7,-8
+ 425              	 .cfi_offset 14,-4
+ 426 0002 00AF     	 add r7,sp,#0
+ 427              	.LCFI11:
+ 428              	 .cfi_def_cfa_register 7
+ 151:XPROGNewAE.c  ****     XMEGANVM_DisablePDI();
+ 429              	 .loc 1 151 5
+ 430 0004 034B     	 ldr r3,.L23
+ 431 0006 9847     	 blx r3
+ 432              	.LVL16:
+ 152:XPROGNewAE.c  **** 	XPROG_Status = XPROG_ERR_OK;
+ 433              	 .loc 1 152 15
+ 434 0008 034B     	 ldr r3,.L23+4
+ 435 000a 0022     	 movs r2,#0
+ 436 000c 1A70     	 strb r2,[r3]
+ 153:XPROGNewAE.c  **** }
+ 437              	 .loc 1 153 1
+ 438 000e 00BF     	 nop
+ 439 0010 80BD     	 pop {r7,pc}
+ 440              	.L24:
+ 441 0012 00BF     	 .align 2
+ 442              	.L23:
+ 443 0014 00000000 	 .word XMEGANVM_DisablePDI
+ 444 0018 00000000 	 .word XPROG_Status
+ 445              	 .cfi_endproc
+ 446              	.LFE183:
+ 448              	 .section .text.XPROGProtocol_Erase,"ax",%progbits
+ 449              	 .align 1
+ 450              	 .syntax unified
+ 451              	 .thumb
+ 452              	 .thumb_func
+ 453              	 .fpu softvfp
+ 455              	XPROGProtocol_Erase:
+ 456              	.LFB184:
+ 154:XPROGNewAE.c  **** 
+ 155:XPROGNewAE.c  **** /** Handler for the XPRG ERASE command to erase a specific memory address space in the attached dev
+ 156:XPROGNewAE.c  **** static void XPROGProtocol_Erase(void)
+ 157:XPROGNewAE.c  **** {
+ 457              	 .loc 1 157 1
+ 458              	 .cfi_startproc
+ 459              	 
+ 460              	 
+ 461 0000 80B5     	 push {r7,lr}
+ 462              	.LCFI12:
+ 463              	 .cfi_def_cfa_offset 8
+ 464              	 .cfi_offset 7,-8
+ 465              	 .cfi_offset 14,-4
+ 466 0002 82B0     	 sub sp,sp,#8
+ 467              	.LCFI13:
+ 468              	 .cfi_def_cfa_offset 16
+ 469 0004 00AF     	 add r7,sp,#0
+ 470              	.LCFI14:
+ 471              	 .cfi_def_cfa_register 7
+ 158:XPROGNewAE.c  **** 	XPROG_Status = XPROG_ERR_OK;
+ 472              	 .loc 1 158 15
+ 473 0006 344B     	 ldr r3,.L39
+ 474 0008 0022     	 movs r2,#0
+ 475 000a 1A70     	 strb r2,[r3]
+ 159:XPROGNewAE.c  **** 	
+ 160:XPROGNewAE.c  **** 	if (udd_g_ctrlreq.payload_size < 5){
+ 476              	 .loc 1 160 19
+ 477 000c 334B     	 ldr r3,.L39+4
+ 478 000e 9B89     	 ldrh r3,[r3,#12]
+ 479              	 .loc 1 160 5
+ 480 0010 042B     	 cmp r3,#4
+ 481 0012 03D8     	 bhi .L26
+ 161:XPROGNewAE.c  **** 		XPROG_Status = XPROG_ERR_FAILED;
+ 482              	 .loc 1 161 16
+ 483 0014 304B     	 ldr r3,.L39
+ 484 0016 0122     	 movs r2,#1
+ 485 0018 1A70     	 strb r2,[r3]
+ 162:XPROGNewAE.c  **** 		return;
+ 486              	 .loc 1 162 3
+ 487 001a 5AE0     	 b .L25
+ 488              	.L26:
+ 163:XPROGNewAE.c  **** 	}
+ 164:XPROGNewAE.c  **** 	
+ 165:XPROGNewAE.c  **** 	uint8_t MemoryType = udd_g_ctrlreq.payload[0]; //Not used
+ 489              	 .loc 1 165 36
+ 490 001c 2F4B     	 ldr r3,.L39+4
+ 491 001e 9B68     	 ldr r3,[r3,#8]
+ 492              	 .loc 1 165 10
+ 493 0020 1B78     	 ldrb r3,[r3]
+ 494 0022 BB71     	 strb r3,[r7,#6]
+ 166:XPROGNewAE.c  **** 	uint32_t Address = (udd_g_ctrlreq.payload[4] << 24) | (udd_g_ctrlreq.payload[3] << 16) | (udd_g_ct
+ 495              	 .loc 1 166 35
+ 496 0024 2D4B     	 ldr r3,.L39+4
+ 497 0026 9B68     	 ldr r3,[r3,#8]
+ 498              	 .loc 1 166 43
+ 499 0028 0433     	 adds r3,r3,#4
+ 500 002a 1B78     	 ldrb r3,[r3]
+ 501              	 .loc 1 166 47
+ 502 002c 1A06     	 lsls r2,r3,#24
+ 503              	 .loc 1 166 70
+ 504 002e 2B4B     	 ldr r3,.L39+4
+ 505 0030 9B68     	 ldr r3,[r3,#8]
+ 506              	 .loc 1 166 78
+ 507 0032 0333     	 adds r3,r3,#3
+ 508 0034 1B78     	 ldrb r3,[r3]
+ 509              	 .loc 1 166 82
+ 510 0036 1B04     	 lsls r3,r3,#16
+ 511              	 .loc 1 166 54
+ 512 0038 1A43     	 orrs r2,r2,r3
+ 513              	 .loc 1 166 105
+ 514 003a 284B     	 ldr r3,.L39+4
+ 515 003c 9B68     	 ldr r3,[r3,#8]
+ 516              	 .loc 1 166 113
+ 517 003e 0233     	 adds r3,r3,#2
+ 518 0040 1B78     	 ldrb r3,[r3]
+ 519              	 .loc 1 166 117
+ 520 0042 1B02     	 lsls r3,r3,#8
+ 521              	 .loc 1 166 89
+ 522 0044 1343     	 orrs r3,r3,r2
+ 523              	 .loc 1 166 139
+ 524 0046 254A     	 ldr r2,.L39+4
+ 525 0048 9268     	 ldr r2,[r2,#8]
+ 526              	 .loc 1 166 147
+ 527 004a 0132     	 adds r2,r2,#1
+ 528 004c 1278     	 ldrb r2,[r2]
+ 529              	 .loc 1 166 123
+ 530 004e 1343     	 orrs r3,r3,r2
+ 531              	 .loc 1 166 11
+ 532 0050 3B60     	 str r3,[r7]
+ 167:XPROGNewAE.c  **** 
+ 168:XPROGNewAE.c  **** 	uint8_t EraseCommand;
+ 169:XPROGNewAE.c  **** 
+ 170:XPROGNewAE.c  **** 	/* Determine which NVM command to send to the device depending on the memory to erase */
+ 171:XPROGNewAE.c  **** 	switch (MemoryType)
+ 533              	 .loc 1 171 2
+ 534 0052 BB79     	 ldrb r3,[r7,#6]
+ 535 0054 013B     	 subs r3,r3,#1
+ 536 0056 072B     	 cmp r3,#7
+ 537 0058 2AD8     	 bhi .L28
+ 538 005a 01A2     	 adr r2,.L30
+ 539 005c 52F823F0 	 ldr pc,[r2,r3,lsl#2]
+ 540              	 .p2align 2
+ 541              	.L30:
+ 542 0060 81000000 	 .word .L37+1
+ 543 0064 87000000 	 .word .L36+1
+ 544 0068 8D000000 	 .word .L35+1
+ 545 006c 93000000 	 .word .L34+1
+ 546 0070 99000000 	 .word .L33+1
+ 547 0074 9F000000 	 .word .L32+1
+ 548 0078 A5000000 	 .word .L31+1
+ 549 007c AB000000 	 .word .L29+1
+ 550              	 .p2align 1
+ 551              	.L37:
+ 172:XPROGNewAE.c  **** 	{
+ 173:XPROGNewAE.c  **** 		case XPROG_ERASE_CHIP:
+ 174:XPROGNewAE.c  **** 		EraseCommand = XMEGA_NVM_CMD_CHIPERASE;
+ 552              	 .loc 1 174 16
+ 553 0080 4023     	 movs r3,#64
+ 554 0082 FB71     	 strb r3,[r7,#7]
+ 175:XPROGNewAE.c  **** 		break;
+ 555              	 .loc 1 175 3
+ 556 0084 17E0     	 b .L38
+ 557              	.L36:
+ 176:XPROGNewAE.c  **** 		case XPROG_ERASE_APP:
+ 177:XPROGNewAE.c  **** 		EraseCommand = XMEGA_NVM_CMD_ERASEAPPSEC;
+ 558              	 .loc 1 177 16
+ 559 0086 2023     	 movs r3,#32
+ 560 0088 FB71     	 strb r3,[r7,#7]
+ 178:XPROGNewAE.c  **** 		break;
+ 561              	 .loc 1 178 3
+ 562 008a 14E0     	 b .L38
+ 563              	.L35:
+ 179:XPROGNewAE.c  **** 		case XPROG_ERASE_BOOT:
+ 180:XPROGNewAE.c  **** 		EraseCommand = XMEGA_NVM_CMD_ERASEBOOTSEC;
+ 564              	 .loc 1 180 16
+ 565 008c 6823     	 movs r3,#104
+ 566 008e FB71     	 strb r3,[r7,#7]
+ 181:XPROGNewAE.c  **** 		break;
+ 567              	 .loc 1 181 3
+ 568 0090 11E0     	 b .L38
+ 569              	.L34:
+ 182:XPROGNewAE.c  **** 		case XPROG_ERASE_EEPROM:
+ 183:XPROGNewAE.c  **** 		EraseCommand = XMEGA_NVM_CMD_ERASEEEPROM;
+ 570              	 .loc 1 183 16
+ 571 0092 3023     	 movs r3,#48
+ 572 0094 FB71     	 strb r3,[r7,#7]
+ 184:XPROGNewAE.c  **** 		break;
+ 573              	 .loc 1 184 3
+ 574 0096 0EE0     	 b .L38
+ 575              	.L33:
+ 185:XPROGNewAE.c  **** 		case XPROG_ERASE_APP_PAGE:
+ 186:XPROGNewAE.c  **** 		EraseCommand = XMEGA_NVM_CMD_ERASEAPPSECPAGE;
+ 576              	 .loc 1 186 16
+ 577 0098 2223     	 movs r3,#34
+ 578 009a FB71     	 strb r3,[r7,#7]
+ 187:XPROGNewAE.c  **** 		break;
+ 579              	 .loc 1 187 3
+ 580 009c 0BE0     	 b .L38
+ 581              	.L32:
+ 188:XPROGNewAE.c  **** 		case XPROG_ERASE_BOOT_PAGE:
+ 189:XPROGNewAE.c  **** 		EraseCommand = XMEGA_NVM_CMD_ERASEBOOTSECPAGE;
+ 582              	 .loc 1 189 16
+ 583 009e 2A23     	 movs r3,#42
+ 584 00a0 FB71     	 strb r3,[r7,#7]
+ 190:XPROGNewAE.c  **** 		break;
+ 585              	 .loc 1 190 3
+ 586 00a2 08E0     	 b .L38
+ 587              	.L31:
+ 191:XPROGNewAE.c  **** 		case XPROG_ERASE_EEPROM_PAGE:
+ 192:XPROGNewAE.c  **** 		EraseCommand = XMEGA_NVM_CMD_ERASEEEPROMPAGE;
+ 588              	 .loc 1 192 16
+ 589 00a4 3223     	 movs r3,#50
+ 590 00a6 FB71     	 strb r3,[r7,#7]
+ 193:XPROGNewAE.c  **** 		break;
+ 591              	 .loc 1 193 3
+ 592 00a8 05E0     	 b .L38
+ 593              	.L29:
+ 194:XPROGNewAE.c  **** 		case XPROG_ERASE_USERSIG:
+ 195:XPROGNewAE.c  **** 		EraseCommand = XMEGA_NVM_CMD_ERASEUSERSIG;
+ 594              	 .loc 1 195 16
+ 595 00aa 1823     	 movs r3,#24
+ 596 00ac FB71     	 strb r3,[r7,#7]
+ 196:XPROGNewAE.c  **** 		break;
+ 597              	 .loc 1 196 3
+ 598 00ae 02E0     	 b .L38
+ 599              	.L28:
+ 197:XPROGNewAE.c  **** 		default:
+ 198:XPROGNewAE.c  **** 		EraseCommand = XMEGA_NVM_CMD_NOOP;
+ 600              	 .loc 1 198 16
+ 601 00b0 0023     	 movs r3,#0
+ 602 00b2 FB71     	 strb r3,[r7,#7]
+ 199:XPROGNewAE.c  **** 		break;
+ 603              	 .loc 1 199 3
+ 604 00b4 00BF     	 nop
+ 605              	.L38:
+ 200:XPROGNewAE.c  **** 	}
+ 201:XPROGNewAE.c  **** 
+ 202:XPROGNewAE.c  **** 	/* Erase the target memory, indicate timeout if occurred */
+ 203:XPROGNewAE.c  **** 	if (XMEGANVM_EraseMemory(EraseCommand, Address) == false) {
+ 606              	 .loc 1 203 6
+ 607 00b6 FB79     	 ldrb r3,[r7,#7]
+ 608 00b8 3968     	 ldr r1,[r7]
+ 609 00ba 1846     	 mov r0,r3
+ 610 00bc 084B     	 ldr r3,.L39+8
+ 611 00be 9847     	 blx r3
+ 612              	.LVL17:
+ 613 00c0 0346     	 mov r3,r0
+ 614              	 .loc 1 203 50
+ 615 00c2 83F00103 	 eor r3,r3,#1
+ 616 00c6 DBB2     	 uxtb r3,r3
+ 617              	 .loc 1 203 5
+ 618 00c8 002B     	 cmp r3,#0
+ 619 00ca 02D0     	 beq .L25
+ 204:XPROGNewAE.c  **** 		XPROG_Status = XPROG_ERR_TIMEOUT;		
+ 620              	 .loc 1 204 16
+ 621 00cc 024B     	 ldr r3,.L39
+ 622 00ce 0322     	 movs r2,#3
+ 623 00d0 1A70     	 strb r2,[r3]
+ 624              	.L25:
+ 205:XPROGNewAE.c  **** 	}
+ 206:XPROGNewAE.c  **** }
+ 625              	 .loc 1 206 1
+ 626 00d2 0837     	 adds r7,r7,#8
+ 627              	.LCFI15:
+ 628              	 .cfi_def_cfa_offset 8
+ 629 00d4 BD46     	 mov sp,r7
+ 630              	.LCFI16:
+ 631              	 .cfi_def_cfa_register 13
+ 632              	 
+ 633 00d6 80BD     	 pop {r7,pc}
+ 634              	.L40:
+ 635              	 .align 2
+ 636              	.L39:
+ 637 00d8 00000000 	 .word XPROG_Status
+ 638 00dc 00000000 	 .word udd_g_ctrlreq
+ 639 00e0 00000000 	 .word XMEGANVM_EraseMemory
+ 640              	 .cfi_endproc
+ 641              	.LFE184:
+ 643              	 .section .text.XPROGProtocol_WriteMemory,"ax",%progbits
+ 644              	 .align 1
+ 645              	 .syntax unified
+ 646              	 .thumb
+ 647              	 .thumb_func
+ 648              	 .fpu softvfp
+ 650              	XPROGProtocol_WriteMemory:
+ 651              	.LFB185:
+ 207:XPROGNewAE.c  **** 
+ 208:XPROGNewAE.c  **** /** Handler for the XPROG WRITE_MEMORY command to write to a specific memory space within the attac
+ 209:XPROGNewAE.c  **** static void XPROGProtocol_WriteMemory(uint8_t * outbuf)
+ 210:XPROGNewAE.c  **** {
+ 652              	 .loc 1 210 1
+ 653              	 .cfi_startproc
+ 654              	 
+ 655              	 
+ 656 0000 90B5     	 push {r4,r7,lr}
+ 657              	.LCFI17:
+ 658              	 .cfi_def_cfa_offset 12
+ 659              	 .cfi_offset 4,-12
+ 660              	 .cfi_offset 7,-8
+ 661              	 .cfi_offset 14,-4
+ 662 0002 8BB0     	 sub sp,sp,#44
+ 663              	.LCFI18:
+ 664              	 .cfi_def_cfa_offset 56
+ 665 0004 04AF     	 add r7,sp,#16
+ 666              	.LCFI19:
+ 667              	 .cfi_def_cfa 7,40
+ 668 0006 7860     	 str r0,[r7,#4]
+ 211:XPROGNewAE.c  **** 	XPROG_Status = XPROG_ERR_OK;
+ 669              	 .loc 1 211 15
+ 670 0008 514B     	 ldr r3,.L56
+ 671 000a 0022     	 movs r2,#0
+ 672 000c 1A70     	 strb r2,[r3]
+ 212:XPROGNewAE.c  **** 	
+ 213:XPROGNewAE.c  **** 	if (udd_g_ctrlreq.req.wLength < 8) {
+ 673              	 .loc 1 213 23
+ 674 000e 514B     	 ldr r3,.L56+4
+ 675 0010 DB88     	 ldrh r3,[r3,#6]
+ 676              	 .loc 1 213 5
+ 677 0012 072B     	 cmp r3,#7
+ 678 0014 02D8     	 bhi .L42
+ 214:XPROGNewAE.c  **** 		XPROG_Status = XPROG_ERR_FAILED;
+ 679              	 .loc 1 214 16
+ 680 0016 4E4B     	 ldr r3,.L56
+ 681 0018 0122     	 movs r2,#1
+ 682 001a 1A70     	 strb r2,[r3]
+ 683              	.L42:
+ 215:XPROGNewAE.c  **** 	}
+ 216:XPROGNewAE.c  **** 	
+ 217:XPROGNewAE.c  **** 	uint8_t MemoryType = udd_g_ctrlreq.payload[0];
+ 684              	 .loc 1 217 36
+ 685 001c 4D4B     	 ldr r3,.L56+4
+ 686 001e 9B68     	 ldr r3,[r3,#8]
+ 687              	 .loc 1 217 10
+ 688 0020 1B78     	 ldrb r3,[r3]
+ 689 0022 7B74     	 strb r3,[r7,#17]
+ 218:XPROGNewAE.c  **** 	uint8_t  PageMode = udd_g_ctrlreq.payload[1];
+ 690              	 .loc 1 218 35
+ 691 0024 4B4B     	 ldr r3,.L56+4
+ 692 0026 9B68     	 ldr r3,[r3,#8]
+ 693              	 .loc 1 218 11
+ 694 0028 5B78     	 ldrb r3,[r3,#1]
+ 695 002a 3B74     	 strb r3,[r7,#16]
+ 219:XPROGNewAE.c  **** 	uint32_t Address = (udd_g_ctrlreq.payload[5] << 24) | (udd_g_ctrlreq.payload[4] << 16) | (udd_g_ct
+ 696              	 .loc 1 219 35
+ 697 002c 494B     	 ldr r3,.L56+4
+ 698 002e 9B68     	 ldr r3,[r3,#8]
+ 699              	 .loc 1 219 43
+ 700 0030 0533     	 adds r3,r3,#5
+ 701 0032 1B78     	 ldrb r3,[r3]
+ 702              	 .loc 1 219 47
+ 703 0034 1A06     	 lsls r2,r3,#24
+ 704              	 .loc 1 219 70
+ 705 0036 474B     	 ldr r3,.L56+4
+ 706 0038 9B68     	 ldr r3,[r3,#8]
+ 707              	 .loc 1 219 78
+ 708 003a 0433     	 adds r3,r3,#4
+ 709 003c 1B78     	 ldrb r3,[r3]
+ 710              	 .loc 1 219 82
+ 711 003e 1B04     	 lsls r3,r3,#16
+ 712              	 .loc 1 219 54
+ 713 0040 1A43     	 orrs r2,r2,r3
+ 714              	 .loc 1 219 105
+ 715 0042 444B     	 ldr r3,.L56+4
+ 716 0044 9B68     	 ldr r3,[r3,#8]
+ 717              	 .loc 1 219 113
+ 718 0046 0333     	 adds r3,r3,#3
+ 719 0048 1B78     	 ldrb r3,[r3]
+ 720              	 .loc 1 219 117
+ 721 004a 1B02     	 lsls r3,r3,#8
+ 722              	 .loc 1 219 89
+ 723 004c 1343     	 orrs r3,r3,r2
+ 724              	 .loc 1 219 139
+ 725 004e 414A     	 ldr r2,.L56+4
+ 726 0050 9268     	 ldr r2,[r2,#8]
+ 727              	 .loc 1 219 147
+ 728 0052 0232     	 adds r2,r2,#2
+ 729 0054 1278     	 ldrb r2,[r2]
+ 730              	 .loc 1 219 123
+ 731 0056 1343     	 orrs r3,r3,r2
+ 732              	 .loc 1 219 11
+ 733 0058 FB60     	 str r3,[r7,#12]
+ 220:XPROGNewAE.c  **** 	uint16_t Length = udd_g_ctrlreq.payload[6] | (udd_g_ctrlreq.payload[7] << 8);
+ 734              	 .loc 1 220 33
+ 735 005a 3E4B     	 ldr r3,.L56+4
+ 736 005c 9B68     	 ldr r3,[r3,#8]
+ 737              	 .loc 1 220 41
+ 738 005e 0633     	 adds r3,r3,#6
+ 739 0060 1B78     	 ldrb r3,[r3]
+ 740 0062 1AB2     	 sxth r2,r3
+ 741              	 .loc 1 220 61
+ 742 0064 3B4B     	 ldr r3,.L56+4
+ 743 0066 9B68     	 ldr r3,[r3,#8]
+ 744              	 .loc 1 220 69
+ 745 0068 0733     	 adds r3,r3,#7
+ 746 006a 1B78     	 ldrb r3,[r3]
+ 747              	 .loc 1 220 73
+ 748 006c 1B02     	 lsls r3,r3,#8
+ 749              	 .loc 1 220 45
+ 750 006e 1BB2     	 sxth r3,r3
+ 751 0070 1343     	 orrs r3,r3,r2
+ 752 0072 1BB2     	 sxth r3,r3
+ 753              	 .loc 1 220 11
+ 754 0074 FB82     	 strh r3,[r7,#22]
+ 221:XPROGNewAE.c  **** 	
+ 222:XPROGNewAE.c  **** 	if (Length > XMEGA_BUF_SIZE) {
+ 755              	 .loc 1 222 5
+ 756 0076 FB8A     	 ldrh r3,[r7,#22]
+ 757 0078 B3F5807F 	 cmp r3,#256
+ 758 007c 02D9     	 bls .L43
+ 223:XPROGNewAE.c  **** 		Length = XMEGA_BUF_SIZE;
+ 759              	 .loc 1 223 10
+ 760 007e 4FF48073 	 mov r3,#256
+ 761 0082 FB82     	 strh r3,[r7,#22]
+ 762              	.L43:
+ 224:XPROGNewAE.c  **** 	}	
+ 225:XPROGNewAE.c  **** 
+ 226:XPROGNewAE.c  **** 	/* Assume FLASH page programming by default, as it is the common case */
+ 227:XPROGNewAE.c  **** 	uint8_t WriteCommand     = XMEGA_NVM_CMD_WRITEFLASHPAGE;
+ 763              	 .loc 1 227 10
+ 764 0084 2E23     	 movs r3,#46
+ 765 0086 7B75     	 strb r3,[r7,#21]
+ 228:XPROGNewAE.c  **** 	uint8_t WriteBuffCommand = XMEGA_NVM_CMD_LOADFLASHPAGEBUFF;
+ 766              	 .loc 1 228 10
+ 767 0088 2323     	 movs r3,#35
+ 768 008a 3B75     	 strb r3,[r7,#20]
+ 229:XPROGNewAE.c  **** 	uint8_t EraseBuffCommand = XMEGA_NVM_CMD_ERASEFLASHPAGEBUFF;
+ 769              	 .loc 1 229 10
+ 770 008c 2623     	 movs r3,#38
+ 771 008e FB74     	 strb r3,[r7,#19]
+ 230:XPROGNewAE.c  **** 	bool    PagedMemory      = true;
+ 772              	 .loc 1 230 10
+ 773 0090 0123     	 movs r3,#1
+ 774 0092 BB74     	 strb r3,[r7,#18]
+ 231:XPROGNewAE.c  **** 
+ 232:XPROGNewAE.c  **** 	switch (MemoryType)
+ 775              	 .loc 1 232 2
+ 776 0094 7B7C     	 ldrb r3,[r7,#17]
+ 777 0096 013B     	 subs r3,r3,#1
+ 778 0098 052B     	 cmp r3,#5
+ 779 009a 29D8     	 bhi .L44
+ 780 009c 01A2     	 adr r2,.L46
+ 781 009e 52F823F0 	 ldr pc,[r2,r3,lsl#2]
+ 782 00a2 00BF     	 .p2align 2
+ 783              	.L46:
+ 784 00a4 BD000000 	 .word .L51+1
+ 785 00a8 C3000000 	 .word .L50+1
+ 786 00ac C9000000 	 .word .L49+1
+ 787 00b0 DD000000 	 .word .L48+1
+ 788 00b4 E7000000 	 .word .L47+1
+ 789 00b8 D7000000 	 .word .L45+1
+ 790              	 .p2align 1
+ 791              	.L51:
+ 233:XPROGNewAE.c  **** 	{
+ 234:XPROGNewAE.c  **** 		case XPROG_MEM_TYPE_APPL:
+ 235:XPROGNewAE.c  **** 		WriteCommand     = XMEGA_NVM_CMD_WRITEAPPSECPAGE;
+ 792              	 .loc 1 235 20
+ 793 00bc 2423     	 movs r3,#36
+ 794 00be 7B75     	 strb r3,[r7,#21]
+ 236:XPROGNewAE.c  **** 		break;
+ 795              	 .loc 1 236 3
+ 796 00c0 16E0     	 b .L44
+ 797              	.L50:
+ 237:XPROGNewAE.c  **** 		case XPROG_MEM_TYPE_BOOT:
+ 238:XPROGNewAE.c  **** 		WriteCommand     = XMEGA_NVM_CMD_WRITEBOOTSECPAGE;
+ 798              	 .loc 1 238 20
+ 799 00c2 2C23     	 movs r3,#44
+ 800 00c4 7B75     	 strb r3,[r7,#21]
+ 239:XPROGNewAE.c  **** 		break;
+ 801              	 .loc 1 239 3
+ 802 00c6 13E0     	 b .L44
+ 803              	.L49:
+ 240:XPROGNewAE.c  **** 		case XPROG_MEM_TYPE_EEPROM:
+ 241:XPROGNewAE.c  **** 		WriteCommand     = XMEGA_NVM_CMD_ERASEWRITEEEPROMPAGE;
+ 804              	 .loc 1 241 20
+ 805 00c8 3523     	 movs r3,#53
+ 806 00ca 7B75     	 strb r3,[r7,#21]
+ 242:XPROGNewAE.c  **** 		WriteBuffCommand = XMEGA_NVM_CMD_LOADEEPROMPAGEBUFF;
+ 807              	 .loc 1 242 20
+ 808 00cc 3323     	 movs r3,#51
+ 809 00ce 3B75     	 strb r3,[r7,#20]
+ 243:XPROGNewAE.c  **** 		EraseBuffCommand = XMEGA_NVM_CMD_ERASEEEPROMPAGEBUFF;
+ 810              	 .loc 1 243 20
+ 811 00d0 3623     	 movs r3,#54
+ 812 00d2 FB74     	 strb r3,[r7,#19]
+ 244:XPROGNewAE.c  **** 		break;
+ 813              	 .loc 1 244 3
+ 814 00d4 0CE0     	 b .L44
+ 815              	.L45:
+ 245:XPROGNewAE.c  **** 		case XPROG_MEM_TYPE_USERSIG:
+ 246:XPROGNewAE.c  **** 		WriteCommand     = XMEGA_NVM_CMD_WRITEUSERSIG;
+ 816              	 .loc 1 246 20
+ 817 00d6 1A23     	 movs r3,#26
+ 818 00d8 7B75     	 strb r3,[r7,#21]
+ 247:XPROGNewAE.c  **** 		break;
+ 819              	 .loc 1 247 3
+ 820 00da 09E0     	 b .L44
+ 821              	.L48:
+ 248:XPROGNewAE.c  **** 		case XPROG_MEM_TYPE_FUSE:
+ 249:XPROGNewAE.c  **** 		WriteCommand     = XMEGA_NVM_CMD_WRITEFUSE;
+ 822              	 .loc 1 249 20
+ 823 00dc 4C23     	 movs r3,#76
+ 824 00de 7B75     	 strb r3,[r7,#21]
+ 250:XPROGNewAE.c  **** 		PagedMemory      = false;
+ 825              	 .loc 1 250 20
+ 826 00e0 0023     	 movs r3,#0
+ 827 00e2 BB74     	 strb r3,[r7,#18]
+ 251:XPROGNewAE.c  **** 		break;
+ 828              	 .loc 1 251 3
+ 829 00e4 04E0     	 b .L44
+ 830              	.L47:
+ 252:XPROGNewAE.c  **** 		case XPROG_MEM_TYPE_LOCKBITS:
+ 253:XPROGNewAE.c  **** 		WriteCommand     = XMEGA_NVM_CMD_WRITELOCK;
+ 831              	 .loc 1 253 20
+ 832 00e6 0823     	 movs r3,#8
+ 833 00e8 7B75     	 strb r3,[r7,#21]
+ 254:XPROGNewAE.c  **** 		PagedMemory      = false;
+ 834              	 .loc 1 254 20
+ 835 00ea 0023     	 movs r3,#0
+ 836 00ec BB74     	 strb r3,[r7,#18]
+ 255:XPROGNewAE.c  **** 		break;
+ 837              	 .loc 1 255 3
+ 838 00ee 00BF     	 nop
+ 839              	.L44:
+ 256:XPROGNewAE.c  **** 	}
+ 257:XPROGNewAE.c  **** 
+ 258:XPROGNewAE.c  **** 	/* Send the appropriate memory write commands to the device, indicate timeout if occurred */
+ 259:XPROGNewAE.c  **** 	if ((PagedMemory && !(XMEGANVM_WritePageMemory(WriteBuffCommand, EraseBuffCommand, WriteCommand,
+ 840              	 .loc 1 259 5
+ 841 00f0 BB7C     	 ldrb r3,[r7,#18]
+ 842 00f2 002B     	 cmp r3,#0
+ 843 00f4 12D0     	 beq .L52
+ 844              	 .loc 1 259 24 discriminator 1
+ 845 00f6 3C7C     	 ldrb r4,[r7,#16]
+ 846 00f8 7A7D     	 ldrb r2,[r7,#21]
+ 847 00fa F97C     	 ldrb r1,[r7,#19]
+ 848 00fc 387D     	 ldrb r0,[r7,#20]
+ 849 00fe FB8A     	 ldrh r3,[r7,#22]
+ 850 0100 0293     	 str r3,[sp,#8]
+ 851 0102 7B68     	 ldr r3,[r7,#4]
+ 852 0104 0193     	 str r3,[sp,#4]
+ 853 0106 FB68     	 ldr r3,[r7,#12]
+ 854 0108 0093     	 str r3,[sp]
+ 855 010a 2346     	 mov r3,r4
+ 856 010c 124C     	 ldr r4,.L56+8
+ 857 010e A047     	 blx r4
+ 858              	.LVL18:
+ 859 0110 0346     	 mov r3,r0
+ 860              	 .loc 1 259 22 discriminator 1
+ 861 0112 83F00103 	 eor r3,r3,#1
+ 862 0116 DBB2     	 uxtb r3,r3
+ 863              	 .loc 1 259 19 discriminator 1
+ 864 0118 002B     	 cmp r3,#0
+ 865 011a 12D1     	 bne .L53
+ 866              	.L52:
+ 260:XPROGNewAE.c  **** 												   PageMode, Address,outbuf, Length)))          ||
+ 261:XPROGNewAE.c  **** 	     (!PagedMemory && !(XMEGANVM_WriteByteMemory(WriteCommand, Address, outbuf[0]))) )
+ 867              	 .loc 1 261 8
+ 868 011c BB7C     	 ldrb r3,[r7,#18]
+ 869 011e 83F00103 	 eor r3,r3,#1
+ 870 0122 DBB2     	 uxtb r3,r3
+ 260:XPROGNewAE.c  **** 												   PageMode, Address,outbuf, Length)))          ||
+ 871              	 .loc 1 260 61
+ 872 0124 002B     	 cmp r3,#0
+ 873 0126 0FD0     	 beq .L55
+ 874              	 .loc 1 261 26
+ 875 0128 7B68     	 ldr r3,[r7,#4]
+ 876 012a 1A78     	 ldrb r2,[r3]
+ 877 012c 7B7D     	 ldrb r3,[r7,#21]
+ 878 012e F968     	 ldr r1,[r7,#12]
+ 879 0130 1846     	 mov r0,r3
+ 880 0132 0A4B     	 ldr r3,.L56+12
+ 881 0134 9847     	 blx r3
+ 882              	.LVL19:
+ 883 0136 0346     	 mov r3,r0
+ 884              	 .loc 1 261 24
+ 885 0138 83F00103 	 eor r3,r3,#1
+ 886 013c DBB2     	 uxtb r3,r3
+ 887              	 .loc 1 261 21
+ 888 013e 002B     	 cmp r3,#0
+ 889 0140 02D0     	 beq .L55
+ 890              	.L53:
+ 262:XPROGNewAE.c  **** 	{
+ 263:XPROGNewAE.c  **** 		XPROG_Status = XPROG_ERR_TIMEOUT;
+ 891              	 .loc 1 263 16
+ 892 0142 034B     	 ldr r3,.L56
+ 893 0144 0322     	 movs r2,#3
+ 894 0146 1A70     	 strb r2,[r3]
+ 895              	.L55:
+ 264:XPROGNewAE.c  **** 	}
+ 265:XPROGNewAE.c  **** 
+ 266:XPROGNewAE.c  **** }
+ 896              	 .loc 1 266 1
+ 897 0148 00BF     	 nop
+ 898 014a 1C37     	 adds r7,r7,#28
+ 899              	.LCFI20:
+ 900              	 .cfi_def_cfa_offset 12
+ 901 014c BD46     	 mov sp,r7
+ 902              	.LCFI21:
+ 903              	 .cfi_def_cfa_register 13
+ 904              	 
+ 905 014e 90BD     	 pop {r4,r7,pc}
+ 906              	.L57:
+ 907              	 .align 2
+ 908              	.L56:
+ 909 0150 00000000 	 .word XPROG_Status
+ 910 0154 00000000 	 .word udd_g_ctrlreq
+ 911 0158 00000000 	 .word XMEGANVM_WritePageMemory
+ 912 015c 00000000 	 .word XMEGANVM_WriteByteMemory
+ 913              	 .cfi_endproc
+ 914              	.LFE185:
+ 916              	 .section .text.XPROGProtocol_ReadMemory,"ax",%progbits
+ 917              	 .align 1
+ 918              	 .syntax unified
+ 919              	 .thumb
+ 920              	 .thumb_func
+ 921              	 .fpu softvfp
+ 923              	XPROGProtocol_ReadMemory:
+ 924              	.LFB186:
+ 267:XPROGNewAE.c  **** 
+ 268:XPROGNewAE.c  **** 
+ 269:XPROGNewAE.c  **** 
+ 270:XPROGNewAE.c  **** /** Handler for the XPROG READ_MEMORY command to read data from a specific address space within the
+ 271:XPROGNewAE.c  ****  *  attached device.
+ 272:XPROGNewAE.c  ****  */
+ 273:XPROGNewAE.c  **** static void XPROGProtocol_ReadMemory(uint8_t * outbuf)
+ 274:XPROGNewAE.c  **** {
+ 925              	 .loc 1 274 1
+ 926              	 .cfi_startproc
+ 927              	 
+ 928              	 
+ 929 0000 80B5     	 push {r7,lr}
+ 930              	.LCFI22:
+ 931              	 .cfi_def_cfa_offset 8
+ 932              	 .cfi_offset 7,-8
+ 933              	 .cfi_offset 14,-4
+ 934 0002 84B0     	 sub sp,sp,#16
+ 935              	.LCFI23:
+ 936              	 .cfi_def_cfa_offset 24
+ 937 0004 00AF     	 add r7,sp,#0
+ 938              	.LCFI24:
+ 939              	 .cfi_def_cfa_register 7
+ 940 0006 7860     	 str r0,[r7,#4]
+ 275:XPROGNewAE.c  **** 	XPROG_Status = XPROG_ERR_OK;
+ 941              	 .loc 1 275 15
+ 942 0008 204B     	 ldr r3,.L62
+ 943 000a 0022     	 movs r2,#0
+ 944 000c 1A70     	 strb r2,[r3]
+ 276:XPROGNewAE.c  **** 	//uint8_t MemoryType = udd_g_ctrlreq.payload[0]; //Not used
+ 277:XPROGNewAE.c  **** 	uint32_t Address = (udd_g_ctrlreq.payload[4] << 24) | (udd_g_ctrlreq.payload[3] << 16) | (udd_g_ct
+ 945              	 .loc 1 277 35
+ 946 000e 204B     	 ldr r3,.L62+4
+ 947 0010 9B68     	 ldr r3,[r3,#8]
+ 948              	 .loc 1 277 43
+ 949 0012 0433     	 adds r3,r3,#4
+ 950 0014 1B78     	 ldrb r3,[r3]
+ 951              	 .loc 1 277 47
+ 952 0016 1A06     	 lsls r2,r3,#24
+ 953              	 .loc 1 277 70
+ 954 0018 1D4B     	 ldr r3,.L62+4
+ 955 001a 9B68     	 ldr r3,[r3,#8]
+ 956              	 .loc 1 277 78
+ 957 001c 0333     	 adds r3,r3,#3
+ 958 001e 1B78     	 ldrb r3,[r3]
+ 959              	 .loc 1 277 82
+ 960 0020 1B04     	 lsls r3,r3,#16
+ 961              	 .loc 1 277 54
+ 962 0022 1A43     	 orrs r2,r2,r3
+ 963              	 .loc 1 277 105
+ 964 0024 1A4B     	 ldr r3,.L62+4
+ 965 0026 9B68     	 ldr r3,[r3,#8]
+ 966              	 .loc 1 277 113
+ 967 0028 0233     	 adds r3,r3,#2
+ 968 002a 1B78     	 ldrb r3,[r3]
+ 969              	 .loc 1 277 117
+ 970 002c 1B02     	 lsls r3,r3,#8
+ 971              	 .loc 1 277 89
+ 972 002e 1343     	 orrs r3,r3,r2
+ 973              	 .loc 1 277 139
+ 974 0030 174A     	 ldr r2,.L62+4
+ 975 0032 9268     	 ldr r2,[r2,#8]
+ 976              	 .loc 1 277 147
+ 977 0034 0132     	 adds r2,r2,#1
+ 978 0036 1278     	 ldrb r2,[r2]
+ 979              	 .loc 1 277 123
+ 980 0038 1343     	 orrs r3,r3,r2
+ 981              	 .loc 1 277 11
+ 982 003a BB60     	 str r3,[r7,#8]
+ 278:XPROGNewAE.c  **** 	uint16_t Length = udd_g_ctrlreq.payload[5] | (udd_g_ctrlreq.payload[6] << 8);
+ 983              	 .loc 1 278 33
+ 984 003c 144B     	 ldr r3,.L62+4
+ 985 003e 9B68     	 ldr r3,[r3,#8]
+ 986              	 .loc 1 278 41
+ 987 0040 0533     	 adds r3,r3,#5
+ 988 0042 1B78     	 ldrb r3,[r3]
+ 989 0044 1AB2     	 sxth r2,r3
+ 990              	 .loc 1 278 61
+ 991 0046 124B     	 ldr r3,.L62+4
+ 992 0048 9B68     	 ldr r3,[r3,#8]
+ 993              	 .loc 1 278 69
+ 994 004a 0633     	 adds r3,r3,#6
+ 995 004c 1B78     	 ldrb r3,[r3]
+ 996              	 .loc 1 278 73
+ 997 004e 1B02     	 lsls r3,r3,#8
+ 998              	 .loc 1 278 45
+ 999 0050 1BB2     	 sxth r3,r3
+ 1000 0052 1343     	 orrs r3,r3,r2
+ 1001 0054 1BB2     	 sxth r3,r3
+ 1002              	 .loc 1 278 11
+ 1003 0056 FB81     	 strh r3,[r7,#14]
+ 279:XPROGNewAE.c  **** 	
+ 280:XPROGNewAE.c  **** 	if (Length > XMEGA_BUF_SIZE) {
+ 1004              	 .loc 1 280 5
+ 1005 0058 FB89     	 ldrh r3,[r7,#14]
+ 1006 005a B3F5807F 	 cmp r3,#256
+ 1007 005e 02D9     	 bls .L59
+ 281:XPROGNewAE.c  **** 		Length = XMEGA_BUF_SIZE;
+ 1008              	 .loc 1 281 10
+ 1009 0060 4FF48073 	 mov r3,#256
+ 1010 0064 FB81     	 strh r3,[r7,#14]
+ 1011              	.L59:
+ 282:XPROGNewAE.c  **** 	}
+ 283:XPROGNewAE.c  **** 	
+ 284:XPROGNewAE.c  **** 	//printf("Reading from %x, %d\n", Address, Length);
+ 285:XPROGNewAE.c  **** 
+ 286:XPROGNewAE.c  **** 	/* Read the PDI target's memory, indicate timeout if occurred */
+ 287:XPROGNewAE.c  **** 	if (!(XMEGANVM_ReadMemory(Address, outbuf, Length))) {
+ 1012              	 .loc 1 287 8
+ 1013 0066 FB89     	 ldrh r3,[r7,#14]
+ 1014 0068 1A46     	 mov r2,r3
+ 1015 006a 7968     	 ldr r1,[r7,#4]
+ 1016 006c B868     	 ldr r0,[r7,#8]
+ 1017 006e 094B     	 ldr r3,.L62+8
+ 1018 0070 9847     	 blx r3
+ 1019              	.LVL20:
+ 1020 0072 0346     	 mov r3,r0
+ 1021              	 .loc 1 287 6
+ 1022 0074 83F00103 	 eor r3,r3,#1
+ 1023 0078 DBB2     	 uxtb r3,r3
+ 1024              	 .loc 1 287 5
+ 1025 007a 002B     	 cmp r3,#0
+ 1026 007c 02D0     	 beq .L61
+ 288:XPROGNewAE.c  **** 	  XPROG_Status = XPROG_ERR_TIMEOUT;
+ 1027              	 .loc 1 288 17
+ 1028 007e 034B     	 ldr r3,.L62
+ 1029 0080 0322     	 movs r2,#3
+ 1030 0082 1A70     	 strb r2,[r3]
+ 1031              	.L61:
+ 289:XPROGNewAE.c  **** 	}
+ 290:XPROGNewAE.c  **** }
+ 1032              	 .loc 1 290 1
+ 1033 0084 00BF     	 nop
+ 1034 0086 1037     	 adds r7,r7,#16
+ 1035              	.LCFI25:
+ 1036              	 .cfi_def_cfa_offset 8
+ 1037 0088 BD46     	 mov sp,r7
+ 1038              	.LCFI26:
+ 1039              	 .cfi_def_cfa_register 13
+ 1040              	 
+ 1041 008a 80BD     	 pop {r7,pc}
+ 1042              	.L63:
+ 1043              	 .align 2
+ 1044              	.L62:
+ 1045 008c 00000000 	 .word XPROG_Status
+ 1046 0090 00000000 	 .word udd_g_ctrlreq
+ 1047 0094 00000000 	 .word XMEGANVM_ReadMemory
+ 1048              	 .cfi_endproc
+ 1049              	.LFE186:
+ 1051              	 .section .text.XPROGProtocol_SetParam,"ax",%progbits
+ 1052              	 .align 1
+ 1053              	 .syntax unified
+ 1054              	 .thumb
+ 1055              	 .thumb_func
+ 1056              	 .fpu softvfp
+ 1058              	XPROGProtocol_SetParam:
+ 1059              	.LFB187:
+ 291:XPROGNewAE.c  **** 
+ 292:XPROGNewAE.c  **** 
+ 293:XPROGNewAE.c  **** static void XPROGProtocol_SetParam(void)
+ 294:XPROGNewAE.c  **** {
+ 1060              	 .loc 1 294 1
+ 1061              	 .cfi_startproc
+ 1062              	 
+ 1063              	 
+ 1064 0000 80B5     	 push {r7,lr}
+ 1065              	.LCFI27:
+ 1066              	 .cfi_def_cfa_offset 8
+ 1067              	 .cfi_offset 7,-8
+ 1068              	 .cfi_offset 14,-4
+ 1069 0002 82B0     	 sub sp,sp,#8
+ 1070              	.LCFI28:
+ 1071              	 .cfi_def_cfa_offset 16
+ 1072 0004 00AF     	 add r7,sp,#0
+ 1073              	.LCFI29:
+ 1074              	 .cfi_def_cfa_register 7
+ 295:XPROGNewAE.c  **** 	XPROG_Status = XPROG_ERR_OK;
+ 1075              	 .loc 1 295 15
+ 1076 0006 4B4B     	 ldr r3,.L77
+ 1077 0008 0022     	 movs r2,#0
+ 1078 000a 1A70     	 strb r2,[r3]
+ 296:XPROGNewAE.c  **** 
+ 297:XPROGNewAE.c  **** 	uint8_t XPROGParam = udd_g_ctrlreq.payload[0];
+ 1079              	 .loc 1 297 36
+ 1080 000c 4A4B     	 ldr r3,.L77+4
+ 1081 000e 9B68     	 ldr r3,[r3,#8]
+ 1082              	 .loc 1 297 10
+ 1083 0010 1B78     	 ldrb r3,[r3]
+ 1084 0012 FB71     	 strb r3,[r7,#7]
+ 298:XPROGNewAE.c  **** 	
+ 299:XPROGNewAE.c  **** 	//At least 2 bytes needed - parameters + value
+ 300:XPROGNewAE.c  **** 	if (udd_g_ctrlreq.payload_size < 2){
+ 1085              	 .loc 1 300 19
+ 1086 0014 484B     	 ldr r3,.L77+4
+ 1087 0016 9B89     	 ldrh r3,[r3,#12]
+ 1088              	 .loc 1 300 5
+ 1089 0018 012B     	 cmp r3,#1
+ 1090 001a 03D8     	 bhi .L65
+ 301:XPROGNewAE.c  **** 		XPROG_Status = XPROG_ERR_FAILED;
+ 1091              	 .loc 1 301 16
+ 1092 001c 454B     	 ldr r3,.L77
+ 1093 001e 0122     	 movs r2,#1
+ 1094 0020 1A70     	 strb r2,[r3]
+ 302:XPROGNewAE.c  **** 		return;
+ 1095              	 .loc 1 302 3
+ 1096 0022 84E0     	 b .L64
+ 1097              	.L65:
+ 303:XPROGNewAE.c  **** 	}
+ 304:XPROGNewAE.c  **** 
+ 305:XPROGNewAE.c  **** 	/* Determine which parameter is being set, store the new parameter value */
+ 306:XPROGNewAE.c  **** 	switch (XPROGParam)
+ 1098              	 .loc 1 306 2
+ 1099 0024 FB79     	 ldrb r3,[r7,#7]
+ 1100 0026 013B     	 subs r3,r3,#1
+ 1101 0028 072B     	 cmp r3,#7
+ 1102 002a 7CD8     	 bhi .L67
+ 1103 002c 01A2     	 adr r2,.L69
+ 1104 002e 52F823F0 	 ldr pc,[r2,r3,lsl#2]
+ 1105 0032 00BF     	 .p2align 2
+ 1106              	.L69:
+ 1107 0034 55000000 	 .word .L73+1
+ 1108 0038 99000000 	 .word .L72+1
+ 1109 003c CB000000 	 .word .L71+1
+ 1110 0040 D7000000 	 .word .L70+1
+ 1111 0044 27010000 	 .word .L67+1
+ 1112 0048 27010000 	 .word .L67+1
+ 1113 004c 27010000 	 .word .L67+1
+ 1114 0050 E3000000 	 .word .L68+1
+ 1115              	 .p2align 1
+ 1116              	.L73:
+ 307:XPROGNewAE.c  **** 	{
+ 308:XPROGNewAE.c  **** 		case XPROG_PARAM_NVMBASE:
+ 309:XPROGNewAE.c  **** 			//5 bytes - parameters + value
+ 310:XPROGNewAE.c  **** 			if (udd_g_ctrlreq.payload_size < 5){
+ 1117              	 .loc 1 310 21
+ 1118 0054 384B     	 ldr r3,.L77+4
+ 1119 0056 9B89     	 ldrh r3,[r3,#12]
+ 1120              	 .loc 1 310 7
+ 1121 0058 042B     	 cmp r3,#4
+ 1122 005a 03D8     	 bhi .L74
+ 311:XPROGNewAE.c  **** 				XPROG_Status = XPROG_ERR_FAILED;
+ 1123              	 .loc 1 311 18
+ 1124 005c 354B     	 ldr r3,.L77
+ 1125 005e 0122     	 movs r2,#1
+ 1126 0060 1A70     	 strb r2,[r3]
+ 312:XPROGNewAE.c  **** 				return;
+ 1127              	 .loc 1 312 5
+ 1128 0062 64E0     	 b .L64
+ 1129              	.L74:
+ 313:XPROGNewAE.c  **** 			}
+ 314:XPROGNewAE.c  **** 			XPROG_Param_NVMBase       = (udd_g_ctrlreq.payload[4] << 24) | (udd_g_ctrlreq.payload[3] << 16) 
+ 1130              	 .loc 1 314 46
+ 1131 0064 344B     	 ldr r3,.L77+4
+ 1132 0066 9B68     	 ldr r3,[r3,#8]
+ 1133              	 .loc 1 314 54
+ 1134 0068 0433     	 adds r3,r3,#4
+ 1135 006a 1B78     	 ldrb r3,[r3]
+ 1136              	 .loc 1 314 58
+ 1137 006c 1A06     	 lsls r2,r3,#24
+ 1138              	 .loc 1 314 81
+ 1139 006e 324B     	 ldr r3,.L77+4
+ 1140 0070 9B68     	 ldr r3,[r3,#8]
+ 1141              	 .loc 1 314 89
+ 1142 0072 0333     	 adds r3,r3,#3
+ 1143 0074 1B78     	 ldrb r3,[r3]
+ 1144              	 .loc 1 314 93
+ 1145 0076 1B04     	 lsls r3,r3,#16
+ 1146              	 .loc 1 314 65
+ 1147 0078 1A43     	 orrs r2,r2,r3
+ 1148              	 .loc 1 314 116
+ 1149 007a 2F4B     	 ldr r3,.L77+4
+ 1150 007c 9B68     	 ldr r3,[r3,#8]
+ 1151              	 .loc 1 314 124
+ 1152 007e 0233     	 adds r3,r3,#2
+ 1153 0080 1B78     	 ldrb r3,[r3]
+ 1154              	 .loc 1 314 128
+ 1155 0082 1B02     	 lsls r3,r3,#8
+ 1156              	 .loc 1 314 100
+ 1157 0084 1343     	 orrs r3,r3,r2
+ 1158              	 .loc 1 314 150
+ 1159 0086 2C4A     	 ldr r2,.L77+4
+ 1160 0088 9268     	 ldr r2,[r2,#8]
+ 1161              	 .loc 1 314 158
+ 1162 008a 0132     	 adds r2,r2,#1
+ 1163 008c 1278     	 ldrb r2,[r2]
+ 1164              	 .loc 1 314 134
+ 1165 008e 1343     	 orrs r3,r3,r2
+ 1166 0090 1A46     	 mov r2,r3
+ 1167              	 .loc 1 314 30
+ 1168 0092 2A4B     	 ldr r3,.L77+8
+ 1169 0094 1A60     	 str r2,[r3]
+ 315:XPROGNewAE.c  **** 			break;
+ 1170              	 .loc 1 315 4
+ 1171 0096 4AE0     	 b .L64
+ 1172              	.L72:
+ 316:XPROGNewAE.c  **** 		case XPROG_PARAM_EEPPAGESIZE:
+ 317:XPROGNewAE.c  **** 			//3 bytes - parameters + value
+ 318:XPROGNewAE.c  **** 			if (udd_g_ctrlreq.payload_size < 3){
+ 1173              	 .loc 1 318 21
+ 1174 0098 274B     	 ldr r3,.L77+4
+ 1175 009a 9B89     	 ldrh r3,[r3,#12]
+ 1176              	 .loc 1 318 7
+ 1177 009c 022B     	 cmp r3,#2
+ 1178 009e 03D8     	 bhi .L75
+ 319:XPROGNewAE.c  **** 				XPROG_Status = XPROG_ERR_FAILED;
+ 1179              	 .loc 1 319 18
+ 1180 00a0 244B     	 ldr r3,.L77
+ 1181 00a2 0122     	 movs r2,#1
+ 1182 00a4 1A70     	 strb r2,[r3]
+ 320:XPROGNewAE.c  **** 				return;
+ 1183              	 .loc 1 320 5
+ 1184 00a6 42E0     	 b .L64
+ 1185              	.L75:
+ 321:XPROGNewAE.c  **** 			}
+ 322:XPROGNewAE.c  **** 			XPROG_Param_EEPageSize    = udd_g_ctrlreq.payload[1] | (udd_g_ctrlreq.payload[2] << 8);
+ 1186              	 .loc 1 322 45
+ 1187 00a8 234B     	 ldr r3,.L77+4
+ 1188 00aa 9B68     	 ldr r3,[r3,#8]
+ 1189              	 .loc 1 322 53
+ 1190 00ac 0133     	 adds r3,r3,#1
+ 1191 00ae 1B78     	 ldrb r3,[r3]
+ 1192 00b0 1AB2     	 sxth r2,r3
+ 1193              	 .loc 1 322 73
+ 1194 00b2 214B     	 ldr r3,.L77+4
+ 1195 00b4 9B68     	 ldr r3,[r3,#8]
+ 1196              	 .loc 1 322 81
+ 1197 00b6 0233     	 adds r3,r3,#2
+ 1198 00b8 1B78     	 ldrb r3,[r3]
+ 1199              	 .loc 1 322 85
+ 1200 00ba 1B02     	 lsls r3,r3,#8
+ 1201              	 .loc 1 322 57
+ 1202 00bc 1BB2     	 sxth r3,r3
+ 1203 00be 1343     	 orrs r3,r3,r2
+ 1204 00c0 1BB2     	 sxth r3,r3
+ 1205 00c2 9AB2     	 uxth r2,r3
+ 1206              	 .loc 1 322 30
+ 1207 00c4 1E4B     	 ldr r3,.L77+12
+ 1208 00c6 1A80     	 strh r2,[r3]
+ 323:XPROGNewAE.c  **** 			break;
+ 1209              	 .loc 1 323 4
+ 1210 00c8 31E0     	 b .L64
+ 1211              	.L71:
+ 324:XPROGNewAE.c  **** 		case XPROG_PARAM_NVMCMD_REG:
+ 325:XPROGNewAE.c  **** 			XPROG_Param_NVMCMDRegAddr = udd_g_ctrlreq.payload[1];
+ 1212              	 .loc 1 325 45
+ 1213 00ca 1B4B     	 ldr r3,.L77+4
+ 1214 00cc 9B68     	 ldr r3,[r3,#8]
+ 1215              	 .loc 1 325 30
+ 1216 00ce 5A78     	 ldrb r2,[r3,#1]
+ 1217 00d0 1C4B     	 ldr r3,.L77+16
+ 1218 00d2 1A70     	 strb r2,[r3]
+ 326:XPROGNewAE.c  **** 			break;
+ 1219              	 .loc 1 326 4
+ 1220 00d4 2BE0     	 b .L64
+ 1221              	.L70:
+ 327:XPROGNewAE.c  **** 		case XPROG_PARAM_NVMCSR_REG:
+ 328:XPROGNewAE.c  **** 			XPROG_Param_NVMCSRRegAddr = udd_g_ctrlreq.payload[1];
+ 1222              	 .loc 1 328 45
+ 1223 00d6 184B     	 ldr r3,.L77+4
+ 1224 00d8 9B68     	 ldr r3,[r3,#8]
+ 1225              	 .loc 1 328 30
+ 1226 00da 5A78     	 ldrb r2,[r3,#1]
+ 1227 00dc 1A4B     	 ldr r3,.L77+20
+ 1228 00de 1A70     	 strb r2,[r3]
+ 329:XPROGNewAE.c  **** 			break;
+ 1229              	 .loc 1 329 4
+ 1230 00e0 25E0     	 b .L64
+ 1231              	.L68:
+ 330:XPROGNewAE.c  **** 		case XPROG_PARAM_TIMEOUT:
+ 331:XPROGNewAE.c  **** 			//5 bytes - parameters + value
+ 332:XPROGNewAE.c  **** 			if (udd_g_ctrlreq.payload_size < 5){
+ 1232              	 .loc 1 332 21
+ 1233 00e2 154B     	 ldr r3,.L77+4
+ 1234 00e4 9B89     	 ldrh r3,[r3,#12]
+ 1235              	 .loc 1 332 7
+ 1236 00e6 042B     	 cmp r3,#4
+ 1237 00e8 03D8     	 bhi .L76
+ 333:XPROGNewAE.c  **** 				XPROG_Status = XPROG_ERR_FAILED;
+ 1238              	 .loc 1 333 18
+ 1239 00ea 124B     	 ldr r3,.L77
+ 1240 00ec 0122     	 movs r2,#1
+ 1241 00ee 1A70     	 strb r2,[r3]
+ 334:XPROGNewAE.c  **** 				return;
+ 1242              	 .loc 1 334 5
+ 1243 00f0 1DE0     	 b .L64
+ 1244              	.L76:
+ 335:XPROGNewAE.c  **** 			}
+ 336:XPROGNewAE.c  **** 			set_timeout((udd_g_ctrlreq.payload[4] << 24) | (udd_g_ctrlreq.payload[3] << 16) | (udd_g_ctrlreq
+ 1245              	 .loc 1 336 30
+ 1246 00f2 114B     	 ldr r3,.L77+4
+ 1247 00f4 9B68     	 ldr r3,[r3,#8]
+ 1248              	 .loc 1 336 38
+ 1249 00f6 0433     	 adds r3,r3,#4
+ 1250 00f8 1B78     	 ldrb r3,[r3]
+ 1251              	 .loc 1 336 42
+ 1252 00fa 1A06     	 lsls r2,r3,#24
+ 1253              	 .loc 1 336 65
+ 1254 00fc 0E4B     	 ldr r3,.L77+4
+ 1255 00fe 9B68     	 ldr r3,[r3,#8]
+ 1256              	 .loc 1 336 73
+ 1257 0100 0333     	 adds r3,r3,#3
+ 1258 0102 1B78     	 ldrb r3,[r3]
+ 1259              	 .loc 1 336 77
+ 1260 0104 1B04     	 lsls r3,r3,#16
+ 1261              	 .loc 1 336 49
+ 1262 0106 1A43     	 orrs r2,r2,r3
+ 1263              	 .loc 1 336 100
+ 1264 0108 0B4B     	 ldr r3,.L77+4
+ 1265 010a 9B68     	 ldr r3,[r3,#8]
+ 1266              	 .loc 1 336 108
+ 1267 010c 0233     	 adds r3,r3,#2
+ 1268 010e 1B78     	 ldrb r3,[r3]
+ 1269              	 .loc 1 336 112
+ 1270 0110 1B02     	 lsls r3,r3,#8
+ 1271              	 .loc 1 336 84
+ 1272 0112 1343     	 orrs r3,r3,r2
+ 1273              	 .loc 1 336 134
+ 1274 0114 084A     	 ldr r2,.L77+4
+ 1275 0116 9268     	 ldr r2,[r2,#8]
+ 1276              	 .loc 1 336 142
+ 1277 0118 0132     	 adds r2,r2,#1
+ 1278 011a 1278     	 ldrb r2,[r2]
+ 1279              	 .loc 1 336 118
+ 1280 011c 1343     	 orrs r3,r3,r2
+ 1281              	 .loc 1 336 4
+ 1282 011e 1846     	 mov r0,r3
+ 1283 0120 0A4B     	 ldr r3,.L77+24
+ 1284 0122 9847     	 blx r3
+ 1285              	.LVL21:
+ 337:XPROGNewAE.c  **** 			break;
+ 1286              	 .loc 1 337 4
+ 1287 0124 03E0     	 b .L64
+ 1288              	.L67:
+ 338:XPROGNewAE.c  **** 		default:
+ 339:XPROGNewAE.c  **** 			XPROG_Status = XPROG_ERR_FAILED;
+ 1289              	 .loc 1 339 17
+ 1290 0126 034B     	 ldr r3,.L77
+ 1291 0128 0122     	 movs r2,#1
+ 1292 012a 1A70     	 strb r2,[r3]
+ 340:XPROGNewAE.c  **** 			break;
+ 1293              	 .loc 1 340 4
+ 1294 012c 00BF     	 nop
+ 1295              	.L64:
+ 341:XPROGNewAE.c  **** 	}
+ 342:XPROGNewAE.c  **** }...
+ 1296              	 .loc 1 342 1
+ 1297 012e 0837     	 adds r7,r7,#8
+ 1298              	.LCFI30:
+ 1299              	 .cfi_def_cfa_offset 8
+ 1300 0130 BD46     	 mov sp,r7
+ 1301              	.LCFI31:
+ 1302              	 .cfi_def_cfa_register 13
+ 1303              	 
+ 1304 0132 80BD     	 pop {r7,pc}
+ 1305              	.L78:
+ 1306              	 .align 2
+ 1307              	.L77:
+ 1308 0134 00000000 	 .word XPROG_Status
+ 1309 0138 00000000 	 .word udd_g_ctrlreq
+ 1310 013c 00000000 	 .word XPROG_Param_NVMBase
+ 1311 0140 00000000 	 .word XPROG_Param_EEPageSize
+ 1312 0144 00000000 	 .word XPROG_Param_NVMCMDRegAddr
+ 1313 0148 00000000 	 .word XPROG_Param_NVMCSRRegAddr
+ 1314 014c 00000000 	 .word set_timeout
+ 1315              	 .cfi_endproc
+ 1316              	.LFE187:
+ 1318              	 .section .bss.status_payload.9087,"aw",%nobits
+ 1319              	 .align 2
+ 1322              	status_payload.9087:
+ 1323 0000 00000000 	 .space 4
+ 1324              	 .section .bss.xprog_rambuf.9088,"aw",%nobits
+ 1325              	 .align 2
+ 1328              	xprog_rambuf.9088:
+ 1329 0000 00000000 	 .space 256
+ 1329      00000000 
+ 1329      00000000 
+ 1329      00000000 
+ 1329      00000000 
+ 1330              	 .text
+ 1331              	.Letext0:
+ 1332              	 .file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 1333              	 .file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 1334              	 .file 4 ".././hal/sam3u1c/inc/core_cm3.h"
+ 1335              	 .file 5 ".././hal/sam3u1c/inc/system_sam3u.h"
+ 1336              	 .file 6 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\lib\\gcc\\arm-none-eabi\\9.3.1\\include\\stddef.h"
+ 1337              	 .file 7 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_types.h"
+ 1338              	 .file 8 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\reent.h"
+ 1339              	 .file 9 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\lock.h"
+ 1340              	 .file 10 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\stdlib.h"
+ 1341              	 .file 11 ".././hal/sam3u1c/inc/interrupt/interrupt_sam_nvic.h"
+ 1342              	 .file 12 ".././hal/sam3u1c/inc/compiler.h"
+ 1343              	 .file 13 ".././hal/sam3u1c/inc/sam/sleepmgr.h"
+ 1344              	 .file 14 "./conf_usb.h"
+ 1345              	 .file 15 ".././hal/sam3u1c/inc/usb_protocol.h"
+ 1346              	 .file 16 ".././hal/sam3u1c/inc/udi.h"
+ 1347              	 .file 17 ".././hal/sam3u1c/inc/udc_desc.h"
+ 1348              	 .file 18 ".././hal/sam3u1c/inc/udd.h"
+ 1349              	 .file 19 ".././hal/sam3u1c/inc/udi_vendor.h"
+ 1350              	 .file 20 "XPROGTimeout.h"
+ 1351              	 .file 21 "XPROGNewAE.h"
+ 1352              	 .file 22 "XMEGANVM.h"
+ 1353              	 .file 23 "<built-in>"
+DEFINED SYMBOLS
+                            *ABS*:00000000 XPROGNewAE.c
+    {standard input}:16     .bss.cpu_irq_critical_section_counter:00000000 $d
+    {standard input}:19     .bss.cpu_irq_critical_section_counter:00000000 cpu_irq_critical_section_counter
+    {standard input}:24     .bss.cpu_irq_prev_interrupt_state:00000000 cpu_irq_prev_interrupt_state
+    {standard input}:25     .bss.cpu_irq_prev_interrupt_state:00000000 $d
+    {standard input}:31     .data.XPROG_Param_NVMBase:00000000 XPROG_Param_NVMBase
+    {standard input}:28     .data.XPROG_Param_NVMBase:00000000 $d
+    {standard input}:38     .data.XPROG_Param_EEPageSize:00000000 XPROG_Param_EEPageSize
+    {standard input}:35     .data.XPROG_Param_EEPageSize:00000000 $d
+    {standard input}:44     .data.XPROG_Param_NVMCMDRegAddr:00000000 XPROG_Param_NVMCMDRegAddr
+    {standard input}:50     .data.XPROG_Param_NVMCSRRegAddr:00000000 XPROG_Param_NVMCSRRegAddr
+                            *COM*:00000001 XPROG_Status
+    {standard input}:54     .text.XPROGProtocol_Command:00000000 $t
+    {standard input}:62     .text.XPROGProtocol_Command:00000000 XPROGProtocol_Command
+    {standard input}:97     .text.XPROGProtocol_Command:00000024 $d
+    {standard input}:131    .text.XPROGProtocol_Command:000000ac $t
+    {standard input}:335    .text.XPROGProtocol_Command:00000194 $d
+    {standard input}:1322   .bss.status_payload.9087:00000000 status_payload.9087
+    {standard input}:359    .text.XPROGProtocol_EnterXPROGMode:00000000 XPROGProtocol_EnterXPROGMode
+    {standard input}:415    .text.XPROGProtocol_LeaveXPROGMode:00000000 XPROGProtocol_LeaveXPROGMode
+    {standard input}:455    .text.XPROGProtocol_Erase:00000000 XPROGProtocol_Erase
+    {standard input}:1328   .bss.xprog_rambuf.9088:00000000 xprog_rambuf.9088
+    {standard input}:650    .text.XPROGProtocol_WriteMemory:00000000 XPROGProtocol_WriteMemory
+    {standard input}:923    .text.XPROGProtocol_ReadMemory:00000000 XPROGProtocol_ReadMemory
+    {standard input}:1058   .text.XPROGProtocol_SetParam:00000000 XPROGProtocol_SetParam
+    {standard input}:353    .text.XPROGProtocol_EnterXPROGMode:00000000 $t
+    {standard input}:403    .text.XPROGProtocol_EnterXPROGMode:00000024 $d
+    {standard input}:409    .text.XPROGProtocol_LeaveXPROGMode:00000000 $t
+    {standard input}:443    .text.XPROGProtocol_LeaveXPROGMode:00000014 $d
+    {standard input}:449    .text.XPROGProtocol_Erase:00000000 $t
+    {standard input}:542    .text.XPROGProtocol_Erase:00000060 $d
+    {standard input}:550    .text.XPROGProtocol_Erase:00000080 $t
+    {standard input}:637    .text.XPROGProtocol_Erase:000000d8 $d
+    {standard input}:644    .text.XPROGProtocol_WriteMemory:00000000 $t
+    {standard input}:784    .text.XPROGProtocol_WriteMemory:000000a4 $d
+    {standard input}:790    .text.XPROGProtocol_WriteMemory:000000bc $t
+    {standard input}:909    .text.XPROGProtocol_WriteMemory:00000150 $d
+    {standard input}:917    .text.XPROGProtocol_ReadMemory:00000000 $t
+    {standard input}:1045   .text.XPROGProtocol_ReadMemory:0000008c $d
+    {standard input}:1052   .text.XPROGProtocol_SetParam:00000000 $t
+    {standard input}:1107   .text.XPROGProtocol_SetParam:00000034 $d
+    {standard input}:1115   .text.XPROGProtocol_SetParam:00000054 $t
+    {standard input}:1308   .text.XPROGProtocol_SetParam:00000134 $d
+    {standard input}:1319   .bss.status_payload.9087:00000000 $d
+    {standard input}:1325   .bss.xprog_rambuf.9088:00000000 $d
+                           .group:00000000 wm4.0.2cd8a2cb7ff4c48cec7eeec776a1dd8c
+                           .group:00000000 wm4.stddef.h.39.27677723d43e5b5a7afdf8d798429f1d
+                           .group:00000000 wm4.parts.h.45.afc900689b2c82332e69d798acedc875
+                           .group:00000000 wm4.tpaste.h.45.af3ee36765243b162c88f7f944858426
+                           .group:00000000 wm4.stringz.h.45.c4f6cbe0005e6c1d2139bc6c0e4f4722
+                           .group:00000000 wm4.mrepeat.h.59.c5daaed201a4340b0edf435161d0b77f
+                           .group:00000000 wm4._newlib_version.h.4.1ef4e12f167f8b69d7c30054be56050d
+                           .group:00000000 wm4.features.h.33.5bd1eea2d80518b50f7af0b5ce6750e0
+                           .group:00000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:00000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:00000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:00000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:00000000 wm4.sam3u1c.h.220.c0b54b5a55bc87791749ae17b1487779
+                           .group:00000000 wm4.core_cm3.h.32.5c59c312db585622d253fdb887b0afb1
+                           .group:00000000 wm4.core_cmInstr.h.25.d8165482ef3061013a2fc83e2d85f3d9
+                           .group:00000000 wm4.core_cm3.h.127.b561404f2a159dc517b409bc244d16c1
+                           .group:00000000 wm4.component_adc.h.43.d49887380d07d1cd08cc4e37b3485e31
+                           .group:00000000 wm4.component_adc12b.h.43.eadc09f1073923fb91f1f393cc397dcb
+                           .group:00000000 wm4.component_chipid.h.43.15825c969b1cc9eeea3d9416499874c8
+                           .group:00000000 wm4.component_dmac.h.43.cc8187b1cf6bfeadc91b14fdd28b9e8b
+                           .group:00000000 wm4.component_efc.h.43.cb1b3997ad9ea3733ad421ecbfd02fdd
+                           .group:00000000 wm4.component_gpbr.h.43.49b7e13894fe38b29f2243bbbe530227
+                           .group:00000000 wm4.component_hsmci.h.43.7b7194c92e1480c038f3342f7cec440a
+                           .group:00000000 wm4.component_matrix.h.43.1d209838fb75b4827119203a357141ee
+                           .group:00000000 wm4.component_pdc.h.43.19528a5f9ef5a348234ea06f89069c55
+                           .group:00000000 wm4.component_pio.h.43.163b46c3683ccf92e8de39a5554f50e8
+                           .group:00000000 wm4.component_pmc.h.43.ee4f030602866917aeed15fb2b948de8
+                           .group:00000000 wm4.component_pwm.h.43.ab6262a86f0aea354b43fe6dce7e7eb3
+                           .group:00000000 wm4.component_rstc.h.43.4eb59dc2ddcf585fabf251d0c329fcdd
+                           .group:00000000 wm4.component_rtc.h.43.ba8ccafc772b11d562a3cceab8b95072
+                           .group:00000000 wm4.component_rtt.h.43.3206ef8f067e5e747c3c4c7e719c1429
+                           .group:00000000 wm4.component_smc.h.43.907847915f1a5616734199d7e34424fa
+                           .group:00000000 wm4.component_spi.h.43.a2a09df64ab768c0a32be55285c74ded
+                           .group:00000000 wm4.component_ssc.h.43.d7c78f990c13fc511671b64798c4bcd0
+                           .group:00000000 wm4.component_supc.h.43.7d17f8e5ed3ba815e84381152735062f
+                           .group:00000000 wm4.component_tc.h.43.662eac8137408372b4f9d26c0b5f8621
+                           .group:00000000 wm4.component_twi.h.43.eda18625bd851fc4605861f5b3240c0b
+                           .group:00000000 wm4.component_uart.h.43.2d92735c5ea05c973661e1ba99a2f37c
+                           .group:00000000 wm4.component_udphs.h.43.21cecd26a4e44df0013037f29f2716e4
+                           .group:00000000 wm4.component_usart.h.43.7872f8f455adb38b67b9fbdb15657fbe
+                           .group:00000000 wm4.component_wdt.h.43.e31e10a5469b62c3660b49ab250f802f
+                           .group:00000000 wm4.instance_hsmci.h.43.e233236cc7fd5a805539a7ecc0e1d8d2
+                           .group:00000000 wm4.instance_ssc.h.43.c0cfabc3b9f3bb60745c913111bce965
+                           .group:00000000 wm4.instance_spi.h.43.570ae46af19e4179d9796872b9a8b9bc
+                           .group:00000000 wm4.instance_tc0.h.43.049b3a82387d2961594190609e896a29
+                           .group:00000000 wm4.instance_twi0.h.43.255dc0afa9e0d45eaea0a935eca2f103
+                           .group:00000000 wm4.instance_twi1.h.43.652d1d407893f259f2a817544ba662c2
+                           .group:00000000 wm4.instance_pwm.h.43.88294acec3ca56d6fc521038521a1567
+                           .group:00000000 wm4.instance_usart0.h.43.e26677512aee3dd3bedd71d394410000
+                           .group:00000000 wm4.instance_usart1.h.43.1ba97dbc6610d9fb3132b9d845688201
+                           .group:00000000 wm4.instance_usart2.h.43.baa1bf30b3c5acdee90c4a1f50fe9ebd
+                           .group:00000000 wm4.instance_udphs.h.43.b1ce94181e0d1f22877b81c6040a4363
+                           .group:00000000 wm4.instance_adc12b.h.43.d73ed59e867ccdfdb846d9ef32a50c0c
+                           .group:00000000 wm4.instance_adc.h.43.2b7611a00afeb4c555339b844d4b8456
+                           .group:00000000 wm4.instance_dmac.h.43.ee72691d84889c8f285932be4a075ddb
+                           .group:00000000 wm4.instance_smc.h.43.29610fd00979caaaa65821ad40e9da06
+                           .group:00000000 wm4.instance_matrix.h.43.01ee474141594385374c41a29daeeefe
+                           .group:00000000 wm4.instance_pmc.h.43.37430325ed7b8b24c3fe640c41c29ef5
+                           .group:00000000 wm4.instance_uart.h.43.bd378395ba022bc8670c82ebe656fbbd
+                           .group:00000000 wm4.instance_chipid.h.43.29cd8fb600f149aa58830fcc78fe36f9
+                           .group:00000000 wm4.instance_efc0.h.43.6b85dba20721a7e9fc4350e78d193680
+                           .group:00000000 wm4.instance_efc1.h.43.2c5e94fc4d2742678318d73450d08d57
+                           .group:00000000 wm4.instance_pioa.h.43.eeb46cc3bfe01a1f28e67aa3a6851ed8
+                           .group:00000000 wm4.instance_piob.h.43.652ce26b6c37ac56f9ed42a9216d9aca
+                           .group:00000000 wm4.instance_rstc.h.43.c5de224364a50a85f237c0b864aa4c8f
+                           .group:00000000 wm4.instance_supc.h.43.a5f1a5ca08f468ccf34ed3653e045f1f
+                           .group:00000000 wm4.instance_rtt.h.43.8622b192c23334996132415e3095df7f
+                           .group:00000000 wm4.instance_wdt.h.43.407ea53e133eacf09acf2c7fcb6b7524
+                           .group:00000000 wm4.instance_rtc.h.43.f70b77f9180401c8d9d920cb4a1cd166
+                           .group:00000000 wm4.instance_gpbr.h.43.9066cb40d557f6755101368854272348
+                           .group:00000000 wm4.sam3u1c.h.312.ae446d8e874d34ca3df78faf190c678f
+                           .group:00000000 wm4.pio_sam3u1c.h.43.18b24f16e1710ff2a400d88fe33c5107
+                           .group:00000000 wm4.sam3u1c.h.442.cd4bbc3af493e98bc9b60c2905132ed0
+                           .group:00000000 wm4.newlib.h.8.7cb3972cd43265932d4782d5eb589854
+                           .group:00000000 wm4.ieeefp.h.77.f33a4dce62116f6f5175ff8bae57a54c
+                           .group:00000000 wm4.config.h.224.c701144a7b0518c6ee9b9b5465b79f81
+                           .group:00000000 wm4._ansi.h.31.de524f58584151836e90d8620a16f8e8
+                           .group:00000000 wm4.stdio.h.31.7c0e28c411445f3f9c5b11accf882760
+                           .group:00000000 wm4.stddef.h.155.ba788add86a0e365f264484f110c3c29
+                           .group:00000000 wm4.cdefs.h.49.2bf373aedffd8b393ccd11dc057e8547
+                           .group:00000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:00000000 wm4._types.h.20.dd0d04dca3800a0d2a6129b87f3adbb2
+                           .group:00000000 wm4.stddef.h.155.3588ebfdd1e8c7ede80509bb9c3b8009
+                           .group:00000000 wm4._types.h.127.34941de1b2539d59d5cac00e0dd27a45
+                           .group:00000000 wm4.reent.h.17.e292bf8b0bec6c96e131a54347145a30
+                           .group:00000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:00000000 wm4.reent.h.77.dcd6129ff07fe81bd5636db29abe53b2
+                           .group:00000000 wm4.types.h.40.8b6acba56cefbb11746718204edc8f5e
+                           .group:00000000 wm4._endian.h.31.65a10590763c3dde1ac4a7f66d7d4891
+                           .group:00000000 wm4.endian.h.9.49f3a4695c1b61e8a0808de3c4a106cb
+                           .group:00000000 wm4._timeval.h.32.bec3221fa7a9bb0bdde696c9c57e47d2
+                           .group:00000000 wm4.timespec.h.41.d855182eb0e690443ab8651bcedca6e1
+                           .group:00000000 wm4.select.h.19.97ca6fd0c752a0f3b6719fd314d361e6
+                           .group:00000000 wm4.types.h.51.5571ec98f267d17d3c670b7a3ba33afa
+                           .group:00000000 wm4.sched.h.22.c60982713a5c428609783c78f9c78d95
+                           .group:00000000 wm4._pthreadtypes.h.36.fcee9961c35163dde6267ef772ad1972
+                           .group:00000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:00000000 wm4.stdio.h.81.932d0c162786b883f622b8d05c120c78
+                           .group:00000000 wm4.stdbool.h.29.07dce69c3b78884144b7f7bd19483461
+                           .group:00000000 wm4.stdlib.h.13.4ed386f5c1a80d71e72172885d946ef2
+                           .group:00000000 wm4.alloca.h.8.dfc0c703c47ec3e69746825b17d9e66d
+                           .group:00000000 wm4.stdlib.h.56.f4862cfbf4363a1db01842d5bdf72c18
+                           .group:00000000 wm4.compiler.h.88.0e6ad966134fa012ce9a34053d3f48aa
+                           .group:00000000 wm4.interrupt_sam_nvic.h.45.4876da6c127868305d66389e87e0876f
+                           .group:00000000 wm4.compiler.h.425.66dd29c210af3287ed85ec3553a3e6b1
+                           .group:00000000 wm4.conf_clock.h.45.5dc276d21b4d793a62f1a9757cc18d5c
+                           .group:00000000 wm4.board.h.48.ce8d06c36cc583d9bf62738411f62e4d
+                           .group:00000000 wm4.cw521.h.62.1727e9a463c60d459e36c42a4e5a0f86
+                           .group:00000000 wm4.pmc.h.45.bbe1bf97a811e3b283420b2eeadf0b35
+                           .group:00000000 wm4.osc.h.94.b766cddafe899eca01d775f7b2906680
+                           .group:00000000 wm4.pll.h.45.a605c31ca466ae25752a678e8572be48
+                           .group:00000000 wm4.sysclk.h.156.541a142b0016a365728ea1f7c0e3db84
+                           .group:00000000 wm4.cycle_counter.h.44.fde38fb1acfd6555d72e65fae6e86af5
+                           .group:00000000 wm4.delay.h.105.f2a8ab5e71eab0684cf6985b5c2fc9e8
+                           .group:00000000 wm4.efc.h.45.ec5734119c630498df26106bacf9a684
+                           .group:00000000 wm4.flash_efc.h.90.a4a39259055880dc10b861c5fe1b99e7
+                           .group:00000000 wm4.pio.h.45.95f22b0ea02ddc698ec54fc56bf6f38c
+                           .group:00000000 wm4.sam_gpio.h.50.76a45c51855d665134f8211cd601d693
+                           .group:00000000 wm4.ioport_pio.h.44.373b34364b4ef25fac62017cd942a761
+                           .group:00000000 wm4.sleep.h.45.ef10e1aee6f903405be19980a8333b7f
+                           .group:00000000 wm4.smc.h.45.17a94aa976bb62b1109d03e8a314a569
+                           .group:00000000 wm4.spi.h.45.712c66be09ffbac297c2e00923077297
+                           .group:00000000 wm4.conf_sleepmgr.h.44.d825b913294720022fefe7201514fca3
+                           .group:00000000 wm4.twi.h.45.ba70de99d200dafba570ce8f7058737a
+                           .group:00000000 wm4.twi_master.h.90.08c062d0fa8f8aeea342ceeb79263395
+                           .group:00000000 wm4.twi_slave.h.45.8b3d1a3d2e43ebc7d0161f4142989871
+                           .group:00000000 wm4.uart.h.45.a5af743b8064bd84d1a6438457096e18
+                           .group:00000000 wm4.usart.h.46.eae6fe592b7ea0768efef8d312e7f44f
+                           .group:00000000 wm4.conf_uart_serial.h.45.245cdceaa1a3811fd043bf660ce38054
+                           .group:00000000 wm4.conf_usb.h.45.2f7207bed7467dcf9cb11fbc6ebe572c
+                           .group:00000000 wm4.udi_vendor_conf.h.56.4348c8e521d040f44df868219dae6785
+                           .group:00000000 wm4.usb_atmel.h.45.c31b525dbe01f8d9e2022a03356ec174
+                           .group:00000000 wm4.usb_protocol.h.63.850c58f3469fce50a9ac9a6854f7594b
+                           .group:00000000 wm4.usb_protocol_vendor.h.45.83dfe073428ff799abc3ed1c7b04c77d
+                           .group:00000000 wm4.udc_desc.h.77.5fec235bd7553e7256e345e020840072
+                           .group:00000000 wm4.udd.h.103.3ccc59b50c14ec70568e6136eeb22d56
+                           .group:00000000 wm4.udi_vendor.h.125.7b9085237d4d4a9757f4c148fba1918d
+                           .group:00000000 wm4.XPROGTarget.h.37.f13be92b4fed79a57f759fbcfb772a0c
+                           .group:00000000 wm4.XMEGANVM.h.48.e7b2897ef70272e11c75543118cf4de6
+                           .group:00000000 wm4.XPROGNewAE.h.44.1fab8fec0bc3c46aa52d18726018ea35
+                           .group:00000000 wm4.string.h.8.c4b8571ce60dff2817f43fec8b86aecd
+
+UNDEFINED SYMBOLS
+udd_g_ctrlreq
+start_timeoutcnt
+memcpy
+TimeoutTicksRemaining
+stop_timeoutcnt
+XMEGANVM_EnablePDI
+XMEGANVM_DisablePDI
+XMEGANVM_EraseMemory
+XMEGANVM_WritePageMemory
+XMEGANVM_WriteByteMemory
+XMEGANVM_ReadMemory
+set_timeout

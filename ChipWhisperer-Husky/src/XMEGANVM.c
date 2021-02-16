@@ -36,6 +36,7 @@
 #define  INCLUDE_FROM_XMEGA_NVM_C
 #include "XMEGANVM.h"
 
+#include "cw521.h"
 /** Sends the given 32-bit absolute address to the target.
  *
  *  \param[in] AbsoluteAddress  Absolute address to send to the target

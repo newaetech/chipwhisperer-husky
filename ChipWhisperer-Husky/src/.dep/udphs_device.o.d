@@ -70,12 +70,11 @@ objdir/udphs_device.o.s: .././hal/sam3u1c/udphs_device.c conf_usb.h \
  .././hal/sam3u1c/inc/sysclk.h .././hal/sam3u1c/inc/parts.h conf_clock.h \
  .././hal/sam3u1c/inc/sam3u/sysclk.h .././hal/sam3u1c/inc/osc.h \
  .././hal/sam3u1c/inc/sam3u/osc.h .././hal/sam3u1c/inc/board.h \
- .././hal/sam3u1c/inc/compiler.h .././hal/sam3u1c/inc/cw521/cw521.h \
- .././hal/sam3u1c/inc/system_sam3u.h .././hal/sam3u1c/inc/exceptions.h \
- .././hal/sam3u1c/inc/pmc.h .././hal/sam3u1c/inc/pll.h \
- .././hal/sam3u1c/inc/sam3u/pll.h .././hal/sam3u1c/inc/udd.h \
- .././hal/sam3u1c/inc/udphs_device.h conf_board.h \
- .././hal/sam3u1c/inc/board.h .././hal/sam3u1c/inc/ioport.h \
+ .././hal/sam3u1c/inc/compiler.h .././hal/sam3u1c/inc/cw521.h \
+ .././hal/sam3u1c/inc/exceptions.h .././hal/sam3u1c/inc/pmc.h \
+ .././hal/sam3u1c/inc/pll.h .././hal/sam3u1c/inc/sam3u/pll.h \
+ .././hal/sam3u1c/inc/udd.h .././hal/sam3u1c/inc/udphs_device.h \
+ conf_board.h .././hal/sam3u1c/inc/board.h .././hal/sam3u1c/inc/ioport.h \
  .././hal/sam3u1c/inc/sam/ioport_pio.h .././hal/sam3u1c/inc/pio.h \
  .././hal/sam3u1c/inc/pio_handler.h .././hal/sam3u1c/inc/sleep.h \
  .././hal/sam3u1c/inc/sleepmgr.h .././hal/sam3u1c/inc/sam/sleepmgr.h \
@@ -259,9 +258,7 @@ conf_clock.h:
 
 .././hal/sam3u1c/inc/compiler.h:
 
-.././hal/sam3u1c/inc/cw521/cw521.h:
-
-.././hal/sam3u1c/inc/system_sam3u.h:
+.././hal/sam3u1c/inc/cw521.h:
 
 .././hal/sam3u1c/inc/exceptions.h:
 

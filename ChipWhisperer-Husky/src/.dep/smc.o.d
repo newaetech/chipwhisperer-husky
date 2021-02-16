@@ -62,8 +62,8 @@ objdir/smc.o.s: .././hal/sam3u1c/smc.c .././hal/sam3u1c/inc/smc.h \
  .././hal/sam3u1c/inc/instance/instance_gpbr.h \
  .././hal/sam3u1c/inc/pio/pio_sam3u1c.h .././hal/sam3u1c/inc/interrupt.h \
  .././hal/sam3u1c/inc/interrupt/interrupt_sam_nvic.h \
- .././hal/sam3u1c/inc/board.h .././hal/sam3u1c/inc/cw521/cw521.h \
- .././hal/sam3u1c/inc/system_sam3u.h .././hal/sam3u1c/inc/exceptions.h
+ .././hal/sam3u1c/inc/board.h .././hal/sam3u1c/inc/cw521.h \
+ .././hal/sam3u1c/inc/exceptions.h
 
 .././hal/sam3u1c/inc/smc.h:
 
@@ -211,8 +211,6 @@ objdir/smc.o.s: .././hal/sam3u1c/smc.c .././hal/sam3u1c/inc/smc.h \
 
 .././hal/sam3u1c/inc/board.h:
 
-.././hal/sam3u1c/inc/cw521/cw521.h:
-
-.././hal/sam3u1c/inc/system_sam3u.h:
+.././hal/sam3u1c/inc/cw521.h:
 
 .././hal/sam3u1c/inc/exceptions.h:

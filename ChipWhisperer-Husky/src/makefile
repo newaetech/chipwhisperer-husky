@@ -34,7 +34,7 @@ TARGET = phywhisperer
 
 # List C source files here.
 # Header files (.h) are automatically pulled in.
-SRC += main.c usb.c usb_xmem.c fpga_program.c usart_driver.c
+SRC += main.c usb.c usb_xmem.c fpga_program.c usart_driver.c V2Protocol.c V2ProtocolParams.c XMEGANVM.c XPROGNewAE.c XPROGTarget.c ISPProtocol.c ISPTarget.c
 # -----------------------------------------------------------------------------
 OPT=0
 

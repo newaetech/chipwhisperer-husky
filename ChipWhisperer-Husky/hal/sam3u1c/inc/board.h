@@ -325,7 +325,7 @@ extern "C" {
 #elif BOARD == CWLITE
 #  include "cwlite/cw_lite.h"
 #elif BOARD == CW521
-#  include "cw521/cw521.h"
+#  include "cw521.h"
 #elif BOARD == DUMMY_BOARD
 #  include "dummy/dummy_board.h"
 #else

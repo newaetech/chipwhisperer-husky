@@ -1,0 +1,2215 @@
+   1              	 .cpu cortex-m3
+   2              	 .eabi_attribute 20,1
+   3              	 .eabi_attribute 21,1
+   4              	 .eabi_attribute 23,3
+   5              	 .eabi_attribute 24,1
+   6              	 .eabi_attribute 25,1
+   7              	 .eabi_attribute 26,1
+   8              	 .eabi_attribute 30,6
+   9              	 .eabi_attribute 34,1
+  10              	 .eabi_attribute 18,4
+  11              	 .file "XMEGANVM.c"
+  12              	 .text
+  13              	.Ltext0:
+  14              	 .cfi_sections .debug_frame
+  15              	 .section .bss.cpu_irq_critical_section_counter,"aw",%nobits
+  16              	 .align 2
+  19              	cpu_irq_critical_section_counter:
+  20 0000 00000000 	 .space 4
+  21              	 .section .bss.cpu_irq_prev_interrupt_state,"aw",%nobits
+  24              	cpu_irq_prev_interrupt_state:
+  25 0000 00       	 .space 1
+  26              	 .section .text.XMEGANVM_SendAddress,"ax",%progbits
+  27              	 .align 1
+  28              	 .arch armv7-m
+  29              	 .syntax unified
+  30              	 .thumb
+  31              	 .thumb_func
+  32              	 .fpu softvfp
+  34              	XMEGANVM_SendAddress:
+  35              	.LFB181:
+  36              	 .file 1 "XMEGANVM.c"
+   1:XMEGANVM.c    **** /*
+   2:XMEGANVM.c    ****              LUFA Library
+   3:XMEGANVM.c    ****      Copyright (C) Dean Camera, 2014.
+   4:XMEGANVM.c    **** 
+   5:XMEGANVM.c    ****   dean [at] fourwalledcubicle [dot] com
+   6:XMEGANVM.c    ****            www.lufa-lib.org
+   7:XMEGANVM.c    **** */
+   8:XMEGANVM.c    **** 
+   9:XMEGANVM.c    **** /*
+  10:XMEGANVM.c    ****   Copyright 2014  Dean Camera (dean [at] fourwalledcubicle [dot] com)
+  11:XMEGANVM.c    **** 
+  12:XMEGANVM.c    ****   Permission to use, copy, modify, distribute, and sell this
+  13:XMEGANVM.c    ****   software and its documentation for any purpose is hereby granted
+  14:XMEGANVM.c    ****   without fee, provided that the above copyright notice appear in
+  15:XMEGANVM.c    ****   all copies and that both that the copyright notice and this
+  16:XMEGANVM.c    ****   permission notice and warranty disclaimer appear in supporting
+  17:XMEGANVM.c    ****   documentation, and that the name of the author not be used in
+  18:XMEGANVM.c    ****   advertising or publicity pertaining to distribution of the
+  19:XMEGANVM.c    ****   software without specific, written prior permission.
+  20:XMEGANVM.c    **** 
+  21:XMEGANVM.c    ****   The author disclaims all warranties with regard to this
+  22:XMEGANVM.c    ****   software, including all implied warranties of merchantability
+  23:XMEGANVM.c    ****   and fitness.  In no event shall the author be liable for any
+  24:XMEGANVM.c    ****   special, indirect or consequential damages or any damages
+  25:XMEGANVM.c    ****   whatsoever resulting from loss of use, data or profits, whether
+  26:XMEGANVM.c    ****   in an action of contract, negligence or other tortious action,
+  27:XMEGANVM.c    ****   arising out of or in connection with the use or performance of
+  28:XMEGANVM.c    ****   this software.
+  29:XMEGANVM.c    **** */
+  30:XMEGANVM.c    **** 
+  31:XMEGANVM.c    **** /** \file
+  32:XMEGANVM.c    ****  *
+  33:XMEGANVM.c    ****  *  Target-related functions for the XMEGA target's NVM module.
+  34:XMEGANVM.c    ****  */
+  35:XMEGANVM.c    **** 
+  36:XMEGANVM.c    **** #define  INCLUDE_FROM_XMEGA_NVM_C
+  37:XMEGANVM.c    **** #include "XMEGANVM.h"
+  38:XMEGANVM.c    **** 
+  39:XMEGANVM.c    **** #include "cw521.h"
+  40:XMEGANVM.c    **** /** Sends the given 32-bit absolute address to the target.
+  41:XMEGANVM.c    ****  *
+  42:XMEGANVM.c    ****  *  \param[in] AbsoluteAddress  Absolute address to send to the target
+  43:XMEGANVM.c    ****  */
+  44:XMEGANVM.c    **** static void XMEGANVM_SendAddress(const uint32_t AbsoluteAddress)
+  45:XMEGANVM.c    **** {
+  37              	 .loc 1 45 1
+  38              	 .cfi_startproc
+  39              	 
+  40              	 
+  41 0000 80B5     	 push {r7,lr}
+  42              	.LCFI0:
+  43              	 .cfi_def_cfa_offset 8
+  44              	 .cfi_offset 7,-8
+  45              	 .cfi_offset 14,-4
+  46 0002 82B0     	 sub sp,sp,#8
+  47              	.LCFI1:
+  48              	 .cfi_def_cfa_offset 16
+  49 0004 00AF     	 add r7,sp,#0
+  50              	.LCFI2:
+  51              	 .cfi_def_cfa_register 7
+  52 0006 7860     	 str r0,[r7,#4]
+  46:XMEGANVM.c    **** 	/* Send the given 32-bit address to the target, LSB first */
+  47:XMEGANVM.c    **** 	XPROGTarget_SendByte(AbsoluteAddress &  0xFF);
+  53              	 .loc 1 47 2
+  54 0008 7B68     	 ldr r3,[r7,#4]
+  55 000a DBB2     	 uxtb r3,r3
+  56 000c 1846     	 mov r0,r3
+  57 000e 0C4B     	 ldr r3,.L2
+  58 0010 9847     	 blx r3
+  59              	.LVL0:
+  48:XMEGANVM.c    **** 	XPROGTarget_SendByte(AbsoluteAddress >> 8);
+  60              	 .loc 1 48 39
+  61 0012 7B68     	 ldr r3,[r7,#4]
+  62 0014 1B0A     	 lsrs r3,r3,#8
+  63              	 .loc 1 48 2
+  64 0016 DBB2     	 uxtb r3,r3
+  65 0018 1846     	 mov r0,r3
+  66 001a 094B     	 ldr r3,.L2
+  67 001c 9847     	 blx r3
+  68              	.LVL1:
+  49:XMEGANVM.c    **** 	XPROGTarget_SendByte(AbsoluteAddress >> 16);
+  69              	 .loc 1 49 39
+  70 001e 7B68     	 ldr r3,[r7,#4]
+  71 0020 1B0C     	 lsrs r3,r3,#16
+  72              	 .loc 1 49 2
+  73 0022 DBB2     	 uxtb r3,r3
+  74 0024 1846     	 mov r0,r3
+  75 0026 064B     	 ldr r3,.L2
+  76 0028 9847     	 blx r3
+  77              	.LVL2:
+  50:XMEGANVM.c    **** 	XPROGTarget_SendByte(AbsoluteAddress >> 24);
+  78              	 .loc 1 50 39
+  79 002a 7B68     	 ldr r3,[r7,#4]
+  80 002c 1B0E     	 lsrs r3,r3,#24
+  81              	 .loc 1 50 2
+  82 002e DBB2     	 uxtb r3,r3
+  83 0030 1846     	 mov r0,r3
+  84 0032 034B     	 ldr r3,.L2
+  85 0034 9847     	 blx r3
+  86              	.LVL3:
+  51:XMEGANVM.c    **** }
+  87              	 .loc 1 51 1
+  88 0036 00BF     	 nop
+  89 0038 0837     	 adds r7,r7,#8
+  90              	.LCFI3:
+  91              	 .cfi_def_cfa_offset 8
+  92 003a BD46     	 mov sp,r7
+  93              	.LCFI4:
+  94              	 .cfi_def_cfa_register 13
+  95              	 
+  96 003c 80BD     	 pop {r7,pc}
+  97              	.L3:
+  98 003e 00BF     	 .align 2
+  99              	.L2:
+ 100 0040 00000000 	 .word XPROGTarget_SendByte
+ 101              	 .cfi_endproc
+ 102              	.LFE181:
+ 104              	 .section .text.XMEGANVM_SendNVMRegAddress,"ax",%progbits
+ 105              	 .align 1
+ 106              	 .syntax unified
+ 107              	 .thumb
+ 108              	 .thumb_func
+ 109              	 .fpu softvfp
+ 111              	XMEGANVM_SendNVMRegAddress:
+ 112              	.LFB182:
+  52:XMEGANVM.c    **** 
+  53:XMEGANVM.c    **** /** Sends the given NVM register address to the target.
+  54:XMEGANVM.c    ****  *
+  55:XMEGANVM.c    ****  *  \param[in] Register  NVM register whose absolute address is to be sent
+  56:XMEGANVM.c    ****  */
+  57:XMEGANVM.c    **** static void XMEGANVM_SendNVMRegAddress(const uint8_t Register)
+  58:XMEGANVM.c    **** {
+ 113              	 .loc 1 58 1
+ 114              	 .cfi_startproc
+ 115              	 
+ 116              	 
+ 117 0000 80B5     	 push {r7,lr}
+ 118              	.LCFI5:
+ 119              	 .cfi_def_cfa_offset 8
+ 120              	 .cfi_offset 7,-8
+ 121              	 .cfi_offset 14,-4
+ 122 0002 84B0     	 sub sp,sp,#16
+ 123              	.LCFI6:
+ 124              	 .cfi_def_cfa_offset 24
+ 125 0004 00AF     	 add r7,sp,#0
+ 126              	.LCFI7:
+ 127              	 .cfi_def_cfa_register 7
+ 128 0006 0346     	 mov r3,r0
+ 129 0008 FB71     	 strb r3,[r7,#7]
+  59:XMEGANVM.c    **** 	/* Determine the absolute register address from the NVM base memory address and the NVM register a
+  60:XMEGANVM.c    **** 	uint32_t Address = XPROG_Param_NVMBase | Register;
+ 130              	 .loc 1 60 41
+ 131 000a FA79     	 ldrb r2,[r7,#7]
+ 132 000c 054B     	 ldr r3,.L5
+ 133 000e 1B68     	 ldr r3,[r3]
+ 134              	 .loc 1 60 11
+ 135 0010 1343     	 orrs r3,r3,r2
+ 136 0012 FB60     	 str r3,[r7,#12]
+  61:XMEGANVM.c    **** 
+  62:XMEGANVM.c    **** 	/* Send the calculated 32-bit address to the target, LSB first */
+  63:XMEGANVM.c    **** 	XMEGANVM_SendAddress(Address);
+ 137              	 .loc 1 63 2
+ 138 0014 F868     	 ldr r0,[r7,#12]
+ 139 0016 044B     	 ldr r3,.L5+4
+ 140 0018 9847     	 blx r3
+ 141              	.LVL4:
+  64:XMEGANVM.c    **** }
+ 142              	 .loc 1 64 1
+ 143 001a 00BF     	 nop
+ 144 001c 1037     	 adds r7,r7,#16
+ 145              	.LCFI8:
+ 146              	 .cfi_def_cfa_offset 8
+ 147 001e BD46     	 mov sp,r7
+ 148              	.LCFI9:
+ 149              	 .cfi_def_cfa_register 13
+ 150              	 
+ 151 0020 80BD     	 pop {r7,pc}
+ 152              	.L6:
+ 153 0022 00BF     	 .align 2
+ 154              	.L5:
+ 155 0024 00000000 	 .word XPROG_Param_NVMBase
+ 156 0028 00000000 	 .word XMEGANVM_SendAddress
+ 157              	 .cfi_endproc
+ 158              	.LFE182:
+ 160              	 .section .text.XMEGANVM_WaitWhileNVMBusBusy,"ax",%progbits
+ 161              	 .align 1
+ 162              	 .global XMEGANVM_WaitWhileNVMBusBusy
+ 163              	 .syntax unified
+ 164              	 .thumb
+ 165              	 .thumb_func
+ 166              	 .fpu softvfp
+ 168              	XMEGANVM_WaitWhileNVMBusBusy:
+ 169              	.LFB183:
+  65:XMEGANVM.c    **** 
+  66:XMEGANVM.c    **** /** Busy-waits while the NVM controller is busy performing a NVM operation, such as a FLASH page re
+  67:XMEGANVM.c    ****  *  calculation.
+  68:XMEGANVM.c    ****  *
+  69:XMEGANVM.c    ****  *  \return Boolean \c true if the NVM controller became ready within the timeout period, \c false 
+  70:XMEGANVM.c    ****  */
+  71:XMEGANVM.c    **** bool XMEGANVM_WaitWhileNVMBusBusy(void)
+  72:XMEGANVM.c    **** {
+ 170              	 .loc 1 72 1
+ 171              	 .cfi_startproc
+ 172              	 
+ 173              	 
+ 174 0000 80B5     	 push {r7,lr}
+ 175              	.LCFI10:
+ 176              	 .cfi_def_cfa_offset 8
+ 177              	 .cfi_offset 7,-8
+ 178              	 .cfi_offset 14,-4
+ 179 0002 82B0     	 sub sp,sp,#8
+ 180              	.LCFI11:
+ 181              	 .cfi_def_cfa_offset 16
+ 182 0004 00AF     	 add r7,sp,#0
+ 183              	.LCFI12:
+ 184              	 .cfi_def_cfa_register 7
+ 185              	.L11:
+ 186              	.LBB2:
+  73:XMEGANVM.c    **** 	/* Poll the STATUS register to check to see if NVM access has been enabled */
+  74:XMEGANVM.c    **** 	for (;;)
+  75:XMEGANVM.c    **** 	{
+  76:XMEGANVM.c    **** 		/* Send the LDCS command to read the PDI STATUS register to see the NVM bus is active */
+  77:XMEGANVM.c    **** 		XPROGTarget_SendByte(PDI_CMD_LDCS(PDI_REG_STATUS));
+ 187              	 .loc 1 77 3
+ 188 0006 8020     	 movs r0,#128
+ 189 0008 0A4B     	 ldr r3,.L12
+ 190 000a 9847     	 blx r3
+ 191              	.LVL5:
+  78:XMEGANVM.c    **** 
+  79:XMEGANVM.c    **** 		uint8_t StatusRegister = XPROGTarget_ReceiveByte();
+ 192              	 .loc 1 79 28
+ 193 000c 0A4B     	 ldr r3,.L12+4
+ 194 000e 9847     	 blx r3
+ 195              	.LVL6:
+ 196 0010 0346     	 mov r3,r0
+ 197 0012 FB71     	 strb r3,[r7,#7]
+  80:XMEGANVM.c    **** 
+  81:XMEGANVM.c    **** 		/* We might have timed out waiting for the status register read response, check here */
+  82:XMEGANVM.c    **** 		if (TimeoutTicksRemaining == 0) {
+ 198              	 .loc 1 82 29
+ 199 0014 094B     	 ldr r3,.L12+8
+ 200 0016 1B68     	 ldr r3,[r3]
+ 201              	 .loc 1 82 6
+ 202 0018 002B     	 cmp r3,#0
+ 203 001a 01D1     	 bne .L8
+  83:XMEGANVM.c    **** 		  return false;
+ 204              	 .loc 1 83 12
+ 205 001c 0023     	 movs r3,#0
+ 206 001e 05E0     	 b .L9
+ 207              	.L8:
+  84:XMEGANVM.c    **** 		}
+  85:XMEGANVM.c    **** 
+  86:XMEGANVM.c    **** 		/* Check the status register read response to see if the NVM bus is enabled */
+  87:XMEGANVM.c    **** 		if (StatusRegister & PDI_STATUS_NVM) {
+ 208              	 .loc 1 87 22
+ 209 0020 FB79     	 ldrb r3,[r7,#7]
+ 210 0022 03F00203 	 and r3,r3,#2
+ 211              	 .loc 1 87 6
+ 212 0026 002B     	 cmp r3,#0
+ 213 0028 EDD0     	 beq .L11
+  88:XMEGANVM.c    **** 		  return true;
+ 214              	 .loc 1 88 12
+ 215 002a 0123     	 movs r3,#1
+ 216              	.L9:
+ 217              	.LBE2:
+  89:XMEGANVM.c    **** 		}
+  90:XMEGANVM.c    **** 	}
+  91:XMEGANVM.c    **** }
+ 218              	 .loc 1 91 1
+ 219 002c 1846     	 mov r0,r3
+ 220 002e 0837     	 adds r7,r7,#8
+ 221              	.LCFI13:
+ 222              	 .cfi_def_cfa_offset 8
+ 223 0030 BD46     	 mov sp,r7
+ 224              	.LCFI14:
+ 225              	 .cfi_def_cfa_register 13
+ 226              	 
+ 227 0032 80BD     	 pop {r7,pc}
+ 228              	.L13:
+ 229              	 .align 2
+ 230              	.L12:
+ 231 0034 00000000 	 .word XPROGTarget_SendByte
+ 232 0038 00000000 	 .word XPROGTarget_ReceiveByte
+ 233 003c 00000000 	 .word TimeoutTicksRemaining
+ 234              	 .cfi_endproc
+ 235              	.LFE183:
+ 237              	 .section .text.XMEGANVM_WaitWhileNVMControllerBusy,"ax",%progbits
+ 238              	 .align 1
+ 239              	 .global XMEGANVM_WaitWhileNVMControllerBusy
+ 240              	 .syntax unified
+ 241              	 .thumb
+ 242              	 .thumb_func
+ 243              	 .fpu softvfp
+ 245              	XMEGANVM_WaitWhileNVMControllerBusy:
+ 246              	.LFB184:
+  92:XMEGANVM.c    **** 
+  93:XMEGANVM.c    **** /** Waits while the target's NVM controller is busy performing an operation, exiting if the
+  94:XMEGANVM.c    ****  *  timeout period expires.
+  95:XMEGANVM.c    ****  *
+  96:XMEGANVM.c    ****  *  \return Boolean \c true if the NVM controller became ready within the timeout period, \c false 
+  97:XMEGANVM.c    ****  */
+  98:XMEGANVM.c    **** bool XMEGANVM_WaitWhileNVMControllerBusy(void)
+  99:XMEGANVM.c    **** {
+ 247              	 .loc 1 99 1
+ 248              	 .cfi_startproc
+ 249              	 
+ 250              	 
+ 251 0000 80B5     	 push {r7,lr}
+ 252              	.LCFI15:
+ 253              	 .cfi_def_cfa_offset 8
+ 254              	 .cfi_offset 7,-8
+ 255              	 .cfi_offset 14,-4
+ 256 0002 82B0     	 sub sp,sp,#8
+ 257              	.LCFI16:
+ 258              	 .cfi_def_cfa_offset 16
+ 259 0004 00AF     	 add r7,sp,#0
+ 260              	.LCFI17:
+ 261              	 .cfi_def_cfa_register 7
+ 100:XMEGANVM.c    **** 	/* Preload the pointer register with the NVM STATUS register address to check the BUSY flag */
+ 101:XMEGANVM.c    **** 	XPROGTarget_SendByte(PDI_CMD_ST(PDI_POINTER_DIRECT, PDI_DATASIZE_4BYTES));
+ 262              	 .loc 1 101 2
+ 263 0006 6B20     	 movs r0,#107
+ 264 0008 0D4B     	 ldr r3,.L19
+ 265 000a 9847     	 blx r3
+ 266              	.LVL7:
+ 102:XMEGANVM.c    **** 	XMEGANVM_SendNVMRegAddress(XMEGA_NVM_REG_STATUS);
+ 267              	 .loc 1 102 2
+ 268 000c 0F20     	 movs r0,#15
+ 269 000e 0D4B     	 ldr r3,.L19+4
+ 270 0010 9847     	 blx r3
+ 271              	.LVL8:
+ 272              	.L18:
+ 273              	.LBB3:
+ 103:XMEGANVM.c    **** 
+ 104:XMEGANVM.c    **** 	/* Poll the NVM STATUS register while the NVM controller is busy */
+ 105:XMEGANVM.c    **** 	for (;;)
+ 106:XMEGANVM.c    **** 	{
+ 107:XMEGANVM.c    **** 		/* Fetch the current status value via the pointer register (without auto-increment afterwards) */
+ 108:XMEGANVM.c    **** 		XPROGTarget_SendByte(PDI_CMD_LD(PDI_POINTER_INDIRECT, PDI_DATASIZE_1BYTE));
+ 274              	 .loc 1 108 3
+ 275 0012 2020     	 movs r0,#32
+ 276 0014 0A4B     	 ldr r3,.L19
+ 277 0016 9847     	 blx r3
+ 278              	.LVL9:
+ 109:XMEGANVM.c    **** 
+ 110:XMEGANVM.c    **** 		uint8_t StatusRegister = XPROGTarget_ReceiveByte();
+ 279              	 .loc 1 110 28
+ 280 0018 0B4B     	 ldr r3,.L19+8
+ 281 001a 9847     	 blx r3
+ 282              	.LVL10:
+ 283 001c 0346     	 mov r3,r0
+ 284 001e FB71     	 strb r3,[r7,#7]
+ 111:XMEGANVM.c    **** 
+ 112:XMEGANVM.c    **** 		/* We might have timed out waiting for the status register read response, check here */
+ 113:XMEGANVM.c    **** 		if (TimeoutTicksRemaining == 0){
+ 285              	 .loc 1 113 29
+ 286 0020 0A4B     	 ldr r3,.L19+12
+ 287 0022 1B68     	 ldr r3,[r3]
+ 288              	 .loc 1 113 6
+ 289 0024 002B     	 cmp r3,#0
+ 290 0026 01D1     	 bne .L15
+ 114:XMEGANVM.c    **** 		  return false;
+ 291              	 .loc 1 114 12
+ 292 0028 0023     	 movs r3,#0
+ 293 002a 04E0     	 b .L16
+ 294              	.L15:
+ 115:XMEGANVM.c    **** 		}
+ 116:XMEGANVM.c    **** 
+ 117:XMEGANVM.c    **** 		/* Check to see if the BUSY flag is still set */
+ 118:XMEGANVM.c    **** 		if (!(StatusRegister & (1 << 7))) {
+ 295              	 .loc 1 118 7
+ 296 002c 97F90730 	 ldrsb r3,[r7,#7]
+ 297              	 .loc 1 118 6
+ 298 0030 002B     	 cmp r3,#0
+ 299 0032 EEDB     	 blt .L18
+ 119:XMEGANVM.c    **** 		  return true;
+ 300              	 .loc 1 119 12
+ 301 0034 0123     	 movs r3,#1
+ 302              	.L16:
+ 303              	.LBE3:
+ 120:XMEGANVM.c    **** 		}
+ 121:XMEGANVM.c    **** 	}
+ 122:XMEGANVM.c    **** }
+ 304              	 .loc 1 122 1
+ 305 0036 1846     	 mov r0,r3
+ 306 0038 0837     	 adds r7,r7,#8
+ 307              	.LCFI18:
+ 308              	 .cfi_def_cfa_offset 8
+ 309 003a BD46     	 mov sp,r7
+ 310              	.LCFI19:
+ 311              	 .cfi_def_cfa_register 13
+ 312              	 
+ 313 003c 80BD     	 pop {r7,pc}
+ 314              	.L20:
+ 315 003e 00BF     	 .align 2
+ 316              	.L19:
+ 317 0040 00000000 	 .word XPROGTarget_SendByte
+ 318 0044 00000000 	 .word XMEGANVM_SendNVMRegAddress
+ 319 0048 00000000 	 .word XPROGTarget_ReceiveByte
+ 320 004c 00000000 	 .word TimeoutTicksRemaining
+ 321              	 .cfi_endproc
+ 322              	.LFE184:
+ 324              	 .section .rodata
+ 325              	 .align 2
+ 326              	.LC0:
+ 327 0000 12       	 .byte 18
+ 328 0001 89       	 .byte -119
+ 329 0002 AB       	 .byte -85
+ 330 0003 45       	 .byte 69
+ 331 0004 CD       	 .byte -51
+ 332 0005 D8       	 .byte -40
+ 333 0006 88       	 .byte -120
+ 334 0007 FF       	 .byte -1
+ 335              	 .section .text.XMEGANVM_EnablePDI,"ax",%progbits
+ 336              	 .align 1
+ 337              	 .global XMEGANVM_EnablePDI
+ 338              	 .syntax unified
+ 339              	 .thumb
+ 340              	 .thumb_func
+ 341              	 .fpu softvfp
+ 343              	XMEGANVM_EnablePDI:
+ 344              	.LFB185:
+ 123:XMEGANVM.c    **** 
+ 124:XMEGANVM.c    **** /** Enables the physical PDI interface on the target and enables access to the internal NVM control
+ 125:XMEGANVM.c    ****  *
+ 126:XMEGANVM.c    ****  *  \return Boolean \c true if the PDI interface was enabled successfully, \c false otherwise
+ 127:XMEGANVM.c    ****  */
+ 128:XMEGANVM.c    **** bool XMEGANVM_EnablePDI(void)
+ 129:XMEGANVM.c    **** {
+ 345              	 .loc 1 129 1
+ 346              	 .cfi_startproc
+ 347              	 
+ 348              	 
+ 349 0000 80B5     	 push {r7,lr}
+ 350              	.LCFI20:
+ 351              	 .cfi_def_cfa_offset 8
+ 352              	 .cfi_offset 7,-8
+ 353              	 .cfi_offset 14,-4
+ 354 0002 86B0     	 sub sp,sp,#24
+ 355              	.LCFI21:
+ 356              	 .cfi_def_cfa_offset 32
+ 357 0004 00AF     	 add r7,sp,#0
+ 358              	.LCFI22:
+ 359              	 .cfi_def_cfa_register 7
+ 130:XMEGANVM.c    **** 	/* Enable PDI programming mode with the attached target */
+ 131:XMEGANVM.c    **** 	XPROGTarget_EnableTargetPDI();
+ 360              	 .loc 1 131 2
+ 361 0006 184B     	 ldr r3,.L25
+ 362 0008 9847     	 blx r3
+ 363              	.LVL11:
+ 132:XMEGANVM.c    **** 
+ 133:XMEGANVM.c    **** 	/* Store the RESET key into the RESET PDI register to keep the XMEGA in reset */
+ 134:XMEGANVM.c    **** 	XPROGTarget_SendByte(PDI_CMD_STCS(PDI_REG_RESET));
+ 364              	 .loc 1 134 2
+ 365 000a C120     	 movs r0,#193
+ 366 000c 174B     	 ldr r3,.L25+4
+ 367 000e 9847     	 blx r3
+ 368              	.LVL12:
+ 135:XMEGANVM.c    **** 	XPROGTarget_SendByte(PDI_RESET_KEY);
+ 369              	 .loc 1 135 2
+ 370 0010 5920     	 movs r0,#89
+ 371 0012 164B     	 ldr r3,.L25+4
+ 372 0014 9847     	 blx r3
+ 373              	.LVL13:
+ 136:XMEGANVM.c    **** 
+ 137:XMEGANVM.c    **** 	/* Lower direction change guard time to 32 USART bits */
+ 138:XMEGANVM.c    **** 	XPROGTarget_SendByte(PDI_CMD_STCS(PDI_REG_CTRL));
+ 374              	 .loc 1 138 2
+ 375 0016 C220     	 movs r0,#194
+ 376 0018 144B     	 ldr r3,.L25+4
+ 377 001a 9847     	 blx r3
+ 378              	.LVL14:
+ 139:XMEGANVM.c    **** 	XPROGTarget_SendByte(0x02);
+ 379              	 .loc 1 139 2
+ 380 001c 0220     	 movs r0,#2
+ 381 001e 134B     	 ldr r3,.L25+4
+ 382 0020 9847     	 blx r3
+ 383              	.LVL15:
+ 140:XMEGANVM.c    **** 
+ 141:XMEGANVM.c    **** 	/* Enable access to the XPROG NVM bus by sending the documented NVM access key to the device */
+ 142:XMEGANVM.c    **** 	XPROGTarget_SendByte(PDI_CMD_KEY);
+ 384              	 .loc 1 142 2
+ 385 0022 E020     	 movs r0,#224
+ 386 0024 114B     	 ldr r3,.L25+4
+ 387 0026 9847     	 blx r3
+ 388              	.LVL16:
+ 389              	.LBB4:
+ 143:XMEGANVM.c    **** 	for (uint8_t i = sizeof(PDI_NVMENABLE_KEY); i > 0; i--)
+ 390              	 .loc 1 143 15
+ 391 0028 0823     	 movs r3,#8
+ 392 002a FB75     	 strb r3,[r7,#23]
+ 393              	 .loc 1 143 2
+ 394 002c 12E0     	 b .L22
+ 395              	.L23:
+ 396              	.LBB5:
+ 144:XMEGANVM.c    **** 	  XPROGTarget_SendByte(PDI_NVMENABLE_KEY[i - 1]);
+ 397              	 .loc 1 144 25 discriminator 3
+ 398 002e 104A     	 ldr r2,.L25+8
+ 399 0030 3B1D     	 adds r3,r7,#4
+ 400 0032 92E80300 	 ldm r2,{r0,r1}
+ 401 0036 83E80300 	 stm r3,{r0,r1}
+ 402              	 .loc 1 144 45 discriminator 3
+ 403 003a FB7D     	 ldrb r3,[r7,#23]
+ 404 003c 013B     	 subs r3,r3,#1
+ 405              	 .loc 1 144 4 discriminator 3
+ 406 003e 07F11802 	 add r2,r7,#24
+ 407 0042 1344     	 add r3,r3,r2
+ 408 0044 13F8143C 	 ldrb r3,[r3,#-20]
+ 409 0048 1846     	 mov r0,r3
+ 410 004a 084B     	 ldr r3,.L25+4
+ 411 004c 9847     	 blx r3
+ 412              	.LVL17:
+ 413              	.LBE5:
+ 143:XMEGANVM.c    **** 	for (uint8_t i = sizeof(PDI_NVMENABLE_KEY); i > 0; i--)
+ 414              	 .loc 1 143 54 discriminator 3
+ 415 004e FB7D     	 ldrb r3,[r7,#23]
+ 416 0050 013B     	 subs r3,r3,#1
+ 417 0052 FB75     	 strb r3,[r7,#23]
+ 418              	.L22:
+ 143:XMEGANVM.c    **** 	for (uint8_t i = sizeof(PDI_NVMENABLE_KEY); i > 0; i--)
+ 419              	 .loc 1 143 2 discriminator 1
+ 420 0054 FB7D     	 ldrb r3,[r7,#23]
+ 421 0056 002B     	 cmp r3,#0
+ 422 0058 E9D1     	 bne .L23
+ 423              	.LBE4:
+ 145:XMEGANVM.c    **** 
+ 146:XMEGANVM.c    **** 	/* Wait until the NVM bus becomes active */
+ 147:XMEGANVM.c    **** 	return XMEGANVM_WaitWhileNVMBusBusy();
+ 424              	 .loc 1 147 9
+ 425 005a 064B     	 ldr r3,.L25+12
+ 426 005c 9847     	 blx r3
+ 427              	.LVL18:
+ 428 005e 0346     	 mov r3,r0
+ 148:XMEGANVM.c    **** }
+ 429              	 .loc 1 148 1
+ 430 0060 1846     	 mov r0,r3
+ 431 0062 1837     	 adds r7,r7,#24
+ 432              	.LCFI23:
+ 433              	 .cfi_def_cfa_offset 8
+ 434 0064 BD46     	 mov sp,r7
+ 435              	.LCFI24:
+ 436              	 .cfi_def_cfa_register 13
+ 437              	 
+ 438 0066 80BD     	 pop {r7,pc}
+ 439              	.L26:
+ 440              	 .align 2
+ 441              	.L25:
+ 442 0068 00000000 	 .word XPROGTarget_EnableTargetPDI
+ 443 006c 00000000 	 .word XPROGTarget_SendByte
+ 444 0070 00000000 	 .word .LC0
+ 445 0074 00000000 	 .word XMEGANVM_WaitWhileNVMBusBusy
+ 446              	 .cfi_endproc
+ 447              	.LFE185:
+ 449              	 .section .text.XMEGANVM_DisablePDI,"ax",%progbits
+ 450              	 .align 1
+ 451              	 .global XMEGANVM_DisablePDI
+ 452              	 .syntax unified
+ 453              	 .thumb
+ 454              	 .thumb_func
+ 455              	 .fpu softvfp
+ 457              	XMEGANVM_DisablePDI:
+ 458              	.LFB186:
+ 149:XMEGANVM.c    **** 
+ 150:XMEGANVM.c    **** /** Removes access to the target's NVM controller and physically disables the target's physical PDI
+ 151:XMEGANVM.c    **** void XMEGANVM_DisablePDI(void)
+ 152:XMEGANVM.c    **** {
+ 459              	 .loc 1 152 1
+ 460              	 .cfi_startproc
+ 461              	 
+ 462              	 
+ 463 0000 80B5     	 push {r7,lr}
+ 464              	.LCFI25:
+ 465              	 .cfi_def_cfa_offset 8
+ 466              	 .cfi_offset 7,-8
+ 467              	 .cfi_offset 14,-4
+ 468 0002 00AF     	 add r7,sp,#0
+ 469              	.LCFI26:
+ 470              	 .cfi_def_cfa_register 7
+ 153:XMEGANVM.c    **** 	XMEGANVM_WaitWhileNVMBusBusy();
+ 471              	 .loc 1 153 2
+ 472 0004 0B4B     	 ldr r3,.L30
+ 473 0006 9847     	 blx r3
+ 474              	.LVL19:
+ 475              	.L29:
+ 154:XMEGANVM.c    **** 
+ 155:XMEGANVM.c    **** 	/* Clear the RESET key in the RESET PDI register to allow the XMEGA to run - must perform this unt
+ 156:XMEGANVM.c    **** 	 * change takes effect, as in some cases it takes multiple writes (silicon bug?).
+ 157:XMEGANVM.c    **** 	 */
+ 158:XMEGANVM.c    **** 	do
+ 159:XMEGANVM.c    **** 	{
+ 160:XMEGANVM.c    **** 		/* Clear reset register */
+ 161:XMEGANVM.c    **** 		XPROGTarget_SendByte(PDI_CMD_STCS(PDI_REG_RESET));
+ 476              	 .loc 1 161 3 discriminator 2
+ 477 0008 C120     	 movs r0,#193
+ 478 000a 0B4B     	 ldr r3,.L30+4
+ 479 000c 9847     	 blx r3
+ 480              	.LVL20:
+ 162:XMEGANVM.c    **** 		XPROGTarget_SendByte(0x00);
+ 481              	 .loc 1 162 3 discriminator 2
+ 482 000e 0020     	 movs r0,#0
+ 483 0010 094B     	 ldr r3,.L30+4
+ 484 0012 9847     	 blx r3
+ 485              	.LVL21:
+ 163:XMEGANVM.c    **** 
+ 164:XMEGANVM.c    **** 		/* Read back the reset register, check to see if it took effect */
+ 165:XMEGANVM.c    **** 		XPROGTarget_SendByte(PDI_CMD_LDCS(PDI_REG_RESET));
+ 486              	 .loc 1 165 3 discriminator 2
+ 487 0014 8120     	 movs r0,#129
+ 488 0016 084B     	 ldr r3,.L30+4
+ 489 0018 9847     	 blx r3
+ 490              	.LVL22:
+ 166:XMEGANVM.c    **** 	} while ((XPROGTarget_ReceiveByte() != 0x00) && TimeoutTicksRemaining);
+ 491              	 .loc 1 166 12 discriminator 2
+ 492 001a 084B     	 ldr r3,.L30+8
+ 493 001c 9847     	 blx r3
+ 494              	.LVL23:
+ 495 001e 0346     	 mov r3,r0
+ 496              	 .loc 1 166 2 discriminator 2
+ 497 0020 002B     	 cmp r3,#0
+ 498 0022 03D0     	 beq .L28
+ 499              	 .loc 1 166 47 discriminator 1
+ 500 0024 064B     	 ldr r3,.L30+12
+ 501 0026 1B68     	 ldr r3,[r3]
+ 502 0028 002B     	 cmp r3,#0
+ 503 002a EDD1     	 bne .L29
+ 504              	.L28:
+ 167:XMEGANVM.c    **** 
+ 168:XMEGANVM.c    **** 	XPROGTarget_DisableTargetPDI();
+ 505              	 .loc 1 168 2
+ 506 002c 054B     	 ldr r3,.L30+16
+ 507 002e 9847     	 blx r3
+ 508              	.LVL24:
+ 169:XMEGANVM.c    **** }
+ 509              	 .loc 1 169 1
+ 510 0030 00BF     	 nop
+ 511 0032 80BD     	 pop {r7,pc}
+ 512              	.L31:
+ 513              	 .align 2
+ 514              	.L30:
+ 515 0034 00000000 	 .word XMEGANVM_WaitWhileNVMBusBusy
+ 516 0038 00000000 	 .word XPROGTarget_SendByte
+ 517 003c 00000000 	 .word XPROGTarget_ReceiveByte
+ 518 0040 00000000 	 .word TimeoutTicksRemaining
+ 519 0044 00000000 	 .word XPROGTarget_DisableTargetPDI
+ 520              	 .cfi_endproc
+ 521              	.LFE186:
+ 523              	 .section .text.XMEGANVM_GetMemoryCRC,"ax",%progbits
+ 524              	 .align 1
+ 525              	 .global XMEGANVM_GetMemoryCRC
+ 526              	 .syntax unified
+ 527              	 .thumb
+ 528              	 .thumb_func
+ 529              	 .fpu softvfp
+ 531              	XMEGANVM_GetMemoryCRC:
+ 532              	.LFB187:
+ 170:XMEGANVM.c    **** 
+ 171:XMEGANVM.c    **** /** Retrieves the CRC value of the given memory space.
+ 172:XMEGANVM.c    ****  *
+ 173:XMEGANVM.c    ****  *  \param[in]  CRCCommand  NVM CRC command to issue to the target
+ 174:XMEGANVM.c    ****  *  \param[out] CRCDest     CRC Destination when read from the target
+ 175:XMEGANVM.c    ****  *
+ 176:XMEGANVM.c    ****  *  \return Boolean \c true if the command sequence complete successfully
+ 177:XMEGANVM.c    ****  */
+ 178:XMEGANVM.c    **** bool XMEGANVM_GetMemoryCRC(const uint8_t CRCCommand,
+ 179:XMEGANVM.c    ****                            uint32_t* const CRCDest)
+ 180:XMEGANVM.c    **** {
+ 533              	 .loc 1 180 1
+ 534              	 .cfi_startproc
+ 535              	 
+ 536              	 
+ 537 0000 90B5     	 push {r4,r7,lr}
+ 538              	.LCFI27:
+ 539              	 .cfi_def_cfa_offset 12
+ 540              	 .cfi_offset 4,-12
+ 541              	 .cfi_offset 7,-8
+ 542              	 .cfi_offset 14,-4
+ 543 0002 85B0     	 sub sp,sp,#20
+ 544              	.LCFI28:
+ 545              	 .cfi_def_cfa_offset 32
+ 546 0004 00AF     	 add r7,sp,#0
+ 547              	.LCFI29:
+ 548              	 .cfi_def_cfa_register 7
+ 549 0006 0346     	 mov r3,r0
+ 550 0008 3960     	 str r1,[r7]
+ 551 000a FB71     	 strb r3,[r7,#7]
+ 181:XMEGANVM.c    **** 	*CRCDest = 0;
+ 552              	 .loc 1 181 11
+ 553 000c 3B68     	 ldr r3,[r7]
+ 554 000e 0022     	 movs r2,#0
+ 555 0010 1A60     	 str r2,[r3]
+ 182:XMEGANVM.c    **** 
+ 183:XMEGANVM.c    **** 	/* Wait until the NVM controller is no longer busy */
+ 184:XMEGANVM.c    **** 	if (!(XMEGANVM_WaitWhileNVMControllerBusy()))
+ 556              	 .loc 1 184 8
+ 557 0012 2D4B     	 ldr r3,.L39
+ 558 0014 9847     	 blx r3
+ 559              	.LVL25:
+ 560 0016 0346     	 mov r3,r0
+ 561              	 .loc 1 184 6
+ 562 0018 83F00103 	 eor r3,r3,#1
+ 563 001c DBB2     	 uxtb r3,r3
+ 564              	 .loc 1 184 5
+ 565 001e 002B     	 cmp r3,#0
+ 566 0020 01D0     	 beq .L33
+ 185:XMEGANVM.c    **** 	  return false;
+ 567              	 .loc 1 185 11
+ 568 0022 0023     	 movs r3,#0
+ 569 0024 4CE0     	 b .L34
+ 570              	.L33:
+ 186:XMEGANVM.c    **** 
+ 187:XMEGANVM.c    **** 	/* Set the NVM command to the correct CRC read command */
+ 188:XMEGANVM.c    **** 	XPROGTarget_SendByte(PDI_CMD_STS(PDI_DATASIZE_4BYTES, PDI_DATASIZE_1BYTE));
+ 571              	 .loc 1 188 2
+ 572 0026 4C20     	 movs r0,#76
+ 573 0028 284B     	 ldr r3,.L39+4
+ 574 002a 9847     	 blx r3
+ 575              	.LVL26:
+ 189:XMEGANVM.c    **** 	XMEGANVM_SendNVMRegAddress(XMEGA_NVM_REG_CMD);
+ 576              	 .loc 1 189 2
+ 577 002c 0A20     	 movs r0,#10
+ 578 002e 284B     	 ldr r3,.L39+8
+ 579 0030 9847     	 blx r3
+ 580              	.LVL27:
+ 190:XMEGANVM.c    **** 	XPROGTarget_SendByte(CRCCommand);
+ 581              	 .loc 1 190 2
+ 582 0032 FB79     	 ldrb r3,[r7,#7]
+ 583 0034 1846     	 mov r0,r3
+ 584 0036 254B     	 ldr r3,.L39+4
+ 585 0038 9847     	 blx r3
+ 586              	.LVL28:
+ 191:XMEGANVM.c    **** 
+ 192:XMEGANVM.c    **** 	/* Set CMDEX bit in NVM CTRLA register to start the CRC generation */
+ 193:XMEGANVM.c    **** 	XPROGTarget_SendByte(PDI_CMD_STS(PDI_DATASIZE_4BYTES, PDI_DATASIZE_1BYTE));
+ 587              	 .loc 1 193 2
+ 588 003a 4C20     	 movs r0,#76
+ 589 003c 234B     	 ldr r3,.L39+4
+ 590 003e 9847     	 blx r3
+ 591              	.LVL29:
+ 194:XMEGANVM.c    **** 	XMEGANVM_SendNVMRegAddress(XMEGA_NVM_REG_CTRLA);
+ 592              	 .loc 1 194 2
+ 593 0040 0B20     	 movs r0,#11
+ 594 0042 234B     	 ldr r3,.L39+8
+ 595 0044 9847     	 blx r3
+ 596              	.LVL30:
+ 195:XMEGANVM.c    **** 	XPROGTarget_SendByte(XMEGA_NVM_BIT_CTRLA_CMDEX);
+ 597              	 .loc 1 195 2
+ 598 0046 0120     	 movs r0,#1
+ 599 0048 204B     	 ldr r3,.L39+4
+ 600 004a 9847     	 blx r3
+ 601              	.LVL31:
+ 196:XMEGANVM.c    **** 
+ 197:XMEGANVM.c    **** 	/* Wait until the NVM bus is ready again */
+ 198:XMEGANVM.c    **** 	if (!(XMEGANVM_WaitWhileNVMBusBusy()))
+ 602              	 .loc 1 198 8
+ 603 004c 214B     	 ldr r3,.L39+12
+ 604 004e 9847     	 blx r3
+ 605              	.LVL32:
+ 606 0050 0346     	 mov r3,r0
+ 607              	 .loc 1 198 6
+ 608 0052 83F00103 	 eor r3,r3,#1
+ 609 0056 DBB2     	 uxtb r3,r3
+ 610              	 .loc 1 198 5
+ 611 0058 002B     	 cmp r3,#0
+ 612 005a 01D0     	 beq .L35
+ 199:XMEGANVM.c    **** 	  return false;
+ 613              	 .loc 1 199 11
+ 614 005c 0023     	 movs r3,#0
+ 615 005e 2FE0     	 b .L34
+ 616              	.L35:
+ 200:XMEGANVM.c    **** 
+ 201:XMEGANVM.c    **** 	/* Wait until the NVM controller is no longer busy */
+ 202:XMEGANVM.c    **** 	if (!(XMEGANVM_WaitWhileNVMControllerBusy()))
+ 617              	 .loc 1 202 8
+ 618 0060 194B     	 ldr r3,.L39
+ 619 0062 9847     	 blx r3
+ 620              	.LVL33:
+ 621 0064 0346     	 mov r3,r0
+ 622              	 .loc 1 202 6
+ 623 0066 83F00103 	 eor r3,r3,#1
+ 624 006a DBB2     	 uxtb r3,r3
+ 625              	 .loc 1 202 5
+ 626 006c 002B     	 cmp r3,#0
+ 627 006e 01D0     	 beq .L36
+ 203:XMEGANVM.c    **** 	  return false;
+ 628              	 .loc 1 203 11
+ 629 0070 0023     	 movs r3,#0
+ 630 0072 25E0     	 b .L34
+ 631              	.L36:
+ 204:XMEGANVM.c    **** 
+ 205:XMEGANVM.c    **** 	/* Load the PDI pointer register with the DAT0 register start address */
+ 206:XMEGANVM.c    **** 	XPROGTarget_SendByte(PDI_CMD_ST(PDI_POINTER_DIRECT, PDI_DATASIZE_4BYTES));
+ 632              	 .loc 1 206 2
+ 633 0074 6B20     	 movs r0,#107
+ 634 0076 154B     	 ldr r3,.L39+4
+ 635 0078 9847     	 blx r3
+ 636              	.LVL34:
+ 207:XMEGANVM.c    **** 	XMEGANVM_SendNVMRegAddress(XMEGA_NVM_REG_DAT0);
+ 637              	 .loc 1 207 2
+ 638 007a 0420     	 movs r0,#4
+ 639 007c 144B     	 ldr r3,.L39+8
+ 640 007e 9847     	 blx r3
+ 641              	.LVL35:
+ 208:XMEGANVM.c    **** 
+ 209:XMEGANVM.c    **** 	/* Send the REPEAT command to grab the CRC bytes */
+ 210:XMEGANVM.c    **** 	XPROGTarget_SendByte(PDI_CMD_REPEAT(PDI_DATASIZE_1BYTE));
+ 642              	 .loc 1 210 2
+ 643 0080 A020     	 movs r0,#160
+ 644 0082 124B     	 ldr r3,.L39+4
+ 645 0084 9847     	 blx r3
+ 646              	.LVL36:
+ 211:XMEGANVM.c    **** 	XPROGTarget_SendByte(XMEGA_CRC_LENGTH_BYTES - 1);
+ 647              	 .loc 1 211 2
+ 648 0086 0220     	 movs r0,#2
+ 649 0088 104B     	 ldr r3,.L39+4
+ 650 008a 9847     	 blx r3
+ 651              	.LVL37:
+ 212:XMEGANVM.c    **** 
+ 213:XMEGANVM.c    **** 	/* Read in the CRC bytes from the target */
+ 214:XMEGANVM.c    **** 	XPROGTarget_SendByte(PDI_CMD_LD(PDI_POINTER_INDIRECT_PI, PDI_DATASIZE_1BYTE));
+ 652              	 .loc 1 214 2
+ 653 008c 2420     	 movs r0,#36
+ 654 008e 0F4B     	 ldr r3,.L39+4
+ 655 0090 9847     	 blx r3
+ 656              	.LVL38:
+ 657              	.LBB6:
+ 215:XMEGANVM.c    **** 	for (uint8_t i = 0; i < XMEGA_CRC_LENGTH_BYTES; i++)
+ 658              	 .loc 1 215 15
+ 659 0092 0023     	 movs r3,#0
+ 660 0094 FB73     	 strb r3,[r7,#15]
+ 661              	 .loc 1 215 2
+ 662 0096 09E0     	 b .L37
+ 663              	.L38:
+ 216:XMEGANVM.c    **** 	  ((uint8_t*)CRCDest)[i] = XPROGTarget_ReceiveByte();
+ 664              	 .loc 1 216 23 discriminator 3
+ 665 0098 FB7B     	 ldrb r3,[r7,#15]
+ 666 009a 3A68     	 ldr r2,[r7]
+ 667 009c D418     	 adds r4,r2,r3
+ 668              	 .loc 1 216 29 discriminator 3
+ 669 009e 0E4B     	 ldr r3,.L39+16
+ 670 00a0 9847     	 blx r3
+ 671              	.LVL39:
+ 672 00a2 0346     	 mov r3,r0
+ 673              	 .loc 1 216 27 discriminator 3
+ 674 00a4 2370     	 strb r3,[r4]
+ 215:XMEGANVM.c    **** 	for (uint8_t i = 0; i < XMEGA_CRC_LENGTH_BYTES; i++)
+ 675              	 .loc 1 215 51 discriminator 3
+ 676 00a6 FB7B     	 ldrb r3,[r7,#15]
+ 677 00a8 0133     	 adds r3,r3,#1
+ 678 00aa FB73     	 strb r3,[r7,#15]
+ 679              	.L37:
+ 215:XMEGANVM.c    **** 	for (uint8_t i = 0; i < XMEGA_CRC_LENGTH_BYTES; i++)
+ 680              	 .loc 1 215 2 discriminator 1
+ 681 00ac FB7B     	 ldrb r3,[r7,#15]
+ 682 00ae 022B     	 cmp r3,#2
+ 683 00b0 F2D9     	 bls .L38
+ 684              	.LBE6:
+ 217:XMEGANVM.c    **** 
+ 218:XMEGANVM.c    **** 	return (TimeoutTicksRemaining > 0);
+ 685              	 .loc 1 218 32
+ 686 00b2 0A4B     	 ldr r3,.L39+20
+ 687 00b4 1B68     	 ldr r3,[r3]
+ 688 00b6 002B     	 cmp r3,#0
+ 689 00b8 14BF     	 ite ne
+ 690 00ba 0123     	 movne r3,#1
+ 691 00bc 0023     	 moveq r3,#0
+ 692 00be DBB2     	 uxtb r3,r3
+ 693              	.L34:
+ 219:XMEGANVM.c    **** }
+ 694              	 .loc 1 219 1
+ 695 00c0 1846     	 mov r0,r3
+ 696 00c2 1437     	 adds r7,r7,#20
+ 697              	.LCFI30:
+ 698              	 .cfi_def_cfa_offset 12
+ 699 00c4 BD46     	 mov sp,r7
+ 700              	.LCFI31:
+ 701              	 .cfi_def_cfa_register 13
+ 702              	 
+ 703 00c6 90BD     	 pop {r4,r7,pc}
+ 704              	.L40:
+ 705              	 .align 2
+ 706              	.L39:
+ 707 00c8 00000000 	 .word XMEGANVM_WaitWhileNVMControllerBusy
+ 708 00cc 00000000 	 .word XPROGTarget_SendByte
+ 709 00d0 00000000 	 .word XMEGANVM_SendNVMRegAddress
+ 710 00d4 00000000 	 .word XMEGANVM_WaitWhileNVMBusBusy
+ 711 00d8 00000000 	 .word XPROGTarget_ReceiveByte
+ 712 00dc 00000000 	 .word TimeoutTicksRemaining
+ 713              	 .cfi_endproc
+ 714              	.LFE187:
+ 716              	 .section .text.XMEGANVM_ReadMemory,"ax",%progbits
+ 717              	 .align 1
+ 718              	 .global XMEGANVM_ReadMemory
+ 719              	 .syntax unified
+ 720              	 .thumb
+ 721              	 .thumb_func
+ 722              	 .fpu softvfp
+ 724              	XMEGANVM_ReadMemory:
+ 725              	.LFB188:
+ 220:XMEGANVM.c    **** 
+ 221:XMEGANVM.c    **** /** Reads memory from the target's memory spaces.
+ 222:XMEGANVM.c    ****  *
+ 223:XMEGANVM.c    ****  *  \param[in]  ReadAddress  Start address to read from within the target's address space
+ 224:XMEGANVM.c    ****  *  \param[out] ReadBuffer   Buffer to store read data into
+ 225:XMEGANVM.c    ****  *  \param[in]  ReadSize     Number of bytes to read
+ 226:XMEGANVM.c    ****  *
+ 227:XMEGANVM.c    ****  *  \return Boolean \c true if the command sequence complete successfully
+ 228:XMEGANVM.c    ****  */
+ 229:XMEGANVM.c    **** bool XMEGANVM_ReadMemory(const uint32_t ReadAddress,
+ 230:XMEGANVM.c    ****                          uint8_t* ReadBuffer,
+ 231:XMEGANVM.c    ****                          uint16_t ReadSize)
+ 232:XMEGANVM.c    **** {
+ 726              	 .loc 1 232 1
+ 727              	 .cfi_startproc
+ 728              	 
+ 729              	 
+ 730 0000 90B5     	 push {r4,r7,lr}
+ 731              	.LCFI32:
+ 732              	 .cfi_def_cfa_offset 12
+ 733              	 .cfi_offset 4,-12
+ 734              	 .cfi_offset 7,-8
+ 735              	 .cfi_offset 14,-4
+ 736 0002 85B0     	 sub sp,sp,#20
+ 737              	.LCFI33:
+ 738              	 .cfi_def_cfa_offset 32
+ 739 0004 00AF     	 add r7,sp,#0
+ 740              	.LCFI34:
+ 741              	 .cfi_def_cfa_register 7
+ 742 0006 F860     	 str r0,[r7,#12]
+ 743 0008 B960     	 str r1,[r7,#8]
+ 744 000a 1346     	 mov r3,r2
+ 745 000c FB80     	 strh r3,[r7,#6]
+ 233:XMEGANVM.c    **** 	/* Wait until the NVM controller is no longer busy */
+ 234:XMEGANVM.c    **** 	if (!(XMEGANVM_WaitWhileNVMControllerBusy()))
+ 746              	 .loc 1 234 8
+ 747 000e 294B     	 ldr r3,.L48
+ 748 0010 9847     	 blx r3
+ 749              	.LVL40:
+ 750 0012 0346     	 mov r3,r0
+ 751              	 .loc 1 234 6
+ 752 0014 83F00103 	 eor r3,r3,#1
+ 753 0018 DBB2     	 uxtb r3,r3
+ 754              	 .loc 1 234 5
+ 755 001a 002B     	 cmp r3,#0
+ 756 001c 01D0     	 beq .L42
+ 235:XMEGANVM.c    **** 	  return false;
+ 757              	 .loc 1 235 11
+ 758 001e 0023     	 movs r3,#0
+ 759 0020 44E0     	 b .L43
+ 760              	.L42:
+ 236:XMEGANVM.c    **** 
+ 237:XMEGANVM.c    **** 	/* Send the READNVM command to the NVM controller for reading of an arbitrary location */
+ 238:XMEGANVM.c    **** 	XPROGTarget_SendByte(PDI_CMD_STS(PDI_DATASIZE_4BYTES, PDI_DATASIZE_1BYTE));
+ 761              	 .loc 1 238 2
+ 762 0022 4C20     	 movs r0,#76
+ 763 0024 244B     	 ldr r3,.L48+4
+ 764 0026 9847     	 blx r3
+ 765              	.LVL41:
+ 239:XMEGANVM.c    **** 	XMEGANVM_SendNVMRegAddress(XMEGA_NVM_REG_CMD);
+ 766              	 .loc 1 239 2
+ 767 0028 0A20     	 movs r0,#10
+ 768 002a 244B     	 ldr r3,.L48+8
+ 769 002c 9847     	 blx r3
+ 770              	.LVL42:
+ 240:XMEGANVM.c    **** 	XPROGTarget_SendByte(XMEGA_NVM_CMD_READNVM);
+ 771              	 .loc 1 240 2
+ 772 002e 4320     	 movs r0,#67
+ 773 0030 214B     	 ldr r3,.L48+4
+ 774 0032 9847     	 blx r3
+ 775              	.LVL43:
+ 241:XMEGANVM.c    **** 
+ 242:XMEGANVM.c    **** 	if (ReadSize > 1)
+ 776              	 .loc 1 242 5
+ 777 0034 FB88     	 ldrh r3,[r7,#6]
+ 778 0036 012B     	 cmp r3,#1
+ 779 0038 24D9     	 bls .L44
+ 243:XMEGANVM.c    **** 	{
+ 244:XMEGANVM.c    **** 		/* Load the PDI pointer register with the start address we want to read from */
+ 245:XMEGANVM.c    **** 		XPROGTarget_SendByte(PDI_CMD_ST(PDI_POINTER_DIRECT, PDI_DATASIZE_4BYTES));
+ 780              	 .loc 1 245 3
+ 781 003a 6B20     	 movs r0,#107
+ 782 003c 1E4B     	 ldr r3,.L48+4
+ 783 003e 9847     	 blx r3
+ 784              	.LVL44:
+ 246:XMEGANVM.c    **** 		XMEGANVM_SendAddress(ReadAddress);
+ 785              	 .loc 1 246 3
+ 786 0040 F868     	 ldr r0,[r7,#12]
+ 787 0042 1F4B     	 ldr r3,.L48+12
+ 788 0044 9847     	 blx r3
+ 789              	.LVL45:
+ 247:XMEGANVM.c    **** 
+ 248:XMEGANVM.c    **** 		/* Send the REPEAT command with the specified number of bytes to read */
+ 249:XMEGANVM.c    **** 		XPROGTarget_SendByte(PDI_CMD_REPEAT(PDI_DATASIZE_1BYTE));
+ 790              	 .loc 1 249 3
+ 791 0046 A020     	 movs r0,#160
+ 792 0048 1B4B     	 ldr r3,.L48+4
+ 793 004a 9847     	 blx r3
+ 794              	.LVL46:
+ 250:XMEGANVM.c    **** 		XPROGTarget_SendByte(ReadSize - 1);
+ 795              	 .loc 1 250 3
+ 796 004c FB88     	 ldrh r3,[r7,#6]
+ 797 004e DBB2     	 uxtb r3,r3
+ 798 0050 013B     	 subs r3,r3,#1
+ 799 0052 DBB2     	 uxtb r3,r3
+ 800 0054 1846     	 mov r0,r3
+ 801 0056 184B     	 ldr r3,.L48+4
+ 802 0058 9847     	 blx r3
+ 803              	.LVL47:
+ 251:XMEGANVM.c    **** 
+ 252:XMEGANVM.c    **** 		/* Send a LD command with indirect access and post-increment to read out the bytes */
+ 253:XMEGANVM.c    **** 		XPROGTarget_SendByte(PDI_CMD_LD(PDI_POINTER_INDIRECT_PI, PDI_DATASIZE_1BYTE));
+ 804              	 .loc 1 253 3
+ 805 005a 2420     	 movs r0,#36
+ 806 005c 164B     	 ldr r3,.L48+4
+ 807 005e 9847     	 blx r3
+ 808              	.LVL48:
+ 254:XMEGANVM.c    **** 		while (ReadSize-- && TimeoutTicksRemaining)
+ 809              	 .loc 1 254 9
+ 810 0060 06E0     	 b .L45
+ 811              	.L47:
+ 255:XMEGANVM.c    **** 		  *(ReadBuffer++) = XPROGTarget_ReceiveByte();
+ 812              	 .loc 1 255 17
+ 813 0062 BC68     	 ldr r4,[r7,#8]
+ 814 0064 631C     	 adds r3,r4,#1
+ 815 0066 BB60     	 str r3,[r7,#8]
+ 816              	 .loc 1 255 23
+ 817 0068 164B     	 ldr r3,.L48+16
+ 818 006a 9847     	 blx r3
+ 819              	.LVL49:
+ 820 006c 0346     	 mov r3,r0
+ 821              	 .loc 1 255 21
+ 822 006e 2370     	 strb r3,[r4]
+ 823              	.L45:
+ 254:XMEGANVM.c    **** 		while (ReadSize-- && TimeoutTicksRemaining)
+ 824              	 .loc 1 254 18
+ 825 0070 FB88     	 ldrh r3,[r7,#6]
+ 826 0072 5A1E     	 subs r2,r3,#1
+ 827 0074 FA80     	 strh r2,[r7,#6]
+ 254:XMEGANVM.c    **** 		while (ReadSize-- && TimeoutTicksRemaining)
+ 828              	 .loc 1 254 9
+ 829 0076 002B     	 cmp r3,#0
+ 830 0078 11D0     	 beq .L46
+ 254:XMEGANVM.c    **** 		while (ReadSize-- && TimeoutTicksRemaining)
+ 831              	 .loc 1 254 21 discriminator 1
+ 832 007a 134B     	 ldr r3,.L48+20
+ 833 007c 1B68     	 ldr r3,[r3]
+ 834 007e 002B     	 cmp r3,#0
+ 835 0080 EFD1     	 bne .L47
+ 836 0082 0CE0     	 b .L46
+ 837              	.L44:
+ 256:XMEGANVM.c    **** 	}
+ 257:XMEGANVM.c    **** 	else
+ 258:XMEGANVM.c    **** 	{
+ 259:XMEGANVM.c    **** 		/* Send a LDS command with the read address to read out the requested byte */
+ 260:XMEGANVM.c    **** 		XPROGTarget_SendByte(PDI_CMD_LDS(PDI_DATASIZE_4BYTES, PDI_DATASIZE_1BYTE));
+ 838              	 .loc 1 260 3
+ 839 0084 0C20     	 movs r0,#12
+ 840 0086 0C4B     	 ldr r3,.L48+4
+ 841 0088 9847     	 blx r3
+ 842              	.LVL50:
+ 261:XMEGANVM.c    **** 		XMEGANVM_SendAddress(ReadAddress);
+ 843              	 .loc 1 261 3
+ 844 008a F868     	 ldr r0,[r7,#12]
+ 845 008c 0C4B     	 ldr r3,.L48+12
+ 846 008e 9847     	 blx r3
+ 847              	.LVL51:
+ 262:XMEGANVM.c    **** 		*(ReadBuffer++) = XPROGTarget_ReceiveByte();
+ 848              	 .loc 1 262 15
+ 849 0090 BC68     	 ldr r4,[r7,#8]
+ 850 0092 631C     	 adds r3,r4,#1
+ 851 0094 BB60     	 str r3,[r7,#8]
+ 852              	 .loc 1 262 21
+ 853 0096 0B4B     	 ldr r3,.L48+16
+ 854 0098 9847     	 blx r3
+ 855              	.LVL52:
+ 856 009a 0346     	 mov r3,r0
+ 857              	 .loc 1 262 19
+ 858 009c 2370     	 strb r3,[r4]
+ 859              	.L46:
+ 263:XMEGANVM.c    **** 	}
+ 264:XMEGANVM.c    **** 
+ 265:XMEGANVM.c    **** 	return (TimeoutTicksRemaining > 0);
+ 860              	 .loc 1 265 32
+ 861 009e 0A4B     	 ldr r3,.L48+20
+ 862 00a0 1B68     	 ldr r3,[r3]
+ 863 00a2 002B     	 cmp r3,#0
+ 864 00a4 14BF     	 ite ne
+ 865 00a6 0123     	 movne r3,#1
+ 866 00a8 0023     	 moveq r3,#0
+ 867 00aa DBB2     	 uxtb r3,r3
+ 868              	.L43:
+ 266:XMEGANVM.c    **** }
+ 869              	 .loc 1 266 1
+ 870 00ac 1846     	 mov r0,r3
+ 871 00ae 1437     	 adds r7,r7,#20
+ 872              	.LCFI35:
+ 873              	 .cfi_def_cfa_offset 12
+ 874 00b0 BD46     	 mov sp,r7
+ 875              	.LCFI36:
+ 876              	 .cfi_def_cfa_register 13
+ 877              	 
+ 878 00b2 90BD     	 pop {r4,r7,pc}
+ 879              	.L49:
+ 880              	 .align 2
+ 881              	.L48:
+ 882 00b4 00000000 	 .word XMEGANVM_WaitWhileNVMControllerBusy
+ 883 00b8 00000000 	 .word XPROGTarget_SendByte
+ 884 00bc 00000000 	 .word XMEGANVM_SendNVMRegAddress
+ 885 00c0 00000000 	 .word XMEGANVM_SendAddress
+ 886 00c4 00000000 	 .word XPROGTarget_ReceiveByte
+ 887 00c8 00000000 	 .word TimeoutTicksRemaining
+ 888              	 .cfi_endproc
+ 889              	.LFE188:
+ 891              	 .section .text.XMEGANVM_WriteByteMemory,"ax",%progbits
+ 892              	 .align 1
+ 893              	 .global XMEGANVM_WriteByteMemory
+ 894              	 .syntax unified
+ 895              	 .thumb
+ 896              	 .thumb_func
+ 897              	 .fpu softvfp
+ 899              	XMEGANVM_WriteByteMemory:
+ 900              	.LFB189:
+ 267:XMEGANVM.c    **** 
+ 268:XMEGANVM.c    **** /** Writes byte addressed memory to the target's memory spaces.
+ 269:XMEGANVM.c    ****  *
+ 270:XMEGANVM.c    ****  *  \param[in]  WriteCommand  Command to send to the device to write each memory byte
+ 271:XMEGANVM.c    ****  *  \param[in]  WriteAddress  Address to write to within the target's address space
+ 272:XMEGANVM.c    ****  *  \param[in]  Byte          Byte to write to the target
+ 273:XMEGANVM.c    ****  *
+ 274:XMEGANVM.c    ****  *  \return Boolean \c true if the command sequence complete successfully
+ 275:XMEGANVM.c    ****  */
+ 276:XMEGANVM.c    **** bool XMEGANVM_WriteByteMemory(const uint8_t WriteCommand,
+ 277:XMEGANVM.c    ****                               const uint32_t WriteAddress,
+ 278:XMEGANVM.c    ****                               const uint8_t data)
+ 279:XMEGANVM.c    **** {
+ 901              	 .loc 1 279 1
+ 902              	 .cfi_startproc
+ 903              	 
+ 904              	 
+ 905 0000 80B5     	 push {r7,lr}
+ 906              	.LCFI37:
+ 907              	 .cfi_def_cfa_offset 8
+ 908              	 .cfi_offset 7,-8
+ 909              	 .cfi_offset 14,-4
+ 910 0002 82B0     	 sub sp,sp,#8
+ 911              	.LCFI38:
+ 912              	 .cfi_def_cfa_offset 16
+ 913 0004 00AF     	 add r7,sp,#0
+ 914              	.LCFI39:
+ 915              	 .cfi_def_cfa_register 7
+ 916 0006 0346     	 mov r3,r0
+ 917 0008 3960     	 str r1,[r7]
+ 918 000a FB71     	 strb r3,[r7,#7]
+ 919 000c 1346     	 mov r3,r2
+ 920 000e BB71     	 strb r3,[r7,#6]
+ 280:XMEGANVM.c    **** 	/* Wait until the NVM controller is no longer busy */
+ 281:XMEGANVM.c    **** 	if (!(XMEGANVM_WaitWhileNVMControllerBusy()))
+ 921              	 .loc 1 281 8
+ 922 0010 114B     	 ldr r3,.L53
+ 923 0012 9847     	 blx r3
+ 924              	.LVL53:
+ 925 0014 0346     	 mov r3,r0
+ 926              	 .loc 1 281 6
+ 927 0016 83F00103 	 eor r3,r3,#1
+ 928 001a DBB2     	 uxtb r3,r3
+ 929              	 .loc 1 281 5
+ 930 001c 002B     	 cmp r3,#0
+ 931 001e 01D0     	 beq .L51
+ 282:XMEGANVM.c    **** 	  return false;
+ 932              	 .loc 1 282 11
+ 933 0020 0023     	 movs r3,#0
+ 934 0022 14E0     	 b .L52
+ 935              	.L51:
+ 283:XMEGANVM.c    **** 
+ 284:XMEGANVM.c    **** 	/* Send the memory write command to the target */
+ 285:XMEGANVM.c    **** 	XPROGTarget_SendByte(PDI_CMD_STS(PDI_DATASIZE_4BYTES, PDI_DATASIZE_1BYTE));
+ 936              	 .loc 1 285 2
+ 937 0024 4C20     	 movs r0,#76
+ 938 0026 0D4B     	 ldr r3,.L53+4
+ 939 0028 9847     	 blx r3
+ 940              	.LVL54:
+ 286:XMEGANVM.c    **** 	XMEGANVM_SendNVMRegAddress(XMEGA_NVM_REG_CMD);
+ 941              	 .loc 1 286 2
+ 942 002a 0A20     	 movs r0,#10
+ 943 002c 0C4B     	 ldr r3,.L53+8
+ 944 002e 9847     	 blx r3
+ 945              	.LVL55:
+ 287:XMEGANVM.c    **** 	XPROGTarget_SendByte(WriteCommand);
+ 946              	 .loc 1 287 2
+ 947 0030 FB79     	 ldrb r3,[r7,#7]
+ 948 0032 1846     	 mov r0,r3
+ 949 0034 094B     	 ldr r3,.L53+4
+ 950 0036 9847     	 blx r3
+ 951              	.LVL56:
+ 288:XMEGANVM.c    **** 
+ 289:XMEGANVM.c    **** 	/* Send new memory byte to the memory of the target */
+ 290:XMEGANVM.c    **** 	XPROGTarget_SendByte(PDI_CMD_STS(PDI_DATASIZE_4BYTES, PDI_DATASIZE_1BYTE));
+ 952              	 .loc 1 290 2
+ 953 0038 4C20     	 movs r0,#76
+ 954 003a 084B     	 ldr r3,.L53+4
+ 955 003c 9847     	 blx r3
+ 956              	.LVL57:
+ 291:XMEGANVM.c    **** 	XMEGANVM_SendAddress(WriteAddress);
+ 957              	 .loc 1 291 2
+ 958 003e 3868     	 ldr r0,[r7]
+ 959 0040 084B     	 ldr r3,.L53+12
+ 960 0042 9847     	 blx r3
+ 961              	.LVL58:
+ 292:XMEGANVM.c    **** 	XPROGTarget_SendByte(data);
+ 962              	 .loc 1 292 2
+ 963 0044 BB79     	 ldrb r3,[r7,#6]
+ 964 0046 1846     	 mov r0,r3
+ 965 0048 044B     	 ldr r3,.L53+4
+ 966 004a 9847     	 blx r3
+ 967              	.LVL59:
+ 293:XMEGANVM.c    **** 
+ 294:XMEGANVM.c    **** 	return true;
+ 968              	 .loc 1 294 9
+ 969 004c 0123     	 movs r3,#1
+ 970              	.L52:
+ 295:XMEGANVM.c    **** }
+ 971              	 .loc 1 295 1
+ 972 004e 1846     	 mov r0,r3
+ 973 0050 0837     	 adds r7,r7,#8
+ 974              	.LCFI40:
+ 975              	 .cfi_def_cfa_offset 8
+ 976 0052 BD46     	 mov sp,r7
+ 977              	.LCFI41:
+ 978              	 .cfi_def_cfa_register 13
+ 979              	 
+ 980 0054 80BD     	 pop {r7,pc}
+ 981              	.L54:
+ 982 0056 00BF     	 .align 2
+ 983              	.L53:
+ 984 0058 00000000 	 .word XMEGANVM_WaitWhileNVMControllerBusy
+ 985 005c 00000000 	 .word XPROGTarget_SendByte
+ 986 0060 00000000 	 .word XMEGANVM_SendNVMRegAddress
+ 987 0064 00000000 	 .word XMEGANVM_SendAddress
+ 988              	 .cfi_endproc
+ 989              	.LFE189:
+ 991              	 .section .text.XMEGANVM_WritePageMemory,"ax",%progbits
+ 992              	 .align 1
+ 993              	 .global XMEGANVM_WritePageMemory
+ 994              	 .syntax unified
+ 995              	 .thumb
+ 996              	 .thumb_func
+ 997              	 .fpu softvfp
+ 999              	XMEGANVM_WritePageMemory:
+ 1000              	.LFB190:
+ 296:XMEGANVM.c    **** 
+ 297:XMEGANVM.c    **** /** Writes page addressed memory to the target's memory spaces.
+ 298:XMEGANVM.c    ****  *
+ 299:XMEGANVM.c    ****  *  \param[in]  WriteBuffCommand  Command to send to the device to write a byte to the memory page 
+ 300:XMEGANVM.c    ****  *  \param[in]  EraseBuffCommand  Command to send to the device to erase the memory page buffer
+ 301:XMEGANVM.c    ****  *  \param[in]  WritePageCommand  Command to send to the device to write the page buffer to the des
+ 302:XMEGANVM.c    ****  *  \param[in]  PageMode          Bitfield indicating what operations need to be executed on the sp
+ 303:XMEGANVM.c    ****  *  \param[in]  WriteAddress      Start address to write the page data to within the target's addre
+ 304:XMEGANVM.c    ****  *  \param[in]  WriteBuffer       Buffer to source data from
+ 305:XMEGANVM.c    ****  *  \param[in]  WriteSize         Number of bytes to write
+ 306:XMEGANVM.c    ****  *
+ 307:XMEGANVM.c    ****  *  \return Boolean \c true if the command sequence complete successfully
+ 308:XMEGANVM.c    ****  */
+ 309:XMEGANVM.c    **** bool XMEGANVM_WritePageMemory(const uint8_t WriteBuffCommand,
+ 310:XMEGANVM.c    ****                               const uint8_t EraseBuffCommand,
+ 311:XMEGANVM.c    ****                               const uint8_t WritePageCommand,
+ 312:XMEGANVM.c    ****                               const uint8_t PageMode,
+ 313:XMEGANVM.c    ****                               const uint32_t WriteAddress,
+ 314:XMEGANVM.c    ****                               const uint8_t* WriteBuffer,
+ 315:XMEGANVM.c    ****                               uint16_t WriteSize)
+ 316:XMEGANVM.c    **** {
+ 1001              	 .loc 1 316 1
+ 1002              	 .cfi_startproc
+ 1003              	 
+ 1004              	 
+ 1005 0000 90B5     	 push {r4,r7,lr}
+ 1006              	.LCFI42:
+ 1007              	 .cfi_def_cfa_offset 12
+ 1008              	 .cfi_offset 4,-12
+ 1009              	 .cfi_offset 7,-8
+ 1010              	 .cfi_offset 14,-4
+ 1011 0002 83B0     	 sub sp,sp,#12
+ 1012              	.LCFI43:
+ 1013              	 .cfi_def_cfa_offset 24
+ 1014 0004 00AF     	 add r7,sp,#0
+ 1015              	.LCFI44:
+ 1016              	 .cfi_def_cfa_register 7
+ 1017 0006 0446     	 mov r4,r0
+ 1018 0008 0846     	 mov r0,r1
+ 1019 000a 1146     	 mov r1,r2
+ 1020 000c 1A46     	 mov r2,r3
+ 1021 000e 2346     	 mov r3,r4
+ 1022 0010 FB71     	 strb r3,[r7,#7]
+ 1023 0012 0346     	 mov r3,r0
+ 1024 0014 BB71     	 strb r3,[r7,#6]
+ 1025 0016 0B46     	 mov r3,r1
+ 1026 0018 7B71     	 strb r3,[r7,#5]
+ 1027 001a 1346     	 mov r3,r2
+ 1028 001c 3B71     	 strb r3,[r7,#4]
+ 317:XMEGANVM.c    **** 	if (PageMode & XPROG_PAGEMODE_ERASE)
+ 1029              	 .loc 1 317 15
+ 1030 001e 3B79     	 ldrb r3,[r7,#4]
+ 1031 0020 03F00103 	 and r3,r3,#1
+ 1032              	 .loc 1 317 5
+ 1033 0024 002B     	 cmp r3,#0
+ 1034 0026 1CD0     	 beq .L56
+ 318:XMEGANVM.c    **** 	{
+ 319:XMEGANVM.c    **** 		/* Wait until the NVM controller is no longer busy */
+ 320:XMEGANVM.c    **** 		if (!(XMEGANVM_WaitWhileNVMControllerBusy()))
+ 1035              	 .loc 1 320 9
+ 1036 0028 3D4B     	 ldr r3,.L65
+ 1037 002a 9847     	 blx r3
+ 1038              	.LVL60:
+ 1039 002c 0346     	 mov r3,r0
+ 1040              	 .loc 1 320 7
+ 1041 002e 83F00103 	 eor r3,r3,#1
+ 1042 0032 DBB2     	 uxtb r3,r3
+ 1043              	 .loc 1 320 6
+ 1044 0034 002B     	 cmp r3,#0
+ 1045 0036 01D0     	 beq .L57
+ 321:XMEGANVM.c    **** 		  return false;
+ 1046              	 .loc 1 321 12
+ 1047 0038 0023     	 movs r3,#0
+ 1048 003a 6CE0     	 b .L58
+ 1049              	.L57:
+ 322:XMEGANVM.c    **** 
+ 323:XMEGANVM.c    **** 		/* Send the memory buffer erase command to the target */
+ 324:XMEGANVM.c    **** 		XPROGTarget_SendByte(PDI_CMD_STS(PDI_DATASIZE_4BYTES, PDI_DATASIZE_1BYTE));
+ 1050              	 .loc 1 324 3
+ 1051 003c 4C20     	 movs r0,#76
+ 1052 003e 394B     	 ldr r3,.L65+4
+ 1053 0040 9847     	 blx r3
+ 1054              	.LVL61:
+ 325:XMEGANVM.c    **** 		XMEGANVM_SendNVMRegAddress(XMEGA_NVM_REG_CMD);
+ 1055              	 .loc 1 325 3
+ 1056 0042 0A20     	 movs r0,#10
+ 1057 0044 384B     	 ldr r3,.L65+8
+ 1058 0046 9847     	 blx r3
+ 1059              	.LVL62:
+ 326:XMEGANVM.c    **** 		XPROGTarget_SendByte(EraseBuffCommand);
+ 1060              	 .loc 1 326 3
+ 1061 0048 BB79     	 ldrb r3,[r7,#6]
+ 1062 004a 1846     	 mov r0,r3
+ 1063 004c 354B     	 ldr r3,.L65+4
+ 1064 004e 9847     	 blx r3
+ 1065              	.LVL63:
+ 327:XMEGANVM.c    **** 
+ 328:XMEGANVM.c    **** 		/* Set CMDEX bit in NVM CTRLA register to start the buffer erase */
+ 329:XMEGANVM.c    **** 		XPROGTarget_SendByte(PDI_CMD_STS(PDI_DATASIZE_4BYTES, PDI_DATASIZE_1BYTE));
+ 1066              	 .loc 1 329 3
+ 1067 0050 4C20     	 movs r0,#76
+ 1068 0052 344B     	 ldr r3,.L65+4
+ 1069 0054 9847     	 blx r3
+ 1070              	.LVL64:
+ 330:XMEGANVM.c    **** 		XMEGANVM_SendNVMRegAddress(XMEGA_NVM_REG_CTRLA);
+ 1071              	 .loc 1 330 3
+ 1072 0056 0B20     	 movs r0,#11
+ 1073 0058 334B     	 ldr r3,.L65+8
+ 1074 005a 9847     	 blx r3
+ 1075              	.LVL65:
+ 331:XMEGANVM.c    **** 		XPROGTarget_SendByte(XMEGA_NVM_BIT_CTRLA_CMDEX);
+ 1076              	 .loc 1 331 3
+ 1077 005c 0120     	 movs r0,#1
+ 1078 005e 314B     	 ldr r3,.L65+4
+ 1079 0060 9847     	 blx r3
+ 1080              	.LVL66:
+ 1081              	.L56:
+ 332:XMEGANVM.c    **** 	}
+ 333:XMEGANVM.c    **** 
+ 334:XMEGANVM.c    **** 	if (WriteSize)
+ 1082              	 .loc 1 334 5
+ 1083 0062 3B8C     	 ldrh r3,[r7,#32]
+ 1084 0064 002B     	 cmp r3,#0
+ 1085 0066 33D0     	 beq .L59
+ 335:XMEGANVM.c    **** 	{
+ 336:XMEGANVM.c    **** 		/* Wait until the NVM controller is no longer busy */
+ 337:XMEGANVM.c    **** 		if (!(XMEGANVM_WaitWhileNVMControllerBusy()))
+ 1086              	 .loc 1 337 9
+ 1087 0068 2D4B     	 ldr r3,.L65
+ 1088 006a 9847     	 blx r3
+ 1089              	.LVL67:
+ 1090 006c 0346     	 mov r3,r0
+ 1091              	 .loc 1 337 7
+ 1092 006e 83F00103 	 eor r3,r3,#1
+ 1093 0072 DBB2     	 uxtb r3,r3
+ 1094              	 .loc 1 337 6
+ 1095 0074 002B     	 cmp r3,#0
+ 1096 0076 01D0     	 beq .L60
+ 338:XMEGANVM.c    **** 		  return false;
+ 1097              	 .loc 1 338 12
+ 1098 0078 0023     	 movs r3,#0
+ 1099 007a 4CE0     	 b .L58
+ 1100              	.L60:
+ 339:XMEGANVM.c    **** 
+ 340:XMEGANVM.c    **** 		/* Send the memory buffer write command to the target */
+ 341:XMEGANVM.c    **** 		XPROGTarget_SendByte(PDI_CMD_STS(PDI_DATASIZE_4BYTES, PDI_DATASIZE_1BYTE));
+ 1101              	 .loc 1 341 3
+ 1102 007c 4C20     	 movs r0,#76
+ 1103 007e 294B     	 ldr r3,.L65+4
+ 1104 0080 9847     	 blx r3
+ 1105              	.LVL68:
+ 342:XMEGANVM.c    **** 		XMEGANVM_SendNVMRegAddress(XMEGA_NVM_REG_CMD);
+ 1106              	 .loc 1 342 3
+ 1107 0082 0A20     	 movs r0,#10
+ 1108 0084 284B     	 ldr r3,.L65+8
+ 1109 0086 9847     	 blx r3
+ 1110              	.LVL69:
+ 343:XMEGANVM.c    **** 		XPROGTarget_SendByte(WriteBuffCommand);
+ 1111              	 .loc 1 343 3
+ 1112 0088 FB79     	 ldrb r3,[r7,#7]
+ 1113 008a 1846     	 mov r0,r3
+ 1114 008c 254B     	 ldr r3,.L65+4
+ 1115 008e 9847     	 blx r3
+ 1116              	.LVL70:
+ 344:XMEGANVM.c    **** 
+ 345:XMEGANVM.c    **** 		/* Load the PDI pointer register with the start address we want to write to */
+ 346:XMEGANVM.c    **** 		XPROGTarget_SendByte(PDI_CMD_ST(PDI_POINTER_DIRECT, PDI_DATASIZE_4BYTES));
+ 1117              	 .loc 1 346 3
+ 1118 0090 6B20     	 movs r0,#107
+ 1119 0092 244B     	 ldr r3,.L65+4
+ 1120 0094 9847     	 blx r3
+ 1121              	.LVL71:
+ 347:XMEGANVM.c    **** 		XMEGANVM_SendAddress(WriteAddress);
+ 1122              	 .loc 1 347 3
+ 1123 0096 B869     	 ldr r0,[r7,#24]
+ 1124 0098 244B     	 ldr r3,.L65+12
+ 1125 009a 9847     	 blx r3
+ 1126              	.LVL72:
+ 348:XMEGANVM.c    **** 
+ 349:XMEGANVM.c    **** 		/* Send the REPEAT command with the specified number of bytes to write */
+ 350:XMEGANVM.c    **** 		XPROGTarget_SendByte(PDI_CMD_REPEAT(PDI_DATASIZE_1BYTE));
+ 1127              	 .loc 1 350 3
+ 1128 009c A020     	 movs r0,#160
+ 1129 009e 214B     	 ldr r3,.L65+4
+ 1130 00a0 9847     	 blx r3
+ 1131              	.LVL73:
+ 351:XMEGANVM.c    **** 		XPROGTarget_SendByte(WriteSize - 1);
+ 1132              	 .loc 1 351 3
+ 1133 00a2 3B8C     	 ldrh r3,[r7,#32]
+ 1134 00a4 DBB2     	 uxtb r3,r3
+ 1135 00a6 013B     	 subs r3,r3,#1
+ 1136 00a8 DBB2     	 uxtb r3,r3
+ 1137 00aa 1846     	 mov r0,r3
+ 1138 00ac 1D4B     	 ldr r3,.L65+4
+ 1139 00ae 9847     	 blx r3
+ 1140              	.LVL74:
+ 352:XMEGANVM.c    **** 
+ 353:XMEGANVM.c    **** 		/* Send a ST command with indirect access and post-increment to write the bytes */
+ 354:XMEGANVM.c    **** 		XPROGTarget_SendByte(PDI_CMD_ST(PDI_POINTER_INDIRECT_PI, PDI_DATASIZE_1BYTE));
+ 1141              	 .loc 1 354 3
+ 1142 00b0 6420     	 movs r0,#100
+ 1143 00b2 1C4B     	 ldr r3,.L65+4
+ 1144 00b4 9847     	 blx r3
+ 1145              	.LVL75:
+ 355:XMEGANVM.c    **** 		while (WriteSize--)
+ 1146              	 .loc 1 355 9
+ 1147 00b6 06E0     	 b .L61
+ 1148              	.L62:
+ 356:XMEGANVM.c    **** 		  XPROGTarget_SendByte(*(WriteBuffer++));
+ 1149              	 .loc 1 356 39
+ 1150 00b8 FB69     	 ldr r3,[r7,#28]
+ 1151 00ba 5A1C     	 adds r2,r3,#1
+ 1152 00bc FA61     	 str r2,[r7,#28]
+ 1153              	 .loc 1 356 5
+ 1154 00be 1B78     	 ldrb r3,[r3]
+ 1155 00c0 1846     	 mov r0,r3
+ 1156 00c2 184B     	 ldr r3,.L65+4
+ 1157 00c4 9847     	 blx r3
+ 1158              	.LVL76:
+ 1159              	.L61:
+ 355:XMEGANVM.c    **** 		while (WriteSize--)
+ 1160              	 .loc 1 355 19
+ 1161 00c6 3B8C     	 ldrh r3,[r7,#32]
+ 1162 00c8 5A1E     	 subs r2,r3,#1
+ 1163 00ca 3A84     	 strh r2,[r7,#32]
+ 355:XMEGANVM.c    **** 		while (WriteSize--)
+ 1164              	 .loc 1 355 9
+ 1165 00cc 002B     	 cmp r3,#0
+ 1166 00ce F3D1     	 bne .L62
+ 1167              	.L59:
+ 357:XMEGANVM.c    **** 	}
+ 358:XMEGANVM.c    **** 
+ 359:XMEGANVM.c    **** 	if (PageMode & XPROG_PAGEMODE_WRITE)
+ 1168              	 .loc 1 359 15
+ 1169 00d0 3B79     	 ldrb r3,[r7,#4]
+ 1170 00d2 03F00203 	 and r3,r3,#2
+ 1171              	 .loc 1 359 5
+ 1172 00d6 002B     	 cmp r3,#0
+ 1173 00d8 1CD0     	 beq .L63
+ 360:XMEGANVM.c    **** 	{
+ 361:XMEGANVM.c    **** 		/* Wait until the NVM controller is no longer busy */
+ 362:XMEGANVM.c    **** 		if (!(XMEGANVM_WaitWhileNVMControllerBusy()))
+ 1174              	 .loc 1 362 9
+ 1175 00da 114B     	 ldr r3,.L65
+ 1176 00dc 9847     	 blx r3
+ 1177              	.LVL77:
+ 1178 00de 0346     	 mov r3,r0
+ 1179              	 .loc 1 362 7
+ 1180 00e0 83F00103 	 eor r3,r3,#1
+ 1181 00e4 DBB2     	 uxtb r3,r3
+ 1182              	 .loc 1 362 6
+ 1183 00e6 002B     	 cmp r3,#0
+ 1184 00e8 01D0     	 beq .L64
+ 363:XMEGANVM.c    **** 		  return false;
+ 1185              	 .loc 1 363 12
+ 1186 00ea 0023     	 movs r3,#0
+ 1187 00ec 13E0     	 b .L58
+ 1188              	.L64:
+ 364:XMEGANVM.c    **** 
+ 365:XMEGANVM.c    **** 		/* Send the memory write command to the target */
+ 366:XMEGANVM.c    **** 		XPROGTarget_SendByte(PDI_CMD_STS(PDI_DATASIZE_4BYTES, PDI_DATASIZE_1BYTE));
+ 1189              	 .loc 1 366 3
+ 1190 00ee 4C20     	 movs r0,#76
+ 1191 00f0 0C4B     	 ldr r3,.L65+4
+ 1192 00f2 9847     	 blx r3
+ 1193              	.LVL78:
+ 367:XMEGANVM.c    **** 		XMEGANVM_SendNVMRegAddress(XMEGA_NVM_REG_CMD);
+ 1194              	 .loc 1 367 3
+ 1195 00f4 0A20     	 movs r0,#10
+ 1196 00f6 0C4B     	 ldr r3,.L65+8
+ 1197 00f8 9847     	 blx r3
+ 1198              	.LVL79:
+ 368:XMEGANVM.c    **** 		XPROGTarget_SendByte(WritePageCommand);
+ 1199              	 .loc 1 368 3
+ 1200 00fa 7B79     	 ldrb r3,[r7,#5]
+ 1201 00fc 1846     	 mov r0,r3
+ 1202 00fe 094B     	 ldr r3,.L65+4
+ 1203 0100 9847     	 blx r3
+ 1204              	.LVL80:
+ 369:XMEGANVM.c    **** 
+ 370:XMEGANVM.c    **** 		/* Send the address of the first page location to write the memory page */
+ 371:XMEGANVM.c    **** 		XPROGTarget_SendByte(PDI_CMD_STS(PDI_DATASIZE_4BYTES, PDI_DATASIZE_1BYTE));
+ 1205              	 .loc 1 371 3
+ 1206 0102 4C20     	 movs r0,#76
+ 1207 0104 074B     	 ldr r3,.L65+4
+ 1208 0106 9847     	 blx r3
+ 1209              	.LVL81:
+ 372:XMEGANVM.c    **** 		XMEGANVM_SendAddress(WriteAddress);
+ 1210              	 .loc 1 372 3
+ 1211 0108 B869     	 ldr r0,[r7,#24]
+ 1212 010a 084B     	 ldr r3,.L65+12
+ 1213 010c 9847     	 blx r3
+ 1214              	.LVL82:
+ 373:XMEGANVM.c    **** 		XPROGTarget_SendByte(0x00);
+ 1215              	 .loc 1 373 3
+ 1216 010e 0020     	 movs r0,#0
+ 1217 0110 044B     	 ldr r3,.L65+4
+ 1218 0112 9847     	 blx r3
+ 1219              	.LVL83:
+ 1220              	.L63:
+ 374:XMEGANVM.c    **** 	}
+ 375:XMEGANVM.c    **** 
+ 376:XMEGANVM.c    **** 	return true;
+ 1221              	 .loc 1 376 9
+ 1222 0114 0123     	 movs r3,#1
+ 1223              	.L58:
+ 377:XMEGANVM.c    **** }
+ 1224              	 .loc 1 377 1
+ 1225 0116 1846     	 mov r0,r3
+ 1226 0118 0C37     	 adds r7,r7,#12
+ 1227              	.LCFI45:
+ 1228              	 .cfi_def_cfa_offset 12
+ 1229 011a BD46     	 mov sp,r7
+ 1230              	.LCFI46:
+ 1231              	 .cfi_def_cfa_register 13
+ 1232              	 
+ 1233 011c 90BD     	 pop {r4,r7,pc}
+ 1234              	.L66:
+ 1235 011e 00BF     	 .align 2
+ 1236              	.L65:
+ 1237 0120 00000000 	 .word XMEGANVM_WaitWhileNVMControllerBusy
+ 1238 0124 00000000 	 .word XPROGTarget_SendByte
+ 1239 0128 00000000 	 .word XMEGANVM_SendNVMRegAddress
+ 1240 012c 00000000 	 .word XMEGANVM_SendAddress
+ 1241              	 .cfi_endproc
+ 1242              	.LFE190:
+ 1244              	 .section .text.XMEGANVM_EraseMemory,"ax",%progbits
+ 1245              	 .align 1
+ 1246              	 .global XMEGANVM_EraseMemory
+ 1247              	 .syntax unified
+ 1248              	 .thumb
+ 1249              	 .thumb_func
+ 1250              	 .fpu softvfp
+ 1252              	XMEGANVM_EraseMemory:
+ 1253              	.LFB191:
+ 378:XMEGANVM.c    **** 
+ 379:XMEGANVM.c    **** /** Erases a specific memory space of the target.
+ 380:XMEGANVM.c    ****  *
+ 381:XMEGANVM.c    ****  *  \param[in] EraseCommand  NVM erase command to send to the device
+ 382:XMEGANVM.c    ****  *  \param[in] Address       Address inside the memory space to erase
+ 383:XMEGANVM.c    ****  *
+ 384:XMEGANVM.c    ****  *  \return Boolean \c true if the command sequence complete successfully
+ 385:XMEGANVM.c    ****  */
+ 386:XMEGANVM.c    **** bool XMEGANVM_EraseMemory(const uint8_t EraseCommand,
+ 387:XMEGANVM.c    ****                           const uint32_t Address)
+ 388:XMEGANVM.c    **** {
+ 1254              	 .loc 1 388 1
+ 1255              	 .cfi_startproc
+ 1256              	 
+ 1257              	 
+ 1258 0000 80B5     	 push {r7,lr}
+ 1259              	.LCFI47:
+ 1260              	 .cfi_def_cfa_offset 8
+ 1261              	 .cfi_offset 7,-8
+ 1262              	 .cfi_offset 14,-4
+ 1263 0002 84B0     	 sub sp,sp,#16
+ 1264              	.LCFI48:
+ 1265              	 .cfi_def_cfa_offset 24
+ 1266 0004 00AF     	 add r7,sp,#0
+ 1267              	.LCFI49:
+ 1268              	 .cfi_def_cfa_register 7
+ 1269 0006 0346     	 mov r3,r0
+ 1270 0008 3960     	 str r1,[r7]
+ 1271 000a FB71     	 strb r3,[r7,#7]
+ 389:XMEGANVM.c    **** 	/* Wait until the NVM controller is no longer busy */
+ 390:XMEGANVM.c    **** 	if (!(XMEGANVM_WaitWhileNVMControllerBusy()))
+ 1272              	 .loc 1 390 8
+ 1273 000c 504B     	 ldr r3,.L77
+ 1274 000e 9847     	 blx r3
+ 1275              	.LVL84:
+ 1276 0010 0346     	 mov r3,r0
+ 1277              	 .loc 1 390 6
+ 1278 0012 83F00103 	 eor r3,r3,#1
+ 1279 0016 DBB2     	 uxtb r3,r3
+ 1280              	 .loc 1 390 5
+ 1281 0018 002B     	 cmp r3,#0
+ 1282 001a 01D0     	 beq .L68
+ 391:XMEGANVM.c    **** 	  return false;
+ 1283              	 .loc 1 391 11
+ 1284 001c 0023     	 movs r3,#0
+ 1285 001e 93E0     	 b .L69
+ 1286              	.L68:
+ 392:XMEGANVM.c    **** 
+ 393:XMEGANVM.c    **** 	/* EEPROM and Chip erasures are triggered differently to FLASH section erasures */
+ 394:XMEGANVM.c    **** 	if (EraseCommand == XMEGA_NVM_CMD_CHIPERASE)
+ 1287              	 .loc 1 394 5
+ 1288 0020 FB79     	 ldrb r3,[r7,#7]
+ 1289 0022 402B     	 cmp r3,#64
+ 1290 0024 13D1     	 bne .L70
+ 395:XMEGANVM.c    **** 	{
+ 396:XMEGANVM.c    **** 		/* Send the memory erase command to the target */
+ 397:XMEGANVM.c    **** 		XPROGTarget_SendByte(PDI_CMD_STS(PDI_DATASIZE_4BYTES, PDI_DATASIZE_1BYTE));
+ 1291              	 .loc 1 397 3
+ 1292 0026 4C20     	 movs r0,#76
+ 1293 0028 4A4B     	 ldr r3,.L77+4
+ 1294 002a 9847     	 blx r3
+ 1295              	.LVL85:
+ 398:XMEGANVM.c    **** 		XMEGANVM_SendNVMRegAddress(XMEGA_NVM_REG_CMD);
+ 1296              	 .loc 1 398 3
+ 1297 002c 0A20     	 movs r0,#10
+ 1298 002e 4A4B     	 ldr r3,.L77+8
+ 1299 0030 9847     	 blx r3
+ 1300              	.LVL86:
+ 399:XMEGANVM.c    **** 		XPROGTarget_SendByte(EraseCommand);
+ 1301              	 .loc 1 399 3
+ 1302 0032 FB79     	 ldrb r3,[r7,#7]
+ 1303 0034 1846     	 mov r0,r3
+ 1304 0036 474B     	 ldr r3,.L77+4
+ 1305 0038 9847     	 blx r3
+ 1306              	.LVL87:
+ 400:XMEGANVM.c    **** 
+ 401:XMEGANVM.c    **** 		/* Set CMDEX bit in NVM CTRLA register to start the erase sequence */
+ 402:XMEGANVM.c    **** 		XPROGTarget_SendByte(PDI_CMD_STS(PDI_DATASIZE_4BYTES, PDI_DATASIZE_1BYTE));
+ 1307              	 .loc 1 402 3
+ 1308 003a 4C20     	 movs r0,#76
+ 1309 003c 454B     	 ldr r3,.L77+4
+ 1310 003e 9847     	 blx r3
+ 1311              	.LVL88:
+ 403:XMEGANVM.c    **** 		XMEGANVM_SendNVMRegAddress(XMEGA_NVM_REG_CTRLA);
+ 1312              	 .loc 1 403 3
+ 1313 0040 0B20     	 movs r0,#11
+ 1314 0042 454B     	 ldr r3,.L77+8
+ 1315 0044 9847     	 blx r3
+ 1316              	.LVL89:
+ 404:XMEGANVM.c    **** 		XPROGTarget_SendByte(XMEGA_NVM_BIT_CTRLA_CMDEX);
+ 1317              	 .loc 1 404 3
+ 1318 0046 0120     	 movs r0,#1
+ 1319 0048 424B     	 ldr r3,.L77+4
+ 1320 004a 9847     	 blx r3
+ 1321              	.LVL90:
+ 1322 004c 71E0     	 b .L71
+ 1323              	.L70:
+ 405:XMEGANVM.c    **** 	}
+ 406:XMEGANVM.c    **** 	else if (EraseCommand == XMEGA_NVM_CMD_ERASEEEPROM)
+ 1324              	 .loc 1 406 10
+ 1325 004e FB79     	 ldrb r3,[r7,#7]
+ 1326 0050 302B     	 cmp r3,#48
+ 1327 0052 5BD1     	 bne .L72
+ 407:XMEGANVM.c    **** 	{
+ 408:XMEGANVM.c    **** 		/* Send the EEPROM page buffer erase command to the target */
+ 409:XMEGANVM.c    **** 		XPROGTarget_SendByte(PDI_CMD_STS(PDI_DATASIZE_4BYTES, PDI_DATASIZE_1BYTE));
+ 1328              	 .loc 1 409 3
+ 1329 0054 4C20     	 movs r0,#76
+ 1330 0056 3F4B     	 ldr r3,.L77+4
+ 1331 0058 9847     	 blx r3
+ 1332              	.LVL91:
+ 410:XMEGANVM.c    **** 		XMEGANVM_SendNVMRegAddress(XMEGA_NVM_REG_CMD);
+ 1333              	 .loc 1 410 3
+ 1334 005a 0A20     	 movs r0,#10
+ 1335 005c 3E4B     	 ldr r3,.L77+8
+ 1336 005e 9847     	 blx r3
+ 1337              	.LVL92:
+ 411:XMEGANVM.c    **** 		XPROGTarget_SendByte(XMEGA_NVM_CMD_ERASEEEPROMPAGEBUFF);
+ 1338              	 .loc 1 411 3
+ 1339 0060 3620     	 movs r0,#54
+ 1340 0062 3C4B     	 ldr r3,.L77+4
+ 1341 0064 9847     	 blx r3
+ 1342              	.LVL93:
+ 412:XMEGANVM.c    **** 
+ 413:XMEGANVM.c    **** 		/* Set CMDEX bit in NVM CTRLA register to start the buffer erase */
+ 414:XMEGANVM.c    **** 		XPROGTarget_SendByte(PDI_CMD_STS(PDI_DATASIZE_4BYTES, PDI_DATASIZE_1BYTE));
+ 1343              	 .loc 1 414 3
+ 1344 0066 4C20     	 movs r0,#76
+ 1345 0068 3A4B     	 ldr r3,.L77+4
+ 1346 006a 9847     	 blx r3
+ 1347              	.LVL94:
+ 415:XMEGANVM.c    **** 		XMEGANVM_SendNVMRegAddress(XMEGA_NVM_REG_CTRLA);
+ 1348              	 .loc 1 415 3
+ 1349 006c 0B20     	 movs r0,#11
+ 1350 006e 3A4B     	 ldr r3,.L77+8
+ 1351 0070 9847     	 blx r3
+ 1352              	.LVL95:
+ 416:XMEGANVM.c    **** 		XPROGTarget_SendByte(XMEGA_NVM_BIT_CTRLA_CMDEX);
+ 1353              	 .loc 1 416 3
+ 1354 0072 0120     	 movs r0,#1
+ 1355 0074 374B     	 ldr r3,.L77+4
+ 1356 0076 9847     	 blx r3
+ 1357              	.LVL96:
+ 417:XMEGANVM.c    **** 
+ 418:XMEGANVM.c    **** 		/* Wait until the NVM controller is no longer busy */
+ 419:XMEGANVM.c    **** 		if (!(XMEGANVM_WaitWhileNVMControllerBusy()))
+ 1358              	 .loc 1 419 9
+ 1359 0078 354B     	 ldr r3,.L77
+ 1360 007a 9847     	 blx r3
+ 1361              	.LVL97:
+ 1362 007c 0346     	 mov r3,r0
+ 1363              	 .loc 1 419 7
+ 1364 007e 83F00103 	 eor r3,r3,#1
+ 1365 0082 DBB2     	 uxtb r3,r3
+ 1366              	 .loc 1 419 6
+ 1367 0084 002B     	 cmp r3,#0
+ 1368 0086 01D0     	 beq .L73
+ 420:XMEGANVM.c    **** 		  return false;
+ 1369              	 .loc 1 420 12
+ 1370 0088 0023     	 movs r3,#0
+ 1371 008a 5DE0     	 b .L69
+ 1372              	.L73:
+ 421:XMEGANVM.c    **** 
+ 422:XMEGANVM.c    **** 		/* Send the EEPROM memory buffer write command to the target */
+ 423:XMEGANVM.c    **** 		XPROGTarget_SendByte(PDI_CMD_STS(PDI_DATASIZE_4BYTES, PDI_DATASIZE_1BYTE));
+ 1373              	 .loc 1 423 3
+ 1374 008c 4C20     	 movs r0,#76
+ 1375 008e 314B     	 ldr r3,.L77+4
+ 1376 0090 9847     	 blx r3
+ 1377              	.LVL98:
+ 424:XMEGANVM.c    **** 		XMEGANVM_SendNVMRegAddress(XMEGA_NVM_REG_CMD);
+ 1378              	 .loc 1 424 3
+ 1379 0092 0A20     	 movs r0,#10
+ 1380 0094 304B     	 ldr r3,.L77+8
+ 1381 0096 9847     	 blx r3
+ 1382              	.LVL99:
+ 425:XMEGANVM.c    **** 		XPROGTarget_SendByte(XMEGA_NVM_CMD_LOADEEPROMPAGEBUFF);
+ 1383              	 .loc 1 425 3
+ 1384 0098 3320     	 movs r0,#51
+ 1385 009a 2E4B     	 ldr r3,.L77+4
+ 1386 009c 9847     	 blx r3
+ 1387              	.LVL100:
+ 426:XMEGANVM.c    **** 
+ 427:XMEGANVM.c    **** 		/* Load the PDI pointer register with the EEPROM page start address */
+ 428:XMEGANVM.c    **** 		XPROGTarget_SendByte(PDI_CMD_ST(PDI_POINTER_DIRECT, PDI_DATASIZE_4BYTES));
+ 1388              	 .loc 1 428 3
+ 1389 009e 6B20     	 movs r0,#107
+ 1390 00a0 2C4B     	 ldr r3,.L77+4
+ 1391 00a2 9847     	 blx r3
+ 1392              	.LVL101:
+ 429:XMEGANVM.c    **** 		XMEGANVM_SendAddress(Address);
+ 1393              	 .loc 1 429 3
+ 1394 00a4 3868     	 ldr r0,[r7]
+ 1395 00a6 2D4B     	 ldr r3,.L77+12
+ 1396 00a8 9847     	 blx r3
+ 1397              	.LVL102:
+ 430:XMEGANVM.c    **** 
+ 431:XMEGANVM.c    **** 		/* Send the REPEAT command with the specified number of bytes to write */
+ 432:XMEGANVM.c    **** 		XPROGTarget_SendByte(PDI_CMD_REPEAT(PDI_DATASIZE_1BYTE));
+ 1398              	 .loc 1 432 3
+ 1399 00aa A020     	 movs r0,#160
+ 1400 00ac 294B     	 ldr r3,.L77+4
+ 1401 00ae 9847     	 blx r3
+ 1402              	.LVL103:
+ 433:XMEGANVM.c    **** 		XPROGTarget_SendByte(XPROG_Param_EEPageSize - 1);
+ 1403              	 .loc 1 433 3
+ 1404 00b0 2B4B     	 ldr r3,.L77+16
+ 1405 00b2 1B88     	 ldrh r3,[r3]
+ 1406 00b4 DBB2     	 uxtb r3,r3
+ 1407 00b6 013B     	 subs r3,r3,#1
+ 1408 00b8 DBB2     	 uxtb r3,r3
+ 1409 00ba 1846     	 mov r0,r3
+ 1410 00bc 254B     	 ldr r3,.L77+4
+ 1411 00be 9847     	 blx r3
+ 1412              	.LVL104:
+ 434:XMEGANVM.c    **** 
+ 435:XMEGANVM.c    **** 		/* Send a ST command with indirect access and post-increment to tag each byte in the EEPROM page 
+ 436:XMEGANVM.c    **** 		XPROGTarget_SendByte(PDI_CMD_ST(PDI_POINTER_INDIRECT_PI, PDI_DATASIZE_1BYTE));
+ 1413              	 .loc 1 436 3
+ 1414 00c0 6420     	 movs r0,#100
+ 1415 00c2 244B     	 ldr r3,.L77+4
+ 1416 00c4 9847     	 blx r3
+ 1417              	.LVL105:
+ 1418              	.LBB7:
+ 437:XMEGANVM.c    **** 		for (uint8_t PageByte = 0; PageByte < XPROG_Param_EEPageSize; PageByte++)
+ 1419              	 .loc 1 437 16
+ 1420 00c6 0023     	 movs r3,#0
+ 1421 00c8 FB73     	 strb r3,[r7,#15]
+ 1422              	 .loc 1 437 3
+ 1423 00ca 05E0     	 b .L74
+ 1424              	.L75:
+ 438:XMEGANVM.c    **** 		  XPROGTarget_SendByte(0x00);
+ 1425              	 .loc 1 438 5 discriminator 3
+ 1426 00cc 0020     	 movs r0,#0
+ 1427 00ce 214B     	 ldr r3,.L77+4
+ 1428 00d0 9847     	 blx r3
+ 1429              	.LVL106:
+ 437:XMEGANVM.c    **** 		for (uint8_t PageByte = 0; PageByte < XPROG_Param_EEPageSize; PageByte++)
+ 1430              	 .loc 1 437 73 discriminator 3
+ 1431 00d2 FB7B     	 ldrb r3,[r7,#15]
+ 1432 00d4 0133     	 adds r3,r3,#1
+ 1433 00d6 FB73     	 strb r3,[r7,#15]
+ 1434              	.L74:
+ 437:XMEGANVM.c    **** 		for (uint8_t PageByte = 0; PageByte < XPROG_Param_EEPageSize; PageByte++)
+ 1435              	 .loc 1 437 39 discriminator 1
+ 1436 00d8 FB7B     	 ldrb r3,[r7,#15]
+ 1437 00da 9AB2     	 uxth r2,r3
+ 1438 00dc 204B     	 ldr r3,.L77+16
+ 1439 00de 1B88     	 ldrh r3,[r3]
+ 437:XMEGANVM.c    **** 		for (uint8_t PageByte = 0; PageByte < XPROG_Param_EEPageSize; PageByte++)
+ 1440              	 .loc 1 437 3 discriminator 1
+ 1441 00e0 9A42     	 cmp r2,r3
+ 1442 00e2 F3D3     	 bcc .L75
+ 1443              	.LBE7:
+ 439:XMEGANVM.c    **** 
+ 440:XMEGANVM.c    **** 		/* Send the memory erase command to the target */
+ 441:XMEGANVM.c    **** 		XPROGTarget_SendByte(PDI_CMD_STS(PDI_DATASIZE_4BYTES, PDI_DATASIZE_1BYTE));
+ 1444              	 .loc 1 441 3
+ 1445 00e4 4C20     	 movs r0,#76
+ 1446 00e6 1B4B     	 ldr r3,.L77+4
+ 1447 00e8 9847     	 blx r3
+ 1448              	.LVL107:
+ 442:XMEGANVM.c    **** 		XMEGANVM_SendNVMRegAddress(XMEGA_NVM_REG_CMD);
+ 1449              	 .loc 1 442 3
+ 1450 00ea 0A20     	 movs r0,#10
+ 1451 00ec 1A4B     	 ldr r3,.L77+8
+ 1452 00ee 9847     	 blx r3
+ 1453              	.LVL108:
+ 443:XMEGANVM.c    **** 		XPROGTarget_SendByte(EraseCommand);
+ 1454              	 .loc 1 443 3
+ 1455 00f0 FB79     	 ldrb r3,[r7,#7]
+ 1456 00f2 1846     	 mov r0,r3
+ 1457 00f4 174B     	 ldr r3,.L77+4
+ 1458 00f6 9847     	 blx r3
+ 1459              	.LVL109:
+ 444:XMEGANVM.c    **** 
+ 445:XMEGANVM.c    **** 		/* Set CMDEX bit in NVM CTRLA register to start the EEPROM erase sequence */
+ 446:XMEGANVM.c    **** 		XPROGTarget_SendByte(PDI_CMD_STS(PDI_DATASIZE_4BYTES, PDI_DATASIZE_1BYTE));
+ 1460              	 .loc 1 446 3
+ 1461 00f8 4C20     	 movs r0,#76
+ 1462 00fa 164B     	 ldr r3,.L77+4
+ 1463 00fc 9847     	 blx r3
+ 1464              	.LVL110:
+ 447:XMEGANVM.c    **** 		XMEGANVM_SendNVMRegAddress(XMEGA_NVM_REG_CTRLA);
+ 1465              	 .loc 1 447 3
+ 1466 00fe 0B20     	 movs r0,#11
+ 1467 0100 154B     	 ldr r3,.L77+8
+ 1468 0102 9847     	 blx r3
+ 1469              	.LVL111:
+ 448:XMEGANVM.c    **** 		XPROGTarget_SendByte(XMEGA_NVM_BIT_CTRLA_CMDEX);
+ 1470              	 .loc 1 448 3
+ 1471 0104 0120     	 movs r0,#1
+ 1472 0106 134B     	 ldr r3,.L77+4
+ 1473 0108 9847     	 blx r3
+ 1474              	.LVL112:
+ 1475 010a 12E0     	 b .L71
+ 1476              	.L72:
+ 449:XMEGANVM.c    **** 	}
+ 450:XMEGANVM.c    **** 	else
+ 451:XMEGANVM.c    **** 	{
+ 452:XMEGANVM.c    **** 		/* Send the memory erase command to the target */
+ 453:XMEGANVM.c    **** 		XPROGTarget_SendByte(PDI_CMD_STS(PDI_DATASIZE_4BYTES, PDI_DATASIZE_1BYTE));
+ 1477              	 .loc 1 453 3
+ 1478 010c 4C20     	 movs r0,#76
+ 1479 010e 114B     	 ldr r3,.L77+4
+ 1480 0110 9847     	 blx r3
+ 1481              	.LVL113:
+ 454:XMEGANVM.c    **** 		XMEGANVM_SendNVMRegAddress(XMEGA_NVM_REG_CMD);
+ 1482              	 .loc 1 454 3
+ 1483 0112 0A20     	 movs r0,#10
+ 1484 0114 104B     	 ldr r3,.L77+8
+ 1485 0116 9847     	 blx r3
+ 1486              	.LVL114:
+ 455:XMEGANVM.c    **** 		XPROGTarget_SendByte(EraseCommand);
+ 1487              	 .loc 1 455 3
+ 1488 0118 FB79     	 ldrb r3,[r7,#7]
+ 1489 011a 1846     	 mov r0,r3
+ 1490 011c 0D4B     	 ldr r3,.L77+4
+ 1491 011e 9847     	 blx r3
+ 1492              	.LVL115:
+ 456:XMEGANVM.c    **** 
+ 457:XMEGANVM.c    **** 		/* Other erase modes just need us to address a byte within the target memory space */
+ 458:XMEGANVM.c    **** 		XPROGTarget_SendByte(PDI_CMD_STS(PDI_DATASIZE_4BYTES, PDI_DATASIZE_1BYTE));
+ 1493              	 .loc 1 458 3
+ 1494 0120 4C20     	 movs r0,#76
+ 1495 0122 0C4B     	 ldr r3,.L77+4
+ 1496 0124 9847     	 blx r3
+ 1497              	.LVL116:
+ 459:XMEGANVM.c    **** 		XMEGANVM_SendAddress(Address);
+ 1498              	 .loc 1 459 3
+ 1499 0126 3868     	 ldr r0,[r7]
+ 1500 0128 0C4B     	 ldr r3,.L77+12
+ 1501 012a 9847     	 blx r3
+ 1502              	.LVL117:
+ 460:XMEGANVM.c    **** 		XPROGTarget_SendByte(0x00);
+ 1503              	 .loc 1 460 3
+ 1504 012c 0020     	 movs r0,#0
+ 1505 012e 094B     	 ldr r3,.L77+4
+ 1506 0130 9847     	 blx r3
+ 1507              	.LVL118:
+ 1508              	.L71:
+ 461:XMEGANVM.c    **** 	}
+ 462:XMEGANVM.c    **** 
+ 463:XMEGANVM.c    **** 	/* Wait until the NVM bus is ready again */
+ 464:XMEGANVM.c    **** 	if (!(XMEGANVM_WaitWhileNVMBusBusy())) {
+ 1509              	 .loc 1 464 8
+ 1510 0132 0C4B     	 ldr r3,.L77+20
+ 1511 0134 9847     	 blx r3
+ 1512              	.LVL119:
+ 1513 0136 0346     	 mov r3,r0
+ 1514              	 .loc 1 464 6
+ 1515 0138 83F00103 	 eor r3,r3,#1
+ 1516 013c DBB2     	 uxtb r3,r3
+ 1517              	 .loc 1 464 5
+ 1518 013e 002B     	 cmp r3,#0
+ 1519 0140 01D0     	 beq .L76
+ 465:XMEGANVM.c    **** 	  return false;
+ 1520              	 .loc 1 465 11
+ 1521 0142 0023     	 movs r3,#0
+ 1522 0144 00E0     	 b .L69
+ 1523              	.L76:
+ 466:XMEGANVM.c    **** 	}
+ 467:XMEGANVM.c    **** 
+ 468:XMEGANVM.c    **** 	return true;
+ 1524              	 .loc 1 468 9
+ 1525 0146 0123     	 movs r3,#1
+ 1526              	.L69:
+ 469:XMEGANVM.c    **** }
+ 1527              	 .loc 1 469 1
+ 1528 0148 1846     	 mov r0,r3
+ 1529 014a 1037     	 adds r7,r7,#16
+ 1530              	.LCFI50:
+ 1531              	 .cfi_def_cfa_offset 8
+ 1532 014c BD46     	 mov sp,r7
+ 1533              	.LCFI51:
+ 1534              	 .cfi_def_cfa_register 13
+ 1535              	 
+ 1536 014e 80BD     	 pop {r7,pc}
+ 1537              	.L78:
+ 1538              	 .align 2
+ 1539              	.L77:
+ 1540 0150 00000000 	 .word XMEGANVM_WaitWhileNVMControllerBusy
+ 1541 0154 00000000 	 .word XPROGTarget_SendByte
+ 1542 0158 00000000 	 .word XMEGANVM_SendNVMRegAddress
+ 1543 015c 00000000 	 .word XMEGANVM_SendAddress
+ 1544 0160 00000000 	 .word XPROG_Param_EEPageSize
+ 1545 0164 00000000 	 .word XMEGANVM_WaitWhileNVMBusBusy
+ 1546              	 .cfi_endproc
+ 1547              	.LFE191:
+ 1549              	 .text
+ 1550              	.Letext0:
+ 1551              	 .file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 1552              	 .file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 1553              	 .file 4 ".././hal/sam3u1c/inc/core_cm3.h"
+ 1554              	 .file 5 ".././hal/sam3u1c/inc/system_sam3u.h"
+ 1555              	 .file 6 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\lib\\gcc\\arm-none-eabi\\9.3.1\\include\\stddef.h"
+ 1556              	 .file 7 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_types.h"
+ 1557              	 .file 8 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\reent.h"
+ 1558              	 .file 9 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\lock.h"
+ 1559              	 .file 10 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\stdlib.h"
+ 1560              	 .file 11 ".././hal/sam3u1c/inc/interrupt/interrupt_sam_nvic.h"
+ 1561              	 .file 12 ".././hal/sam3u1c/inc/compiler.h"
+ 1562              	 .file 13 ".././hal/sam3u1c/inc/sam/sleepmgr.h"
+ 1563              	 .file 14 "./conf_usb.h"
+ 1564              	 .file 15 ".././hal/sam3u1c/inc/usb_protocol.h"
+ 1565              	 .file 16 ".././hal/sam3u1c/inc/udi.h"
+ 1566              	 .file 17 ".././hal/sam3u1c/inc/udc_desc.h"
+ 1567              	 .file 18 ".././hal/sam3u1c/inc/udd.h"
+ 1568              	 .file 19 ".././hal/sam3u1c/inc/udi_vendor.h"
+ 1569              	 .file 20 "XPROGNewAE.h"
+ 1570              	 .file 21 "XPROGTimeout.h"
+ 1571              	 .file 22 "XPROGTarget.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 XMEGANVM.c
+    {standard input}:16     .bss.cpu_irq_critical_section_counter:00000000 $d
+    {standard input}:19     .bss.cpu_irq_critical_section_counter:00000000 cpu_irq_critical_section_counter
+    {standard input}:24     .bss.cpu_irq_prev_interrupt_state:00000000 cpu_irq_prev_interrupt_state
+    {standard input}:25     .bss.cpu_irq_prev_interrupt_state:00000000 $d
+    {standard input}:27     .text.XMEGANVM_SendAddress:00000000 $t
+    {standard input}:34     .text.XMEGANVM_SendAddress:00000000 XMEGANVM_SendAddress
+    {standard input}:100    .text.XMEGANVM_SendAddress:00000040 $d
+    {standard input}:105    .text.XMEGANVM_SendNVMRegAddress:00000000 $t
+    {standard input}:111    .text.XMEGANVM_SendNVMRegAddress:00000000 XMEGANVM_SendNVMRegAddress
+    {standard input}:155    .text.XMEGANVM_SendNVMRegAddress:00000024 $d
+    {standard input}:161    .text.XMEGANVM_WaitWhileNVMBusBusy:00000000 $t
+    {standard input}:168    .text.XMEGANVM_WaitWhileNVMBusBusy:00000000 XMEGANVM_WaitWhileNVMBusBusy
+    {standard input}:231    .text.XMEGANVM_WaitWhileNVMBusBusy:00000034 $d
+    {standard input}:238    .text.XMEGANVM_WaitWhileNVMControllerBusy:00000000 $t
+    {standard input}:245    .text.XMEGANVM_WaitWhileNVMControllerBusy:00000000 XMEGANVM_WaitWhileNVMControllerBusy
+    {standard input}:317    .text.XMEGANVM_WaitWhileNVMControllerBusy:00000040 $d
+    {standard input}:325    .rodata:00000000 $d
+    {standard input}:336    .text.XMEGANVM_EnablePDI:00000000 $t
+    {standard input}:343    .text.XMEGANVM_EnablePDI:00000000 XMEGANVM_EnablePDI
+    {standard input}:442    .text.XMEGANVM_EnablePDI:00000068 $d
+    {standard input}:450    .text.XMEGANVM_DisablePDI:00000000 $t
+    {standard input}:457    .text.XMEGANVM_DisablePDI:00000000 XMEGANVM_DisablePDI
+    {standard input}:515    .text.XMEGANVM_DisablePDI:00000034 $d
+    {standard input}:524    .text.XMEGANVM_GetMemoryCRC:00000000 $t
+    {standard input}:531    .text.XMEGANVM_GetMemoryCRC:00000000 XMEGANVM_GetMemoryCRC
+    {standard input}:707    .text.XMEGANVM_GetMemoryCRC:000000c8 $d
+    {standard input}:717    .text.XMEGANVM_ReadMemory:00000000 $t
+    {standard input}:724    .text.XMEGANVM_ReadMemory:00000000 XMEGANVM_ReadMemory
+    {standard input}:882    .text.XMEGANVM_ReadMemory:000000b4 $d
+    {standard input}:892    .text.XMEGANVM_WriteByteMemory:00000000 $t
+    {standard input}:899    .text.XMEGANVM_WriteByteMemory:00000000 XMEGANVM_WriteByteMemory
+    {standard input}:984    .text.XMEGANVM_WriteByteMemory:00000058 $d
+    {standard input}:992    .text.XMEGANVM_WritePageMemory:00000000 $t
+    {standard input}:999    .text.XMEGANVM_WritePageMemory:00000000 XMEGANVM_WritePageMemory
+    {standard input}:1237   .text.XMEGANVM_WritePageMemory:00000120 $d
+    {standard input}:1245   .text.XMEGANVM_EraseMemory:00000000 $t
+    {standard input}:1252   .text.XMEGANVM_EraseMemory:00000000 XMEGANVM_EraseMemory
+    {standard input}:1540   .text.XMEGANVM_EraseMemory:00000150 $d
+                           .group:00000000 wm4.0.2cd8a2cb7ff4c48cec7eeec776a1dd8c
+                           .group:00000000 wm4.stddef.h.39.27677723d43e5b5a7afdf8d798429f1d
+                           .group:00000000 wm4.parts.h.45.afc900689b2c82332e69d798acedc875
+                           .group:00000000 wm4.tpaste.h.45.af3ee36765243b162c88f7f944858426
+                           .group:00000000 wm4.stringz.h.45.c4f6cbe0005e6c1d2139bc6c0e4f4722
+                           .group:00000000 wm4.mrepeat.h.59.c5daaed201a4340b0edf435161d0b77f
+                           .group:00000000 wm4._newlib_version.h.4.1ef4e12f167f8b69d7c30054be56050d
+                           .group:00000000 wm4.features.h.33.5bd1eea2d80518b50f7af0b5ce6750e0
+                           .group:00000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:00000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:00000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:00000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:00000000 wm4.sam3u1c.h.220.c0b54b5a55bc87791749ae17b1487779
+                           .group:00000000 wm4.core_cm3.h.32.5c59c312db585622d253fdb887b0afb1
+                           .group:00000000 wm4.core_cmInstr.h.25.d8165482ef3061013a2fc83e2d85f3d9
+                           .group:00000000 wm4.core_cm3.h.127.b561404f2a159dc517b409bc244d16c1
+                           .group:00000000 wm4.component_adc.h.43.d49887380d07d1cd08cc4e37b3485e31
+                           .group:00000000 wm4.component_adc12b.h.43.eadc09f1073923fb91f1f393cc397dcb
+                           .group:00000000 wm4.component_chipid.h.43.15825c969b1cc9eeea3d9416499874c8
+                           .group:00000000 wm4.component_dmac.h.43.cc8187b1cf6bfeadc91b14fdd28b9e8b
+                           .group:00000000 wm4.component_efc.h.43.cb1b3997ad9ea3733ad421ecbfd02fdd
+                           .group:00000000 wm4.component_gpbr.h.43.49b7e13894fe38b29f2243bbbe530227
+                           .group:00000000 wm4.component_hsmci.h.43.7b7194c92e1480c038f3342f7cec440a
+                           .group:00000000 wm4.component_matrix.h.43.1d209838fb75b4827119203a357141ee
+                           .group:00000000 wm4.component_pdc.h.43.19528a5f9ef5a348234ea06f89069c55
+                           .group:00000000 wm4.component_pio.h.43.163b46c3683ccf92e8de39a5554f50e8
+                           .group:00000000 wm4.component_pmc.h.43.ee4f030602866917aeed15fb2b948de8
+                           .group:00000000 wm4.component_pwm.h.43.ab6262a86f0aea354b43fe6dce7e7eb3
+                           .group:00000000 wm4.component_rstc.h.43.4eb59dc2ddcf585fabf251d0c329fcdd
+                           .group:00000000 wm4.component_rtc.h.43.ba8ccafc772b11d562a3cceab8b95072
+                           .group:00000000 wm4.component_rtt.h.43.3206ef8f067e5e747c3c4c7e719c1429
+                           .group:00000000 wm4.component_smc.h.43.907847915f1a5616734199d7e34424fa
+                           .group:00000000 wm4.component_spi.h.43.a2a09df64ab768c0a32be55285c74ded
+                           .group:00000000 wm4.component_ssc.h.43.d7c78f990c13fc511671b64798c4bcd0
+                           .group:00000000 wm4.component_supc.h.43.7d17f8e5ed3ba815e84381152735062f
+                           .group:00000000 wm4.component_tc.h.43.662eac8137408372b4f9d26c0b5f8621
+                           .group:00000000 wm4.component_twi.h.43.eda18625bd851fc4605861f5b3240c0b
+                           .group:00000000 wm4.component_uart.h.43.2d92735c5ea05c973661e1ba99a2f37c
+                           .group:00000000 wm4.component_udphs.h.43.21cecd26a4e44df0013037f29f2716e4
+                           .group:00000000 wm4.component_usart.h.43.7872f8f455adb38b67b9fbdb15657fbe
+                           .group:00000000 wm4.component_wdt.h.43.e31e10a5469b62c3660b49ab250f802f
+                           .group:00000000 wm4.instance_hsmci.h.43.e233236cc7fd5a805539a7ecc0e1d8d2
+                           .group:00000000 wm4.instance_ssc.h.43.c0cfabc3b9f3bb60745c913111bce965
+                           .group:00000000 wm4.instance_spi.h.43.570ae46af19e4179d9796872b9a8b9bc
+                           .group:00000000 wm4.instance_tc0.h.43.049b3a82387d2961594190609e896a29
+                           .group:00000000 wm4.instance_twi0.h.43.255dc0afa9e0d45eaea0a935eca2f103
+                           .group:00000000 wm4.instance_twi1.h.43.652d1d407893f259f2a817544ba662c2
+                           .group:00000000 wm4.instance_pwm.h.43.88294acec3ca56d6fc521038521a1567
+                           .group:00000000 wm4.instance_usart0.h.43.e26677512aee3dd3bedd71d394410000
+                           .group:00000000 wm4.instance_usart1.h.43.1ba97dbc6610d9fb3132b9d845688201
+                           .group:00000000 wm4.instance_usart2.h.43.baa1bf30b3c5acdee90c4a1f50fe9ebd
+                           .group:00000000 wm4.instance_udphs.h.43.b1ce94181e0d1f22877b81c6040a4363
+                           .group:00000000 wm4.instance_adc12b.h.43.d73ed59e867ccdfdb846d9ef32a50c0c
+                           .group:00000000 wm4.instance_adc.h.43.2b7611a00afeb4c555339b844d4b8456
+                           .group:00000000 wm4.instance_dmac.h.43.ee72691d84889c8f285932be4a075ddb
+                           .group:00000000 wm4.instance_smc.h.43.29610fd00979caaaa65821ad40e9da06
+                           .group:00000000 wm4.instance_matrix.h.43.01ee474141594385374c41a29daeeefe
+                           .group:00000000 wm4.instance_pmc.h.43.37430325ed7b8b24c3fe640c41c29ef5
+                           .group:00000000 wm4.instance_uart.h.43.bd378395ba022bc8670c82ebe656fbbd
+                           .group:00000000 wm4.instance_chipid.h.43.29cd8fb600f149aa58830fcc78fe36f9
+                           .group:00000000 wm4.instance_efc0.h.43.6b85dba20721a7e9fc4350e78d193680
+                           .group:00000000 wm4.instance_efc1.h.43.2c5e94fc4d2742678318d73450d08d57
+                           .group:00000000 wm4.instance_pioa.h.43.eeb46cc3bfe01a1f28e67aa3a6851ed8
+                           .group:00000000 wm4.instance_piob.h.43.652ce26b6c37ac56f9ed42a9216d9aca
+                           .group:00000000 wm4.instance_rstc.h.43.c5de224364a50a85f237c0b864aa4c8f
+                           .group:00000000 wm4.instance_supc.h.43.a5f1a5ca08f468ccf34ed3653e045f1f
+                           .group:00000000 wm4.instance_rtt.h.43.8622b192c23334996132415e3095df7f
+                           .group:00000000 wm4.instance_wdt.h.43.407ea53e133eacf09acf2c7fcb6b7524
+                           .group:00000000 wm4.instance_rtc.h.43.f70b77f9180401c8d9d920cb4a1cd166
+                           .group:00000000 wm4.instance_gpbr.h.43.9066cb40d557f6755101368854272348
+                           .group:00000000 wm4.sam3u1c.h.312.ae446d8e874d34ca3df78faf190c678f
+                           .group:00000000 wm4.pio_sam3u1c.h.43.18b24f16e1710ff2a400d88fe33c5107
+                           .group:00000000 wm4.sam3u1c.h.442.cd4bbc3af493e98bc9b60c2905132ed0
+                           .group:00000000 wm4.newlib.h.8.7cb3972cd43265932d4782d5eb589854
+                           .group:00000000 wm4.ieeefp.h.77.f33a4dce62116f6f5175ff8bae57a54c
+                           .group:00000000 wm4.config.h.224.c701144a7b0518c6ee9b9b5465b79f81
+                           .group:00000000 wm4._ansi.h.31.de524f58584151836e90d8620a16f8e8
+                           .group:00000000 wm4.stdio.h.31.7c0e28c411445f3f9c5b11accf882760
+                           .group:00000000 wm4.stddef.h.155.ba788add86a0e365f264484f110c3c29
+                           .group:00000000 wm4.cdefs.h.49.2bf373aedffd8b393ccd11dc057e8547
+                           .group:00000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:00000000 wm4._types.h.20.dd0d04dca3800a0d2a6129b87f3adbb2
+                           .group:00000000 wm4.stddef.h.155.3588ebfdd1e8c7ede80509bb9c3b8009
+                           .group:00000000 wm4._types.h.127.34941de1b2539d59d5cac00e0dd27a45
+                           .group:00000000 wm4.reent.h.17.e292bf8b0bec6c96e131a54347145a30
+                           .group:00000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:00000000 wm4.reent.h.77.dcd6129ff07fe81bd5636db29abe53b2
+                           .group:00000000 wm4.types.h.40.8b6acba56cefbb11746718204edc8f5e
+                           .group:00000000 wm4._endian.h.31.65a10590763c3dde1ac4a7f66d7d4891
+                           .group:00000000 wm4.endian.h.9.49f3a4695c1b61e8a0808de3c4a106cb
+                           .group:00000000 wm4._timeval.h.32.bec3221fa7a9bb0bdde696c9c57e47d2
+                           .group:00000000 wm4.timespec.h.41.d855182eb0e690443ab8651bcedca6e1
+                           .group:00000000 wm4.select.h.19.97ca6fd0c752a0f3b6719fd314d361e6
+                           .group:00000000 wm4.types.h.51.5571ec98f267d17d3c670b7a3ba33afa
+                           .group:00000000 wm4.sched.h.22.c60982713a5c428609783c78f9c78d95
+                           .group:00000000 wm4._pthreadtypes.h.36.fcee9961c35163dde6267ef772ad1972
+                           .group:00000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:00000000 wm4.stdio.h.81.932d0c162786b883f622b8d05c120c78
+                           .group:00000000 wm4.stdbool.h.29.07dce69c3b78884144b7f7bd19483461
+                           .group:00000000 wm4.stdlib.h.13.4ed386f5c1a80d71e72172885d946ef2
+                           .group:00000000 wm4.alloca.h.8.dfc0c703c47ec3e69746825b17d9e66d
+                           .group:00000000 wm4.stdlib.h.56.f4862cfbf4363a1db01842d5bdf72c18
+                           .group:00000000 wm4.compiler.h.88.0e6ad966134fa012ce9a34053d3f48aa
+                           .group:00000000 wm4.interrupt_sam_nvic.h.45.4876da6c127868305d66389e87e0876f
+                           .group:00000000 wm4.compiler.h.425.66dd29c210af3287ed85ec3553a3e6b1
+                           .group:00000000 wm4.conf_clock.h.45.5dc276d21b4d793a62f1a9757cc18d5c
+                           .group:00000000 wm4.board.h.48.ce8d06c36cc583d9bf62738411f62e4d
+                           .group:00000000 wm4.cw521.h.62.1727e9a463c60d459e36c42a4e5a0f86
+                           .group:00000000 wm4.pmc.h.45.bbe1bf97a811e3b283420b2eeadf0b35
+                           .group:00000000 wm4.osc.h.94.b766cddafe899eca01d775f7b2906680
+                           .group:00000000 wm4.pll.h.45.a605c31ca466ae25752a678e8572be48
+                           .group:00000000 wm4.sysclk.h.156.541a142b0016a365728ea1f7c0e3db84
+                           .group:00000000 wm4.cycle_counter.h.44.fde38fb1acfd6555d72e65fae6e86af5
+                           .group:00000000 wm4.delay.h.105.f2a8ab5e71eab0684cf6985b5c2fc9e8
+                           .group:00000000 wm4.efc.h.45.ec5734119c630498df26106bacf9a684
+                           .group:00000000 wm4.flash_efc.h.90.a4a39259055880dc10b861c5fe1b99e7
+                           .group:00000000 wm4.pio.h.45.95f22b0ea02ddc698ec54fc56bf6f38c
+                           .group:00000000 wm4.sam_gpio.h.50.76a45c51855d665134f8211cd601d693
+                           .group:00000000 wm4.ioport_pio.h.44.373b34364b4ef25fac62017cd942a761
+                           .group:00000000 wm4.sleep.h.45.ef10e1aee6f903405be19980a8333b7f
+                           .group:00000000 wm4.smc.h.45.17a94aa976bb62b1109d03e8a314a569
+                           .group:00000000 wm4.spi.h.45.712c66be09ffbac297c2e00923077297
+                           .group:00000000 wm4.conf_sleepmgr.h.44.d825b913294720022fefe7201514fca3
+                           .group:00000000 wm4.twi.h.45.ba70de99d200dafba570ce8f7058737a
+                           .group:00000000 wm4.twi_master.h.90.08c062d0fa8f8aeea342ceeb79263395
+                           .group:00000000 wm4.twi_slave.h.45.8b3d1a3d2e43ebc7d0161f4142989871
+                           .group:00000000 wm4.uart.h.45.a5af743b8064bd84d1a6438457096e18
+                           .group:00000000 wm4.usart.h.46.eae6fe592b7ea0768efef8d312e7f44f
+                           .group:00000000 wm4.conf_uart_serial.h.45.245cdceaa1a3811fd043bf660ce38054
+                           .group:00000000 wm4.conf_usb.h.45.2f7207bed7467dcf9cb11fbc6ebe572c
+                           .group:00000000 wm4.udi_vendor_conf.h.56.4348c8e521d040f44df868219dae6785
+                           .group:00000000 wm4.usb_atmel.h.45.c31b525dbe01f8d9e2022a03356ec174
+                           .group:00000000 wm4.usb_protocol.h.63.850c58f3469fce50a9ac9a6854f7594b
+                           .group:00000000 wm4.usb_protocol_vendor.h.45.83dfe073428ff799abc3ed1c7b04c77d
+                           .group:00000000 wm4.udc_desc.h.77.5fec235bd7553e7256e345e020840072
+                           .group:00000000 wm4.udd.h.103.3ccc59b50c14ec70568e6136eeb22d56
+                           .group:00000000 wm4.udi_vendor.h.125.7b9085237d4d4a9757f4c148fba1918d
+                           .group:00000000 wm4.XPROGNewAE.h.44.1fab8fec0bc3c46aa52d18726018ea35
+                           .group:00000000 wm4.XPROGTarget.h.37.f13be92b4fed79a57f759fbcfb772a0c
+                           .group:00000000 wm4.XMEGANVM.h.48.e7b2897ef70272e11c75543118cf4de6
+
+UNDEFINED SYMBOLS
+XPROGTarget_SendByte
+XPROG_Param_NVMBase
+XPROGTarget_ReceiveByte
+TimeoutTicksRemaining
+XPROGTarget_EnableTargetPDI
+XPROGTarget_DisableTargetPDI
+XPROG_Param_EEPageSize

@@ -67,9 +67,9 @@ objdir/flash_efc.o.s: .././hal/sam3u1c/flash_efc.c \
  .././hal/sam3u1c/inc/parts.h conf_clock.h \
  .././hal/sam3u1c/inc/sam3u/sysclk.h .././hal/sam3u1c/inc/osc.h \
  .././hal/sam3u1c/inc/sam3u/osc.h .././hal/sam3u1c/inc/board.h \
- .././hal/sam3u1c/inc/cw521/cw521.h .././hal/sam3u1c/inc/system_sam3u.h \
- .././hal/sam3u1c/inc/exceptions.h .././hal/sam3u1c/inc/pmc.h \
- .././hal/sam3u1c/inc/pll.h .././hal/sam3u1c/inc/sam3u/pll.h
+ .././hal/sam3u1c/inc/cw521.h .././hal/sam3u1c/inc/exceptions.h \
+ .././hal/sam3u1c/inc/pmc.h .././hal/sam3u1c/inc/pll.h \
+ .././hal/sam3u1c/inc/sam3u/pll.h
 
 .././hal/sam3u1c/inc/flash_efc.h:
 
@@ -231,9 +231,7 @@ conf_clock.h:
 
 .././hal/sam3u1c/inc/board.h:
 
-.././hal/sam3u1c/inc/cw521/cw521.h:
-
-.././hal/sam3u1c/inc/system_sam3u.h:
+.././hal/sam3u1c/inc/cw521.h:
 
 .././hal/sam3u1c/inc/exceptions.h:
 

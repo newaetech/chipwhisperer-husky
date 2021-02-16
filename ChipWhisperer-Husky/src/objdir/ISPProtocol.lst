@@ -1,0 +1,3046 @@
+   1              	 .cpu cortex-m3
+   2              	 .eabi_attribute 20,1
+   3              	 .eabi_attribute 21,1
+   4              	 .eabi_attribute 23,3
+   5              	 .eabi_attribute 24,1
+   6              	 .eabi_attribute 25,1
+   7              	 .eabi_attribute 26,1
+   8              	 .eabi_attribute 30,6
+   9              	 .eabi_attribute 34,1
+  10              	 .eabi_attribute 18,4
+  11              	 .file "ISPProtocol.c"
+  12              	 .text
+  13              	.Ltext0:
+  14              	 .cfi_sections .debug_frame
+  15              	 .section .bss.cpu_irq_critical_section_counter,"aw",%nobits
+  16              	 .align 2
+  19              	cpu_irq_critical_section_counter:
+  20 0000 00000000 	 .space 4
+  21              	 .section .bss.cpu_irq_prev_interrupt_state,"aw",%nobits
+  24              	cpu_irq_prev_interrupt_state:
+  25 0000 00       	 .space 1
+  26              	 .section .text.spi_is_tx_empty,"ax",%progbits
+  27              	 .align 1
+  28              	 .arch armv7-m
+  29              	 .syntax unified
+  30              	 .thumb
+  31              	 .thumb_func
+  32              	 .fpu softvfp
+  34              	spi_is_tx_empty:
+  35              	.LFB156:
+  36              	 .file 1 ".././hal/sam3u1c/inc/spi.h"
+   1:.././hal/sam3u1c/inc/spi.h **** /**
+   2:.././hal/sam3u1c/inc/spi.h ****  * \file
+   3:.././hal/sam3u1c/inc/spi.h ****  *
+   4:.././hal/sam3u1c/inc/spi.h ****  * \brief Serial Peripheral Interface (SPI) driver for SAM.
+   5:.././hal/sam3u1c/inc/spi.h ****  *
+   6:.././hal/sam3u1c/inc/spi.h ****  * Copyright (c) 2011-2014 Atmel Corporation. All rights reserved.
+   7:.././hal/sam3u1c/inc/spi.h ****  *
+   8:.././hal/sam3u1c/inc/spi.h ****  * \asf_license_start
+   9:.././hal/sam3u1c/inc/spi.h ****  *
+  10:.././hal/sam3u1c/inc/spi.h ****  * \page License
+  11:.././hal/sam3u1c/inc/spi.h ****  *
+  12:.././hal/sam3u1c/inc/spi.h ****  * Redistribution and use in source and binary forms, with or without
+  13:.././hal/sam3u1c/inc/spi.h ****  * modification, are permitted provided that the following conditions are met:
+  14:.././hal/sam3u1c/inc/spi.h ****  *
+  15:.././hal/sam3u1c/inc/spi.h ****  * 1. Redistributions of source code must retain the above copyright notice,
+  16:.././hal/sam3u1c/inc/spi.h ****  *    this list of conditions and the following disclaimer.
+  17:.././hal/sam3u1c/inc/spi.h ****  *
+  18:.././hal/sam3u1c/inc/spi.h ****  * 2. Redistributions in binary form must reproduce the above copyright notice,
+  19:.././hal/sam3u1c/inc/spi.h ****  *    this list of conditions and the following disclaimer in the documentation
+  20:.././hal/sam3u1c/inc/spi.h ****  *    and/or other materials provided with the distribution.
+  21:.././hal/sam3u1c/inc/spi.h ****  *
+  22:.././hal/sam3u1c/inc/spi.h ****  * 3. The name of Atmel may not be used to endorse or promote products derived
+  23:.././hal/sam3u1c/inc/spi.h ****  *    from this software without specific prior written permission.
+  24:.././hal/sam3u1c/inc/spi.h ****  *
+  25:.././hal/sam3u1c/inc/spi.h ****  * 4. This software may only be redistributed and used in connection with an
+  26:.././hal/sam3u1c/inc/spi.h ****  *    Atmel microcontroller product.
+  27:.././hal/sam3u1c/inc/spi.h ****  *
+  28:.././hal/sam3u1c/inc/spi.h ****  * THIS SOFTWARE IS PROVIDED BY ATMEL "AS IS" AND ANY EXPRESS OR IMPLIED
+  29:.././hal/sam3u1c/inc/spi.h ****  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  30:.././hal/sam3u1c/inc/spi.h ****  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT ARE
+  31:.././hal/sam3u1c/inc/spi.h ****  * EXPRESSLY AND SPECIFICALLY DISCLAIMED. IN NO EVENT SHALL ATMEL BE LIABLE FOR
+  32:.././hal/sam3u1c/inc/spi.h ****  * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  33:.././hal/sam3u1c/inc/spi.h ****  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+  34:.././hal/sam3u1c/inc/spi.h ****  * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+  35:.././hal/sam3u1c/inc/spi.h ****  * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+  36:.././hal/sam3u1c/inc/spi.h ****  * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+  37:.././hal/sam3u1c/inc/spi.h ****  * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  38:.././hal/sam3u1c/inc/spi.h ****  * POSSIBILITY OF SUCH DAMAGE.
+  39:.././hal/sam3u1c/inc/spi.h ****  *
+  40:.././hal/sam3u1c/inc/spi.h ****  * \asf_license_stop
+  41:.././hal/sam3u1c/inc/spi.h ****  *
+  42:.././hal/sam3u1c/inc/spi.h ****  */
+  43:.././hal/sam3u1c/inc/spi.h **** 
+  44:.././hal/sam3u1c/inc/spi.h **** #ifndef SPI_H_INCLUDED
+  45:.././hal/sam3u1c/inc/spi.h **** #define SPI_H_INCLUDED
+  46:.././hal/sam3u1c/inc/spi.h **** 
+  47:.././hal/sam3u1c/inc/spi.h **** #include "compiler.h"
+  48:.././hal/sam3u1c/inc/spi.h **** 
+  49:.././hal/sam3u1c/inc/spi.h **** /// @cond 0
+  50:.././hal/sam3u1c/inc/spi.h **** /**INDENT-OFF**/
+  51:.././hal/sam3u1c/inc/spi.h **** #ifdef __cplusplus
+  52:.././hal/sam3u1c/inc/spi.h **** extern "C" {
+  53:.././hal/sam3u1c/inc/spi.h **** #endif
+  54:.././hal/sam3u1c/inc/spi.h **** /**INDENT-ON**/
+  55:.././hal/sam3u1c/inc/spi.h **** /// @endcond
+  56:.././hal/sam3u1c/inc/spi.h **** 
+  57:.././hal/sam3u1c/inc/spi.h **** /** Time-out value (number of attempts). */
+  58:.././hal/sam3u1c/inc/spi.h **** #define SPI_TIMEOUT       15000
+  59:.././hal/sam3u1c/inc/spi.h **** 
+  60:.././hal/sam3u1c/inc/spi.h **** /** Status codes used by the SPI driver. */
+  61:.././hal/sam3u1c/inc/spi.h **** typedef enum
+  62:.././hal/sam3u1c/inc/spi.h **** {
+  63:.././hal/sam3u1c/inc/spi.h **** 	SPI_ERROR = -1,
+  64:.././hal/sam3u1c/inc/spi.h **** 	SPI_OK = 0,
+  65:.././hal/sam3u1c/inc/spi.h **** 	SPI_ERROR_TIMEOUT = 1,
+  66:.././hal/sam3u1c/inc/spi.h **** 	SPI_ERROR_ARGUMENT,
+  67:.././hal/sam3u1c/inc/spi.h **** 	SPI_ERROR_OVERRUN,
+  68:.././hal/sam3u1c/inc/spi.h **** 	SPI_ERROR_MODE_FAULT,
+  69:.././hal/sam3u1c/inc/spi.h **** 	SPI_ERROR_OVERRUN_AND_MODE_FAULT
+  70:.././hal/sam3u1c/inc/spi.h **** } spi_status_t;
+  71:.././hal/sam3u1c/inc/spi.h **** 
+  72:.././hal/sam3u1c/inc/spi.h **** /** SPI Chip Select behavior modes while transferring. */
+  73:.././hal/sam3u1c/inc/spi.h **** typedef enum spi_cs_behavior {
+  74:.././hal/sam3u1c/inc/spi.h **** 	/** CS does not rise until a new transfer is requested on different chip select. */
+  75:.././hal/sam3u1c/inc/spi.h **** 	SPI_CS_KEEP_LOW = SPI_CSR_CSAAT,
+  76:.././hal/sam3u1c/inc/spi.h **** 	/** CS rises if there is no more data to transfer. */
+  77:.././hal/sam3u1c/inc/spi.h **** 	SPI_CS_RISE_NO_TX = 0,
+  78:.././hal/sam3u1c/inc/spi.h **** 	/** CS is de-asserted systematically during a time DLYBCS. */
+  79:.././hal/sam3u1c/inc/spi.h **** 	SPI_CS_RISE_FORCED = SPI_CSR_CSNAAT
+  80:.././hal/sam3u1c/inc/spi.h **** } spi_cs_behavior_t;
+  81:.././hal/sam3u1c/inc/spi.h **** 
+  82:.././hal/sam3u1c/inc/spi.h **** /**
+  83:.././hal/sam3u1c/inc/spi.h ****  * \brief Generate Peripheral Chip Select Value from Chip Select ID
+  84:.././hal/sam3u1c/inc/spi.h ****  * \note When chip select n is working, PCS bit n is set to low level.
+  85:.././hal/sam3u1c/inc/spi.h ****  *
+  86:.././hal/sam3u1c/inc/spi.h ****  * \param chip_sel_id The chip select number used
+  87:.././hal/sam3u1c/inc/spi.h ****  */
+  88:.././hal/sam3u1c/inc/spi.h **** #define spi_get_pcs(chip_sel_id) ((~(1u<<(chip_sel_id)))&0xF)
+  89:.././hal/sam3u1c/inc/spi.h **** 
+  90:.././hal/sam3u1c/inc/spi.h **** /**
+  91:.././hal/sam3u1c/inc/spi.h ****  * \brief Reset SPI and set it to Slave mode.
+  92:.././hal/sam3u1c/inc/spi.h ****  *
+  93:.././hal/sam3u1c/inc/spi.h ****  * \param p_spi Pointer to an SPI instance.
+  94:.././hal/sam3u1c/inc/spi.h ****  */
+  95:.././hal/sam3u1c/inc/spi.h **** static inline void spi_reset(Spi *p_spi)
+  96:.././hal/sam3u1c/inc/spi.h **** {
+  97:.././hal/sam3u1c/inc/spi.h **** 	p_spi->SPI_CR = SPI_CR_SWRST;
+  98:.././hal/sam3u1c/inc/spi.h **** }
+  99:.././hal/sam3u1c/inc/spi.h **** 
+ 100:.././hal/sam3u1c/inc/spi.h **** /**
+ 101:.././hal/sam3u1c/inc/spi.h ****  * \brief Enable SPI.
+ 102:.././hal/sam3u1c/inc/spi.h ****  *
+ 103:.././hal/sam3u1c/inc/spi.h ****  * \param p_spi Pointer to an SPI instance.
+ 104:.././hal/sam3u1c/inc/spi.h ****  */
+ 105:.././hal/sam3u1c/inc/spi.h **** static inline void spi_enable(Spi *p_spi)
+ 106:.././hal/sam3u1c/inc/spi.h **** {
+ 107:.././hal/sam3u1c/inc/spi.h **** 	p_spi->SPI_CR = SPI_CR_SPIEN;
+ 108:.././hal/sam3u1c/inc/spi.h **** }
+ 109:.././hal/sam3u1c/inc/spi.h **** 
+ 110:.././hal/sam3u1c/inc/spi.h **** /**
+ 111:.././hal/sam3u1c/inc/spi.h ****  * \brief Disable SPI.
+ 112:.././hal/sam3u1c/inc/spi.h ****  *
+ 113:.././hal/sam3u1c/inc/spi.h ****  * \note CS is de-asserted, which indicates that the last data is done, and user
+ 114:.././hal/sam3u1c/inc/spi.h ****  * should check TX_EMPTY before disabling SPI.
+ 115:.././hal/sam3u1c/inc/spi.h ****  *
+ 116:.././hal/sam3u1c/inc/spi.h ****  * \param p_spi Pointer to an SPI instance.
+ 117:.././hal/sam3u1c/inc/spi.h ****  */
+ 118:.././hal/sam3u1c/inc/spi.h **** static inline void spi_disable(Spi *p_spi)
+ 119:.././hal/sam3u1c/inc/spi.h **** {
+ 120:.././hal/sam3u1c/inc/spi.h **** 	p_spi->SPI_CR = SPI_CR_SPIDIS;
+ 121:.././hal/sam3u1c/inc/spi.h **** }
+ 122:.././hal/sam3u1c/inc/spi.h **** 
+ 123:.././hal/sam3u1c/inc/spi.h **** /**
+ 124:.././hal/sam3u1c/inc/spi.h ****  * \brief Issue a LASTXFER command.
+ 125:.././hal/sam3u1c/inc/spi.h ****  *  The next transfer is the last transfer and after that CS is de-asserted.
+ 126:.././hal/sam3u1c/inc/spi.h ****  *
+ 127:.././hal/sam3u1c/inc/spi.h ****  * \param p_spi Pointer to an SPI instance.
+ 128:.././hal/sam3u1c/inc/spi.h ****  */
+ 129:.././hal/sam3u1c/inc/spi.h **** static inline void spi_set_lastxfer(Spi *p_spi)
+ 130:.././hal/sam3u1c/inc/spi.h **** {
+ 131:.././hal/sam3u1c/inc/spi.h **** 	p_spi->SPI_CR = SPI_CR_LASTXFER;
+ 132:.././hal/sam3u1c/inc/spi.h **** }
+ 133:.././hal/sam3u1c/inc/spi.h **** 
+ 134:.././hal/sam3u1c/inc/spi.h **** /**
+ 135:.././hal/sam3u1c/inc/spi.h ****  * \brief Set SPI to Master mode.
+ 136:.././hal/sam3u1c/inc/spi.h ****  *
+ 137:.././hal/sam3u1c/inc/spi.h ****  * \param p_spi Pointer to an SPI instance.
+ 138:.././hal/sam3u1c/inc/spi.h ****  */
+ 139:.././hal/sam3u1c/inc/spi.h **** static inline void spi_set_master_mode(Spi *p_spi)
+ 140:.././hal/sam3u1c/inc/spi.h **** {
+ 141:.././hal/sam3u1c/inc/spi.h **** 	p_spi->SPI_MR |= SPI_MR_MSTR;
+ 142:.././hal/sam3u1c/inc/spi.h **** }
+ 143:.././hal/sam3u1c/inc/spi.h **** 
+ 144:.././hal/sam3u1c/inc/spi.h **** /**
+ 145:.././hal/sam3u1c/inc/spi.h ****  * \brief Set SPI to Slave mode.
+ 146:.././hal/sam3u1c/inc/spi.h ****  *
+ 147:.././hal/sam3u1c/inc/spi.h ****  * \param p_spi Pointer to an SPI instance.
+ 148:.././hal/sam3u1c/inc/spi.h ****  */
+ 149:.././hal/sam3u1c/inc/spi.h **** static inline void spi_set_slave_mode(Spi *p_spi)
+ 150:.././hal/sam3u1c/inc/spi.h **** {
+ 151:.././hal/sam3u1c/inc/spi.h **** 	p_spi->SPI_MR &= (~SPI_MR_MSTR);
+ 152:.././hal/sam3u1c/inc/spi.h **** }
+ 153:.././hal/sam3u1c/inc/spi.h **** 
+ 154:.././hal/sam3u1c/inc/spi.h **** /**
+ 155:.././hal/sam3u1c/inc/spi.h ****  * \brief Get SPI work mode.
+ 156:.././hal/sam3u1c/inc/spi.h ****  *
+ 157:.././hal/sam3u1c/inc/spi.h ****  * \param p_spi Pointer to an SPI instance.
+ 158:.././hal/sam3u1c/inc/spi.h ****  *
+ 159:.././hal/sam3u1c/inc/spi.h ****  * \return 1 for master mode, 0 for slave mode.
+ 160:.././hal/sam3u1c/inc/spi.h ****  */
+ 161:.././hal/sam3u1c/inc/spi.h **** static inline uint32_t spi_get_mode(Spi *p_spi)
+ 162:.././hal/sam3u1c/inc/spi.h **** {
+ 163:.././hal/sam3u1c/inc/spi.h **** 	if (p_spi->SPI_MR & SPI_MR_MSTR) {
+ 164:.././hal/sam3u1c/inc/spi.h **** 		return 1;
+ 165:.././hal/sam3u1c/inc/spi.h **** 	} else {
+ 166:.././hal/sam3u1c/inc/spi.h **** 		return 0;
+ 167:.././hal/sam3u1c/inc/spi.h **** 	}
+ 168:.././hal/sam3u1c/inc/spi.h **** }
+ 169:.././hal/sam3u1c/inc/spi.h **** 
+ 170:.././hal/sam3u1c/inc/spi.h **** /**
+ 171:.././hal/sam3u1c/inc/spi.h ****  * \brief Set Variable Peripheral Select.
+ 172:.././hal/sam3u1c/inc/spi.h ****  * Peripheral Chip Select can be controlled by SPI_TDR.
+ 173:.././hal/sam3u1c/inc/spi.h ****  *
+ 174:.././hal/sam3u1c/inc/spi.h ****  * \param p_spi Pointer to an SPI instance.
+ 175:.././hal/sam3u1c/inc/spi.h ****  */
+ 176:.././hal/sam3u1c/inc/spi.h **** static inline void spi_set_variable_peripheral_select(Spi *p_spi)
+ 177:.././hal/sam3u1c/inc/spi.h **** {
+ 178:.././hal/sam3u1c/inc/spi.h **** 	p_spi->SPI_MR |= SPI_MR_PS;
+ 179:.././hal/sam3u1c/inc/spi.h **** }
+ 180:.././hal/sam3u1c/inc/spi.h **** 
+ 181:.././hal/sam3u1c/inc/spi.h **** /**
+ 182:.././hal/sam3u1c/inc/spi.h ****  * \brief Set Fixed Peripheral Select.
+ 183:.././hal/sam3u1c/inc/spi.h ****  *  Peripheral Chip Select is controlled by SPI_MR.
+ 184:.././hal/sam3u1c/inc/spi.h ****  *
+ 185:.././hal/sam3u1c/inc/spi.h ****  * \param p_spi Pointer to an SPI instance.
+ 186:.././hal/sam3u1c/inc/spi.h ****  */
+ 187:.././hal/sam3u1c/inc/spi.h **** static inline void spi_set_fixed_peripheral_select(Spi *p_spi)
+ 188:.././hal/sam3u1c/inc/spi.h **** {
+ 189:.././hal/sam3u1c/inc/spi.h **** 	p_spi->SPI_MR &= (~SPI_MR_PS);
+ 190:.././hal/sam3u1c/inc/spi.h **** }
+ 191:.././hal/sam3u1c/inc/spi.h **** 
+ 192:.././hal/sam3u1c/inc/spi.h **** /**
+ 193:.././hal/sam3u1c/inc/spi.h ****  * \brief Get Peripheral Select mode.
+ 194:.././hal/sam3u1c/inc/spi.h ****  *
+ 195:.././hal/sam3u1c/inc/spi.h ****  * \param p_spi Pointer to an SPI instance.
+ 196:.././hal/sam3u1c/inc/spi.h ****  *
+ 197:.././hal/sam3u1c/inc/spi.h ****  * \return 1 for Variable mode, 0 for fixed mode.
+ 198:.././hal/sam3u1c/inc/spi.h ****  */
+ 199:.././hal/sam3u1c/inc/spi.h **** static inline uint32_t spi_get_peripheral_select_mode(Spi *p_spi)
+ 200:.././hal/sam3u1c/inc/spi.h **** {
+ 201:.././hal/sam3u1c/inc/spi.h **** 	if (p_spi->SPI_MR & SPI_MR_PS) {
+ 202:.././hal/sam3u1c/inc/spi.h **** 		return 1;
+ 203:.././hal/sam3u1c/inc/spi.h **** 	} else {
+ 204:.././hal/sam3u1c/inc/spi.h **** 		return 0;
+ 205:.././hal/sam3u1c/inc/spi.h **** 	}
+ 206:.././hal/sam3u1c/inc/spi.h **** }
+ 207:.././hal/sam3u1c/inc/spi.h **** 
+ 208:.././hal/sam3u1c/inc/spi.h **** /**
+ 209:.././hal/sam3u1c/inc/spi.h ****  * \brief Enable Peripheral Select Decode.
+ 210:.././hal/sam3u1c/inc/spi.h ****  *
+ 211:.././hal/sam3u1c/inc/spi.h ****  * \param p_spi Pointer to an SPI instance.
+ 212:.././hal/sam3u1c/inc/spi.h ****  */
+ 213:.././hal/sam3u1c/inc/spi.h **** static inline void spi_enable_peripheral_select_decode(Spi *p_spi)
+ 214:.././hal/sam3u1c/inc/spi.h **** {
+ 215:.././hal/sam3u1c/inc/spi.h **** 	p_spi->SPI_MR |= SPI_MR_PCSDEC;
+ 216:.././hal/sam3u1c/inc/spi.h **** }
+ 217:.././hal/sam3u1c/inc/spi.h **** 
+ 218:.././hal/sam3u1c/inc/spi.h **** /**
+ 219:.././hal/sam3u1c/inc/spi.h ****  * \brief Disable Peripheral Select Decode.
+ 220:.././hal/sam3u1c/inc/spi.h ****  *
+ 221:.././hal/sam3u1c/inc/spi.h ****  * \param p_spi Pointer to an SPI instance.
+ 222:.././hal/sam3u1c/inc/spi.h ****  */
+ 223:.././hal/sam3u1c/inc/spi.h **** static inline void spi_disable_peripheral_select_decode(Spi *p_spi)
+ 224:.././hal/sam3u1c/inc/spi.h **** {
+ 225:.././hal/sam3u1c/inc/spi.h **** 	p_spi->SPI_MR &= (~SPI_MR_PCSDEC);
+ 226:.././hal/sam3u1c/inc/spi.h **** }
+ 227:.././hal/sam3u1c/inc/spi.h **** 
+ 228:.././hal/sam3u1c/inc/spi.h **** /**
+ 229:.././hal/sam3u1c/inc/spi.h ****  * \brief Get Peripheral Select Decode mode.
+ 230:.././hal/sam3u1c/inc/spi.h ****  *
+ 231:.././hal/sam3u1c/inc/spi.h ****  * \param p_spi Pointer to an SPI instance.
+ 232:.././hal/sam3u1c/inc/spi.h ****  *
+ 233:.././hal/sam3u1c/inc/spi.h ****  * \return 1 for decode mode, 0 for direct mode.
+ 234:.././hal/sam3u1c/inc/spi.h ****  */
+ 235:.././hal/sam3u1c/inc/spi.h **** static inline uint32_t spi_get_peripheral_select_decode_setting(Spi *p_spi)
+ 236:.././hal/sam3u1c/inc/spi.h **** {
+ 237:.././hal/sam3u1c/inc/spi.h **** 	if (p_spi->SPI_MR & SPI_MR_PCSDEC) {
+ 238:.././hal/sam3u1c/inc/spi.h **** 		return 1;
+ 239:.././hal/sam3u1c/inc/spi.h **** 	} else {
+ 240:.././hal/sam3u1c/inc/spi.h **** 		return 0;
+ 241:.././hal/sam3u1c/inc/spi.h **** 	}
+ 242:.././hal/sam3u1c/inc/spi.h **** }
+ 243:.././hal/sam3u1c/inc/spi.h **** 
+ 244:.././hal/sam3u1c/inc/spi.h **** /**
+ 245:.././hal/sam3u1c/inc/spi.h ****  * \brief Enable Mode Fault Detection.
+ 246:.././hal/sam3u1c/inc/spi.h ****  *
+ 247:.././hal/sam3u1c/inc/spi.h ****  * \param p_spi Pointer to an SPI instance.
+ 248:.././hal/sam3u1c/inc/spi.h ****  */
+ 249:.././hal/sam3u1c/inc/spi.h **** static inline void spi_enable_mode_fault_detect(Spi *p_spi)
+ 250:.././hal/sam3u1c/inc/spi.h **** {
+ 251:.././hal/sam3u1c/inc/spi.h **** 	p_spi->SPI_MR &= (~SPI_MR_MODFDIS);
+ 252:.././hal/sam3u1c/inc/spi.h **** }
+ 253:.././hal/sam3u1c/inc/spi.h **** 
+ 254:.././hal/sam3u1c/inc/spi.h **** /**
+ 255:.././hal/sam3u1c/inc/spi.h ****  * \brief Disable Mode Fault Detection.
+ 256:.././hal/sam3u1c/inc/spi.h ****  *
+ 257:.././hal/sam3u1c/inc/spi.h ****  * \param p_spi Pointer to an SPI instance.
+ 258:.././hal/sam3u1c/inc/spi.h ****  */
+ 259:.././hal/sam3u1c/inc/spi.h **** static inline void spi_disable_mode_fault_detect(Spi *p_spi)
+ 260:.././hal/sam3u1c/inc/spi.h **** {
+ 261:.././hal/sam3u1c/inc/spi.h **** 	p_spi->SPI_MR |= SPI_MR_MODFDIS;
+ 262:.././hal/sam3u1c/inc/spi.h **** }
+ 263:.././hal/sam3u1c/inc/spi.h **** 
+ 264:.././hal/sam3u1c/inc/spi.h **** /**
+ 265:.././hal/sam3u1c/inc/spi.h ****  * \brief Check if mode fault detection is enabled.
+ 266:.././hal/sam3u1c/inc/spi.h ****  *
+ 267:.././hal/sam3u1c/inc/spi.h ****  * \param p_spi Pointer to an SPI instance.
+ 268:.././hal/sam3u1c/inc/spi.h ****  *
+ 269:.././hal/sam3u1c/inc/spi.h ****  * \return 1 for disabled, 0 for enabled.
+ 270:.././hal/sam3u1c/inc/spi.h ****  */
+ 271:.././hal/sam3u1c/inc/spi.h **** static inline uint32_t spi_get_mode_fault_detect_setting(Spi *p_spi)
+ 272:.././hal/sam3u1c/inc/spi.h **** {
+ 273:.././hal/sam3u1c/inc/spi.h **** 	if (p_spi->SPI_MR & SPI_MR_MODFDIS) {
+ 274:.././hal/sam3u1c/inc/spi.h **** 		return 1;
+ 275:.././hal/sam3u1c/inc/spi.h **** 	} else {
+ 276:.././hal/sam3u1c/inc/spi.h **** 		return 0;
+ 277:.././hal/sam3u1c/inc/spi.h **** 	}
+ 278:.././hal/sam3u1c/inc/spi.h **** }
+ 279:.././hal/sam3u1c/inc/spi.h **** 
+ 280:.././hal/sam3u1c/inc/spi.h **** /**
+ 281:.././hal/sam3u1c/inc/spi.h ****  * \brief Enable waiting RX_EMPTY before transfer starts.
+ 282:.././hal/sam3u1c/inc/spi.h ****  *
+ 283:.././hal/sam3u1c/inc/spi.h ****  * \param p_spi Pointer to an SPI instance.
+ 284:.././hal/sam3u1c/inc/spi.h ****  */
+ 285:.././hal/sam3u1c/inc/spi.h **** static inline void spi_enable_tx_on_rx_empty(Spi *p_spi)
+ 286:.././hal/sam3u1c/inc/spi.h **** {
+ 287:.././hal/sam3u1c/inc/spi.h **** 	p_spi->SPI_MR |= SPI_MR_WDRBT;
+ 288:.././hal/sam3u1c/inc/spi.h **** }
+ 289:.././hal/sam3u1c/inc/spi.h **** 
+ 290:.././hal/sam3u1c/inc/spi.h **** /**
+ 291:.././hal/sam3u1c/inc/spi.h ****  * \brief Disable waiting RX_EMPTY before transfer starts.
+ 292:.././hal/sam3u1c/inc/spi.h ****  *
+ 293:.././hal/sam3u1c/inc/spi.h ****  * \param p_spi Pointer to an SPI instance.
+ 294:.././hal/sam3u1c/inc/spi.h ****  */
+ 295:.././hal/sam3u1c/inc/spi.h **** static inline void spi_disable_tx_on_rx_empty(Spi *p_spi)
+ 296:.././hal/sam3u1c/inc/spi.h **** {
+ 297:.././hal/sam3u1c/inc/spi.h **** 	p_spi->SPI_MR &= (~SPI_MR_WDRBT);
+ 298:.././hal/sam3u1c/inc/spi.h **** }
+ 299:.././hal/sam3u1c/inc/spi.h **** 
+ 300:.././hal/sam3u1c/inc/spi.h **** /**
+ 301:.././hal/sam3u1c/inc/spi.h ****  * \brief Check if SPI waits RX_EMPTY before transfer starts.
+ 302:.././hal/sam3u1c/inc/spi.h ****  *
+ 303:.././hal/sam3u1c/inc/spi.h ****  * \param p_spi Pointer to an SPI instance.
+ 304:.././hal/sam3u1c/inc/spi.h ****  *
+ 305:.././hal/sam3u1c/inc/spi.h ****  * \return 1 for SPI waits, 0 for no wait.
+ 306:.././hal/sam3u1c/inc/spi.h ****  */
+ 307:.././hal/sam3u1c/inc/spi.h **** static inline uint32_t spi_get_tx_on_rx_empty_setting(Spi *p_spi)
+ 308:.././hal/sam3u1c/inc/spi.h **** {
+ 309:.././hal/sam3u1c/inc/spi.h **** 	if (p_spi->SPI_MR & SPI_MR_WDRBT) {
+ 310:.././hal/sam3u1c/inc/spi.h **** 		return 1;
+ 311:.././hal/sam3u1c/inc/spi.h **** 	} else {
+ 312:.././hal/sam3u1c/inc/spi.h **** 		return 0;
+ 313:.././hal/sam3u1c/inc/spi.h **** 	}
+ 314:.././hal/sam3u1c/inc/spi.h **** }
+ 315:.././hal/sam3u1c/inc/spi.h **** 
+ 316:.././hal/sam3u1c/inc/spi.h **** /**
+ 317:.././hal/sam3u1c/inc/spi.h ****  * \brief Enable loopback mode.
+ 318:.././hal/sam3u1c/inc/spi.h ****  *
+ 319:.././hal/sam3u1c/inc/spi.h ****  * \param p_spi Pointer to an SPI instance.
+ 320:.././hal/sam3u1c/inc/spi.h ****  */
+ 321:.././hal/sam3u1c/inc/spi.h **** static inline void spi_enable_loopback(Spi *p_spi)
+ 322:.././hal/sam3u1c/inc/spi.h **** {
+ 323:.././hal/sam3u1c/inc/spi.h **** 	p_spi->SPI_MR |= SPI_MR_LLB;
+ 324:.././hal/sam3u1c/inc/spi.h **** }
+ 325:.././hal/sam3u1c/inc/spi.h **** 
+ 326:.././hal/sam3u1c/inc/spi.h **** /**
+ 327:.././hal/sam3u1c/inc/spi.h ****  * \brief Disable loopback mode.
+ 328:.././hal/sam3u1c/inc/spi.h ****  *
+ 329:.././hal/sam3u1c/inc/spi.h ****  * \param p_spi Pointer to an SPI instance.
+ 330:.././hal/sam3u1c/inc/spi.h ****  */
+ 331:.././hal/sam3u1c/inc/spi.h **** static inline void spi_disable_loopback(Spi *p_spi)
+ 332:.././hal/sam3u1c/inc/spi.h **** {
+ 333:.././hal/sam3u1c/inc/spi.h **** 	p_spi->SPI_MR &= (~SPI_MR_LLB);
+ 334:.././hal/sam3u1c/inc/spi.h **** }
+ 335:.././hal/sam3u1c/inc/spi.h **** 
+ 336:.././hal/sam3u1c/inc/spi.h **** void spi_enable_clock(Spi *p_spi);
+ 337:.././hal/sam3u1c/inc/spi.h **** void spi_disable_clock(Spi *p_spi);
+ 338:.././hal/sam3u1c/inc/spi.h **** void spi_set_peripheral_chip_select_value(Spi *p_spi, uint32_t ul_value);
+ 339:.././hal/sam3u1c/inc/spi.h **** void spi_set_delay_between_chip_select(Spi *p_spi, uint32_t ul_delay);
+ 340:.././hal/sam3u1c/inc/spi.h **** spi_status_t spi_read(Spi *p_spi, uint16_t *us_data, uint8_t *p_pcs);
+ 341:.././hal/sam3u1c/inc/spi.h **** spi_status_t spi_write(Spi *p_spi, uint16_t us_data, uint8_t uc_pcs,
+ 342:.././hal/sam3u1c/inc/spi.h **** 		uint8_t uc_last);
+ 343:.././hal/sam3u1c/inc/spi.h **** 
+ 344:.././hal/sam3u1c/inc/spi.h **** /**
+ 345:.././hal/sam3u1c/inc/spi.h ****  * \brief Read status register.
+ 346:.././hal/sam3u1c/inc/spi.h ****  *
+ 347:.././hal/sam3u1c/inc/spi.h ****  * \param p_spi Pointer to an SPI instance.
+ 348:.././hal/sam3u1c/inc/spi.h ****  *
+ 349:.././hal/sam3u1c/inc/spi.h ****  * \return SPI status register value.
+ 350:.././hal/sam3u1c/inc/spi.h ****  */
+ 351:.././hal/sam3u1c/inc/spi.h **** static inline uint32_t spi_read_status(Spi *p_spi)
+ 352:.././hal/sam3u1c/inc/spi.h **** {
+ 353:.././hal/sam3u1c/inc/spi.h **** 	return p_spi->SPI_SR;
+ 354:.././hal/sam3u1c/inc/spi.h **** }
+ 355:.././hal/sam3u1c/inc/spi.h **** 
+ 356:.././hal/sam3u1c/inc/spi.h **** /**
+ 357:.././hal/sam3u1c/inc/spi.h ****  * \brief Test if the SPI is enabled.
+ 358:.././hal/sam3u1c/inc/spi.h ****  *
+ 359:.././hal/sam3u1c/inc/spi.h ****  * \param p_spi Pointer to an SPI instance.
+ 360:.././hal/sam3u1c/inc/spi.h ****  *
+ 361:.././hal/sam3u1c/inc/spi.h ****  * \return 1 if the SPI is enabled, otherwise 0.
+ 362:.././hal/sam3u1c/inc/spi.h ****  */
+ 363:.././hal/sam3u1c/inc/spi.h **** static inline uint32_t spi_is_enabled(Spi *p_spi)
+ 364:.././hal/sam3u1c/inc/spi.h **** {
+ 365:.././hal/sam3u1c/inc/spi.h **** 	if (p_spi->SPI_SR & SPI_SR_SPIENS) {
+ 366:.././hal/sam3u1c/inc/spi.h **** 		return 1;
+ 367:.././hal/sam3u1c/inc/spi.h **** 	} else {
+ 368:.././hal/sam3u1c/inc/spi.h **** 		return 0;
+ 369:.././hal/sam3u1c/inc/spi.h **** 	}
+ 370:.././hal/sam3u1c/inc/spi.h **** }
+ 371:.././hal/sam3u1c/inc/spi.h **** 
+ 372:.././hal/sam3u1c/inc/spi.h **** /**
+ 373:.././hal/sam3u1c/inc/spi.h ****  * \brief Put one data to a SPI peripheral.
+ 374:.././hal/sam3u1c/inc/spi.h ****  *
+ 375:.././hal/sam3u1c/inc/spi.h ****  * \param p_spi Base address of the SPI instance.
+ 376:.././hal/sam3u1c/inc/spi.h ****  * \param data The data byte to be loaded
+ 377:.././hal/sam3u1c/inc/spi.h ****  *
+ 378:.././hal/sam3u1c/inc/spi.h ****  */
+ 379:.././hal/sam3u1c/inc/spi.h **** static inline void spi_put(Spi *p_spi, uint16_t data)
+ 380:.././hal/sam3u1c/inc/spi.h **** {
+ 381:.././hal/sam3u1c/inc/spi.h **** 	p_spi->SPI_TDR = SPI_TDR_TD(data);
+ 382:.././hal/sam3u1c/inc/spi.h **** }
+ 383:.././hal/sam3u1c/inc/spi.h **** 
+ 384:.././hal/sam3u1c/inc/spi.h **** /** \brief Get one data to a SPI peripheral.
+ 385:.././hal/sam3u1c/inc/spi.h ****  *
+ 386:.././hal/sam3u1c/inc/spi.h ****  * \param p_spi Base address of the SPI instance.
+ 387:.././hal/sam3u1c/inc/spi.h ****  * \return The data byte
+ 388:.././hal/sam3u1c/inc/spi.h ****  *
+ 389:.././hal/sam3u1c/inc/spi.h ****  */
+ 390:.././hal/sam3u1c/inc/spi.h **** static inline uint16_t spi_get(Spi *p_spi)
+ 391:.././hal/sam3u1c/inc/spi.h **** {
+ 392:.././hal/sam3u1c/inc/spi.h **** 	return (p_spi->SPI_RDR & SPI_RDR_RD_Msk);
+ 393:.././hal/sam3u1c/inc/spi.h **** }
+ 394:.././hal/sam3u1c/inc/spi.h **** 
+ 395:.././hal/sam3u1c/inc/spi.h **** /**
+ 396:.././hal/sam3u1c/inc/spi.h ****  * \brief Check if all transmissions are complete.
+ 397:.././hal/sam3u1c/inc/spi.h ****  *
+ 398:.././hal/sam3u1c/inc/spi.h ****  * \param p_spi Pointer to an SPI instance.
+ 399:.././hal/sam3u1c/inc/spi.h ****  *
+ 400:.././hal/sam3u1c/inc/spi.h ****  * \retval 1 if transmissions are complete.
+ 401:.././hal/sam3u1c/inc/spi.h ****  * \retval 0 if transmissions are not complete.
+ 402:.././hal/sam3u1c/inc/spi.h ****  */
+ 403:.././hal/sam3u1c/inc/spi.h **** static inline uint32_t spi_is_tx_empty(Spi *p_spi)
+ 404:.././hal/sam3u1c/inc/spi.h **** {
+  37              	 .loc 1 404 1
+  38              	 .cfi_startproc
+  39              	 
+  40              	 
+  41              	 
+  42 0000 80B4     	 push {r7}
+  43              	.LCFI0:
+  44              	 .cfi_def_cfa_offset 4
+  45              	 .cfi_offset 7,-4
+  46 0002 83B0     	 sub sp,sp,#12
+  47              	.LCFI1:
+  48              	 .cfi_def_cfa_offset 16
+  49 0004 00AF     	 add r7,sp,#0
+  50              	.LCFI2:
+  51              	 .cfi_def_cfa_register 7
+  52 0006 7860     	 str r0,[r7,#4]
+ 405:.././hal/sam3u1c/inc/spi.h **** 	if (p_spi->SPI_SR & SPI_SR_TXEMPTY) {
+  53              	 .loc 1 405 11
+  54 0008 7B68     	 ldr r3,[r7,#4]
+  55 000a 1B69     	 ldr r3,[r3,#16]
+  56              	 .loc 1 405 20
+  57 000c 03F40073 	 and r3,r3,#512
+  58              	 .loc 1 405 5
+  59 0010 002B     	 cmp r3,#0
+  60 0012 01D0     	 beq .L2
+ 406:.././hal/sam3u1c/inc/spi.h **** 		return 1;
+  61              	 .loc 1 406 10
+  62 0014 0123     	 movs r3,#1
+  63 0016 00E0     	 b .L3
+  64              	.L2:
+ 407:.././hal/sam3u1c/inc/spi.h **** 	} else {
+ 408:.././hal/sam3u1c/inc/spi.h **** 		return 0;
+  65              	 .loc 1 408 10
+  66 0018 0023     	 movs r3,#0
+  67              	.L3:
+ 409:.././hal/sam3u1c/inc/spi.h **** 	}
+ 410:.././hal/sam3u1c/inc/spi.h **** }
+  68              	 .loc 1 410 1
+  69 001a 1846     	 mov r0,r3
+  70 001c 0C37     	 adds r7,r7,#12
+  71              	.LCFI3:
+  72              	 .cfi_def_cfa_offset 4
+  73 001e BD46     	 mov sp,r7
+  74              	.LCFI4:
+  75              	 .cfi_def_cfa_register 13
+  76              	 
+  77 0020 80BC     	 pop {r7}
+  78              	.LCFI5:
+  79              	 .cfi_restore 7
+  80              	 .cfi_def_cfa_offset 0
+  81 0022 7047     	 bx lr
+  82              	 .cfi_endproc
+  83              	.LFE156:
+  85              	 .section .text.ISPTarget_SendByte,"ax",%progbits
+  86              	 .align 1
+  87              	 .syntax unified
+  88              	 .thumb
+  89              	 .thumb_func
+  90              	 .fpu softvfp
+  92              	ISPTarget_SendByte:
+  93              	.LFB181:
+  94              	 .file 2 "ISPTarget.h"
+   1:ISPTarget.h   **** /* This file is based on the excellent LUFA Library, which is:
+   2:ISPTarget.h   ****   Copyright (C) Dean Camera, 2013. See www.lufa-lib.org
+   3:ISPTarget.h   ****   
+   4:ISPTarget.h   ****   Note it has been modified for the SAM3U by NewAE Technology Inc.,
+   5:ISPTarget.h   ****   changes Copyright (C) NewAE Technology Inc, 2015. Changes have
+   6:ISPTarget.h   ****   generally basterdized and reduced the functionality of the original
+   7:ISPTarget.h   ****   code, so please see original code if using this to port. 
+   8:ISPTarget.h   **** */
+   9:ISPTarget.h   **** 
+  10:ISPTarget.h   **** /*
+  11:ISPTarget.h   ****   Copyright 2013  Dean Camera (dean [at] fourwalledcubicle [dot] com)
+  12:ISPTarget.h   **** 
+  13:ISPTarget.h   ****   Permission to use, copy, modify, distribute, and sell this
+  14:ISPTarget.h   ****   software and its documentation for any purpose is hereby granted
+  15:ISPTarget.h   ****   without fee, provided that the above copyright notice appear in
+  16:ISPTarget.h   ****   all copies and that both that the copyright notice and this
+  17:ISPTarget.h   ****   permission notice and warranty disclaimer appear in supporting
+  18:ISPTarget.h   ****   documentation, and that the name of the author not be used in
+  19:ISPTarget.h   ****   advertising or publicity pertaining to distribution of the
+  20:ISPTarget.h   ****   software without specific, written prior permission.
+  21:ISPTarget.h   **** 
+  22:ISPTarget.h   ****   The author disclaims all warranties with regard to this
+  23:ISPTarget.h   ****   software, including all implied warranties of merchantability
+  24:ISPTarget.h   ****   and fitness.  In no event shall the author be liable for any
+  25:ISPTarget.h   ****   special, indirect or consequential damages or any damages
+  26:ISPTarget.h   ****   whatsoever resulting from loss of use, data or profits, whether
+  27:ISPTarget.h   ****   in an action of contract, negligence or other tortious action,
+  28:ISPTarget.h   ****   arising out of or in connection with the use or performance of
+  29:ISPTarget.h   ****   this software.
+  30:ISPTarget.h   **** */
+  31:ISPTarget.h   **** 
+  32:ISPTarget.h   **** /** \file
+  33:ISPTarget.h   ****  *
+  34:ISPTarget.h   ****  *  Header file for ISPTarget.c.
+  35:ISPTarget.h   ****  */
+  36:ISPTarget.h   **** 
+  37:ISPTarget.h   **** #ifndef _ISP_TARGET_
+  38:ISPTarget.h   **** #define _ISP_TARGET_
+  39:ISPTarget.h   **** 
+  40:ISPTarget.h   **** 	/* Includes: */
+  41:ISPTarget.h   **** 		#include <asf.h>
+  42:ISPTarget.h   **** 		#include "delay.h"
+  43:ISPTarget.h   **** 		#include "spi.h"
+  44:ISPTarget.h   **** 
+  45:ISPTarget.h   **** 		#include "V2Protocol.h"
+  46:ISPTarget.h   **** 		#include "ISPProtocol.h"
+  47:ISPTarget.h   **** 
+  48:ISPTarget.h   **** 	/* Macros: */
+  49:ISPTarget.h   **** 		/** Low level device command to issue an extended FLASH address, for devices with over 128KB of F
+  50:ISPTarget.h   **** 		#define LOAD_EXTENDED_ADDRESS_CMD     0x4D
+  51:ISPTarget.h   **** 
+  52:ISPTarget.h   **** 		//By default use SPI, can define this to 1 to use the USART module
+  53:ISPTarget.h   **** 		//USART in use is defined by AVRISP_USART
+  54:ISPTarget.h   **** 		#ifndef AVRISP_USEUART
+  55:ISPTarget.h   **** 		#define AVRISP_USEUART 0
+  56:ISPTarget.h   **** 		#define AVRISP_USART USART0
+  57:ISPTarget.h   **** 		#define AVRISP_USART_ID ID_USART0
+  58:ISPTarget.h   **** 		#endif
+  59:ISPTarget.h   **** 
+  60:ISPTarget.h   **** 	/* Function Prototypes: */
+  61:ISPTarget.h   **** 		void    ISPTarget_EnableTargetISP(void);
+  62:ISPTarget.h   **** 		void    ISPTarget_DisableTargetISP(void);	
+  63:ISPTarget.h   **** 		void    ISPTarget_ChangeTargetResetLine(const bool ResetTarget);
+  64:ISPTarget.h   **** 		uint8_t ISPTarget_WaitWhileTargetBusy(void);
+  65:ISPTarget.h   **** 		void    ISPTarget_LoadExtendedAddress(void);
+  66:ISPTarget.h   **** 		uint8_t ISPTarget_WaitForProgComplete(const uint8_t ProgrammingMode,
+  67:ISPTarget.h   **** 		                                      const uint16_t PollAddress,
+  68:ISPTarget.h   **** 		                                      const uint8_t PollValue,
+  69:ISPTarget.h   **** 		                                      const uint8_t DelayMS,
+  70:ISPTarget.h   **** 		                                      const uint8_t ReadMemCommand);
+  71:ISPTarget.h   **** 
+  72:ISPTarget.h   **** 	/* Inline Functions: */
+  73:ISPTarget.h   **** 		/** Sends a byte of ISP data to the attached target, using the appropriate SPI hardware or
+  74:ISPTarget.h   **** 		 *  software routines depending on the selected ISP speed.
+  75:ISPTarget.h   **** 		 *
+  76:ISPTarget.h   **** 		 *  \param[in] Byte  Byte of data to send to the attached target
+  77:ISPTarget.h   **** 		 */
+  78:ISPTarget.h   **** 		static inline void ISPTarget_SendByte(const uint8_t data)
+  79:ISPTarget.h   **** 		{
+  95              	 .loc 2 79 3
+  96              	 .cfi_startproc
+  97              	 
+  98              	 
+  99 0000 90B5     	 push {r4,r7,lr}
+ 100              	.LCFI6:
+ 101              	 .cfi_def_cfa_offset 12
+ 102              	 .cfi_offset 4,-12
+ 103              	 .cfi_offset 7,-8
+ 104              	 .cfi_offset 14,-4
+ 105 0002 83B0     	 sub sp,sp,#12
+ 106              	.LCFI7:
+ 107              	 .cfi_def_cfa_offset 24
+ 108 0004 00AF     	 add r7,sp,#0
+ 109              	.LCFI8:
+ 110              	 .cfi_def_cfa_register 7
+ 111 0006 0346     	 mov r3,r0
+ 112 0008 FB71     	 strb r3,[r7,#7]
+  80:ISPTarget.h   **** #if AVRISP_USEUART
+  81:ISPTarget.h   **** 		  usart_putchar(AVRISP_USART, data);
+  82:ISPTarget.h   **** #else
+  83:ISPTarget.h   **** 		  spi_write(SPI, data, 0, 0);
+ 113              	 .loc 2 83 5
+ 114 000a FB79     	 ldrb r3,[r7,#7]
+ 115 000c 99B2     	 uxth r1,r3
+ 116 000e 0023     	 movs r3,#0
+ 117 0010 0022     	 movs r2,#0
+ 118 0012 0348     	 ldr r0,.L5
+ 119 0014 034C     	 ldr r4,.L5+4
+ 120 0016 A047     	 blx r4
+ 121              	.LVL0:
+  84:ISPTarget.h   **** #endif
+  85:ISPTarget.h   **** 		}
+ 122              	 .loc 2 85 3
+ 123 0018 00BF     	 nop
+ 124 001a 0C37     	 adds r7,r7,#12
+ 125              	.LCFI9:
+ 126              	 .cfi_def_cfa_offset 12
+ 127 001c BD46     	 mov sp,r7
+ 128              	.LCFI10:
+ 129              	 .cfi_def_cfa_register 13
+ 130              	 
+ 131 001e 90BD     	 pop {r4,r7,pc}
+ 132              	.L6:
+ 133              	 .align 2
+ 134              	.L5:
+ 135 0020 00800040 	 .word 1073774592
+ 136 0024 00000000 	 .word spi_write
+ 137              	 .cfi_endproc
+ 138              	.LFE181:
+ 140              	 .section .text.ISPTarget_ReceiveByte,"ax",%progbits
+ 141              	 .align 1
+ 142              	 .syntax unified
+ 143              	 .thumb
+ 144              	 .thumb_func
+ 145              	 .fpu softvfp
+ 147              	ISPTarget_ReceiveByte:
+ 148              	.LFB182:
+  86:ISPTarget.h   **** 
+  87:ISPTarget.h   **** 		/** DO NOT USE DIRECTLY - USE ISPTarget_TransferByte() INSTEAD. This will return
+  88:ISPTarget.h   **** 		 *  the last read byte, which is probably not what you intended.
+  89:ISPTarget.h   **** 		 *
+  90:ISPTarget.h   **** 		 *  \return Received byte of data from the attached target
+  91:ISPTarget.h   **** 		 */
+  92:ISPTarget.h   **** 		static inline uint8_t ISPTarget_ReceiveByte(void)
+  93:ISPTarget.h   **** 		{			
+ 149              	 .loc 2 93 3
+ 150              	 .cfi_startproc
+ 151              	 
+ 152              	 
+ 153 0000 80B5     	 push {r7,lr}
+ 154              	.LCFI11:
+ 155              	 .cfi_def_cfa_offset 8
+ 156              	 .cfi_offset 7,-8
+ 157              	 .cfi_offset 14,-4
+ 158 0002 82B0     	 sub sp,sp,#8
+ 159              	.LCFI12:
+ 160              	 .cfi_def_cfa_offset 16
+ 161 0004 00AF     	 add r7,sp,#0
+ 162              	.LCFI13:
+ 163              	 .cfi_def_cfa_register 7
+  94:ISPTarget.h   **** #if AVRISP_USEUART
+  95:ISPTarget.h   **** 			uint32_t ReceivedByte;
+  96:ISPTarget.h   **** 			usart_getchar(AVRISP_USART, &ReceivedByte);
+  97:ISPTarget.h   **** #else
+  98:ISPTarget.h   **** 			uint16_t ReceivedByte;
+  99:ISPTarget.h   **** 			uint8_t _;
+ 100:ISPTarget.h   **** 			spi_read(SPI, &ReceivedByte, &_);
+ 164              	 .loc 2 100 4
+ 165 0006 7A1D     	 adds r2,r7,#5
+ 166 0008 BB1D     	 adds r3,r7,#6
+ 167 000a 1946     	 mov r1,r3
+ 168 000c 0448     	 ldr r0,.L9
+ 169 000e 054B     	 ldr r3,.L9+4
+ 170 0010 9847     	 blx r3
+ 171              	.LVL1:
+ 101:ISPTarget.h   **** #endif		
+ 102:ISPTarget.h   **** 			#if defined(INVERTED_ISP_MISO)
+ 103:ISPTarget.h   **** 			return ~ReceivedByte;
+ 104:ISPTarget.h   **** 			#else
+ 105:ISPTarget.h   **** 			return  ReceivedByte;
+ 172              	 .loc 2 105 12
+ 173 0012 FB88     	 ldrh r3,[r7,#6]
+ 174 0014 DBB2     	 uxtb r3,r3
+ 106:ISPTarget.h   **** 			#endif
+ 107:ISPTarget.h   **** 		}
+ 175              	 .loc 2 107 3
+ 176 0016 1846     	 mov r0,r3
+ 177 0018 0837     	 adds r7,r7,#8
+ 178              	.LCFI14:
+ 179              	 .cfi_def_cfa_offset 8
+ 180 001a BD46     	 mov sp,r7
+ 181              	.LCFI15:
+ 182              	 .cfi_def_cfa_register 13
+ 183              	 
+ 184 001c 80BD     	 pop {r7,pc}
+ 185              	.L10:
+ 186 001e 00BF     	 .align 2
+ 187              	.L9:
+ 188 0020 00800040 	 .word 1073774592
+ 189 0024 00000000 	 .word spi_read
+ 190              	 .cfi_endproc
+ 191              	.LFE182:
+ 193              	 .section .text.ISPTarget_TransferByte,"ax",%progbits
+ 194              	 .align 1
+ 195              	 .syntax unified
+ 196              	 .thumb
+ 197              	 .thumb_func
+ 198              	 .fpu softvfp
+ 200              	ISPTarget_TransferByte:
+ 201              	.LFB183:
+ 108:ISPTarget.h   **** 
+ 109:ISPTarget.h   **** 		/** Sends and receives a byte of ISP data to and from the attached target, using the
+ 110:ISPTarget.h   **** 		 *  appropriate SPI hardware or software routines depending on the selected ISP speed.
+ 111:ISPTarget.h   **** 		 *
+ 112:ISPTarget.h   **** 		 *  \param[in] Byte  Byte of data to send to the attached target
+ 113:ISPTarget.h   **** 		 *
+ 114:ISPTarget.h   **** 		 *  \return Received byte of data from the attached target
+ 115:ISPTarget.h   **** 		 */
+ 116:ISPTarget.h   **** 		static inline uint8_t ISPTarget_TransferByte(const uint8_t data)
+ 117:ISPTarget.h   **** 		{
+ 202              	 .loc 2 117 3
+ 203              	 .cfi_startproc
+ 204              	 
+ 205              	 
+ 206 0000 80B5     	 push {r7,lr}
+ 207              	.LCFI16:
+ 208              	 .cfi_def_cfa_offset 8
+ 209              	 .cfi_offset 7,-8
+ 210              	 .cfi_offset 14,-4
+ 211 0002 82B0     	 sub sp,sp,#8
+ 212              	.LCFI17:
+ 213              	 .cfi_def_cfa_offset 16
+ 214 0004 00AF     	 add r7,sp,#0
+ 215              	.LCFI18:
+ 216              	 .cfi_def_cfa_register 7
+ 217 0006 0346     	 mov r3,r0
+ 218 0008 FB71     	 strb r3,[r7,#7]
+ 118:ISPTarget.h   **** 			ISPTarget_SendByte(data);
+ 219              	 .loc 2 118 4
+ 220 000a FB79     	 ldrb r3,[r7,#7]
+ 221 000c 1846     	 mov r0,r3
+ 222 000e 084B     	 ldr r3,.L14
+ 223 0010 9847     	 blx r3
+ 224              	.LVL2:
+ 119:ISPTarget.h   **** #if AVRISP_USEUART
+ 120:ISPTarget.h   **** 			while(usart_is_tx_empty(AVRISP_USART) == 0);
+ 121:ISPTarget.h   **** #else
+ 122:ISPTarget.h   **** 			while(spi_is_tx_empty(SPI) == 0);
+ 225              	 .loc 2 122 9
+ 226 0012 00BF     	 nop
+ 227              	.L12:
+ 228              	 .loc 2 122 10 discriminator 1
+ 229 0014 0748     	 ldr r0,.L14+4
+ 230 0016 084B     	 ldr r3,.L14+8
+ 231 0018 9847     	 blx r3
+ 232              	.LVL3:
+ 233 001a 0346     	 mov r3,r0
+ 234              	 .loc 2 122 9 discriminator 1
+ 235 001c 002B     	 cmp r3,#0
+ 236 001e F9D0     	 beq .L12
+ 123:ISPTarget.h   **** #endif
+ 124:ISPTarget.h   **** 			return ISPTarget_ReceiveByte();			
+ 237              	 .loc 2 124 11
+ 238 0020 064B     	 ldr r3,.L14+12
+ 239 0022 9847     	 blx r3
+ 240              	.LVL4:
+ 241 0024 0346     	 mov r3,r0
+ 125:ISPTarget.h   **** 		}
+ 242              	 .loc 2 125 3
+ 243 0026 1846     	 mov r0,r3
+ 244 0028 0837     	 adds r7,r7,#8
+ 245              	.LCFI19:
+ 246              	 .cfi_def_cfa_offset 8
+ 247 002a BD46     	 mov sp,r7
+ 248              	.LCFI20:
+ 249              	 .cfi_def_cfa_register 13
+ 250              	 
+ 251 002c 80BD     	 pop {r7,pc}
+ 252              	.L15:
+ 253 002e 00BF     	 .align 2
+ 254              	.L14:
+ 255 0030 00000000 	 .word ISPTarget_SendByte
+ 256 0034 00800040 	 .word 1073774592
+ 257 0038 00000000 	 .word spi_is_tx_empty
+ 258 003c 00000000 	 .word ISPTarget_ReceiveByte
+ 259              	 .cfi_endproc
+ 260              	.LFE183:
+ 262              	 .section .rodata
+ 263              	 .align 2
+ 264              	.LC0:
+ 265 0000 5061796C 	 .ascii "Payload size = %d, error!?\012\000"
+ 265      6F616420 
+ 265      73697A65 
+ 265      203D2025 
+ 265      642C2065 
+ 266              	 .align 2
+ 267              	.LC1:
+ 268 001c 41565250 	 .ascii "AVRPROG: Enter ISP Mode: %x\012\000"
+ 268      524F473A 
+ 268      20456E74 
+ 268      65722049 
+ 268      5350204D 
+ 269              	 .section .text.ISPProtocol_EnterISPMode,"ax",%progbits
+ 270              	 .align 1
+ 271              	 .global ISPProtocol_EnterISPMode
+ 272              	 .syntax unified
+ 273              	 .thumb
+ 274              	 .thumb_func
+ 275              	 .fpu softvfp
+ 277              	ISPProtocol_EnterISPMode:
+ 278              	.LFB184:
+ 279              	 .file 3 "ISPProtocol.c"
+   1:ISPProtocol.c **** /* This file is based on the excellent LUFA Library, which is:
+   2:ISPProtocol.c ****   Copyright (C) Dean Camera, 2013. See www.lufa-lib.org
+   3:ISPProtocol.c ****   
+   4:ISPProtocol.c ****   Note it has been modified for the SAM3U by NewAE Technology Inc.,
+   5:ISPProtocol.c ****   changes Copyright (C) NewAE Technology Inc, 2015. Changes have
+   6:ISPProtocol.c ****   generally basterdized and reduced the functionality of the original
+   7:ISPProtocol.c ****   code, so please see original code if using this to port. 
+   8:ISPProtocol.c **** */
+   9:ISPProtocol.c **** 
+  10:ISPProtocol.c **** /*
+  11:ISPProtocol.c ****   Copyright 2013  Dean Camera (dean [at] fourwalledcubicle [dot] com)
+  12:ISPProtocol.c **** 
+  13:ISPProtocol.c ****   Permission to use, copy, modify, distribute, and sell this
+  14:ISPProtocol.c ****   software and its documentation for any purpose is hereby granted
+  15:ISPProtocol.c ****   without fee, provided that the above copyright notice appear in
+  16:ISPProtocol.c ****   all copies and that both that the copyright notice and this
+  17:ISPProtocol.c ****   permission notice and warranty disclaimer appear in supporting
+  18:ISPProtocol.c ****   documentation, and that the name of the author not be used in
+  19:ISPProtocol.c ****   advertising or publicity pertaining to distribution of the
+  20:ISPProtocol.c ****   software without specific, written prior permission.
+  21:ISPProtocol.c **** 
+  22:ISPProtocol.c ****   The author disclaims all warranties with regard to this
+  23:ISPProtocol.c ****   software, including all implied warranties of merchantability
+  24:ISPProtocol.c ****   and fitness.  In no event shall the author be liable for any
+  25:ISPProtocol.c ****   special, indirect or consequential damages or any damages
+  26:ISPProtocol.c ****   whatsoever resulting from loss of use, data or profits, whether
+  27:ISPProtocol.c ****   in an action of contract, negligence or other tortious action,
+  28:ISPProtocol.c ****   arising out of or in connection with the use or performance of
+  29:ISPProtocol.c ****   this software.
+  30:ISPProtocol.c **** */
+  31:ISPProtocol.c **** 
+  32:ISPProtocol.c **** /** \file
+  33:ISPProtocol.c ****  *
+  34:ISPProtocol.c ****  *  ISP Protocol handler, to process V2 Protocol wrapped ISP commands used in Atmel programmer devi
+  35:ISPProtocol.c ****  */
+  36:ISPProtocol.c **** 
+  37:ISPProtocol.c **** #include "ISPProtocol.h"
+  38:ISPProtocol.c **** #include "delay.h"
+  39:ISPProtocol.c **** #include <string.h>
+  40:ISPProtocol.c **** 
+  41:ISPProtocol.c **** #include "cw521.h"
+  42:ISPProtocol.c **** //static uint8_t status_payload[32];
+  43:ISPProtocol.c **** 
+  44:ISPProtocol.c **** 
+  45:ISPProtocol.c **** /** Handler for the CMD_ENTER_PROGMODE_ISP command, which attempts to enter programming mode on
+  46:ISPProtocol.c ****  *  the attached device, returning success or failure back to the host.
+  47:ISPProtocol.c ****  */
+  48:ISPProtocol.c **** void ISPProtocol_EnterISPMode(void)
+  49:ISPProtocol.c **** {
+ 280              	 .loc 3 49 1
+ 281              	 .cfi_startproc
+ 282              	 
+ 283              	 
+ 284 0000 90B5     	 push {r4,r7,lr}
+ 285              	.LCFI21:
+ 286              	 .cfi_def_cfa_offset 12
+ 287              	 .cfi_offset 4,-12
+ 288              	 .cfi_offset 7,-8
+ 289              	 .cfi_offset 14,-4
+ 290 0002 87B0     	 sub sp,sp,#28
+ 291              	.LCFI22:
+ 292              	 .cfi_def_cfa_offset 40
+ 293 0004 00AF     	 add r7,sp,#0
+ 294              	.LCFI23:
+ 295              	 .cfi_def_cfa_register 7
+  50:ISPProtocol.c **** 	struct
+  51:ISPProtocol.c **** 	{
+  52:ISPProtocol.c **** 		uint8_t TimeoutMS;
+  53:ISPProtocol.c **** 		uint8_t PinStabDelayMS;
+  54:ISPProtocol.c **** 		uint8_t ExecutionDelayMS;
+  55:ISPProtocol.c **** 		uint8_t SynchLoops;
+  56:ISPProtocol.c **** 		uint8_t ByteDelay;
+  57:ISPProtocol.c **** 		uint8_t PollValue;
+  58:ISPProtocol.c **** 		uint8_t PollIndex;
+  59:ISPProtocol.c **** 		uint8_t EnterProgBytes[4];
+  60:ISPProtocol.c **** 	} Enter_ISP_Params;
+  61:ISPProtocol.c **** 
+  62:ISPProtocol.c **** 	if (udd_g_ctrlreq.payload_size != 11){
+ 296              	 .loc 3 62 19
+ 297 0006 404B     	 ldr r3,.L26
+ 298 0008 9B89     	 ldrh r3,[r3,#12]
+ 299              	 .loc 3 62 5
+ 300 000a 0B2B     	 cmp r3,#11
+ 301 000c 06D0     	 beq .L17
+  63:ISPProtocol.c **** 		printf("Payload size = %d, error!?\n", udd_g_ctrlreq.payload_size);
+ 302              	 .loc 3 63 55
+ 303 000e 3E4B     	 ldr r3,.L26
+ 304 0010 9B89     	 ldrh r3,[r3,#12]
+ 305              	 .loc 3 63 3
+ 306 0012 1946     	 mov r1,r3
+ 307 0014 3D48     	 ldr r0,.L26+4
+ 308 0016 3E4B     	 ldr r3,.L26+8
+ 309 0018 9847     	 blx r3
+ 310              	.LVL5:
+ 311 001a 71E0     	 b .L16
+ 312              	.L17:
+  64:ISPProtocol.c **** 		return;
+  65:ISPProtocol.c **** 	}
+  66:ISPProtocol.c **** 
+  67:ISPProtocol.c **** 	memcpy(&Enter_ISP_Params, udd_g_ctrlreq.payload, sizeof(Enter_ISP_Params));
+ 313              	 .loc 3 67 41
+ 314 001c 3A4B     	 ldr r3,.L26
+ 315 001e 9A68     	 ldr r2,[r3,#8]
+ 316              	 .loc 3 67 2
+ 317 0020 07F10803 	 add r3,r7,#8
+ 318 0024 1068     	 ldr r0,[r2]
+ 319 0026 5168     	 ldr r1,[r2,#4]
+ 320 0028 03C3     	 stmia r3!,{r0,r1}
+ 321 002a 1189     	 ldrh r1,[r2,#8]
+ 322 002c 927A     	 ldrb r2,[r2,#10]
+ 323 002e 1980     	 strh r1,[r3]
+ 324 0030 9A70     	 strb r2,[r3,#2]
+  68:ISPProtocol.c **** 
+  69:ISPProtocol.c **** 	uint8_t ResponseStatus = STATUS_CMD_FAILED;
+ 325              	 .loc 3 69 10
+ 326 0032 C023     	 movs r3,#192
+ 327 0034 FB75     	 strb r3,[r7,#23]
+  70:ISPProtocol.c **** 
+  71:ISPProtocol.c **** 	CurrentAddress = 0;
+ 328              	 .loc 3 71 17
+ 329 0036 374B     	 ldr r3,.L26+12
+ 330 0038 0022     	 movs r2,#0
+ 331 003a 1A60     	 str r2,[r3]
+  72:ISPProtocol.c **** 
+  73:ISPProtocol.c **** 	/* Perform execution delay, initialize SPI bus */
+  74:ISPProtocol.c **** 	ISPProtocol_DelayMS(Enter_ISP_Params.ExecutionDelayMS);
+ 332              	 .loc 3 74 2
+ 333 003c BB7A     	 ldrb r3,[r7,#10]
+ 334 003e 1846     	 mov r0,r3
+ 335 0040 354B     	 ldr r3,.L26+16
+ 336 0042 9847     	 blx r3
+ 337              	.LVL6:
+  75:ISPProtocol.c **** 	ISPTarget_EnableTargetISP();
+ 338              	 .loc 3 75 2
+ 339 0044 354B     	 ldr r3,.L26+20
+ 340 0046 9847     	 blx r3
+ 341              	.LVL7:
+  76:ISPProtocol.c **** 
+  77:ISPProtocol.c **** 	ISPTarget_ChangeTargetResetLine(true);
+ 342              	 .loc 3 77 2
+ 343 0048 0120     	 movs r0,#1
+ 344 004a 354B     	 ldr r3,.L26+24
+ 345 004c 9847     	 blx r3
+ 346              	.LVL8:
+  78:ISPProtocol.c **** 	ISPProtocol_DelayMS(Enter_ISP_Params.PinStabDelayMS);
+ 347              	 .loc 3 78 2
+ 348 004e 7B7A     	 ldrb r3,[r7,#9]
+ 349 0050 1846     	 mov r0,r3
+ 350 0052 314B     	 ldr r3,.L26+16
+ 351 0054 9847     	 blx r3
+ 352              	.LVL9:
+  79:ISPProtocol.c **** 	
+  80:ISPProtocol.c **** 	/* Continuously attempt to synchronize with the target until either the number of attempts specifi
+  81:ISPProtocol.c **** 	 * by the host has exceeded, or the the device sends back the expected response values */
+  82:ISPProtocol.c **** 	while (Enter_ISP_Params.SynchLoops-- && TimeoutTicksRemaining)
+ 353              	 .loc 3 82 8
+ 354 0056 3BE0     	 b .L19
+ 355              	.L25:
+ 356              	.LBB2:
+ 357              	.LBB3:
+  83:ISPProtocol.c **** 	{
+  84:ISPProtocol.c **** 		uint8_t ResponseBytes[4];		
+  85:ISPProtocol.c **** 
+  86:ISPProtocol.c **** 		for (uint8_t RByte = 0; RByte < sizeof(ResponseBytes); RByte++)
+ 358              	 .loc 3 86 16
+ 359 0058 0023     	 movs r3,#0
+ 360 005a BB75     	 strb r3,[r7,#22]
+ 361              	 .loc 3 86 3
+ 362 005c 17E0     	 b .L20
+ 363              	.L21:
+  87:ISPProtocol.c **** 		{
+  88:ISPProtocol.c **** 			ISPProtocol_DelayMS(Enter_ISP_Params.ByteDelay);
+ 364              	 .loc 3 88 4 discriminator 3
+ 365 005e 3B7B     	 ldrb r3,[r7,#12]
+ 366 0060 1846     	 mov r0,r3
+ 367 0062 2D4B     	 ldr r3,.L26+16
+ 368 0064 9847     	 blx r3
+ 369              	.LVL10:
+  89:ISPProtocol.c **** 			ResponseBytes[RByte] = ISPTarget_TransferByte(Enter_ISP_Params.EnterProgBytes[RByte]);
+ 370              	 .loc 3 89 27 discriminator 3
+ 371 0066 BB7D     	 ldrb r3,[r7,#22]
+ 372 0068 07F11802 	 add r2,r7,#24
+ 373 006c 1344     	 add r3,r3,r2
+ 374 006e 13F8093C 	 ldrb r3,[r3,#-9]
+ 375              	 .loc 3 89 17 discriminator 3
+ 376 0072 BC7D     	 ldrb r4,[r7,#22]
+ 377              	 .loc 3 89 27 discriminator 3
+ 378 0074 1846     	 mov r0,r3
+ 379 0076 2B4B     	 ldr r3,.L26+28
+ 380 0078 9847     	 blx r3
+ 381              	.LVL11:
+ 382 007a 0346     	 mov r3,r0
+ 383 007c 1A46     	 mov r2,r3
+ 384              	 .loc 3 89 25 discriminator 3
+ 385 007e 07F11803 	 add r3,r7,#24
+ 386 0082 2344     	 add r3,r3,r4
+ 387 0084 03F8142C 	 strb r2,[r3,#-20]
+  86:ISPProtocol.c **** 		{
+ 388              	 .loc 3 86 63 discriminator 3
+ 389 0088 BB7D     	 ldrb r3,[r7,#22]
+ 390 008a 0133     	 adds r3,r3,#1
+ 391 008c BB75     	 strb r3,[r7,#22]
+ 392              	.L20:
+  86:ISPProtocol.c **** 		{
+ 393              	 .loc 3 86 3 discriminator 1
+ 394 008e BB7D     	 ldrb r3,[r7,#22]
+ 395 0090 032B     	 cmp r3,#3
+ 396 0092 E4D9     	 bls .L21
+ 397              	.LBE3:
+  90:ISPProtocol.c **** 		}
+  91:ISPProtocol.c **** 
+  92:ISPProtocol.c **** 		/* Check if polling disabled, or if the polled value matches the expected value */
+  93:ISPProtocol.c **** 		if (!(Enter_ISP_Params.PollIndex) || (ResponseBytes[Enter_ISP_Params.PollIndex - 1] == Enter_ISP_
+ 398              	 .loc 3 93 25
+ 399 0094 BB7B     	 ldrb r3,[r7,#14]
+ 400              	 .loc 3 93 6
+ 401 0096 002B     	 cmp r3,#0
+ 402 0098 09D0     	 beq .L22
+ 403              	 .loc 3 93 71 discriminator 1
+ 404 009a BB7B     	 ldrb r3,[r7,#14]
+ 405              	 .loc 3 93 82 discriminator 1
+ 406 009c 013B     	 subs r3,r3,#1
+ 407              	 .loc 3 93 54 discriminator 1
+ 408 009e 07F11802 	 add r2,r7,#24
+ 409 00a2 1344     	 add r3,r3,r2
+ 410 00a4 13F8142C 	 ldrb r2,[r3,#-20]
+ 411              	 .loc 3 93 106 discriminator 1
+ 412 00a8 7B7B     	 ldrb r3,[r7,#13]
+ 413              	 .loc 3 93 37 discriminator 1
+ 414 00aa 9A42     	 cmp r2,r3
+ 415 00ac 02D1     	 bne .L23
+ 416              	.L22:
+  94:ISPProtocol.c **** 		{
+  95:ISPProtocol.c **** 			ResponseStatus = STATUS_CMD_OK;
+ 417              	 .loc 3 95 19
+ 418 00ae 0023     	 movs r3,#0
+ 419 00b0 FB75     	 strb r3,[r7,#23]
+ 420 00b2 17E0     	 b .L24
+ 421              	.L23:
+  96:ISPProtocol.c **** 			break;
+  97:ISPProtocol.c **** 		}
+  98:ISPProtocol.c **** 		else
+  99:ISPProtocol.c **** 		{
+ 100:ISPProtocol.c **** 			ISPTarget_ChangeTargetResetLine(false);
+ 422              	 .loc 3 100 4
+ 423 00b4 0020     	 movs r0,#0
+ 424 00b6 1A4B     	 ldr r3,.L26+24
+ 425 00b8 9847     	 blx r3
+ 426              	.LVL12:
+ 101:ISPProtocol.c **** 			ISPProtocol_DelayMS(Enter_ISP_Params.PinStabDelayMS);
+ 427              	 .loc 3 101 4
+ 428 00ba 7B7A     	 ldrb r3,[r7,#9]
+ 429 00bc 1846     	 mov r0,r3
+ 430 00be 164B     	 ldr r3,.L26+16
+ 431 00c0 9847     	 blx r3
+ 432              	.LVL13:
+ 102:ISPProtocol.c **** 			ISPTarget_ChangeTargetResetLine(true);
+ 433              	 .loc 3 102 4
+ 434 00c2 0120     	 movs r0,#1
+ 435 00c4 164B     	 ldr r3,.L26+24
+ 436 00c6 9847     	 blx r3
+ 437              	.LVL14:
+ 103:ISPProtocol.c **** 			ISPProtocol_DelayMS(Enter_ISP_Params.PinStabDelayMS);
+ 438              	 .loc 3 103 4
+ 439 00c8 7B7A     	 ldrb r3,[r7,#9]
+ 440 00ca 1846     	 mov r0,r3
+ 441 00cc 124B     	 ldr r3,.L26+16
+ 442 00ce 9847     	 blx r3
+ 443              	.LVL15:
+ 444              	.L19:
+ 445              	.LBE2:
+  82:ISPProtocol.c **** 	{
+ 446              	 .loc 3 82 25
+ 447 00d0 FB7A     	 ldrb r3,[r7,#11]
+  82:ISPProtocol.c **** 	{
+ 448              	 .loc 3 82 36
+ 449 00d2 5A1E     	 subs r2,r3,#1
+ 450 00d4 D2B2     	 uxtb r2,r2
+ 451 00d6 FA72     	 strb r2,[r7,#11]
+  82:ISPProtocol.c **** 	{
+ 452              	 .loc 3 82 8
+ 453 00d8 002B     	 cmp r3,#0
+ 454 00da 03D0     	 beq .L24
+  82:ISPProtocol.c **** 	{
+ 455              	 .loc 3 82 39 discriminator 1
+ 456 00dc 124B     	 ldr r3,.L26+32
+ 457 00de 1B68     	 ldr r3,[r3]
+ 458 00e0 002B     	 cmp r3,#0
+ 459 00e2 B9D1     	 bne .L25
+ 460              	.L24:
+ 104:ISPProtocol.c **** 		}
+ 105:ISPProtocol.c **** 	}
+ 106:ISPProtocol.c **** 
+ 107:ISPProtocol.c **** 	printf("AVRPROG: Enter ISP Mode: %x\n", ResponseStatus);
+ 461              	 .loc 3 107 2
+ 462 00e4 FB7D     	 ldrb r3,[r7,#23]
+ 463 00e6 1946     	 mov r1,r3
+ 464 00e8 1048     	 ldr r0,.L26+36
+ 465 00ea 094B     	 ldr r3,.L26+8
+ 466 00ec 9847     	 blx r3
+ 467              	.LVL16:
+ 108:ISPProtocol.c **** 	avrisp_status_payload[0] = CMD_ENTER_PROGMODE_ISP;
+ 468              	 .loc 3 108 27
+ 469 00ee 104B     	 ldr r3,.L26+40
+ 470 00f0 1022     	 movs r2,#16
+ 471 00f2 1A70     	 strb r2,[r3]
+ 109:ISPProtocol.c **** 	avrisp_status_payload[1] = ResponseStatus;
+ 472              	 .loc 3 109 27
+ 473 00f4 0E4A     	 ldr r2,.L26+40
+ 474 00f6 FB7D     	 ldrb r3,[r7,#23]
+ 475 00f8 5370     	 strb r3,[r2,#1]
+ 110:ISPProtocol.c **** 	avrisp_status_payload_size = 2;
+ 476              	 .loc 3 110 29
+ 477 00fa 0E4B     	 ldr r3,.L26+44
+ 478 00fc 0222     	 movs r2,#2
+ 479 00fe 1A80     	 strh r2,[r3]
+ 480              	.L16:
+ 111:ISPProtocol.c **** }
+ 481              	 .loc 3 111 1
+ 482 0100 1C37     	 adds r7,r7,#28
+ 483              	.LCFI24:
+ 484              	 .cfi_def_cfa_offset 12
+ 485 0102 BD46     	 mov sp,r7
+ 486              	.LCFI25:
+ 487              	 .cfi_def_cfa_register 13
+ 488              	 
+ 489 0104 90BD     	 pop {r4,r7,pc}
+ 490              	.L27:
+ 491 0106 00BF     	 .align 2
+ 492              	.L26:
+ 493 0108 00000000 	 .word udd_g_ctrlreq
+ 494 010c 00000000 	 .word .LC0
+ 495 0110 00000000 	 .word iprintf
+ 496 0114 00000000 	 .word CurrentAddress
+ 497 0118 00000000 	 .word ISPProtocol_DelayMS
+ 498 011c 00000000 	 .word ISPTarget_EnableTargetISP
+ 499 0120 00000000 	 .word ISPTarget_ChangeTargetResetLine
+ 500 0124 00000000 	 .word ISPTarget_TransferByte
+ 501 0128 00000000 	 .word TimeoutTicksRemaining
+ 502 012c 1C000000 	 .word .LC1
+ 503 0130 00000000 	 .word avrisp_status_payload
+ 504 0134 00000000 	 .word avrisp_status_payload_size
+ 505              	 .cfi_endproc
+ 506              	.LFE184:
+ 508              	 .section .text.ISPProtocol_LeaveISPMode,"ax",%progbits
+ 509              	 .align 1
+ 510              	 .global ISPProtocol_LeaveISPMode
+ 511              	 .syntax unified
+ 512              	 .thumb
+ 513              	 .thumb_func
+ 514              	 .fpu softvfp
+ 516              	ISPProtocol_LeaveISPMode:
+ 517              	.LFB185:
+ 112:ISPProtocol.c **** 
+ 113:ISPProtocol.c **** /** Handler for the CMD_LEAVE_ISP command, which releases the target from programming mode. */
+ 114:ISPProtocol.c **** void ISPProtocol_LeaveISPMode(void)
+ 115:ISPProtocol.c **** {
+ 518              	 .loc 3 115 1
+ 519              	 .cfi_startproc
+ 520              	 
+ 521              	 
+ 522 0000 80B5     	 push {r7,lr}
+ 523              	.LCFI26:
+ 524              	 .cfi_def_cfa_offset 8
+ 525              	 .cfi_offset 7,-8
+ 526              	 .cfi_offset 14,-4
+ 527 0002 82B0     	 sub sp,sp,#8
+ 528              	.LCFI27:
+ 529              	 .cfi_def_cfa_offset 16
+ 530 0004 00AF     	 add r7,sp,#0
+ 531              	.LCFI28:
+ 532              	 .cfi_def_cfa_register 7
+ 116:ISPProtocol.c **** 	struct
+ 117:ISPProtocol.c **** 	{
+ 118:ISPProtocol.c **** 		uint8_t PreDelayMS;
+ 119:ISPProtocol.c **** 		uint8_t PostDelayMS;
+ 120:ISPProtocol.c **** 	} Leave_ISP_Params;
+ 121:ISPProtocol.c **** 
+ 122:ISPProtocol.c **** 	if (udd_g_ctrlreq.payload_size != 2){
+ 533              	 .loc 3 122 19
+ 534 0006 144B     	 ldr r3,.L31
+ 535 0008 9B89     	 ldrh r3,[r3,#12]
+ 536              	 .loc 3 122 5
+ 537 000a 022B     	 cmp r3,#2
+ 538 000c 06D0     	 beq .L29
+ 123:ISPProtocol.c **** 		printf("Payload size = %d, error!?\n", udd_g_ctrlreq.payload_size);
+ 539              	 .loc 3 123 55
+ 540 000e 124B     	 ldr r3,.L31
+ 541 0010 9B89     	 ldrh r3,[r3,#12]
+ 542              	 .loc 3 123 3
+ 543 0012 1946     	 mov r1,r3
+ 544 0014 1148     	 ldr r0,.L31+4
+ 545 0016 124B     	 ldr r3,.L31+8
+ 546 0018 9847     	 blx r3
+ 547              	.LVL17:
+ 548 001a 1AE0     	 b .L28
+ 549              	.L29:
+ 124:ISPProtocol.c **** 		return;
+ 125:ISPProtocol.c **** 	}
+ 126:ISPProtocol.c **** 
+ 127:ISPProtocol.c **** 	memcpy(&Leave_ISP_Params, udd_g_ctrlreq.payload, sizeof(Leave_ISP_Params));
+ 550              	 .loc 3 127 41
+ 551 001c 0E4B     	 ldr r3,.L31
+ 552 001e 9B68     	 ldr r3,[r3,#8]
+ 553 0020 1B88     	 ldrh r3,[r3]
+ 554 0022 9BB2     	 uxth r3,r3
+ 555              	 .loc 3 127 2
+ 556 0024 BB80     	 strh r3,[r7,#4]
+ 128:ISPProtocol.c **** 
+ 129:ISPProtocol.c **** 	/* Perform pre-exit delay, release the target /RESET, disable the SPI bus and perform the post-exi
+ 130:ISPProtocol.c **** 	ISPProtocol_DelayMS(Leave_ISP_Params.PreDelayMS);
+ 557              	 .loc 3 130 2
+ 558 0026 3B79     	 ldrb r3,[r7,#4]
+ 559 0028 1846     	 mov r0,r3
+ 560 002a 0E4B     	 ldr r3,.L31+12
+ 561 002c 9847     	 blx r3
+ 562              	.LVL18:
+ 131:ISPProtocol.c **** 	ISPTarget_ChangeTargetResetLine(false);
+ 563              	 .loc 3 131 2
+ 564 002e 0020     	 movs r0,#0
+ 565 0030 0D4B     	 ldr r3,.L31+16
+ 566 0032 9847     	 blx r3
+ 567              	.LVL19:
+ 132:ISPProtocol.c **** 	ISPTarget_DisableTargetISP();
+ 568              	 .loc 3 132 2
+ 569 0034 0D4B     	 ldr r3,.L31+20
+ 570 0036 9847     	 blx r3
+ 571              	.LVL20:
+ 133:ISPProtocol.c **** 	ISPProtocol_DelayMS(Leave_ISP_Params.PostDelayMS);
+ 572              	 .loc 3 133 2
+ 573 0038 7B79     	 ldrb r3,[r7,#5]
+ 574 003a 1846     	 mov r0,r3
+ 575 003c 094B     	 ldr r3,.L31+12
+ 576 003e 9847     	 blx r3
+ 577              	.LVL21:
+ 134:ISPProtocol.c **** 
+ 135:ISPProtocol.c **** 	avrisp_status_payload[0] = CMD_LEAVE_PROGMODE_ISP;
+ 578              	 .loc 3 135 27
+ 579 0040 0B4B     	 ldr r3,.L31+24
+ 580 0042 1122     	 movs r2,#17
+ 581 0044 1A70     	 strb r2,[r3]
+ 136:ISPProtocol.c **** 	avrisp_status_payload[1] = STATUS_CMD_OK;
+ 582              	 .loc 3 136 27
+ 583 0046 0A4B     	 ldr r3,.L31+24
+ 584 0048 0022     	 movs r2,#0
+ 585 004a 5A70     	 strb r2,[r3,#1]
+ 137:ISPProtocol.c **** 	avrisp_status_payload_size = 2;
+ 586              	 .loc 3 137 29
+ 587 004c 094B     	 ldr r3,.L31+28
+ 588 004e 0222     	 movs r2,#2
+ 589 0050 1A80     	 strh r2,[r3]
+ 590              	.L28:
+ 138:ISPProtocol.c **** }
+ 591              	 .loc 3 138 1
+ 592 0052 0837     	 adds r7,r7,#8
+ 593              	.LCFI29:
+ 594              	 .cfi_def_cfa_offset 8
+ 595 0054 BD46     	 mov sp,r7
+ 596              	.LCFI30:
+ 597              	 .cfi_def_cfa_register 13
+ 598              	 
+ 599 0056 80BD     	 pop {r7,pc}
+ 600              	.L32:
+ 601              	 .align 2
+ 602              	.L31:
+ 603 0058 00000000 	 .word udd_g_ctrlreq
+ 604 005c 00000000 	 .word .LC0
+ 605 0060 00000000 	 .word iprintf
+ 606 0064 00000000 	 .word ISPProtocol_DelayMS
+ 607 0068 00000000 	 .word ISPTarget_ChangeTargetResetLine
+ 608 006c 00000000 	 .word ISPTarget_DisableTargetISP
+ 609 0070 00000000 	 .word avrisp_status_payload
+ 610 0074 00000000 	 .word avrisp_status_payload_size
+ 611              	 .cfi_endproc
+ 612              	.LFE185:
+ 614              	 .section .text.ISPProtocol_ProgramMemory,"ax",%progbits
+ 615              	 .align 1
+ 616              	 .global ISPProtocol_ProgramMemory
+ 617              	 .syntax unified
+ 618              	 .thumb
+ 619              	 .thumb_func
+ 620              	 .fpu softvfp
+ 622              	ISPProtocol_ProgramMemory:
+ 623              	.LFB186:
+ 139:ISPProtocol.c **** 
+ 140:ISPProtocol.c **** /** Handler for the CMD_PROGRAM_FLASH_ISP and CMD_PROGRAM_EEPROM_ISP commands, writing out bytes,
+ 141:ISPProtocol.c ****  *  words or pages of data to the attached device.
+ 142:ISPProtocol.c ****  *
+ 143:ISPProtocol.c ****  *  \param[in] V2Command  Issued V2 Protocol command byte from the host
+ 144:ISPProtocol.c ****  */
+ 145:ISPProtocol.c **** void ISPProtocol_ProgramMemory(uint8_t V2Command, uint8_t * buffer)
+ 146:ISPProtocol.c **** {
+ 624              	 .loc 3 146 1
+ 625              	 .cfi_startproc
+ 626              	 
+ 627              	 
+ 628 0000 90B5     	 push {r4,r7,lr}
+ 629              	.LCFI31:
+ 630              	 .cfi_def_cfa_offset 12
+ 631              	 .cfi_offset 4,-12
+ 632              	 .cfi_offset 7,-8
+ 633              	 .cfi_offset 14,-4
+ 634 0002 8DB0     	 sub sp,sp,#52
+ 635              	.LCFI32:
+ 636              	 .cfi_def_cfa_offset 64
+ 637 0004 02AF     	 add r7,sp,#8
+ 638              	.LCFI33:
+ 639              	 .cfi_def_cfa 7,56
+ 640 0006 0346     	 mov r3,r0
+ 641 0008 3960     	 str r1,[r7]
+ 642 000a FB71     	 strb r3,[r7,#7]
+ 147:ISPProtocol.c **** 	struct
+ 148:ISPProtocol.c **** 	{
+ 149:ISPProtocol.c **** 		uint16_t BytesToWrite;
+ 150:ISPProtocol.c **** 		uint8_t  ProgrammingMode;
+ 151:ISPProtocol.c **** 		uint8_t  DelayMS;
+ 152:ISPProtocol.c **** 		uint8_t  ProgrammingCommands[3];
+ 153:ISPProtocol.c **** 		uint8_t  PollValue1;
+ 154:ISPProtocol.c **** 		uint8_t  PollValue2;
+ 155:ISPProtocol.c **** 	} Write_Memory_Params; 
+ 156:ISPProtocol.c **** 
+ 157:ISPProtocol.c **** 	if (udd_g_ctrlreq.payload_size != 9){
+ 643              	 .loc 3 157 19
+ 644 000c 8A4B     	 ldr r3,.L56
+ 645 000e 9B89     	 ldrh r3,[r3,#12]
+ 646              	 .loc 3 157 5
+ 647 0010 092B     	 cmp r3,#9
+ 648 0012 06D0     	 beq .L34
+ 158:ISPProtocol.c **** 		printf("Payload size = %d, error!?\n", udd_g_ctrlreq.payload_size);
+ 649              	 .loc 3 158 55
+ 650 0014 884B     	 ldr r3,.L56
+ 651 0016 9B89     	 ldrh r3,[r3,#12]
+ 652              	 .loc 3 158 3
+ 653 0018 1946     	 mov r1,r3
+ 654 001a 8848     	 ldr r0,.L56+4
+ 655 001c 884B     	 ldr r3,.L56+8
+ 656 001e 9847     	 blx r3
+ 657              	.LVL22:
+ 159:ISPProtocol.c **** 		return;
+ 658              	 .loc 3 159 3
+ 659 0020 07E1     	 b .L33
+ 660              	.L34:
+ 160:ISPProtocol.c **** 	}
+ 161:ISPProtocol.c **** 
+ 162:ISPProtocol.c **** 	memcpy(&Write_Memory_Params, udd_g_ctrlreq.payload, sizeof(Write_Memory_Params));
+ 661              	 .loc 3 162 44
+ 662 0022 854B     	 ldr r3,.L56
+ 663 0024 9968     	 ldr r1,[r3,#8]
+ 664              	 .loc 3 162 2
+ 665 0026 07F10C03 	 add r3,r7,#12
+ 666 002a 0A22     	 movs r2,#10
+ 667 002c 1846     	 mov r0,r3
+ 668 002e 854B     	 ldr r3,.L56+12
+ 669 0030 9847     	 blx r3
+ 670              	.LVL23:
+ 163:ISPProtocol.c **** 
+ 164:ISPProtocol.c **** 	if (Write_Memory_Params.BytesToWrite > 256)
+ 671              	 .loc 3 164 25
+ 672 0032 BB89     	 ldrh r3,[r7,#12]
+ 673              	 .loc 3 164 5
+ 674 0034 B3F5807F 	 cmp r3,#256
+ 675 0038 09D9     	 bls .L36
+ 165:ISPProtocol.c **** 	{
+ 166:ISPProtocol.c **** 		avrisp_status_payload[0] = V2Command;
+ 676              	 .loc 3 166 28
+ 677 003a 834A     	 ldr r2,.L56+16
+ 678 003c FB79     	 ldrb r3,[r7,#7]
+ 679 003e 1370     	 strb r3,[r2]
+ 167:ISPProtocol.c **** 		avrisp_status_payload[1] = STATUS_CMD_FAILED;
+ 680              	 .loc 3 167 28
+ 681 0040 814B     	 ldr r3,.L56+16
+ 682 0042 C022     	 movs r2,#192
+ 683 0044 5A70     	 strb r2,[r3,#1]
+ 168:ISPProtocol.c **** 		avrisp_status_payload_size = 2;
+ 684              	 .loc 3 168 30
+ 685 0046 814B     	 ldr r3,.L56+20
+ 686 0048 0222     	 movs r2,#2
+ 687 004a 1A80     	 strh r2,[r3]
+ 169:ISPProtocol.c **** 		return;
+ 688              	 .loc 3 169 3
+ 689 004c F1E0     	 b .L33
+ 690              	.L36:
+ 170:ISPProtocol.c **** 	}
+ 171:ISPProtocol.c **** 
+ 172:ISPProtocol.c **** 
+ 173:ISPProtocol.c **** 	uint8_t  ProgrammingStatus = STATUS_CMD_OK;
+ 691              	 .loc 3 173 11
+ 692 004e 0023     	 movs r3,#0
+ 693 0050 87F82730 	 strb r3,[r7,#39]
+ 174:ISPProtocol.c **** 	uint8_t  PollValue         = (V2Command == CMD_PROGRAM_FLASH_ISP) ? Write_Memory_Params.PollValue1
+ 694              	 .loc 3 174 11
+ 695 0054 FB79     	 ldrb r3,[r7,#7]
+ 696 0056 132B     	 cmp r3,#19
+ 697 0058 01D1     	 bne .L37
+ 698              	 .loc 3 174 11 is_stmt 0 discriminator 1
+ 699 005a FB7C     	 ldrb r3,[r7,#19]
+ 700 005c 00E0     	 b .L38
+ 701              	.L37:
+ 702              	 .loc 3 174 11 discriminator 2
+ 703 005e 3B7D     	 ldrb r3,[r7,#20]
+ 704              	.L38:
+ 705              	 .loc 3 174 11 discriminator 4
+ 706 0060 3B77     	 strb r3,[r7,#28]
+ 175:ISPProtocol.c **** 	                                                                    Write_Memory_Params.PollValue2
+ 176:ISPProtocol.c **** 	uint16_t PollAddress       = 0;
+ 707              	 .loc 3 176 11 is_stmt 1 discriminator 4
+ 708 0062 0023     	 movs r3,#0
+ 709 0064 BB84     	 strh r3,[r7,#36]
+ 177:ISPProtocol.c **** 	uint8_t* NextWriteByte     = buffer;
+ 710              	 .loc 3 177 11 discriminator 4
+ 711 0066 3B68     	 ldr r3,[r7]
+ 712 0068 3B62     	 str r3,[r7,#32]
+ 178:ISPProtocol.c **** 	uint16_t PageStartAddress  = (CurrentAddress & 0xFFFF);
+ 713              	 .loc 3 178 11 discriminator 4
+ 714 006a 794B     	 ldr r3,.L56+24
+ 715 006c 1B68     	 ldr r3,[r3]
+ 716 006e 7B83     	 strh r3,[r7,#26]
+ 717              	.LBB4:
+ 179:ISPProtocol.c **** 
+ 180:ISPProtocol.c **** 	for (uint16_t CurrentByte = 0; CurrentByte < Write_Memory_Params.BytesToWrite; CurrentByte++)
+ 718              	 .loc 3 180 16 discriminator 4
+ 719 0070 0023     	 movs r3,#0
+ 720 0072 FB83     	 strh r3,[r7,#30]
+ 721              	 .loc 3 180 2 discriminator 4
+ 722 0074 8CE0     	 b .L39
+ 723              	.L51:
+ 724              	.LBB5:
+ 181:ISPProtocol.c **** 	{
+ 182:ISPProtocol.c **** 		uint8_t ByteToWrite     = *(NextWriteByte++);
+ 725              	 .loc 3 182 44
+ 726 0076 3B6A     	 ldr r3,[r7,#32]
+ 727 0078 5A1C     	 adds r2,r3,#1
+ 728 007a 3A62     	 str r2,[r7,#32]
+ 729              	 .loc 3 182 11
+ 730 007c 1B78     	 ldrb r3,[r3]
+ 731 007e 7B76     	 strb r3,[r7,#25]
+ 183:ISPProtocol.c **** 		uint8_t ProgrammingMode = Write_Memory_Params.ProgrammingMode;
+ 732              	 .loc 3 183 11
+ 733 0080 BB7B     	 ldrb r3,[r7,#14]
+ 734 0082 7B77     	 strb r3,[r7,#29]
+ 184:ISPProtocol.c **** 
+ 185:ISPProtocol.c **** 		/* Check to see if we need to send a LOAD EXTENDED ADDRESS command to the target */
+ 186:ISPProtocol.c **** 		if (MustLoadExtendedAddress)
+ 735              	 .loc 3 186 7
+ 736 0084 734B     	 ldr r3,.L56+28
+ 737 0086 1B78     	 ldrb r3,[r3]
+ 738              	 .loc 3 186 6
+ 739 0088 002B     	 cmp r3,#0
+ 740 008a 04D0     	 beq .L40
+ 187:ISPProtocol.c **** 		{
+ 188:ISPProtocol.c **** 			ISPTarget_LoadExtendedAddress();
+ 741              	 .loc 3 188 4
+ 742 008c 724B     	 ldr r3,.L56+32
+ 743 008e 9847     	 blx r3
+ 744              	.LVL24:
+ 189:ISPProtocol.c **** 			MustLoadExtendedAddress = false;
+ 745              	 .loc 3 189 28
+ 746 0090 704B     	 ldr r3,.L56+28
+ 747 0092 0022     	 movs r2,#0
+ 748 0094 1A70     	 strb r2,[r3]
+ 749              	.L40:
+ 190:ISPProtocol.c **** 		}
+ 191:ISPProtocol.c **** 
+ 192:ISPProtocol.c **** 		ISPTarget_SendByte(Write_Memory_Params.ProgrammingCommands[0]);
+ 750              	 .loc 3 192 3
+ 751 0096 3B7C     	 ldrb r3,[r7,#16]
+ 752 0098 1846     	 mov r0,r3
+ 753 009a 704B     	 ldr r3,.L56+36
+ 754 009c 9847     	 blx r3
+ 755              	.LVL25:
+ 193:ISPProtocol.c **** 		ISPTarget_SendByte(CurrentAddress >> 8);
+ 756              	 .loc 3 193 37
+ 757 009e 6C4B     	 ldr r3,.L56+24
+ 758 00a0 1B68     	 ldr r3,[r3]
+ 759 00a2 1B0A     	 lsrs r3,r3,#8
+ 760              	 .loc 3 193 3
+ 761 00a4 DBB2     	 uxtb r3,r3
+ 762 00a6 1846     	 mov r0,r3
+ 763 00a8 6C4B     	 ldr r3,.L56+36
+ 764 00aa 9847     	 blx r3
+ 765              	.LVL26:
+ 194:ISPProtocol.c **** 		ISPTarget_SendByte(CurrentAddress & 0xFF);
+ 766              	 .loc 3 194 3
+ 767 00ac 684B     	 ldr r3,.L56+24
+ 768 00ae 1B68     	 ldr r3,[r3]
+ 769 00b0 DBB2     	 uxtb r3,r3
+ 770 00b2 1846     	 mov r0,r3
+ 771 00b4 694B     	 ldr r3,.L56+36
+ 772 00b6 9847     	 blx r3
+ 773              	.LVL27:
+ 195:ISPProtocol.c **** 		ISPTarget_SendByte(ByteToWrite);
+ 774              	 .loc 3 195 3
+ 775 00b8 7B7E     	 ldrb r3,[r7,#25]
+ 776 00ba 1846     	 mov r0,r3
+ 777 00bc 674B     	 ldr r3,.L56+36
+ 778 00be 9847     	 blx r3
+ 779              	.LVL28:
+ 196:ISPProtocol.c **** 
+ 197:ISPProtocol.c **** 		/* AVR FLASH addressing requires us to modify the write command based on if we are writing a high
+ 198:ISPProtocol.c **** 		 * or low byte at the current word address */
+ 199:ISPProtocol.c **** 		if (V2Command == CMD_PROGRAM_FLASH_ISP)
+ 780              	 .loc 3 199 6
+ 781 00c0 FB79     	 ldrb r3,[r7,#7]
+ 782 00c2 132B     	 cmp r3,#19
+ 783 00c4 04D1     	 bne .L41
+ 200:ISPProtocol.c **** 		  Write_Memory_Params.ProgrammingCommands[0] ^= READ_WRITE_HIGH_BYTE_MASK;
+ 784              	 .loc 3 200 48
+ 785 00c6 3B7C     	 ldrb r3,[r7,#16]
+ 786 00c8 83F00803 	 eor r3,r3,#8
+ 787 00cc DBB2     	 uxtb r3,r3
+ 788 00ce 3B74     	 strb r3,[r7,#16]
+ 789              	.L41:
+ 201:ISPProtocol.c **** 
+ 202:ISPProtocol.c **** 		/* Check to see if we have a valid polling address */
+ 203:ISPProtocol.c **** 		if (!(PollAddress) && (ByteToWrite != PollValue))
+ 790              	 .loc 3 203 6
+ 791 00d0 BB8C     	 ldrh r3,[r7,#36]
+ 792 00d2 002B     	 cmp r3,#0
+ 793 00d4 19D1     	 bne .L42
+ 794              	 .loc 3 203 22 discriminator 1
+ 795 00d6 7A7E     	 ldrb r2,[r7,#25]
+ 796 00d8 3B7F     	 ldrb r3,[r7,#28]
+ 797 00da 9A42     	 cmp r2,r3
+ 798 00dc 15D0     	 beq .L42
+ 204:ISPProtocol.c **** 		{
+ 205:ISPProtocol.c **** 			if ((CurrentByte & 0x01) && (V2Command == CMD_PROGRAM_FLASH_ISP))
+ 799              	 .loc 3 205 21
+ 800 00de FB8B     	 ldrh r3,[r7,#30]
+ 801 00e0 03F00103 	 and r3,r3,#1
+ 802              	 .loc 3 205 7
+ 803 00e4 002B     	 cmp r3,#0
+ 804 00e6 08D0     	 beq .L43
+ 805              	 .loc 3 205 29 discriminator 1
+ 806 00e8 FB79     	 ldrb r3,[r7,#7]
+ 807 00ea 132B     	 cmp r3,#19
+ 808 00ec 05D1     	 bne .L43
+ 206:ISPProtocol.c **** 			  Write_Memory_Params.ProgrammingCommands[2] |=  READ_WRITE_HIGH_BYTE_MASK;
+ 809              	 .loc 3 206 49
+ 810 00ee BB7C     	 ldrb r3,[r7,#18]
+ 811 00f0 43F00803 	 orr r3,r3,#8
+ 812 00f4 DBB2     	 uxtb r3,r3
+ 813 00f6 BB74     	 strb r3,[r7,#18]
+ 814 00f8 04E0     	 b .L44
+ 815              	.L43:
+ 207:ISPProtocol.c **** 			else
+ 208:ISPProtocol.c **** 			  Write_Memory_Params.ProgrammingCommands[2] &= ~READ_WRITE_HIGH_BYTE_MASK;
+ 816              	 .loc 3 208 49
+ 817 00fa BB7C     	 ldrb r3,[r7,#18]
+ 818 00fc 23F00803 	 bic r3,r3,#8
+ 819 0100 DBB2     	 uxtb r3,r3
+ 820 0102 BB74     	 strb r3,[r7,#18]
+ 821              	.L44:
+ 209:ISPProtocol.c **** 
+ 210:ISPProtocol.c **** 			PollAddress = (CurrentAddress & 0xFFFF);
+ 822              	 .loc 3 210 16
+ 823 0104 524B     	 ldr r3,.L56+24
+ 824 0106 1B68     	 ldr r3,[r3]
+ 825 0108 BB84     	 strh r3,[r7,#36]
+ 826              	.L42:
+ 211:ISPProtocol.c **** 		}
+ 212:ISPProtocol.c **** 
+ 213:ISPProtocol.c **** 		/* If in word programming mode, commit the byte to the target's memory */
+ 214:ISPProtocol.c **** 		if (!(ProgrammingMode & PROG_MODE_PAGED_WRITES_MASK))
+ 827              	 .loc 3 214 25
+ 828 010a 7B7F     	 ldrb r3,[r7,#29]
+ 829 010c 03F00103 	 and r3,r3,#1
+ 830              	 .loc 3 214 6
+ 831 0110 002B     	 cmp r3,#0
+ 832 0112 22D1     	 bne .L45
+ 215:ISPProtocol.c **** 		{
+ 216:ISPProtocol.c **** 			/* If the current polling address is invalid, switch to timed delay write completion mode */
+ 217:ISPProtocol.c **** 			if (!(PollAddress) && !(ProgrammingMode & PROG_MODE_WORD_READYBUSY_MASK))
+ 833              	 .loc 3 217 7
+ 834 0114 BB8C     	 ldrh r3,[r7,#36]
+ 835 0116 002B     	 cmp r3,#0
+ 836 0118 0DD1     	 bne .L46
+ 837              	 .loc 3 217 44 discriminator 1
+ 838 011a 7B7F     	 ldrb r3,[r7,#29]
+ 839 011c 03F00803 	 and r3,r3,#8
+ 840              	 .loc 3 217 23 discriminator 1
+ 841 0120 002B     	 cmp r3,#0
+ 842 0122 08D1     	 bne .L46
+ 218:ISPProtocol.c **** 			  ProgrammingMode = (ProgrammingMode & ~PROG_MODE_WORD_VALUE_MASK) | PROG_MODE_WORD_TIMEDELAY_MA
+ 843              	 .loc 3 218 71
+ 844 0124 97F91D30 	 ldrsb r3,[r7,#29]
+ 845 0128 23F00603 	 bic r3,r3,#6
+ 846 012c 5BB2     	 sxtb r3,r3
+ 847 012e 43F00203 	 orr r3,r3,#2
+ 848 0132 5BB2     	 sxtb r3,r3
+ 849              	 .loc 3 218 22
+ 850 0134 7B77     	 strb r3,[r7,#29]
+ 851              	.L46:
+ 219:ISPProtocol.c **** 
+ 220:ISPProtocol.c **** 			ProgrammingStatus = ISPTarget_WaitForProgComplete(ProgrammingMode, PollAddress, PollValue,
+ 852              	 .loc 3 220 24
+ 853 0136 FC7B     	 ldrb r4,[r7,#15]
+ 854 0138 BB7C     	 ldrb r3,[r7,#18]
+ 855 013a 3A7F     	 ldrb r2,[r7,#28]
+ 856 013c B98C     	 ldrh r1,[r7,#36]
+ 857 013e 787F     	 ldrb r0,[r7,#29]
+ 858 0140 0093     	 str r3,[sp]
+ 859 0142 2346     	 mov r3,r4
+ 860 0144 464C     	 ldr r4,.L56+40
+ 861 0146 A047     	 blx r4
+ 862              	.LVL29:
+ 863 0148 0346     	 mov r3,r0
+ 864 014a 87F82730 	 strb r3,[r7,#39]
+ 221:ISPProtocol.c **** 			                                                  Write_Memory_Params.DelayMS,
+ 222:ISPProtocol.c **** 			                                                  Write_Memory_Params.ProgrammingCommands[2]);
+ 223:ISPProtocol.c **** 
+ 224:ISPProtocol.c **** 			/* Abort the programming loop early if the byte/word programming failed */
+ 225:ISPProtocol.c **** 			if (ProgrammingStatus != STATUS_CMD_OK)
+ 865              	 .loc 3 225 7
+ 866 014e 97F82730 	 ldrb r3,[r7,#39]
+ 867 0152 002B     	 cmp r3,#0
+ 868 0154 22D1     	 bne .L55
+ 226:ISPProtocol.c **** 			  break;
+ 227:ISPProtocol.c **** 
+ 228:ISPProtocol.c **** 			/* Must reset the polling address afterwards, so it is not erroneously used for the next byte */
+ 229:ISPProtocol.c **** 			PollAddress = 0;
+ 869              	 .loc 3 229 16
+ 870 0156 0023     	 movs r3,#0
+ 871 0158 BB84     	 strh r3,[r7,#36]
+ 872              	.L45:
+ 230:ISPProtocol.c **** 		}
+ 231:ISPProtocol.c **** 
+ 232:ISPProtocol.c **** 		/* EEPROM just increments the address each byte, flash needs to increment on each word and
+ 233:ISPProtocol.c **** 		 * also check to ensure that a LOAD EXTENDED ADDRESS command is issued each time the extended
+ 234:ISPProtocol.c **** 		 * address boundary has been crossed during FLASH memory programming */
+ 235:ISPProtocol.c **** 		if ((CurrentByte & 0x01) || (V2Command == CMD_PROGRAM_EEPROM_ISP))
+ 873              	 .loc 3 235 20
+ 874 015a FB8B     	 ldrh r3,[r7,#30]
+ 875 015c 03F00103 	 and r3,r3,#1
+ 876              	 .loc 3 235 6
+ 877 0160 002B     	 cmp r3,#0
+ 878 0162 02D1     	 bne .L49
+ 879              	 .loc 3 235 28 discriminator 1
+ 880 0164 FB79     	 ldrb r3,[r7,#7]
+ 881 0166 152B     	 cmp r3,#21
+ 882 0168 0FD1     	 bne .L50
+ 883              	.L49:
+ 236:ISPProtocol.c **** 		{
+ 237:ISPProtocol.c **** 			CurrentAddress++;
+ 884              	 .loc 3 237 18
+ 885 016a 394B     	 ldr r3,.L56+24
+ 886 016c 1B68     	 ldr r3,[r3]
+ 887 016e 0133     	 adds r3,r3,#1
+ 888 0170 374A     	 ldr r2,.L56+24
+ 889 0172 1360     	 str r3,[r2]
+ 238:ISPProtocol.c **** 
+ 239:ISPProtocol.c **** 			if ((V2Command == CMD_PROGRAM_FLASH_ISP) && !(CurrentAddress & 0xFFFF))
+ 890              	 .loc 3 239 7
+ 891 0174 FB79     	 ldrb r3,[r7,#7]
+ 892 0176 132B     	 cmp r3,#19
+ 893 0178 07D1     	 bne .L50
+ 894              	 .loc 3 239 65 discriminator 1
+ 895 017a 354B     	 ldr r3,.L56+24
+ 896 017c 1B68     	 ldr r3,[r3]
+ 897 017e 9BB2     	 uxth r3,r3
+ 898              	 .loc 3 239 45 discriminator 1
+ 899 0180 002B     	 cmp r3,#0
+ 900 0182 02D1     	 bne .L50
+ 240:ISPProtocol.c **** 			  MustLoadExtendedAddress = true;
+ 901              	 .loc 3 240 30
+ 902 0184 334B     	 ldr r3,.L56+28
+ 903 0186 0122     	 movs r2,#1
+ 904 0188 1A70     	 strb r2,[r3]
+ 905              	.L50:
+ 906              	.LBE5:
+ 180:ISPProtocol.c **** 	{
+ 907              	 .loc 3 180 92 discriminator 2
+ 908 018a FB8B     	 ldrh r3,[r7,#30]
+ 909 018c 0133     	 adds r3,r3,#1
+ 910 018e FB83     	 strh r3,[r7,#30]
+ 911              	.L39:
+ 180:ISPProtocol.c **** 	{
+ 912              	 .loc 3 180 66 discriminator 1
+ 913 0190 BB89     	 ldrh r3,[r7,#12]
+ 180:ISPProtocol.c **** 	{
+ 914              	 .loc 3 180 2 discriminator 1
+ 915 0192 FA8B     	 ldrh r2,[r7,#30]
+ 916 0194 9A42     	 cmp r2,r3
+ 917 0196 FFF46EAF 	 bcc .L51
+ 918 019a 00E0     	 b .L48
+ 919              	.L55:
+ 920              	.LBB6:
+ 226:ISPProtocol.c **** 
+ 921              	 .loc 3 226 6
+ 922 019c 00BF     	 nop
+ 923              	.L48:
+ 924              	.LBE6:
+ 925              	.LBE4:
+ 241:ISPProtocol.c **** 		}
+ 242:ISPProtocol.c **** 	}
+ 243:ISPProtocol.c **** 
+ 244:ISPProtocol.c **** 	/* If the current page must be committed, send the PROGRAM PAGE command to the target */
+ 245:ISPProtocol.c **** 	if (Write_Memory_Params.ProgrammingMode & PROG_MODE_COMMIT_PAGE_MASK)
+ 926              	 .loc 3 245 25
+ 927 019e BB7B     	 ldrb r3,[r7,#14]
+ 928              	 .loc 3 245 6
+ 929 01a0 5BB2     	 sxtb r3,r3
+ 930              	 .loc 3 245 5
+ 931 01a2 002B     	 cmp r3,#0
+ 932 01a4 3BDA     	 bge .L52
+ 246:ISPProtocol.c **** 	{
+ 247:ISPProtocol.c **** 		ISPTarget_SendByte(Write_Memory_Params.ProgrammingCommands[1]);
+ 933              	 .loc 3 247 3
+ 934 01a6 7B7C     	 ldrb r3,[r7,#17]
+ 935 01a8 1846     	 mov r0,r3
+ 936 01aa 2C4B     	 ldr r3,.L56+36
+ 937 01ac 9847     	 blx r3
+ 938              	.LVL30:
+ 248:ISPProtocol.c **** 		ISPTarget_SendByte(PageStartAddress >> 8);
+ 939              	 .loc 3 248 3
+ 940 01ae 7B8B     	 ldrh r3,[r7,#26]
+ 941 01b0 1B0A     	 lsrs r3,r3,#8
+ 942 01b2 9BB2     	 uxth r3,r3
+ 943 01b4 DBB2     	 uxtb r3,r3
+ 944 01b6 1846     	 mov r0,r3
+ 945 01b8 284B     	 ldr r3,.L56+36
+ 946 01ba 9847     	 blx r3
+ 947              	.LVL31:
+ 249:ISPProtocol.c **** 		ISPTarget_SendByte(PageStartAddress & 0xFF);
+ 948              	 .loc 3 249 3
+ 949 01bc 7B8B     	 ldrh r3,[r7,#26]
+ 950 01be DBB2     	 uxtb r3,r3
+ 951 01c0 1846     	 mov r0,r3
+ 952 01c2 264B     	 ldr r3,.L56+36
+ 953 01c4 9847     	 blx r3
+ 954              	.LVL32:
+ 250:ISPProtocol.c **** 		ISPTarget_SendByte(0x00);
+ 955              	 .loc 3 250 3
+ 956 01c6 0020     	 movs r0,#0
+ 957 01c8 244B     	 ldr r3,.L56+36
+ 958 01ca 9847     	 blx r3
+ 959              	.LVL33:
+ 251:ISPProtocol.c **** 
+ 252:ISPProtocol.c **** 		/* Check if polling is enabled and possible, if not switch to timed delay mode */
+ 253:ISPProtocol.c **** 		if ((Write_Memory_Params.ProgrammingMode & PROG_MODE_PAGED_VALUE_MASK) && !(PollAddress))
+ 960              	 .loc 3 253 27
+ 961 01cc BB7B     	 ldrb r3,[r7,#14]
+ 962              	 .loc 3 253 44
+ 963 01ce 03F02003 	 and r3,r3,#32
+ 964              	 .loc 3 253 6
+ 965 01d2 002B     	 cmp r3,#0
+ 966 01d4 0CD0     	 beq .L53
+ 967              	 .loc 3 253 74 discriminator 1
+ 968 01d6 BB8C     	 ldrh r3,[r7,#36]
+ 969 01d8 002B     	 cmp r3,#0
+ 970 01da 09D1     	 bne .L53
+ 254:ISPProtocol.c **** 		{
+ 255:ISPProtocol.c **** 			Write_Memory_Params.ProgrammingMode = (Write_Memory_Params.ProgrammingMode & ~PROG_MODE_PAGED_VA
+ 971              	 .loc 3 255 62
+ 972 01dc BB7B     	 ldrb r3,[r7,#14]
+ 973 01de 5BB2     	 sxtb r3,r3
+ 974              	 .loc 3 255 110
+ 975 01e0 23F03003 	 bic r3,r3,#48
+ 976 01e4 5BB2     	 sxtb r3,r3
+ 977 01e6 43F01003 	 orr r3,r3,#16
+ 978 01ea 5BB2     	 sxtb r3,r3
+ 979 01ec DBB2     	 uxtb r3,r3
+ 980              	 .loc 3 255 40
+ 981 01ee BB73     	 strb r3,[r7,#14]
+ 982              	.L53:
+ 256:ISPProtocol.c **** 												   PROG_MODE_PAGED_TIMEDELAY_MASK;
+ 257:ISPProtocol.c **** 		}
+ 258:ISPProtocol.c **** 
+ 259:ISPProtocol.c **** 		ProgrammingStatus = ISPTarget_WaitForProgComplete(Write_Memory_Params.ProgrammingMode, PollAddres
+ 983              	 .loc 3 259 23
+ 984 01f0 B87B     	 ldrb r0,[r7,#14]
+ 985 01f2 FC7B     	 ldrb r4,[r7,#15]
+ 986 01f4 BB7C     	 ldrb r3,[r7,#18]
+ 987 01f6 3A7F     	 ldrb r2,[r7,#28]
+ 988 01f8 B98C     	 ldrh r1,[r7,#36]
+ 989 01fa 0093     	 str r3,[sp]
+ 990 01fc 2346     	 mov r3,r4
+ 991 01fe 184C     	 ldr r4,.L56+40
+ 992 0200 A047     	 blx r4
+ 993              	.LVL34:
+ 994 0202 0346     	 mov r3,r0
+ 995 0204 87F82730 	 strb r3,[r7,#39]
+ 260:ISPProtocol.c **** 		                                                  Write_Memory_Params.DelayMS,
+ 261:ISPProtocol.c **** 		                                                  Write_Memory_Params.ProgrammingCommands[2]);
+ 262:ISPProtocol.c **** 
+ 263:ISPProtocol.c **** 		/* Check to see if the FLASH address has crossed the extended address boundary */
+ 264:ISPProtocol.c **** 		if ((V2Command == CMD_PROGRAM_FLASH_ISP) && !(CurrentAddress & 0xFFFF))
+ 996              	 .loc 3 264 6
+ 997 0208 FB79     	 ldrb r3,[r7,#7]
+ 998 020a 132B     	 cmp r3,#19
+ 999 020c 07D1     	 bne .L52
+ 1000              	 .loc 3 264 64 discriminator 1
+ 1001 020e 104B     	 ldr r3,.L56+24
+ 1002 0210 1B68     	 ldr r3,[r3]
+ 1003 0212 9BB2     	 uxth r3,r3
+ 1004              	 .loc 3 264 44 discriminator 1
+ 1005 0214 002B     	 cmp r3,#0
+ 1006 0216 02D1     	 bne .L52
+ 265:ISPProtocol.c **** 		  MustLoadExtendedAddress = true;
+ 1007              	 .loc 3 265 29
+ 1008 0218 0E4B     	 ldr r3,.L56+28
+ 1009 021a 0122     	 movs r2,#1
+ 1010 021c 1A70     	 strb r2,[r3]
+ 1011              	.L52:
+ 266:ISPProtocol.c **** 	}
+ 267:ISPProtocol.c **** 
+ 268:ISPProtocol.c **** 	//printf("AVRPROG: Programming Done: %x\n", ProgrammingStatus);
+ 269:ISPProtocol.c **** 	avrisp_status_payload[0] = V2Command;
+ 1012              	 .loc 3 269 27
+ 1013 021e 0A4A     	 ldr r2,.L56+16
+ 1014 0220 FB79     	 ldrb r3,[r7,#7]
+ 1015 0222 1370     	 strb r3,[r2]
+ 270:ISPProtocol.c **** 	avrisp_status_payload[1] = ProgrammingStatus;
+ 1016              	 .loc 3 270 27
+ 1017 0224 084A     	 ldr r2,.L56+16
+ 1018 0226 97F82730 	 ldrb r3,[r7,#39]
+ 1019 022a 5370     	 strb r3,[r2,#1]
+ 271:ISPProtocol.c **** 	avrisp_status_payload_size = 2;
+ 1020              	 .loc 3 271 29
+ 1021 022c 074B     	 ldr r3,.L56+20
+ 1022 022e 0222     	 movs r2,#2
+ 1023 0230 1A80     	 strh r2,[r3]
+ 1024              	.L33:
+ 272:ISPProtocol.c **** 
+ 273:ISPProtocol.c **** }
+ 1025              	 .loc 3 273 1
+ 1026 0232 2C37     	 adds r7,r7,#44
+ 1027              	.LCFI34:
+ 1028              	 .cfi_def_cfa_offset 12
+ 1029 0234 BD46     	 mov sp,r7
+ 1030              	.LCFI35:
+ 1031              	 .cfi_def_cfa_register 13
+ 1032              	 
+ 1033 0236 90BD     	 pop {r4,r7,pc}
+ 1034              	.L57:
+ 1035              	 .align 2
+ 1036              	.L56:
+ 1037 0238 00000000 	 .word udd_g_ctrlreq
+ 1038 023c 00000000 	 .word .LC0
+ 1039 0240 00000000 	 .word iprintf
+ 1040 0244 00000000 	 .word memcpy
+ 1041 0248 00000000 	 .word avrisp_status_payload
+ 1042 024c 00000000 	 .word avrisp_status_payload_size
+ 1043 0250 00000000 	 .word CurrentAddress
+ 1044 0254 00000000 	 .word MustLoadExtendedAddress
+ 1045 0258 00000000 	 .word ISPTarget_LoadExtendedAddress
+ 1046 025c 00000000 	 .word ISPTarget_SendByte
+ 1047 0260 00000000 	 .word ISPTarget_WaitForProgComplete
+ 1048              	 .cfi_endproc
+ 1049              	.LFE186:
+ 1051              	 .section .rodata
+ 1052 0039 000000   	 .align 2
+ 1053              	.LC2:
+ 1054 003c 41565250 	 .ascii "AVRPROG: Payload size = %d, error!?\012\000"
+ 1054      524F473A 
+ 1054      20506179 
+ 1054      6C6F6164 
+ 1054      2073697A 
+ 1055              	 .section .text.ISPProtocol_ReadMemory,"ax",%progbits
+ 1056              	 .align 1
+ 1057              	 .global ISPProtocol_ReadMemory
+ 1058              	 .syntax unified
+ 1059              	 .thumb
+ 1060              	 .thumb_func
+ 1061              	 .fpu softvfp
+ 1063              	ISPProtocol_ReadMemory:
+ 1064              	.LFB187:
+ 274:ISPProtocol.c **** 
+ 275:ISPProtocol.c **** /** Handler for the CMD_READ_FLASH_ISP and CMD_READ_EEPROM_ISP commands, reading in bytes,
+ 276:ISPProtocol.c ****  *  words or pages of data from the attached device.
+ 277:ISPProtocol.c ****  *
+ 278:ISPProtocol.c ****  *  \param[in] V2Command  Issued V2 Protocol command byte from the host
+ 279:ISPProtocol.c ****  */
+ 280:ISPProtocol.c **** void ISPProtocol_ReadMemory(uint8_t V2Command, uint8_t * buffer)
+ 281:ISPProtocol.c **** {
+ 1065              	 .loc 3 281 1
+ 1066              	 .cfi_startproc
+ 1067              	 
+ 1068              	 
+ 1069 0000 90B5     	 push {r4,r7,lr}
+ 1070              	.LCFI36:
+ 1071              	 .cfi_def_cfa_offset 12
+ 1072              	 .cfi_offset 4,-12
+ 1073              	 .cfi_offset 7,-8
+ 1074              	 .cfi_offset 14,-4
+ 1075 0002 85B0     	 sub sp,sp,#20
+ 1076              	.LCFI37:
+ 1077              	 .cfi_def_cfa_offset 32
+ 1078 0004 00AF     	 add r7,sp,#0
+ 1079              	.LCFI38:
+ 1080              	 .cfi_def_cfa_register 7
+ 1081 0006 0346     	 mov r3,r0
+ 1082 0008 3960     	 str r1,[r7]
+ 1083 000a FB71     	 strb r3,[r7,#7]
+ 282:ISPProtocol.c **** 	struct
+ 283:ISPProtocol.c **** 	{
+ 284:ISPProtocol.c **** 		uint16_t BytesToRead;
+ 285:ISPProtocol.c **** 		uint8_t  ReadMemoryCommand;
+ 286:ISPProtocol.c **** 	} Read_Memory_Params;
+ 287:ISPProtocol.c **** 	
+ 288:ISPProtocol.c **** 	if (udd_g_ctrlreq.payload_size != 3){
+ 1084              	 .loc 3 288 19
+ 1085 000c 394B     	 ldr r3,.L70
+ 1086 000e 9B89     	 ldrh r3,[r3,#12]
+ 1087              	 .loc 3 288 5
+ 1088 0010 032B     	 cmp r3,#3
+ 1089 0012 06D0     	 beq .L59
+ 289:ISPProtocol.c **** 		printf("AVRPROG: Payload size = %d, error!?\n", udd_g_ctrlreq.payload_size);
+ 1090              	 .loc 3 289 64
+ 1091 0014 374B     	 ldr r3,.L70
+ 1092 0016 9B89     	 ldrh r3,[r3,#12]
+ 1093              	 .loc 3 289 3
+ 1094 0018 1946     	 mov r1,r3
+ 1095 001a 3748     	 ldr r0,.L70+4
+ 1096 001c 374B     	 ldr r3,.L70+8
+ 1097 001e 9847     	 blx r3
+ 1098              	.LVL35:
+ 290:ISPProtocol.c **** 		return;
+ 1099              	 .loc 3 290 3
+ 1100 0020 64E0     	 b .L58
+ 1101              	.L59:
+ 291:ISPProtocol.c **** 	}
+ 292:ISPProtocol.c **** 
+ 293:ISPProtocol.c **** 	memcpy(&Read_Memory_Params, udd_g_ctrlreq.payload, sizeof(Read_Memory_Params));
+ 1102              	 .loc 3 293 43
+ 1103 0022 344B     	 ldr r3,.L70
+ 1104 0024 9B68     	 ldr r3,[r3,#8]
+ 1105 0026 1B68     	 ldr r3,[r3]
+ 1106              	 .loc 3 293 2
+ 1107 0028 BB60     	 str r3,[r7,#8]
+ 294:ISPProtocol.c **** 
+ 295:ISPProtocol.c **** 	//Default to failed status
+ 296:ISPProtocol.c **** 	avrisp_status_payload[0] = V2Command;
+ 1108              	 .loc 3 296 27
+ 1109 002a 354A     	 ldr r2,.L70+12
+ 1110 002c FB79     	 ldrb r3,[r7,#7]
+ 1111 002e 1370     	 strb r3,[r2]
+ 297:ISPProtocol.c **** 	avrisp_status_payload[1] = STATUS_CMD_FAILED;
+ 1112              	 .loc 3 297 27
+ 1113 0030 334B     	 ldr r3,.L70+12
+ 1114 0032 C022     	 movs r2,#192
+ 1115 0034 5A70     	 strb r2,[r3,#1]
+ 298:ISPProtocol.c **** 	avrisp_status_payload_size = 2;
+ 1116              	 .loc 3 298 29
+ 1117 0036 334B     	 ldr r3,.L70+16
+ 1118 0038 0222     	 movs r2,#2
+ 1119 003a 1A80     	 strh r2,[r3]
+ 299:ISPProtocol.c **** 		
+ 300:ISPProtocol.c **** 	//printf("AVRPROG: Attempting to read %d bytes\n", Read_Memory_Params.BytesToRead);
+ 301:ISPProtocol.c **** 
+ 302:ISPProtocol.c **** 	//Woops... too long
+ 303:ISPProtocol.c **** 	if (Read_Memory_Params.BytesToRead > 256)
+ 1120              	 .loc 3 303 24
+ 1121 003c 3B89     	 ldrh r3,[r7,#8]
+ 1122              	 .loc 3 303 5
+ 1123 003e B3F5807F 	 cmp r3,#256
+ 1124 0042 52D8     	 bhi .L69
+ 1125              	.LBB7:
+ 304:ISPProtocol.c **** 	{
+ 305:ISPProtocol.c **** 		return;
+ 306:ISPProtocol.c **** 	}
+ 307:ISPProtocol.c **** 
+ 308:ISPProtocol.c **** 	/* Read each byte from the device and write them to the packet for the host */
+ 309:ISPProtocol.c **** 	for (uint16_t CurrentByte = 0; CurrentByte < Read_Memory_Params.BytesToRead; CurrentByte++)
+ 1126              	 .loc 3 309 16
+ 1127 0044 0023     	 movs r3,#0
+ 1128 0046 FB81     	 strh r3,[r7,#14]
+ 1129              	 .loc 3 309 2
+ 1130 0048 44E0     	 b .L62
+ 1131              	.L67:
+ 310:ISPProtocol.c **** 	{
+ 311:ISPProtocol.c **** 		/* Check to see if we need to send a LOAD EXTENDED ADDRESS command to the target */
+ 312:ISPProtocol.c **** 		if (MustLoadExtendedAddress)
+ 1132              	 .loc 3 312 7
+ 1133 004a 2F4B     	 ldr r3,.L70+20
+ 1134 004c 1B78     	 ldrb r3,[r3]
+ 1135              	 .loc 3 312 6
+ 1136 004e 002B     	 cmp r3,#0
+ 1137 0050 04D0     	 beq .L63
+ 313:ISPProtocol.c **** 		{
+ 314:ISPProtocol.c **** 			ISPTarget_LoadExtendedAddress();
+ 1138              	 .loc 3 314 4
+ 1139 0052 2E4B     	 ldr r3,.L70+24
+ 1140 0054 9847     	 blx r3
+ 1141              	.LVL36:
+ 315:ISPProtocol.c **** 			MustLoadExtendedAddress = false;
+ 1142              	 .loc 3 315 28
+ 1143 0056 2C4B     	 ldr r3,.L70+20
+ 1144 0058 0022     	 movs r2,#0
+ 1145 005a 1A70     	 strb r2,[r3]
+ 1146              	.L63:
+ 316:ISPProtocol.c **** 		}
+ 317:ISPProtocol.c **** 
+ 318:ISPProtocol.c **** 		/* Read the next byte from the desired memory space in the device */
+ 319:ISPProtocol.c **** 		ISPTarget_SendByte(Read_Memory_Params.ReadMemoryCommand);
+ 1147              	 .loc 3 319 3
+ 1148 005c BB7A     	 ldrb r3,[r7,#10]
+ 1149 005e 1846     	 mov r0,r3
+ 1150 0060 2B4B     	 ldr r3,.L70+28
+ 1151 0062 9847     	 blx r3
+ 1152              	.LVL37:
+ 320:ISPProtocol.c **** 		ISPTarget_SendByte(CurrentAddress >> 8);
+ 1153              	 .loc 3 320 37
+ 1154 0064 2B4B     	 ldr r3,.L70+32
+ 1155 0066 1B68     	 ldr r3,[r3]
+ 1156 0068 1B0A     	 lsrs r3,r3,#8
+ 1157              	 .loc 3 320 3
+ 1158 006a DBB2     	 uxtb r3,r3
+ 1159 006c 1846     	 mov r0,r3
+ 1160 006e 284B     	 ldr r3,.L70+28
+ 1161 0070 9847     	 blx r3
+ 1162              	.LVL38:
+ 321:ISPProtocol.c **** 		ISPTarget_SendByte(CurrentAddress & 0xFF);
+ 1163              	 .loc 3 321 3
+ 1164 0072 284B     	 ldr r3,.L70+32
+ 1165 0074 1B68     	 ldr r3,[r3]
+ 1166 0076 DBB2     	 uxtb r3,r3
+ 1167 0078 1846     	 mov r0,r3
+ 1168 007a 254B     	 ldr r3,.L70+28
+ 1169 007c 9847     	 blx r3
+ 1170              	.LVL39:
+ 322:ISPProtocol.c **** 		//Send Garbage byte, RX data
+ 323:ISPProtocol.c **** 		buffer[CurrentByte] = ISPTarget_TransferByte(0x00);
+ 1171              	 .loc 3 323 9
+ 1172 007e FB89     	 ldrh r3,[r7,#14]
+ 1173 0080 3A68     	 ldr r2,[r7]
+ 1174 0082 D418     	 adds r4,r2,r3
+ 1175              	 .loc 3 323 25
+ 1176 0084 0020     	 movs r0,#0
+ 1177 0086 244B     	 ldr r3,.L70+36
+ 1178 0088 9847     	 blx r3
+ 1179              	.LVL40:
+ 1180 008a 0346     	 mov r3,r0
+ 1181              	 .loc 3 323 23
+ 1182 008c 2370     	 strb r3,[r4]
+ 324:ISPProtocol.c **** 
+ 325:ISPProtocol.c **** 		/* AVR FLASH addressing requires us to modify the read command based on if we are reading a high
+ 326:ISPProtocol.c **** 		 * or low byte at the current word address */
+ 327:ISPProtocol.c **** 		if (V2Command == CMD_READ_FLASH_ISP)
+ 1183              	 .loc 3 327 6
+ 1184 008e FB79     	 ldrb r3,[r7,#7]
+ 1185 0090 142B     	 cmp r3,#20
+ 1186 0092 04D1     	 bne .L64
+ 328:ISPProtocol.c **** 		  Read_Memory_Params.ReadMemoryCommand ^= READ_WRITE_HIGH_BYTE_MASK;
+ 1187              	 .loc 3 328 42
+ 1188 0094 BB7A     	 ldrb r3,[r7,#10]
+ 1189 0096 83F00803 	 eor r3,r3,#8
+ 1190 009a DBB2     	 uxtb r3,r3
+ 1191 009c BB72     	 strb r3,[r7,#10]
+ 1192              	.L64:
+ 329:ISPProtocol.c **** 
+ 330:ISPProtocol.c **** 		/* EEPROM just increments the address each byte, flash needs to increment on each word and
+ 331:ISPProtocol.c **** 		 * also check to ensure that a LOAD EXTENDED ADDRESS command is issued each time the extended
+ 332:ISPProtocol.c **** 		 * address boundary has been crossed */
+ 333:ISPProtocol.c **** 		if ((CurrentByte & 0x01) || (V2Command == CMD_READ_EEPROM_ISP))
+ 1193              	 .loc 3 333 20
+ 1194 009e FB89     	 ldrh r3,[r7,#14]
+ 1195 00a0 03F00103 	 and r3,r3,#1
+ 1196              	 .loc 3 333 6
+ 1197 00a4 002B     	 cmp r3,#0
+ 1198 00a6 02D1     	 bne .L65
+ 1199              	 .loc 3 333 28 discriminator 1
+ 1200 00a8 FB79     	 ldrb r3,[r7,#7]
+ 1201 00aa 162B     	 cmp r3,#22
+ 1202 00ac 0FD1     	 bne .L66
+ 1203              	.L65:
+ 334:ISPProtocol.c **** 		{
+ 335:ISPProtocol.c **** 			CurrentAddress++;
+ 1204              	 .loc 3 335 18
+ 1205 00ae 194B     	 ldr r3,.L70+32
+ 1206 00b0 1B68     	 ldr r3,[r3]
+ 1207 00b2 0133     	 adds r3,r3,#1
+ 1208 00b4 174A     	 ldr r2,.L70+32
+ 1209 00b6 1360     	 str r3,[r2]
+ 336:ISPProtocol.c **** 
+ 337:ISPProtocol.c **** 			if ((V2Command != CMD_READ_EEPROM_ISP) && !(CurrentAddress & 0xFFFF))
+ 1210              	 .loc 3 337 7
+ 1211 00b8 FB79     	 ldrb r3,[r7,#7]
+ 1212 00ba 162B     	 cmp r3,#22
+ 1213 00bc 07D0     	 beq .L66
+ 1214              	 .loc 3 337 63 discriminator 1
+ 1215 00be 154B     	 ldr r3,.L70+32
+ 1216 00c0 1B68     	 ldr r3,[r3]
+ 1217 00c2 9BB2     	 uxth r3,r3
+ 1218              	 .loc 3 337 43 discriminator 1
+ 1219 00c4 002B     	 cmp r3,#0
+ 1220 00c6 02D1     	 bne .L66
+ 338:ISPProtocol.c **** 			  MustLoadExtendedAddress = true;
+ 1221              	 .loc 3 338 30
+ 1222 00c8 0F4B     	 ldr r3,.L70+20
+ 1223 00ca 0122     	 movs r2,#1
+ 1224 00cc 1A70     	 strb r2,[r3]
+ 1225              	.L66:
+ 309:ISPProtocol.c **** 	{
+ 1226              	 .loc 3 309 90 discriminator 2
+ 1227 00ce FB89     	 ldrh r3,[r7,#14]
+ 1228 00d0 0133     	 adds r3,r3,#1
+ 1229 00d2 FB81     	 strh r3,[r7,#14]
+ 1230              	.L62:
+ 309:ISPProtocol.c **** 	{
+ 1231              	 .loc 3 309 65 discriminator 1
+ 1232 00d4 3B89     	 ldrh r3,[r7,#8]
+ 309:ISPProtocol.c **** 	{
+ 1233              	 .loc 3 309 2 discriminator 1
+ 1234 00d6 FA89     	 ldrh r2,[r7,#14]
+ 1235 00d8 9A42     	 cmp r2,r3
+ 1236 00da B6D3     	 bcc .L67
+ 1237              	.LBE7:
+ 339:ISPProtocol.c **** 		}
+ 340:ISPProtocol.c **** 	}
+ 341:ISPProtocol.c **** 
+ 342:ISPProtocol.c **** 	//printf("AVRPROG: Read %d bytes\n", Read_Memory_Params.BytesToRead);
+ 343:ISPProtocol.c **** 	avrisp_status_payload[1] = STATUS_CMD_OK;
+ 1238              	 .loc 3 343 27
+ 1239 00dc 084B     	 ldr r3,.L70+12
+ 1240 00de 0022     	 movs r2,#0
+ 1241 00e0 5A70     	 strb r2,[r3,#1]
+ 344:ISPProtocol.c **** 	avrisp_status_payload_size = 2;
+ 1242              	 .loc 3 344 29
+ 1243 00e2 084B     	 ldr r3,.L70+16
+ 1244 00e4 0222     	 movs r2,#2
+ 1245 00e6 1A80     	 strh r2,[r3]
+ 1246 00e8 00E0     	 b .L58
+ 1247              	.L69:
+ 305:ISPProtocol.c **** 	}
+ 1248              	 .loc 3 305 3
+ 1249 00ea 00BF     	 nop
+ 1250              	.L58:
+ 345:ISPProtocol.c **** }
+ 1251              	 .loc 3 345 1
+ 1252 00ec 1437     	 adds r7,r7,#20
+ 1253              	.LCFI39:
+ 1254              	 .cfi_def_cfa_offset 12
+ 1255 00ee BD46     	 mov sp,r7
+ 1256              	.LCFI40:
+ 1257              	 .cfi_def_cfa_register 13
+ 1258              	 
+ 1259 00f0 90BD     	 pop {r4,r7,pc}
+ 1260              	.L71:
+ 1261 00f2 00BF     	 .align 2
+ 1262              	.L70:
+ 1263 00f4 00000000 	 .word udd_g_ctrlreq
+ 1264 00f8 3C000000 	 .word .LC2
+ 1265 00fc 00000000 	 .word iprintf
+ 1266 0100 00000000 	 .word avrisp_status_payload
+ 1267 0104 00000000 	 .word avrisp_status_payload_size
+ 1268 0108 00000000 	 .word MustLoadExtendedAddress
+ 1269 010c 00000000 	 .word ISPTarget_LoadExtendedAddress
+ 1270 0110 00000000 	 .word ISPTarget_SendByte
+ 1271 0114 00000000 	 .word CurrentAddress
+ 1272 0118 00000000 	 .word ISPTarget_TransferByte
+ 1273              	 .cfi_endproc
+ 1274              	.LFE187:
+ 1276              	 .section .rodata
+ 1277 0061 000000   	 .align 2
+ 1278              	.LC3:
+ 1279 0064 41565250 	 .ascii "AVRPROG: Erase: Payload size = %d, error!?\012\000"
+ 1279      524F473A 
+ 1279      20457261 
+ 1279      73653A20 
+ 1279      5061796C 
+ 1280              	 .section .text.ISPProtocol_ChipErase,"ax",%progbits
+ 1281              	 .align 1
+ 1282              	 .global ISPProtocol_ChipErase
+ 1283              	 .syntax unified
+ 1284              	 .thumb
+ 1285              	 .thumb_func
+ 1286              	 .fpu softvfp
+ 1288              	ISPProtocol_ChipErase:
+ 1289              	.LFB188:
+ 346:ISPProtocol.c **** 
+ 347:ISPProtocol.c **** /** Handler for the CMD_CHI_ERASE_ISP command, clearing the target's FLASH memory. */
+ 348:ISPProtocol.c **** void ISPProtocol_ChipErase(void)
+ 349:ISPProtocol.c **** {
+ 1290              	 .loc 3 349 1
+ 1291              	 .cfi_startproc
+ 1292              	 
+ 1293              	 
+ 1294 0000 80B5     	 push {r7,lr}
+ 1295              	.LCFI41:
+ 1296              	 .cfi_def_cfa_offset 8
+ 1297              	 .cfi_offset 7,-8
+ 1298              	 .cfi_offset 14,-4
+ 1299 0002 82B0     	 sub sp,sp,#8
+ 1300              	.LCFI42:
+ 1301              	 .cfi_def_cfa_offset 16
+ 1302 0004 00AF     	 add r7,sp,#0
+ 1303              	.LCFI43:
+ 1304              	 .cfi_def_cfa_register 7
+ 350:ISPProtocol.c **** 	struct
+ 351:ISPProtocol.c **** 	{
+ 352:ISPProtocol.c **** 		uint8_t EraseDelayMS;
+ 353:ISPProtocol.c **** 		uint8_t PollMethod;
+ 354:ISPProtocol.c **** 		uint8_t EraseCommandBytes[4];
+ 355:ISPProtocol.c **** 	} Erase_Chip_Params;	
+ 356:ISPProtocol.c **** 	
+ 357:ISPProtocol.c **** 	if (udd_g_ctrlreq.payload_size != sizeof(Erase_Chip_Params)){
+ 1305              	 .loc 3 357 19
+ 1306 0006 1F4B     	 ldr r3,.L79
+ 1307 0008 9B89     	 ldrh r3,[r3,#12]
+ 1308              	 .loc 3 357 5
+ 1309 000a 062B     	 cmp r3,#6
+ 1310 000c 06D0     	 beq .L73
+ 358:ISPProtocol.c **** 		printf("AVRPROG: Erase: Payload size = %d, error!?\n", udd_g_ctrlreq.payload_size);
+ 1311              	 .loc 3 358 71
+ 1312 000e 1D4B     	 ldr r3,.L79
+ 1313 0010 9B89     	 ldrh r3,[r3,#12]
+ 1314              	 .loc 3 358 3
+ 1315 0012 1946     	 mov r1,r3
+ 1316 0014 1C48     	 ldr r0,.L79+4
+ 1317 0016 1D4B     	 ldr r3,.L79+8
+ 1318 0018 9847     	 blx r3
+ 1319              	.LVL41:
+ 1320 001a 2FE0     	 b .L72
+ 1321              	.L73:
+ 359:ISPProtocol.c **** 		return;
+ 360:ISPProtocol.c **** 	}
+ 361:ISPProtocol.c **** 
+ 362:ISPProtocol.c **** 	memcpy(&Erase_Chip_Params, udd_g_ctrlreq.payload, sizeof(Erase_Chip_Params));
+ 1322              	 .loc 3 362 42
+ 1323 001c 194B     	 ldr r3,.L79
+ 1324 001e 9A68     	 ldr r2,[r3,#8]
+ 1325              	 .loc 3 362 2
+ 1326 0020 3B46     	 mov r3,r7
+ 1327 0022 1068     	 ldr r0,[r2]
+ 1328 0024 1860     	 str r0,[r3]
+ 1329 0026 9288     	 ldrh r2,[r2,#4]
+ 1330 0028 9A80     	 strh r2,[r3,#4]
+ 363:ISPProtocol.c **** 
+ 364:ISPProtocol.c **** 	uint8_t ResponseStatus = STATUS_CMD_OK;
+ 1331              	 .loc 3 364 10
+ 1332 002a 0023     	 movs r3,#0
+ 1333 002c FB71     	 strb r3,[r7,#7]
+ 1334              	.LBB8:
+ 365:ISPProtocol.c **** 
+ 366:ISPProtocol.c **** 	/* Send the chip erase commands as given by the host to the device */
+ 367:ISPProtocol.c **** 	for (uint8_t SByte = 0; SByte < sizeof(Erase_Chip_Params.EraseCommandBytes); SByte++) {
+ 1335              	 .loc 3 367 15
+ 1336 002e 0023     	 movs r3,#0
+ 1337 0030 BB71     	 strb r3,[r7,#6]
+ 1338              	 .loc 3 367 2
+ 1339 0032 0BE0     	 b .L75
+ 1340              	.L76:
+ 368:ISPProtocol.c **** 	  ISPTarget_SendByte(Erase_Chip_Params.EraseCommandBytes[SByte]);
+ 1341              	 .loc 3 368 4 discriminator 3
+ 1342 0034 BB79     	 ldrb r3,[r7,#6]
+ 1343 0036 07F10802 	 add r2,r7,#8
+ 1344 003a 1344     	 add r3,r3,r2
+ 1345 003c 13F8063C 	 ldrb r3,[r3,#-6]
+ 1346 0040 1846     	 mov r0,r3
+ 1347 0042 134B     	 ldr r3,.L79+12
+ 1348 0044 9847     	 blx r3
+ 1349              	.LVL42:
+ 367:ISPProtocol.c **** 	  ISPTarget_SendByte(Erase_Chip_Params.EraseCommandBytes[SByte]);
+ 1350              	 .loc 3 367 84 discriminator 3
+ 1351 0046 BB79     	 ldrb r3,[r7,#6]
+ 1352 0048 0133     	 adds r3,r3,#1
+ 1353 004a BB71     	 strb r3,[r7,#6]
+ 1354              	.L75:
+ 367:ISPProtocol.c **** 	  ISPTarget_SendByte(Erase_Chip_Params.EraseCommandBytes[SByte]);
+ 1355              	 .loc 3 367 2 discriminator 1
+ 1356 004c BB79     	 ldrb r3,[r7,#6]
+ 1357 004e 032B     	 cmp r3,#3
+ 1358 0050 F0D9     	 bls .L76
+ 1359              	.LBE8:
+ 369:ISPProtocol.c **** 	  //printf("Sending %02x", Erase_Chip_Params.EraseCommandBytes[SByte]);
+ 370:ISPProtocol.c **** 	}
+ 371:ISPProtocol.c **** 
+ 372:ISPProtocol.c **** 	/* Use appropriate command completion check as given by the host (delay or busy polling) */
+ 373:ISPProtocol.c **** 	if (!(Erase_Chip_Params.PollMethod))
+ 1360              	 .loc 3 373 25
+ 1361 0052 7B78     	 ldrb r3,[r7,#1]
+ 1362              	 .loc 3 373 5
+ 1363 0054 002B     	 cmp r3,#0
+ 1364 0056 04D1     	 bne .L77
+ 374:ISPProtocol.c **** 	  ISPProtocol_DelayMS(Erase_Chip_Params.EraseDelayMS);
+ 1365              	 .loc 3 374 4
+ 1366 0058 3B78     	 ldrb r3,[r7]
+ 1367 005a 1846     	 mov r0,r3
+ 1368 005c 0D4B     	 ldr r3,.L79+16
+ 1369 005e 9847     	 blx r3
+ 1370              	.LVL43:
+ 1371 0060 03E0     	 b .L78
+ 1372              	.L77:
+ 375:ISPProtocol.c **** 	else
+ 376:ISPProtocol.c **** 	  ResponseStatus = ISPTarget_WaitWhileTargetBusy();
+ 1373              	 .loc 3 376 21
+ 1374 0062 0D4B     	 ldr r3,.L79+20
+ 1375 0064 9847     	 blx r3
+ 1376              	.LVL44:
+ 1377 0066 0346     	 mov r3,r0
+ 1378 0068 FB71     	 strb r3,[r7,#7]
+ 1379              	.L78:
+ 377:ISPProtocol.c **** 
+ 378:ISPProtocol.c **** 	//printf("AVRPROG: Chip Erase: %x\n", ResponseStatus);
+ 379:ISPProtocol.c **** 
+ 380:ISPProtocol.c **** 	avrisp_status_payload[0] = CMD_CHIP_ERASE_ISP;
+ 1380              	 .loc 3 380 27
+ 1381 006a 0C4B     	 ldr r3,.L79+24
+ 1382 006c 1222     	 movs r2,#18
+ 1383 006e 1A70     	 strb r2,[r3]
+ 381:ISPProtocol.c **** 	avrisp_status_payload[1] = ResponseStatus;
+ 1384              	 .loc 3 381 27
+ 1385 0070 0A4A     	 ldr r2,.L79+24
+ 1386 0072 FB79     	 ldrb r3,[r7,#7]
+ 1387 0074 5370     	 strb r3,[r2,#1]
+ 382:ISPProtocol.c **** 	avrisp_status_payload_size = 2;
+ 1388              	 .loc 3 382 29
+ 1389 0076 0A4B     	 ldr r3,.L79+28
+ 1390 0078 0222     	 movs r2,#2
+ 1391 007a 1A80     	 strh r2,[r3]
+ 1392              	.L72:
+ 383:ISPProtocol.c **** }
+ 1393              	 .loc 3 383 1
+ 1394 007c 0837     	 adds r7,r7,#8
+ 1395              	.LCFI44:
+ 1396              	 .cfi_def_cfa_offset 8
+ 1397 007e BD46     	 mov sp,r7
+ 1398              	.LCFI45:
+ 1399              	 .cfi_def_cfa_register 13
+ 1400              	 
+ 1401 0080 80BD     	 pop {r7,pc}
+ 1402              	.L80:
+ 1403 0082 00BF     	 .align 2
+ 1404              	.L79:
+ 1405 0084 00000000 	 .word udd_g_ctrlreq
+ 1406 0088 64000000 	 .word .LC3
+ 1407 008c 00000000 	 .word iprintf
+ 1408 0090 00000000 	 .word ISPTarget_SendByte
+ 1409 0094 00000000 	 .word ISPProtocol_DelayMS
+ 1410 0098 00000000 	 .word ISPTarget_WaitWhileTargetBusy
+ 1411 009c 00000000 	 .word avrisp_status_payload
+ 1412 00a0 00000000 	 .word avrisp_status_payload_size
+ 1413              	 .cfi_endproc
+ 1414              	.LFE188:
+ 1416              	 .section .text.ISPProtocol_ReadFuseLockSigOSCCAL,"ax",%progbits
+ 1417              	 .align 1
+ 1418              	 .global ISPProtocol_ReadFuseLockSigOSCCAL
+ 1419              	 .syntax unified
+ 1420              	 .thumb
+ 1421              	 .thumb_func
+ 1422              	 .fpu softvfp
+ 1424              	ISPProtocol_ReadFuseLockSigOSCCAL:
+ 1425              	.LFB189:
+ 384:ISPProtocol.c **** 
+ 385:ISPProtocol.c **** /** Handler for the CMD_READ_FUSE_ISP, CMD_READ_LOCK_ISP, CMD_READ_SIGNATURE_ISP and CMD_READ_OSCCA
+ 386:ISPProtocol.c ****  *  reading the requested configuration byte from the device.
+ 387:ISPProtocol.c ****  *
+ 388:ISPProtocol.c ****  *  \param[in] V2Command  Issued V2 Protocol command byte from the host
+ 389:ISPProtocol.c ****  */
+ 390:ISPProtocol.c **** void ISPProtocol_ReadFuseLockSigOSCCAL(uint8_t V2Command)
+ 391:ISPProtocol.c **** {
+ 1426              	 .loc 3 391 1
+ 1427              	 .cfi_startproc
+ 1428              	 
+ 1429              	 
+ 1430 0000 90B5     	 push {r4,r7,lr}
+ 1431              	.LCFI46:
+ 1432              	 .cfi_def_cfa_offset 12
+ 1433              	 .cfi_offset 4,-12
+ 1434              	 .cfi_offset 7,-8
+ 1435              	 .cfi_offset 14,-4
+ 1436 0002 87B0     	 sub sp,sp,#28
+ 1437              	.LCFI47:
+ 1438              	 .cfi_def_cfa_offset 40
+ 1439 0004 00AF     	 add r7,sp,#0
+ 1440              	.LCFI48:
+ 1441              	 .cfi_def_cfa_register 7
+ 1442 0006 0346     	 mov r3,r0
+ 1443 0008 FB71     	 strb r3,[r7,#7]
+ 392:ISPProtocol.c **** 	struct
+ 393:ISPProtocol.c **** 	{
+ 394:ISPProtocol.c **** 		uint8_t RetByte;
+ 395:ISPProtocol.c **** 		uint8_t ReadCommandBytes[4];
+ 396:ISPProtocol.c **** 	} Read_FuseLockSigOSCCAL_Params;
+ 397:ISPProtocol.c **** 
+ 398:ISPProtocol.c **** 	if (udd_g_ctrlreq.payload_size != 5){
+ 1444              	 .loc 3 398 19
+ 1445 000a 224B     	 ldr r3,.L86
+ 1446 000c 9B89     	 ldrh r3,[r3,#12]
+ 1447              	 .loc 3 398 5
+ 1448 000e 052B     	 cmp r3,#5
+ 1449 0010 06D0     	 beq .L82
+ 399:ISPProtocol.c **** 		printf("Payload size = %d, error!?\n", udd_g_ctrlreq.payload_size);
+ 1450              	 .loc 3 399 55
+ 1451 0012 204B     	 ldr r3,.L86
+ 1452 0014 9B89     	 ldrh r3,[r3,#12]
+ 1453              	 .loc 3 399 3
+ 1454 0016 1946     	 mov r1,r3
+ 1455 0018 1F48     	 ldr r0,.L86+4
+ 1456 001a 204B     	 ldr r3,.L86+8
+ 1457 001c 9847     	 blx r3
+ 1458              	.LVL45:
+ 1459 001e 36E0     	 b .L81
+ 1460              	.L82:
+ 400:ISPProtocol.c **** 		return;
+ 401:ISPProtocol.c **** 	}
+ 402:ISPProtocol.c **** 
+ 403:ISPProtocol.c **** 	memcpy(&Read_FuseLockSigOSCCAL_Params, udd_g_ctrlreq.payload, sizeof(Read_FuseLockSigOSCCAL_Params
+ 1461              	 .loc 3 403 54
+ 1462 0020 1C4B     	 ldr r3,.L86
+ 1463 0022 9A68     	 ldr r2,[r3,#8]
+ 1464              	 .loc 3 403 2
+ 1465 0024 07F11003 	 add r3,r7,#16
+ 1466 0028 1068     	 ldr r0,[r2]
+ 1467 002a 1860     	 str r0,[r3]
+ 1468 002c 1279     	 ldrb r2,[r2,#4]
+ 1469 002e 1A71     	 strb r2,[r3,#4]
+ 1470              	.LBB9:
+ 404:ISPProtocol.c **** 
+ 405:ISPProtocol.c **** 	uint8_t ResponseBytes[4];
+ 406:ISPProtocol.c **** 
+ 407:ISPProtocol.c **** 	/* Send the Fuse or Lock byte read commands as given by the host to the device, store response */
+ 408:ISPProtocol.c **** 	for (uint8_t RByte = 0; RByte < sizeof(ResponseBytes); RByte++)
+ 1471              	 .loc 3 408 15
+ 1472 0030 0023     	 movs r3,#0
+ 1473 0032 FB75     	 strb r3,[r7,#23]
+ 1474              	 .loc 3 408 2
+ 1475 0034 13E0     	 b .L84
+ 1476              	.L85:
+ 409:ISPProtocol.c **** 	  ResponseBytes[RByte] = ISPTarget_TransferByte(Read_FuseLockSigOSCCAL_Params.ReadCommandBytes[RBy
+ 1477              	 .loc 3 409 27 discriminator 3
+ 1478 0036 FB7D     	 ldrb r3,[r7,#23]
+ 1479 0038 07F11802 	 add r2,r7,#24
+ 1480 003c 1344     	 add r3,r3,r2
+ 1481 003e 13F8073C 	 ldrb r3,[r3,#-7]
+ 1482              	 .loc 3 409 17 discriminator 3
+ 1483 0042 FC7D     	 ldrb r4,[r7,#23]
+ 1484              	 .loc 3 409 27 discriminator 3
+ 1485 0044 1846     	 mov r0,r3
+ 1486 0046 164B     	 ldr r3,.L86+12
+ 1487 0048 9847     	 blx r3
+ 1488              	.LVL46:
+ 1489 004a 0346     	 mov r3,r0
+ 1490 004c 1A46     	 mov r2,r3
+ 1491              	 .loc 3 409 25 discriminator 3
+ 1492 004e 07F11803 	 add r3,r7,#24
+ 1493 0052 2344     	 add r3,r3,r4
+ 1494 0054 03F80C2C 	 strb r2,[r3,#-12]
+ 408:ISPProtocol.c **** 	  ResponseBytes[RByte] = ISPTarget_TransferByte(Read_FuseLockSigOSCCAL_Params.ReadCommandBytes[RBy
+ 1495              	 .loc 3 408 62 discriminator 3
+ 1496 0058 FB7D     	 ldrb r3,[r7,#23]
+ 1497 005a 0133     	 adds r3,r3,#1
+ 1498 005c FB75     	 strb r3,[r7,#23]
+ 1499              	.L84:
+ 408:ISPProtocol.c **** 	  ResponseBytes[RByte] = ISPTarget_TransferByte(Read_FuseLockSigOSCCAL_Params.ReadCommandBytes[RBy
+ 1500              	 .loc 3 408 2 discriminator 1
+ 1501 005e FB7D     	 ldrb r3,[r7,#23]
+ 1502 0060 032B     	 cmp r3,#3
+ 1503 0062 E8D9     	 bls .L85
+ 1504              	.LBE9:
+ 410:ISPProtocol.c **** 
+ 411:ISPProtocol.c **** 	avrisp_status_payload[0] = V2Command;
+ 1505              	 .loc 3 411 27
+ 1506 0064 0F4A     	 ldr r2,.L86+16
+ 1507 0066 FB79     	 ldrb r3,[r7,#7]
+ 1508 0068 1370     	 strb r3,[r2]
+ 412:ISPProtocol.c **** 	avrisp_status_payload[1] = STATUS_CMD_OK;
+ 1509              	 .loc 3 412 27
+ 1510 006a 0E4B     	 ldr r3,.L86+16
+ 1511 006c 0022     	 movs r2,#0
+ 1512 006e 5A70     	 strb r2,[r3,#1]
+ 413:ISPProtocol.c **** 	avrisp_status_payload[2] = ResponseBytes[Read_FuseLockSigOSCCAL_Params.RetByte - 1];
+ 1513              	 .loc 3 413 72
+ 1514 0070 3B7C     	 ldrb r3,[r7,#16]
+ 1515              	 .loc 3 413 81
+ 1516 0072 013B     	 subs r3,r3,#1
+ 1517              	 .loc 3 413 42
+ 1518 0074 07F11802 	 add r2,r7,#24
+ 1519 0078 1344     	 add r3,r3,r2
+ 1520 007a 13F80C2C 	 ldrb r2,[r3,#-12]
+ 1521              	 .loc 3 413 27
+ 1522 007e 094B     	 ldr r3,.L86+16
+ 1523 0080 9A70     	 strb r2,[r3,#2]
+ 414:ISPProtocol.c **** 	avrisp_status_payload[3] = STATUS_CMD_OK;
+ 1524              	 .loc 3 414 27
+ 1525 0082 084B     	 ldr r3,.L86+16
+ 1526 0084 0022     	 movs r2,#0
+ 1527 0086 DA70     	 strb r2,[r3,#3]
+ 415:ISPProtocol.c **** 		
+ 416:ISPProtocol.c **** 	avrisp_status_payload_size = 4;	
+ 1528              	 .loc 3 416 29
+ 1529 0088 074B     	 ldr r3,.L86+20
+ 1530 008a 0422     	 movs r2,#4
+ 1531 008c 1A80     	 strh r2,[r3]
+ 1532              	.L81:
+ 417:ISPProtocol.c **** }
+ 1533              	 .loc 3 417 1
+ 1534 008e 1C37     	 adds r7,r7,#28
+ 1535              	.LCFI49:
+ 1536              	 .cfi_def_cfa_offset 12
+ 1537 0090 BD46     	 mov sp,r7
+ 1538              	.LCFI50:
+ 1539              	 .cfi_def_cfa_register 13
+ 1540              	 
+ 1541 0092 90BD     	 pop {r4,r7,pc}
+ 1542              	.L87:
+ 1543              	 .align 2
+ 1544              	.L86:
+ 1545 0094 00000000 	 .word udd_g_ctrlreq
+ 1546 0098 00000000 	 .word .LC0
+ 1547 009c 00000000 	 .word iprintf
+ 1548 00a0 00000000 	 .word ISPTarget_TransferByte
+ 1549 00a4 00000000 	 .word avrisp_status_payload
+ 1550 00a8 00000000 	 .word avrisp_status_payload_size
+ 1551              	 .cfi_endproc
+ 1552              	.LFE189:
+ 1554              	 .section .text.ISPProtocol_WriteFuseLock,"ax",%progbits
+ 1555              	 .align 1
+ 1556              	 .global ISPProtocol_WriteFuseLock
+ 1557              	 .syntax unified
+ 1558              	 .thumb
+ 1559              	 .thumb_func
+ 1560              	 .fpu softvfp
+ 1562              	ISPProtocol_WriteFuseLock:
+ 1563              	.LFB190:
+ 418:ISPProtocol.c **** 
+ 419:ISPProtocol.c **** /** Handler for the CMD_WRITE_FUSE_ISP and CMD_WRITE_LOCK_ISP commands, writing the requested confi
+ 420:ISPProtocol.c ****  *  byte to the device.
+ 421:ISPProtocol.c ****  *
+ 422:ISPProtocol.c ****  *  \param[in] V2Command  Issued V2 Protocol command byte from the host
+ 423:ISPProtocol.c ****  */
+ 424:ISPProtocol.c **** void ISPProtocol_WriteFuseLock(uint8_t V2Command)
+ 425:ISPProtocol.c **** {
+ 1564              	 .loc 3 425 1
+ 1565              	 .cfi_startproc
+ 1566              	 
+ 1567              	 
+ 1568 0000 80B5     	 push {r7,lr}
+ 1569              	.LCFI51:
+ 1570              	 .cfi_def_cfa_offset 8
+ 1571              	 .cfi_offset 7,-8
+ 1572              	 .cfi_offset 14,-4
+ 1573 0002 84B0     	 sub sp,sp,#16
+ 1574              	.LCFI52:
+ 1575              	 .cfi_def_cfa_offset 24
+ 1576 0004 00AF     	 add r7,sp,#0
+ 1577              	.LCFI53:
+ 1578              	 .cfi_def_cfa_register 7
+ 1579 0006 0346     	 mov r3,r0
+ 1580 0008 FB71     	 strb r3,[r7,#7]
+ 426:ISPProtocol.c **** 	struct
+ 427:ISPProtocol.c **** 	{
+ 428:ISPProtocol.c **** 		uint8_t WriteCommandBytes[4];
+ 429:ISPProtocol.c **** 	} Write_FuseLockSig_Params;
+ 430:ISPProtocol.c **** 	
+ 431:ISPProtocol.c **** 	if (udd_g_ctrlreq.payload_size != sizeof(Write_FuseLockSig_Params)){
+ 1581              	 .loc 3 431 19
+ 1582 000a 164B     	 ldr r3,.L93
+ 1583 000c 9B89     	 ldrh r3,[r3,#12]
+ 1584              	 .loc 3 431 5
+ 1585 000e 042B     	 cmp r3,#4
+ 1586 0010 06D0     	 beq .L89
+ 432:ISPProtocol.c **** 		printf("Payload size = %d, error!?\n", udd_g_ctrlreq.payload_size);
+ 1587              	 .loc 3 432 55
+ 1588 0012 144B     	 ldr r3,.L93
+ 1589 0014 9B89     	 ldrh r3,[r3,#12]
+ 1590              	 .loc 3 432 3
+ 1591 0016 1946     	 mov r1,r3
+ 1592 0018 1348     	 ldr r0,.L93+4
+ 1593 001a 144B     	 ldr r3,.L93+8
+ 1594 001c 9847     	 blx r3
+ 1595              	.LVL47:
+ 1596 001e 1EE0     	 b .L88
+ 1597              	.L89:
+ 433:ISPProtocol.c **** 		return;
+ 434:ISPProtocol.c **** 	}
+ 435:ISPProtocol.c **** 
+ 436:ISPProtocol.c **** 	memcpy(&Write_FuseLockSig_Params, udd_g_ctrlreq.payload, sizeof(Write_FuseLockSig_Params));
+ 1598              	 .loc 3 436 49
+ 1599 0020 104B     	 ldr r3,.L93
+ 1600 0022 9B68     	 ldr r3,[r3,#8]
+ 1601 0024 1B68     	 ldr r3,[r3]
+ 1602              	 .loc 3 436 2
+ 1603 0026 BB60     	 str r3,[r7,#8]
+ 1604              	.LBB10:
+ 437:ISPProtocol.c **** 
+ 438:ISPProtocol.c **** 	/* Send the Fuse or Lock byte program commands as given by the host to the device */
+ 439:ISPProtocol.c **** 	for (uint8_t SByte = 0; SByte < sizeof(Write_FuseLockSig_Params.WriteCommandBytes); SByte++) {
+ 1605              	 .loc 3 439 15
+ 1606 0028 0023     	 movs r3,#0
+ 1607 002a FB73     	 strb r3,[r7,#15]
+ 1608              	 .loc 3 439 2
+ 1609 002c 0BE0     	 b .L91
+ 1610              	.L92:
+ 440:ISPProtocol.c **** 	  ISPTarget_SendByte(Write_FuseLockSig_Params.WriteCommandBytes[SByte]);
+ 1611              	 .loc 3 440 4 discriminator 3
+ 1612 002e FB7B     	 ldrb r3,[r7,#15]
+ 1613 0030 07F11002 	 add r2,r7,#16
+ 1614 0034 1344     	 add r3,r3,r2
+ 1615 0036 13F8083C 	 ldrb r3,[r3,#-8]
+ 1616 003a 1846     	 mov r0,r3
+ 1617 003c 0C4B     	 ldr r3,.L93+12
+ 1618 003e 9847     	 blx r3
+ 1619              	.LVL48:
+ 439:ISPProtocol.c **** 	  ISPTarget_SendByte(Write_FuseLockSig_Params.WriteCommandBytes[SByte]);
+ 1620              	 .loc 3 439 91 discriminator 3
+ 1621 0040 FB7B     	 ldrb r3,[r7,#15]
+ 1622 0042 0133     	 adds r3,r3,#1
+ 1623 0044 FB73     	 strb r3,[r7,#15]
+ 1624              	.L91:
+ 439:ISPProtocol.c **** 	  ISPTarget_SendByte(Write_FuseLockSig_Params.WriteCommandBytes[SByte]);
+ 1625              	 .loc 3 439 2 discriminator 1
+ 1626 0046 FB7B     	 ldrb r3,[r7,#15]
+ 1627 0048 032B     	 cmp r3,#3
+ 1628 004a F0D9     	 bls .L92
+ 1629              	.LBE10:
+ 441:ISPProtocol.c **** 	}
+ 442:ISPProtocol.c **** 
+ 443:ISPProtocol.c **** 	avrisp_status_payload[0] = V2Command;
+ 1630              	 .loc 3 443 27
+ 1631 004c 094A     	 ldr r2,.L93+16
+ 1632 004e FB79     	 ldrb r3,[r7,#7]
+ 1633 0050 1370     	 strb r3,[r2]
+ 444:ISPProtocol.c **** 	avrisp_status_payload[1] = STATUS_CMD_OK;
+ 1634              	 .loc 3 444 27
+ 1635 0052 084B     	 ldr r3,.L93+16
+ 1636 0054 0022     	 movs r2,#0
+ 1637 0056 5A70     	 strb r2,[r3,#1]
+ 445:ISPProtocol.c **** 	//Supposed to be an extra status byte, but always OK so we don't bother
+ 446:ISPProtocol.c **** //	avrisp_status_payload[2] = STATUS_CMD_OK;
+ 447:ISPProtocol.c **** 	
+ 448:ISPProtocol.c **** 	avrisp_status_payload_size = 2;	
+ 1638              	 .loc 3 448 29
+ 1639 0058 074B     	 ldr r3,.L93+20
+ 1640 005a 0222     	 movs r2,#2
+ 1641 005c 1A80     	 strh r2,[r3]
+ 1642              	.L88:
+ 449:ISPProtocol.c **** }
+ 1643              	 .loc 3 449 1
+ 1644 005e 1037     	 adds r7,r7,#16
+ 1645              	.LCFI54:
+ 1646              	 .cfi_def_cfa_offset 8
+ 1647 0060 BD46     	 mov sp,r7
+ 1648              	.LCFI55:
+ 1649              	 .cfi_def_cfa_register 13
+ 1650              	 
+ 1651 0062 80BD     	 pop {r7,pc}
+ 1652              	.L94:
+ 1653              	 .align 2
+ 1654              	.L93:
+ 1655 0064 00000000 	 .word udd_g_ctrlreq
+ 1656 0068 00000000 	 .word .LC0
+ 1657 006c 00000000 	 .word iprintf
+ 1658 0070 00000000 	 .word ISPTarget_SendByte
+ 1659 0074 00000000 	 .word avrisp_status_payload
+ 1660 0078 00000000 	 .word avrisp_status_payload_size
+ 1661              	 .cfi_endproc
+ 1662              	.LFE190:
+ 1664              	 .section .text.ISPProtocol_SPIMulti,"ax",%progbits
+ 1665              	 .align 1
+ 1666              	 .global ISPProtocol_SPIMulti
+ 1667              	 .syntax unified
+ 1668              	 .thumb
+ 1669              	 .thumb_func
+ 1670              	 .fpu softvfp
+ 1672              	ISPProtocol_SPIMulti:
+ 1673              	.LFB191:
+ 450:ISPProtocol.c **** 
+ 451:ISPProtocol.c **** /** Handler for the CMD_SPI_MULTI command, writing and reading arbitrary SPI data to and from the a
+ 452:ISPProtocol.c **** void ISPProtocol_SPIMulti(void)
+ 453:ISPProtocol.c **** {
+ 1674              	 .loc 3 453 1
+ 1675              	 .cfi_startproc
+ 1676              	 
+ 1677              	 
+ 1678              	 
+ 1679 0000 80B4     	 push {r7}
+ 1680              	.LCFI56:
+ 1681              	 .cfi_def_cfa_offset 4
+ 1682              	 .cfi_offset 7,-4
+ 1683 0002 00AF     	 add r7,sp,#0
+ 1684              	.LCFI57:
+ 1685              	 .cfi_def_cfa_register 7
+ 454:ISPProtocol.c **** 	//Not implemented for this device, alternative methods of accessing SPI interface present
+ 455:ISPProtocol.c **** 	;
+ 456:ISPProtocol.c **** }
+ 1686              	 .loc 3 456 1
+ 1687 0004 00BF     	 nop
+ 1688 0006 BD46     	 mov sp,r7
+ 1689              	.LCFI58:
+ 1690              	 .cfi_def_cfa_register 13
+ 1691              	 
+ 1692 0008 80BC     	 pop {r7}
+ 1693              	.LCFI59:
+ 1694              	 .cfi_restore 7
+ 1695              	 .cfi_def_cfa_offset 0
+ 1696 000a 7047     	 bx lr
+ 1697              	 .cfi_endproc
+ 1698              	.LFE191:
+ 1700              	 .global __aeabi_uldivmod
+ 1701              	 .section .text.ISPProtocol_DelayMS,"ax",%progbits
+ 1702              	 .align 1
+ 1703              	 .global ISPProtocol_DelayMS
+ 1704              	 .syntax unified
+ 1705              	 .thumb
+ 1706              	 .thumb_func
+ 1707              	 .fpu softvfp
+ 1709              	ISPProtocol_DelayMS:
+ 1710              	.LFB192:
+ 457:ISPProtocol.c **** 
+ 458:ISPProtocol.c **** /** Blocking delay for a given number of milliseconds. This provides a simple wrapper around
+ 459:ISPProtocol.c ****  *  the avr-libc provided delay function, so that the delay function can be called with a
+ 460:ISPProtocol.c ****  *  constant value (to prevent run-time floating point operations being required).
+ 461:ISPProtocol.c ****  *
+ 462:ISPProtocol.c ****  *  \param[in] DelayMS  Number of milliseconds to delay for
+ 463:ISPProtocol.c ****  */
+ 464:ISPProtocol.c **** void ISPProtocol_DelayMS(uint8_t DelayMS)
+ 465:ISPProtocol.c **** {
+ 1711              	 .loc 3 465 1
+ 1712              	 .cfi_startproc
+ 1713              	 
+ 1714              	 
+ 1715 0000 2DE9B043 	 push {r4,r5,r7,r8,r9,lr}
+ 1716              	.LCFI60:
+ 1717              	 .cfi_def_cfa_offset 24
+ 1718              	 .cfi_offset 4,-24
+ 1719              	 .cfi_offset 5,-20
+ 1720              	 .cfi_offset 7,-16
+ 1721              	 .cfi_offset 8,-12
+ 1722              	 .cfi_offset 9,-8
+ 1723              	 .cfi_offset 14,-4
+ 1724 0004 82B0     	 sub sp,sp,#8
+ 1725              	.LCFI61:
+ 1726              	 .cfi_def_cfa_offset 32
+ 1727 0006 00AF     	 add r7,sp,#0
+ 1728              	.LCFI62:
+ 1729              	 .cfi_def_cfa_register 7
+ 1730 0008 0346     	 mov r3,r0
+ 1731 000a FB71     	 strb r3,[r7,#7]
+ 466:ISPProtocol.c **** 	if (DelayMS){delay_ms(DelayMS);};
+ 1732              	 .loc 3 466 5
+ 1733 000c FB79     	 ldrb r3,[r7,#7]
+ 1734 000e 002B     	 cmp r3,#0
+ 1735 0010 40D0     	 beq .L98
+ 1736              	 .loc 3 466 15 discriminator 1
+ 1737 0012 F879     	 ldrb r0,[r7,#7]
+ 1738 0014 4FF00001 	 mov r1,#0
+ 1739 0018 0246     	 mov r2,r0
+ 1740 001a 0B46     	 mov r3,r1
+ 1741 001c 4FF00004 	 mov r4,#0
+ 1742 0020 4FF00005 	 mov r5,#0
+ 1743 0024 DD00     	 lsls r5,r3,#3
+ 1744 0026 45EA5275 	 orr r5,r5,r2,lsr#29
+ 1745 002a D400     	 lsls r4,r2,#3
+ 1746 002c 2246     	 mov r2,r4
+ 1747 002e 2B46     	 mov r3,r5
+ 1748 0030 121A     	 subs r2,r2,r0
+ 1749 0032 63EB0103 	 sbc r3,r3,r1
+ 1750 0036 4FF00004 	 mov r4,#0
+ 1751 003a 4FF00005 	 mov r5,#0
+ 1752 003e 5D01     	 lsls r5,r3,#5
+ 1753 0040 45EAD265 	 orr r5,r5,r2,lsr#27
+ 1754 0044 5401     	 lsls r4,r2,#5
+ 1755 0046 2246     	 mov r2,r4
+ 1756 0048 2B46     	 mov r3,r5
+ 1757 004a 1218     	 adds r2,r2,r0
+ 1758 004c 41EB0303 	 adc r3,r1,r3
+ 1759 0050 4FF00000 	 mov r0,#0
+ 1760 0054 4FF00001 	 mov r1,#0
+ 1761 0058 D903     	 lsls r1,r3,#15
+ 1762 005a 41EA5241 	 orr r1,r1,r2,lsr#17
+ 1763 005e D003     	 lsls r0,r2,#15
+ 1764 0060 0246     	 mov r2,r0
+ 1765 0062 0B46     	 mov r3,r1
+ 1766 0064 1046     	 mov r0,r2
+ 1767 0066 1946     	 mov r1,r3
+ 1768 0068 43F2AF62 	 movw r2,#13999
+ 1769 006c 4FF00003 	 mov r3,#0
+ 1770 0070 10EB0208 	 adds r8,r0,r2
+ 1771 0074 41EB0309 	 adc r9,r1,r3
+ 1772 0078 094C     	 ldr r4,.L99
+ 1773 007a 43F2B062 	 movw r2,#14000
+ 1774 007e 4FF00003 	 mov r3,#0
+ 1775 0082 4046     	 mov r0,r8
+ 1776 0084 4946     	 mov r1,r9
+ 1777 0086 A047     	 blx r4
+ 1778              	.LVL49:
+ 1779 0088 0246     	 mov r2,r0
+ 1780 008a 0B46     	 mov r3,r1
+ 1781 008c 1346     	 mov r3,r2
+ 1782 008e 1846     	 mov r0,r3
+ 1783 0090 044B     	 ldr r3,.L99+4
+ 1784 0092 9847     	 blx r3
+ 1785              	.LVL50:
+ 1786              	.L98:
+ 467:ISPProtocol.c **** }
+ 1787              	 .loc 3 467 1
+ 1788 0094 00BF     	 nop
+ 1789 0096 0837     	 adds r7,r7,#8
+ 1790              	.LCFI63:
+ 1791              	 .cfi_def_cfa_offset 24
+ 1792 0098 BD46     	 mov sp,r7
+ 1793              	.LCFI64:
+ 1794              	 .cfi_def_cfa_register 13
+ 1795              	 
+ 1796 009a BDE8B083 	 pop {r4,r5,r7,r8,r9,pc}
+ 1797              	.L100:
+ 1798 009e 00BF     	 .align 2
+ 1799              	.L99:
+ 1800 00a0 00000000 	 .word __aeabi_uldivmod
+ 1801 00a4 00000000 	 .word portable_delay_cycles
+ 1802              	 .cfi_endproc
+ 1803              	.LFE192:
+ 1805              	 .text
+ 1806              	.Letext0:
+ 1807              	 .file 4 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 1808              	 .file 5 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 1809              	 .file 6 ".././hal/sam3u1c/inc/sam3u1c.h"
+ 1810              	 .file 7 ".././hal/sam3u1c/inc/core_cm3.h"
+ 1811              	 .file 8 ".././hal/sam3u1c/inc/system_sam3u.h"
+ 1812              	 .file 9 ".././hal/sam3u1c/inc/component/component_spi.h"
+ 1813              	 .file 10 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\lib\\gcc\\arm-none-eabi\\9.3.1\\include\\stddef.h"
+ 1814              	 .file 11 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_types.h"
+ 1815              	 .file 12 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\reent.h"
+ 1816              	 .file 13 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\lock.h"
+ 1817              	 .file 14 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\stdlib.h"
+ 1818              	 .file 15 ".././hal/sam3u1c/inc/interrupt/interrupt_sam_nvic.h"
+ 1819              	 .file 16 ".././hal/sam3u1c/inc/compiler.h"
+ 1820              	 .file 17 ".././hal/sam3u1c/inc/sam/sleepmgr.h"
+ 1821              	 .file 18 "./conf_usb.h"
+ 1822              	 .file 19 ".././hal/sam3u1c/inc/usb_protocol.h"
+ 1823              	 .file 20 ".././hal/sam3u1c/inc/udi.h"
+ 1824              	 .file 21 ".././hal/sam3u1c/inc/udc_desc.h"
+ 1825              	 .file 22 ".././hal/sam3u1c/inc/udd.h"
+ 1826              	 .file 23 ".././hal/sam3u1c/inc/udi_vendor.h"
+ 1827              	 .file 24 "XPROGTimeout.h"
+ 1828              	 .file 25 "V2Protocol.h"
+ 1829              	 .file 26 ".././hal/sam3u1c/inc/sam/cycle_counter.h"
+ 1830              	 .file 27 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\stdio.h"
+ 1831              	 .file 28 "<built-in>"
+DEFINED SYMBOLS
+                            *ABS*:00000000 ISPProtocol.c
+    {standard input}:16     .bss.cpu_irq_critical_section_counter:00000000 $d
+    {standard input}:19     .bss.cpu_irq_critical_section_counter:00000000 cpu_irq_critical_section_counter
+    {standard input}:24     .bss.cpu_irq_prev_interrupt_state:00000000 cpu_irq_prev_interrupt_state
+    {standard input}:25     .bss.cpu_irq_prev_interrupt_state:00000000 $d
+    {standard input}:27     .text.spi_is_tx_empty:00000000 $t
+    {standard input}:34     .text.spi_is_tx_empty:00000000 spi_is_tx_empty
+    {standard input}:86     .text.ISPTarget_SendByte:00000000 $t
+    {standard input}:92     .text.ISPTarget_SendByte:00000000 ISPTarget_SendByte
+    {standard input}:135    .text.ISPTarget_SendByte:00000020 $d
+    {standard input}:141    .text.ISPTarget_ReceiveByte:00000000 $t
+    {standard input}:147    .text.ISPTarget_ReceiveByte:00000000 ISPTarget_ReceiveByte
+    {standard input}:188    .text.ISPTarget_ReceiveByte:00000020 $d
+    {standard input}:194    .text.ISPTarget_TransferByte:00000000 $t
+    {standard input}:200    .text.ISPTarget_TransferByte:00000000 ISPTarget_TransferByte
+    {standard input}:255    .text.ISPTarget_TransferByte:00000030 $d
+    {standard input}:263    .rodata:00000000 $d
+    {standard input}:270    .text.ISPProtocol_EnterISPMode:00000000 $t
+    {standard input}:277    .text.ISPProtocol_EnterISPMode:00000000 ISPProtocol_EnterISPMode
+    {standard input}:493    .text.ISPProtocol_EnterISPMode:00000108 $d
+    {standard input}:1709   .text.ISPProtocol_DelayMS:00000000 ISPProtocol_DelayMS
+    {standard input}:509    .text.ISPProtocol_LeaveISPMode:00000000 $t
+    {standard input}:516    .text.ISPProtocol_LeaveISPMode:00000000 ISPProtocol_LeaveISPMode
+    {standard input}:603    .text.ISPProtocol_LeaveISPMode:00000058 $d
+    {standard input}:615    .text.ISPProtocol_ProgramMemory:00000000 $t
+    {standard input}:622    .text.ISPProtocol_ProgramMemory:00000000 ISPProtocol_ProgramMemory
+    {standard input}:1037   .text.ISPProtocol_ProgramMemory:00000238 $d
+    {standard input}:1056   .text.ISPProtocol_ReadMemory:00000000 $t
+    {standard input}:1063   .text.ISPProtocol_ReadMemory:00000000 ISPProtocol_ReadMemory
+    {standard input}:1263   .text.ISPProtocol_ReadMemory:000000f4 $d
+    {standard input}:1281   .text.ISPProtocol_ChipErase:00000000 $t
+    {standard input}:1288   .text.ISPProtocol_ChipErase:00000000 ISPProtocol_ChipErase
+    {standard input}:1405   .text.ISPProtocol_ChipErase:00000084 $d
+    {standard input}:1417   .text.ISPProtocol_ReadFuseLockSigOSCCAL:00000000 $t
+    {standard input}:1424   .text.ISPProtocol_ReadFuseLockSigOSCCAL:00000000 ISPProtocol_ReadFuseLockSigOSCCAL
+    {standard input}:1545   .text.ISPProtocol_ReadFuseLockSigOSCCAL:00000094 $d
+    {standard input}:1555   .text.ISPProtocol_WriteFuseLock:00000000 $t
+    {standard input}:1562   .text.ISPProtocol_WriteFuseLock:00000000 ISPProtocol_WriteFuseLock
+    {standard input}:1655   .text.ISPProtocol_WriteFuseLock:00000064 $d
+    {standard input}:1665   .text.ISPProtocol_SPIMulti:00000000 $t
+    {standard input}:1672   .text.ISPProtocol_SPIMulti:00000000 ISPProtocol_SPIMulti
+    {standard input}:1702   .text.ISPProtocol_DelayMS:00000000 $t
+    {standard input}:1800   .text.ISPProtocol_DelayMS:000000a0 $d
+                           .group:00000000 wm4.0.2cd8a2cb7ff4c48cec7eeec776a1dd8c
+                           .group:00000000 wm4.stddef.h.39.27677723d43e5b5a7afdf8d798429f1d
+                           .group:00000000 wm4.parts.h.45.afc900689b2c82332e69d798acedc875
+                           .group:00000000 wm4.tpaste.h.45.af3ee36765243b162c88f7f944858426
+                           .group:00000000 wm4.stringz.h.45.c4f6cbe0005e6c1d2139bc6c0e4f4722
+                           .group:00000000 wm4.mrepeat.h.59.c5daaed201a4340b0edf435161d0b77f
+                           .group:00000000 wm4._newlib_version.h.4.1ef4e12f167f8b69d7c30054be56050d
+                           .group:00000000 wm4.features.h.33.5bd1eea2d80518b50f7af0b5ce6750e0
+                           .group:00000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:00000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:00000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:00000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:00000000 wm4.sam3u1c.h.220.c0b54b5a55bc87791749ae17b1487779
+                           .group:00000000 wm4.core_cm3.h.32.5c59c312db585622d253fdb887b0afb1
+                           .group:00000000 wm4.core_cmInstr.h.25.d8165482ef3061013a2fc83e2d85f3d9
+                           .group:00000000 wm4.core_cm3.h.127.b561404f2a159dc517b409bc244d16c1
+                           .group:00000000 wm4.component_adc.h.43.d49887380d07d1cd08cc4e37b3485e31
+                           .group:00000000 wm4.component_adc12b.h.43.eadc09f1073923fb91f1f393cc397dcb
+                           .group:00000000 wm4.component_chipid.h.43.15825c969b1cc9eeea3d9416499874c8
+                           .group:00000000 wm4.component_dmac.h.43.cc8187b1cf6bfeadc91b14fdd28b9e8b
+                           .group:00000000 wm4.component_efc.h.43.cb1b3997ad9ea3733ad421ecbfd02fdd
+                           .group:00000000 wm4.component_gpbr.h.43.49b7e13894fe38b29f2243bbbe530227
+                           .group:00000000 wm4.component_hsmci.h.43.7b7194c92e1480c038f3342f7cec440a
+                           .group:00000000 wm4.component_matrix.h.43.1d209838fb75b4827119203a357141ee
+                           .group:00000000 wm4.component_pdc.h.43.19528a5f9ef5a348234ea06f89069c55
+                           .group:00000000 wm4.component_pio.h.43.163b46c3683ccf92e8de39a5554f50e8
+                           .group:00000000 wm4.component_pmc.h.43.ee4f030602866917aeed15fb2b948de8
+                           .group:00000000 wm4.component_pwm.h.43.ab6262a86f0aea354b43fe6dce7e7eb3
+                           .group:00000000 wm4.component_rstc.h.43.4eb59dc2ddcf585fabf251d0c329fcdd
+                           .group:00000000 wm4.component_rtc.h.43.ba8ccafc772b11d562a3cceab8b95072
+                           .group:00000000 wm4.component_rtt.h.43.3206ef8f067e5e747c3c4c7e719c1429
+                           .group:00000000 wm4.component_smc.h.43.907847915f1a5616734199d7e34424fa
+                           .group:00000000 wm4.component_spi.h.43.a2a09df64ab768c0a32be55285c74ded
+                           .group:00000000 wm4.component_ssc.h.43.d7c78f990c13fc511671b64798c4bcd0
+                           .group:00000000 wm4.component_supc.h.43.7d17f8e5ed3ba815e84381152735062f
+                           .group:00000000 wm4.component_tc.h.43.662eac8137408372b4f9d26c0b5f8621
+                           .group:00000000 wm4.component_twi.h.43.eda18625bd851fc4605861f5b3240c0b
+                           .group:00000000 wm4.component_uart.h.43.2d92735c5ea05c973661e1ba99a2f37c
+                           .group:00000000 wm4.component_udphs.h.43.21cecd26a4e44df0013037f29f2716e4
+                           .group:00000000 wm4.component_usart.h.43.7872f8f455adb38b67b9fbdb15657fbe
+                           .group:00000000 wm4.component_wdt.h.43.e31e10a5469b62c3660b49ab250f802f
+                           .group:00000000 wm4.instance_hsmci.h.43.e233236cc7fd5a805539a7ecc0e1d8d2
+                           .group:00000000 wm4.instance_ssc.h.43.c0cfabc3b9f3bb60745c913111bce965
+                           .group:00000000 wm4.instance_spi.h.43.570ae46af19e4179d9796872b9a8b9bc
+                           .group:00000000 wm4.instance_tc0.h.43.049b3a82387d2961594190609e896a29
+                           .group:00000000 wm4.instance_twi0.h.43.255dc0afa9e0d45eaea0a935eca2f103
+                           .group:00000000 wm4.instance_twi1.h.43.652d1d407893f259f2a817544ba662c2
+                           .group:00000000 wm4.instance_pwm.h.43.88294acec3ca56d6fc521038521a1567
+                           .group:00000000 wm4.instance_usart0.h.43.e26677512aee3dd3bedd71d394410000
+                           .group:00000000 wm4.instance_usart1.h.43.1ba97dbc6610d9fb3132b9d845688201
+                           .group:00000000 wm4.instance_usart2.h.43.baa1bf30b3c5acdee90c4a1f50fe9ebd
+                           .group:00000000 wm4.instance_udphs.h.43.b1ce94181e0d1f22877b81c6040a4363
+                           .group:00000000 wm4.instance_adc12b.h.43.d73ed59e867ccdfdb846d9ef32a50c0c
+                           .group:00000000 wm4.instance_adc.h.43.2b7611a00afeb4c555339b844d4b8456
+                           .group:00000000 wm4.instance_dmac.h.43.ee72691d84889c8f285932be4a075ddb
+                           .group:00000000 wm4.instance_smc.h.43.29610fd00979caaaa65821ad40e9da06
+                           .group:00000000 wm4.instance_matrix.h.43.01ee474141594385374c41a29daeeefe
+                           .group:00000000 wm4.instance_pmc.h.43.37430325ed7b8b24c3fe640c41c29ef5
+                           .group:00000000 wm4.instance_uart.h.43.bd378395ba022bc8670c82ebe656fbbd
+                           .group:00000000 wm4.instance_chipid.h.43.29cd8fb600f149aa58830fcc78fe36f9
+                           .group:00000000 wm4.instance_efc0.h.43.6b85dba20721a7e9fc4350e78d193680
+                           .group:00000000 wm4.instance_efc1.h.43.2c5e94fc4d2742678318d73450d08d57
+                           .group:00000000 wm4.instance_pioa.h.43.eeb46cc3bfe01a1f28e67aa3a6851ed8
+                           .group:00000000 wm4.instance_piob.h.43.652ce26b6c37ac56f9ed42a9216d9aca
+                           .group:00000000 wm4.instance_rstc.h.43.c5de224364a50a85f237c0b864aa4c8f
+                           .group:00000000 wm4.instance_supc.h.43.a5f1a5ca08f468ccf34ed3653e045f1f
+                           .group:00000000 wm4.instance_rtt.h.43.8622b192c23334996132415e3095df7f
+                           .group:00000000 wm4.instance_wdt.h.43.407ea53e133eacf09acf2c7fcb6b7524
+                           .group:00000000 wm4.instance_rtc.h.43.f70b77f9180401c8d9d920cb4a1cd166
+                           .group:00000000 wm4.instance_gpbr.h.43.9066cb40d557f6755101368854272348
+                           .group:00000000 wm4.sam3u1c.h.312.ae446d8e874d34ca3df78faf190c678f
+                           .group:00000000 wm4.pio_sam3u1c.h.43.18b24f16e1710ff2a400d88fe33c5107
+                           .group:00000000 wm4.sam3u1c.h.442.cd4bbc3af493e98bc9b60c2905132ed0
+                           .group:00000000 wm4.newlib.h.8.7cb3972cd43265932d4782d5eb589854
+                           .group:00000000 wm4.ieeefp.h.77.f33a4dce62116f6f5175ff8bae57a54c
+                           .group:00000000 wm4.config.h.224.c701144a7b0518c6ee9b9b5465b79f81
+                           .group:00000000 wm4._ansi.h.31.de524f58584151836e90d8620a16f8e8
+                           .group:00000000 wm4.stdio.h.31.7c0e28c411445f3f9c5b11accf882760
+                           .group:00000000 wm4.stddef.h.155.ba788add86a0e365f264484f110c3c29
+                           .group:00000000 wm4.cdefs.h.49.2bf373aedffd8b393ccd11dc057e8547
+                           .group:00000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:00000000 wm4._types.h.20.dd0d04dca3800a0d2a6129b87f3adbb2
+                           .group:00000000 wm4.stddef.h.155.3588ebfdd1e8c7ede80509bb9c3b8009
+                           .group:00000000 wm4._types.h.127.34941de1b2539d59d5cac00e0dd27a45
+                           .group:00000000 wm4.reent.h.17.e292bf8b0bec6c96e131a54347145a30
+                           .group:00000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:00000000 wm4.reent.h.77.dcd6129ff07fe81bd5636db29abe53b2
+                           .group:00000000 wm4.types.h.40.8b6acba56cefbb11746718204edc8f5e
+                           .group:00000000 wm4._endian.h.31.65a10590763c3dde1ac4a7f66d7d4891
+                           .group:00000000 wm4.endian.h.9.49f3a4695c1b61e8a0808de3c4a106cb
+                           .group:00000000 wm4._timeval.h.32.bec3221fa7a9bb0bdde696c9c57e47d2
+                           .group:00000000 wm4.timespec.h.41.d855182eb0e690443ab8651bcedca6e1
+                           .group:00000000 wm4.select.h.19.97ca6fd0c752a0f3b6719fd314d361e6
+                           .group:00000000 wm4.types.h.51.5571ec98f267d17d3c670b7a3ba33afa
+                           .group:00000000 wm4.sched.h.22.c60982713a5c428609783c78f9c78d95
+                           .group:00000000 wm4._pthreadtypes.h.36.fcee9961c35163dde6267ef772ad1972
+                           .group:00000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:00000000 wm4.stdio.h.81.932d0c162786b883f622b8d05c120c78
+                           .group:00000000 wm4.stdbool.h.29.07dce69c3b78884144b7f7bd19483461
+                           .group:00000000 wm4.stdlib.h.13.4ed386f5c1a80d71e72172885d946ef2
+                           .group:00000000 wm4.alloca.h.8.dfc0c703c47ec3e69746825b17d9e66d
+                           .group:00000000 wm4.stdlib.h.56.f4862cfbf4363a1db01842d5bdf72c18
+                           .group:00000000 wm4.compiler.h.88.0e6ad966134fa012ce9a34053d3f48aa
+                           .group:00000000 wm4.interrupt_sam_nvic.h.45.4876da6c127868305d66389e87e0876f
+                           .group:00000000 wm4.compiler.h.425.66dd29c210af3287ed85ec3553a3e6b1
+                           .group:00000000 wm4.conf_clock.h.45.5dc276d21b4d793a62f1a9757cc18d5c
+                           .group:00000000 wm4.board.h.48.ce8d06c36cc583d9bf62738411f62e4d
+                           .group:00000000 wm4.cw521.h.62.1727e9a463c60d459e36c42a4e5a0f86
+                           .group:00000000 wm4.pmc.h.45.bbe1bf97a811e3b283420b2eeadf0b35
+                           .group:00000000 wm4.osc.h.94.b766cddafe899eca01d775f7b2906680
+                           .group:00000000 wm4.pll.h.45.a605c31ca466ae25752a678e8572be48
+                           .group:00000000 wm4.sysclk.h.156.541a142b0016a365728ea1f7c0e3db84
+                           .group:00000000 wm4.cycle_counter.h.44.fde38fb1acfd6555d72e65fae6e86af5
+                           .group:00000000 wm4.delay.h.105.f2a8ab5e71eab0684cf6985b5c2fc9e8
+                           .group:00000000 wm4.efc.h.45.ec5734119c630498df26106bacf9a684
+                           .group:00000000 wm4.flash_efc.h.90.a4a39259055880dc10b861c5fe1b99e7
+                           .group:00000000 wm4.pio.h.45.95f22b0ea02ddc698ec54fc56bf6f38c
+                           .group:00000000 wm4.sam_gpio.h.50.76a45c51855d665134f8211cd601d693
+                           .group:00000000 wm4.ioport_pio.h.44.373b34364b4ef25fac62017cd942a761
+                           .group:00000000 wm4.sleep.h.45.ef10e1aee6f903405be19980a8333b7f
+                           .group:00000000 wm4.smc.h.45.17a94aa976bb62b1109d03e8a314a569
+                           .group:00000000 wm4.spi.h.45.712c66be09ffbac297c2e00923077297
+                           .group:00000000 wm4.conf_sleepmgr.h.44.d825b913294720022fefe7201514fca3
+                           .group:00000000 wm4.twi.h.45.ba70de99d200dafba570ce8f7058737a
+                           .group:00000000 wm4.twi_master.h.90.08c062d0fa8f8aeea342ceeb79263395
+                           .group:00000000 wm4.twi_slave.h.45.8b3d1a3d2e43ebc7d0161f4142989871
+                           .group:00000000 wm4.uart.h.45.a5af743b8064bd84d1a6438457096e18
+                           .group:00000000 wm4.usart.h.46.eae6fe592b7ea0768efef8d312e7f44f
+                           .group:00000000 wm4.conf_uart_serial.h.45.245cdceaa1a3811fd043bf660ce38054
+                           .group:00000000 wm4.conf_usb.h.45.2f7207bed7467dcf9cb11fbc6ebe572c
+                           .group:00000000 wm4.udi_vendor_conf.h.56.4348c8e521d040f44df868219dae6785
+                           .group:00000000 wm4.usb_atmel.h.45.c31b525dbe01f8d9e2022a03356ec174
+                           .group:00000000 wm4.usb_protocol.h.63.850c58f3469fce50a9ac9a6854f7594b
+                           .group:00000000 wm4.usb_protocol_vendor.h.45.83dfe073428ff799abc3ed1c7b04c77d
+                           .group:00000000 wm4.udc_desc.h.77.5fec235bd7553e7256e345e020840072
+                           .group:00000000 wm4.udd.h.103.3ccc59b50c14ec70568e6136eeb22d56
+                           .group:00000000 wm4.udi_vendor.h.125.7b9085237d4d4a9757f4c148fba1918d
+                           .group:00000000 wm4.V2ProtocolConstants.h.37.9bf16fd2ae5d223b4504404f34063b2d
+                           .group:00000000 wm4.ISPTarget.h.50.523ab5c75c84ecee1eba3c8576d9b11a
+                           .group:00000000 wm4.V2ProtocolParams.h.47.77ffe24f39fdee76136b1a6cd17622ea
+                           .group:00000000 wm4.V2Protocol.h.50.00f5564fabc070724b66bfdabab7441a
+                           .group:00000000 wm4.ISPProtocol.h.47.c4612f03402c6c8309b10b8bfa8458bb
+                           .group:00000000 wm4.string.h.8.c4b8571ce60dff2817f43fec8b86aecd
+
+UNDEFINED SYMBOLS
+spi_write
+spi_read
+udd_g_ctrlreq
+iprintf
+CurrentAddress
+ISPTarget_EnableTargetISP
+ISPTarget_ChangeTargetResetLine
+TimeoutTicksRemaining
+avrisp_status_payload
+avrisp_status_payload_size
+ISPTarget_DisableTargetISP
+memcpy
+MustLoadExtendedAddress
+ISPTarget_LoadExtendedAddress
+ISPTarget_WaitForProgComplete
+ISPTarget_WaitWhileTargetBusy
+__aeabi_uldivmod
+portable_delay_cycles
