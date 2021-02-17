@@ -3792,7 +3792,7 @@ DEFINED SYMBOLS
     {standard input}:2133   .text.flash_read_unique_id:00000000 $t
     {standard input}:2140   .text.flash_read_unique_id:00000000 flash_read_unique_id
     {standard input}:2231   .text.flash_read_unique_id:00000068 $d
-                           .group:00000000 wm4.0.2cd8a2cb7ff4c48cec7eeec776a1dd8c
+                           .group:00000000 wm4.0.84f01b7600eb36308f16331d3d2e9779
                            .group:00000000 wm4._newlib_version.h.4.1ef4e12f167f8b69d7c30054be56050d
                            .group:00000000 wm4.newlib.h.18.1c9fedb6b3cd797cff253cc0fd593ef2
                            .group:00000000 wm4.ieeefp.h.77.f33a4dce62116f6f5175ff8bae57a54c
@@ -3902,8 +3902,8 @@ DEFINED SYMBOLS
                            .group:00000000 wm4.efc.h.45.ec5734119c630498df26106bacf9a684
                            .group:00000000 wm4.flash_efc.h.90.a4a39259055880dc10b861c5fe1b99e7
                            .group:00000000 wm4.conf_clock.h.45.5dc276d21b4d793a62f1a9757cc18d5c
-                           .group:00000000 wm4.board.h.48.ce8d06c36cc583d9bf62738411f62e4d
-                           .group:00000000 wm4.cw521.h.62.1727e9a463c60d459e36c42a4e5a0f86
+                           .group:00000000 wm4.board.h.48.3fc21f768e842120f151448a98046af0
+                           .group:00000000 wm4.cw521.h.62.6f487d78438f1a237b2b554798be063f
                            .group:00000000 wm4.pmc.h.45.bbe1bf97a811e3b283420b2eeadf0b35
                            .group:00000000 wm4.osc.h.94.b766cddafe899eca01d775f7b2906680
                            .group:00000000 wm4.pll.h.45.a605c31ca466ae25752a678e8572be48

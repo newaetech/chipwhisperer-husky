@@ -2375,7 +2375,7 @@ DEFINED SYMBOLS
     {standard input}:983    .text.pmc_wait_wakeup_clocks_restore:00000000 $t
     {standard input}:990    .text.pmc_wait_wakeup_clocks_restore:00000000 pmc_wait_wakeup_clocks_restore
     {standard input}:1074   .text.pmc_wait_wakeup_clocks_restore:0000003c $d
-                           .group:00000000 wm4.0.2cd8a2cb7ff4c48cec7eeec776a1dd8c
+                           .group:00000000 wm4.0.84f01b7600eb36308f16331d3d2e9779
                            .group:00000000 wm4.stddef.h.39.27677723d43e5b5a7afdf8d798429f1d
                            .group:00000000 wm4.parts.h.45.afc900689b2c82332e69d798acedc875
                            .group:00000000 wm4.tpaste.h.45.af3ee36765243b162c88f7f944858426
@@ -2482,8 +2482,8 @@ DEFINED SYMBOLS
                            .group:00000000 wm4.compiler.h.425.66dd29c210af3287ed85ec3553a3e6b1
                            .group:00000000 wm4.sleep.h.45.ef10e1aee6f903405be19980a8333b7f
                            .group:00000000 wm4.pmc.h.58.e82ab76d364abd9761d4d0905e15fc60
-                           .group:00000000 wm4.board.h.48.ce8d06c36cc583d9bf62738411f62e4d
-                           .group:00000000 wm4.cw521.h.62.1727e9a463c60d459e36c42a4e5a0f86
+                           .group:00000000 wm4.board.h.48.3fc21f768e842120f151448a98046af0
+                           .group:00000000 wm4.cw521.h.62.6f487d78438f1a237b2b554798be063f
 
 UNDEFINED SYMBOLS
 g_interrupt_enabled

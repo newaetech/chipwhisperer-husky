@@ -342,7 +342,7 @@ DEFINED SYMBOLS
     {standard input}:129    .text.LED_On:00000000 $t
     {standard input}:136    .text.LED_On:00000000 LED_On
     {standard input}:213    .text.LED_On:00000050 $d
-                           .group:00000000 wm4.0.2cd8a2cb7ff4c48cec7eeec776a1dd8c
+                           .group:00000000 wm4.0.84f01b7600eb36308f16331d3d2e9779
                            .group:00000000 wm4.stddef.h.39.27677723d43e5b5a7afdf8d798429f1d
                            .group:00000000 wm4.parts.h.45.afc900689b2c82332e69d798acedc875
                            .group:00000000 wm4.tpaste.h.45.af3ee36765243b162c88f7f944858426
@@ -447,8 +447,8 @@ DEFINED SYMBOLS
                            .group:00000000 wm4.compiler.h.88.0e6ad966134fa012ce9a34053d3f48aa
                            .group:00000000 wm4.interrupt_sam_nvic.h.45.4876da6c127868305d66389e87e0876f
                            .group:00000000 wm4.compiler.h.425.66dd29c210af3287ed85ec3553a3e6b1
-                           .group:00000000 wm4.board.h.69.3670053ec9e880dbc2016be2b8dca792
-                           .group:00000000 wm4.cw521.h.62.1727e9a463c60d459e36c42a4e5a0f86
+                           .group:00000000 wm4.board.h.69.393030e13de4d1fe453f71b0383cfb00
+                           .group:00000000 wm4.cw521.h.62.6f487d78438f1a237b2b554798be063f
                            .group:00000000 wm4.pio.h.45.95f22b0ea02ddc698ec54fc56bf6f38c
                            .group:00000000 wm4.sam_gpio.h.50.76a45c51855d665134f8211cd601d693
 

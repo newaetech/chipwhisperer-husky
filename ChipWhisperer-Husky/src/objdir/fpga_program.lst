@@ -852,13 +852,13 @@
   26:fpga_program.c ****     FPGA_NPROG_SETUP();
  275              	 .loc 3 26 5
  276 0004 4FF06051 	 mov r1,#939524096
- 277 0008 1420     	 movs r0,#20
+ 277 0008 1920     	 movs r0,#25
  278 000a 034B     	 ldr r3,.L27
  279 000c 9847     	 blx r3
  280              	.LVL3:
   27:fpga_program.c ****     FPGA_NPROG_HIGH();
  281              	 .loc 3 27 5
- 282 000e 1420     	 movs r0,#20
+ 282 000e 1920     	 movs r0,#25
  283 0010 024B     	 ldr r3,.L27+4
  284 0012 9847     	 blx r3
  285              	.LVL4:
@@ -904,7 +904,7 @@
   33:fpga_program.c ****     /* Init - set program low to erase FPGA */
   34:fpga_program.c ****     FPGA_NPROG_LOW();
  322              	 .loc 3 34 5
- 323 0006 1420     	 movs r0,#20
+ 323 0006 1920     	 movs r0,#25
  324 0008 144B     	 ldr r3,.L30
  325 000a 9847     	 blx r3
  326              	.LVL5:
@@ -947,14 +947,14 @@
  354              	.LVL8:
   44:fpga_program.c ****     FPGA_DO_SETUP();
  355              	 .loc 3 44 5
- 356 0032 4FF04051 	 mov r1,#805306368
+ 356 0032 4FF00061 	 mov r1,#134217728
  357 0036 1220     	 movs r0,#18
  358 0038 0E4B     	 ldr r3,.L30+24
  359 003a 9847     	 blx r3
  360              	.LVL9:
   45:fpga_program.c ****     FPGA_CCLK_SETUP();
  361              	 .loc 3 45 5
- 362 003c 4FF04051 	 mov r1,#805306368
+ 362 003c 4FF00061 	 mov r1,#134217728
  363 0040 1120     	 movs r0,#17
  364 0042 0C4B     	 ldr r3,.L30+24
  365 0044 9847     	 blx r3
@@ -1025,7 +1025,7 @@
  423              	 .cfi_def_cfa_register 7
   55:fpga_program.c ****     FPGA_NPROG_HIGH();
  424              	 .loc 3 55 5
- 425 0004 1420     	 movs r0,#20
+ 425 0004 1920     	 movs r0,#25
  426 0006 024B     	 ldr r3,.L33
  427 0008 9847     	 blx r3
  428              	.LVL12:
@@ -1116,18 +1116,18 @@
  504              	 .file 15 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\stdlib.h"
  505              	 .file 16 ".././hal/sam3u1c/inc/interrupt/interrupt_sam_nvic.h"
  506              	 .file 17 ".././hal/sam3u1c/inc/compiler.h"
- 507              	 .file 18 ".././hal/sam3u1c/inc/sam/sleepmgr.h"
- 508              	 .file 19 ".././hal/sam3u1c/inc/usart.h"
- 509              	 .file 20 "./conf_usb.h"
- 510              	 .file 21 ".././hal/sam3u1c/inc/usb_protocol.h"
- 511              	 .file 22 ".././hal/sam3u1c/inc/udi.h"
- 512              	 .file 23 ".././hal/sam3u1c/inc/udc_desc.h"
- 513              	 .file 24 ".././hal/sam3u1c/inc/udd.h"
- 514              	 .file 25 ".././hal/sam3u1c/inc/udi_vendor.h"
- 515              	 .file 26 "fpga_program.h"
- 516              	 .file 27 ".././hal/sam3u1c/inc/pio.h"
- 517              	 .file 28 ".././hal/sam3u1c/inc/pmc.h"
- 518              	 .file 29 ".././hal/sam3u1c/inc/sam3u/pll.h"
+ 507              	 .file 18 ".././hal/sam3u1c/inc/sam3u/pll.h"
+ 508              	 .file 19 ".././hal/sam3u1c/inc/pio.h"
+ 509              	 .file 20 ".././hal/sam3u1c/inc/sam/sleepmgr.h"
+ 510              	 .file 21 ".././hal/sam3u1c/inc/usart.h"
+ 511              	 .file 22 "./conf_usb.h"
+ 512              	 .file 23 ".././hal/sam3u1c/inc/usb_protocol.h"
+ 513              	 .file 24 ".././hal/sam3u1c/inc/udi.h"
+ 514              	 .file 25 ".././hal/sam3u1c/inc/udc_desc.h"
+ 515              	 .file 26 ".././hal/sam3u1c/inc/udd.h"
+ 516              	 .file 27 ".././hal/sam3u1c/inc/udi_vendor.h"
+ 517              	 .file 28 "fpga_program.h"
+ 518              	 .file 29 ".././hal/sam3u1c/inc/pmc.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 fpga_program.c
     {standard input}:16     .bss.cpu_irq_critical_section_counter:00000000 $d
@@ -1160,7 +1160,7 @@ DEFINED SYMBOLS
     {standard input}:440    .text.fpga_program_sendbyte:00000000 $t
     {standard input}:447    .text.fpga_program_sendbyte:00000000 fpga_program_sendbyte
     {standard input}:486    .text.fpga_program_sendbyte:0000001c $d
-                           .group:00000000 wm4.0.2cd8a2cb7ff4c48cec7eeec776a1dd8c
+                           .group:00000000 wm4.0.84f01b7600eb36308f16331d3d2e9779
                            .group:00000000 wm4.stddef.h.39.27677723d43e5b5a7afdf8d798429f1d
                            .group:00000000 wm4.parts.h.45.afc900689b2c82332e69d798acedc875
                            .group:00000000 wm4.tpaste.h.45.af3ee36765243b162c88f7f944858426
@@ -1266,8 +1266,8 @@ DEFINED SYMBOLS
                            .group:00000000 wm4.interrupt_sam_nvic.h.45.4876da6c127868305d66389e87e0876f
                            .group:00000000 wm4.compiler.h.425.66dd29c210af3287ed85ec3553a3e6b1
                            .group:00000000 wm4.conf_clock.h.45.5dc276d21b4d793a62f1a9757cc18d5c
-                           .group:00000000 wm4.board.h.48.ce8d06c36cc583d9bf62738411f62e4d
-                           .group:00000000 wm4.cw521.h.62.1727e9a463c60d459e36c42a4e5a0f86
+                           .group:00000000 wm4.board.h.48.3fc21f768e842120f151448a98046af0
+                           .group:00000000 wm4.cw521.h.62.6f487d78438f1a237b2b554798be063f
                            .group:00000000 wm4.pmc.h.45.bbe1bf97a811e3b283420b2eeadf0b35
                            .group:00000000 wm4.osc.h.94.b766cddafe899eca01d775f7b2906680
                            .group:00000000 wm4.pll.h.45.a605c31ca466ae25752a678e8572be48
@@ -1297,7 +1297,7 @@ DEFINED SYMBOLS
                            .group:00000000 wm4.udc_desc.h.77.5fec235bd7553e7256e345e020840072
                            .group:00000000 wm4.udd.h.103.3ccc59b50c14ec70568e6136eeb22d56
                            .group:00000000 wm4.udi_vendor.h.125.7b9085237d4d4a9757f4c148fba1918d
-                           .group:00000000 wm4.fpga_program.h.36.ca9933fdd1528ae3419efe9d74ea4ee5
+                           .group:00000000 wm4.fpga_program.h.36.190ebe3d8947892068b52cb69c85273d
 
 UNDEFINED SYMBOLS
 pmc_enable_periph_clk

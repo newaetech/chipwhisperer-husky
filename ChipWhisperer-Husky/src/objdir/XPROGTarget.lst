@@ -1757,7 +1757,7 @@ DEFINED SYMBOLS
     {standard input}:860    .text.XPROGTarget_SetTxMode:00000068 $d
     {standard input}:871    .text.XPROGTarget_SetRxMode:00000000 $t
     {standard input}:929    .text.XPROGTarget_SetRxMode:00000034 $d
-                           .group:00000000 wm4.0.2cd8a2cb7ff4c48cec7eeec776a1dd8c
+                           .group:00000000 wm4.0.84f01b7600eb36308f16331d3d2e9779
                            .group:00000000 wm4.stddef.h.39.27677723d43e5b5a7afdf8d798429f1d
                            .group:00000000 wm4.parts.h.45.afc900689b2c82332e69d798acedc875
                            .group:00000000 wm4.tpaste.h.45.af3ee36765243b162c88f7f944858426
@@ -1863,8 +1863,8 @@ DEFINED SYMBOLS
                            .group:00000000 wm4.interrupt_sam_nvic.h.45.4876da6c127868305d66389e87e0876f
                            .group:00000000 wm4.compiler.h.425.66dd29c210af3287ed85ec3553a3e6b1
                            .group:00000000 wm4.conf_clock.h.45.5dc276d21b4d793a62f1a9757cc18d5c
-                           .group:00000000 wm4.board.h.48.ce8d06c36cc583d9bf62738411f62e4d
-                           .group:00000000 wm4.cw521.h.62.1727e9a463c60d459e36c42a4e5a0f86
+                           .group:00000000 wm4.board.h.48.3fc21f768e842120f151448a98046af0
+                           .group:00000000 wm4.cw521.h.62.6f487d78438f1a237b2b554798be063f
                            .group:00000000 wm4.pmc.h.45.bbe1bf97a811e3b283420b2eeadf0b35
                            .group:00000000 wm4.osc.h.94.b766cddafe899eca01d775f7b2906680
                            .group:00000000 wm4.pll.h.45.a605c31ca466ae25752a678e8572be48

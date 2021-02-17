@@ -1101,10 +1101,10 @@ pmc_wait_wakeup_clocks_restore:
 	.4byte	.Ldebug_abbrev0
 	.byte	0x4
 	.uleb128 0x1
-	.4byte	.LASF8769
+	.4byte	.LASF8757
 	.byte	0xc
-	.4byte	.LASF8770
-	.4byte	.LASF8771
+	.4byte	.LASF8758
+	.4byte	.LASF8759
 	.4byte	.Ldebug_ranges0+0
 	.4byte	0
 	.4byte	0
@@ -1117,13 +1117,13 @@ pmc_wait_wakeup_clocks_restore:
 	.uleb128 0x3
 	.byte	0x4
 	.byte	0x7
-	.4byte	.LASF8551
+	.4byte	.LASF8539
 	.uleb128 0x3
 	.byte	0x1
 	.byte	0x6
-	.4byte	.LASF8552
+	.4byte	.LASF8540
 	.uleb128 0x4
-	.4byte	.LASF8556
+	.4byte	.LASF8544
 	.byte	0x4
 	.byte	0x2b
 	.byte	0x18
@@ -1131,17 +1131,17 @@ pmc_wait_wakeup_clocks_restore:
 	.uleb128 0x3
 	.byte	0x1
 	.byte	0x8
-	.4byte	.LASF8553
+	.4byte	.LASF8541
 	.uleb128 0x3
 	.byte	0x2
 	.byte	0x5
-	.4byte	.LASF8554
+	.4byte	.LASF8542
 	.uleb128 0x3
 	.byte	0x2
 	.byte	0x7
-	.4byte	.LASF8555
+	.4byte	.LASF8543
 	.uleb128 0x4
-	.4byte	.LASF8557
+	.4byte	.LASF8545
 	.byte	0x4
 	.byte	0x4d
 	.byte	0x18
@@ -1149,9 +1149,9 @@ pmc_wait_wakeup_clocks_restore:
 	.uleb128 0x3
 	.byte	0x4
 	.byte	0x5
-	.4byte	.LASF8558
+	.4byte	.LASF8546
 	.uleb128 0x4
-	.4byte	.LASF8559
+	.4byte	.LASF8547
 	.byte	0x4
 	.byte	0x4f
 	.byte	0x19
@@ -1159,17 +1159,17 @@ pmc_wait_wakeup_clocks_restore:
 	.uleb128 0x3
 	.byte	0x4
 	.byte	0x7
-	.4byte	.LASF8560
+	.4byte	.LASF8548
 	.uleb128 0x3
 	.byte	0x8
 	.byte	0x5
-	.4byte	.LASF8561
+	.4byte	.LASF8549
 	.uleb128 0x3
 	.byte	0x8
 	.byte	0x7
-	.4byte	.LASF8562
+	.4byte	.LASF8550
 	.uleb128 0x4
-	.4byte	.LASF8563
+	.4byte	.LASF8551
 	.byte	0x5
 	.byte	0x18
 	.byte	0x13
@@ -1177,7 +1177,7 @@ pmc_wait_wakeup_clocks_restore:
 	.uleb128 0x5
 	.4byte	0x97
 	.uleb128 0x4
-	.4byte	.LASF8564
+	.4byte	.LASF8552
 	.byte	0x5
 	.byte	0x2c
 	.byte	0x13
@@ -1185,7 +1185,7 @@ pmc_wait_wakeup_clocks_restore:
 	.uleb128 0x5
 	.4byte	0xa8
 	.uleb128 0x4
-	.4byte	.LASF8565
+	.4byte	.LASF8553
 	.byte	0x5
 	.byte	0x30
 	.byte	0x14
@@ -1197,19 +1197,19 @@ pmc_wait_wakeup_clocks_restore:
 	.uleb128 0x5
 	.4byte	0xb9
 	.uleb128 0x4
-	.4byte	.LASF8566
+	.4byte	.LASF8554
 	.byte	0x6
 	.byte	0x3d
 	.byte	0x21
 	.4byte	0xca
 	.uleb128 0x4
-	.4byte	.LASF8567
+	.4byte	.LASF8555
 	.byte	0x6
 	.byte	0x41
 	.byte	0x21
 	.4byte	0xcf
 	.uleb128 0x4
-	.4byte	.LASF8568
+	.4byte	.LASF8556
 	.byte	0x6
 	.byte	0x42
 	.byte	0x21
@@ -1223,7 +1223,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x9
 	.4byte	0x256
 	.uleb128 0x9
-	.4byte	.LASF8569
+	.4byte	.LASF8557
 	.byte	0x7
 	.2byte	0x139
 	.byte	0x11
@@ -1232,7 +1232,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x9
-	.4byte	.LASF8570
+	.4byte	.LASF8558
 	.byte	0x7
 	.2byte	0x13a
 	.byte	0x11
@@ -1241,7 +1241,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0x9
-	.4byte	.LASF8571
+	.4byte	.LASF8559
 	.byte	0x7
 	.2byte	0x13b
 	.byte	0x11
@@ -1250,7 +1250,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0x9
-	.4byte	.LASF8572
+	.4byte	.LASF8560
 	.byte	0x7
 	.2byte	0x13c
 	.byte	0x11
@@ -1286,7 +1286,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x18
 	.uleb128 0x9
-	.4byte	.LASF8573
+	.4byte	.LASF8561
 	.byte	0x7
 	.2byte	0x140
 	.byte	0x11
@@ -1295,7 +1295,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x24
 	.uleb128 0x9
-	.4byte	.LASF8574
+	.4byte	.LASF8562
 	.byte	0x7
 	.2byte	0x141
 	.byte	0x11
@@ -1304,7 +1304,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x28
 	.uleb128 0x9
-	.4byte	.LASF8575
+	.4byte	.LASF8563
 	.byte	0x7
 	.2byte	0x142
 	.byte	0x11
@@ -1313,7 +1313,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x2c
 	.uleb128 0x9
-	.4byte	.LASF8576
+	.4byte	.LASF8564
 	.byte	0x7
 	.2byte	0x143
 	.byte	0x11
@@ -1322,7 +1322,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x30
 	.uleb128 0x9
-	.4byte	.LASF8577
+	.4byte	.LASF8565
 	.byte	0x7
 	.2byte	0x144
 	.byte	0x11
@@ -1331,7 +1331,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x34
 	.uleb128 0x9
-	.4byte	.LASF8578
+	.4byte	.LASF8566
 	.byte	0x7
 	.2byte	0x145
 	.byte	0x11
@@ -1340,7 +1340,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x38
 	.uleb128 0x9
-	.4byte	.LASF8579
+	.4byte	.LASF8567
 	.byte	0x7
 	.2byte	0x146
 	.byte	0x11
@@ -1376,7 +1376,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x4c
 	.uleb128 0x9
-	.4byte	.LASF8580
+	.4byte	.LASF8568
 	.byte	0x7
 	.2byte	0x14a
 	.byte	0x11
@@ -1385,7 +1385,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x50
 	.uleb128 0x9
-	.4byte	.LASF8581
+	.4byte	.LASF8569
 	.byte	0x7
 	.2byte	0x14b
 	.byte	0x11
@@ -1394,7 +1394,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x60
 	.uleb128 0x9
-	.4byte	.LASF8582
+	.4byte	.LASF8570
 	.byte	0x7
 	.2byte	0x14c
 	.byte	0x11
@@ -1403,7 +1403,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x74
 	.uleb128 0x9
-	.4byte	.LASF8583
+	.4byte	.LASF8571
 	.byte	0x7
 	.2byte	0x14d
 	.byte	0x11
@@ -1462,13 +1462,13 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x4
 	.byte	0
 	.uleb128 0xd
-	.4byte	.LASF8584
+	.4byte	.LASF8572
 	.byte	0x7
 	.2byte	0x14e
 	.byte	0x3
 	.4byte	0xfa
 	.uleb128 0xe
-	.4byte	.LASF8585
+	.4byte	.LASF8573
 	.byte	0x7
 	.2byte	0x5c9
 	.byte	0x19
@@ -1476,7 +1476,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xf
-	.4byte	.LASF8586
+	.4byte	.LASF8574
 	.byte	0x8
 	.byte	0x3b
 	.byte	0x11
@@ -1514,7 +1514,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x9
 	.4byte	0x372
 	.uleb128 0x11
-	.4byte	.LASF8587
+	.4byte	.LASF8575
 	.byte	0x9
 	.byte	0x36
 	.byte	0x9
@@ -1523,7 +1523,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x11
-	.4byte	.LASF8588
+	.4byte	.LASF8576
 	.byte	0x9
 	.byte	0x37
 	.byte	0x9
@@ -1532,7 +1532,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0x11
-	.4byte	.LASF8589
+	.4byte	.LASF8577
 	.byte	0x9
 	.byte	0x38
 	.byte	0x9
@@ -1541,7 +1541,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0x11
-	.4byte	.LASF8590
+	.4byte	.LASF8578
 	.byte	0x9
 	.byte	0x39
 	.byte	0x9
@@ -1574,7 +1574,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x9
 	.4byte	0x52a
 	.uleb128 0x11
-	.4byte	.LASF8591
+	.4byte	.LASF8579
 	.byte	0xa
 	.byte	0x36
 	.byte	0x9
@@ -1583,7 +1583,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x11
-	.4byte	.LASF8592
+	.4byte	.LASF8580
 	.byte	0xa
 	.byte	0x37
 	.byte	0x9
@@ -1592,7 +1592,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0x11
-	.4byte	.LASF8593
+	.4byte	.LASF8581
 	.byte	0xa
 	.byte	0x38
 	.byte	0x9
@@ -1601,7 +1601,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0x11
-	.4byte	.LASF8594
+	.4byte	.LASF8582
 	.byte	0xa
 	.byte	0x39
 	.byte	0x9
@@ -1610,7 +1610,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0xc
 	.uleb128 0x11
-	.4byte	.LASF8595
+	.4byte	.LASF8583
 	.byte	0xa
 	.byte	0x3a
 	.byte	0x9
@@ -1619,7 +1619,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x10
 	.uleb128 0x11
-	.4byte	.LASF8596
+	.4byte	.LASF8584
 	.byte	0xa
 	.byte	0x3b
 	.byte	0x9
@@ -1628,7 +1628,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x14
 	.uleb128 0x11
-	.4byte	.LASF8597
+	.4byte	.LASF8585
 	.byte	0xa
 	.byte	0x3c
 	.byte	0x9
@@ -1637,7 +1637,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x18
 	.uleb128 0x11
-	.4byte	.LASF8598
+	.4byte	.LASF8586
 	.byte	0xa
 	.byte	0x3d
 	.byte	0x9
@@ -1646,7 +1646,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x1c
 	.uleb128 0x11
-	.4byte	.LASF8599
+	.4byte	.LASF8587
 	.byte	0xa
 	.byte	0x3e
 	.byte	0x9
@@ -1655,7 +1655,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x20
 	.uleb128 0x11
-	.4byte	.LASF8600
+	.4byte	.LASF8588
 	.byte	0xa
 	.byte	0x3f
 	.byte	0x9
@@ -1664,7 +1664,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x24
 	.uleb128 0x11
-	.4byte	.LASF8601
+	.4byte	.LASF8589
 	.byte	0xa
 	.byte	0x40
 	.byte	0x9
@@ -1673,7 +1673,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x28
 	.uleb128 0x11
-	.4byte	.LASF8602
+	.4byte	.LASF8590
 	.byte	0xa
 	.byte	0x41
 	.byte	0x9
@@ -1682,7 +1682,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x2c
 	.uleb128 0x11
-	.4byte	.LASF8603
+	.4byte	.LASF8591
 	.byte	0xa
 	.byte	0x42
 	.byte	0x9
@@ -1691,7 +1691,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x30
 	.uleb128 0x11
-	.4byte	.LASF8604
+	.4byte	.LASF8592
 	.byte	0xa
 	.byte	0x43
 	.byte	0x9
@@ -1700,7 +1700,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x34
 	.uleb128 0x11
-	.4byte	.LASF8605
+	.4byte	.LASF8593
 	.byte	0xa
 	.byte	0x44
 	.byte	0x9
@@ -1709,7 +1709,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x40
 	.uleb128 0x11
-	.4byte	.LASF8606
+	.4byte	.LASF8594
 	.byte	0xa
 	.byte	0x45
 	.byte	0x9
@@ -1718,7 +1718,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x4c
 	.uleb128 0x11
-	.4byte	.LASF8607
+	.4byte	.LASF8595
 	.byte	0xa
 	.byte	0x46
 	.byte	0x9
@@ -1727,7 +1727,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x60
 	.uleb128 0x11
-	.4byte	.LASF8608
+	.4byte	.LASF8596
 	.byte	0xa
 	.byte	0x47
 	.byte	0x9
@@ -1736,7 +1736,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x64
 	.uleb128 0x11
-	.4byte	.LASF8609
+	.4byte	.LASF8597
 	.byte	0xa
 	.byte	0x48
 	.byte	0x9
@@ -1745,7 +1745,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x68
 	.uleb128 0x11
-	.4byte	.LASF8610
+	.4byte	.LASF8598
 	.byte	0xa
 	.byte	0x49
 	.byte	0x9
@@ -1754,7 +1754,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x6c
 	.uleb128 0x11
-	.4byte	.LASF8611
+	.4byte	.LASF8599
 	.byte	0xa
 	.byte	0x4a
 	.byte	0x9
@@ -1763,7 +1763,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x70
 	.uleb128 0x11
-	.4byte	.LASF8612
+	.4byte	.LASF8600
 	.byte	0xa
 	.byte	0x4b
 	.byte	0x9
@@ -1772,7 +1772,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x74
 	.uleb128 0x11
-	.4byte	.LASF8613
+	.4byte	.LASF8601
 	.byte	0xa
 	.byte	0x4c
 	.byte	0x9
@@ -1781,7 +1781,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x78
 	.uleb128 0x11
-	.4byte	.LASF8614
+	.4byte	.LASF8602
 	.byte	0xa
 	.byte	0x4d
 	.byte	0x9
@@ -1790,7 +1790,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x7c
 	.uleb128 0x11
-	.4byte	.LASF8615
+	.4byte	.LASF8603
 	.byte	0xa
 	.byte	0x4e
 	.byte	0x9
@@ -1799,7 +1799,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0xe4
 	.uleb128 0x11
-	.4byte	.LASF8616
+	.4byte	.LASF8604
 	.byte	0xa
 	.byte	0x4f
 	.byte	0x9
@@ -1835,19 +1835,19 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x3
 	.4byte	0x398
 	.uleb128 0xd
-	.4byte	.LASF8617
+	.4byte	.LASF8605
 	.byte	0xb
 	.2byte	0x15e
 	.byte	0x17
 	.4byte	0x34
 	.uleb128 0x4
-	.4byte	.LASF8618
+	.4byte	.LASF8606
 	.byte	0xc
 	.byte	0x2e
 	.byte	0xe
 	.4byte	0x6f
 	.uleb128 0x4
-	.4byte	.LASF8619
+	.4byte	.LASF8607
 	.byte	0xc
 	.byte	0x74
 	.byte	0xe
@@ -1859,13 +1859,13 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x3
 	.4byte	0x5ac
 	.uleb128 0x14
-	.4byte	.LASF8620
+	.4byte	.LASF8608
 	.byte	0xc
 	.byte	0xa7
 	.byte	0xc
 	.4byte	0x565
 	.uleb128 0x14
-	.4byte	.LASF8621
+	.4byte	.LASF8609
 	.byte	0xc
 	.byte	0xa8
 	.byte	0x13
@@ -1885,7 +1885,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x9
 	.4byte	0x5e4
 	.uleb128 0x11
-	.4byte	.LASF8622
+	.4byte	.LASF8610
 	.byte	0xc
 	.byte	0xa4
 	.byte	0x7
@@ -1894,7 +1894,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x11
-	.4byte	.LASF8623
+	.4byte	.LASF8611
 	.byte	0xc
 	.byte	0xa9
 	.byte	0x5
@@ -1904,19 +1904,19 @@ pmc_wait_wakeup_clocks_restore:
 	.uleb128 0x4
 	.byte	0
 	.uleb128 0x4
-	.4byte	.LASF8624
+	.4byte	.LASF8612
 	.byte	0xc
 	.byte	0xaa
 	.byte	0x3
 	.4byte	0x5bc
 	.uleb128 0x4
-	.4byte	.LASF8625
+	.4byte	.LASF8613
 	.byte	0xd
 	.byte	0x16
 	.byte	0x19
 	.4byte	0x82
 	.uleb128 0x4
-	.4byte	.LASF8626
+	.4byte	.LASF8614
 	.byte	0xe
 	.byte	0x22
 	.byte	0x19
@@ -1925,23 +1925,23 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x4
 	.4byte	0x60e
 	.uleb128 0x16
-	.4byte	.LASF8723
+	.4byte	.LASF8711
 	.byte	0x1
 	.uleb128 0x4
-	.4byte	.LASF8627
+	.4byte	.LASF8615
 	.byte	0xd
 	.byte	0x23
 	.byte	0x1b
 	.4byte	0x5fc
 	.uleb128 0x17
-	.4byte	.LASF8632
+	.4byte	.LASF8620
 	.byte	0x18
 	.byte	0xd
 	.byte	0x34
 	.byte	0x8
 	.4byte	0x686
 	.uleb128 0x11
-	.4byte	.LASF8628
+	.4byte	.LASF8616
 	.byte	0xd
 	.byte	0x36
 	.byte	0x13
@@ -1959,7 +1959,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0x11
-	.4byte	.LASF8629
+	.4byte	.LASF8617
 	.byte	0xd
 	.byte	0x37
 	.byte	0xb
@@ -1968,7 +1968,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0x11
-	.4byte	.LASF8630
+	.4byte	.LASF8618
 	.byte	0xd
 	.byte	0x37
 	.byte	0x14
@@ -1977,7 +1977,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0xc
 	.uleb128 0x11
-	.4byte	.LASF8631
+	.4byte	.LASF8619
 	.byte	0xd
 	.byte	0x37
 	.byte	0x1b
@@ -2006,14 +2006,14 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0
 	.byte	0
 	.uleb128 0x17
-	.4byte	.LASF8633
+	.4byte	.LASF8621
 	.byte	0x24
 	.byte	0xd
 	.byte	0x3c
 	.byte	0x8
 	.4byte	0x731
 	.uleb128 0x11
-	.4byte	.LASF8634
+	.4byte	.LASF8622
 	.byte	0xd
 	.byte	0x3e
 	.byte	0x9
@@ -2022,7 +2022,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x11
-	.4byte	.LASF8635
+	.4byte	.LASF8623
 	.byte	0xd
 	.byte	0x3f
 	.byte	0x9
@@ -2031,7 +2031,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0x11
-	.4byte	.LASF8636
+	.4byte	.LASF8624
 	.byte	0xd
 	.byte	0x40
 	.byte	0x9
@@ -2040,7 +2040,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0x11
-	.4byte	.LASF8637
+	.4byte	.LASF8625
 	.byte	0xd
 	.byte	0x41
 	.byte	0x9
@@ -2049,7 +2049,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0xc
 	.uleb128 0x11
-	.4byte	.LASF8638
+	.4byte	.LASF8626
 	.byte	0xd
 	.byte	0x42
 	.byte	0x9
@@ -2058,7 +2058,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x10
 	.uleb128 0x11
-	.4byte	.LASF8639
+	.4byte	.LASF8627
 	.byte	0xd
 	.byte	0x43
 	.byte	0x9
@@ -2067,7 +2067,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x14
 	.uleb128 0x11
-	.4byte	.LASF8640
+	.4byte	.LASF8628
 	.byte	0xd
 	.byte	0x44
 	.byte	0x9
@@ -2076,7 +2076,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x18
 	.uleb128 0x11
-	.4byte	.LASF8641
+	.4byte	.LASF8629
 	.byte	0xd
 	.byte	0x45
 	.byte	0x9
@@ -2085,7 +2085,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x1c
 	.uleb128 0x11
-	.4byte	.LASF8642
+	.4byte	.LASF8630
 	.byte	0xd
 	.byte	0x46
 	.byte	0x9
@@ -2095,14 +2095,14 @@ pmc_wait_wakeup_clocks_restore:
 	.uleb128 0x20
 	.byte	0
 	.uleb128 0x19
-	.4byte	.LASF8643
+	.4byte	.LASF8631
 	.2byte	0x108
 	.byte	0xd
 	.byte	0x4f
 	.byte	0x8
 	.4byte	0x77f
 	.uleb128 0x11
-	.4byte	.LASF8644
+	.4byte	.LASF8632
 	.byte	0xd
 	.byte	0x50
 	.byte	0xa
@@ -2111,7 +2111,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x11
-	.4byte	.LASF8645
+	.4byte	.LASF8633
 	.byte	0xd
 	.byte	0x51
 	.byte	0x9
@@ -2120,7 +2120,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x80
 	.uleb128 0x11
-	.4byte	.LASF8646
+	.4byte	.LASF8634
 	.byte	0xd
 	.byte	0x53
 	.byte	0xa
@@ -2129,7 +2129,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x100
 	.uleb128 0x11
-	.4byte	.LASF8647
+	.4byte	.LASF8635
 	.byte	0xd
 	.byte	0x56
 	.byte	0xa
@@ -2146,14 +2146,14 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x1f
 	.byte	0
 	.uleb128 0x19
-	.4byte	.LASF8648
+	.4byte	.LASF8636
 	.2byte	0x190
 	.byte	0xd
 	.byte	0x62
 	.byte	0x8
 	.4byte	0x7db
 	.uleb128 0x11
-	.4byte	.LASF8628
+	.4byte	.LASF8616
 	.byte	0xd
 	.byte	0x63
 	.byte	0x12
@@ -2162,7 +2162,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x11
-	.4byte	.LASF8649
+	.4byte	.LASF8637
 	.byte	0xd
 	.byte	0x64
 	.byte	0x6
@@ -2171,7 +2171,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0x11
-	.4byte	.LASF8650
+	.4byte	.LASF8638
 	.byte	0xd
 	.byte	0x66
 	.byte	0x9
@@ -2180,7 +2180,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0x11
-	.4byte	.LASF8643
+	.4byte	.LASF8631
 	.byte	0xd
 	.byte	0x67
 	.byte	0x1e
@@ -2205,14 +2205,14 @@ pmc_wait_wakeup_clocks_restore:
 	.uleb128 0x1a
 	.byte	0x1
 	.uleb128 0x17
-	.4byte	.LASF8651
+	.4byte	.LASF8639
 	.byte	0x8
 	.byte	0xd
 	.byte	0x7a
 	.byte	0x8
 	.4byte	0x825
 	.uleb128 0x11
-	.4byte	.LASF8652
+	.4byte	.LASF8640
 	.byte	0xd
 	.byte	0x7b
 	.byte	0x11
@@ -2221,7 +2221,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x11
-	.4byte	.LASF8653
+	.4byte	.LASF8641
 	.byte	0xd
 	.byte	0x7c
 	.byte	0x6
@@ -2234,7 +2234,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x4
 	.4byte	0x4e
 	.uleb128 0x17
-	.4byte	.LASF8654
+	.4byte	.LASF8642
 	.byte	0x68
 	.byte	0xd
 	.byte	0xba
@@ -2268,7 +2268,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0x11
-	.4byte	.LASF8655
+	.4byte	.LASF8643
 	.byte	0xd
 	.byte	0xbe
 	.byte	0x9
@@ -2277,7 +2277,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0xc
 	.uleb128 0x11
-	.4byte	.LASF8656
+	.4byte	.LASF8644
 	.byte	0xd
 	.byte	0xbf
 	.byte	0x9
@@ -2295,7 +2295,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x10
 	.uleb128 0x11
-	.4byte	.LASF8657
+	.4byte	.LASF8645
 	.byte	0xd
 	.byte	0xc1
 	.byte	0x7
@@ -2304,7 +2304,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x18
 	.uleb128 0x11
-	.4byte	.LASF8658
+	.4byte	.LASF8646
 	.byte	0xd
 	.byte	0xc8
 	.byte	0xa
@@ -2313,7 +2313,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x1c
 	.uleb128 0x11
-	.4byte	.LASF8659
+	.4byte	.LASF8647
 	.byte	0xd
 	.byte	0xca
 	.byte	0x1d
@@ -2322,7 +2322,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x20
 	.uleb128 0x11
-	.4byte	.LASF8660
+	.4byte	.LASF8648
 	.byte	0xd
 	.byte	0xcc
 	.byte	0x1d
@@ -2331,7 +2331,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x24
 	.uleb128 0x11
-	.4byte	.LASF8661
+	.4byte	.LASF8649
 	.byte	0xd
 	.byte	0xcf
 	.byte	0xd
@@ -2340,7 +2340,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x28
 	.uleb128 0x11
-	.4byte	.LASF8662
+	.4byte	.LASF8650
 	.byte	0xd
 	.byte	0xd0
 	.byte	0x9
@@ -2376,7 +2376,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x3c
 	.uleb128 0x11
-	.4byte	.LASF8663
+	.4byte	.LASF8651
 	.byte	0xd
 	.byte	0xd8
 	.byte	0x11
@@ -2385,7 +2385,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x40
 	.uleb128 0x11
-	.4byte	.LASF8664
+	.4byte	.LASF8652
 	.byte	0xd
 	.byte	0xd9
 	.byte	0x11
@@ -2403,7 +2403,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x44
 	.uleb128 0x11
-	.4byte	.LASF8665
+	.4byte	.LASF8653
 	.byte	0xd
 	.byte	0xdf
 	.byte	0x7
@@ -2412,7 +2412,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x4c
 	.uleb128 0x11
-	.4byte	.LASF8666
+	.4byte	.LASF8654
 	.byte	0xd
 	.byte	0xe0
 	.byte	0xa
@@ -2421,7 +2421,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x50
 	.uleb128 0x11
-	.4byte	.LASF8667
+	.4byte	.LASF8655
 	.byte	0xd
 	.byte	0xe3
 	.byte	0x12
@@ -2430,7 +2430,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x54
 	.uleb128 0x11
-	.4byte	.LASF8668
+	.4byte	.LASF8656
 	.byte	0xd
 	.byte	0xe7
 	.byte	0xc
@@ -2439,7 +2439,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x58
 	.uleb128 0x11
-	.4byte	.LASF8669
+	.4byte	.LASF8657
 	.byte	0xd
 	.byte	0xe9
 	.byte	0xe
@@ -2448,7 +2448,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x5c
 	.uleb128 0x11
-	.4byte	.LASF8670
+	.4byte	.LASF8658
 	.byte	0xd
 	.byte	0xea
 	.byte	0x9
@@ -2476,14 +2476,14 @@ pmc_wait_wakeup_clocks_restore:
 	.uleb128 0x6
 	.4byte	0x9bd
 	.uleb128 0x1d
-	.4byte	.LASF8671
+	.4byte	.LASF8659
 	.2byte	0x428
 	.byte	0xd
 	.2byte	0x265
 	.byte	0x8
 	.4byte	0xb3d
 	.uleb128 0x9
-	.4byte	.LASF8672
+	.4byte	.LASF8660
 	.byte	0xd
 	.2byte	0x267
 	.byte	0x7
@@ -2492,7 +2492,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x9
-	.4byte	.LASF8673
+	.4byte	.LASF8661
 	.byte	0xd
 	.2byte	0x26c
 	.byte	0xb
@@ -2501,7 +2501,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0x9
-	.4byte	.LASF8674
+	.4byte	.LASF8662
 	.byte	0xd
 	.2byte	0x26c
 	.byte	0x14
@@ -2510,7 +2510,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0x9
-	.4byte	.LASF8675
+	.4byte	.LASF8663
 	.byte	0xd
 	.2byte	0x26c
 	.byte	0x1e
@@ -2519,7 +2519,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0xc
 	.uleb128 0x9
-	.4byte	.LASF8676
+	.4byte	.LASF8664
 	.byte	0xd
 	.2byte	0x26e
 	.byte	0x8
@@ -2528,7 +2528,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x10
 	.uleb128 0x9
-	.4byte	.LASF8677
+	.4byte	.LASF8665
 	.byte	0xd
 	.2byte	0x26f
 	.byte	0x8
@@ -2537,7 +2537,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x14
 	.uleb128 0x9
-	.4byte	.LASF8678
+	.4byte	.LASF8666
 	.byte	0xd
 	.2byte	0x272
 	.byte	0x7
@@ -2546,7 +2546,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x30
 	.uleb128 0x9
-	.4byte	.LASF8679
+	.4byte	.LASF8667
 	.byte	0xd
 	.2byte	0x273
 	.byte	0x16
@@ -2555,7 +2555,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x34
 	.uleb128 0x9
-	.4byte	.LASF8680
+	.4byte	.LASF8668
 	.byte	0xd
 	.2byte	0x275
 	.byte	0x7
@@ -2564,7 +2564,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x38
 	.uleb128 0x9
-	.4byte	.LASF8681
+	.4byte	.LASF8669
 	.byte	0xd
 	.2byte	0x277
 	.byte	0xa
@@ -2573,7 +2573,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x3c
 	.uleb128 0x9
-	.4byte	.LASF8682
+	.4byte	.LASF8670
 	.byte	0xd
 	.2byte	0x27a
 	.byte	0x13
@@ -2582,7 +2582,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x40
 	.uleb128 0x9
-	.4byte	.LASF8683
+	.4byte	.LASF8671
 	.byte	0xd
 	.2byte	0x27b
 	.byte	0x7
@@ -2591,7 +2591,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x44
 	.uleb128 0x9
-	.4byte	.LASF8684
+	.4byte	.LASF8672
 	.byte	0xd
 	.2byte	0x27c
 	.byte	0x13
@@ -2600,7 +2600,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x48
 	.uleb128 0x9
-	.4byte	.LASF8685
+	.4byte	.LASF8673
 	.byte	0xd
 	.2byte	0x27d
 	.byte	0x14
@@ -2609,7 +2609,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x4c
 	.uleb128 0x9
-	.4byte	.LASF8686
+	.4byte	.LASF8674
 	.byte	0xd
 	.2byte	0x280
 	.byte	0x7
@@ -2618,7 +2618,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x50
 	.uleb128 0x9
-	.4byte	.LASF8687
+	.4byte	.LASF8675
 	.byte	0xd
 	.2byte	0x281
 	.byte	0x9
@@ -2627,7 +2627,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x54
 	.uleb128 0x9
-	.4byte	.LASF8688
+	.4byte	.LASF8676
 	.byte	0xd
 	.2byte	0x2a4
 	.byte	0x7
@@ -2636,7 +2636,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x58
 	.uleb128 0x9
-	.4byte	.LASF8648
+	.4byte	.LASF8636
 	.byte	0xd
 	.2byte	0x2a8
 	.byte	0x13
@@ -2645,7 +2645,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x148
 	.uleb128 0x9
-	.4byte	.LASF8689
+	.4byte	.LASF8677
 	.byte	0xd
 	.2byte	0x2a9
 	.byte	0x12
@@ -2654,7 +2654,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x14c
 	.uleb128 0x9
-	.4byte	.LASF8690
+	.4byte	.LASF8678
 	.byte	0xd
 	.2byte	0x2ad
 	.byte	0xc
@@ -2663,7 +2663,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x2dc
 	.uleb128 0x9
-	.4byte	.LASF8691
+	.4byte	.LASF8679
 	.byte	0xd
 	.2byte	0x2b2
 	.byte	0x10
@@ -2672,7 +2672,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x2e0
 	.uleb128 0x9
-	.4byte	.LASF8692
+	.4byte	.LASF8680
 	.byte	0xd
 	.2byte	0x2b4
 	.byte	0xa
@@ -2755,20 +2755,20 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0
 	.byte	0
 	.uleb128 0xd
-	.4byte	.LASF8693
+	.4byte	.LASF8681
 	.byte	0xd
 	.2byte	0x124
 	.byte	0x1a
 	.4byte	0x82b
 	.uleb128 0x1e
-	.4byte	.LASF8694
+	.4byte	.LASF8682
 	.byte	0xc
 	.byte	0xd
 	.2byte	0x128
 	.byte	0x8
 	.4byte	0xc2c
 	.uleb128 0x9
-	.4byte	.LASF8628
+	.4byte	.LASF8616
 	.byte	0xd
 	.2byte	0x12a
 	.byte	0x11
@@ -2777,7 +2777,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x9
-	.4byte	.LASF8695
+	.4byte	.LASF8683
 	.byte	0xd
 	.2byte	0x12b
 	.byte	0x7
@@ -2786,7 +2786,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0x9
-	.4byte	.LASF8696
+	.4byte	.LASF8684
 	.byte	0xd
 	.2byte	0x12c
 	.byte	0xb
@@ -2802,14 +2802,14 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x4
 	.4byte	0xbe0
 	.uleb128 0x1e
-	.4byte	.LASF8697
+	.4byte	.LASF8685
 	.byte	0xe
 	.byte	0xd
 	.2byte	0x144
 	.byte	0x8
 	.4byte	0xc77
 	.uleb128 0x9
-	.4byte	.LASF8698
+	.4byte	.LASF8686
 	.byte	0xd
 	.2byte	0x145
 	.byte	0x12
@@ -2818,7 +2818,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x9
-	.4byte	.LASF8699
+	.4byte	.LASF8687
 	.byte	0xd
 	.2byte	0x146
 	.byte	0x12
@@ -2827,7 +2827,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x6
 	.uleb128 0x9
-	.4byte	.LASF8700
+	.4byte	.LASF8688
 	.byte	0xd
 	.2byte	0x147
 	.byte	0x12
@@ -2850,7 +2850,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x7
 	.4byte	0xdcb
 	.uleb128 0x9
-	.4byte	.LASF8701
+	.4byte	.LASF8689
 	.byte	0xd
 	.2byte	0x287
 	.byte	0x18
@@ -2859,7 +2859,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x9
-	.4byte	.LASF8702
+	.4byte	.LASF8690
 	.byte	0xd
 	.2byte	0x288
 	.byte	0x12
@@ -2868,7 +2868,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0x9
-	.4byte	.LASF8703
+	.4byte	.LASF8691
 	.byte	0xd
 	.2byte	0x289
 	.byte	0x10
@@ -2877,7 +2877,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0x9
-	.4byte	.LASF8704
+	.4byte	.LASF8692
 	.byte	0xd
 	.2byte	0x28a
 	.byte	0x17
@@ -2886,7 +2886,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x24
 	.uleb128 0x9
-	.4byte	.LASF8705
+	.4byte	.LASF8693
 	.byte	0xd
 	.2byte	0x28b
 	.byte	0xf
@@ -2895,7 +2895,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x48
 	.uleb128 0x9
-	.4byte	.LASF8706
+	.4byte	.LASF8694
 	.byte	0xd
 	.2byte	0x28c
 	.byte	0x2c
@@ -2904,7 +2904,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x50
 	.uleb128 0x9
-	.4byte	.LASF8707
+	.4byte	.LASF8695
 	.byte	0xd
 	.2byte	0x28d
 	.byte	0x1a
@@ -2913,7 +2913,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x58
 	.uleb128 0x9
-	.4byte	.LASF8708
+	.4byte	.LASF8696
 	.byte	0xd
 	.2byte	0x28e
 	.byte	0x16
@@ -2922,7 +2922,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x68
 	.uleb128 0x9
-	.4byte	.LASF8709
+	.4byte	.LASF8697
 	.byte	0xd
 	.2byte	0x28f
 	.byte	0x16
@@ -2931,7 +2931,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x70
 	.uleb128 0x9
-	.4byte	.LASF8710
+	.4byte	.LASF8698
 	.byte	0xd
 	.2byte	0x290
 	.byte	0x16
@@ -2940,7 +2940,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x78
 	.uleb128 0x9
-	.4byte	.LASF8711
+	.4byte	.LASF8699
 	.byte	0xd
 	.2byte	0x291
 	.byte	0x10
@@ -2949,7 +2949,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x80
 	.uleb128 0x9
-	.4byte	.LASF8712
+	.4byte	.LASF8700
 	.byte	0xd
 	.2byte	0x292
 	.byte	0x10
@@ -2958,7 +2958,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0x88
 	.uleb128 0x9
-	.4byte	.LASF8713
+	.4byte	.LASF8701
 	.byte	0xd
 	.2byte	0x293
 	.byte	0xf
@@ -2967,7 +2967,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0xa0
 	.uleb128 0x9
-	.4byte	.LASF8714
+	.4byte	.LASF8702
 	.byte	0xd
 	.2byte	0x294
 	.byte	0x16
@@ -2976,7 +2976,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0xa4
 	.uleb128 0x9
-	.4byte	.LASF8715
+	.4byte	.LASF8703
 	.byte	0xd
 	.2byte	0x295
 	.byte	0x16
@@ -2985,7 +2985,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0xac
 	.uleb128 0x9
-	.4byte	.LASF8716
+	.4byte	.LASF8704
 	.byte	0xd
 	.2byte	0x296
 	.byte	0x16
@@ -2994,7 +2994,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0xb4
 	.uleb128 0x9
-	.4byte	.LASF8717
+	.4byte	.LASF8705
 	.byte	0xd
 	.2byte	0x297
 	.byte	0x16
@@ -3003,7 +3003,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0xbc
 	.uleb128 0x9
-	.4byte	.LASF8718
+	.4byte	.LASF8706
 	.byte	0xd
 	.2byte	0x298
 	.byte	0x16
@@ -3012,7 +3012,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0xc4
 	.uleb128 0x9
-	.4byte	.LASF8719
+	.4byte	.LASF8707
 	.byte	0xd
 	.2byte	0x299
 	.byte	0x8
@@ -3049,7 +3049,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x7
 	.4byte	0xe26
 	.uleb128 0x9
-	.4byte	.LASF8720
+	.4byte	.LASF8708
 	.byte	0xd
 	.2byte	0x2a1
 	.byte	0x1b
@@ -3058,7 +3058,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x9
-	.4byte	.LASF8721
+	.4byte	.LASF8709
 	.byte	0xd
 	.2byte	0x2a2
 	.byte	0x18
@@ -3088,13 +3088,13 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x3
 	.4byte	0xe6b
 	.uleb128 0x20
-	.4byte	.LASF8671
+	.4byte	.LASF8659
 	.byte	0xd
 	.2byte	0x29a
 	.byte	0xb
 	.4byte	0xc87
 	.uleb128 0x20
-	.4byte	.LASF8722
+	.4byte	.LASF8710
 	.byte	0xd
 	.2byte	0x2a3
 	.byte	0xb
@@ -3108,7 +3108,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x18
 	.byte	0
 	.uleb128 0x16
-	.4byte	.LASF8724
+	.4byte	.LASF8712
 	.byte	0x1
 	.uleb128 0x15
 	.byte	0x4
@@ -3145,7 +3145,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x2
 	.byte	0
 	.uleb128 0xe
-	.4byte	.LASF8725
+	.4byte	.LASF8713
 	.byte	0xd
 	.2byte	0x333
 	.byte	0x17
@@ -3153,7 +3153,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xe
-	.4byte	.LASF8726
+	.4byte	.LASF8714
 	.byte	0xd
 	.2byte	0x334
 	.byte	0x1d
@@ -3161,7 +3161,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xf
-	.4byte	.LASF8727
+	.4byte	.LASF8715
 	.byte	0xf
 	.byte	0x67
 	.byte	0xe
@@ -3169,7 +3169,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xf
-	.4byte	.LASF8728
+	.4byte	.LASF8716
 	.byte	0x10
 	.byte	0x8c
 	.byte	0x16
@@ -3179,13 +3179,13 @@ pmc_wait_wakeup_clocks_restore:
 	.uleb128 0x3
 	.byte	0x1
 	.byte	0x2
-	.4byte	.LASF8729
+	.4byte	.LASF8717
 	.uleb128 0x5
 	.4byte	0xf01
 	.uleb128 0x6
 	.4byte	0xf01
 	.uleb128 0x22
-	.4byte	.LASF8730
+	.4byte	.LASF8718
 	.byte	0x10
 	.byte	0x91
 	.byte	0x1a
@@ -3194,7 +3194,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x3
 	.4byte	cpu_irq_critical_section_counter
 	.uleb128 0x22
-	.4byte	.LASF8731
+	.4byte	.LASF8719
 	.byte	0x10
 	.byte	0x92
 	.byte	0x1a
@@ -3205,19 +3205,19 @@ pmc_wait_wakeup_clocks_restore:
 	.uleb128 0x3
 	.byte	0x4
 	.byte	0x4
-	.4byte	.LASF8732
+	.4byte	.LASF8720
 	.uleb128 0x3
 	.byte	0x8
 	.byte	0x4
-	.4byte	.LASF8733
+	.4byte	.LASF8721
 	.uleb128 0x4
-	.4byte	.LASF8734
+	.4byte	.LASF8722
 	.byte	0x11
 	.byte	0x64
 	.byte	0x10
 	.4byte	0x7f1
 	.uleb128 0x23
-	.4byte	.LASF8735
+	.4byte	.LASF8723
 	.byte	0x1
 	.2byte	0x113
 	.byte	0x16
@@ -3226,7 +3226,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x3
 	.4byte	b_is_sleep_clock_used
 	.uleb128 0x23
-	.4byte	.LASF8736
+	.4byte	.LASF8724
 	.byte	0x1
 	.2byte	0x115
 	.byte	0x2e
@@ -3236,7 +3236,7 @@ pmc_wait_wakeup_clocks_restore:
 	.4byte	callback_clocks_restored
 	.uleb128 0x24
 	.byte	0x1
-	.4byte	.LASF8737
+	.4byte	.LASF8725
 	.byte	0x1
 	.2byte	0x177
 	.byte	0x6
@@ -3247,7 +3247,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x1
 	.4byte	0xfc5
 	.uleb128 0x25
-	.4byte	.LASF8739
+	.4byte	.LASF8727
 	.byte	0x1
 	.2byte	0x178
 	.byte	0x29
@@ -3272,7 +3272,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0
 	.uleb128 0x27
 	.byte	0x1
-	.4byte	.LASF8772
+	.4byte	.LASF8760
 	.byte	0x1
 	.2byte	0x172
 	.byte	0x6
@@ -3284,7 +3284,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x1
 	.uleb128 0x24
 	.byte	0x1
-	.4byte	.LASF8738
+	.4byte	.LASF8726
 	.byte	0x1
 	.2byte	0x117
 	.byte	0x6
@@ -3295,7 +3295,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x1
 	.4byte	0x1268
 	.uleb128 0x25
-	.4byte	.LASF8740
+	.4byte	.LASF8728
 	.byte	0x1
 	.2byte	0x117
 	.byte	0x14
@@ -3317,7 +3317,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x91
 	.sleb128 -96
 	.uleb128 0x23
-	.4byte	.LASF8741
+	.4byte	.LASF8729
 	.byte	0x1
 	.2byte	0x130
 	.byte	0x11
@@ -3326,7 +3326,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x91
 	.sleb128 -100
 	.uleb128 0x23
-	.4byte	.LASF8742
+	.4byte	.LASF8730
 	.byte	0x1
 	.2byte	0x130
 	.byte	0x18
@@ -3335,7 +3335,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x91
 	.sleb128 -104
 	.uleb128 0x23
-	.4byte	.LASF8743
+	.4byte	.LASF8731
 	.byte	0x1
 	.2byte	0x130
 	.byte	0x1f
@@ -3353,7 +3353,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x91
 	.sleb128 -112
 	.uleb128 0x23
-	.4byte	.LASF8744
+	.4byte	.LASF8732
 	.byte	0x1
 	.2byte	0x133
 	.byte	0xc
@@ -3591,7 +3591,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x3
 	.byte	0
 	.uleb128 0x2e
-	.4byte	.LASF8752
+	.4byte	.LASF8740
 	.byte	0x1
 	.byte	0xad
 	.byte	0x1d
@@ -3599,56 +3599,56 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x3
 	.4byte	0x12d7
 	.uleb128 0x2f
-	.4byte	.LASF8745
+	.4byte	.LASF8733
 	.byte	0x1
 	.byte	0xae
 	.byte	0x12
 	.4byte	0xc5
 	.uleb128 0x2f
-	.4byte	.LASF8746
+	.4byte	.LASF8734
 	.byte	0x1
 	.byte	0xaf
 	.byte	0x12
 	.4byte	0xc5
 	.uleb128 0x2f
-	.4byte	.LASF8747
+	.4byte	.LASF8735
 	.byte	0x1
 	.byte	0xb0
 	.byte	0x12
 	.4byte	0xc5
 	.uleb128 0x2f
-	.4byte	.LASF8748
+	.4byte	.LASF8736
 	.byte	0x1
 	.byte	0xb1
 	.byte	0x12
 	.4byte	0xc5
 	.uleb128 0x2f
-	.4byte	.LASF8749
+	.4byte	.LASF8737
 	.byte	0x1
 	.byte	0xb2
 	.byte	0x12
 	.4byte	0xc5
 	.uleb128 0x2f
-	.4byte	.LASF8750
+	.4byte	.LASF8738
 	.byte	0x1
 	.byte	0xb4
 	.byte	0x14
 	.4byte	0xc5
 	.uleb128 0x30
-	.4byte	.LASF8743
+	.4byte	.LASF8731
 	.byte	0x1
 	.byte	0xb8
 	.byte	0xb
 	.4byte	0xb9
 	.uleb128 0x30
-	.4byte	.LASF8751
+	.4byte	.LASF8739
 	.byte	0x1
 	.byte	0xb9
 	.byte	0xb
 	.4byte	0xb9
 	.byte	0
 	.uleb128 0x2e
-	.4byte	.LASF8753
+	.4byte	.LASF8741
 	.byte	0x1
 	.byte	0x42
 	.byte	0x1d
@@ -3656,43 +3656,43 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x3
 	.4byte	0x136a
 	.uleb128 0x2f
-	.4byte	.LASF8754
+	.4byte	.LASF8742
 	.byte	0x1
 	.byte	0x43
 	.byte	0xd
 	.4byte	0x136a
 	.uleb128 0x2f
-	.4byte	.LASF8755
+	.4byte	.LASF8743
 	.byte	0x1
 	.byte	0x44
 	.byte	0xd
 	.4byte	0x136a
 	.uleb128 0x2f
-	.4byte	.LASF8756
+	.4byte	.LASF8744
 	.byte	0x1
 	.byte	0x45
 	.byte	0xd
 	.4byte	0x136a
 	.uleb128 0x2f
-	.4byte	.LASF8757
+	.4byte	.LASF8745
 	.byte	0x1
 	.byte	0x46
 	.byte	0xd
 	.4byte	0x136a
 	.uleb128 0x2f
-	.4byte	.LASF8758
+	.4byte	.LASF8746
 	.byte	0x1
 	.byte	0x47
 	.byte	0xd
 	.4byte	0x136a
 	.uleb128 0x2f
-	.4byte	.LASF8759
+	.4byte	.LASF8747
 	.byte	0x1
 	.byte	0x49
 	.byte	0xd
 	.4byte	0x136a
 	.uleb128 0x2f
-	.4byte	.LASF8760
+	.4byte	.LASF8748
 	.byte	0x1
 	.byte	0x4b
 	.byte	0xe
@@ -3704,7 +3704,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0xb
 	.4byte	0xb9
 	.uleb128 0x30
-	.4byte	.LASF8743
+	.4byte	.LASF8731
 	.byte	0x1
 	.byte	0x4e
 	.byte	0xb
@@ -3716,7 +3716,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0xb
 	.4byte	0xb9
 	.uleb128 0x30
-	.4byte	.LASF8744
+	.4byte	.LASF8732
 	.byte	0x1
 	.byte	0x51
 	.byte	0xb
@@ -3726,35 +3726,35 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x4
 	.4byte	0xb9
 	.uleb128 0x32
-	.4byte	.LASF8761
+	.4byte	.LASF8749
 	.byte	0x3
 	.2byte	0x146
 	.byte	0x39
 	.byte	0x1
 	.byte	0x3
 	.uleb128 0x32
-	.4byte	.LASF8762
+	.4byte	.LASF8750
 	.byte	0x3
 	.2byte	0x13b
 	.byte	0x39
 	.byte	0x1
 	.byte	0x3
 	.uleb128 0x32
-	.4byte	.LASF8763
+	.4byte	.LASF8751
 	.byte	0x2
 	.2byte	0x160
 	.byte	0x39
 	.byte	0x1
 	.byte	0x3
 	.uleb128 0x32
-	.4byte	.LASF8764
+	.4byte	.LASF8752
 	.byte	0x2
 	.2byte	0x134
 	.byte	0x39
 	.byte	0x1
 	.byte	0x3
 	.uleb128 0x32
-	.4byte	.LASF8765
+	.4byte	.LASF8753
 	.byte	0x2
 	.2byte	0x129
 	.byte	0x39
@@ -3763,24 +3763,24 @@ pmc_wait_wakeup_clocks_restore:
 	.uleb128 0x33
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF8766
-	.4byte	.LASF8766
+	.4byte	.LASF8754
+	.4byte	.LASF8754
 	.byte	0x12
 	.byte	0xb8
 	.byte	0x6
 	.uleb128 0x33
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF8767
-	.4byte	.LASF8767
+	.4byte	.LASF8755
+	.4byte	.LASF8755
 	.byte	0x12
 	.byte	0xc3
 	.byte	0x6
 	.uleb128 0x34
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF8768
-	.4byte	.LASF8768
+	.4byte	.LASF8756
+	.4byte	.LASF8756
 	.byte	0x12
 	.2byte	0x131
 	.byte	0x6
@@ -5556,18 +5556,18 @@ pmc_wait_wakeup_clocks_restore:
 	.4byte	.Ldebug_macro109
 	.file 110 ".././hal/sam3u1c/inc/cw521.h"
 	.byte	0x3
-	.uleb128 0x148
+	.uleb128 0x14a
 	.uleb128 0x6e
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LASF8405
+	.4byte	.LASF8407
 	.file 111 ".././hal/sam3u1c/inc/exceptions.h"
 	.byte	0x3
 	.uleb128 0x31
 	.uleb128 0x6f
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LASF8406
+	.4byte	.LASF8408
 	.byte	0x4
 	.byte	0x7
 	.4byte	.Ldebug_macro110
@@ -5575,7 +5575,7 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x4
 	.byte	0x4
 	.byte	0
-	.section	.debug_macro,"G",%progbits,wm4.0.2cd8a2cb7ff4c48cec7eeec776a1dd8c,comdat
+	.section	.debug_macro,"G",%progbits,wm4.0.84f01b7600eb36308f16331d3d2e9779,comdat
 .Ldebug_macro2:
 	.2byte	0x4
 	.byte	0
@@ -31037,7 +31037,7 @@ pmc_wait_wakeup_clocks_restore:
 	.uleb128 0x71
 	.4byte	.LASF8313
 	.byte	0
-	.section	.debug_macro,"G",%progbits,wm4.board.h.48.ce8d06c36cc583d9bf62738411f62e4d,comdat
+	.section	.debug_macro,"G",%progbits,wm4.board.h.48.3fc21f768e842120f151448a98046af0,comdat
 .Ldebug_macro109:
 	.2byte	0x4
 	.byte	0
@@ -31276,7 +31276,7 @@ pmc_wait_wakeup_clocks_restore:
 	.uleb128 0x91
 	.4byte	.LASF8391
 	.byte	0x5
-	.uleb128 0x97
+	.uleb128 0x92
 	.4byte	.LASF8392
 	.byte	0x5
 	.uleb128 0x98
@@ -31314,443 +31314,407 @@ pmc_wait_wakeup_clocks_restore:
 	.byte	0x5
 	.uleb128 0xa3
 	.4byte	.LASF8404
+	.byte	0x5
+	.uleb128 0xa4
+	.4byte	.LASF8405
+	.byte	0x5
+	.uleb128 0xa6
+	.4byte	.LASF8406
 	.byte	0
-	.section	.debug_macro,"G",%progbits,wm4.cw521.h.62.1727e9a463c60d459e36c42a4e5a0f86,comdat
+	.section	.debug_macro,"G",%progbits,wm4.cw521.h.62.6f487d78438f1a237b2b554798be063f,comdat
 .Ldebug_macro110:
 	.2byte	0x4
 	.byte	0
 	.byte	0x5
 	.uleb128 0x3e
-	.4byte	.LASF8407
-	.byte	0x5
-	.uleb128 0x3f
-	.4byte	.LASF8408
-	.byte	0x5
-	.uleb128 0x40
 	.4byte	.LASF8409
 	.byte	0x5
-	.uleb128 0x41
+	.uleb128 0x3f
 	.4byte	.LASF8410
 	.byte	0x5
-	.uleb128 0x44
+	.uleb128 0x40
 	.4byte	.LASF8411
 	.byte	0x5
-	.uleb128 0x47
+	.uleb128 0x41
 	.4byte	.LASF8412
 	.byte	0x5
-	.uleb128 0x56
+	.uleb128 0x44
 	.4byte	.LASF8413
 	.byte	0x5
-	.uleb128 0x58
+	.uleb128 0x47
 	.4byte	.LASF8414
 	.byte	0x5
-	.uleb128 0x5a
+	.uleb128 0x56
 	.4byte	.LASF8415
 	.byte	0x5
-	.uleb128 0x5c
+	.uleb128 0x58
 	.4byte	.LASF8416
 	.byte	0x5
-	.uleb128 0x60
+	.uleb128 0x5a
 	.4byte	.LASF8417
 	.byte	0x5
-	.uleb128 0x61
+	.uleb128 0x5c
 	.4byte	.LASF8418
 	.byte	0x5
-	.uleb128 0x62
+	.uleb128 0x60
 	.4byte	.LASF8419
 	.byte	0x5
-	.uleb128 0x63
+	.uleb128 0x61
 	.4byte	.LASF8420
 	.byte	0x5
-	.uleb128 0x66
+	.uleb128 0x62
 	.4byte	.LASF8421
 	.byte	0x5
-	.uleb128 0x67
+	.uleb128 0x63
 	.4byte	.LASF8422
 	.byte	0x5
-	.uleb128 0x69
+	.uleb128 0x66
 	.4byte	.LASF8423
 	.byte	0x5
-	.uleb128 0x6a
+	.uleb128 0x67
 	.4byte	.LASF8424
 	.byte	0x5
-	.uleb128 0x6b
+	.uleb128 0x69
 	.4byte	.LASF8425
 	.byte	0x5
-	.uleb128 0x6c
+	.uleb128 0x6a
 	.4byte	.LASF8426
 	.byte	0x5
-	.uleb128 0x6d
+	.uleb128 0x6b
 	.4byte	.LASF8427
 	.byte	0x5
-	.uleb128 0x6f
+	.uleb128 0x6c
 	.4byte	.LASF8428
 	.byte	0x5
-	.uleb128 0x70
+	.uleb128 0x6d
 	.4byte	.LASF8429
 	.byte	0x5
-	.uleb128 0x71
+	.uleb128 0x6f
 	.4byte	.LASF8430
 	.byte	0x5
-	.uleb128 0x72
+	.uleb128 0x70
 	.4byte	.LASF8431
 	.byte	0x5
-	.uleb128 0x75
+	.uleb128 0x71
 	.4byte	.LASF8432
 	.byte	0x5
-	.uleb128 0x76
+	.uleb128 0x72
 	.4byte	.LASF8433
 	.byte	0x5
-	.uleb128 0x77
+	.uleb128 0x75
 	.4byte	.LASF8434
 	.byte	0x5
-	.uleb128 0x78
+	.uleb128 0x76
 	.4byte	.LASF8435
 	.byte	0x5
-	.uleb128 0x79
+	.uleb128 0x77
 	.4byte	.LASF8436
 	.byte	0x5
-	.uleb128 0x7a
+	.uleb128 0x78
 	.4byte	.LASF8437
 	.byte	0x5
-	.uleb128 0x7d
+	.uleb128 0x79
 	.4byte	.LASF8438
 	.byte	0x5
-	.uleb128 0x7e
+	.uleb128 0x7a
 	.4byte	.LASF8439
 	.byte	0x5
-	.uleb128 0x7f
+	.uleb128 0x7d
 	.4byte	.LASF8440
 	.byte	0x5
-	.uleb128 0x80
+	.uleb128 0x7e
 	.4byte	.LASF8441
 	.byte	0x5
-	.uleb128 0x81
+	.uleb128 0x7f
 	.4byte	.LASF8442
 	.byte	0x5
-	.uleb128 0x82
+	.uleb128 0x80
 	.4byte	.LASF8443
 	.byte	0x5
-	.uleb128 0x86
+	.uleb128 0x81
 	.4byte	.LASF8444
 	.byte	0x5
-	.uleb128 0x87
+	.uleb128 0x82
 	.4byte	.LASF8445
 	.byte	0x5
-	.uleb128 0x88
+	.uleb128 0x86
 	.4byte	.LASF8446
 	.byte	0x5
-	.uleb128 0x89
+	.uleb128 0x87
 	.4byte	.LASF8447
 	.byte	0x5
-	.uleb128 0x8a
+	.uleb128 0x88
 	.4byte	.LASF8448
 	.byte	0x5
-	.uleb128 0x8b
+	.uleb128 0x89
 	.4byte	.LASF8449
 	.byte	0x5
-	.uleb128 0x8c
+	.uleb128 0x8a
 	.4byte	.LASF8450
 	.byte	0x5
-	.uleb128 0x8d
+	.uleb128 0x8b
 	.4byte	.LASF8451
 	.byte	0x5
-	.uleb128 0x8e
+	.uleb128 0x8c
 	.4byte	.LASF8452
 	.byte	0x5
-	.uleb128 0x8f
+	.uleb128 0x8d
 	.4byte	.LASF8453
 	.byte	0x5
-	.uleb128 0x90
+	.uleb128 0x8e
 	.4byte	.LASF8454
 	.byte	0x5
-	.uleb128 0x91
+	.uleb128 0x8f
 	.4byte	.LASF8455
 	.byte	0x5
-	.uleb128 0x92
+	.uleb128 0x90
 	.4byte	.LASF8456
 	.byte	0x5
-	.uleb128 0x93
+	.uleb128 0x91
 	.4byte	.LASF8457
 	.byte	0x5
-	.uleb128 0x94
+	.uleb128 0x92
 	.4byte	.LASF8458
 	.byte	0x5
-	.uleb128 0x95
+	.uleb128 0x93
 	.4byte	.LASF8459
 	.byte	0x5
-	.uleb128 0x97
+	.uleb128 0x94
 	.4byte	.LASF8460
 	.byte	0x5
-	.uleb128 0x98
+	.uleb128 0x95
 	.4byte	.LASF8461
 	.byte	0x5
-	.uleb128 0x9a
+	.uleb128 0x97
 	.4byte	.LASF8462
 	.byte	0x5
-	.uleb128 0x9b
+	.uleb128 0x98
 	.4byte	.LASF8463
 	.byte	0x5
-	.uleb128 0x9d
+	.uleb128 0x9a
 	.4byte	.LASF8464
 	.byte	0x5
-	.uleb128 0x9f
+	.uleb128 0x9b
 	.4byte	.LASF8465
 	.byte	0x5
-	.uleb128 0xa0
+	.uleb128 0x9d
 	.4byte	.LASF8466
 	.byte	0x5
-	.uleb128 0xa2
+	.uleb128 0x9f
 	.4byte	.LASF8467
 	.byte	0x5
-	.uleb128 0xa3
+	.uleb128 0xa0
 	.4byte	.LASF8468
 	.byte	0x5
-	.uleb128 0xa5
+	.uleb128 0xa2
 	.4byte	.LASF8469
 	.byte	0x5
-	.uleb128 0xa6
+	.uleb128 0xa3
 	.4byte	.LASF8470
 	.byte	0x5
-	.uleb128 0xa9
+	.uleb128 0xa5
 	.4byte	.LASF8471
 	.byte	0x5
-	.uleb128 0xaa
+	.uleb128 0xa6
 	.4byte	.LASF8472
 	.byte	0x5
-	.uleb128 0xac
+	.uleb128 0xa9
 	.4byte	.LASF8473
 	.byte	0x5
-	.uleb128 0xad
+	.uleb128 0xaa
 	.4byte	.LASF8474
 	.byte	0x5
-	.uleb128 0xaf
+	.uleb128 0xac
 	.4byte	.LASF8475
 	.byte	0x5
-	.uleb128 0xb0
+	.uleb128 0xad
 	.4byte	.LASF8476
 	.byte	0x5
-	.uleb128 0xb1
+	.uleb128 0xaf
 	.4byte	.LASF8477
 	.byte	0x5
-	.uleb128 0xb2
+	.uleb128 0xb0
 	.4byte	.LASF8478
 	.byte	0x5
-	.uleb128 0xb3
+	.uleb128 0xb1
 	.4byte	.LASF8479
 	.byte	0x5
-	.uleb128 0xb4
+	.uleb128 0xb2
 	.4byte	.LASF8480
 	.byte	0x5
-	.uleb128 0xb5
+	.uleb128 0xb3
 	.4byte	.LASF8481
 	.byte	0x5
-	.uleb128 0xb6
+	.uleb128 0xb4
 	.4byte	.LASF8482
 	.byte	0x5
-	.uleb128 0xb7
+	.uleb128 0xb5
 	.4byte	.LASF8483
 	.byte	0x5
-	.uleb128 0xb8
+	.uleb128 0xb6
 	.4byte	.LASF8484
 	.byte	0x5
-	.uleb128 0xb9
+	.uleb128 0xc6
 	.4byte	.LASF8485
 	.byte	0x5
-	.uleb128 0xba
+	.uleb128 0xc7
 	.4byte	.LASF8486
 	.byte	0x5
-	.uleb128 0xbb
+	.uleb128 0xc9
 	.4byte	.LASF8487
 	.byte	0x5
-	.uleb128 0xbc
+	.uleb128 0xca
 	.4byte	.LASF8488
 	.byte	0x5
-	.uleb128 0xbd
+	.uleb128 0xcc
 	.4byte	.LASF8489
 	.byte	0x5
-	.uleb128 0xbe
+	.uleb128 0xcd
 	.4byte	.LASF8490
 	.byte	0x5
-	.uleb128 0xbf
+	.uleb128 0xce
 	.4byte	.LASF8491
 	.byte	0x5
-	.uleb128 0xc0
+	.uleb128 0xcf
 	.4byte	.LASF8492
 	.byte	0x5
-	.uleb128 0xc1
+	.uleb128 0xd1
 	.4byte	.LASF8493
 	.byte	0x5
-	.uleb128 0xc2
+	.uleb128 0xd2
 	.4byte	.LASF8494
 	.byte	0x5
-	.uleb128 0xc3
+	.uleb128 0xd3
 	.4byte	.LASF8495
 	.byte	0x5
-	.uleb128 0xc4
+	.uleb128 0xd5
 	.4byte	.LASF8496
 	.byte	0x5
-	.uleb128 0xc6
+	.uleb128 0xd6
 	.4byte	.LASF8497
 	.byte	0x5
-	.uleb128 0xc7
+	.uleb128 0xd7
 	.4byte	.LASF8498
 	.byte	0x5
-	.uleb128 0xc9
+	.uleb128 0xd8
 	.4byte	.LASF8499
 	.byte	0x5
-	.uleb128 0xca
+	.uleb128 0xdb
 	.4byte	.LASF8500
 	.byte	0x5
-	.uleb128 0xcc
+	.uleb128 0xdc
 	.4byte	.LASF8501
 	.byte	0x5
-	.uleb128 0xcd
+	.uleb128 0xdd
 	.4byte	.LASF8502
 	.byte	0x5
-	.uleb128 0xce
+	.uleb128 0xde
 	.4byte	.LASF8503
 	.byte	0x5
-	.uleb128 0xcf
+	.uleb128 0xdf
 	.4byte	.LASF8504
 	.byte	0x5
-	.uleb128 0xd1
+	.uleb128 0xe0
 	.4byte	.LASF8505
 	.byte	0x5
-	.uleb128 0xd2
+	.uleb128 0xe1
 	.4byte	.LASF8506
 	.byte	0x5
-	.uleb128 0xd3
+	.uleb128 0xe3
 	.4byte	.LASF8507
 	.byte	0x5
-	.uleb128 0xd5
+	.uleb128 0xe4
 	.4byte	.LASF8508
 	.byte	0x5
-	.uleb128 0xd6
+	.uleb128 0xe5
 	.4byte	.LASF8509
 	.byte	0x5
-	.uleb128 0xd7
+	.uleb128 0xe6
 	.4byte	.LASF8510
 	.byte	0x5
-	.uleb128 0xd8
+	.uleb128 0xe7
 	.4byte	.LASF8511
 	.byte	0x5
-	.uleb128 0xdb
+	.uleb128 0xe8
 	.4byte	.LASF8512
 	.byte	0x5
-	.uleb128 0xdc
+	.uleb128 0xe9
 	.4byte	.LASF8513
 	.byte	0x5
-	.uleb128 0xdd
+	.uleb128 0xeb
 	.4byte	.LASF8514
 	.byte	0x5
-	.uleb128 0xde
+	.uleb128 0xec
 	.4byte	.LASF8515
 	.byte	0x5
-	.uleb128 0xdf
+	.uleb128 0xed
 	.4byte	.LASF8516
 	.byte	0x5
-	.uleb128 0xe0
+	.uleb128 0xee
 	.4byte	.LASF8517
 	.byte	0x5
-	.uleb128 0xe1
+	.uleb128 0xef
 	.4byte	.LASF8518
 	.byte	0x5
-	.uleb128 0xe3
+	.uleb128 0xf0
 	.4byte	.LASF8519
 	.byte	0x5
-	.uleb128 0xe4
+	.uleb128 0xf1
 	.4byte	.LASF8520
 	.byte	0x5
-	.uleb128 0xe5
+	.uleb128 0xf4
 	.4byte	.LASF8521
 	.byte	0x5
-	.uleb128 0xe6
+	.uleb128 0xf5
 	.4byte	.LASF8522
 	.byte	0x5
-	.uleb128 0xe7
+	.uleb128 0xf6
 	.4byte	.LASF8523
 	.byte	0x5
-	.uleb128 0xe8
+	.uleb128 0xf7
 	.4byte	.LASF8524
 	.byte	0x5
-	.uleb128 0xe9
+	.uleb128 0xfa
 	.4byte	.LASF8525
 	.byte	0x5
-	.uleb128 0xeb
+	.uleb128 0xfb
 	.4byte	.LASF8526
 	.byte	0x5
-	.uleb128 0xec
+	.uleb128 0xfc
 	.4byte	.LASF8527
 	.byte	0x5
-	.uleb128 0xed
+	.uleb128 0xfd
 	.4byte	.LASF8528
 	.byte	0x5
-	.uleb128 0xee
+	.uleb128 0x105
 	.4byte	.LASF8529
 	.byte	0x5
-	.uleb128 0xef
+	.uleb128 0x108
 	.4byte	.LASF8530
 	.byte	0x5
-	.uleb128 0xf0
+	.uleb128 0x109
 	.4byte	.LASF8531
 	.byte	0x5
-	.uleb128 0xf1
+	.uleb128 0x10a
 	.4byte	.LASF8532
 	.byte	0x5
-	.uleb128 0xf4
+	.uleb128 0x10b
 	.4byte	.LASF8533
 	.byte	0x5
-	.uleb128 0xf5
+	.uleb128 0x10c
 	.4byte	.LASF8534
 	.byte	0x5
-	.uleb128 0xf6
+	.uleb128 0x110
 	.4byte	.LASF8535
 	.byte	0x5
-	.uleb128 0xf7
+	.uleb128 0x112
 	.4byte	.LASF8536
 	.byte	0x5
-	.uleb128 0xfa
+	.uleb128 0x113
 	.4byte	.LASF8537
 	.byte	0x5
-	.uleb128 0xfb
-	.4byte	.LASF8538
-	.byte	0x5
-	.uleb128 0xfc
-	.4byte	.LASF8539
-	.byte	0x5
-	.uleb128 0xfd
-	.4byte	.LASF8540
-	.byte	0x5
-	.uleb128 0x105
-	.4byte	.LASF8541
-	.byte	0x5
-	.uleb128 0x108
-	.4byte	.LASF8542
-	.byte	0x5
-	.uleb128 0x109
-	.4byte	.LASF8543
-	.byte	0x5
-	.uleb128 0x10a
-	.4byte	.LASF8544
-	.byte	0x5
-	.uleb128 0x10b
-	.4byte	.LASF8545
-	.byte	0x5
-	.uleb128 0x10c
-	.4byte	.LASF8546
-	.byte	0x5
-	.uleb128 0x110
-	.4byte	.LASF8547
-	.byte	0x5
-	.uleb128 0x112
-	.4byte	.LASF8548
-	.byte	0x5
-	.uleb128 0x113
-	.4byte	.LASF8549
-	.byte	0x5
 	.uleb128 0x116
-	.4byte	.LASF8550
+	.4byte	.LASF8538
 	.byte	0
 	.section	.debug_line,"",%progbits
 .Ldebug_line0:
@@ -31776,7 +31740,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_CODR_P5 (0x1u << 5)\000"
 .LASF2333:
 	.ascii	"HSMCI_CSTOR_CSTOMUL_128 (0x2u << 4)\000"
-.LASF8684:
+.LASF8672:
 	.ascii	"_p5s\000"
 .LASF1771:
 	.ascii	"ADC12B_SR_OVRE2 (0x1u << 10)\000"
@@ -31831,9 +31795,9 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"C_HALT_Pos)\000"
 .LASF8253:
 	.ascii	"_MEM_TYPE_MEDFAST_ \000"
-.LASF8525:
+.LASF8513:
 	.ascii	"PIN_EBI_NWE_ATTR PIO_PULLUP\000"
-.LASF8522:
+.LASF8510:
 	.ascii	"PIN_EBI_NWE_PIO PIOB\000"
 .LASF2314:
 	.ascii	"HSMCI_CMDR_ATACS (0x1u << 26)\000"
@@ -31867,7 +31831,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PMC_PCER0_PID12 (0x1u << 12)\000"
 .LASF8375:
 	.ascii	"SAM4C_EK 64\000"
-.LASF8629:
+.LASF8617:
 	.ascii	"_maxwds\000"
 .LASF983:
 	.ascii	"_DEFAULT_SOURCE 1\000"
@@ -31909,7 +31873,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"__DEC64_MIN__ 1E-383DD\000"
 .LASF2214:
 	.ascii	"EEFC_FCR_FKEY_Pos 24\000"
-.LASF8453:
+.LASF8455:
 	.ascii	"PIN_EBI_DATA_BUS_D9 PIO_PB26_IDX\000"
 .LASF2695:
 	.ascii	"PIO_PER_P12 (0x1u << 12)\000"
@@ -31946,7 +31910,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_PB1A_PWMH1 (1u << 1)\000"
 .LASF1161:
 	.ascii	"SCB_CPUID_REVISION_Pos 0\000"
-.LASF8620:
+.LASF8608:
 	.ascii	"__wch\000"
 .LASF3484:
 	.ascii	"PIO_DIFSR_P1 (0x1u << 1)\000"
@@ -32000,7 +31964,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_PA0B_NPCS1 (1u << 0)\000"
 .LASF8312:
 	.ascii	"PMC_PCK_2 2\000"
-.LASF8519:
+.LASF8507:
 	.ascii	"PIN_EBI_NWE PIO_PB23_IDX\000"
 .LASF5867:
 	.ascii	"TWI_IER_NACK (0x1u << 8)\000"
@@ -32047,7 +32011,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF1436:
 	.ascii	"TPI_DEVID_MANCVALID_Msk (0x1UL << TPI_DEVID_MANCVAL"
 	.ascii	"ID_Pos)\000"
-.LASF8471:
+.LASF8473:
 	.ascii	"PIN_EBI_ADDR_BUS_NBS0 PIO_PB7_IDX\000"
 .LASF7558:
 	.ascii	"PIO_PC7B_PWML1 (1u << 7)\000"
@@ -32059,7 +32023,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"SUPC_SR_WKUPIS8_DIS (0x0u << 24)\000"
 .LASF3654:
 	.ascii	"PIO_AIMER_P8 (0x1u << 8)\000"
-.LASF8524:
+.LASF8512:
 	.ascii	"PIN_EBI_NWE_TYPE PIO_PERIPH_A\000"
 .LASF695:
 	.ascii	"TPASTE9(a,b,c,d,e,f,g,h,i) a ##b ##c ##d ##e ##f ##"
@@ -32173,12 +32137,12 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"R14_Pos)\000"
 .LASF4653:
 	.ascii	"RTC_CALR_DAY_Msk (0x7u << RTC_CALR_DAY_Pos)\000"
-.LASF8542:
+.LASF8530:
 	.ascii	"PIN_PWRON_GPIO PIO_PA29_IDX\000"
 .LASF2580:
 	.ascii	"MATRIX_PRAS6_M0PR_Msk (0x3u << MATRIX_PRAS6_M0PR_Po"
 	.ascii	"s)\000"
-.LASF8404:
+.LASF8405:
 	.ascii	"USER_EXT_BOARD 99\000"
 .LASF1458:
 	.ascii	"MPU_CTRL_HFNMIENA_Msk (1UL << MPU_CTRL_HFNMIENA_Pos"
@@ -32221,7 +32185,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"TC_BMR_SPEEDEN (0x1u << 10)\000"
 .LASF3292:
 	.ascii	"PIO_MDSR_P1 (0x1u << 1)\000"
-.LASF8499:
+.LASF8487:
 	.ascii	"PIN_EBI_USB_SPARE0_FLAGS (PIO_TYPE_PIO_OUTPUT_0 | P"
 	.ascii	"IO_DEFAULT)\000"
 .LASF5844:
@@ -32303,7 +32267,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF745:
 	.ascii	"MREPEAT33(macro,data) MREPEAT32( macro, data) macro"
 	.ascii	"( 32, data)\000"
-.LASF8469:
+.LASF8471:
 	.ascii	"SPI_SPCK_GPIO (PIO_PA15_IDX)\000"
 .LASF70:
 	.ascii	"__SCHAR_MAX__ 0x7f\000"
@@ -32323,7 +32287,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"SAM4CMS8 (SAM4CMS8_0 || SAM4CMS8_1)\000"
 .LASF135:
 	.ascii	"__UINT_FAST16_MAX__ 0xffffffffU\000"
-.LASF8566:
+.LASF8554:
 	.ascii	"RoReg\000"
 .LASF5830:
 	.ascii	"TWI_MMR_DADR(value) ((TWI_MMR_DADR_Msk & ((value) <"
@@ -32400,7 +32364,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"((value) << MATRIX_PRAS1_M2PR_Pos)))\000"
 .LASF4262:
 	.ascii	"PWM_IMR1_CHID1 (0x1u << 1)\000"
-.LASF8644:
+.LASF8632:
 	.ascii	"_fnargs\000"
 .LASF1608:
 	.ascii	"ADC_SR_EOC3 (0x1u << 3)\000"
@@ -32514,7 +32478,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_PA1 (1u << 1)\000"
 .LASF4562:
 	.ascii	"PWM_CMR_CPRE_MCK_DIV_512 (0x9u << 0)\000"
-.LASF8750:
+.LASF8738:
 	.ascii	"fmr_setting1\000"
 .LASF3136:
 	.ascii	"PIO_IDR_P5 (0x1u << 5)\000"
@@ -32531,7 +32495,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_ESR_P6 (0x1u << 6)\000"
 .LASF3736:
 	.ascii	"PIO_AIMMR_P26 (0x1u << 26)\000"
-.LASF8603:
+.LASF8591:
 	.ascii	"PMC_MCKR\000"
 .LASF1588:
 	.ascii	"ADC_CHER_CH7 (0x1u << 7)\000"
@@ -32694,7 +32658,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_DIFSR_P9 (0x1u << 9)\000"
 .LASF5954:
 	.ascii	"UART_MR_CHMODE_Msk (0x3u << UART_MR_CHMODE_Pos)\000"
-.LASF8596:
+.LASF8584:
 	.ascii	"PMC_PCDR0\000"
 .LASF1680:
 	.ascii	"ADC_IMR_OVRE5 (0x1u << 13)\000"
@@ -32705,7 +32669,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"ne__))\000"
 .LASF7063:
 	.ascii	"REG_SMC_IMR (*(RoReg*)0x400E0014U)\000"
-.LASF8502:
+.LASF8490:
 	.ascii	"PIN_PDIDTX_OUT_FLAGS (PIO_TYPE_PIO_OUTPUT_0 | PIO_D"
 	.ascii	"EFAULT)\000"
 .LASF8183:
@@ -32719,7 +32683,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"REG_PWM_CMPMUPD5 (*(WoReg*)0x4008C18CU)\000"
 .LASF7849:
 	.ascii	"__COPYRIGHT(s) struct __hack\000"
-.LASF8605:
+.LASF8593:
 	.ascii	"PMC_PCK\000"
 .LASF8161:
 	.ascii	"unlikely(exp) (exp)\000"
@@ -32740,7 +32704,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"_REENT_STDIO_STREAM(var,index) &(var)->__sf[index]\000"
 .LASF3874:
 	.ascii	"PIO_REHLSR_P4 (0x1u << 4)\000"
-.LASF8712:
+.LASF8700:
 	.ascii	"_signal_buf\000"
 .LASF6994:
 	.ascii	"REG_ADC12B_RPR (*(RwReg*)0x400A8100U)\000"
@@ -32777,7 +32741,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"os)\000"
 .LASF6457:
 	.ascii	"US_CSR_TIMEOUT (0x1u << 8)\000"
-.LASF8657:
+.LASF8645:
 	.ascii	"_lbfsize\000"
 .LASF5561:
 	.ascii	"SUPC_SR_WKUPIS0 (0x1u << 16)\000"
@@ -32826,7 +32790,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"ADC12B_CHDR_CH5 (0x1u << 5)\000"
 .LASF2846:
 	.ascii	"PIO_OSR_P3 (0x1u << 3)\000"
-.LASF8599:
+.LASF8587:
 	.ascii	"CKGR_MOR\000"
 .LASF340:
 	.ascii	"__DQ_IBIT__ 0\000"
@@ -32849,7 +32813,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF543:
 	.ascii	"XMEGA_A4 ( AVR8_PART_IS_DEFINED(ATxmega16A4) || AVR"
 	.ascii	"8_PART_IS_DEFINED(ATxmega32A4) )\000"
-.LASF8642:
+.LASF8630:
 	.ascii	"__tm_isdst\000"
 .LASF5072:
 	.ascii	"SMC_KEY2_KEY2_Msk (0xffffffffu << SMC_KEY2_KEY2_Pos"
@@ -32888,7 +32852,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF2629:
 	.ascii	"MATRIX_PRAS9_M1PR(value) ((MATRIX_PRAS9_M1PR_Msk & "
 	.ascii	"((value) << MATRIX_PRAS9_M1PR_Pos)))\000"
-.LASF8556:
+.LASF8544:
 	.ascii	"__uint8_t\000"
 .LASF345:
 	.ascii	"__UHQ_FBIT__ 16\000"
@@ -32934,8 +32898,6 @@ pmc_wait_wakeup_clocks_restore:
 .LASF2256:
 	.ascii	"HSMCI_SDCR_SDCSEL_Msk (0x3u << HSMCI_SDCR_SDCSEL_Po"
 	.ascii	"s)\000"
-.LASF8492:
-	.ascii	"PIN_EBI_ADDR_BUS_A17 PIO_PC23_IDX\000"
 .LASF6912:
 	.ascii	"REG_UDPHS_EPTCLRSTA0 (*(WoReg*)0x400A4118U)\000"
 .LASF610:
@@ -32964,14 +32926,14 @@ pmc_wait_wakeup_clocks_restore:
 .LASF2237:
 	.ascii	"HSMCI_MR_PWSDIV(value) ((HSMCI_MR_PWSDIV_Msk & ((va"
 	.ascii	"lue) << HSMCI_MR_PWSDIV_Pos)))\000"
-.LASF8679:
+.LASF8667:
 	.ascii	"_locale\000"
 .LASF918:
 	.ascii	"MREPEAT206(macro,data) MREPEAT205(macro, data) macr"
 	.ascii	"o(205, data)\000"
 .LASF5793:
 	.ascii	"TC_BMR_SWAP (0x1u << 16)\000"
-.LASF8423:
+.LASF8425:
 	.ascii	"PINS_UART_MASK PIO_PA11A_URXD|PIO_PA12A_UTXD\000"
 .LASF3500:
 	.ascii	"PIO_DIFSR_P17 (0x1u << 17)\000"
@@ -32981,7 +32943,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"TWI_IMR_TXBUFE (0x1u << 15)\000"
 .LASF510:
 	.ascii	"NULL ((void *)0)\000"
-.LASF8539:
+.LASF8527:
 	.ascii	"LED1_FLAGS (PIO_TYPE_PIO_OUTPUT_1 | PIO_DEFAULT)\000"
 .LASF7421:
 	.ascii	"PIO_PB16 (1u << 16)\000"
@@ -32996,7 +32958,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"UC3L3 ( AVR32_PART_IS_DEFINED(UC64L3U) || AVR32_PAR"
 	.ascii	"T_IS_DEFINED(UC128L3U) || AVR32_PART_IS_DEFINED(UC2"
 	.ascii	"56L3U) )\000"
-.LASF8518:
+.LASF8506:
 	.ascii	"PIN_EBI_NRD_ATTR PIO_PULLUP\000"
 .LASF5770:
 	.ascii	"TC_BMR_TC0XC0S_Pos 0\000"
@@ -33033,7 +32995,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"DMAC_EBCIDR_BTC3 (0x1u << 3)\000"
 .LASF6176:
 	.ascii	"UDPHS_EPTCTLENB_INTDIS_DMA (0x1u << 3)\000"
-.LASF8691:
+.LASF8679:
 	.ascii	"__sglue\000"
 .LASF4143:
 	.ascii	"PMC_IDR_MCKRDY (0x1u << 3)\000"
@@ -33053,7 +33015,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PWM_OSCUPD_OSCUPL2 (0x1u << 18)\000"
 .LASF1331:
 	.ascii	"DWT_CTRL_SLEEPEVTENA_Pos 19\000"
-.LASF8588:
+.LASF8576:
 	.ascii	"EEFC_FCR\000"
 .LASF8138:
 	.ascii	"Assert(expr) ((void) 0)\000"
@@ -33137,7 +33099,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"UART_IMR_TXRDY (0x1u << 1)\000"
 .LASF2549:
 	.ascii	"MATRIX_PRAS4_M0PR_Pos 0\000"
-.LASF8609:
+.LASF8597:
 	.ascii	"PMC_SR\000"
 .LASF4602:
 	.ascii	"RSTC_CR_KEY_Pos 24\000"
@@ -33183,13 +33145,13 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_REHLSR_P8 (0x1u << 8)\000"
 .LASF8021:
 	.ascii	"_OFF_T_DECLARED \000"
-.LASF8516:
+.LASF8504:
 	.ascii	"PIN_EBI_NRD_ID ID_PIOB\000"
 .LASF536:
 	.ascii	"UC3C (UC3C0 || UC3C1 || UC3C2)\000"
 .LASF981:
 	.ascii	"__GNUC_PREREQ__(ma,mi) __GNUC_PREREQ(ma, mi)\000"
-.LASF8695:
+.LASF8683:
 	.ascii	"_niobs\000"
 .LASF3635:
 	.ascii	"PIO_OWSR_P21 (0x1u << 21)\000"
@@ -33295,7 +33257,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"STK600_RCUC3A0 38\000"
 .LASF3110:
 	.ascii	"PIO_IER_P11 (0x1u << 11)\000"
-.LASF8700:
+.LASF8688:
 	.ascii	"_add\000"
 .LASF3464:
 	.ascii	"PIO_SCIFSR_P13 (0x1u << 13)\000"
@@ -33305,10 +33267,12 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"LE64_TO_CPU_ENDIAN(x) (x)\000"
 .LASF422:
 	.ascii	"__ARM_ARCH_ISA_THUMB 2\000"
-.LASF8593:
+.LASF8581:
 	.ascii	"PMC_SCSR\000"
 .LASF5369:
 	.ascii	"SUPC_SMMR_SMTH_2_0V (0x1u << 0)\000"
+.LASF8483:
+	.ascii	"PIN_EBI_ADDR_BUS_A6 PIO_PB4_IDX\000"
 .LASF7138:
 	.ascii	"REG_PMC_MCKR (*(RwReg*)0x400E0430U)\000"
 .LASF4126:
@@ -33318,7 +33282,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"Pos)\000"
 .LASF6000:
 	.ascii	"UART_RHR_RXCHR_Msk (0xffu << UART_RHR_RXCHR_Pos)\000"
-.LASF8462:
+.LASF8464:
 	.ascii	"USART_PDI USART1\000"
 .LASF7513:
 	.ascii	"PIO_PA4A_MCCDA (1u << 4)\000"
@@ -33337,7 +33301,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF4710:
 	.ascii	"RTC_WPMR_WPKEY_Msk (0xffffffu << RTC_WPMR_WPKEY_Pos"
 	.ascii	")\000"
-.LASF8578:
+.LASF8566:
 	.ascii	"BFAR\000"
 .LASF7828:
 	.ascii	"__null_sentinel __attribute__((__sentinel__))\000"
@@ -33377,7 +33341,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"REG_PIOB_PDSR (*(RoReg*)0x400E0E3CU)\000"
 .LASF8198:
 	.ascii	"LSB1W(u32) MSB2W(u32)\000"
-.LASF8685:
+.LASF8673:
 	.ascii	"_freelist\000"
 .LASF3309:
 	.ascii	"PIO_MDSR_P18 (0x1u << 18)\000"
@@ -33484,7 +33448,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"__GCC_ATOMIC_CHAR32_T_LOCK_FREE 2\000"
 .LASF3028:
 	.ascii	"PIO_CODR_P25 (0x1u << 25)\000"
-.LASF8656:
+.LASF8644:
 	.ascii	"_file\000"
 .LASF3858:
 	.ascii	"PIO_FELLSR_P20 (0x1u << 20)\000"
@@ -33519,7 +33483,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF4089:
 	.ascii	"CKGR_PLLAR_DIVA(value) ((CKGR_PLLAR_DIVA_Msk & ((va"
 	.ascii	"lue) << CKGR_PLLAR_DIVA_Pos)))\000"
-.LASF8664:
+.LASF8652:
 	.ascii	"_nbuf\000"
 .LASF3258:
 	.ascii	"PIO_MDER_P31 (0x1u << 31)\000"
@@ -33602,8 +33566,6 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"REG_UDPHS_EPTCTL6 (*(RoReg*)0x400A41CCU)\000"
 .LASF5408:
 	.ascii	"SUPC_MR_KEY_Msk (0xffu << SUPC_MR_KEY_Pos)\000"
-.LASF456:
-	.ascii	"PLATFORMCW521 1\000"
 .LASF1594:
 	.ascii	"ADC_CHDR_CH5 (0x1u << 5)\000"
 .LASF6805:
@@ -33615,7 +33577,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PWM_SCM_PTRCS_Msk (0x7u << PWM_SCM_PTRCS_Pos)\000"
 .LASF4412:
 	.ascii	"PWM_OSSUPD_OSSUPH0 (0x1u << 0)\000"
-.LASF8447:
+.LASF8449:
 	.ascii	"PIN_EBI_DATA_BUS_D3 PIO_PB12_IDX\000"
 .LASF2589:
 	.ascii	"MATRIX_PRAS6_M3PR_Msk (0x3u << MATRIX_PRAS6_M3PR_Po"
@@ -33641,8 +33603,6 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"o(199, data)\000"
 .LASF4665:
 	.ascii	"RTC_TIMALR_MINEN (0x1u << 15)\000"
-.LASF8482:
-	.ascii	"PIN_EBI_ADDR_BUS_A7 PIO_PC5_IDX\000"
 .LASF4428:
 	.ascii	"PWM_FMR_FPOL_Pos 0\000"
 .LASF6619:
@@ -33668,8 +33628,6 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"RITY_Pos)\000"
 .LASF7961:
 	.ascii	"_GLOBAL_ATEXIT (_GLOBAL_REENT->_atexit)\000"
-.LASF8493:
-	.ascii	"PIN_EBI_ADDR_BUS_A18 PIO_PC24_IDX\000"
 .LASF7598:
 	.ascii	"PIO_PA9A_TWD0 (1u << 9)\000"
 .LASF3982:
@@ -33766,7 +33724,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PMC_SR_MOSCSELS (0x1u << 16)\000"
 .LASF8128:
 	.ascii	"unused(v) do { (void)(v); } while(0)\000"
-.LASF8587:
+.LASF8575:
 	.ascii	"EEFC_FMR\000"
 .LASF1765:
 	.ascii	"ADC12B_SR_EOC4 (0x1u << 4)\000"
@@ -33807,7 +33765,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF8053:
 	.ascii	"_funlockfile(fp) (((fp)->_flags & __SSTR) ? 0 : __l"
 	.ascii	"ock_release_recursive((fp)->_lock))\000"
-.LASF8631:
+.LASF8619:
 	.ascii	"_wds\000"
 .LASF7936:
 	.ascii	"_REENT_RAND48_ADD(ptr) ((ptr)->_new._reent._r48._ad"
@@ -33845,7 +33803,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"REG_TC0_BMR (*(RwReg*)0x400800C4U)\000"
 .LASF4082:
 	.ascii	"CKGR_MOR_MOSCSEL (0x1u << 24)\000"
-.LASF8468:
+.LASF8470:
 	.ascii	"SPI_MOSI_FLAGS (PIO_PERIPH_A | PIO_DEFAULT)\000"
 .LASF6659:
 	.ascii	"REG_TC0_IDR2 (*(WoReg*)0x400800A8U)\000"
@@ -33871,7 +33829,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"REG_RSTC_SR (*(RoReg*)0x400E1204U)\000"
 .LASF6028:
 	.ascii	"UART_TNCR_TXNCTR_Pos 0\000"
-.LASF8648:
+.LASF8636:
 	.ascii	"_atexit\000"
 .LASF6375:
 	.ascii	"US_MR_MODE9 (0x1u << 17)\000"
@@ -33900,7 +33858,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_PA29B_PWMH1 (1u << 29)\000"
 .LASF2507:
 	.ascii	"MATRIX_PRAS1_M1PR_Pos 4\000"
-.LASF8527:
+.LASF8515:
 	.ascii	"PIN_EBI_NCS0_FLAGS PIO_PERIPH_A | PIO_PULLUP\000"
 .LASF3214:
 	.ascii	"PIO_ISR_P19 (0x1u << 19)\000"
@@ -34059,7 +34017,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_AIMDR_P14 (0x1u << 14)\000"
 .LASF3090:
 	.ascii	"PIO_PDSR_P23 (0x1u << 23)\000"
-.LASF8727:
+.LASF8715:
 	.ascii	"suboptarg\000"
 .LASF8362:
 	.ascii	"SAM4E_EK 51\000"
@@ -34109,7 +34067,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"TR_Pos)\000"
 .LASF1651:
 	.ascii	"ADC_IDR_EOC4 (0x1u << 4)\000"
-.LASF8590:
+.LASF8578:
 	.ascii	"EEFC_FRR\000"
 .LASF435:
 	.ascii	"__ARM_NEON\000"
@@ -34190,7 +34148,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_SCIFSR_P29 (0x1u << 29)\000"
 .LASF6541:
 	.ascii	"US_RNPR_RXNPTR_Pos 0\000"
-.LASF8589:
+.LASF8577:
 	.ascii	"EEFC_FSR\000"
 .LASF3630:
 	.ascii	"PIO_OWSR_P16 (0x1u << 16)\000"
@@ -34233,7 +34191,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PMC_MCKR_PRES_CLK_4 (0x2u << 4)\000"
 .LASF4365:
 	.ascii	"PWM_ISR2_CMPM1 (0x1u << 9)\000"
-.LASF8429:
+.LASF8431:
 	.ascii	"PIN_USART0_RXD_FLAGS (PIO_PERIPH_A | PIO_DEFAULT)\000"
 .LASF4008:
 	.ascii	"PMC_PCER0_PID28 (0x1u << 28)\000"
@@ -34246,7 +34204,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"Pos)\000"
 .LASF3924:
 	.ascii	"PIO_FRLHSR_P22 (0x1u << 22)\000"
-.LASF8608:
+.LASF8596:
 	.ascii	"PMC_IDR\000"
 .LASF7:
 	.ascii	"__GNUC_PATCHLEVEL__ 1\000"
@@ -34295,7 +34253,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_AIMMR_P3 (0x1u << 3)\000"
 .LASF6835:
 	.ascii	"REG_USART0_RNCR (*(RwReg*)0x40090114U)\000"
-.LASF8746:
+.LASF8734:
 	.ascii	"pll0_setting\000"
 .LASF6811:
 	.ascii	"REG_PWM_DTUPD3 (*(WoReg*)0x4008C27CU)\000"
@@ -34311,7 +34269,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"UDPHS_CTRL_FADDR_EN (0x1u << 7)\000"
 .LASF4348:
 	.ascii	"PWM_IMR2_CMPM4 (0x1u << 12)\000"
-.LASF8702:
+.LASF8690:
 	.ascii	"_strtok_last\000"
 .LASF5603:
 	.ascii	"SUPC_SR_WKUPIS14 (0x1u << 30)\000"
@@ -34319,7 +34277,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"SCB_CCR_BFHFNMIGN_Pos 8\000"
 .LASF3974:
 	.ascii	"PMC_SCER_PCK0 (0x1u << 8)\000"
-.LASF8607:
+.LASF8595:
 	.ascii	"PMC_IER\000"
 .LASF3405:
 	.ascii	"PIO_PUSR_P18 (0x1u << 18)\000"
@@ -34436,7 +34394,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PWM_DT_DTH_Pos 0\000"
 .LASF4220:
 	.ascii	"PWMCH_NUM_NUMBER 4\000"
-.LASF8393:
+.LASF8394:
 	.ascii	"MC300 2\000"
 .LASF1165:
 	.ascii	"SCB_ICSR_PENDSVSET_Pos 28\000"
@@ -34464,7 +34422,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF750:
 	.ascii	"MREPEAT38(macro,data) MREPEAT37( macro, data) macro"
 	.ascii	"( 37, data)\000"
-.LASF8450:
+.LASF8452:
 	.ascii	"PIN_EBI_DATA_BUS_D6 PIO_PB15_IDX\000"
 .LASF5361:
 	.ascii	"SUPC_CR_XTALSEL_NO_EFFECT (0x0u << 3)\000"
@@ -34585,7 +34543,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF8244:
 	.ascii	"Swap16(u16) ((U16)(((U16)(u16) >> 8) | ((U16)(u16) "
 	.ascii	"<< 8)))\000"
-.LASF8407:
+.LASF8409:
 	.ascii	"BOARD_FREQ_SLCK_XTAL (0U)\000"
 .LASF3183:
 	.ascii	"PIO_IMR_P20 (0x1u << 20)\000"
@@ -34610,7 +34568,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"__INT32_MAX__ 0x7fffffffL\000"
 .LASF2202:
 	.ascii	"EEFC_FMR_FRDY (0x1u << 0)\000"
-.LASF8422:
+.LASF8424:
 	.ascii	"PINS_UART_FLAGS (PIO_PERIPH_A | PIO_DEFAULT)\000"
 .LASF6477:
 	.ascii	"US_THR_TXCHR_Msk (0x1ffu << US_THR_TXCHR_Pos)\000"
@@ -34628,7 +34586,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"RT_IS_DEFINED(SAM4SA16C) )\000"
 .LASF5287:
 	.ascii	"SSC_TFMR_FSOS_NEGATIVE (0x1u << 20)\000"
-.LASF8414:
+.LASF8416:
 	.ascii	"cw521 \000"
 .LASF4645:
 	.ascii	"RTC_CALR_CENT(value) ((RTC_CALR_CENT_Msk & ((value)"
@@ -34663,7 +34621,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"DMAC_EBCISR_ERR2 (0x1u << 18)\000"
 .LASF3353:
 	.ascii	"PIO_PUDR_P30 (0x1u << 30)\000"
-.LASF8597:
+.LASF8585:
 	.ascii	"PMC_PCSR0\000"
 .LASF2204:
 	.ascii	"EEFC_FMR_FWS_Msk (0xfu << EEFC_FMR_FWS_Pos)\000"
@@ -34765,7 +34723,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF1290:
 	.ascii	"SysTick_CALIB_NOREF_Msk (1UL << SysTick_CALIB_NOREF"
 	.ascii	"_Pos)\000"
-.LASF8470:
+.LASF8472:
 	.ascii	"SPI_SPCK_FLAGS (PIO_PERIPH_A | PIO_DEFAULT)\000"
 .LASF6147:
 	.ascii	"UDPHS_EPTCFG_EPT_SIZE_Pos 0\000"
@@ -34795,7 +34753,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"o(100, data)\000"
 .LASF7959:
 	.ascii	"_REENT _impure_ptr\000"
-.LASF8457:
+.LASF8459:
 	.ascii	"PIN_EBI_DATA_BUS_D13 PIO_PB30_IDX\000"
 .LASF4378:
 	.ascii	"PWM_ISR2_CMPU6 (0x1u << 22)\000"
@@ -34821,9 +34779,9 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_SODR_P26 (0x1u << 26)\000"
 .LASF4135:
 	.ascii	"PMC_IER_PCKRDY0 (0x1u << 8)\000"
-.LASF8551:
+.LASF8539:
 	.ascii	"unsigned int\000"
-.LASF8689:
+.LASF8677:
 	.ascii	"_atexit0\000"
 .LASF1793:
 	.ascii	"ADC12B_IER_OVRE2 (0x1u << 10)\000"
@@ -34871,7 +34829,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"_ATEXIT_SIZE 32\000"
 .LASF1998:
 	.ascii	"DMAC_CREQ_DCREQ0 (0x1u << 1)\000"
-.LASF8581:
+.LASF8569:
 	.ascii	"ISAR\000"
 .LASF7313:
 	.ascii	"ID_EFC1 ( 7)\000"
@@ -34885,7 +34843,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"UDD_ENABLE 1\000"
 .LASF1031:
 	.ascii	"__INT8 \"hh\"\000"
-.LASF8634:
+.LASF8622:
 	.ascii	"__tm_sec\000"
 .LASF5334:
 	.ascii	"SSC_IDR_TXEMPTY (0x1u << 1)\000"
@@ -34926,7 +34884,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"TMP_MAX 26\000"
 .LASF7783:
 	.ascii	"__CC_SUPPORTS___INLINE 1\000"
-.LASF8703:
+.LASF8691:
 	.ascii	"_asctime_buf\000"
 .LASF6850:
 	.ascii	"REG_USART1_RTOR (*(RwReg*)0x40094024U)\000"
@@ -34957,7 +34915,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"irq_initialize_vectors() do { } while(0)\000"
 .LASF5462:
 	.ascii	"SUPC_WUIR_WKUPEN8 (0x1u << 8)\000"
-.LASF8592:
+.LASF8580:
 	.ascii	"PMC_SCDR\000"
 .LASF8188:
 	.ascii	"MSB(u16) (((U8 *)&(u16))[1])\000"
@@ -35172,7 +35130,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF723:
 	.ascii	"MREPEAT11(macro,data) MREPEAT10( macro, data) macro"
 	.ascii	"( 10, data)\000"
-.LASF8671:
+.LASF8659:
 	.ascii	"_reent\000"
 .LASF4269:
 	.ascii	"PWM_ISR1_CHID0 (0x1u << 0)\000"
@@ -35199,7 +35157,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_AIMMR_P17 (0x1u << 17)\000"
 .LASF1579:
 	.ascii	"ADC_MR_SHTIM_Msk (0xfu << ADC_MR_SHTIM_Pos)\000"
-.LASF8571:
+.LASF8559:
 	.ascii	"VTOR\000"
 .LASF5783:
 	.ascii	"TC_BMR_TC2XC2S_TIOA1 (0x2u << 4)\000"
@@ -35213,7 +35171,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"SUPC_SMMR_SMSMPL_2048SLCK (0x4u << 8)\000"
 .LASF2118:
 	.ascii	"DMAC_CTRLA_SCSIZE_CHK_256 (0x7u << 16)\000"
-.LASF8662:
+.LASF8650:
 	.ascii	"_close\000"
 .LASF5319:
 	.ascii	"SSC_SR_CP0 (0x1u << 8)\000"
@@ -35245,7 +35203,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF2200:
 	.ascii	"DMAC_WPSR_WPVSRC_Msk (0xffffu << DMAC_WPSR_WPVSRC_P"
 	.ascii	"os)\000"
-.LASF8728:
+.LASF8716:
 	.ascii	"g_interrupt_enabled\000"
 .LASF6694:
 	.ascii	"REG_TWI1_CWGR (*(RwReg*)0x40088010U)\000"
@@ -35270,7 +35228,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"UDPHS_IEN_WAKE_UP (0x1u << 5)\000"
 .LASF3022:
 	.ascii	"PIO_CODR_P19 (0x1u << 19)\000"
-.LASF8531:
+.LASF8519:
 	.ascii	"PIN_EBI_NCS0_TYPE PIO_PERIPH_A\000"
 .LASF3852:
 	.ascii	"PIO_FELLSR_P14 (0x1u << 14)\000"
@@ -35282,8 +35240,6 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"SSC_TFMR_DATLEN_Msk (0x1fu << SSC_TFMR_DATLEN_Pos)\000"
 .LASF7443:
 	.ascii	"PIO_PC15X1_AD12B4 (1u << 15)\000"
-.LASF8490:
-	.ascii	"PIN_EBI_ADDR_BUS_A15 PIO_PC21_IDX\000"
 .LASF1558:
 	.ascii	"ADC_MR_TRGSEL_Msk (0x7u << ADC_MR_TRGSEL_Pos)\000"
 .LASF1190:
@@ -35302,7 +35258,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF754:
 	.ascii	"MREPEAT42(macro,data) MREPEAT41( macro, data) macro"
 	.ascii	"( 41, data)\000"
-.LASF8732:
+.LASF8720:
 	.ascii	"float\000"
 .LASF1923:
 	.ascii	"CHIPID_CIDR_SRAMSIZ_32K (0xAu << 16)\000"
@@ -35348,7 +35304,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"alloca(size) __builtin_alloca(size)\000"
 .LASF6126:
 	.ascii	"UDPHS_IPFEATURES_DMA_FIFO_WORD_DEPTH_Pos 8\000"
-.LASF8645:
+.LASF8633:
 	.ascii	"_dso_handle\000"
 .LASF1535:
 	.ascii	"CoreDebug_BASE (0xE000EDF0UL)\000"
@@ -35356,8 +35312,6 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"US_RPR_RXPTR_Pos 0\000"
 .LASF6267:
 	.ascii	"UDPHS_EPTSTA_ERR_CRISO (0x1u << 13)\000"
-.LASF8481:
-	.ascii	"PIN_EBI_ADDR_BUS_A6 PIO_PC4_IDX\000"
 .LASF4684:
 	.ascii	"RTC_SCCR_ACKCLR (0x1u << 0)\000"
 .LASF8231:
@@ -35370,7 +35324,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF4952:
 	.ascii	"SMC_ECC_PR8_WORDADDR_Msk (0xffu << SMC_ECC_PR8_WORD"
 	.ascii	"ADDR_Pos)\000"
-.LASF8536:
+.LASF8524:
 	.ascii	"LED0_ACTIVE_LEVEL 1\000"
 .LASF5421:
 	.ascii	"SUPC_WUMR_RTCEN_ENABLE (0x1u << 3)\000"
@@ -35436,7 +35390,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF1206:
 	.ascii	"SCB_SCR_SLEEPONEXIT_Msk (1UL << SCB_SCR_SLEEPONEXIT"
 	.ascii	"_Pos)\000"
-.LASF8451:
+.LASF8453:
 	.ascii	"PIN_EBI_DATA_BUS_D7 PIO_PB16_IDX\000"
 .LASF511:
 	.ascii	"__need_NULL\000"
@@ -35495,8 +35449,6 @@ pmc_wait_wakeup_clocks_restore:
 .LASF907:
 	.ascii	"MREPEAT195(macro,data) MREPEAT194(macro, data) macr"
 	.ascii	"o(194, data)\000"
-.LASF8488:
-	.ascii	"PIN_EBI_ADDR_BUS_A13 PIO_PC11_IDX\000"
 .LASF6988:
 	.ascii	"REG_ADC12B_IER (*(WoReg*)0x400A8024U)\000"
 .LASF1844:
@@ -35549,7 +35501,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"((value) << ADC12B_MR_STARTUP_Pos)))\000"
 .LASF4870:
 	.ascii	"SMC_ECC_SR2_MULERR9 (0x1u << 6)\000"
-.LASF8601:
+.LASF8589:
 	.ascii	"CKGR_PLLAR\000"
 .LASF4560:
 	.ascii	"PWM_CMR_CPRE_MCK_DIV_128 (0x7u << 0)\000"
@@ -35611,9 +35563,9 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"REG_HSMCI_RSPR (*(RoReg*)0x40000020U)\000"
 .LASF5340:
 	.ascii	"SSC_IDR_RXSYN (0x1u << 11)\000"
-.LASF8759:
+.LASF8747:
 	.ascii	"p_fmr_setting1\000"
-.LASF8559:
+.LASF8547:
 	.ascii	"__uint32_t\000"
 .LASF2537:
 	.ascii	"MATRIX_PRAS3_M1PR_Pos 4\000"
@@ -35634,7 +35586,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"ITM_TCR_TXENA_Msk (1UL << ITM_TCR_TXENA_Pos)\000"
 .LASF3247:
 	.ascii	"PIO_MDER_P20 (0x1u << 20)\000"
-.LASF8431:
+.LASF8433:
 	.ascii	"PIN_USART0_TXD_FLAGS (PIO_PERIPH_A | PIO_DEFAULT)\000"
 .LASF6836:
 	.ascii	"REG_USART0_TNPR (*(RwReg*)0x40090118U)\000"
@@ -35668,7 +35620,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF957:
 	.ascii	"MREPEAT245(macro,data) MREPEAT244(macro, data) macr"
 	.ascii	"o(244, data)\000"
-.LASF8667:
+.LASF8655:
 	.ascii	"_data\000"
 .LASF375:
 	.ascii	"__GCC_HAVE_SYNC_COMPARE_AND_SWAP_2 1\000"
@@ -35692,7 +35644,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_CODR_P9 (0x1u << 9)\000"
 .LASF3999:
 	.ascii	"PMC_PCER0_PID19 (0x1u << 19)\000"
-.LASF8687:
+.LASF8675:
 	.ascii	"_cvtbuf\000"
 .LASF2644:
 	.ascii	"MATRIX_WPMR_WPEN (0x1u << 0)\000"
@@ -35733,7 +35685,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_PB23A_NWR0 (1u << 23)\000"
 .LASF7760:
 	.ascii	"__unbounded \000"
-.LASF8615:
+.LASF8603:
 	.ascii	"PMC_WPMR\000"
 .LASF6630:
 	.ascii	"_SAM3U_TC0_INSTANCE_ \000"
@@ -35755,7 +35707,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF889:
 	.ascii	"MREPEAT177(macro,data) MREPEAT176(macro, data) macr"
 	.ascii	"o(176, data)\000"
-.LASF8563:
+.LASF8551:
 	.ascii	"uint8_t\000"
 .LASF4796:
 	.ascii	"SMC_ADDR_ADDR_CYCLE0(value) ((SMC_ADDR_ADDR_CYCLE0_"
@@ -35834,7 +35786,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF871:
 	.ascii	"MREPEAT159(macro,data) MREPEAT158(macro, data) macr"
 	.ascii	"o(158, data)\000"
-.LASF8682:
+.LASF8670:
 	.ascii	"_result\000"
 .LASF2739:
 	.ascii	"PIO_PDR_P24 (0x1u << 24)\000"
@@ -35929,14 +35881,14 @@ pmc_wait_wakeup_clocks_restore:
 .LASF939:
 	.ascii	"MREPEAT227(macro,data) MREPEAT226(macro, data) macr"
 	.ascii	"o(226, data)\000"
-.LASF8678:
+.LASF8666:
 	.ascii	"_unspecified_locale_info\000"
 .LASF7408:
 	.ascii	"PIO_PB3 (1u << 3)\000"
 .LASF927:
 	.ascii	"MREPEAT215(macro,data) MREPEAT214(macro, data) macr"
 	.ascii	"o(214, data)\000"
-.LASF8395:
+.LASF8396:
 	.ascii	"SENSORS_XPLAINED_INERTIAL_2 4\000"
 .LASF2119:
 	.ascii	"DMAC_CTRLA_DCSIZE_Pos 20\000"
@@ -35997,9 +35949,9 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"ADC_RCR_RXCTR_Msk (0xffffu << ADC_RCR_RXCTR_Pos)\000"
 .LASF5403:
 	.ascii	"SUPC_MR_VDDIORDYONREG (0x1u << 14)\000"
-.LASF8708:
+.LASF8696:
 	.ascii	"_mblen_state\000"
-.LASF8764:
+.LASF8752:
 	.ascii	"__WFE\000"
 .LASF7804:
 	.ascii	"__section(x) __attribute__((__section__(x)))\000"
@@ -36010,11 +35962,11 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"SMC_SR_AWB (0x1u << 22)\000"
 .LASF6022:
 	.ascii	"UART_RNCR_RXNCTR_Pos 0\000"
-.LASF8640:
+.LASF8628:
 	.ascii	"__tm_wday\000"
 .LASF3223:
 	.ascii	"PIO_ISR_P28 (0x1u << 28)\000"
-.LASF8765:
+.LASF8753:
 	.ascii	"__WFI\000"
 .LASF921:
 	.ascii	"MREPEAT209(macro,data) MREPEAT208(macro, data) macr"
@@ -36023,7 +35975,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"SSC_IDR_CP1 (0x1u << 9)\000"
 .LASF1920:
 	.ascii	"CHIPID_CIDR_SRAMSIZ_160K (0x7u << 16)\000"
-.LASF8548:
+.LASF8536:
 	.ascii	"CONSOLE_UART UART\000"
 .LASF5999:
 	.ascii	"UART_RHR_RXCHR_Pos 0\000"
@@ -36041,7 +35993,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"o(134, data)\000"
 .LASF6343:
 	.ascii	"US_MR_USCLKS_MCK (0x0u << 4)\000"
-.LASF8758:
+.LASF8746:
 	.ascii	"p_fmr_setting\000"
 .LASF4610:
 	.ascii	"RSTC_MR_URSTEN (0x1u << 0)\000"
@@ -36101,7 +36053,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF4809:
 	.ascii	"SMC_ECC_MD_TYPCORREC_Msk (0x3u << SMC_ECC_MD_TYPCOR"
 	.ascii	"REC_Pos)\000"
-.LASF8473:
+.LASF8475:
 	.ascii	"PIN_EBI_ADDR_BUS_FLAG1 PIO_PERIPH_B | PIO_PULLUP\000"
 .LASF6848:
 	.ascii	"REG_USART1_THR (*(WoReg*)0x4009401CU)\000"
@@ -36198,14 +36150,14 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"_SIZE_T_DECLARED \000"
 .LASF7651:
 	.ascii	"PIO_PA29_IDX 29\000"
-.LASF8466:
+.LASF8468:
 	.ascii	"SPI_MISO_FLAGS (PIO_PERIPH_A | PIO_DEFAULT)\000"
 .LASF3971:
 	.ascii	"PIO_WPSR_WPVSRC_Pos 8\000"
 .LASF835:
 	.ascii	"MREPEAT123(macro,data) MREPEAT122(macro, data) macr"
 	.ascii	"o(122, data)\000"
-.LASF8616:
+.LASF8604:
 	.ascii	"PMC_WPSR\000"
 .LASF3019:
 	.ascii	"PIO_CODR_P16 (0x1u << 16)\000"
@@ -36334,7 +36286,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF820:
 	.ascii	"MREPEAT108(macro,data) MREPEAT107(macro, data) macr"
 	.ascii	"o(107, data)\000"
-.LASF8430:
+.LASF8432:
 	.ascii	"PIN_USART0_TXD (PIO_PA18_IDX)\000"
 .LASF2865:
 	.ascii	"PIO_OSR_P22 (0x1u << 22)\000"
@@ -36359,7 +36311,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"CoreDebug_DEMCR_VC_NOCPERR_Pos 5\000"
 .LASF5391:
 	.ascii	"SUPC_SMMR_SMRSTEN (0x1u << 12)\000"
-.LASF8553:
+.LASF8541:
 	.ascii	"unsigned char\000"
 .LASF6539:
 	.ascii	"US_TCR_TXCTR_Msk (0xffffu << US_TCR_TXCTR_Pos)\000"
@@ -36418,8 +36370,6 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PMC_PCSR0_PID19 (0x1u << 19)\000"
 .LASF1474:
 	.ascii	"MPU_RASR_SIZE_Msk (0x1FUL << MPU_RASR_SIZE_Pos)\000"
-.LASF8495:
-	.ascii	"PIN_EBI_ADDR_BUS_A20 PIO_PC26_IDX\000"
 .LASF865:
 	.ascii	"MREPEAT153(macro,data) MREPEAT152(macro, data) macr"
 	.ascii	"o(152, data)\000"
@@ -36455,7 +36405,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"TC_SR_ETRGS (0x1u << 7)\000"
 .LASF3957:
 	.ascii	"PIO_LOCKSR_P23 (0x1u << 23)\000"
-.LASF8652:
+.LASF8640:
 	.ascii	"_base\000"
 .LASF5164:
 	.ascii	"SPI_WPMR_WPKEY_Pos 8\000"
@@ -36520,7 +36470,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_ODSR_P3 (0x1u << 3)\000"
 .LASF5262:
 	.ascii	"SSC_TCMR_START_RF_FALLING (0x4u << 8)\000"
-.LASF8723:
+.LASF8711:
 	.ascii	"__lock\000"
 .LASF8232:
 	.ascii	"be16_to_cpu(x) Swap16(x)\000"
@@ -36545,7 +36495,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"__TA_FBIT__ 63\000"
 .LASF6166:
 	.ascii	"UDPHS_EPTCFG_BK_NUMBER_0 (0x0u << 6)\000"
-.LASF8665:
+.LASF8653:
 	.ascii	"_blksize\000"
 .LASF4676:
 	.ascii	"RTC_CALALR_DATE_Msk (0x3fu << RTC_CALALR_DATE_Pos)\000"
@@ -36615,7 +36565,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"ID_USART2 (15)\000"
 .LASF1620:
 	.ascii	"ADC_SR_OVRE7 (0x1u << 15)\000"
-.LASF8421:
+.LASF8423:
 	.ascii	"PINS_UART (PIO_PA11A_URXD | PIO_PA12A_UTXD)\000"
 .LASF7630:
 	.ascii	"PIO_PA8_IDX 8\000"
@@ -36889,7 +36839,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF5385:
 	.ascii	"SUPC_SMMR_SMSMPL_Msk (0x7u << SUPC_SMMR_SMSMPL_Pos)"
 	.ascii	"\000"
-.LASF8449:
+.LASF8451:
 	.ascii	"PIN_EBI_DATA_BUS_D5 PIO_PB14_IDX\000"
 .LASF6213:
 	.ascii	"UDPHS_EPTCTLDIS_NAK_OUT (0x1u << 15)\000"
@@ -36903,7 +36853,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"SSC_TFMR_MSBF (0x1u << 7)\000"
 .LASF3651:
 	.ascii	"PIO_AIMER_P5 (0x1u << 5)\000"
-.LASF8754:
+.LASF8742:
 	.ascii	"p_osc_setting\000"
 .LASF4360:
 	.ascii	"PWM_ISR2_WRDY (0x1u << 0)\000"
@@ -36915,7 +36865,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"__ARM_FEATURE_IDIV 1\000"
 .LASF120:
 	.ascii	"__UINT_LEAST16_MAX__ 0xffff\000"
-.LASF8659:
+.LASF8647:
 	.ascii	"_read\000"
 .LASF778:
 	.ascii	"MREPEAT66(macro,data) MREPEAT65( macro, data) macro"
@@ -37139,8 +37089,6 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_MDSR_P4 (0x1u << 4)\000"
 .LASF1611:
 	.ascii	"ADC_SR_EOC6 (0x1u << 6)\000"
-.LASF8480:
-	.ascii	"PIN_EBI_ADDR_BUS_A5 PIO_PC3_IDX\000"
 .LASF6739:
 	.ascii	"REG_PWM_ELMR (*(RwReg*)0x4008C07CU)\000"
 .LASF4097:
@@ -37189,7 +37137,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"DMAC_CTRLA_DST_WIDTH_BYTE (0x0u << 28)\000"
 .LASF3642:
 	.ascii	"PIO_OWSR_P28 (0x1u << 28)\000"
-.LASF8731:
+.LASF8719:
 	.ascii	"cpu_irq_prev_interrupt_state\000"
 .LASF4742:
 	.ascii	"SMC_CFG_DTOMUL_Msk (0x7u << SMC_CFG_DTOMUL_Pos)\000"
@@ -37217,7 +37165,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"REG_PIOB_REHLSR (*(WoReg*)0x400E0ED4U)\000"
 .LASF7925:
 	.ascii	"_REENT_CHECK_RAND48(ptr) \000"
-.LASF8653:
+.LASF8641:
 	.ascii	"_size\000"
 .LASF3798:
 	.ascii	"PIO_LSR_P24 (0x1u << 24)\000"
@@ -37225,7 +37173,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"REG_PWM_DTUPD1 (*(WoReg*)0x4008C23CU)\000"
 .LASF7489:
 	.ascii	"PIO_PB31A_D14 (1u << 31)\000"
-.LASF8418:
+.LASF8420:
 	.ascii	"PINS_ADC12B_TRIG_FLAG (PIO_PERIPH_B | PIO_DEFAULT)\000"
 .LASF724:
 	.ascii	"MREPEAT12(macro,data) MREPEAT11( macro, data) macro"
@@ -37279,6 +37227,8 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"SysTick_LOAD_RELOAD_Pos 0\000"
 .LASF3471:
 	.ascii	"PIO_SCIFSR_P20 (0x1u << 20)\000"
+.LASF8480:
+	.ascii	"PIN_EBI_ADDR_BUS_A3 PIO_PB1_IDX\000"
 .LASF3567:
 	.ascii	"PIO_OWER_P17 (0x1u << 17)\000"
 .LASF5481:
@@ -37323,8 +37273,6 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"CHIPID_CIDR_EPROC_CA5 (0x6u << 5)\000"
 .LASF6357:
 	.ascii	"US_MR_PAR_ODD (0x1u << 9)\000"
-.LASF8491:
-	.ascii	"PIN_EBI_ADDR_BUS_A16 PIO_PC22_IDX\000"
 .LASF6436:
 	.ascii	"US_IMR_PARE (0x1u << 7)\000"
 .LASF3865:
@@ -37346,7 +37294,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_LOCKSR_P20 (0x1u << 20)\000"
 .LASF3427:
 	.ascii	"PIO_ABSR_P8 (0x1u << 8)\000"
-.LASF8763:
+.LASF8751:
 	.ascii	"__DMB\000"
 .LASF4290:
 	.ascii	"PWM_SCUC_UPDULOCK (0x1u << 0)\000"
@@ -37356,9 +37304,9 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"DMAC_CFG_DST_H2SEL_HW (0x1u << 13)\000"
 .LASF1000:
 	.ascii	"__EXP(x) __ ##x ##__\000"
-.LASF8550:
+.LASF8538:
 	.ascii	"BOARD_NF_DATA_ADDR 0x61000000\000"
-.LASF8627:
+.LASF8615:
 	.ascii	"_flock_t\000"
 .LASF4798:
 	.ascii	"SMC_BANK_BANK_Msk (0x7u << SMC_BANK_BANK_Pos)\000"
@@ -37391,7 +37339,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"CT_Pos)\000"
 .LASF3645:
 	.ascii	"PIO_OWSR_P31 (0x1u << 31)\000"
-.LASF8618:
+.LASF8606:
 	.ascii	"_off_t\000"
 .LASF1355:
 	.ascii	"DWT_SLEEPCNT_SLEEPCNT_Pos 0\000"
@@ -37437,7 +37385,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"SUPC_CR_KEY_Msk (0xffu << SUPC_CR_KEY_Pos)\000"
 .LASF6586:
 	.ascii	"REG_HSMCI_CSTOR (*(RwReg*)0x4000001CU)\000"
-.LASF8617:
+.LASF8605:
 	.ascii	"wint_t\000"
 .LASF5903:
 	.ascii	"TWI_RHR_RXDATA_Pos 0\000"
@@ -37519,7 +37467,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"UDPHS_EPTCLRSTA_NAK_OUT (0x1u << 15)\000"
 .LASF7514:
 	.ascii	"PIO_PA3A_MCCK (1u << 3)\000"
-.LASF8755:
+.LASF8743:
 	.ascii	"p_pll0_setting\000"
 .LASF4830:
 	.ascii	"SMC_ECC_SR1_ECCERR5_Msk (0x3u << SMC_ECC_SR1_ECCERR"
@@ -37537,7 +37485,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"{0}}, {0, {0}}, {0, {0}}, \"\", \"\", 0, {0, {0}}, "
 	.ascii	"{0, {0}}, {0, {0}}, {0, {0}}, {0, {0}} } }, _REENT_"
 	.ascii	"INIT_ATEXIT _NULL, {_NULL, 0, _NULL} }\000"
-.LASF8632:
+.LASF8620:
 	.ascii	"_Bigint\000"
 .LASF2301:
 	.ascii	"HSMCI_CMDR_TRDIR_READ (0x1u << 18)\000"
@@ -37600,7 +37548,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF730:
 	.ascii	"MREPEAT18(macro,data) MREPEAT17( macro, data) macro"
 	.ascii	"( 17, data)\000"
-.LASF8694:
+.LASF8682:
 	.ascii	"_glue\000"
 .LASF4719:
 	.ascii	"RTT_AR_ALMV_Pos 0\000"
@@ -37643,11 +37591,11 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"ferror_unlocked(p) __sferror(p)\000"
 .LASF309:
 	.ascii	"__UACCUM_IBIT__ 16\000"
-.LASF8560:
+.LASF8548:
 	.ascii	"long unsigned int\000"
-.LASF8676:
+.LASF8664:
 	.ascii	"_inc\000"
-.LASF8649:
+.LASF8637:
 	.ascii	"_ind\000"
 .LASF502:
 	.ascii	"_WCHAR_T_H \000"
@@ -37673,11 +37621,11 @@ pmc_wait_wakeup_clocks_restore:
 .LASF551:
 	.ascii	"XMEGA_C4 ( AVR8_PART_IS_DEFINED(ATxmega32C4) || AVR"
 	.ascii	"8_PART_IS_DEFINED(ATxmega16C4) )\000"
-.LASF8442:
+.LASF8444:
 	.ascii	"PIN_USART2_SCK (PIO_PA25_IDX)\000"
 .LASF6603:
 	.ascii	"REG_SSC_RFMR (*(RwReg*)0x40004014U)\000"
-.LASF8406:
+.LASF8408:
 	.ascii	"EXCEPTIONS_H_INCLUDED \000"
 .LASF5677:
 	.ascii	"TC_CMR_ACPA_NONE (0x0u << 16)\000"
@@ -37736,11 +37684,11 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"SPI_IDR_OVRES (0x1u << 3)\000"
 .LASF5047:
 	.ascii	"SMC_MODE_READ_MODE (0x1u << 0)\000"
-.LASF8706:
+.LASF8694:
 	.ascii	"_rand_next\000"
 .LASF2686:
 	.ascii	"PIO_PER_P3 (0x1u << 3)\000"
-.LASF8438:
+.LASF8440:
 	.ascii	"PIN_USART2_RXD (PIO_PA23_IDX)\000"
 .LASF2837:
 	.ascii	"PIO_ODR_P26 (0x1u << 26)\000"
@@ -37768,9 +37716,9 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"TC_IMR_LDRBS (0x1u << 6)\000"
 .LASF4312:
 	.ascii	"PWM_IER2_CMPU0 (0x1u << 16)\000"
-.LASF8575:
+.LASF8563:
 	.ascii	"HFSR\000"
-.LASF8498:
+.LASF8486:
 	.ascii	"PIN_EBI_USB_SPARE1 PIO_PB17_IDX\000"
 .LASF3302:
 	.ascii	"PIO_MDSR_P11 (0x1u << 11)\000"
@@ -37813,7 +37761,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_SODR_P17 (0x1u << 17)\000"
 .LASF7194:
 	.ascii	"REG_PIOA_ODSR (*(RwReg*)0x400E0C38U)\000"
-.LASF8595:
+.LASF8583:
 	.ascii	"PMC_PCER0\000"
 .LASF8248:
 	.ascii	"swap32(u32) ((U32)__builtin_bswap32((U32)(u32)))\000"
@@ -37895,7 +37843,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"TC_IMR_ETRGS (0x1u << 7)\000"
 .LASF6669:
 	.ascii	"REG_TWI0_MMR (*(RwReg*)0x40084004U)\000"
-.LASF8740:
+.LASF8728:
 	.ascii	"sleep_mode\000"
 .LASF825:
 	.ascii	"MREPEAT113(macro,data) MREPEAT112(macro, data) macr"
@@ -38076,9 +38024,9 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"CHIPID_CIDR_SRAMSIZ_Pos 16\000"
 .LASF7963:
 	.ascii	"_SYS_TYPES_H \000"
-.LASF8767:
+.LASF8755:
 	.ascii	"pmc_disable_upll_clock\000"
-.LASF8439:
+.LASF8441:
 	.ascii	"PIN_USART2_RXD_FLAGS (PIO_PERIPH_A | PIO_DEFAULT)\000"
 .LASF701:
 	.ascii	"ATPASTE6(a,b,c,d,e,f) TPASTE6( a, b, c, d, e, f)\000"
@@ -38120,7 +38068,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"REG_PWM_OSC (*(WoReg*)0x4008C050U)\000"
 .LASF2336:
 	.ascii	"HSMCI_CSTOR_CSTOMUL_4096 (0x5u << 4)\000"
-.LASF8441:
+.LASF8443:
 	.ascii	"PIN_USART2_TXD_FLAGS (PIO_PERIPH_A | PIO_DEFAULT)\000"
 .LASF1956:
 	.ascii	"CHIPID_CIDR_ARCH_SAM4XxE (0x85u << 20)\000"
@@ -38239,7 +38187,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF7950:
 	.ascii	"_REENT_MBSRTOWCS_STATE(ptr) ((ptr)->_new._reent._mb"
 	.ascii	"srtowcs_state)\000"
-.LASF8713:
+.LASF8701:
 	.ascii	"_getdate_err\000"
 .LASF4901:
 	.ascii	"SMC_ECC_PR3_WORDADDR_Pos 3\000"
@@ -38267,7 +38215,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"REG_PIOB_SCIFSR (*(WoReg*)0x400E0E80U)\000"
 .LASF2667:
 	.ascii	"PERIPH_RNCR_RXNCTR_Pos 0\000"
-.LASF8408:
+.LASF8410:
 	.ascii	"BOARD_FREQ_SLCK_BYPASS (0U)\000"
 .LASF7779:
 	.ascii	"__GNUCLIKE_BUILTIN_NEXT_ARG 1\000"
@@ -38294,7 +38242,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF2610:
 	.ascii	"MATRIX_PRAS8_M0PR_Msk (0x3u << MATRIX_PRAS8_M0PR_Po"
 	.ascii	"s)\000"
-.LASF8681:
+.LASF8669:
 	.ascii	"__cleanup\000"
 .LASF986:
 	.ascii	"_POSIX_C_SOURCE\000"
@@ -38302,7 +38250,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"TC_IDR_CPAS (0x1u << 2)\000"
 .LASF1999:
 	.ascii	"DMAC_CREQ_SCREQ1 (0x1u << 2)\000"
-.LASF8610:
+.LASF8598:
 	.ascii	"PMC_IMR\000"
 .LASF5593:
 	.ascii	"SUPC_SR_WKUPIS10_EN (0x1u << 26)\000"
@@ -38438,7 +38386,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_OWER_P1 (0x1u << 1)\000"
 .LASF5407:
 	.ascii	"SUPC_MR_KEY_Pos 24\000"
-.LASF8444:
+.LASF8446:
 	.ascii	"PIN_EBI_DATA_BUS_D0 PIO_PB9_IDX\000"
 .LASF3931:
 	.ascii	"PIO_FRLHSR_P29 (0x1u << 29)\000"
@@ -38580,7 +38528,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"os)\000"
 .LASF1764:
 	.ascii	"ADC12B_SR_EOC3 (0x1u << 3)\000"
-.LASF8623:
+.LASF8611:
 	.ascii	"__value\000"
 .LASF8167:
 	.ascii	"Set_bits(lvalue,mask) ((lvalue) |= (mask))\000"
@@ -38713,7 +38661,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF5011:
 	.ascii	"SMC_PULSE_NWE_PULSE(value) ((SMC_PULSE_NWE_PULSE_Ms"
 	.ascii	"k & ((value) << SMC_PULSE_NWE_PULSE_Pos)))\000"
-.LASF8537:
+.LASF8525:
 	.ascii	"LED_1_NAME \"red TX\"\000"
 .LASF1389:
 	.ascii	"TPI_FFSR_FtStopped_Pos 1\000"
@@ -38826,7 +38774,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"SUPC_SR_WKUPIS6_EN (0x1u << 22)\000"
 .LASF136:
 	.ascii	"__UINT_FAST32_MAX__ 0xffffffffU\000"
-.LASF8737:
+.LASF8725:
 	.ascii	"pmc_wait_wakeup_clocks_restore\000"
 .LASF2250:
 	.ascii	"HSMCI_DTOR_DTOMUL_256 (0x3u << 4)\000"
@@ -38899,7 +38847,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"DMAC_CTRLA_DCSIZE_CHK_1 (0x0u << 20)\000"
 .LASF5376:
 	.ascii	"SUPC_SMMR_SMTH_2_7V (0x8u << 0)\000"
-.LASF8736:
+.LASF8724:
 	.ascii	"callback_clocks_restored\000"
 .LASF3257:
 	.ascii	"PIO_MDER_P30 (0x1u << 30)\000"
@@ -39045,7 +38993,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"\000"
 .LASF6316:
 	.ascii	"US_CR_RSTSTA (0x1u << 8)\000"
-.LASF8523:
+.LASF8511:
 	.ascii	"PIN_EBI_NWE_ID ID_PIOB\000"
 .LASF2286:
 	.ascii	"HSMCI_CMDR_SPCMD_BOR (0x6u << 8)\000"
@@ -39098,8 +39046,6 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"o(239, data)\000"
 .LASF1552:
 	.ascii	"ADC_CR_SWRST (0x1u << 0)\000"
-.LASF8479:
-	.ascii	"PIN_EBI_ADDR_BUS_A4 PIO_PC2_IDX\000"
 .LASF6317:
 	.ascii	"US_CR_STTBRK (0x1u << 9)\000"
 .LASF3501:
@@ -39334,7 +39280,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"o(201, data)\000"
 .LASF3948:
 	.ascii	"PIO_LOCKSR_P14 (0x1u << 14)\000"
-.LASF8730:
+.LASF8718:
 	.ascii	"cpu_irq_critical_section_counter\000"
 .LASF7060:
 	.ascii	"REG_SMC_SR (*(RoReg*)0x400E0008U)\000"
@@ -39349,6 +39295,8 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_PA3_IDX 3\000"
 .LASF4781:
 	.ascii	"SMC_IDR_UNDEF (0x1u << 21)\000"
+.LASF8479:
+	.ascii	"PIN_EBI_ADDR_BUS_A2 PIO_PB0_IDX\000"
 .LASF44:
 	.ascii	"__INT64_TYPE__ long long int\000"
 .LASF5442:
@@ -39421,7 +39369,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	")\000"
 .LASF7512:
 	.ascii	"PIO_PC15A_NBS1 (1u << 15)\000"
-.LASF8425:
+.LASF8427:
 	.ascii	"PINS_UART_ID ID_PIOA\000"
 .LASF4967:
 	.ascii	"SMC_ECC_PR11_BITADDR_Pos 0\000"
@@ -39444,7 +39392,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"MATRIX_PRAS7_M1PR_Pos 4\000"
 .LASF1052:
 	.ascii	"__int32_t_defined 1\000"
-.LASF8639:
+.LASF8627:
 	.ascii	"__tm_year\000"
 .LASF5916:
 	.ascii	"TWI_TPR_TXPTR(value) ((TWI_TPR_TXPTR_Msk & ((value)"
@@ -39498,7 +39446,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"SAMR21E ( SAM_PART_IS_DEFINED(SAMR21E16A) || SAM_PA"
 	.ascii	"RT_IS_DEFINED(SAMR21E17A) || SAM_PART_IS_DEFINED(SA"
 	.ascii	"MR21E18A) )\000"
-.LASF8513:
+.LASF8501:
 	.ascii	"PIN_EBI_NRD_FLAGS PIO_PERIPH_A | PIO_PULLUP\000"
 .LASF6993:
 	.ascii	"REG_ADC12B_EMR (*(RwReg*)0x400A8068U)\000"
@@ -39537,7 +39485,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"US_MR_CHMODE_LOCAL_LOOPBACK (0x2u << 14)\000"
 .LASF7064:
 	.ascii	"REG_SMC_ADDR (*(RwReg*)0x400E0018U)\000"
-.LASF8654:
+.LASF8642:
 	.ascii	"__sFILE\000"
 .LASF4345:
 	.ascii	"PWM_IMR2_CMPM1 (0x1u << 9)\000"
@@ -39607,7 +39555,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"REG_PWM_CMPVUPD2 (*(WoReg*)0x4008C154U)\000"
 .LASF7228:
 	.ascii	"REG_PIOB_PDR (*(WoReg*)0x400E0E04U)\000"
-.LASF8432:
+.LASF8434:
 	.ascii	"PIN_USART1_RXD (PIO_PA21_IDX)\000"
 .LASF7914:
 	.ascii	"_RAND48_MULT_0 (0xe66d)\000"
@@ -39615,7 +39563,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_PA24B_SCK1 (1u << 24)\000"
 .LASF4619:
 	.ascii	"RTC_CR_UPDTIM (0x1u << 0)\000"
-.LASF8409:
+.LASF8411:
 	.ascii	"BOARD_FREQ_MAINCK_XTAL (12000000U)\000"
 .LASF2419:
 	.ascii	"HSMCI_IDR_OVRE (0x1u << 30)\000"
@@ -39672,7 +39620,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"ADC12B_CHDR_CH4 (0x1u << 4)\000"
 .LASF5083:
 	.ascii	"SPI_CR_SPIEN (0x1u << 0)\000"
-.LASF8427:
+.LASF8429:
 	.ascii	"PINS_UART_ATTR PIO_DEFAULT\000"
 .LASF6991:
 	.ascii	"REG_ADC12B_CDR (*(RoReg*)0x400A8030U)\000"
@@ -39702,7 +39650,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"__INTMAX_WIDTH__ 64\000"
 .LASF2239:
 	.ascii	"HSMCI_MR_WRPROOF (0x1u << 12)\000"
-.LASF8743:
+.LASF8731:
 	.ascii	"mckr\000"
 .LASF7115:
 	.ascii	"REG_MATRIX_PRAS1 (*(RwReg*)0x400E0288U)\000"
@@ -39725,7 +39673,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"US_MR_CPOL (0x1u << 16)\000"
 .LASF1399:
 	.ascii	"TPI_FIFO0_ITM_ATVALID_Pos 29\000"
-.LASF8445:
+.LASF8447:
 	.ascii	"PIN_EBI_DATA_BUS_D1 PIO_PB10_IDX\000"
 .LASF3358:
 	.ascii	"PIO_PUER_P3 (0x1u << 3)\000"
@@ -39803,8 +39751,8 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"_SAM3U_SUPC_INSTANCE_ \000"
 .LASF2467:
 	.ascii	"HSMCI_WPSR_WP_VS_BOTH (0x3u << 0)\000"
-.LASF454:
-	.ascii	"BOARD CW521\000"
+.LASF2001:
+	.ascii	"DMAC_CREQ_SCREQ2 (0x1u << 4)\000"
 .LASF7187:
 	.ascii	"REG_PIOA_ODR (*(WoReg*)0x400E0C14U)\000"
 .LASF4559:
@@ -39910,7 +39858,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"SMC_ECC_PR1_NPARITY_Pos 0\000"
 .LASF4361:
 	.ascii	"PWM_ISR2_ENDTX (0x1u << 1)\000"
-.LASF8515:
+.LASF8503:
 	.ascii	"PIN_EBI_NRD_PIO PIOB\000"
 .LASF1490:
 	.ascii	"CoreDebug_DHCSR_S_REGRDY_Msk (1UL << CoreDebug_DHCS"
@@ -39980,8 +39928,6 @@ pmc_wait_wakeup_clocks_restore:
 .LASF2566:
 	.ascii	"MATRIX_PRAS5_M0PR(value) ((MATRIX_PRAS5_M0PR_Msk & "
 	.ascii	"((value) << MATRIX_PRAS5_M0PR_Pos)))\000"
-.LASF8496:
-	.ascii	"PIN_EBI_ADDR_BUS_A21 PIO_PB21_IDX\000"
 .LASF5373:
 	.ascii	"SUPC_SMMR_SMTH_2_4V (0x5u << 0)\000"
 .LASF7502:
@@ -40154,7 +40100,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_LSR_P15 (0x1u << 15)\000"
 .LASF6745:
 	.ascii	"REG_PWM_TNCR (*(RwReg*)0x4008C11CU)\000"
-.LASF8532:
+.LASF8520:
 	.ascii	"PIN_EBI_NCS0_ATTR PIO_PULLUP\000"
 .LASF1820:
 	.ascii	"ADC12B_IDR_GOVRE (0x1u << 17)\000"
@@ -40174,7 +40120,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"ID_ADC12B (26)\000"
 .LASF8271:
 	.ascii	"FLASH_EXTERN(x) extern const x\000"
-.LASF8760:
+.LASF8748:
 	.ascii	"disable_xtal\000"
 .LASF238:
 	.ascii	"__DEC32_SUBNORMAL_MIN__ 0.000001E-95DF\000"
@@ -40231,7 +40177,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF2548:
 	.ascii	"MATRIX_PRAS3_M4PR(value) ((MATRIX_PRAS3_M4PR_Msk & "
 	.ascii	"((value) << MATRIX_PRAS3_M4PR_Pos)))\000"
-.LASF8465:
+.LASF8467:
 	.ascii	"SPI_MISO_GPIO (PIO_PA13_IDX)\000"
 .LASF7623:
 	.ascii	"PIO_PA1_IDX 1\000"
@@ -40258,6 +40204,8 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"REG_USART0_PTCR (*(WoReg*)0x40090120U)\000"
 .LASF1953:
 	.ascii	"CHIPID_CIDR_ARCH_SAM3XxC (0x84u << 20)\000"
+.LASF8392:
+	.ascii	"CW1190 107\000"
 .LASF7053:
 	.ascii	"REG_DMAC_CTRLB3 (*(RwReg*)0x400B00C4U)\000"
 .LASF1255:
@@ -40324,12 +40272,12 @@ pmc_wait_wakeup_clocks_restore:
 .LASF787:
 	.ascii	"MREPEAT75(macro,data) MREPEAT74( macro, data) macro"
 	.ascii	"( 74, data)\000"
-.LASF8673:
+.LASF8661:
 	.ascii	"_stdin\000"
 .LASF4936:
 	.ascii	"SMC_ECC_PR6_WORDADDR_W8BIT_Msk (0xffu << SMC_ECC_PR"
 	.ascii	"6_WORDADDR_W8BIT_Pos)\000"
-.LASF8509:
+.LASF8497:
 	.ascii	"PIN_PDIC_OUT_FLAGS (PIO_TYPE_PIO_OUTPUT_0 | PIO_DEF"
 	.ascii	"AULT)\000"
 .LASF2907:
@@ -40373,7 +40321,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"TC_CMR_EEVTEDG_EDGE (0x3u << 8)\000"
 .LASF1033:
 	.ascii	"__INT32 \"l\"\000"
-.LASF8456:
+.LASF8458:
 	.ascii	"PIN_EBI_DATA_BUS_D12 PIO_PB29_IDX\000"
 .LASF4720:
 	.ascii	"RTT_AR_ALMV_Msk (0xffffffffu << RTT_AR_ALMV_Pos)\000"
@@ -40478,7 +40426,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_PB25B_PWML0 (1u << 25)\000"
 .LASF4569:
 	.ascii	"PWM_CMR_DTE (0x1u << 16)\000"
-.LASF8672:
+.LASF8660:
 	.ascii	"_errno\000"
 .LASF3617:
 	.ascii	"PIO_OWSR_P3 (0x1u << 3)\000"
@@ -40676,7 +40624,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"REG_ADC12B_ACR (*(RwReg*)0x400A8064U)\000"
 .LASF6047:
 	.ascii	"UDPHS_CTRL_PULLD_DIS (0x1u << 11)\000"
-.LASF8544:
+.LASF8532:
 	.ascii	"board_power(a) if (a){gpio_set_pin_high(PIN_PWRON_G"
 	.ascii	"PIO);} else {gpio_set_pin_low(PIN_PWRON_GPIO);}\000"
 .LASF3472:
@@ -40689,7 +40637,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"SAM4CMS16_1 ( SAM_PART_IS_DEFINED(SAM4CMS16C_1) )\000"
 .LASF3964:
 	.ascii	"PIO_LOCKSR_P30 (0x1u << 30)\000"
-.LASF8721:
+.LASF8709:
 	.ascii	"_nmalloc\000"
 .LASF518:
 	.ascii	"UC3A1 ( AVR32_PART_IS_DEFINED(UC3A1128) || AVR32_PA"
@@ -40716,7 +40664,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"__FLT64_MIN__ 2.2250738585072014e-308F64\000"
 .LASF3142:
 	.ascii	"PIO_IDR_P11 (0x1u << 11)\000"
-.LASF8585:
+.LASF8573:
 	.ascii	"ITM_RxBuffer\000"
 .LASF7569:
 	.ascii	"PIO_PC16B_PWML3 (1u << 16)\000"
@@ -40775,7 +40723,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"DMAC_CFG_SRC_H2SEL_SW (0x0u << 9)\000"
 .LASF150:
 	.ascii	"__FLT_MIN_10_EXP__ (-37)\000"
-.LASF8520:
+.LASF8508:
 	.ascii	"PIN_EBI_NWE_FLAGS PIO_PERIPH_A | PIO_PULLUP\000"
 .LASF8316:
 	.ascii	"EVK1101 2\000"
@@ -40870,7 +40818,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_PDR_P28 (0x1u << 28)\000"
 .LASF4003:
 	.ascii	"PMC_PCER0_PID23 (0x1u << 23)\000"
-.LASF8497:
+.LASF8485:
 	.ascii	"PIN_EBI_USB_SPARE0 PIO_PB6_IDX\000"
 .LASF2547:
 	.ascii	"MATRIX_PRAS3_M4PR_Msk (0x3u << MATRIX_PRAS3_M4PR_Po"
@@ -41127,7 +41075,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_IFER_P30 (0x1u << 30)\000"
 .LASF5049:
 	.ascii	"SMC_MODE_READ_MODE_NRD_CTRL (0x1u << 0)\000"
-.LASF8510:
+.LASF8498:
 	.ascii	"PIN_PDIC_IN_FLAGS (PIO_TYPE_PIO_INPUT | PIO_DEFAULT"
 	.ascii	")\000"
 .LASF799:
@@ -41146,7 +41094,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	" AVR8_PART_IS_DEFINED(ATmega168A) || AVR8_PART_IS_D"
 	.ascii	"EFINED(ATmega168PA) || AVR8_PART_IS_DEFINED(ATmega3"
 	.ascii	"28) || AVR8_PART_IS_DEFINED(ATmega328P) )\000"
-.LASF8650:
+.LASF8638:
 	.ascii	"_fns\000"
 .LASF4448:
 	.ascii	"PWM_FPV_FPVL0 (0x1u << 16)\000"
@@ -41206,7 +41154,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"_SYS__STDINT_H \000"
 .LASF35:
 	.ascii	"__WINT_TYPE__ unsigned int\000"
-.LASF8769:
+.LASF8757:
 	.ascii	"GNU C99 9.3.1 20200408 (release) -mcpu=cortex-m3 -m"
 	.ascii	"long-calls -mfloat-abi=soft -mthumb -march=armv7-m "
 	.ascii	"-g3 -gdwarf-2 -O0 -std=gnu99 -fdata-sections -ffunc"
@@ -41405,7 +41353,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"UDPHS_DMACONTROL_LDNXT_DSC (0x1u << 1)\000"
 .LASF7192:
 	.ascii	"REG_PIOA_SODR (*(WoReg*)0x400E0C30U)\000"
-.LASF8521:
+.LASF8509:
 	.ascii	"PIN_EBI_NWE_MASK 1 << 23\000"
 .LASF4561:
 	.ascii	"PWM_CMR_CPRE_MCK_DIV_256 (0x8u << 0)\000"
@@ -41487,8 +41435,6 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_ISR_P7 (0x1u << 7)\000"
 .LASF6111:
 	.ascii	"UDPHS_TST_SPEED_CFG_HIGH_SPEED (0x2u << 0)\000"
-.LASF8486:
-	.ascii	"PIN_EBI_ADDR_BUS_A11 PIO_PC9_IDX\000"
 .LASF3155:
 	.ascii	"PIO_IDR_P24 (0x1u << 24)\000"
 .LASF7114:
@@ -41533,7 +41479,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_OWER_P24 (0x1u << 24)\000"
 .LASF6424:
 	.ascii	"US_IDR_RIIC (0x1u << 16)\000"
-.LASF8428:
+.LASF8430:
 	.ascii	"PIN_USART0_RXD (PIO_PA19_IDX)\000"
 .LASF4837:
 	.ascii	"SMC_ECC_PR0_BITADDR_Pos 0\000"
@@ -41599,15 +41545,15 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_IFDGSR_P15 (0x1u << 15)\000"
 .LASF2195:
 	.ascii	"DMAC_WPMR_WPKEY_Pos 8\000"
-.LASF8594:
+.LASF8582:
 	.ascii	"Reserved1\000"
-.LASF8602:
+.LASF8590:
 	.ascii	"Reserved2\000"
-.LASF8604:
+.LASF8592:
 	.ascii	"Reserved3\000"
-.LASF8606:
+.LASF8594:
 	.ascii	"Reserved4\000"
-.LASF8614:
+.LASF8602:
 	.ascii	"Reserved5\000"
 .LASF3:
 	.ascii	"__STDC_UTF_32__ 1\000"
@@ -41644,7 +41590,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"value) << SMC_TIMINGS_TCLR_Pos)))\000"
 .LASF305:
 	.ascii	"__ACCUM_MIN__ (-0X1P15K-0X1P15K)\000"
-.LASF8574:
+.LASF8562:
 	.ascii	"CFSR\000"
 .LASF1080:
 	.ascii	"INT_LEAST16_MIN (-__INT_LEAST16_MAX__ - 1)\000"
@@ -41652,13 +41598,13 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_PB14B_PWMH1 (1u << 14)\000"
 .LASF286:
 	.ascii	"__LLFRACT_MAX__ 0X7FFFFFFFFFFFFFFFP-63LLR\000"
-.LASF8411:
+.LASF8413:
 	.ascii	"BOARD_MCK CHIP_FREQ_CPU_MAX\000"
 .LASF6134:
 	.ascii	"UDPHS_IPFEATURES_ISO_EPT_3 (0x1u << 19)\000"
 .LASF1602:
 	.ascii	"ADC_CHSR_CH5 (0x1u << 5)\000"
-.LASF8464:
+.LASF8466:
 	.ascii	"PIN_TARG_NRST_GPIO PIO_PA17_IDX\000"
 .LASF159:
 	.ascii	"__FLT_HAS_INFINITY__ 1\000"
@@ -41748,7 +41694,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"CHIPID_CIDR_ARCH_SAM5A (0xA5u << 20)\000"
 .LASF7854:
 	.ascii	"_Nullable \000"
-.LASF8554:
+.LASF8542:
 	.ascii	"short int\000"
 .LASF8245:
 	.ascii	"Swap32(u32) ((U32)(((U32)Swap16((U32)(u32) >> 16)) "
@@ -41763,7 +41709,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_LOCKSR_P0 (0x1u << 0)\000"
 .LASF2718:
 	.ascii	"PIO_PDR_P3 (0x1u << 3)\000"
-.LASF8555:
+.LASF8543:
 	.ascii	"short unsigned int\000"
 .LASF6328:
 	.ascii	"US_CR_RTSDIS (0x1u << 19)\000"
@@ -41864,7 +41810,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"__WINT_MAX__ 0xffffffffU\000"
 .LASF7706:
 	.ascii	"CHIP_FREQ_FWS_2 (72000000UL)\000"
-.LASF8549:
+.LASF8537:
 	.ascii	"CONSOLE_UART_ID ID_UART\000"
 .LASF2294:
 	.ascii	"HSMCI_CMDR_TRCMD_Pos 16\000"
@@ -41880,7 +41826,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"_MACHINE__TYPES_H \000"
 .LASF5215:
 	.ascii	"SSC_RFMR_DATLEN_Pos 0\000"
-.LASF8557:
+.LASF8545:
 	.ascii	"__int32_t\000"
 .LASF6433:
 	.ascii	"US_IMR_ENDTX (0x1u << 4)\000"
@@ -41917,6 +41863,8 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"o(190, data)\000"
 .LASF5940:
 	.ascii	"UART_CR_RSTTX (0x1u << 3)\000"
+.LASF456:
+	.ascii	"PLATFORMCW1190 1\000"
 .LASF8218:
 	.ascii	"LSB7D(u64) MSB0D(u64)\000"
 .LASF2882:
@@ -42054,7 +42002,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"ADC12B_MR_TRGEN_DIS (0x0u << 0)\000"
 .LASF1113:
 	.ascii	"PTRDIFF_MAX (__PTRDIFF_MAX__)\000"
-.LASF8707:
+.LASF8695:
 	.ascii	"_r48\000"
 .LASF5437:
 	.ascii	"SUPC_WUMR_WKUPDBC_32768_SCLK (0x5u << 12)\000"
@@ -42114,7 +42062,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_ISR_P30 (0x1u << 30)\000"
 .LASF5872:
 	.ascii	"TWI_IER_ENDTX (0x1u << 13)\000"
-.LASF8635:
+.LASF8623:
 	.ascii	"__tm_min\000"
 .LASF7505:
 	.ascii	"PIO_PC16A_NCS2 (1u << 16)\000"
@@ -42127,7 +42075,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF968:
 	.ascii	"MREPEAT256(macro,data) MREPEAT255(macro, data) macr"
 	.ascii	"o(255, data)\000"
-.LASF8460:
+.LASF8462:
 	.ascii	"PIN_EBI_DATA_BUS_FLAG1 PIO_PERIPH_A | PIO_PULLUP\000"
 .LASF5604:
 	.ascii	"SUPC_SR_WKUPIS14_DIS (0x0u << 30)\000"
@@ -42167,7 +42115,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"ADC12B_IER_OVRE5 (0x1u << 13)\000"
 .LASF2226:
 	.ascii	"_SAM3U_HSMCI_COMPONENT_ \000"
-.LASF8452:
+.LASF8454:
 	.ascii	"PIN_EBI_DATA_BUS_D8 PIO_PB25_IDX\000"
 .LASF959:
 	.ascii	"MREPEAT247(macro,data) MREPEAT246(macro, data) macr"
@@ -42226,7 +42174,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_AIMDR_P28 (0x1u << 28)\000"
 .LASF3782:
 	.ascii	"PIO_LSR_P8 (0x1u << 8)\000"
-.LASF8651:
+.LASF8639:
 	.ascii	"__sbuf\000"
 .LASF513:
 	.ascii	"ATMEL_PARTS_H \000"
@@ -42272,7 +42220,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF5283:
 	.ascii	"SSC_TFMR_FSLEN(value) ((SSC_TFMR_FSLEN_Msk & ((valu"
 	.ascii	"e) << SSC_TFMR_FSLEN_Pos)))\000"
-.LASF8715:
+.LASF8703:
 	.ascii	"_mbrtowc_state\000"
 .LASF5573:
 	.ascii	"SUPC_SR_WKUPIS4 (0x1u << 20)\000"
@@ -42307,7 +42255,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"o(157, data)\000"
 .LASF3475:
 	.ascii	"PIO_SCIFSR_P24 (0x1u << 24)\000"
-.LASF8666:
+.LASF8654:
 	.ascii	"_offset\000"
 .LASF3312:
 	.ascii	"PIO_MDSR_P21 (0x1u << 21)\000"
@@ -42361,7 +42309,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"MCR_VC_STATERR_Pos)\000"
 .LASF2358:
 	.ascii	"HSMCI_SR_RENDE (0x1u << 19)\000"
-.LASF8748:
+.LASF8736:
 	.ascii	"mck_setting\000"
 .LASF873:
 	.ascii	"MREPEAT161(macro,data) MREPEAT160(macro, data) macr"
@@ -42411,8 +42359,8 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"o(213, data)\000"
 .LASF6332:
 	.ascii	"US_MR_USART_MODE_NORMAL (0x0u << 0)\000"
-.LASF6868:
-	.ascii	"_SAM3U_USART2_INSTANCE_ \000"
+.LASF454:
+	.ascii	"BOARD CW1190\000"
 .LASF6615:
 	.ascii	"REG_SSC_IMR (*(RoReg*)0x4000404CU)\000"
 .LASF3802:
@@ -42512,7 +42460,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"TC_CMR_WAVE (0x1u << 15)\000"
 .LASF3837:
 	.ascii	"PIO_ELSR_P31 (0x1u << 31)\000"
-.LASF8584:
+.LASF8572:
 	.ascii	"SCB_Type\000"
 .LASF7204:
 	.ascii	"REG_PIOA_PUER (*(WoReg*)0x400E0C64U)\000"
@@ -42524,7 +42472,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF861:
 	.ascii	"MREPEAT149(macro,data) MREPEAT148(macro, data) macr"
 	.ascii	"o(148, data)\000"
-.LASF8625:
+.LASF8613:
 	.ascii	"__ULong\000"
 .LASF6109:
 	.ascii	"UDPHS_TST_SPEED_CFG_Msk (0x3u << UDPHS_TST_SPEED_CF"
@@ -42605,7 +42553,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_MDSR_P29 (0x1u << 29)\000"
 .LASF4075:
 	.ascii	"CKGR_MOR_MOSCRCF_12_MHz (0x2u << 4)\000"
-.LASF8638:
+.LASF8626:
 	.ascii	"__tm_mon\000"
 .LASF2247:
 	.ascii	"HSMCI_DTOR_DTOMUL_1 (0x0u << 4)\000"
@@ -42747,7 +42695,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_OER_P12 (0x1u << 12)\000"
 .LASF1840:
 	.ascii	"ADC12B_IMR_GOVRE (0x1u << 17)\000"
-.LASF8771:
+.LASF8759:
 	.ascii	"C:\\Users\\adewa\\Documents\\Atmel Studio\\7.0\\Chi"
 	.ascii	"pWhisperer-Husky\\ChipWhisperer-Husky\\src\000"
 .LASF3262:
@@ -42790,7 +42738,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF1318:
 	.ascii	"DWT_CTRL_NOTRCPKT_Msk (0x1UL << DWT_CTRL_NOTRCPKT_P"
 	.ascii	"os)\000"
-.LASF8583:
+.LASF8571:
 	.ascii	"CPACR\000"
 .LASF299:
 	.ascii	"__USACCUM_IBIT__ 8\000"
@@ -42817,8 +42765,6 @@ pmc_wait_wakeup_clocks_restore:
 .LASF5073:
 	.ascii	"SMC_KEY2_KEY2(value) ((SMC_KEY2_KEY2_Msk & ((value)"
 	.ascii	" << SMC_KEY2_KEY2_Pos)))\000"
-.LASF8477:
-	.ascii	"PIN_EBI_ADDR_BUS_A2 PIO_PC0_IDX\000"
 .LASF1776:
 	.ascii	"ADC12B_SR_OVRE7 (0x1u << 15)\000"
 .LASF7326:
@@ -42899,7 +42845,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_ODR_P1 (0x1u << 1)\000"
 .LASF1997:
 	.ascii	"DMAC_CREQ_SCREQ0 (0x1u << 0)\000"
-.LASF8501:
+.LASF8489:
 	.ascii	"PIN_PDIDTX_GPIO (PIO_PA20_IDX)\000"
 .LASF6749:
 	.ascii	"REG_PWM_CMPVUPD0 (*(WoReg*)0x4008C134U)\000"
@@ -42914,7 +42860,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"bit_reverse64(u64) ((U64)(((U64)bit_reverse32((U64)"
 	.ascii	"(u64) >> 32)) | ((U64)bit_reverse32((U64)(u64)) << "
 	.ascii	"32)))\000"
-.LASF8647:
+.LASF8635:
 	.ascii	"_is_cxa\000"
 .LASF8355:
 	.ascii	"STK600_RCUC3L3 44\000"
@@ -42952,12 +42898,12 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"DMAC_CHER_KEEP2 (0x1u << 26)\000"
 .LASF3040:
 	.ascii	"PIO_ODSR_P5 (0x1u << 5)\000"
-.LASF8569:
+.LASF8557:
 	.ascii	"CPUID\000"
 .LASF8133:
 	.ascii	"COMPILER_ALIGNED(a) __attribute__((__aligned__(a)))"
 	.ascii	"\000"
-.LASF8394:
+.LASF8395:
 	.ascii	"SENSORS_XPLAINED_INERTIAL_1 3\000"
 .LASF1791:
 	.ascii	"ADC12B_IER_OVRE0 (0x1u << 8)\000"
@@ -43075,7 +43021,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_ISR_P11 (0x1u << 11)\000"
 .LASF3624:
 	.ascii	"PIO_OWSR_P10 (0x1u << 10)\000"
-.LASF8692:
+.LASF8680:
 	.ascii	"__sf\000"
 .LASF6777:
 	.ascii	"REG_PWM_CMPVUPD7 (*(WoReg*)0x4008C1A4U)\000"
@@ -43144,7 +43090,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PWM_CMPMUPD_CTRUPD_Pos 4\000"
 .LASF5820:
 	.ascii	"TWI_CR_SWRST (0x1u << 7)\000"
-.LASF8633:
+.LASF8621:
 	.ascii	"__tm\000"
 .LASF5670:
 	.ascii	"TC_CMR_WAVSEL_Msk (0x3u << TC_CMR_WAVSEL_Pos)\000"
@@ -43234,34 +43180,32 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"SMC_SETUP_NCS_RD_SETUP_Pos 24\000"
 .LASF2681:
 	.ascii	"PERIPH_PTSR_TXTEN (0x1u << 8)\000"
-.LASF8701:
+.LASF8689:
 	.ascii	"_unused_rand\000"
 .LASF8088:
 	.ascii	"_stdout_r(x) ((x)->_stdout)\000"
 .LASF418:
 	.ascii	"__thumb__ 1\000"
-.LASF8711:
+.LASF8699:
 	.ascii	"_l64a_buf\000"
 .LASF5092:
 	.ascii	"SPI_MR_LLB (0x1u << 7)\000"
-.LASF8401:
+.LASF8402:
 	.ascii	"RZ600_AT86RF212 10\000"
 .LASF5027:
 	.ascii	"SMC_TIMINGS_TCLR_Pos 0\000"
 .LASF7946:
 	.ascii	"_REENT_MBTOWC_STATE(ptr) ((ptr)->_new._reent._mbtow"
 	.ascii	"c_state)\000"
-.LASF8485:
-	.ascii	"PIN_EBI_ADDR_BUS_A10 PIO_PC8_IDX\000"
 .LASF1019:
 	.ascii	"__int20__\000"
 .LASF107:
 	.ascii	"__INT8_C(c) c\000"
-.LASF8538:
+.LASF8526:
 	.ascii	"LED1_GPIO (PIO_PA31_IDX)\000"
 .LASF5198:
 	.ascii	"SSC_RCMR_START_Msk (0xfu << SSC_RCMR_START_Pos)\000"
-.LASF8405:
+.LASF8407:
 	.ascii	"_SAM3U_EK_H_ \000"
 .LASF1786:
 	.ascii	"ADC12B_IER_EOC3 (0x1u << 3)\000"
@@ -43275,7 +43219,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"CCPU_ENDIAN_TO_LE16(x) (x)\000"
 .LASF2973:
 	.ascii	"PIO_SODR_P2 (0x1u << 2)\000"
-.LASF8436:
+.LASF8438:
 	.ascii	"PIN_USART1_SCK (PIO_PA24_IDX)\000"
 .LASF330:
 	.ascii	"__ULLACCUM_MIN__ 0.0ULLK\000"
@@ -43470,7 +43414,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"DADDR_Pos)\000"
 .LASF6949:
 	.ascii	"REG_UDPHS_EPTCFG6 (*(RwReg*)0x400A41C0U)\000"
-.LASF8669:
+.LASF8657:
 	.ascii	"_mbstate\000"
 .LASF4086:
 	.ascii	"CKGR_MCFR_MAINFRDY (0x1u << 16)\000"
@@ -43509,7 +43453,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_OWER_P4 (0x1u << 4)\000"
 .LASF6608:
 	.ascii	"REG_SSC_RSHR (*(RoReg*)0x40004030U)\000"
-.LASF8663:
+.LASF8651:
 	.ascii	"_ubuf\000"
 .LASF6173:
 	.ascii	"UDPHS_EPTCFG_EPT_MAPD (0x1u << 31)\000"
@@ -43618,17 +43562,15 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_PB10B_DSR0 (1u << 10)\000"
 .LASF163:
 	.ascii	"__DBL_MIN_EXP__ (-1021)\000"
-.LASF8619:
+.LASF8607:
 	.ascii	"_fpos_t\000"
 .LASF5484:
 	.ascii	"SUPC_WUIR_WKUPEN15_NOT_ENABLE (0x0u << 15)\000"
-.LASF8637:
+.LASF8625:
 	.ascii	"__tm_mday\000"
 .LASF5850:
 	.ascii	"TWI_SR_SVACC (0x1u << 4)\000"
-.LASF8478:
-	.ascii	"PIN_EBI_ADDR_BUS_A3 PIO_PC1_IDX\000"
-.LASF8661:
+.LASF8649:
 	.ascii	"_seek\000"
 .LASF1767:
 	.ascii	"ADC12B_SR_EOC6 (0x1u << 6)\000"
@@ -43840,11 +43782,11 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"RTT ((Rtt *)0x400E1230U)\000"
 .LASF4301:
 	.ascii	"PWM_IER2_ENDTX (0x1u << 1)\000"
-.LASF8455:
+.LASF8457:
 	.ascii	"PIN_EBI_DATA_BUS_D11 PIO_PB28_IDX\000"
 .LASF2083:
 	.ascii	"DMAC_CHSR_ENA2 (0x1u << 2)\000"
-.LASF8719:
+.LASF8707:
 	.ascii	"_h_errno\000"
 .LASF3548:
 	.ascii	"PIO_SCDR_DIV_Msk (0x3fffu << PIO_SCDR_DIV_Pos)\000"
@@ -43938,7 +43880,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"& ((value) << PWM_CMPMUPD_CPRUPD_Pos)))\000"
 .LASF6468:
 	.ascii	"US_CSR_RI (0x1u << 20)\000"
-.LASF8582:
+.LASF8570:
 	.ascii	"RESERVED0\000"
 .LASF3558:
 	.ascii	"PIO_OWER_P8 (0x1u << 8)\000"
@@ -44032,7 +43974,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"STK600_RC044X 24\000"
 .LASF420:
 	.ascii	"__THUMBEL__ 1\000"
-.LASF8677:
+.LASF8665:
 	.ascii	"_emergency\000"
 .LASF7459:
 	.ascii	"PIO_PC24A_A18 (1u << 24)\000"
@@ -44078,9 +44020,9 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"MATRIX_PRAS3_M2PR_Pos 8\000"
 .LASF3669:
 	.ascii	"PIO_AIMER_P23 (0x1u << 23)\000"
-.LASF8417:
+.LASF8419:
 	.ascii	"PINS_ADC12B_TRIG PIO_PA2_IDX\000"
-.LASF8688:
+.LASF8676:
 	.ascii	"_new\000"
 .LASF1519:
 	.ascii	"CoreDebug_DEMCR_VC_BUSERR_Pos 8\000"
@@ -44149,7 +44091,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_PA14 (1u << 14)\000"
 .LASF8108:
 	.ascii	"L_ctermid 16\000"
-.LASF8725:
+.LASF8713:
 	.ascii	"_impure_ptr\000"
 .LASF4592:
 	.ascii	"PWM_DTUPD_DTHUPD_Pos 0\000"
@@ -44166,7 +44108,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"( 33, data)\000"
 .LASF6045:
 	.ascii	"UDPHS_CTRL_DETACH (0x1u << 9)\000"
-.LASF8698:
+.LASF8686:
 	.ascii	"_seed\000"
 .LASF7571:
 	.ascii	"PIO_PA14A_MOSI (1u << 14)\000"
@@ -44182,7 +44124,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"ADC_SR_OVRE3 (0x1u << 11)\000"
 .LASF3640:
 	.ascii	"PIO_OWSR_P26 (0x1u << 26)\000"
-.LASF8472:
+.LASF8474:
 	.ascii	"PIN_EBI_ADDR_BUS_NBS1 PIO_PC15_IDX\000"
 .LASF7969:
 	.ascii	"_QUAD_HIGHWORD 1\000"
@@ -44316,6 +44258,8 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"TPI_FIFO0_ETM0_Msk (0xFFUL << TPI_FIFO0_ETM0_Pos)\000"
 .LASF6454:
 	.ascii	"US_CSR_OVRE (0x1u << 5)\000"
+.LASF8406:
+	.ascii	"BOARD CW521\000"
 .LASF7188:
 	.ascii	"REG_PIOA_OSR (*(RoReg*)0x400E0C18U)\000"
 .LASF4029:
@@ -44515,7 +44459,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"< PWM_FMR_FMOD_Pos)))\000"
 .LASF60:
 	.ascii	"__INT_FAST64_TYPE__ long long int\000"
-.LASF8621:
+.LASF8609:
 	.ascii	"__wchb\000"
 .LASF6921:
 	.ascii	"REG_UDPHS_EPTCFG2 (*(RwReg*)0x400A4140U)\000"
@@ -44567,7 +44511,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF7871:
 	.ascii	"__requires_unlocked(...) __lock_annotate(locks_excl"
 	.ascii	"uded(__VA_ARGS__))\000"
-.LASF8586:
+.LASF8574:
 	.ascii	"SystemCoreClock\000"
 .LASF4871:
 	.ascii	"SMC_ECC_SR2_RECERR10 (0x1u << 8)\000"
@@ -44578,7 +44522,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF744:
 	.ascii	"MREPEAT32(macro,data) MREPEAT31( macro, data) macro"
 	.ascii	"( 31, data)\000"
-.LASF8674:
+.LASF8662:
 	.ascii	"_stdout\000"
 .LASF5393:
 	.ascii	"SUPC_SMMR_SMRSTEN_ENABLE (0x1u << 12)\000"
@@ -44723,9 +44667,9 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"REG_USART1_TTGR (*(RwReg*)0x40094028U)\000"
 .LASF1233:
 	.ascii	"SCB_SHCSR_SYSTICKACT_Pos 11\000"
-.LASF8741:
+.LASF8729:
 	.ascii	"pllr0\000"
-.LASF8742:
+.LASF8730:
 	.ascii	"pllr1\000"
 .LASF80:
 	.ascii	"__SIZE_MAX__ 0xffffffffU\000"
@@ -44764,7 +44708,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"DMAC_CREQ_DCREQ2 (0x1u << 5)\000"
 .LASF1897:
 	.ascii	"CHIPID_CIDR_NVPSIZ_1024K (0xCu << 8)\000"
-.LASF8437:
+.LASF8439:
 	.ascii	"PIN_USART1_SCK_FLAGS (PIO_PERIPH_B | PIO_DEFAULT)\000"
 .LASF4806:
 	.ascii	"SMC_ECC_MD_ECC_PAGESIZE_PS2048_64 (0x2u << 0)\000"
@@ -44779,7 +44723,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"CHIPID_CIDR_SRAMSIZ_256K (0xDu << 16)\000"
 .LASF7305:
 	.ascii	"REG_GPBR_GPBR (*(RwReg*)0x400E1290U)\000"
-.LASF8416:
+.LASF8418:
 	.ascii	"cortexm3 \000"
 .LASF2206:
 	.ascii	"EEFC_FMR_SCOD (0x1u << 16)\000"
@@ -44812,7 +44756,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_OWSR_P27 (0x1u << 27)\000"
 .LASF183:
 	.ascii	"__LDBL_MAX__ 1.7976931348623157e+308L\000"
-.LASF8705:
+.LASF8693:
 	.ascii	"_gamma_signgam\000"
 .LASF2683:
 	.ascii	"PIO_PER_P0 (0x1u << 0)\000"
@@ -44828,7 +44772,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"__INT_LEAST64_WIDTH__ 64\000"
 .LASF2428:
 	.ascii	"HSMCI_IMR_SDIOWAIT (0x1u << 12)\000"
-.LASF8564:
+.LASF8552:
 	.ascii	"int32_t\000"
 .LASF7030:
 	.ascii	"REG_DMAC_CHSR (*(RoReg*)0x400B0030U)\000"
@@ -44864,7 +44808,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"fast_putc(x,p) (--(p)->_w < 0 ? __swbuf_r(_REENT, ("
 	.ascii	"int)(x), p) == EOF : (*(p)->_p = (x), (p)->_p++, 0)"
 	.ascii	")\000"
-.LASF8762:
+.LASF8750:
 	.ascii	"__enable_irq\000"
 .LASF4473:
 	.ascii	"PWM_WPCR_WPCMD_Msk (0x3u << PWM_WPCR_WPCMD_Pos)\000"
@@ -44919,6 +44863,8 @@ pmc_wait_wakeup_clocks_restore:
 .LASF4988:
 	.ascii	"SMC_ECC_PR14_WORDADDR_Msk (0xffu << SMC_ECC_PR14_WO"
 	.ascii	"RDADDR_Pos)\000"
+.LASF8481:
+	.ascii	"PIN_EBI_ADDR_BUS_A4 PIO_PB2_IDX\000"
 .LASF1950:
 	.ascii	"CHIPID_CIDR_ARCH_SAM3UxE (0x81u << 20)\000"
 .LASF1618:
@@ -44954,7 +44900,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"__PMT(args) args\000"
 .LASF6114:
 	.ascii	"UDPHS_TST_TST_K (0x1u << 3)\000"
-.LASF8717:
+.LASF8705:
 	.ascii	"_wcrtomb_state\000"
 .LASF692:
 	.ascii	"TPASTE6(a,b,c,d,e,f) a ##b ##c ##d ##e ##f\000"
@@ -44973,7 +44919,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"__GCC_ATOMIC_BOOL_LOCK_FREE 2\000"
 .LASF5167:
 	.ascii	"SPI_WPSR_WPVS (0x7u << 0)\000"
-.LASF8400:
+.LASF8401:
 	.ascii	"RZ600_AT86RF230B 9\000"
 .LASF2426:
 	.ascii	"HSMCI_IMR_NOTBUSY (0x1u << 5)\000"
@@ -45121,7 +45067,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF8097:
 	.ascii	"__sclearerr(p) ((void)((p)->_flags &= ~(__SERR|__SE"
 	.ascii	"OF)))\000"
-.LASF8420:
+.LASF8422:
 	.ascii	"PINS_ADC_TRIG_FLAG (PIO_PERIPH_B | PIO_DEFAULT)\000"
 .LASF1420:
 	.ascii	"TPI_FIFO1_ETM_ATVALID_Msk (0x3UL << TPI_FIFO1_ETM_A"
@@ -45140,7 +45086,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_PUER_P12 (0x1u << 12)\000"
 .LASF6886:
 	.ascii	"REG_USART2_RPR (*(RwReg*)0x40098100U)\000"
-.LASF8458:
+.LASF8460:
 	.ascii	"PIN_EBI_DATA_BUS_D14 PIO_PB31_IDX\000"
 .LASF6012:
 	.ascii	"UART_RCR_RXCTR(value) ((UART_RCR_RXCTR_Msk & ((valu"
@@ -45151,7 +45097,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PWM_SCM_UPDM_MODE1 (0x1u << 16)\000"
 .LASF2924:
 	.ascii	"PIO_IFDR_P17 (0x1u << 17)\000"
-.LASF8733:
+.LASF8721:
 	.ascii	"double\000"
 .LASF8266:
 	.ascii	"MSB0(u32) MSB0W(u32)\000"
@@ -45277,7 +45223,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PMC_FSMR_FSTT5 (0x1u << 5)\000"
 .LASF6263:
 	.ascii	"UDPHS_EPTSTA_ERR_TRANS (0x1u << 11)\000"
-.LASF8546:
+.LASF8534:
 	.ascii	"board_sram_pwroff() gpio_set_pin_high(PIN_PWRON_GPI"
 	.ascii	"O)\000"
 .LASF5224:
@@ -45288,7 +45234,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_OWSR_P23 (0x1u << 23)\000"
 .LASF6794:
 	.ascii	"REG_PWM_DT1 (*(RwReg*)0x4008C238U)\000"
-.LASF8547:
+.LASF8535:
 	.ascii	"BOARD_PSRAM_ADDR (0x60000000)\000"
 .LASF1123:
 	.ascii	"INT32_C(x) __INT32_C(x)\000"
@@ -45365,7 +45311,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"__BSD_VISIBLE 1\000"
 .LASF3735:
 	.ascii	"PIO_AIMMR_P25 (0x1u << 25)\000"
-.LASF8528:
+.LASF8516:
 	.ascii	"PIN_EBI_NCS0_MASK 1 << 20\000"
 .LASF7317:
 	.ascii	"ID_PIOB (11)\000"
@@ -45398,7 +45344,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"SUPC_WUIR_WKUPT4_HIGH_TO_LOW (0x0u << 20)\000"
 .LASF5779:
 	.ascii	"TC_BMR_TC1XC1S_TIOA2 (0x3u << 2)\000"
-.LASF8511:
+.LASF8499:
 	.ascii	"PIN_PDIC_USART_FLAGS (PIO_PERIPH_B | PIO_DEFAULT)\000"
 .LASF7545:
 	.ascii	"PIO_PC26B_PWMH2 (1u << 26)\000"
@@ -45529,8 +45475,6 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"raceInput_Pos)\000"
 .LASF7212:
 	.ascii	"REG_PIOA_OWDR (*(WoReg*)0x400E0CA4U)\000"
-.LASF8489:
-	.ascii	"PIN_EBI_ADDR_BUS_A14 PIO_PC20_IDX\000"
 .LASF4399:
 	.ascii	"PWM_OSS_OSSH3 (0x1u << 3)\000"
 .LASF6443:
@@ -45559,7 +45503,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"SMC_ECC_PR9_WORDADDR_Pos 3\000"
 .LASF2772:
 	.ascii	"PIO_PSR_P25 (0x1u << 25)\000"
-.LASF8680:
+.LASF8668:
 	.ascii	"__sdidinit\000"
 .LASF7267:
 	.ascii	"REG_PIOB_LOCKSR (*(RoReg*)0x400E0EE0U)\000"
@@ -45719,7 +45663,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PWM_CMPV_CV_Msk (0xffffffu << PWM_CMPV_CV_Pos)\000"
 .LASF1973:
 	.ascii	"CHIPID_CIDR_NVPTYP_Pos 28\000"
-.LASF8545:
+.LASF8533:
 	.ascii	"board_sram_pwron() gpio_set_pin_low(PIN_PWRON_GPIO)"
 	.ascii	"\000"
 .LASF5537:
@@ -45740,7 +45684,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_PUSR_P15 (0x1u << 15)\000"
 .LASF2175:
 	.ascii	"DMAC_CFG_SOD (0x1u << 16)\000"
-.LASF8399:
+.LASF8400:
 	.ascii	"RZ600_AT86RF231 8\000"
 .LASF6083:
 	.ascii	"UDPHS_INTSTA_EPT_2 (0x1u << 10)\000"
@@ -45785,8 +45729,6 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"((value) << MATRIX_PRAS6_M0PR_Pos)))\000"
 .LASF5681:
 	.ascii	"TC_CMR_ACPC_Pos 18\000"
-.LASF8487:
-	.ascii	"PIN_EBI_ADDR_BUS_A12 PIO_PC10_IDX\000"
 .LASF2481:
 	.ascii	"MATRIX_SCFG_DEFMSTR_TYPE_Msk (0x3u << MATRIX_SCFG_D"
 	.ascii	"EFMSTR_TYPE_Pos)\000"
@@ -45796,11 +45738,11 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_IFSR_P26 (0x1u << 26)\000"
 .LASF8356:
 	.ascii	"SAM4L_EK 45\000"
-.LASF8433:
+.LASF8435:
 	.ascii	"PIN_USART1_RXD_FLAGS (PIO_PERIPH_A | PIO_DEFAULT)\000"
 .LASF3387:
 	.ascii	"PIO_PUSR_P0 (0x1u << 0)\000"
-.LASF8529:
+.LASF8517:
 	.ascii	"PIN_EBI_NCS0_PIO PIOB\000"
 .LASF6948:
 	.ascii	"REG_UDPHS_EPTSTA5 (*(RoReg*)0x400A41BCU)\000"
@@ -45862,8 +45804,6 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_SODR_P31 (0x1u << 31)\000"
 .LASF5141:
 	.ascii	"SPI_CSR_CSNAAT (0x1u << 2)\000"
-.LASF2001:
-	.ascii	"DMAC_CREQ_SCREQ2 (0x1u << 4)\000"
 .LASF4855:
 	.ascii	"SMC_ECC_PR1_BITADDR_Pos 0\000"
 .LASF793:
@@ -45886,7 +45826,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"DMAC_SREQ_SSREQ2 (0x1u << 4)\000"
 .LASF2890:
 	.ascii	"PIO_IFER_P15 (0x1u << 15)\000"
-.LASF8739:
+.LASF8727:
 	.ascii	"callback\000"
 .LASF2963:
 	.ascii	"PIO_IFSR_P24 (0x1u << 24)\000"
@@ -45894,7 +45834,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_MDDR_P27 (0x1u << 27)\000"
 .LASF5041:
 	.ascii	"SMC_TIMINGS_TWB_Msk (0xfu << SMC_TIMINGS_TWB_Pos)\000"
-.LASF8514:
+.LASF8502:
 	.ascii	"PIN_EBI_NRD_MASK 1 << 19\000"
 .LASF6125:
 	.ascii	"UDPHS_IPFEATURES_DMA_B_SIZ (0x1u << 7)\000"
@@ -45926,7 +45866,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"REG_PWM_IER1 (*(WoReg*)0x4008C010U)\000"
 .LASF1560:
 	.ascii	"ADC_MR_TRGSEL_ADC_TRIG0 (0x0u << 1)\000"
-.LASF8534:
+.LASF8522:
 	.ascii	"LED0_GPIO (PIO_PA29_IDX)\000"
 .LASF6758:
 	.ascii	"REG_PWM_CMPM2 (*(RwReg*)0x4008C158U)\000"
@@ -45939,7 +45879,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	")\000"
 .LASF3052:
 	.ascii	"PIO_ODSR_P17 (0x1u << 17)\000"
-.LASF8724:
+.LASF8712:
 	.ascii	"__locale_t\000"
 .LASF7404:
 	.ascii	"PIO_PA31 (1u << 31)\000"
@@ -45965,13 +45905,13 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"SUPC_SR_WKUPIS13_EN (0x1u << 29)\000"
 .LASF4515:
 	.ascii	"PWM_PTSR_RXTEN (0x1u << 0)\000"
-.LASF8729:
+.LASF8717:
 	.ascii	"_Bool\000"
 .LASF4152:
 	.ascii	"PMC_SR_LOCKA (0x1u << 1)\000"
 .LASF67:
 	.ascii	"__has_include(STR) __has_include__(STR)\000"
-.LASF8543:
+.LASF8531:
 	.ascii	"PIN_PWRON_FLAGS (PIO_TYPE_PIO_OUTPUT_0 | PIO_DEFAUL"
 	.ascii	"T)\000"
 .LASF4491:
@@ -45988,11 +45928,11 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"DMAC_CTRLB_SRC_DSCR_FETCH_DISABLE (0x1u << 16)\000"
 .LASF5046:
 	.ascii	"SMC_TIMINGS_NFSEL (0x1u << 31)\000"
-.LASF8693:
+.LASF8681:
 	.ascii	"__FILE\000"
 .LASF3216:
 	.ascii	"PIO_ISR_P21 (0x1u << 21)\000"
-.LASF8660:
+.LASF8648:
 	.ascii	"_write\000"
 .LASF2877:
 	.ascii	"PIO_IFER_P2 (0x1u << 2)\000"
@@ -46018,7 +45958,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"_IS_DEFINED(SAMG53N19) )\000"
 .LASF5293:
 	.ascii	"SSC_TFMR_FSEDGE (0x1u << 24)\000"
-.LASF8714:
+.LASF8702:
 	.ascii	"_mbrlen_state\000"
 .LASF2921:
 	.ascii	"PIO_IFDR_P14 (0x1u << 14)\000"
@@ -46052,9 +45992,9 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"UDPHS_EPTSTA_ERR_FLUSH (0x1u << 14)\000"
 .LASF1977:
 	.ascii	"CHIPID_CIDR_NVPTYP_FLASH (0x2u << 28)\000"
-.LASF8646:
+.LASF8634:
 	.ascii	"_fntypes\000"
-.LASF8540:
+.LASF8528:
 	.ascii	"LED1_ACTIVE_LEVEL 1\000"
 .LASF8213:
 	.ascii	"MSB3D(u64) (((U8 *)&(u64))[4])\000"
@@ -46114,7 +46054,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"ADC12B_SR_GOVRE (0x1u << 17)\000"
 .LASF3009:
 	.ascii	"PIO_CODR_P6 (0x1u << 6)\000"
-.LASF8670:
+.LASF8658:
 	.ascii	"_flags2\000"
 .LASF1012:
 	.ascii	"_SYS__INTSUP_H \000"
@@ -46126,7 +46066,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_PB7X1_AD2 (1u << 7)\000"
 .LASF1581:
 	.ascii	"ADC_CHER_CH0 (0x1u << 0)\000"
-.LASF8655:
+.LASF8643:
 	.ascii	"_flags\000"
 .LASF2390:
 	.ascii	"HSMCI_IER_FIFOEMPTY (0x1u << 26)\000"
@@ -46168,7 +46108,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF1224:
 	.ascii	"SCB_SHCSR_MEMFAULTENA_Msk (1UL << SCB_SHCSR_MEMFAUL"
 	.ascii	"TENA_Pos)\000"
-.LASF8505:
+.LASF8493:
 	.ascii	"PIN_PDIDRX_GPIO (PIO_PA21_IDX)\000"
 .LASF7465:
 	.ascii	"PIO_PB21A_A21 (1u << 21)\000"
@@ -46202,13 +46142,13 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"SCB_CCR_USERSETMPEND_Pos 1\000"
 .LASF7971:
 	.ascii	"LITTLE_ENDIAN _LITTLE_ENDIAN\000"
-.LASF8658:
+.LASF8646:
 	.ascii	"_cookie\000"
-.LASF8718:
+.LASF8706:
 	.ascii	"_wcsrtombs_state\000"
 .LASF5101:
 	.ascii	"SPI_RDR_PCS_Pos 16\000"
-.LASF8709:
+.LASF8697:
 	.ascii	"_mbtowc_state\000"
 .LASF4583:
 	.ascii	"PWM_CPRDUPD_CPRDUPD(value) ((PWM_CPRDUPD_CPRDUPD_Ms"
@@ -46306,7 +46246,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"UDPHS_EPTCFG_EPT_TYPE_ISO (0x1u << 4)\000"
 .LASF5578:
 	.ascii	"SUPC_SR_WKUPIS5_EN (0x1u << 21)\000"
-.LASF8562:
+.LASF8550:
 	.ascii	"long long unsigned int\000"
 .LASF2199:
 	.ascii	"DMAC_WPSR_WPVSRC_Pos 8\000"
@@ -46369,7 +46309,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"ADC_IMR_OVRE0 (0x1u << 8)\000"
 .LASF128:
 	.ascii	"__INT_FAST16_MAX__ 0x7fffffff\000"
-.LASF8613:
+.LASF8601:
 	.ascii	"PMC_FOCR\000"
 .LASF2604:
 	.ascii	"MATRIX_PRAS7_M3PR_Msk (0x3u << MATRIX_PRAS7_M3PR_Po"
@@ -46406,7 +46346,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"TC_CMR_BSWTRG_Pos 30\000"
 .LASF4819:
 	.ascii	"SMC_ECC_SR1_RECERR2 (0x1u << 8)\000"
-.LASF8738:
+.LASF8726:
 	.ascii	"pmc_sleep\000"
 .LASF7014:
 	.ascii	"REG_ADC_RNPR (*(RwReg*)0x400AC110U)\000"
@@ -46485,7 +46425,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_PUDR_P13 (0x1u << 13)\000"
 .LASF3178:
 	.ascii	"PIO_IMR_P15 (0x1u << 15)\000"
-.LASF8577:
+.LASF8565:
 	.ascii	"MMFAR\000"
 .LASF604:
 	.ascii	"SAM4SD16 ( SAM_PART_IS_DEFINED(SAM4SD16B) || SAM_PA"
@@ -46499,12 +46439,12 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_PC9A_A11 (1u << 9)\000"
 .LASF5510:
 	.ascii	"SUPC_WUIR_WKUPT8 (0x1u << 24)\000"
-.LASF8696:
+.LASF8684:
 	.ascii	"_iobs\000"
 .LASF1500:
 	.ascii	"CoreDebug_DHCSR_C_DEBUGEN_Msk (1UL << CoreDebug_DHC"
 	.ascii	"SR_C_DEBUGEN_Pos)\000"
-.LASF8413:
+.LASF8415:
 	.ascii	"BOARD_NAME \"ChipWhisperer-CW521\"\000"
 .LASF6665:
 	.ascii	"REG_TC0_QIMR (*(RoReg*)0x400800D0U)\000"
@@ -46548,7 +46488,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"REG_WDT_CR (*(WoReg*)0x400E1250U)\000"
 .LASF6410:
 	.ascii	"US_IDR_TXRDY (0x1u << 1)\000"
-.LASF8768:
+.LASF8756:
 	.ascii	"pmc_enable_waitmode\000"
 .LASF4402:
 	.ascii	"PWM_OSS_OSSL2 (0x1u << 18)\000"
@@ -46583,7 +46523,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF1486:
 	.ascii	"CoreDebug_DHCSR_S_SLEEP_Msk (1UL << CoreDebug_DHCSR"
 	.ascii	"_S_SLEEP_Pos)\000"
-.LASF8461:
+.LASF8463:
 	.ascii	"PIN_EBI_DATA_BUS_FLAG2 PIO_PERIPH_B | PIO_PULLUP\000"
 .LASF2694:
 	.ascii	"PIO_PER_P11 (0x1u << 11)\000"
@@ -46607,7 +46547,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"REG_MATRIX_PRAS3 (*(RwReg*)0x400E0298U)\000"
 .LASF3653:
 	.ascii	"PIO_AIMER_P7 (0x1u << 7)\000"
-.LASF8535:
+.LASF8523:
 	.ascii	"LED0_FLAGS (PIO_TYPE_PIO_OUTPUT_1 | PIO_DEFAULT)\000"
 .LASF8277:
 	.ascii	"CPU_ENDIAN_TO_LE16(x) (x)\000"
@@ -46642,7 +46582,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"s)\000"
 .LASF460:
 	.ascii	"UTILS_COMPILER_H \000"
-.LASF8643:
+.LASF8631:
 	.ascii	"_on_exit_args\000"
 .LASF7683:
 	.ascii	"IRAM0_SIZE (0x2000u)\000"
@@ -46673,7 +46613,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"TPASTE7(a,b,c,d,e,f,g) a ##b ##c ##d ##e ##f ##g\000"
 .LASF8284:
 	.ascii	"CLE32_TO_CPU_ENDIAN(x) (x)\000"
-.LASF8567:
+.LASF8555:
 	.ascii	"WoReg\000"
 .LASF3355:
 	.ascii	"PIO_PUER_P0 (0x1u << 0)\000"
@@ -46777,7 +46717,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"SMC_IMR_CMDDONE (0x1u << 17)\000"
 .LASF542:
 	.ascii	"XMEGA_A3B ( AVR8_PART_IS_DEFINED(ATxmega256A3B) )\000"
-.LASF8504:
+.LASF8492:
 	.ascii	"PIN_PDIDTX_USART_FLAGS (PIO_PERIPH_A | PIO_DEFAULT)"
 	.ascii	"\000"
 .LASF1903:
@@ -46804,7 +46744,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"DMAC_CTRLA_SRC_WIDTH_Pos 24\000"
 .LASF6513:
 	.ascii	"US_MAN_RX_PP_Pos 24\000"
-.LASF8690:
+.LASF8678:
 	.ascii	"_sig_func\000"
 .LASF1783:
 	.ascii	"ADC12B_IER_EOC0 (0x1u << 0)\000"
@@ -46844,7 +46784,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"SMC_TIMINGS_OCMS (0x1u << 12)\000"
 .LASF3137:
 	.ascii	"PIO_IDR_P6 (0x1u << 6)\000"
-.LASF8579:
+.LASF8567:
 	.ascii	"AFSR\000"
 .LASF1633:
 	.ascii	"ADC_IER_EOC6 (0x1u << 6)\000"
@@ -46860,6 +46800,8 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"DMAC_SREQ_DSREQ2 (0x1u << 5)\000"
 .LASF2252:
 	.ascii	"HSMCI_DTOR_DTOMUL_4096 (0x5u << 4)\000"
+.LASF8482:
+	.ascii	"PIN_EBI_ADDR_BUS_A5 PIO_PB3_IDX\000"
 .LASF5664:
 	.ascii	"TC_CMR_EEVT_TIOB (0x0u << 10)\000"
 .LASF3049:
@@ -46868,9 +46810,9 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"SAM4CMS8_0 ( SAM_PART_IS_DEFINED(SAM4CMS8C_0) )\000"
 .LASF8009:
 	.ascii	"__u_int_defined \000"
-.LASF8396:
+.LASF8397:
 	.ascii	"SENSORS_XPLAINED_PRESSURE_1 5\000"
-.LASF8624:
+.LASF8612:
 	.ascii	"_mbstate_t\000"
 .LASF3773:
 	.ascii	"PIO_ESR_P31 (0x1u << 31)\000"
@@ -46911,7 +46853,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"ADC12B_IDR_OVRE5 (0x1u << 13)\000"
 .LASF2859:
 	.ascii	"PIO_OSR_P16 (0x1u << 16)\000"
-.LASF8467:
+.LASF8469:
 	.ascii	"SPI_MOSI_GPIO (PIO_PA14_IDX)\000"
 .LASF7169:
 	.ascii	"_SAM3U_CHIPID_INSTANCE_ \000"
@@ -47022,7 +46964,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF810:
 	.ascii	"MREPEAT98(macro,data) MREPEAT97( macro, data) macro"
 	.ascii	"( 97, data)\000"
-.LASF8435:
+.LASF8437:
 	.ascii	"PIN_USART1_TXD_FLAGS (PIO_PERIPH_A | PIO_DEFAULT)\000"
 .LASF6689:
 	.ascii	"_SAM3U_TWI1_INSTANCE_ \000"
@@ -47055,7 +46997,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF6018:
 	.ascii	"UART_TCR_TXCTR(value) ((UART_TCR_TXCTR_Msk & ((valu"
 	.ascii	"e) << UART_TCR_TXCTR_Pos)))\000"
-.LASF8720:
+.LASF8708:
 	.ascii	"_nextf\000"
 .LASF6903:
 	.ascii	"REG_UDPHS_TST (*(RwReg*)0x400A40E0U)\000"
@@ -47134,7 +47076,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF1450:
 	.ascii	"MPU_TYPE_IREGION_Msk (0xFFUL << MPU_TYPE_IREGION_Po"
 	.ascii	"s)\000"
-.LASF8507:
+.LASF8495:
 	.ascii	"PIN_PDIDRX_USART_FLAGS (PIO_PERIPH_A | PIO_DEFAULT)"
 	.ascii	"\000"
 .LASF5188:
@@ -47147,7 +47089,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_IFDR_P30 (0x1u << 30)\000"
 .LASF8073:
 	.ascii	"_IONBF 2\000"
-.LASF8448:
+.LASF8450:
 	.ascii	"PIN_EBI_DATA_BUS_D4 PIO_PB13_IDX\000"
 .LASF2143:
 	.ascii	"DMAC_CTRLB_DST_DSCR (0x1u << 20)\000"
@@ -47161,7 +47103,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"SMC_ECC_PR13_BITADDR_Pos 0\000"
 .LASF7270:
 	.ascii	"_SAM3U_RSTC_INSTANCE_ \000"
-.LASF8500:
+.LASF8488:
 	.ascii	"PIN_EBI_USB_SPARE1_FLAGS (PIO_TYPE_PIO_OUTPUT_1 | P"
 	.ascii	"IO_DEFAULT)\000"
 .LASF2422:
@@ -47217,7 +47159,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"ADC12B_IDR_OVRE1 (0x1u << 9)\000"
 .LASF5585:
 	.ascii	"SUPC_SR_WKUPIS8 (0x1u << 24)\000"
-.LASF8412:
+.LASF8414:
 	.ascii	"BOARD_OSC_STARTUP_US 15625\000"
 .LASF923:
 	.ascii	"MREPEAT211(macro,data) MREPEAT210(macro, data) macr"
@@ -47329,7 +47271,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF6549:
 	.ascii	"US_TNPR_TXNPTR(value) ((US_TNPR_TXNPTR_Msk & ((valu"
 	.ascii	"e) << US_TNPR_TXNPTR_Pos)))\000"
-.LASF8747:
+.LASF8735:
 	.ascii	"pll1_setting\000"
 .LASF7886:
 	.ascii	"unsigned signed\000"
@@ -47439,7 +47381,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"SSC_THR_TDAT_Pos 0\000"
 .LASF1860:
 	.ascii	"ADC12B_RCR_RXCTR_Pos 0\000"
-.LASF8410:
+.LASF8412:
 	.ascii	"BOARD_FREQ_MAINCK_BYPASS (12000000U)\000"
 .LASF4510:
 	.ascii	"PWM_TNCR_TXNCTR(value) ((PWM_TNCR_TXNCTR_Msk & ((va"
@@ -47467,7 +47409,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_IFER_P12 (0x1u << 12)\000"
 .LASF7061:
 	.ascii	"REG_SMC_IER (*(WoReg*)0x400E000CU)\000"
-.LASF8752:
+.LASF8740:
 	.ascii	"pmc_restore_clock_setting\000"
 .LASF8124:
 	.ascii	"MB_CUR_MAX __locale_mb_cur_max()\000"
@@ -47486,7 +47428,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	")\000"
 .LASF4016:
 	.ascii	"PMC_PCDR0_PID8 (0x1u << 8)\000"
-.LASF8541:
+.LASF8529:
 	.ascii	"BOARD_NUM_OF_LED 2\000"
 .LASF6904:
 	.ascii	"REG_UDPHS_IPNAME1 (*(RoReg*)0x400A40F0U)\000"
@@ -47496,7 +47438,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_MDSR_P14 (0x1u << 14)\000"
 .LASF6196:
 	.ascii	"UDPHS_EPTCTLDIS_AUTO_VALID (0x1u << 1)\000"
-.LASF8761:
+.LASF8749:
 	.ascii	"__disable_irq\000"
 .LASF1439:
 	.ascii	"TPI_DEVID_MinBufSz_Pos 6\000"
@@ -47560,7 +47502,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"Z_Pos)\000"
 .LASF203:
 	.ascii	"__FLT32_HAS_QUIET_NAN__ 1\000"
-.LASF8630:
+.LASF8618:
 	.ascii	"_sign\000"
 .LASF3606:
 	.ascii	"PIO_OWDR_P24 (0x1u << 24)\000"
@@ -47599,7 +47541,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF4904:
 	.ascii	"SMC_ECC_PR3_NPARITY_Msk (0xfffu << SMC_ECC_PR3_NPAR"
 	.ascii	"ITY_Pos)\000"
-.LASF8770:
+.LASF8758:
 	.ascii	".././hal/sam3u1c/sleep.c\000"
 .LASF6298:
 	.ascii	"UDPHS_DMACONTROL_BUFF_LENGTH_Pos 16\000"
@@ -47654,7 +47596,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"SSC_SR_TXEN (0x1u << 16)\000"
 .LASF4118:
 	.ascii	"PMC_PCK_CSS_MAIN_CLK (0x1u << 0)\000"
-.LASF8533:
+.LASF8521:
 	.ascii	"LED_0_NAME \"green LEDHB\"\000"
 .LASF5121:
 	.ascii	"SPI_IER_OVRES (0x1u << 3)\000"
@@ -47702,11 +47644,11 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"__RAND_MAX 0x7fffffff\000"
 .LASF4367:
 	.ascii	"PWM_ISR2_CMPM3 (0x1u << 11)\000"
-.LASF8704:
+.LASF8692:
 	.ascii	"_localtime_buf\000"
 .LASF1762:
 	.ascii	"ADC12B_SR_EOC1 (0x1u << 1)\000"
-.LASF8392:
+.LASF8393:
 	.ascii	"EXT1102 1\000"
 .LASF3377:
 	.ascii	"PIO_PUER_P22 (0x1u << 22)\000"
@@ -47743,7 +47685,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"DR_Pos)\000"
 .LASF6088:
 	.ascii	"UDPHS_INTSTA_DMA_1 (0x1u << 25)\000"
-.LASF8402:
+.LASF8403:
 	.ascii	"SENSORS_XPLAINED_BREADBOARD 11\000"
 .LASF7724:
 	.ascii	"_UNBUF_STREAM_OPT 1\000"
@@ -47791,7 +47733,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_ESR_P28 (0x1u << 28)\000"
 .LASF7403:
 	.ascii	"PIO_PA30 (1u << 30)\000"
-.LASF8419:
+.LASF8421:
 	.ascii	"PINS_ADC_TRIG PIO_PA17_IDX\000"
 .LASF4826:
 	.ascii	"SMC_ECC_SR1_ECCERR4_Pos 17\000"
@@ -47827,7 +47769,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"UINTPTR_MAX (__UINTPTR_MAX__)\000"
 .LASF6987:
 	.ascii	"REG_ADC12B_LCDR (*(RoReg*)0x400A8020U)\000"
-.LASF8403:
+.LASF8404:
 	.ascii	"SECURITY_XPLAINED 12\000"
 .LASF7025:
 	.ascii	"REG_DMAC_EBCIDR (*(WoReg*)0x400B001CU)\000"
@@ -47849,15 +47791,15 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"US_BRGR_FP_Pos 16\000"
 .LASF3390:
 	.ascii	"PIO_PUSR_P3 (0x1u << 3)\000"
-.LASF8749:
+.LASF8737:
 	.ascii	"fmr_setting\000"
 .LASF5636:
 	.ascii	"TC_CMR_ETRGEDG_RISING (0x1u << 8)\000"
-.LASF8474:
+.LASF8476:
 	.ascii	"PIN_EBI_ADDR_BUS_FLAG2 PIO_PERIPH_A | PIO_PULLUP\000"
 .LASF7019:
 	.ascii	"REG_DMAC_GCFG (*(RwReg*)0x400B0000U)\000"
-.LASF8459:
+.LASF8461:
 	.ascii	"PIN_EBI_DATA_BUS_D15 PIO_PB6_IDX\000"
 .LASF3987:
 	.ascii	"PMC_PCER0_PID6 (0x1u << 6)\000"
@@ -47901,7 +47843,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF2602:
 	.ascii	"MATRIX_PRAS7_M2PR(value) ((MATRIX_PRAS7_M2PR_Msk & "
 	.ascii	"((value) << MATRIX_PRAS7_M2PR_Pos)))\000"
-.LASF8751:
+.LASF8739:
 	.ascii	"pll_sr\000"
 .LASF5460:
 	.ascii	"SUPC_WUIR_WKUPEN7_NOT_ENABLE (0x0u << 7)\000"
@@ -47994,7 +47936,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF1244:
 	.ascii	"SCB_SHCSR_BUSFAULTACT_Msk (1UL << SCB_SHCSR_BUSFAUL"
 	.ascii	"TACT_Pos)\000"
-.LASF8570:
+.LASF8558:
 	.ascii	"ICSR\000"
 .LASF4643:
 	.ascii	"RTC_CALR_CENT_Pos 0\000"
@@ -48071,7 +48013,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_LOCKSR_P3 (0x1u << 3)\000"
 .LASF3167:
 	.ascii	"PIO_IMR_P4 (0x1u << 4)\000"
-.LASF8476:
+.LASF8478:
 	.ascii	"PIN_EBI_ADDR_BUS_A1 PIO_PB8_IDX\000"
 .LASF1376:
 	.ascii	"DWT_FUNCTION_CYCMATCH_Msk (0x1UL << DWT_FUNCTION_CY"
@@ -48084,7 +48026,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"SIG_ATOMIC_MAX (__STDINT_EXP(INT_MAX))\000"
 .LASF7915:
 	.ascii	"_RAND48_MULT_1 (0xdeec)\000"
-.LASF8668:
+.LASF8656:
 	.ascii	"_lock\000"
 .LASF5631:
 	.ascii	"TC_CMR_LDBSTOP (0x1u << 6)\000"
@@ -48190,8 +48132,6 @@ pmc_wait_wakeup_clocks_restore:
 .LASF905:
 	.ascii	"MREPEAT193(macro,data) MREPEAT192(macro, data) macr"
 	.ascii	"o(192, data)\000"
-.LASF8494:
-	.ascii	"PIN_EBI_ADDR_BUS_A19 PIO_PC25_IDX\000"
 .LASF2013:
 	.ascii	"DMAC_EBCIER_BTC0 (0x1u << 0)\000"
 .LASF3553:
@@ -48273,7 +48213,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_LSR_P29 (0x1u << 29)\000"
 .LASF5119:
 	.ascii	"SPI_IER_TDRE (0x1u << 1)\000"
-.LASF8753:
+.LASF8741:
 	.ascii	"pmc_save_clock_settings\000"
 .LASF3726:
 	.ascii	"PIO_AIMMR_P16 (0x1u << 16)\000"
@@ -48288,7 +48228,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"ADC_SR_OVRE1 (0x1u << 9)\000"
 .LASF4556:
 	.ascii	"PWM_CMR_CPRE_MCK_DIV_8 (0x3u << 0)\000"
-.LASF8565:
+.LASF8553:
 	.ascii	"uint32_t\000"
 .LASF1264:
 	.ascii	"SCB_DFSR_DWTTRAP_Msk (1UL << SCB_DFSR_DWTTRAP_Pos)\000"
@@ -48307,7 +48247,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF4085:
 	.ascii	"CKGR_MCFR_MAINF_Msk (0xffffu << CKGR_MCFR_MAINF_Pos"
 	.ascii	")\000"
-.LASF8526:
+.LASF8514:
 	.ascii	"PIN_EBI_NCS0 PIO_PB20_IDX\000"
 .LASF7179:
 	.ascii	"REG_EFC1_FCR (*(WoReg*)0x400E0A04U)\000"
@@ -48334,7 +48274,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"HSMCI_CMDR_IOSPCMD_Pos 24\000"
 .LASF5377:
 	.ascii	"SUPC_SMMR_SMTH_2_8V (0x9u << 0)\000"
-.LASF8503:
+.LASF8491:
 	.ascii	"PIN_PDIDTX_IN_FLAGS (PIO_TYPE_PIO_INPUT | PIO_DEFAU"
 	.ascii	"LT)\000"
 .LASF5300:
@@ -48394,7 +48334,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"__UTQ_IBIT__ 0\000"
 .LASF6729:
 	.ascii	"REG_PWM_OS (*(RwReg*)0x4008C048U)\000"
-.LASF8576:
+.LASF8564:
 	.ascii	"DFSR\000"
 .LASF958:
 	.ascii	"MREPEAT246(macro,data) MREPEAT245(macro, data) macr"
@@ -48426,7 +48366,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_PB22 (1u << 22)\000"
 .LASF7332:
 	.ascii	"ID_DMAC (28)\000"
-.LASF8683:
+.LASF8671:
 	.ascii	"_result_k\000"
 .LASF5990:
 	.ascii	"UART_SR_TXRDY (0x1u << 1)\000"
@@ -48434,7 +48374,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"REG_UART_CR (*(WoReg*)0x400E0600U)\000"
 .LASF1779:
 	.ascii	"ADC12B_SR_ENDRX (0x1u << 18)\000"
-.LASF8446:
+.LASF8448:
 	.ascii	"PIN_EBI_DATA_BUS_D2 PIO_PB11_IDX\000"
 .LASF5038:
 	.ascii	"SMC_TIMINGS_TRR_Msk (0xfu << SMC_TIMINGS_TRR_Pos)\000"
@@ -48541,7 +48481,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"__CONCAT1(x,y) x ## y\000"
 .LASF3064:
 	.ascii	"PIO_ODSR_P29 (0x1u << 29)\000"
-.LASF8734:
+.LASF8722:
 	.ascii	"pmc_callback_wakeup_clocks_restored_t\000"
 .LASF4750:
 	.ascii	"SMC_CFG_DTOMUL_X1048576 (0x7u << 20)\000"
@@ -48549,7 +48489,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"SSC_RCMR_START_TRANSMIT (0x1u << 8)\000"
 .LASF5540:
 	.ascii	"SUPC_SR_SMWS (0x1u << 2)\000"
-.LASF8517:
+.LASF8505:
 	.ascii	"PIN_EBI_NRD_TYPE PIO_PERIPH_A\000"
 .LASF6392:
 	.ascii	"US_IER_ENDRX (0x1u << 3)\000"
@@ -48592,7 +48532,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"eed)\000"
 .LASF8072:
 	.ascii	"_IOLBF 1\000"
-.LASF8508:
+.LASF8496:
 	.ascii	"PIN_PDIC_GPIO (PIO_PA24_IDX)\000"
 .LASF3382:
 	.ascii	"PIO_PUER_P27 (0x1u << 27)\000"
@@ -48607,15 +48547,15 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_PUSR_P7 (0x1u << 7)\000"
 .LASF2346:
 	.ascii	"HSMCI_SR_CMDRDY (0x1u << 0)\000"
-.LASF8686:
+.LASF8674:
 	.ascii	"_cvtlen\000"
-.LASF8735:
+.LASF8723:
 	.ascii	"b_is_sleep_clock_used\000"
 .LASF1735:
 	.ascii	"ADC12B_MR_SHTIM_Msk (0xfu << ADC12B_MR_SHTIM_Pos)\000"
-.LASF8552:
+.LASF8540:
 	.ascii	"signed char\000"
-.LASF8598:
+.LASF8586:
 	.ascii	"CKGR_UCKR\000"
 .LASF93:
 	.ascii	"__UINTMAX_C(c) c ## ULL\000"
@@ -48719,7 +48659,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_FRLHSR_P26 (0x1u << 26)\000"
 .LASF133:
 	.ascii	"__INT_FAST64_WIDTH__ 64\000"
-.LASF8506:
+.LASF8494:
 	.ascii	"PIN_PDIDRX_FLAGS (PIO_TYPE_PIO_INPUT | PIO_DEFAULT)"
 	.ascii	"\000"
 .LASF5023:
@@ -48757,7 +48697,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"o(144, data)\000"
 .LASF4708:
 	.ascii	"RTC_WPMR_WPEN (0x1u << 0)\000"
-.LASF8426:
+.LASF8428:
 	.ascii	"PINS_UART_TYPE PIO_PERIPH_A\000"
 .LASF5657:
 	.ascii	"TC_CMR_EEVTEDG_Msk (0x3u << TC_CMR_EEVTEDG_Pos)\000"
@@ -48800,7 +48740,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF848:
 	.ascii	"MREPEAT136(macro,data) MREPEAT135(macro, data) macr"
 	.ascii	"o(135, data)\000"
-.LASF8745:
+.LASF8733:
 	.ascii	"osc_setting\000"
 .LASF2070:
 	.ascii	"DMAC_CHER_KEEP1 (0x1u << 25)\000"
@@ -48884,7 +48824,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"o(203, data)\000"
 .LASF6612:
 	.ascii	"REG_SSC_SR (*(RoReg*)0x40004040U)\000"
-.LASF8558:
+.LASF8546:
 	.ascii	"long int\000"
 .LASF5947:
 	.ascii	"UART_MR_PAR_Msk (0x7u << UART_MR_PAR_Pos)\000"
@@ -48996,14 +48936,12 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"TC_IER_LOVRS (0x1u << 1)\000"
 .LASF4655:
 	.ascii	"RTC_CALR_DATE_Pos 24\000"
-.LASF8484:
-	.ascii	"PIN_EBI_ADDR_BUS_A9 PIO_PC7_IDX\000"
 .LASF5082:
 	.ascii	"_SAM3U_SPI_COMPONENT_ \000"
 .LASF833:
 	.ascii	"MREPEAT121(macro,data) MREPEAT120(macro, data) macr"
 	.ascii	"o(120, data)\000"
-.LASF8699:
+.LASF8687:
 	.ascii	"_mult\000"
 .LASF7487:
 	.ascii	"PIO_PB29A_D12 (1u << 29)\000"
@@ -49083,7 +49021,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PWM_OSCUPD_OSCUPH2 (0x1u << 2)\000"
 .LASF5533:
 	.ascii	"SUPC_WUIR_WKUPT15_LOW_TO_HIGH (0x1u << 31)\000"
-.LASF8611:
+.LASF8599:
 	.ascii	"PMC_FSMR\000"
 .LASF827:
 	.ascii	"MREPEAT115(macro,data) MREPEAT114(macro, data) macr"
@@ -49134,7 +49072,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF6049:
 	.ascii	"UDPHS_FNUM_MICRO_FRAME_NUM_Msk (0x7u << UDPHS_FNUM_"
 	.ascii	"MICRO_FRAME_NUM_Pos)\000"
-.LASF8568:
+.LASF8556:
 	.ascii	"RwReg\000"
 .LASF3042:
 	.ascii	"PIO_ODSR_P7 (0x1u << 7)\000"
@@ -49142,6 +49080,8 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"BIG_ENDIAN _BIG_ENDIAN\000"
 .LASF7221:
 	.ascii	"REG_PIOA_REHLSR (*(WoReg*)0x400E0CD4U)\000"
+.LASF8484:
+	.ascii	"PIN_EBI_ADDR_BUS_A7 PIO_PB5_IDX\000"
 .LASF2670:
 	.ascii	"PERIPH_TNPR_TXNPTR_Pos 0\000"
 .LASF6803:
@@ -49201,7 +49141,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"__UINT_LEAST64_TYPE__ long long unsigned int\000"
 .LASF3509:
 	.ascii	"PIO_DIFSR_P26 (0x1u << 26)\000"
-.LASF8397:
+.LASF8398:
 	.ascii	"SENSORS_XPLAINED_LIGHTPROX_1 6\000"
 .LASF392:
 	.ascii	"__SIZEOF_WINT_T__ 4\000"
@@ -49229,7 +49169,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF2491:
 	.ascii	"MATRIX_PRAS0_M0PR(value) ((MATRIX_PRAS0_M0PR_Msk & "
 	.ascii	"((value) << MATRIX_PRAS0_M0PR_Pos)))\000"
-.LASF8636:
+.LASF8624:
 	.ascii	"__tm_hour\000"
 .LASF86:
 	.ascii	"__WCHAR_WIDTH__ 32\000"
@@ -49246,7 +49186,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PWM_DIS_CHID0 (0x1u << 0)\000"
 .LASF5266:
 	.ascii	"SSC_TCMR_START_CMP_0 (0x8u << 8)\000"
-.LASF8697:
+.LASF8685:
 	.ascii	"_rand48\000"
 .LASF3644:
 	.ascii	"PIO_OWSR_P30 (0x1u << 30)\000"
@@ -49297,7 +49237,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"UINT_FAST8_MAX (__UINT_FAST8_MAX__)\000"
 .LASF2867:
 	.ascii	"PIO_OSR_P24 (0x1u << 24)\000"
-.LASF8612:
+.LASF8600:
 	.ascii	"PMC_FSPR\000"
 .LASF3800:
 	.ascii	"PIO_LSR_P26 (0x1u << 26)\000"
@@ -49326,7 +49266,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"ile char *)__x - __offsetof(s, m));})\000"
 .LASF1751:
 	.ascii	"ADC12B_CHDR_CH6 (0x1u << 6)\000"
-.LASF8675:
+.LASF8663:
 	.ascii	"_stderr\000"
 .LASF2406:
 	.ascii	"HSMCI_IDR_RDIRE (0x1u << 17)\000"
@@ -49359,7 +49299,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"_T_PTRDIFF \000"
 .LASF3119:
 	.ascii	"PIO_IER_P20 (0x1u << 20)\000"
-.LASF8572:
+.LASF8560:
 	.ascii	"AIRCR\000"
 .LASF5203:
 	.ascii	"SSC_RCMR_START_RF_FALLING (0x4u << 8)\000"
@@ -49442,7 +49382,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PMC_FSMR_FSTT0 (0x1u << 0)\000"
 .LASF4408:
 	.ascii	"PWM_OSC_OSCL0 (0x1u << 16)\000"
-.LASF8628:
+.LASF8616:
 	.ascii	"_next\000"
 .LASF8350:
 	.ascii	"STK600_MEGA 39\000"
@@ -49470,7 +49410,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF4654:
 	.ascii	"RTC_CALR_DAY(value) ((RTC_CALR_DAY_Msk & ((value) <"
 	.ascii	"< RTC_CALR_DAY_Pos)))\000"
-.LASF8463:
+.LASF8465:
 	.ascii	"USART_PDI_ID ID_USART1\000"
 .LASF7916:
 	.ascii	"_RAND48_MULT_2 (0x0005)\000"
@@ -49527,7 +49467,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF694:
 	.ascii	"TPASTE8(a,b,c,d,e,f,g,h) a ##b ##c ##d ##e ##f ##g "
 	.ascii	"##h\000"
-.LASF8757:
+.LASF8745:
 	.ascii	"p_mck_setting\000"
 .LASF5933:
 	.ascii	"TWI_PTCR_RXTDIS (0x1u << 1)\000"
@@ -49566,7 +49506,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"_NOINLINE_STATIC _NOINLINE static\000"
 .LASF3881:
 	.ascii	"PIO_REHLSR_P11 (0x1u << 11)\000"
-.LASF8573:
+.LASF8561:
 	.ascii	"SHCSR\000"
 .LASF7335:
 	.ascii	"SSC ((Ssc *)0x40004000U)\000"
@@ -49589,7 +49529,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"__GCC_HAVE_SYNC_COMPARE_AND_SWAP_1 1\000"
 .LASF5320:
 	.ascii	"SSC_SR_CP1 (0x1u << 9)\000"
-.LASF8726:
+.LASF8714:
 	.ascii	"_global_impure_ptr\000"
 .LASF1283:
 	.ascii	"SysTick_CTRL_ENABLE_Pos 0\000"
@@ -49670,7 +49610,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"SMC_OCMS_SMSE (0x1u << 0)\000"
 .LASF5502:
 	.ascii	"SUPC_WUIR_WKUPT5_HIGH_TO_LOW (0x0u << 21)\000"
-.LASF8454:
+.LASF8456:
 	.ascii	"PIN_EBI_DATA_BUS_D10 PIO_PB27_IDX\000"
 .LASF7007:
 	.ascii	"REG_ADC_LCDR (*(RoReg*)0x400AC020U)\000"
@@ -49701,7 +49641,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_PUDR_P23 (0x1u << 23)\000"
 .LASF3188:
 	.ascii	"PIO_IMR_P25 (0x1u << 25)\000"
-.LASF8415:
+.LASF8417:
 	.ascii	"sam3u \000"
 .LASF1182:
 	.ascii	"SCB_ICSR_VECTACTIVE_Msk (0x1FFUL << SCB_ICSR_VECTAC"
@@ -49710,7 +49650,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_REHLSR_P22 (0x1u << 22)\000"
 .LASF1623:
 	.ascii	"ADC_SR_ENDRX (0x1u << 18)\000"
-.LASF8716:
+.LASF8704:
 	.ascii	"_mbsrtowcs_state\000"
 .LASF8258:
 	.ascii	"memcpy_code2ram memcpy\000"
@@ -49762,7 +49702,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"SAM4CMP8 (SAM4CMP8_0 || SAM4CMP8_1)\000"
 .LASF7439:
 	.ascii	"PIO_PA22X1_AD12B0 (1u << 22)\000"
-.LASF8744:
+.LASF8732:
 	.ascii	"fmr1\000"
 .LASF4421:
 	.ascii	"PWM_OSCUPD_OSCUPH1 (0x1u << 1)\000"
@@ -49826,7 +49766,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"R12_Pos)\000"
 .LASF8061:
 	.ascii	"__SMBF 0x0080\000"
-.LASF8641:
+.LASF8629:
 	.ascii	"__tm_yday\000"
 .LASF1270:
 	.ascii	"SCnSCB_ICTR_INTLINESNUM_Msk (0xFUL << SCnSCB_ICTR_I"
@@ -49867,7 +49807,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF6159:
 	.ascii	"UDPHS_EPTCFG_EPT_TYPE_Msk (0x3u << UDPHS_EPTCFG_EPT"
 	.ascii	"_TYPE_Pos)\000"
-.LASF8626:
+.LASF8614:
 	.ascii	"_LOCK_T\000"
 .LASF4028:
 	.ascii	"PMC_PCDR0_PID21 (0x1u << 21)\000"
@@ -49891,7 +49831,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"REG_USART1_TCR (*(RwReg*)0x4009410CU)\000"
 .LASF5191:
 	.ascii	"SSC_RCMR_CKI (0x1u << 5)\000"
-.LASF8710:
+.LASF8698:
 	.ascii	"_wctomb_state\000"
 .LASF4759:
 	.ascii	"SMC_SR_NFCSID_Msk (0x7u << SMC_SR_NFCSID_Pos)\000"
@@ -49934,7 +49874,7 @@ pmc_wait_wakeup_clocks_restore:
 .LASF783:
 	.ascii	"MREPEAT71(macro,data) MREPEAT70( macro, data) macro"
 	.ascii	"( 70, data)\000"
-.LASF8622:
+.LASF8610:
 	.ascii	"__count\000"
 .LASF1529:
 	.ascii	"CoreDebug_DEMCR_VC_CORERESET_Pos 0\000"
@@ -49954,7 +49894,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_ESR_P10 (0x1u << 10)\000"
 .LASF7163:
 	.ascii	"REG_UART_RNPR (*(RwReg*)0x400E0710U)\000"
-.LASF8475:
+.LASF8477:
 	.ascii	"PIN_EBI_ADDR_BUS_A0 PIO_PB7_IDX\000"
 .LASF3361:
 	.ascii	"PIO_PUER_P6 (0x1u << 6)\000"
@@ -50044,7 +49984,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"REG_DMAC_CTRLA0 (*(RwReg*)0x400B0048U)\000"
 .LASF8067:
 	.ascii	"__SORD 0x2000\000"
-.LASF8722:
+.LASF8710:
 	.ascii	"_unused\000"
 .LASF4966:
 	.ascii	"SMC_ECC_PR10_NPARITY_Msk (0x7ffu << SMC_ECC_PR10_NP"
@@ -50133,7 +50073,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"DADDR_Pos)\000"
 .LASF4949:
 	.ascii	"SMC_ECC_PR8_BITADDR_Pos 0\000"
-.LASF8591:
+.LASF8579:
 	.ascii	"PMC_SCER\000"
 .LASF2337:
 	.ascii	"HSMCI_CSTOR_CSTOMUL_65536 (0x6u << 4)\000"
@@ -50163,7 +50103,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"SMC_SETUP_NCS_WR_SETUP(value) ((SMC_SETUP_NCS_WR_SE"
 	.ascii	"TUP_Msk & ((value) << SMC_SETUP_NCS_WR_SETUP_Pos)))"
 	.ascii	"\000"
-.LASF8424:
+.LASF8426:
 	.ascii	"PINS_UART_PIO PIOA\000"
 .LASF8098:
 	.ascii	"__sfileno(p) ((p)->_file)\000"
@@ -50279,7 +50219,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_FELLSR_P8 (0x1u << 8)\000"
 .LASF3015:
 	.ascii	"PIO_CODR_P12 (0x1u << 12)\000"
-.LASF8772:
+.LASF8760:
 	.ascii	"pmc_is_wakeup_clocks_restored\000"
 .LASF3470:
 	.ascii	"PIO_SCIFSR_P19 (0x1u << 19)\000"
@@ -50326,7 +50266,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_CODR_P1 (0x1u << 1)\000"
 .LASF22:
 	.ascii	"__SIZEOF_LONG_DOUBLE__ 8\000"
-.LASF8398:
+.LASF8399:
 	.ascii	"SENSORS_XPLAINED_INERTIAL_A1 7\000"
 .LASF2366:
 	.ascii	"HSMCI_SR_XFRDONE (0x1u << 27)\000"
@@ -50388,7 +50328,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"PIO_AIMMR_P10 (0x1u << 10)\000"
 .LASF2078:
 	.ascii	"DMAC_CHDR_RES1 (0x1u << 9)\000"
-.LASF8530:
+.LASF8518:
 	.ascii	"PIN_EBI_NCS0_ID ID_PIOB\000"
 .LASF5154:
 	.ascii	"SPI_CSR_SCBR_Pos 8\000"
@@ -50413,7 +50353,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"REG_PIOB_OWDR (*(WoReg*)0x400E0EA4U)\000"
 .LASF7986:
 	.ascii	"__time_t_defined \000"
-.LASF8512:
+.LASF8500:
 	.ascii	"PIN_EBI_NRD PIO_PB19_IDX\000"
 .LASF2618:
 	.ascii	"MATRIX_PRAS8_M3PR_Pos 12\000"
@@ -50436,6 +50376,8 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"((value) << HSMCI_WPMR_WP_KEY_Pos)))\000"
 .LASF3739:
 	.ascii	"PIO_AIMMR_P29 (0x1u << 29)\000"
+.LASF6868:
+	.ascii	"_SAM3U_USART2_INSTANCE_ \000"
 .LASF2913:
 	.ascii	"PIO_IFDR_P6 (0x1u << 6)\000"
 .LASF6786:
@@ -50472,7 +50414,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"BER)\000"
 .LASF5898:
 	.ascii	"TWI_IMR_EOSACC (0x1u << 11)\000"
-.LASF8600:
+.LASF8588:
 	.ascii	"CKGR_MCFR\000"
 .LASF1644:
 	.ascii	"ADC_IER_GOVRE (0x1u << 17)\000"
@@ -50511,7 +50453,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"ADC_IMR_EOC7 (0x1u << 7)\000"
 .LASF1985:
 	.ascii	"DMAC_GCFG_ARB_CFG (0x1u << 4)\000"
-.LASF8440:
+.LASF8442:
 	.ascii	"PIN_USART2_TXD (PIO_PA22_IDX)\000"
 .LASF7731:
 	.ascii	"__RAND_MAX\000"
@@ -50525,11 +50467,11 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"REG_SSC_TSHR (*(RwReg*)0x40004034U)\000"
 .LASF445:
 	.ascii	"__ARM_FEATURE_COPROC 15\000"
-.LASF8580:
+.LASF8568:
 	.ascii	"MMFR\000"
 .LASF2047:
 	.ascii	"DMAC_EBCIMR_ERR2 (0x1u << 18)\000"
-.LASF8443:
+.LASF8445:
 	.ascii	"PIN_USART2_SCK_FLAGS (PIO_PERIPH_B | PIO_DEFAULT)\000"
 .LASF1902:
 	.ascii	"CHIPID_CIDR_NVPSIZ2_8K (0x1u << 12)\000"
@@ -50557,7 +50499,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"_Alignas(x) __aligned(x)\000"
 .LASF254:
 	.ascii	"__SFRACT_IBIT__ 0\000"
-.LASF8561:
+.LASF8549:
 	.ascii	"long long int\000"
 .LASF944:
 	.ascii	"MREPEAT232(macro,data) MREPEAT231(macro, data) macr"
@@ -50585,7 +50527,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"RTC_CR_TIMEVSEL_NOON (0x3u << 8)\000"
 .LASF7384:
 	.ascii	"PIO_PA11 (1u << 11)\000"
-.LASF8766:
+.LASF8754:
 	.ascii	"pmc_disable_pllack\000"
 .LASF6229:
 	.ascii	"UDPHS_EPTCTL_STALL_SNT (0x1u << 13)\000"
@@ -50609,7 +50551,7 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"REG_PWM_CMR1 (*(RwReg*)0x4008C220U)\000"
 .LASF18:
 	.ascii	"__SIZEOF_LONG_LONG__ 8\000"
-.LASF8756:
+.LASF8744:
 	.ascii	"p_pll1_setting\000"
 .LASF1409:
 	.ascii	"TPI_FIFO0_ETM1_Pos 8\000"
@@ -50734,11 +50676,9 @@ pmc_wait_wakeup_clocks_restore:
 	.ascii	"ID_SUPC ( 0)\000"
 .LASF249:
 	.ascii	"__DEC128_MIN__ 1E-6143DL\000"
-.LASF8483:
-	.ascii	"PIN_EBI_ADDR_BUS_A8 PIO_PC6_IDX\000"
 .LASF6470:
 	.ascii	"US_CSR_DCD (0x1u << 22)\000"
-.LASF8434:
+.LASF8436:
 	.ascii	"PIN_USART1_TXD (PIO_PA20_IDX)\000"
 .LASF4336:
 	.ascii	"PWM_IDR2_CMPU4 (0x1u << 20)\000"

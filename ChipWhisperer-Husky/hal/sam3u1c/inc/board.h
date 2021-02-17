@@ -163,6 +163,7 @@ extern "C" {
 #define SECURITY_XPLAINED           12  //!< Xplained ATSHA204 board
 #define USER_EXT_BOARD              99  //!< User-reserved extension board (if any).
 //! @}
+#define BOARD CW521
 
 #if BOARD == EVK1100
 #  include "evk1100/evk1100.h"
@@ -326,13 +327,7 @@ extern "C" {
 #elif BOARD == CWLITE
 #  include "cwlite/cw_lite.h"
 #elif BOARD == CW521
-<<<<<<< HEAD
 #  include "cw521.h"
-=======
-#  include "cw521/cw521.h"
-#elif BOARD == CW1190
-#  include "cw1190/cw1190.h"
->>>>>>> 3c4c97c0b5a1df9713d52af7eba97ec04196ae68
 #elif BOARD == DUMMY_BOARD
 #  include "dummy/dummy_board.h"
 #else
