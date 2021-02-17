@@ -1665,17 +1665,10 @@ ctrlbuffer.8844:
 	.4byte	.Ldebug_abbrev0
 	.byte	0x4
 	.uleb128 0x1
-<<<<<<< HEAD
+	.4byte	.LASF9363
+	.byte	0xc
 	.4byte	.LASF9364
-	.byte	0xc
 	.4byte	.LASF9365
-	.4byte	.LASF9366
-=======
-	.4byte	.LASF9360
-	.byte	0xc
-	.4byte	.LASF9361
-	.4byte	.LASF9362
->>>>>>> main
 	.4byte	.Ldebug_ranges0+0
 	.4byte	0
 	.4byte	0
@@ -5702,101 +5695,57 @@ ctrlbuffer.8844:
 	.uleb128 0x3a
 	.byte	0x1
 	.byte	0x1
-<<<<<<< HEAD
 	.4byte	.LASF9356
 	.4byte	.LASF9356
-	.byte	0x1c
-	.2byte	0x12a
-	.byte	0x5
-	.uleb128 0x3a
-	.byte	0x1
-	.byte	0x1
-	.4byte	.LASF9357
-	.4byte	.LASF9357
-=======
-	.4byte	.LASF9353
-	.4byte	.LASF9353
->>>>>>> main
 	.byte	0x14
 	.byte	0xcb
 	.byte	0xa
 	.uleb128 0x3a
 	.byte	0x1
 	.byte	0x1
-<<<<<<< HEAD
-	.4byte	.LASF9358
-	.4byte	.LASF9358
-=======
-	.4byte	.LASF9354
-	.4byte	.LASF9354
->>>>>>> main
+	.4byte	.LASF9357
+	.4byte	.LASF9357
 	.byte	0x14
 	.byte	0xff
 	.byte	0x6
 	.uleb128 0x3a
 	.byte	0x1
 	.byte	0x1
-<<<<<<< HEAD
-	.4byte	.LASF9359
-	.4byte	.LASF9359
-=======
-	.4byte	.LASF9355
-	.4byte	.LASF9355
->>>>>>> main
+	.4byte	.LASF9358
+	.4byte	.LASF9358
 	.byte	0x14
 	.byte	0xfb
 	.byte	0x6
 	.uleb128 0x3b
 	.byte	0x1
 	.byte	0x1
-<<<<<<< HEAD
-	.4byte	.LASF9360
-	.4byte	.LASF9360
-=======
-	.4byte	.LASF9356
-	.4byte	.LASF9356
->>>>>>> main
+	.4byte	.LASF9359
+	.4byte	.LASF9359
 	.byte	0x14
 	.2byte	0x100
 	.byte	0x6
 	.uleb128 0x3a
 	.byte	0x1
 	.byte	0x1
-<<<<<<< HEAD
-	.4byte	.LASF9361
-	.4byte	.LASF9361
-=======
-	.4byte	.LASF9357
-	.4byte	.LASF9357
->>>>>>> main
+	.4byte	.LASF9360
+	.4byte	.LASF9360
 	.byte	0x1b
 	.byte	0x38
 	.byte	0xe
 	.uleb128 0x3a
 	.byte	0x1
 	.byte	0x1
-<<<<<<< HEAD
-	.4byte	.LASF9362
-	.4byte	.LASF9362
-=======
-	.4byte	.LASF9358
-	.4byte	.LASF9358
->>>>>>> main
+	.4byte	.LASF9361
+	.4byte	.LASF9361
 	.byte	0x12
 	.byte	0xcb
 	.byte	0xa
 	.uleb128 0x3a
 	.byte	0x1
 	.byte	0x1
-<<<<<<< HEAD
-	.4byte	.LASF9363
-	.4byte	.LASF9363
-	.byte	0x1d
-=======
-	.4byte	.LASF9359
-	.4byte	.LASF9359
+	.4byte	.LASF9362
+	.4byte	.LASF9362
 	.byte	0x1c
->>>>>>> main
 	.byte	0xcf
 	.byte	0xa
 	.byte	0
@@ -42977,11 +42926,7 @@ ctrlbuffer.8844:
 	.ascii	"REG_PWM_OSS (*(WoReg*)0x4008C04CU)\000"
 .LASF6604:
 	.ascii	"REG_SSC_RCMR (*(RwReg*)0x40004010U)\000"
-<<<<<<< HEAD
-.LASF9361:
-=======
-.LASF9357:
->>>>>>> main
+.LASF9360:
 	.ascii	"circ_buf_count\000"
 .LASF7702:
 	.ascii	"CHIP_FREQ_CPU_MAX (96000000UL)\000"
@@ -46258,11 +46203,7 @@ ctrlbuffer.8844:
 	.ascii	"_SYS__STDINT_H \000"
 .LASF35:
 	.ascii	"__WINT_TYPE__ unsigned int\000"
-<<<<<<< HEAD
-.LASF9364:
-=======
-.LASF9360:
->>>>>>> main
+.LASF9363:
 	.ascii	"GNU C99 9.3.1 20200408 (release) -mcpu=cortex-m3 -m"
 	.ascii	"long-calls -mfloat-abi=soft -mthumb -march=armv7-m "
 	.ascii	"-g3 -gdwarf-2 -O0 -std=gnu99 -fdata-sections -ffunc"
@@ -47882,11 +47823,7 @@ ctrlbuffer.8844:
 	.ascii	"( 40, data)\000"
 .LASF2793:
 	.ascii	"PIO_OER_P12 (0x1u << 12)\000"
-<<<<<<< HEAD
-.LASF9366:
-=======
-.LASF9362:
->>>>>>> main
+.LASF9365:
 	.ascii	"C:\\Users\\adewa\\Documents\\Atmel Studio\\7.0\\Chi"
 	.ascii	"pWhisperer-Husky\\ChipWhisperer-Husky\\src\000"
 .LASF3264:
@@ -47969,11 +47906,7 @@ ctrlbuffer.8844:
 	.ascii	"ID_TC0 (22)\000"
 .LASF7373:
 	.ascii	"GPBR ((Gpbr *)0x400E1290U)\000"
-<<<<<<< HEAD
-.LASF9362:
-=======
-.LASF9358:
->>>>>>> main
+.LASF9361:
 	.ascii	"pio_configure_pin\000"
 .LASF6369:
 	.ascii	"US_MR_CHMODE_Pos 14\000"
@@ -49466,11 +49399,7 @@ ctrlbuffer.8844:
 	.ascii	"PIO_PB21_IDX 53\000"
 .LASF1399:
 	.ascii	"TPI_TRIGGER_TRIGGER_Pos 0\000"
-<<<<<<< HEAD
-.LASF9363:
-=======
-.LASF9359:
->>>>>>> main
+.LASF9362:
 	.ascii	"pmc_enable_periph_clk\000"
 .LASF2628:
 	.ascii	"MATRIX_PRAS9_M0PR(value) ((MATRIX_PRAS9_M0PR_Msk & "
@@ -51251,11 +51180,7 @@ ctrlbuffer.8844:
 	.ascii	"TC_CMR_WAVSEL_UP_RC (0x2u << 13)\000"
 .LASF2162:
 	.ascii	"DMAC_CTRLB_DST_INCR_DECREMENTING (0x1u << 28)\000"
-<<<<<<< HEAD
-.LASF9358:
-=======
-.LASF9354:
->>>>>>> main
+.LASF9357:
 	.ascii	"usart_enable_rx\000"
 .LASF7707:
 	.ascii	"CHIP_FREQ_FWS_1 (40000000UL)\000"
@@ -51265,13 +51190,8 @@ ctrlbuffer.8844:
 	.ascii	"__UTA_FBIT__ 64\000"
 .LASF4382:
 	.ascii	"PWM_OOV_OOVH0 (0x1u << 0)\000"
-<<<<<<< HEAD
-.LASF9356:
-	.ascii	"iprintf\000"
-=======
 .LASF8194:
 	.ascii	"MSB0W(u32) (((U8 *)&(u32))[3])\000"
->>>>>>> main
 .LASF3004:
 	.ascii	"PIO_SODR_P31 (0x1u << 31)\000"
 .LASF5143:
@@ -51420,11 +51340,7 @@ ctrlbuffer.8844:
 	.ascii	"___int32_t_defined 1\000"
 .LASF5726:
 	.ascii	"TC_CV_CV_Msk (0xffffffffu << TC_CV_CV_Pos)\000"
-<<<<<<< HEAD
-.LASF9359:
-=======
-.LASF9355:
->>>>>>> main
+.LASF9358:
 	.ascii	"usart_enable_tx\000"
 .LASF4073:
 	.ascii	"CKGR_MOR_MOSCRCF_Pos 4\000"
@@ -53353,11 +53269,7 @@ ctrlbuffer.8844:
 	.ascii	"PIO_ESR_P28 (0x1u << 28)\000"
 .LASF8781:
 	.ascii	"UDI_VENDOR_EPS_SIZE_ISO_FS 0\000"
-<<<<<<< HEAD
-.LASF9360:
-=======
-.LASF9356:
->>>>>>> main
+.LASF9359:
 	.ascii	"usart_disable_rx\000"
 .LASF8412:
 	.ascii	"PINS_ADC_TRIG PIO_PA17_IDX\000"
@@ -54492,11 +54404,7 @@ ctrlbuffer.8844:
 	.ascii	"PWM_IER1_CHID2 (0x1u << 2)\000"
 .LASF4843:
 	.ascii	"SMC_ECC_PR0_BITADDR_W9BIT_Pos 0\000"
-<<<<<<< HEAD
-.LASF9357:
-=======
-.LASF9353:
->>>>>>> main
+.LASF9356:
 	.ascii	"usart_init_rs232\000"
 .LASF2995:
 	.ascii	"PIO_SODR_P22 (0x1u << 22)\000"
@@ -55452,11 +55360,7 @@ ctrlbuffer.8844:
 .LASF1272:
 	.ascii	"SCnSCB_ICTR_INTLINESNUM_Msk (0xFUL << SCnSCB_ICTR_I"
 	.ascii	"NTLINESNUM_Pos)\000"
-<<<<<<< HEAD
-.LASF9365:
-=======
-.LASF9361:
->>>>>>> main
+.LASF9364:
 	.ascii	"usart_driver.c\000"
 .LASF3844:
 	.ascii	"PIO_FELLSR_P4 (0x1u << 4)\000"
