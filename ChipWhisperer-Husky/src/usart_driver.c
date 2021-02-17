@@ -188,7 +188,6 @@ bool ctrl_usart(Usart * usart, bool directionIn)
 							sysclk_enable_peripheral_clock(ID_USART0);
 							init_circ_buf(&tx0buf);
 							init_circ_buf(&rx0buf);
-							printf("Enabling USART0\n");
 						} else if (usart == USART1)
 						{
 							sysclk_enable_peripheral_clock(ID_USART1);
@@ -210,7 +209,6 @@ bool ctrl_usart(Usart * usart, bool directionIn)
 #endif
 						usart_init_rs232(usart, &usartopts,  sysclk_get_cpu_hz());						 
 					} else {
-						printf("ERR: Invalid USART Configuration packet?\n");
 					}
 			}
 			break;
