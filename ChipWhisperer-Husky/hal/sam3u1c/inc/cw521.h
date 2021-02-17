@@ -164,6 +164,9 @@
 /** SPI SPCK pin definition. */
 #define SPI_SPCK_GPIO       (PIO_PA15_IDX)
 #define SPI_SPCK_FLAGS (PIO_PERIPH_A | PIO_DEFAULT)
+
+#define SPI_CS_GPIO (PIO_PA16_IDX)
+#define SPI_CS_FLAGS (PIO_TYPE_PIO_OUTPUT_0 | PIO_DEFAULT)
 /* NBS0 = A0 = LB# */
 /* NBS1      = UB# */
 #define PIN_EBI_ADDR_BUS_NBS0 PIO_PB7_IDX
@@ -261,7 +264,7 @@
 #define BOARD_NUM_OF_LED 2
 
 //! General Pins
-#define PIN_PWRON_GPIO	  PIO_PA29_IDX
+#define PIN_PWRON_GPIO	  PIO_PB18_IDX
 #define PIN_PWRON_FLAGS  (PIO_TYPE_PIO_OUTPUT_0 | PIO_DEFAULT) 
 #define board_power(a)	 if (a){gpio_set_pin_high(PIN_PWRON_GPIO);} else {gpio_set_pin_low(PIN_PWRON_GPIO);}
 #define board_sram_pwron() gpio_set_pin_low(PIN_PWRON_GPIO)
