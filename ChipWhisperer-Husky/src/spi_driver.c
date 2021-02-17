@@ -36,6 +36,9 @@ bool ctrl_spi(Spi * spi, bool directionIn)
                 if (udd_g_ctrlreq.req.wLength == 4) {
                     buf2word(baud, udd_g_ctrlreq.payload);
                     int16_t div = spi_calc_baudrate_div(baud, 0xFFFF);
+                    if (div == -1) {
+                        return false;
+                    }
                     spi_set_baudrate_div(spi, 0, div);
                 }
             }
@@ -44,5 +47,7 @@ bool ctrl_spi(Spi * spi, bool directionIn)
 
 void spi_driver_putword(Spi *spi, tcirc_buf *txbuf, uint16_t data)
 {
+    add_to_circ_buf(txbuf, data & 0xFF, false);
+    add_to_circ_buf(txbuf, (data >> 8), false);
 
 }
