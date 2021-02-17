@@ -110,9 +110,7 @@ int main(void)
     genclk_enable_config(GENCLK_PCK_1, GENCLK_PCK_SRC_MCK, GENCLK_PCK_PRES_1);
     udc_start();
 
-    USB_PWR_STATE = 0;
-
-    uint8_t curr_pwr_setting = 0;
+    ui_init();
     while(1) {
         sleepmgr_enter_sleep();
     }

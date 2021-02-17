@@ -4261,17 +4261,17 @@
   89:main.c        ****     // Read Device-ID from SAM3U. Do this before enabling interrupts etc.
   90:main.c        ****     flash_read_unique_id(serial_number, sizeof(serial_number));
  2186              	 .loc 9 90 5
- 2187 0006 3B46     	 mov r3,r7
+ 2187 0006 3B1D     	 adds r3,r7,#4
  2188 0008 1021     	 movs r1,#16
  2189 000a 1846     	 mov r0,r3
- 2190 000c 1D4B     	 ldr r3,.L162
+ 2190 000c 1B4B     	 ldr r3,.L162
  2191 000e 9847     	 blx r3
  2192              	.LVL92:
   91:main.c        **** 
   92:main.c        ****     irq_initialize_vectors();
   93:main.c        ****     cpu_irq_enable();
  2193              	 .loc 9 93 5
- 2194 0010 1D4B     	 ldr r3,.L162+4
+ 2194 0010 1B4B     	 ldr r3,.L162+4
  2195 0012 0122     	 movs r2,#1
  2196 0014 1A70     	 strb r2,[r3]
  2197              	.LBB24:
@@ -4307,18 +4307,18 @@
   95:main.c        ****     // Initialize the sleep manager
   96:main.c        ****     sleepmgr_init();
  2223              	 .loc 9 96 5
- 2224 0020 1A4B     	 ldr r3,.L162+8
+ 2224 0020 184B     	 ldr r3,.L162+8
  2225 0022 9847     	 blx r3
  2226              	.LVL93:
   97:main.c        **** #if !SAMD21 && !SAMR21
   98:main.c        ****     sysclk_init();
  2227              	 .loc 9 98 5
- 2228 0024 1A4B     	 ldr r3,.L162+12
+ 2228 0024 184B     	 ldr r3,.L162+12
  2229 0026 9847     	 blx r3
  2230              	.LVL94:
   99:main.c        ****     phywhisperer_setup_pins();
  2231              	 .loc 9 99 5
- 2232 0028 1A4B     	 ldr r3,.L162+16
+ 2232 0028 184B     	 ldr r3,.L162+16
  2233 002a 9847     	 blx r3
  2234              	.LVL95:
  2235              	.LBB28:
@@ -4339,18 +4339,18 @@
  2243 0032 7B69     	 ldr r3,[r7,#20]
  2244 0034 DB00     	 lsls r3,r3,#3
  2245              	 .loc 9 106 3 discriminator 3
- 2246 0036 184A     	 ldr r2,.L162+20
+ 2246 0036 164A     	 ldr r2,.L162+20
  2247 0038 9818     	 adds r0,r3,r2
  2248              	 .loc 9 106 71 discriminator 3
  2249 003a 7B69     	 ldr r3,[r7,#20]
  2250 003c 9B00     	 lsls r3,r3,#2
  2251 003e 07F11802 	 add r2,r7,#24
  2252 0042 1344     	 add r3,r3,r2
- 2253 0044 53F8183C 	 ldr r3,[r3,#-24]
+ 2253 0044 53F8143C 	 ldr r3,[r3,#-20]
  2254              	 .loc 9 106 3 discriminator 3
  2255 0048 1A46     	 mov r2,r3
- 2256 004a 1449     	 ldr r1,.L162+24
- 2257 004c 144B     	 ldr r3,.L162+28
+ 2256 004a 1249     	 ldr r1,.L162+24
+ 2257 004c 124B     	 ldr r3,.L162+28
  2258 004e 9847     	 blx r3
  2259              	.LVL96:
  105:main.c        **** 		sprintf(usb_serial_number+(i*8), "%08x", (unsigned int)serial_number[i]);	
@@ -4368,7 +4368,7 @@
  107:main.c        **** 	}
  108:main.c        **** 	usb_serial_number[32] = 0;
  2270              	 .loc 9 108 24
- 2271 005c 0E4B     	 ldr r3,.L162+20
+ 2271 005c 0C4B     	 ldr r3,.L162+20
  2272 005e 0022     	 movs r2,#0
  2273 0060 83F82020 	 strb r2,[r3,#32]
  109:main.c        **** 
@@ -4377,87 +4377,83 @@
  2275 0064 0022     	 movs r2,#0
  2276 0066 0A21     	 movs r1,#10
  2277 0068 0120     	 movs r0,#1
- 2278 006a 0E4B     	 ldr r3,.L162+32
+ 2278 006a 0C4B     	 ldr r3,.L162+32
  2279 006c 9847     	 blx r3
  2280              	.LVL97:
  111:main.c        ****     udc_start();
  2281              	 .loc 9 111 5
- 2282 006e 0E4B     	 ldr r3,.L162+36
+ 2282 006e 0C4B     	 ldr r3,.L162+36
  2283 0070 9847     	 blx r3
  2284              	.LVL98:
  112:main.c        **** 
- 113:main.c        ****     USB_PWR_STATE = 0;
- 2285              	 .loc 9 113 19
- 2286 0072 0E4B     	 ldr r3,.L162+40
- 2287 0074 0022     	 movs r2,#0
- 2288 0076 1A70     	 strb r2,[r3]
- 114:main.c        **** 
- 115:main.c        ****     uint8_t curr_pwr_setting = 0;
- 2289              	 .loc 9 115 13
- 2290 0078 0023     	 movs r3,#0
- 2291 007a FB74     	 strb r3,[r7,#19]
- 2292              	.L161:
- 116:main.c        ****     while(1) {
- 117:main.c        ****         sleepmgr_enter_sleep();
- 2293              	 .loc 9 117 9 discriminator 1
- 2294 007c 0C4B     	 ldr r3,.L162+44
- 2295 007e 9847     	 blx r3
- 2296              	.LVL99:
- 2297 0080 FCE7     	 b .L161
- 2298              	.L163:
- 2299 0082 00BF     	 .align 2
- 2300              	.L162:
- 2301 0084 00000000 	 .word flash_read_unique_id
- 2302 0088 00000000 	 .word g_interrupt_enabled
- 2303 008c 00000000 	 .word sleepmgr_init
- 2304 0090 00000000 	 .word sysclk_init
- 2305 0094 00000000 	 .word phywhisperer_setup_pins
- 2306 0098 00000000 	 .word usb_serial_number
- 2307 009c 00000000 	 .word .LC0
- 2308 00a0 00000000 	 .word sprintf
- 2309 00a4 00000000 	 .word genclk_enable_config
- 2310 00a8 00000000 	 .word udc_start
- 2311 00ac 00000000 	 .word USB_PWR_STATE
- 2312 00b0 00000000 	 .word sleepmgr_enter_sleep
- 2313              	 .cfi_endproc
- 2314              	.LFE193:
- 2316              	 .text
- 2317              	.Letext0:
- 2318              	 .file 10 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\machine\\_default_types.h"
- 2319              	 .file 11 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_stdint.h"
- 2320              	 .file 12 ".././hal/sam3u1c/inc/sam3u1c.h"
- 2321              	 .file 13 ".././hal/sam3u1c/inc/core_cm3.h"
- 2322              	 .file 14 ".././hal/sam3u1c/inc/system_sam3u.h"
- 2323              	 .file 15 ".././hal/sam3u1c/inc/component/component_pio.h"
- 2324              	 .file 16 ".././hal/sam3u1c/inc/component/component_pmc.h"
- 2325              	 .file 17 ".././hal/sam3u1c/inc/component/component_smc.h"
- 2326              	 .file 18 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\lib\\gcc\\arm-none-eabi\\9.3.1\\include\\stddef.h"
- 2327              	 .file 19 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_types.h"
- 2328              	 .file 20 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\reent.h"
- 2329              	 .file 21 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\lock.h"
- 2330              	 .file 22 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\stdlib.h"
- 2331              	 .file 23 ".././hal/sam3u1c/inc/interrupt/interrupt_sam_nvic.h"
- 2332              	 .file 24 ".././hal/sam3u1c/inc/compiler.h"
- 2333              	 .file 25 ".././hal/sam3u1c/inc/pio.h"
- 2334              	 .file 26 "./conf_usb.h"
- 2335              	 .file 27 ".././hal/sam3u1c/inc/usb_protocol.h"
- 2336              	 .file 28 ".././hal/sam3u1c/inc/udi.h"
- 2337              	 .file 29 ".././hal/sam3u1c/inc/udc_desc.h"
- 2338              	 .file 30 ".././hal/sam3u1c/inc/udd.h"
- 2339              	 .file 31 ".././hal/sam3u1c/inc/udi_vendor.h"
- 2340              	 .file 32 ".././hal/sam3u1c/inc/stdio_serial.h"
- 2341              	 .file 33 ".././hal/sam3u1c/inc/tasks.h"
- 2342              	 .file 34 "usb_xmem.h"
- 2343              	 .file 35 "fpga_program.h"
- 2344              	 .file 36 ".././hal/sam3u1c/inc/usb.h"
- 2345              	 .file 37 ".././hal/sam3u1c/inc/flash_efc.h"
- 2346              	 .file 38 ".././hal/sam3u1c/inc/sam3u/sysclk.h"
- 2347              	 .file 39 ".././hal/sam3u1c/inc/udc.h"
- 2348              	 .file 40 ".././hal/sam3u1c/inc/board.h"
- 2349              	 .file 41 ".././hal/sam3u1c/inc/pmc.h"
- 2350              	 .file 42 ".././hal/sam3u1c/inc/smc.h"
- 2351              	 .file 43 ".././hal/sam3u1c/inc/sleep.h"
- 2352              	 .file 44 "<built-in>"
+ 113:main.c        ****     ui_init();
+ 2285              	 .loc 9 113 5
+ 2286 0072 0C4B     	 ldr r3,.L162+40
+ 2287 0074 9847     	 blx r3
+ 2288              	.LVL99:
+ 2289              	.L161:
+ 114:main.c        ****     while(1) {
+ 115:main.c        ****         sleepmgr_enter_sleep();
+ 2290              	 .loc 9 115 9 discriminator 1
+ 2291 0076 0C4B     	 ldr r3,.L162+44
+ 2292 0078 9847     	 blx r3
+ 2293              	.LVL100:
+ 2294 007a FCE7     	 b .L161
+ 2295              	.L163:
+ 2296              	 .align 2
+ 2297              	.L162:
+ 2298 007c 00000000 	 .word flash_read_unique_id
+ 2299 0080 00000000 	 .word g_interrupt_enabled
+ 2300 0084 00000000 	 .word sleepmgr_init
+ 2301 0088 00000000 	 .word sysclk_init
+ 2302 008c 00000000 	 .word phywhisperer_setup_pins
+ 2303 0090 00000000 	 .word usb_serial_number
+ 2304 0094 00000000 	 .word .LC0
+ 2305 0098 00000000 	 .word sprintf
+ 2306 009c 00000000 	 .word genclk_enable_config
+ 2307 00a0 00000000 	 .word udc_start
+ 2308 00a4 00000000 	 .word ui_init
+ 2309 00a8 00000000 	 .word sleepmgr_enter_sleep
+ 2310              	 .cfi_endproc
+ 2311              	.LFE193:
+ 2313              	 .text
+ 2314              	.Letext0:
+ 2315              	 .file 10 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 2316              	 .file 11 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 2317              	 .file 12 ".././hal/sam3u1c/inc/sam3u1c.h"
+ 2318              	 .file 13 ".././hal/sam3u1c/inc/core_cm3.h"
+ 2319              	 .file 14 ".././hal/sam3u1c/inc/system_sam3u.h"
+ 2320              	 .file 15 ".././hal/sam3u1c/inc/component/component_pio.h"
+ 2321              	 .file 16 ".././hal/sam3u1c/inc/component/component_pmc.h"
+ 2322              	 .file 17 ".././hal/sam3u1c/inc/component/component_smc.h"
+ 2323              	 .file 18 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\lib\\gcc\\arm-none-eabi\\9.3.1\\include\\stddef.h"
+ 2324              	 .file 19 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_types.h"
+ 2325              	 .file 20 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\reent.h"
+ 2326              	 .file 21 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\lock.h"
+ 2327              	 .file 22 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\stdlib.h"
+ 2328              	 .file 23 ".././hal/sam3u1c/inc/interrupt/interrupt_sam_nvic.h"
+ 2329              	 .file 24 ".././hal/sam3u1c/inc/compiler.h"
+ 2330              	 .file 25 ".././hal/sam3u1c/inc/pio.h"
+ 2331              	 .file 26 "./conf_usb.h"
+ 2332              	 .file 27 ".././hal/sam3u1c/inc/usb_protocol.h"
+ 2333              	 .file 28 ".././hal/sam3u1c/inc/udi.h"
+ 2334              	 .file 29 ".././hal/sam3u1c/inc/udc_desc.h"
+ 2335              	 .file 30 ".././hal/sam3u1c/inc/udd.h"
+ 2336              	 .file 31 ".././hal/sam3u1c/inc/udi_vendor.h"
+ 2337              	 .file 32 ".././hal/sam3u1c/inc/stdio_serial.h"
+ 2338              	 .file 33 ".././hal/sam3u1c/inc/tasks.h"
+ 2339              	 .file 34 "usb_xmem.h"
+ 2340              	 .file 35 "fpga_program.h"
+ 2341              	 .file 36 ".././hal/sam3u1c/inc/usb.h"
+ 2342              	 .file 37 ".././hal/sam3u1c/inc/flash_efc.h"
+ 2343              	 .file 38 ".././hal/sam3u1c/inc/sam3u/sysclk.h"
+ 2344              	 .file 39 ".././hal/sam3u1c/inc/udc.h"
+ 2345              	 .file 40 ".././hal/sam3u1c/inc/ui.h"
+ 2346              	 .file 41 ".././hal/sam3u1c/inc/board.h"
+ 2347              	 .file 42 ".././hal/sam3u1c/inc/pmc.h"
+ 2348              	 .file 43 ".././hal/sam3u1c/inc/smc.h"
+ 2349              	 .file 44 ".././hal/sam3u1c/inc/sleep.h"
+ 2350              	 .file 45 "<built-in>"
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
     {standard input}:16     .bss.cpu_irq_critical_section_counter:00000000 $d
@@ -4539,7 +4535,7 @@ DEFINED SYMBOLS
     {standard input}:2158   .rodata:00000000 $d
     {standard input}:2162   .text.main:00000000 $t
     {standard input}:2169   .text.main:00000000 main
-    {standard input}:2301   .text.main:00000084 $d
+    {standard input}:2298   .text.main:0000007c $d
                            .group:00000000 wm4.0.84f01b7600eb36308f16331d3d2e9779
                            .group:00000000 wm4.stddef.h.39.27677723d43e5b5a7afdf8d798429f1d
                            .group:00000000 wm4.parts.h.45.afc900689b2c82332e69d798acedc875
@@ -4715,4 +4711,4 @@ flash_read_unique_id
 sysclk_init
 sprintf
 udc_start
-USB_PWR_STATE
+ui_init

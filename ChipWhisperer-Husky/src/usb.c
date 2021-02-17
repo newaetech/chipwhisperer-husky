@@ -56,6 +56,7 @@
 volatile bool g_captureinprogress = true;
 
 static volatile bool main_b_vendor_enable = true;
+static bool active = false;
 
 uint8_t USB_PWR_STATE = 0;
 
@@ -70,20 +71,25 @@ void main_vendor_bulk_out_received(udd_ep_status_t status,
 //this stuff just turns leds on and off
 void main_suspend_action(void)
 {
+	active = false;
+	ui_powerdown();
 }
 
 void main_resume_action(void)
 {
+    ui_wakeup();
 }
 
 void main_sof_action(void)
 {
     if (!main_b_vendor_enable)
         return;
+    ui_process(udd_get_frame_number());
 }
 
 bool main_vendor_enable(void)
 {
+    active = true;
     main_b_vendor_enable = true;
     // Start data reception on OUT endpoints
 #if UDI_VENDOR_EPS_SIZE_BULK_FS
