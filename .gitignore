@@ -4,3 +4,4 @@
 /ChipWhisperer-Husky/src/objdir/*
 *.d
 *.o
+*.o.s

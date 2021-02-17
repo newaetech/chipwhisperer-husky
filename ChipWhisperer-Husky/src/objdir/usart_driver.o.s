@@ -511,13 +511,6 @@ usart0_enableIO:
 	.cfi_endproc
 .LFE181:
 	.size	usart0_enableIO, .-usart0_enableIO
-	.section	.rodata
-	.align	2
-.LC0:
-	.ascii	"Enabling USART0\012\000"
-	.align	2
-.LC1:
-	.ascii	"ERR: Invalid USART Configuration packet?\012\000"
 	.section	.text.ctrl_usart,"ax",%progbits
 	.align	1
 	.global	ctrl_usart
@@ -547,7 +540,7 @@ ctrl_usart:
 	mov	r3, r1
 	strb	r3, [r7, #3]
 	.loc 4 109 26
-	ldr	r3, .L92
+	ldr	r3, .L91
 	ldrh	r3, [r3, #2]
 	.loc 4 109 34
 	uxtb	r3, r3
@@ -574,23 +567,23 @@ ctrl_usart:
 	cmp	r3, #0
 	beq	.L49
 	.loc 4 113 26
-	ldr	r3, .L92
+	ldr	r3, .L91
 	ldrh	r3, [r3, #6]
 	.loc 4 113 8
 	cmp	r3, #4
-	bne	.L87
+	bne	.L86
 	.loc 4 119 13
 	movs	r3, #1
-	b	.L86
+	b	.L85
 .L49:
 	.loc 4 122 27
-	ldr	r3, .L92
+	ldr	r3, .L91
 	ldrh	r3, [r3, #6]
 	.loc 4 122 9
 	cmp	r3, #7
-	bne	.L52
+	bne	.L86
 	.loc 4 125 7
-	ldr	r3, .L92
+	ldr	r3, .L91
 	ldr	r3, [r3, #8]
 	ldr	r3, [r3]
 	str	r3, [r7, #36]
@@ -598,391 +591,391 @@ ctrl_usart:
 	ldr	r3, [r7, #36]
 	str	r3, [r7, #12]
 	.loc 4 130 27
-	ldr	r3, .L92
+	ldr	r3, .L91
 	ldr	r3, [r3, #8]
 	.loc 4 130 35
 	adds	r3, r3, #4
 	ldrb	r3, [r3]	@ zero_extendqisi2
 	cmp	r3, #2
-	beq	.L53
+	beq	.L52
 	cmp	r3, #2
-	bgt	.L54
+	bgt	.L53
 	cmp	r3, #0
-	beq	.L55
+	beq	.L54
 	cmp	r3, #1
-	beq	.L56
-	b	.L54
-.L55:
+	beq	.L55
+	b	.L53
+.L54:
 	.loc 4 133 29
 	movs	r3, #0
 	str	r3, [r7, #24]
 	.loc 4 134 9
-	b	.L57
-.L56:
+	b	.L56
+.L55:
 	.loc 4 136 29
 	mov	r3, #4096
 	str	r3, [r7, #24]
 	.loc 4 137 9
-	b	.L57
-.L53:
+	b	.L56
+.L52:
 	.loc 4 139 29
 	mov	r3, #8192
 	str	r3, [r7, #24]
 	.loc 4 140 9
-	b	.L57
-.L54:
+	b	.L56
+.L53:
 	.loc 4 142 29
 	movs	r3, #0
 	str	r3, [r7, #24]
-.L57:
+.L56:
 	.loc 4 146 27
-	ldr	r3, .L92
+	ldr	r3, .L91
 	ldr	r3, [r3, #8]
 	.loc 4 146 35
 	adds	r3, r3, #5
 	ldrb	r3, [r3]	@ zero_extendqisi2
 	cmp	r3, #4
-	bhi	.L58
-	adr	r2, .L60
+	bhi	.L57
+	adr	r2, .L59
 	ldr	pc, [r2, r3, lsl #2]
 	.p2align 2
-.L60:
-	.word	.L64+1
+.L59:
 	.word	.L63+1
 	.word	.L62+1
 	.word	.L61+1
-	.word	.L59+1
+	.word	.L60+1
+	.word	.L58+1
 	.p2align 1
-.L64:
+.L63:
 	.loc 4 149 31
 	mov	r3, #2048
 	str	r3, [r7, #20]
 	.loc 4 150 9
-	b	.L65
-.L63:
+	b	.L64
+.L62:
 	.loc 4 152 31
 	mov	r3, #512
 	str	r3, [r7, #20]
 	.loc 4 153 9
-	b	.L65
-.L62:
+	b	.L64
+.L61:
 	.loc 4 155 31
 	movs	r3, #0
 	str	r3, [r7, #20]
 	.loc 4 156 9
-	b	.L65
-.L61:
+	b	.L64
+.L60:
 	.loc 4 158 31
 	mov	r3, #1536
 	str	r3, [r7, #20]
 	.loc 4 159 9
-	b	.L65
-.L59:
+	b	.L64
+.L58:
 	.loc 4 161 31
 	mov	r3, #1024
 	str	r3, [r7, #20]
 	.loc 4 162 9
-	b	.L65
-.L58:
+	b	.L64
+.L57:
 	.loc 4 164 31
 	mov	r3, #2048
 	str	r3, [r7, #20]
-.L65:
+.L64:
 	.loc 4 168 27
-	ldr	r3, .L92
+	ldr	r3, .L91
 	ldr	r3, [r3, #8]
 	.loc 4 168 35
 	adds	r3, r3, #6
 	ldrb	r3, [r3]	@ zero_extendqisi2
 	cmp	r3, #7
-	beq	.L66
+	beq	.L65
 	cmp	r3, #7
-	bgt	.L67
+	bgt	.L66
 	cmp	r3, #5
-	beq	.L68
+	beq	.L67
 	cmp	r3, #6
-	beq	.L69
-	b	.L67
-.L68:
+	beq	.L68
+	b	.L66
+.L67:
 	.loc 4 171 31
 	movs	r3, #0
 	str	r3, [r7, #16]
 	.loc 4 172 9
-	b	.L70
-.L69:
+	b	.L69
+.L68:
 	.loc 4 174 31
 	movs	r3, #64
 	str	r3, [r7, #16]
 	.loc 4 175 9
-	b	.L70
-.L66:
+	b	.L69
+.L65:
 	.loc 4 177 31
 	movs	r3, #128
 	str	r3, [r7, #16]
 	.loc 4 178 9
-	b	.L70
-.L67:
+	b	.L69
+.L66:
 	.loc 4 181 31
 	movs	r3, #192
 	str	r3, [r7, #16]
-.L70:
+.L69:
 	.loc 4 184 30
 	movs	r3, #0
 	str	r3, [r7, #28]
 	.loc 4 186 10
 	ldr	r3, [r7, #4]
-	ldr	r2, .L92+4
+	ldr	r2, .L91+4
 	cmp	r3, r2
-	bne	.L71
+	bne	.L70
 	.loc 4 188 8
 	movs	r0, #13
-	ldr	r3, .L92+8
+	ldr	r3, .L91+8
 	blx	r3
 .LVL5:
 	.loc 4 189 8
-	ldr	r0, .L92+12
-	ldr	r3, .L92+16
+	ldr	r0, .L91+12
+	ldr	r3, .L91+16
 	blx	r3
 .LVL6:
 	.loc 4 190 8
-	ldr	r0, .L92+20
-	ldr	r3, .L92+16
+	ldr	r0, .L91+20
+	ldr	r3, .L91+16
 	blx	r3
 .LVL7:
-	.loc 4 191 8
-	ldr	r0, .L92+24
-	ldr	r3, .L92+28
+	b	.L71
+.L70:
+	.loc 4 191 17
+	ldr	r3, [r7, #4]
+	ldr	r2, .L91+24
+	cmp	r3, r2
+	bne	.L72
+	.loc 4 193 8
+	movs	r0, #14
+	ldr	r3, .L91+8
 	blx	r3
 .LVL8:
-	b	.L72
-.L71:
-	.loc 4 192 17
-	ldr	r3, [r7, #4]
-	ldr	r2, .L92+32
-	cmp	r3, r2
-	bne	.L73
 	.loc 4 194 8
-	movs	r0, #14
-	ldr	r3, .L92+8
+	ldr	r0, .L91+28
+	ldr	r3, .L91+16
 	blx	r3
 .LVL9:
 	.loc 4 195 8
-	ldr	r0, .L92+36
-	ldr	r3, .L92+16
+	ldr	r0, .L91+32
+	ldr	r3, .L91+16
 	blx	r3
 .LVL10:
-	.loc 4 196 8
-	ldr	r0, .L92+40
-	ldr	r3, .L92+16
+	b	.L71
+.L72:
+	.loc 4 196 17
+	ldr	r3, [r7, #4]
+	ldr	r2, .L91+36
+	cmp	r3, r2
+	bne	.L71
+	.loc 4 198 8
+	movs	r0, #15
+	ldr	r3, .L91+8
 	blx	r3
 .LVL11:
-	b	.L72
-.L73:
-	.loc 4 197 17
-	ldr	r3, [r7, #4]
-	ldr	r2, .L92+44
-	cmp	r3, r2
-	bne	.L72
 	.loc 4 199 8
-	movs	r0, #15
-	ldr	r3, .L92+8
+	ldr	r0, .L91+40
+	ldr	r3, .L91+16
 	blx	r3
 .LVL12:
 	.loc 4 200 8
-	ldr	r0, .L92+48
-	ldr	r3, .L92+16
+	ldr	r0, .L91+44
+	ldr	r3, .L91+16
 	blx	r3
 .LVL13:
-	.loc 4 201 8
-	ldr	r0, .L92+52
-	ldr	r3, .L92+16
+.L71:
+	.loc 4 210 7
+	ldr	r3, .L91+48
 	blx	r3
 .LVL14:
-.L72:
-	.loc 4 211 7
-	ldr	r3, .L92+56
-	blx	r3
-.LVL15:
 	mov	r2, r0
 	add	r3, r7, #12
 	mov	r1, r3
 	ldr	r0, [r7, #4]
-	ldr	r3, .L92+60
+	ldr	r3, .L91+52
+	blx	r3
+.LVL15:
+	.loc 4 214 4
+	b	.L86
+.L47:
+	.loc 4 217 20
+	ldrb	r3, [r7, #3]
+	eor	r3, r3, #1
+	uxtb	r3, r3
+	.loc 4 217 7
+	cmp	r3, #0
+	beq	.L87
+	.loc 4 218 5
+	ldr	r0, [r7, #4]
+	ldr	r3, .L91+56
 	blx	r3
 .LVL16:
-	.loc 4 216 4
-	b	.L87
-.L52:
-	.loc 4 213 7
-	ldr	r0, .L92+64
-	ldr	r3, .L92+28
+	.loc 4 219 5
+	ldr	r0, [r7, #4]
+	ldr	r3, .L91+60
 	blx	r3
 .LVL17:
-	.loc 4 216 4
-	b	.L87
-.L47:
-	.loc 4 219 20
-	ldrb	r3, [r7, #3]
-	eor	r3, r3, #1
-	uxtb	r3, r3
-	.loc 4 219 7
-	cmp	r3, #0
-	beq	.L88
-	.loc 4 220 5
-	ldr	r0, [r7, #4]
-	ldr	r3, .L92+68
-	blx	r3
-.LVL18:
 	.loc 4 221 5
-	ldr	r0, [r7, #4]
-	ldr	r3, .L92+72
-	blx	r3
-.LVL19:
-	.loc 4 223 5
 	movs	r1, #1
 	ldr	r0, [r7, #4]
-	ldr	r3, .L92+76
+	ldr	r3, .L91+64
+	blx	r3
+.LVL18:
+	.loc 4 224 8
+	ldr	r3, [r7, #4]
+	ldr	r2, .L91+4
+	cmp	r3, r2
+	bne	.L74
+	.loc 4 225 6
+	ldr	r3, .L91+68
+	blx	r3
+.LVL19:
+	.loc 4 226 6
+	movs	r0, #13
+	ldr	r3, .L91+72
 	blx	r3
 .LVL20:
-	.loc 4 226 8
-	ldr	r3, [r7, #4]
-	ldr	r2, .L92+4
-	cmp	r3, r2
-	bne	.L75
-	.loc 4 227 6
-	ldr	r3, .L92+80
+	movs	r1, #5
+	movs	r0, #13
+	ldr	r3, .L91+76
 	blx	r3
 .LVL21:
-	.loc 4 228 6
 	movs	r0, #13
-	ldr	r3, .L92+84
+	ldr	r3, .L91+80
 	blx	r3
 .LVL22:
-	movs	r1, #5
-	movs	r0, #13
-	ldr	r3, .L92+88
+	.loc 4 241 4
+	b	.L87
+.L74:
+	.loc 4 227 15
+	ldr	r3, [r7, #4]
+	ldr	r2, .L91+24
+	cmp	r3, r2
+	bne	.L75
+	.loc 4 229 6
+	movs	r0, #14
+	ldr	r3, .L91+72
 	blx	r3
 .LVL23:
-	movs	r0, #13
-	ldr	r3, .L92+92
+	movs	r1, #5
+	movs	r0, #14
+	ldr	r3, .L91+76
 	blx	r3
 .LVL24:
-	.loc 4 243 4
-	b	.L88
-.L75:
-	.loc 4 229 15
-	ldr	r3, [r7, #4]
-	ldr	r2, .L92+32
-	cmp	r3, r2
-	bne	.L76
-	.loc 4 231 6
 	movs	r0, #14
-	ldr	r3, .L92+84
+	ldr	r3, .L91+80
 	blx	r3
 .LVL25:
-	movs	r1, #5
-	movs	r0, #14
-	ldr	r3, .L92+88
+	.loc 4 241 4
+	b	.L87
+.L75:
+	.loc 4 230 15
+	ldr	r3, [r7, #4]
+	ldr	r2, .L91+36
+	cmp	r3, r2
+	bne	.L87
+	.loc 4 232 6
+	movs	r0, #15
+	ldr	r3, .L91+72
 	blx	r3
 .LVL26:
-	movs	r0, #14
-	ldr	r3, .L92+92
-	blx	r3
-.LVL27:
-	.loc 4 243 4
-	b	.L88
-.L76:
-	.loc 4 232 15
-	ldr	r3, [r7, #4]
-	ldr	r2, .L92+44
-	cmp	r3, r2
-	bne	.L88
-	.loc 4 234 6
-	movs	r0, #15
-	ldr	r3, .L92+84
-	blx	r3
-.LVL28:
 	movs	r1, #5
 	movs	r0, #15
-	ldr	r3, .L92+88
+	ldr	r3, .L91+76
 	blx	r3
-.LVL29:
+.LVL27:
 	movs	r0, #15
-	ldr	r3, .L92+92
+	ldr	r3, .L91+80
 	blx	r3
-.LVL30:
-	.loc 4 243 4
-	b	.L88
+.LVL28:
+	.loc 4 241 4
+	b	.L87
 .L46:
-	.loc 4 246 20
+	.loc 4 244 20
 	ldrb	r3, [r7, #3]
 	eor	r3, r3, #1
 	uxtb	r3, r3
-	.loc 4 246 7
+	.loc 4 244 7
 	cmp	r3, #0
-	beq	.L89
+	beq	.L88
+	.loc 4 245 5
+	ldr	r0, [r7, #4]
+	ldr	r3, .L91+84
+	blx	r3
+.LVL29:
+	.loc 4 246 5
+	ldr	r0, [r7, #4]
+	ldr	r3, .L91+84
+	blx	r3
+.LVL30:
 	.loc 4 247 5
-	ldr	r0, [r7, #4]
-	ldr	r3, .L92+96
-	blx	r3
-.LVL31:
-	.loc 4 248 5
-	ldr	r0, [r7, #4]
-	ldr	r3, .L92+96
-	blx	r3
-.LVL32:
-	.loc 4 249 5
 	movs	r1, #3
 	ldr	r0, [r7, #4]
-	ldr	r3, .L92+100
+	ldr	r3, .L91+88
 	blx	r3
-.LVL33:
-	.loc 4 252 4
-	b	.L89
+.LVL31:
+	.loc 4 250 4
+	b	.L88
 .L45:
-	.loc 4 255 7
+	.loc 4 253 7
 	ldrb	r3, [r7, #3]	@ zero_extendqisi2
 	cmp	r3, #0
-	beq	.L90
-	.loc 4 256 26
-	ldr	r3, .L92
+	beq	.L89
+	.loc 4 254 26
+	ldr	r3, .L91
 	ldrh	r3, [r3, #6]
-	.loc 4 256 8
+	.loc 4 254 8
 	cmp	r3, #4
-	bne	.L90
-	.loc 4 258 28
-	ldr	r3, .L92
-	ldr	r2, .L92+104
+	bne	.L89
+	.loc 4 256 28
+	ldr	r3, .L91
+	ldr	r2, .L91+92
 	str	r2, [r3, #8]
-	.loc 4 259 33
-	ldr	r3, .L92
+	.loc 4 257 33
+	ldr	r3, .L91
 	movs	r2, #4
 	strh	r2, [r3, #12]	@ movhi
-	.loc 4 261 9
+	.loc 4 259 9
 	ldr	r3, [r7, #4]
-	ldr	r2, .L92+4
+	ldr	r2, .L91+4
 	cmp	r3, r2
-	bne	.L79
-	.loc 4 262 13
-	ldr	r0, .L92+20
-	ldr	r3, .L92+108
+	bne	.L78
+	.loc 4 260 13
+	ldr	r0, .L91+20
+	ldr	r3, .L91+96
 	blx	r3
-.LVL34:
+.LVL32:
+	mov	r3, r0
+	.loc 4 260 11
+	str	r3, [r7, #8]
+	b	.L79
+.L78:
+	.loc 4 261 16
+	ldr	r3, [r7, #4]
+	ldr	r2, .L91+24
+	cmp	r3, r2
+	bne	.L80
+	.loc 4 262 13
+	ldr	r0, .L91+32
+	ldr	r3, .L91+96
+	blx	r3
+.LVL33:
 	mov	r3, r0
 	.loc 4 262 11
 	str	r3, [r7, #8]
-	b	.L80
-.L93:
-	.align	2
+	b	.L79
 .L92:
+	.align	2
+.L91:
 	.word	udd_g_ctrlreq
 	.word	1074331648
 	.word	sysclk_enable_peripheral_clock
 	.word	tx0buf
 	.word	init_circ_buf
 	.word	rx0buf
-	.word	.LC0
-	.word	iprintf
 	.word	1074348032
 	.word	tx1buf
 	.word	rx1buf
@@ -991,7 +984,6 @@ ctrl_usart:
 	.word	rx2buf
 	.word	sysclk_get_cpu_hz
 	.word	usart_init_rs232
-	.word	.LC1
 	.word	usart_enable_rx
 	.word	usart_enable_tx
 	.word	usart_enable_interrupt
@@ -1003,157 +995,142 @@ ctrl_usart:
 	.word	usart_disable_interrupt
 	.word	ctrlbuffer.8844
 	.word	circ_buf_count
-.L79:
+.L80:
 	.loc 4 263 16
 	ldr	r3, [r7, #4]
-	ldr	r2, .L94
+	ldr	r2, .L93
 	cmp	r3, r2
-	bne	.L81
+	bne	.L79
 	.loc 4 264 13
-	ldr	r0, .L94+4
-	ldr	r3, .L94+8
+	ldr	r0, .L93+4
+	ldr	r3, .L93+8
 	blx	r3
-.LVL35:
+.LVL34:
 	mov	r3, r0
 	.loc 4 264 11
 	str	r3, [r7, #8]
-	b	.L80
-.L81:
-	.loc 4 265 16
+.L79:
+	.loc 4 272 6
+	add	r3, r7, #8
+	ldrb	r2, [r3]	@ zero_extendqisi2
+	ldr	r3, .L93+12
+	strb	r2, [r3]
+	ldrb	r2, [r7, #9]	@ zero_extendqisi2
+	ldr	r3, .L93+12
+	strb	r2, [r3, #1]
+	ldrb	r2, [r7, #10]	@ zero_extendqisi2
+	ldr	r3, .L93+12
+	strb	r2, [r3, #2]
+	ldrb	r2, [r7, #11]	@ zero_extendqisi2
+	ldr	r3, .L93+12
+	strb	r2, [r3, #3]
+	.loc 4 274 13
+	movs	r3, #1
+	b	.L85
+.L43:
+	.loc 4 279 7
+	ldrb	r3, [r7, #3]	@ zero_extendqisi2
+	cmp	r3, #0
+	beq	.L90
+	.loc 4 280 26
+	ldr	r3, .L93+16
+	ldrh	r3, [r3, #6]
+	.loc 4 280 8
+	cmp	r3, #4
+	bne	.L90
+	.loc 4 282 28
+	ldr	r3, .L93+16
+	ldr	r2, .L93+12
+	str	r2, [r3, #8]
+	.loc 4 283 33
+	ldr	r3, .L93+16
+	movs	r2, #4
+	strh	r2, [r3, #12]	@ movhi
+	.loc 4 285 9
 	ldr	r3, [r7, #4]
-	ldr	r2, .L94+12
+	ldr	r2, .L93+20
 	cmp	r3, r2
-	bne	.L80
-	.loc 4 266 13
-	ldr	r0, .L94+16
-	ldr	r3, .L94+8
+	bne	.L82
+	.loc 4 286 13
+	ldr	r0, .L93+24
+	ldr	r3, .L93+8
+	blx	r3
+.LVL35:
+	mov	r3, r0
+	.loc 4 286 11
+	str	r3, [r7, #8]
+	b	.L83
+.L82:
+	.loc 4 287 16
+	ldr	r3, [r7, #4]
+	ldr	r2, .L93+28
+	cmp	r3, r2
+	bne	.L84
+	.loc 4 288 13
+	ldr	r0, .L93+32
+	ldr	r3, .L93+8
 	blx	r3
 .LVL36:
 	mov	r3, r0
-	.loc 4 266 11
+	.loc 4 288 11
 	str	r3, [r7, #8]
-.L80:
-	.loc 4 274 6
-	add	r3, r7, #8
-	ldrb	r2, [r3]	@ zero_extendqisi2
-	ldr	r3, .L94+20
-	strb	r2, [r3]
-	ldrb	r2, [r7, #9]	@ zero_extendqisi2
-	ldr	r3, .L94+20
-	strb	r2, [r3, #1]
-	ldrb	r2, [r7, #10]	@ zero_extendqisi2
-	ldr	r3, .L94+20
-	strb	r2, [r3, #2]
-	ldrb	r2, [r7, #11]	@ zero_extendqisi2
-	ldr	r3, .L94+20
-	strb	r2, [r3, #3]
-	.loc 4 276 13
-	movs	r3, #1
-	b	.L86
-.L43:
-	.loc 4 281 7
-	ldrb	r3, [r7, #3]	@ zero_extendqisi2
-	cmp	r3, #0
-	beq	.L91
-	.loc 4 282 26
-	ldr	r3, .L94+24
-	ldrh	r3, [r3, #6]
-	.loc 4 282 8
-	cmp	r3, #4
-	bne	.L91
-	.loc 4 284 28
-	ldr	r3, .L94+24
-	ldr	r2, .L94+20
-	str	r2, [r3, #8]
-	.loc 4 285 33
-	ldr	r3, .L94+24
-	movs	r2, #4
-	strh	r2, [r3, #12]	@ movhi
-	.loc 4 287 9
+	b	.L83
+.L84:
+	.loc 4 289 16
 	ldr	r3, [r7, #4]
-	ldr	r2, .L94+28
+	ldr	r2, .L93
 	cmp	r3, r2
 	bne	.L83
-	.loc 4 288 13
-	ldr	r0, .L94+32
-	ldr	r3, .L94+8
+	.loc 4 290 13
+	ldr	r0, .L93+36
+	ldr	r3, .L93+8
 	blx	r3
 .LVL37:
 	mov	r3, r0
-	.loc 4 288 11
-	str	r3, [r7, #8]
-	b	.L84
-.L83:
-	.loc 4 289 16
-	ldr	r3, [r7, #4]
-	ldr	r2, .L94
-	cmp	r3, r2
-	bne	.L85
-	.loc 4 290 13
-	ldr	r0, .L94+36
-	ldr	r3, .L94+8
-	blx	r3
-.LVL38:
-	mov	r3, r0
 	.loc 4 290 11
 	str	r3, [r7, #8]
-	b	.L84
-.L85:
-	.loc 4 291 16
-	ldr	r3, [r7, #4]
-	ldr	r2, .L94+12
-	cmp	r3, r2
-	bne	.L84
-	.loc 4 292 13
-	ldr	r0, .L94+40
-	ldr	r3, .L94+8
-	blx	r3
-.LVL39:
-	mov	r3, r0
-	.loc 4 292 11
-	str	r3, [r7, #8]
-.L84:
-	.loc 4 300 6
+.L83:
+	.loc 4 298 6
 	add	r3, r7, #8
 	ldrb	r2, [r3]	@ zero_extendqisi2
-	ldr	r3, .L94+20
+	ldr	r3, .L93+12
 	strb	r2, [r3]
 	ldrb	r2, [r7, #9]	@ zero_extendqisi2
-	ldr	r3, .L94+20
+	ldr	r3, .L93+12
 	strb	r2, [r3, #1]
 	ldrb	r2, [r7, #10]	@ zero_extendqisi2
-	ldr	r3, .L94+20
+	ldr	r3, .L93+12
 	strb	r2, [r3, #2]
 	ldrb	r2, [r7, #11]	@ zero_extendqisi2
-	ldr	r3, .L94+20
+	ldr	r3, .L93+12
 	strb	r2, [r3, #3]
-	.loc 4 302 13
+	.loc 4 300 13
 	movs	r3, #1
-	b	.L86
+	b	.L85
+.L86:
+	.loc 4 214 4
+	nop
+	b	.L42
 .L87:
-	.loc 4 216 4
+	.loc 4 241 4
 	nop
 	b	.L42
 .L88:
-	.loc 4 243 4
+	.loc 4 250 4
 	nop
 	b	.L42
 .L89:
-	.loc 4 252 4
+	.loc 4 277 4
 	nop
 	b	.L42
 .L90:
-	.loc 4 279 4
-	nop
-	b	.L42
-.L91:
-	.loc 4 305 4
+	.loc 4 303 4
 	nop
 .L42:
-	.loc 4 308 9
+	.loc 4 306 9
 	movs	r3, #0
-.L86:
-	.loc 4 309 1 discriminator 2
+.L85:
+	.loc 4 307 1 discriminator 2
 	mov	r0, r3
 	adds	r7, r7, #40
 .LCFI38:
@@ -1163,18 +1140,17 @@ ctrl_usart:
 	.cfi_def_cfa_register 13
 	@ sp needed
 	pop	{r7, pc}
-.L95:
-	.align	2
 .L94:
-	.word	1074348032
-	.word	rx1buf
-	.word	circ_buf_count
+	.align	2
+.L93:
 	.word	1074364416
 	.word	rx2buf
+	.word	circ_buf_count
 	.word	ctrlbuffer.8844
 	.word	udd_g_ctrlreq
 	.word	1074331648
 	.word	tx0buf
+	.word	1074348032
 	.word	tx1buf
 	.word	tx2buf
 	.cfi_endproc
@@ -1190,7 +1166,7 @@ ctrl_usart:
 	.type	usart_driver_putchar, %function
 usart_driver_putchar:
 .LFB183:
-	.loc 4 312 1
+	.loc 4 310 1
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 16
 	@ frame_needed = 1, uses_anonymous_args = 0
@@ -1209,82 +1185,82 @@ usart_driver_putchar:
 	str	r1, [r7, #8]
 	mov	r3, r2
 	strb	r3, [r7, #7]
-	.loc 4 313 5
+	.loc 4 311 5
 	ldr	r3, [r7, #8]
 	cmp	r3, #0
-	bne	.L97
-	.loc 4 314 6
+	bne	.L96
+	.loc 4 312 6
 	ldr	r3, [r7, #12]
-	ldr	r2, .L103
+	ldr	r2, .L102
+	cmp	r3, r2
+	bne	.L97
+	.loc 4 312 30 discriminator 1
+	ldr	r3, .L102+4
+	str	r3, [r7, #8]
+	b	.L96
+.L97:
+	.loc 4 313 11
+	ldr	r3, [r7, #12]
+	ldr	r2, .L102+8
 	cmp	r3, r2
 	bne	.L98
-	.loc 4 314 30 discriminator 1
-	ldr	r3, .L103+4
+	.loc 4 313 35 discriminator 1
+	ldr	r3, .L102+12
 	str	r3, [r7, #8]
-	b	.L97
+	b	.L96
 .L98:
-	.loc 4 315 11
+	.loc 4 314 11
 	ldr	r3, [r7, #12]
-	ldr	r2, .L103+8
+	ldr	r2, .L102+16
 	cmp	r3, r2
-	bne	.L99
-	.loc 4 315 35 discriminator 1
-	ldr	r3, .L103+12
+	bne	.L101
+	.loc 4 314 35 discriminator 1
+	ldr	r3, .L102+20
 	str	r3, [r7, #8]
-	b	.L97
-.L99:
-	.loc 4 316 11
-	ldr	r3, [r7, #12]
-	ldr	r2, .L103+16
-	cmp	r3, r2
-	bne	.L102
-	.loc 4 316 35 discriminator 1
-	ldr	r3, .L103+20
-	str	r3, [r7, #8]
-.L97:
-	.loc 4 324 2
+.L96:
+	.loc 4 322 2
 	ldrb	r3, [r7, #7]	@ zero_extendqisi2
 	movs	r2, #0
 	mov	r1, r3
 	ldr	r0, [r7, #8]
-	ldr	r3, .L103+24
+	ldr	r3, .L102+24
+	blx	r3
+.LVL38:
+	.loc 4 327 7
+	ldr	r0, [r7, #12]
+	ldr	r3, .L102+28
+	blx	r3
+.LVL39:
+	mov	r3, r0
+	.loc 4 327 39
+	and	r3, r3, #2
+	.loc 4 327 5
+	cmp	r3, #0
+	bne	.L95
+	.loc 4 328 24
+	ldr	r0, [r7, #8]
+	ldr	r3, .L102+32
 	blx	r3
 .LVL40:
-	.loc 4 329 7
-	ldr	r0, [r7, #12]
-	ldr	r3, .L103+28
-	blx	r3
-.LVL41:
 	mov	r3, r0
-	.loc 4 329 39
-	and	r3, r3, #2
-	.loc 4 329 5
-	cmp	r3, #0
-	bne	.L96
-	.loc 4 330 24
-	ldr	r0, [r7, #8]
-	ldr	r3, .L103+32
-	blx	r3
-.LVL42:
-	mov	r3, r0
-	.loc 4 330 3
+	.loc 4 328 3
 	mov	r1, r3
 	ldr	r0, [r7, #12]
-	ldr	r3, .L103+36
+	ldr	r3, .L102+36
 	blx	r3
-.LVL43:
-	.loc 4 331 3
+.LVL41:
+	.loc 4 329 3
 	movs	r1, #2
 	ldr	r0, [r7, #12]
-	ldr	r3, .L103+40
+	ldr	r3, .L102+40
 	blx	r3
-.LVL44:
-	b	.L96
-.L102:
-	.loc 4 320 8
+.LVL42:
+	b	.L95
+.L101:
+	.loc 4 318 8
 	nop
-.L96:
-	.loc 4 333 1
+.L95:
+	.loc 4 331 1
 	adds	r7, r7, #16
 .LCFI43:
 	.cfi_def_cfa_offset 8
@@ -1293,9 +1269,9 @@ usart_driver_putchar:
 	.cfi_def_cfa_register 13
 	@ sp needed
 	pop	{r7, pc}
-.L104:
-	.align	2
 .L103:
+	.align	2
+.L102:
 	.word	1074331648
 	.word	tx0buf
 	.word	1074348032
@@ -1320,7 +1296,7 @@ usart_driver_putchar:
 	.type	usart_driver_getchar, %function
 usart_driver_getchar:
 .LFB184:
-	.loc 4 336 1
+	.loc 4 334 1
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 16
 	@ frame_needed = 1, uses_anonymous_args = 0
@@ -1336,55 +1312,55 @@ usart_driver_getchar:
 .LCFI47:
 	.cfi_def_cfa_register 7
 	str	r0, [r7, #4]
-	.loc 4 337 14
+	.loc 4 335 14
 	movs	r3, #0
 	str	r3, [r7, #12]
-	.loc 4 338 5
+	.loc 4 336 5
 	ldr	r3, [r7, #12]
 	cmp	r3, #0
-	bne	.L106
-	.loc 4 339 7
+	bne	.L105
+	.loc 4 337 7
 	ldr	r3, [r7, #4]
-	ldr	r2, .L111
+	ldr	r2, .L110
+	cmp	r3, r2
+	bne	.L106
+	.loc 4 337 31 discriminator 1
+	ldr	r3, .L110+4
+	str	r3, [r7, #12]
+	b	.L105
+.L106:
+	.loc 4 338 12
+	ldr	r3, [r7, #4]
+	ldr	r2, .L110+8
 	cmp	r3, r2
 	bne	.L107
-	.loc 4 339 31 discriminator 1
-	ldr	r3, .L111+4
+	.loc 4 338 36 discriminator 1
+	ldr	r3, .L110+12
 	str	r3, [r7, #12]
-	b	.L106
+	b	.L105
 .L107:
-	.loc 4 340 12
+	.loc 4 339 12
 	ldr	r3, [r7, #4]
-	ldr	r2, .L111+8
+	ldr	r2, .L110+16
 	cmp	r3, r2
 	bne	.L108
-	.loc 4 340 36 discriminator 1
-	ldr	r3, .L111+12
+	.loc 4 339 36 discriminator 1
+	ldr	r3, .L110+20
 	str	r3, [r7, #12]
-	b	.L106
+	b	.L105
 .L108:
-	.loc 4 341 12
-	ldr	r3, [r7, #4]
-	ldr	r2, .L111+16
-	cmp	r3, r2
-	bne	.L109
-	.loc 4 341 36 discriminator 1
-	ldr	r3, .L111+20
-	str	r3, [r7, #12]
-	b	.L106
-.L109:
-	.loc 4 345 16
+	.loc 4 343 16
 	movs	r3, #255
-	b	.L110
-.L106:
-	.loc 4 347 9
+	b	.L109
+.L105:
+	.loc 4 345 9
 	ldr	r0, [r7, #12]
-	ldr	r3, .L111+24
+	ldr	r3, .L110+24
 	blx	r3
-.LVL45:
+.LVL43:
 	mov	r3, r0
-.L110:
-	.loc 4 348 1
+.L109:
+	.loc 4 346 1
 	mov	r0, r3
 	adds	r7, r7, #16
 .LCFI48:
@@ -1394,9 +1370,9 @@ usart_driver_getchar:
 	.cfi_def_cfa_register 13
 	@ sp needed
 	pop	{r7, pc}
-.L112:
-	.align	2
 .L111:
+	.align	2
+.L110:
 	.word	1074331648
 	.word	rx0buf
 	.word	1074348032
@@ -1417,7 +1393,7 @@ usart_driver_getchar:
 	.type	generic_isr, %function
 generic_isr:
 .LFB185:
-	.loc 4 352 1
+	.loc 4 350 1
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 24
 	@ frame_needed = 1, uses_anonymous_args = 0
@@ -1435,74 +1411,74 @@ generic_isr:
 	str	r0, [r7, #12]
 	str	r1, [r7, #8]
 	str	r2, [r7, #4]
-	.loc 4 354 11
+	.loc 4 352 11
 	ldr	r0, [r7, #12]
-	ldr	r3, .L118
+	ldr	r3, .L117
 	blx	r3
-.LVL46:
+.LVL44:
 	str	r0, [r7, #20]
-	.loc 4 355 13
+	.loc 4 353 13
 	ldr	r3, [r7, #20]
 	and	r3, r3, #1
-	.loc 4 355 5
+	.loc 4 353 5
 	cmp	r3, #0
-	beq	.L114
+	beq	.L113
 .LBB2:
-	.loc 4 357 15
+	.loc 4 355 15
 	ldr	r3, [r7, #12]
 	ldr	r3, [r3, #24]
-	.loc 4 357 8
+	.loc 4 355 8
 	ubfx	r3, r3, #0, #9
 	str	r3, [r7, #16]
-	.loc 4 358 3
+	.loc 4 356 3
 	ldr	r3, [r7, #16]
 	uxtb	r3, r3
 	movs	r2, #0
 	mov	r1, r3
 	ldr	r0, [r7, #8]
-	ldr	r3, .L118+4
+	ldr	r3, .L117+4
 	blx	r3
-.LVL47:
-.L114:
+.LVL45:
+.L113:
 .LBE2:
-	.loc 4 361 13
+	.loc 4 359 13
 	ldr	r3, [r7, #20]
 	and	r3, r3, #2
-	.loc 4 361 5
-	cmp	r3, #0
-	beq	.L117
-	.loc 4 362 7
-	ldr	r0, [r7, #4]
-	ldr	r3, .L118+8
-	blx	r3
-.LVL48:
-	mov	r3, r0
-	.loc 4 362 6
+	.loc 4 359 5
 	cmp	r3, #0
 	beq	.L116
-	.loc 4 364 25
+	.loc 4 360 7
 	ldr	r0, [r7, #4]
-	ldr	r3, .L118+12
+	ldr	r3, .L117+8
 	blx	r3
-.LVL49:
+.LVL46:
 	mov	r3, r0
-	.loc 4 364 4
+	.loc 4 360 6
+	cmp	r3, #0
+	beq	.L115
+	.loc 4 362 25
+	ldr	r0, [r7, #4]
+	ldr	r3, .L117+12
+	blx	r3
+.LVL47:
+	mov	r3, r0
+	.loc 4 362 4
 	mov	r1, r3
 	ldr	r0, [r7, #12]
-	ldr	r3, .L118+16
+	ldr	r3, .L117+16
 	blx	r3
-.LVL50:
-	.loc 4 370 1
-	b	.L117
-.L116:
-	.loc 4 367 4
+.LVL48:
+	.loc 4 368 1
+	b	.L116
+.L115:
+	.loc 4 365 4
 	movs	r1, #2
 	ldr	r0, [r7, #12]
-	ldr	r3, .L118+20
+	ldr	r3, .L117+20
 	blx	r3
-.LVL51:
-.L117:
-	.loc 4 370 1
+.LVL49:
+.L116:
+	.loc 4 368 1
 	nop
 	adds	r7, r7, #24
 .LCFI53:
@@ -1512,9 +1488,9 @@ generic_isr:
 	.cfi_def_cfa_register 13
 	@ sp needed
 	pop	{r7, pc}
-.L119:
-	.align	2
 .L118:
+	.align	2
+.L117:
 	.word	usart_get_status
 	.word	add_to_circ_buf
 	.word	circ_buf_has_char
@@ -1534,7 +1510,7 @@ generic_isr:
 	.type	USART0_Handler, %function
 USART0_Handler:
 .LFB186:
-	.loc 4 373 1
+	.loc 4 371 1
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 1, uses_anonymous_args = 0
@@ -1546,19 +1522,19 @@ USART0_Handler:
 	add	r7, sp, #0
 .LCFI56:
 	.cfi_def_cfa_register 7
-	.loc 4 374 2
-	ldr	r2, .L121
-	ldr	r1, .L121+4
-	ldr	r0, .L121+8
-	ldr	r3, .L121+12
+	.loc 4 372 2
+	ldr	r2, .L120
+	ldr	r1, .L120+4
+	ldr	r0, .L120+8
+	ldr	r3, .L120+12
 	blx	r3
-.LVL52:
-	.loc 4 375 1
+.LVL50:
+	.loc 4 373 1
 	nop
 	pop	{r7, pc}
-.L122:
-	.align	2
 .L121:
+	.align	2
+.L120:
 	.word	tx0buf
 	.word	rx0buf
 	.word	1074331648
@@ -1576,7 +1552,7 @@ USART0_Handler:
 	.type	USART1_Handler, %function
 USART1_Handler:
 .LFB187:
-	.loc 4 378 1
+	.loc 4 376 1
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 1, uses_anonymous_args = 0
@@ -1588,19 +1564,19 @@ USART1_Handler:
 	add	r7, sp, #0
 .LCFI58:
 	.cfi_def_cfa_register 7
-	.loc 4 379 2
-	ldr	r2, .L124
-	ldr	r1, .L124+4
-	ldr	r0, .L124+8
-	ldr	r3, .L124+12
+	.loc 4 377 2
+	ldr	r2, .L123
+	ldr	r1, .L123+4
+	ldr	r0, .L123+8
+	ldr	r3, .L123+12
 	blx	r3
-.LVL53:
-	.loc 4 380 1
+.LVL51:
+	.loc 4 378 1
 	nop
 	pop	{r7, pc}
-.L125:
-	.align	2
 .L124:
+	.align	2
+.L123:
 	.word	tx1buf
 	.word	rx1buf
 	.word	1074348032
@@ -1618,7 +1594,7 @@ USART1_Handler:
 	.type	USART2_Handler, %function
 USART2_Handler:
 .LFB188:
-	.loc 4 384 1
+	.loc 4 382 1
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 1, uses_anonymous_args = 0
@@ -1630,19 +1606,19 @@ USART2_Handler:
 	add	r7, sp, #0
 .LCFI60:
 	.cfi_def_cfa_register 7
-	.loc 4 385 2
-	ldr	r2, .L127
-	ldr	r1, .L127+4
-	ldr	r0, .L127+8
-	ldr	r3, .L127+12
+	.loc 4 383 2
+	ldr	r2, .L126
+	ldr	r1, .L126+4
+	ldr	r0, .L126+8
+	ldr	r3, .L126+12
 	blx	r3
-.LVL54:
-	.loc 4 386 1
+.LVL52:
+	.loc 4 384 1
 	nop
 	pop	{r7, pc}
-.L128:
-	.align	2
 .L127:
+	.align	2
+.L126:
 	.word	tx2buf
 	.word	rx2buf
 	.word	1074364416
@@ -1681,19 +1657,25 @@ ctrlbuffer.8844:
 	.file 25 ".././hal/sam3u1c/inc/udd.h"
 	.file 26 ".././hal/sam3u1c/inc/udi_vendor.h"
 	.file 27 ".././hal/sam3u1c/inc/circbuffer.h"
-	.file 28 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\stdio.h"
-	.file 29 ".././hal/sam3u1c/inc/pmc.h"
+	.file 28 ".././hal/sam3u1c/inc/pmc.h"
 	.section	.debug_info,"",%progbits
 .Ldebug_info0:
-	.4byte	0x1e9e
+	.4byte	0x1e7d
 	.2byte	0x2
 	.4byte	.Ldebug_abbrev0
 	.byte	0x4
 	.uleb128 0x1
+<<<<<<< HEAD
 	.4byte	.LASF9364
 	.byte	0xc
 	.4byte	.LASF9365
 	.4byte	.LASF9366
+=======
+	.4byte	.LASF9360
+	.byte	0xc
+	.4byte	.LASF9361
+	.4byte	.LASF9362
+>>>>>>> main
 	.4byte	.Ldebug_ranges0+0
 	.4byte	0
 	.4byte	0
@@ -5085,7 +5067,7 @@ ctrlbuffer.8844:
 	.byte	0x1
 	.4byte	.LASF9320
 	.byte	0x4
-	.2byte	0x17f
+	.2byte	0x17d
 	.byte	0x1
 	.byte	0x1
 	.4byte	.LFB188
@@ -5094,14 +5076,14 @@ ctrlbuffer.8844:
 	.byte	0x1
 	.4byte	0x18a8
 	.uleb128 0x2e
-	.4byte	.LVL54
+	.4byte	.LVL52
 	.4byte	0x18f4
 	.byte	0
 	.uleb128 0x2d
 	.byte	0x1
 	.4byte	.LASF9321
 	.byte	0x4
-	.2byte	0x179
+	.2byte	0x177
 	.byte	0x1
 	.byte	0x1
 	.4byte	.LFB187
@@ -5110,14 +5092,14 @@ ctrlbuffer.8844:
 	.byte	0x1
 	.4byte	0x18ce
 	.uleb128 0x2e
-	.4byte	.LVL53
+	.4byte	.LVL51
 	.4byte	0x18f4
 	.byte	0
 	.uleb128 0x2d
 	.byte	0x1
 	.4byte	.LASF9322
 	.byte	0x4
-	.2byte	0x174
+	.2byte	0x172
 	.byte	0x1
 	.byte	0x1
 	.4byte	.LFB186
@@ -5126,14 +5108,14 @@ ctrlbuffer.8844:
 	.byte	0x1
 	.4byte	0x18f4
 	.uleb128 0x2e
-	.4byte	.LVL52
+	.4byte	.LVL50
 	.4byte	0x18f4
 	.byte	0
 	.uleb128 0x2d
 	.byte	0x1
 	.4byte	.LASF9323
 	.byte	0x4
-	.2byte	0x15f
+	.2byte	0x15d
 	.byte	0x6
 	.byte	0x1
 	.4byte	.LFB185
@@ -5144,7 +5126,7 @@ ctrlbuffer.8844:
 	.uleb128 0x2f
 	.4byte	.LASF9324
 	.byte	0x4
-	.2byte	0x15f
+	.2byte	0x15d
 	.byte	0x1a
 	.4byte	0x1294
 	.byte	0x2
@@ -5153,7 +5135,7 @@ ctrlbuffer.8844:
 	.uleb128 0x2f
 	.4byte	.LASF9325
 	.byte	0x4
-	.2byte	0x15f
+	.2byte	0x15d
 	.byte	0x2d
 	.4byte	0x19a5
 	.byte	0x2
@@ -5162,7 +5144,7 @@ ctrlbuffer.8844:
 	.uleb128 0x2f
 	.4byte	.LASF9326
 	.byte	0x4
-	.2byte	0x15f
+	.2byte	0x15d
 	.byte	0x40
 	.4byte	0x19a5
 	.byte	0x2
@@ -5171,7 +5153,7 @@ ctrlbuffer.8844:
 	.uleb128 0x30
 	.4byte	.LASF9327
 	.byte	0x4
-	.2byte	0x161
+	.2byte	0x15f
 	.byte	0xb
 	.4byte	0xd6
 	.byte	0x2
@@ -5184,31 +5166,31 @@ ctrlbuffer.8844:
 	.uleb128 0x30
 	.4byte	.LASF9328
 	.byte	0x4
-	.2byte	0x164
+	.2byte	0x162
 	.byte	0xc
 	.4byte	0xd6
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -16
 	.uleb128 0x2e
-	.4byte	.LVL47
-	.4byte	0x1dac
+	.4byte	.LVL45
+	.4byte	0x1d9a
 	.byte	0
 	.uleb128 0x2e
+	.4byte	.LVL44
+	.4byte	0x1da8
+	.uleb128 0x2e
 	.4byte	.LVL46
-	.4byte	0x1dba
+	.4byte	0x1db7
+	.uleb128 0x2e
+	.4byte	.LVL47
+	.4byte	0x1dc5
 	.uleb128 0x2e
 	.4byte	.LVL48
-	.4byte	0x1dc9
+	.4byte	0x1dd3
 	.uleb128 0x2e
 	.4byte	.LVL49
-	.4byte	0x1dd7
-	.uleb128 0x2e
-	.4byte	.LVL50
-	.4byte	0x1de5
-	.uleb128 0x2e
-	.4byte	.LVL51
-	.4byte	0x1df4
+	.4byte	0x1de2
 	.byte	0
 	.uleb128 0x1a
 	.byte	0x4
@@ -5217,7 +5199,7 @@ ctrlbuffer.8844:
 	.byte	0x1
 	.4byte	.LASF9331
 	.byte	0x4
-	.2byte	0x14f
+	.2byte	0x14d
 	.byte	0x9
 	.byte	0x1
 	.4byte	0xa8
@@ -5229,7 +5211,7 @@ ctrlbuffer.8844:
 	.uleb128 0x2f
 	.4byte	.LASF9324
 	.byte	0x4
-	.2byte	0x14f
+	.2byte	0x14d
 	.byte	0x26
 	.4byte	0x1294
 	.byte	0x2
@@ -5238,21 +5220,21 @@ ctrlbuffer.8844:
 	.uleb128 0x30
 	.4byte	.LASF9325
 	.byte	0x4
-	.2byte	0x151
+	.2byte	0x14f
 	.byte	0xe
 	.4byte	0x19a5
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -12
 	.uleb128 0x2e
-	.4byte	.LVL45
-	.4byte	0x1dd7
+	.4byte	.LVL43
+	.4byte	0x1dc5
 	.byte	0
 	.uleb128 0x2d
 	.byte	0x1
 	.4byte	.LASF9329
 	.byte	0x4
-	.2byte	0x137
+	.2byte	0x135
 	.byte	0x6
 	.byte	0x1
 	.4byte	.LFB183
@@ -5263,7 +5245,7 @@ ctrlbuffer.8844:
 	.uleb128 0x2f
 	.4byte	.LASF9324
 	.byte	0x4
-	.2byte	0x137
+	.2byte	0x135
 	.byte	0x23
 	.4byte	0x1294
 	.byte	0x2
@@ -5272,7 +5254,7 @@ ctrlbuffer.8844:
 	.uleb128 0x2f
 	.4byte	.LASF9326
 	.byte	0x4
-	.2byte	0x137
+	.2byte	0x135
 	.byte	0x36
 	.4byte	0x19a5
 	.byte	0x2
@@ -5281,27 +5263,27 @@ ctrlbuffer.8844:
 	.uleb128 0x2f
 	.4byte	.LASF9330
 	.byte	0x4
-	.2byte	0x137
+	.2byte	0x135
 	.byte	0x45
 	.4byte	0xa8
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -17
 	.uleb128 0x2e
+	.4byte	.LVL38
+	.4byte	0x1d9a
+	.uleb128 0x2e
+	.4byte	.LVL39
+	.4byte	0x1df1
+	.uleb128 0x2e
 	.4byte	.LVL40
-	.4byte	0x1dac
+	.4byte	0x1dc5
 	.uleb128 0x2e
 	.4byte	.LVL41
-	.4byte	0x1e03
+	.4byte	0x1dd3
 	.uleb128 0x2e
 	.4byte	.LVL42
-	.4byte	0x1dd7
-	.uleb128 0x2e
-	.4byte	.LVL43
-	.4byte	0x1de5
-	.uleb128 0x2e
-	.4byte	.LVL44
-	.4byte	0x1e12
+	.4byte	0x1e00
 	.byte	0
 	.uleb128 0x33
 	.byte	0x1
@@ -5315,7 +5297,7 @@ ctrlbuffer.8844:
 	.4byte	.LFE182
 	.4byte	.LLST8
 	.byte	0x1
-	.4byte	0x1c27
+	.4byte	0x1c15
 	.uleb128 0x34
 	.4byte	.LASF9324
 	.byte	0x4
@@ -5348,7 +5330,7 @@ ctrlbuffer.8844:
 	.byte	0x4
 	.byte	0x5d
 	.byte	0x11
-	.4byte	0x1c27
+	.4byte	0x1c15
 	.byte	0x5
 	.byte	0x3
 	.4byte	ctrlbuffer.8844
@@ -5372,113 +5354,107 @@ ctrlbuffer.8844:
 	.sleb128 -40
 	.uleb128 0x2e
 	.4byte	.LVL5
-	.4byte	0x1c64
+	.4byte	0x1c52
 	.uleb128 0x2e
 	.4byte	.LVL6
-	.4byte	0x1e21
+	.4byte	0x1e0f
 	.uleb128 0x2e
 	.4byte	.LVL7
-	.4byte	0x1e21
+	.4byte	0x1e0f
 	.uleb128 0x2e
 	.4byte	.LVL8
-	.4byte	0x1e2f
+	.4byte	0x1c52
 	.uleb128 0x2e
 	.4byte	.LVL9
-	.4byte	0x1c64
+	.4byte	0x1e0f
 	.uleb128 0x2e
 	.4byte	.LVL10
-	.4byte	0x1e21
+	.4byte	0x1e0f
 	.uleb128 0x2e
 	.4byte	.LVL11
-	.4byte	0x1e21
+	.4byte	0x1c52
 	.uleb128 0x2e
 	.4byte	.LVL12
-	.4byte	0x1c64
+	.4byte	0x1e0f
 	.uleb128 0x2e
 	.4byte	.LVL13
-	.4byte	0x1e21
+	.4byte	0x1e0f
 	.uleb128 0x2e
 	.4byte	.LVL14
-	.4byte	0x1e21
+	.4byte	0x1c87
 	.uleb128 0x2e
 	.4byte	.LVL15
-	.4byte	0x1c99
+	.4byte	0x1e1d
 	.uleb128 0x2e
 	.4byte	.LVL16
-	.4byte	0x1e3e
+	.4byte	0x1e2b
 	.uleb128 0x2e
 	.4byte	.LVL17
-	.4byte	0x1e2f
+	.4byte	0x1e39
 	.uleb128 0x2e
 	.4byte	.LVL18
-	.4byte	0x1e4c
+	.4byte	0x1e00
 	.uleb128 0x2e
 	.4byte	.LVL19
-	.4byte	0x1e5a
+	.4byte	0x1c25
 	.uleb128 0x2e
 	.4byte	.LVL20
-	.4byte	0x1e12
+	.4byte	0x1d42
 	.uleb128 0x2e
 	.4byte	.LVL21
-	.4byte	0x1c37
+	.4byte	0x1d06
 	.uleb128 0x2e
 	.4byte	.LVL22
-	.4byte	0x1d54
+	.4byte	0x1d6e
 	.uleb128 0x2e
 	.4byte	.LVL23
-	.4byte	0x1d18
+	.4byte	0x1d42
 	.uleb128 0x2e
 	.4byte	.LVL24
-	.4byte	0x1d80
+	.4byte	0x1d06
 	.uleb128 0x2e
 	.4byte	.LVL25
-	.4byte	0x1d54
+	.4byte	0x1d6e
 	.uleb128 0x2e
 	.4byte	.LVL26
-	.4byte	0x1d18
+	.4byte	0x1d42
 	.uleb128 0x2e
 	.4byte	.LVL27
-	.4byte	0x1d80
+	.4byte	0x1d06
 	.uleb128 0x2e
 	.4byte	.LVL28
-	.4byte	0x1d54
+	.4byte	0x1d6e
 	.uleb128 0x2e
 	.4byte	.LVL29
-	.4byte	0x1d18
+	.4byte	0x1e47
 	.uleb128 0x2e
 	.4byte	.LVL30
-	.4byte	0x1d80
+	.4byte	0x1e47
 	.uleb128 0x2e
 	.4byte	.LVL31
-	.4byte	0x1e68
+	.4byte	0x1de2
 	.uleb128 0x2e
 	.4byte	.LVL32
-	.4byte	0x1e68
+	.4byte	0x1e56
 	.uleb128 0x2e
 	.4byte	.LVL33
-	.4byte	0x1df4
+	.4byte	0x1e56
 	.uleb128 0x2e
 	.4byte	.LVL34
-	.4byte	0x1e77
+	.4byte	0x1e56
 	.uleb128 0x2e
 	.4byte	.LVL35
-	.4byte	0x1e77
+	.4byte	0x1e56
 	.uleb128 0x2e
 	.4byte	.LVL36
-	.4byte	0x1e77
+	.4byte	0x1e56
 	.uleb128 0x2e
 	.4byte	.LVL37
-	.4byte	0x1e77
-	.uleb128 0x2e
-	.4byte	.LVL38
-	.4byte	0x1e77
-	.uleb128 0x2e
-	.4byte	.LVL39
-	.4byte	0x1e77
+	.4byte	0x1e56
 	.byte	0
 	.uleb128 0xe
 	.4byte	0xa8
-	.4byte	0x1c37
+	.4byte	0x1c25
 	.uleb128 0xf
 	.4byte	0x34
 	.byte	0xf
@@ -5493,13 +5469,13 @@ ctrlbuffer.8844:
 	.4byte	.LFE181
 	.4byte	.LLST7
 	.byte	0x1
-	.4byte	0x1c64
+	.4byte	0x1c52
 	.uleb128 0x2e
 	.4byte	.LVL3
-	.4byte	0x1e85
+	.4byte	0x1e64
 	.uleb128 0x2e
 	.4byte	.LVL4
-	.4byte	0x1e85
+	.4byte	0x1e64
 	.byte	0
 	.uleb128 0x37
 	.4byte	.LASF9338
@@ -5511,7 +5487,7 @@ ctrlbuffer.8844:
 	.4byte	.LFE87
 	.4byte	.LLST6
 	.byte	0x1
-	.4byte	0x1c99
+	.4byte	0x1c87
 	.uleb128 0x2f
 	.4byte	.LASF9339
 	.byte	0x3
@@ -5523,7 +5499,7 @@ ctrlbuffer.8844:
 	.sleb128 -12
 	.uleb128 0x2e
 	.4byte	.LVL2
-	.4byte	0x1e93
+	.4byte	0x1e72
 	.byte	0
 	.uleb128 0x38
 	.4byte	.LASF9340
@@ -5536,10 +5512,10 @@ ctrlbuffer.8844:
 	.4byte	.LFE84
 	.4byte	.LLST5
 	.byte	0x1
-	.4byte	0x1cc2
+	.4byte	0x1cb0
 	.uleb128 0x2e
 	.4byte	.LVL1
-	.4byte	0x1cc2
+	.4byte	0x1cb0
 	.byte	0
 	.uleb128 0x39
 	.4byte	.LASF9341
@@ -5552,10 +5528,10 @@ ctrlbuffer.8844:
 	.4byte	.LFE83
 	.4byte	.LLST4
 	.byte	0x1
-	.4byte	0x1cea
+	.4byte	0x1cd8
 	.uleb128 0x2e
 	.4byte	.LVL0
-	.4byte	0x1cea
+	.4byte	0x1cd8
 	.byte	0
 	.uleb128 0x39
 	.4byte	.LASF9342
@@ -5568,7 +5544,7 @@ ctrlbuffer.8844:
 	.4byte	.LFE72
 	.4byte	.LLST3
 	.byte	0x1
-	.4byte	0x1d18
+	.4byte	0x1d06
 	.uleb128 0x34
 	.4byte	.LASF9339
 	.byte	0x2
@@ -5589,7 +5565,7 @@ ctrlbuffer.8844:
 	.4byte	.LFE47
 	.4byte	.LLST2
 	.byte	0x1
-	.4byte	0x1d54
+	.4byte	0x1d42
 	.uleb128 0x2f
 	.4byte	.LASF9228
 	.byte	0x1
@@ -5619,7 +5595,7 @@ ctrlbuffer.8844:
 	.4byte	.LFE45
 	.4byte	.LLST1
 	.byte	0x1
-	.4byte	0x1d80
+	.4byte	0x1d6e
 	.uleb128 0x2f
 	.4byte	.LASF9228
 	.byte	0x1
@@ -5640,7 +5616,7 @@ ctrlbuffer.8844:
 	.4byte	.LFE41
 	.4byte	.LLST0
 	.byte	0x1
-	.4byte	0x1dac
+	.4byte	0x1d9a
 	.uleb128 0x2f
 	.4byte	.LASF9228
 	.byte	0x1
@@ -5723,9 +5699,10 @@ ctrlbuffer.8844:
 	.byte	0x1b
 	.byte	0x34
 	.byte	0x6
-	.uleb128 0x3b
+	.uleb128 0x3a
 	.byte	0x1
 	.byte	0x1
+<<<<<<< HEAD
 	.4byte	.LASF9356
 	.4byte	.LASF9356
 	.byte	0x1c
@@ -5736,55 +5713,90 @@ ctrlbuffer.8844:
 	.byte	0x1
 	.4byte	.LASF9357
 	.4byte	.LASF9357
+=======
+	.4byte	.LASF9353
+	.4byte	.LASF9353
+>>>>>>> main
 	.byte	0x14
 	.byte	0xcb
 	.byte	0xa
 	.uleb128 0x3a
 	.byte	0x1
 	.byte	0x1
+<<<<<<< HEAD
 	.4byte	.LASF9358
 	.4byte	.LASF9358
+=======
+	.4byte	.LASF9354
+	.4byte	.LASF9354
+>>>>>>> main
 	.byte	0x14
 	.byte	0xff
 	.byte	0x6
 	.uleb128 0x3a
 	.byte	0x1
 	.byte	0x1
+<<<<<<< HEAD
 	.4byte	.LASF9359
 	.4byte	.LASF9359
+=======
+	.4byte	.LASF9355
+	.4byte	.LASF9355
+>>>>>>> main
 	.byte	0x14
 	.byte	0xfb
 	.byte	0x6
 	.uleb128 0x3b
 	.byte	0x1
 	.byte	0x1
+<<<<<<< HEAD
 	.4byte	.LASF9360
 	.4byte	.LASF9360
+=======
+	.4byte	.LASF9356
+	.4byte	.LASF9356
+>>>>>>> main
 	.byte	0x14
 	.2byte	0x100
 	.byte	0x6
 	.uleb128 0x3a
 	.byte	0x1
 	.byte	0x1
+<<<<<<< HEAD
 	.4byte	.LASF9361
 	.4byte	.LASF9361
+=======
+	.4byte	.LASF9357
+	.4byte	.LASF9357
+>>>>>>> main
 	.byte	0x1b
 	.byte	0x38
 	.byte	0xe
 	.uleb128 0x3a
 	.byte	0x1
 	.byte	0x1
+<<<<<<< HEAD
 	.4byte	.LASF9362
 	.4byte	.LASF9362
+=======
+	.4byte	.LASF9358
+	.4byte	.LASF9358
+>>>>>>> main
 	.byte	0x12
 	.byte	0xcb
 	.byte	0xa
 	.uleb128 0x3a
 	.byte	0x1
 	.byte	0x1
+<<<<<<< HEAD
 	.4byte	.LASF9363
 	.4byte	.LASF9363
 	.byte	0x1d
+=======
+	.4byte	.LASF9359
+	.4byte	.LASF9359
+	.byte	0x1c
+>>>>>>> main
 	.byte	0xcf
 	.byte	0xa
 	.byte	0
@@ -7199,17 +7211,17 @@ ctrlbuffer.8844:
 	.byte	0x3
 	.uleb128 0
 	.uleb128 0x4
-	.file 30 ".././hal/sam3u1c/inc/asf.h"
+	.file 29 ".././hal/sam3u1c/inc/asf.h"
 	.byte	0x3
 	.uleb128 0x21
-	.uleb128 0x1e
+	.uleb128 0x1d
 	.byte	0x5
 	.uleb128 0x2d
 	.4byte	.LASF460
-	.file 31 ".././hal/sam3u1c/inc/chipid.h"
+	.file 30 ".././hal/sam3u1c/inc/chipid.h"
 	.byte	0x3
 	.uleb128 0x38
-	.uleb128 0x1f
+	.uleb128 0x1e
 	.byte	0x5
 	.uleb128 0x2d
 	.4byte	.LASF461
@@ -7225,60 +7237,60 @@ ctrlbuffer.8844:
 	.byte	0x7
 	.4byte	.Ldebug_macro3
 	.byte	0x4
-	.file 32 ".././hal/sam3u1c/inc/parts.h"
+	.file 31 ".././hal/sam3u1c/inc/parts.h"
 	.byte	0x3
 	.uleb128 0x3d
-	.uleb128 0x20
+	.uleb128 0x1f
 	.byte	0x7
 	.4byte	.Ldebug_macro4
 	.byte	0x4
-	.file 33 ".././hal/sam3u1c/inc/preprocessor.h"
+	.file 32 ".././hal/sam3u1c/inc/preprocessor.h"
 	.byte	0x3
 	.uleb128 0x3e
-	.uleb128 0x21
+	.uleb128 0x20
 	.byte	0x5
 	.uleb128 0x2d
 	.4byte	.LASF688
-	.file 34 ".././hal/sam3u1c/inc/tpaste.h"
+	.file 33 ".././hal/sam3u1c/inc/tpaste.h"
 	.byte	0x3
 	.uleb128 0x2f
-	.uleb128 0x22
+	.uleb128 0x21
 	.byte	0x7
 	.4byte	.Ldebug_macro5
 	.byte	0x4
-	.file 35 ".././hal/sam3u1c/inc/stringz.h"
+	.file 34 ".././hal/sam3u1c/inc/stringz.h"
 	.byte	0x3
 	.uleb128 0x30
-	.uleb128 0x23
+	.uleb128 0x22
 	.byte	0x7
 	.4byte	.Ldebug_macro6
 	.byte	0x4
-	.file 36 ".././hal/sam3u1c/inc/mrepeat.h"
+	.file 35 ".././hal/sam3u1c/inc/mrepeat.h"
 	.byte	0x3
 	.uleb128 0x31
-	.uleb128 0x24
+	.uleb128 0x23
 	.byte	0x5
 	.uleb128 0x2d
 	.4byte	.LASF711
 	.byte	0x3
 	.uleb128 0x37
-	.uleb128 0x21
+	.uleb128 0x20
 	.byte	0x4
 	.byte	0x7
 	.4byte	.Ldebug_macro7
 	.byte	0x4
 	.byte	0x4
-	.file 37 ".././hal/sam3u1c/inc/io.h"
+	.file 36 ".././hal/sam3u1c/inc/io.h"
 	.byte	0x3
 	.uleb128 0x40
-	.uleb128 0x25
+	.uleb128 0x24
 	.byte	0x5
 	.uleb128 0x2f
 	.4byte	.LASF971
-	.file 38 ".././hal/sam3u1c/inc/sam3u.h"
+	.file 37 ".././hal/sam3u1c/inc/sam3u.h"
 	.byte	0x3
 	.uleb128 0x3e
-	.uleb128 0x26
+	.uleb128 0x25
 	.byte	0x5
 	.uleb128 0x2b
 	.4byte	.LASF972
@@ -7288,14 +7300,14 @@ ctrlbuffer.8844:
 	.byte	0x5
 	.uleb128 0x2b
 	.4byte	.LASF973
-	.file 39 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\lib\\gcc\\arm-none-eabi\\9.3.1\\include\\stdint.h"
+	.file 38 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\lib\\gcc\\arm-none-eabi\\9.3.1\\include\\stdint.h"
 	.byte	0x3
 	.uleb128 0x3b
-	.uleb128 0x27
-	.file 40 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\stdint.h"
+	.uleb128 0x26
+	.file 39 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\stdint.h"
 	.byte	0x3
 	.uleb128 0x9
-	.uleb128 0x28
+	.uleb128 0x27
 	.byte	0x5
 	.uleb128 0xa
 	.4byte	.LASF974
@@ -7305,17 +7317,17 @@ ctrlbuffer.8844:
 	.byte	0x5
 	.uleb128 0x6
 	.4byte	.LASF975
-	.file 41 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\features.h"
+	.file 40 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\features.h"
 	.byte	0x3
 	.uleb128 0x8
-	.uleb128 0x29
+	.uleb128 0x28
 	.byte	0x5
 	.uleb128 0x16
 	.4byte	.LASF976
-	.file 42 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\_newlib_version.h"
+	.file 41 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\_newlib_version.h"
 	.byte	0x3
 	.uleb128 0x1c
-	.uleb128 0x2a
+	.uleb128 0x29
 	.byte	0x7
 	.4byte	.Ldebug_macro8
 	.byte	0x4
@@ -7325,10 +7337,10 @@ ctrlbuffer.8844:
 	.byte	0x7
 	.4byte	.Ldebug_macro10
 	.byte	0x4
-	.file 43 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_intsup.h"
+	.file 42 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_intsup.h"
 	.byte	0x3
 	.uleb128 0xd
-	.uleb128 0x2b
+	.uleb128 0x2a
 	.byte	0x7
 	.4byte	.Ldebug_macro11
 	.byte	0x4
@@ -7352,17 +7364,17 @@ ctrlbuffer.8844:
 	.uleb128 0x1
 	.byte	0x7
 	.4byte	.Ldebug_macro15
-	.file 44 ".././hal/sam3u1c/inc/core_cmInstr.h"
+	.file 43 ".././hal/sam3u1c/inc/core_cmInstr.h"
 	.byte	0x3
 	.uleb128 0x77
-	.uleb128 0x2c
+	.uleb128 0x2b
 	.byte	0x7
 	.4byte	.Ldebug_macro16
 	.byte	0x4
-	.file 45 ".././hal/sam3u1c/inc/core_cmFunc.h"
+	.file 44 ".././hal/sam3u1c/inc/core_cmFunc.h"
 	.byte	0x3
 	.uleb128 0x78
-	.uleb128 0x2d
+	.uleb128 0x2c
 	.byte	0x5
 	.uleb128 0x19
 	.4byte	.LASF1148
@@ -7381,164 +7393,164 @@ ctrlbuffer.8844:
 	.uleb128 0x10
 	.byte	0x4
 	.byte	0x4
-	.file 46 ".././hal/sam3u1c/inc/component/component_adc.h"
+	.file 45 ".././hal/sam3u1c/inc/component/component_adc.h"
 	.byte	0x3
 	.uleb128 0xf2
-	.uleb128 0x2e
+	.uleb128 0x2d
 	.byte	0x7
 	.4byte	.Ldebug_macro18
 	.byte	0x4
-	.file 47 ".././hal/sam3u1c/inc/component/component_adc12b.h"
+	.file 46 ".././hal/sam3u1c/inc/component/component_adc12b.h"
 	.byte	0x3
 	.uleb128 0xf3
-	.uleb128 0x2f
+	.uleb128 0x2e
 	.byte	0x7
 	.4byte	.Ldebug_macro19
 	.byte	0x4
-	.file 48 ".././hal/sam3u1c/inc/component/component_chipid.h"
+	.file 47 ".././hal/sam3u1c/inc/component/component_chipid.h"
 	.byte	0x3
 	.uleb128 0xf4
-	.uleb128 0x30
+	.uleb128 0x2f
 	.byte	0x7
 	.4byte	.Ldebug_macro20
 	.byte	0x4
-	.file 49 ".././hal/sam3u1c/inc/component/component_dmac.h"
+	.file 48 ".././hal/sam3u1c/inc/component/component_dmac.h"
 	.byte	0x3
 	.uleb128 0xf5
-	.uleb128 0x31
+	.uleb128 0x30
 	.byte	0x7
 	.4byte	.Ldebug_macro21
 	.byte	0x4
-	.file 50 ".././hal/sam3u1c/inc/component/component_efc.h"
+	.file 49 ".././hal/sam3u1c/inc/component/component_efc.h"
 	.byte	0x3
 	.uleb128 0xf6
-	.uleb128 0x32
+	.uleb128 0x31
 	.byte	0x7
 	.4byte	.Ldebug_macro22
 	.byte	0x4
-	.file 51 ".././hal/sam3u1c/inc/component/component_gpbr.h"
+	.file 50 ".././hal/sam3u1c/inc/component/component_gpbr.h"
 	.byte	0x3
 	.uleb128 0xf7
-	.uleb128 0x33
+	.uleb128 0x32
 	.byte	0x7
 	.4byte	.Ldebug_macro23
 	.byte	0x4
-	.file 52 ".././hal/sam3u1c/inc/component/component_hsmci.h"
+	.file 51 ".././hal/sam3u1c/inc/component/component_hsmci.h"
 	.byte	0x3
 	.uleb128 0xf8
-	.uleb128 0x34
+	.uleb128 0x33
 	.byte	0x7
 	.4byte	.Ldebug_macro24
 	.byte	0x4
-	.file 53 ".././hal/sam3u1c/inc/component/component_matrix.h"
+	.file 52 ".././hal/sam3u1c/inc/component/component_matrix.h"
 	.byte	0x3
 	.uleb128 0xf9
-	.uleb128 0x35
+	.uleb128 0x34
 	.byte	0x7
 	.4byte	.Ldebug_macro25
 	.byte	0x4
-	.file 54 ".././hal/sam3u1c/inc/component/component_pdc.h"
+	.file 53 ".././hal/sam3u1c/inc/component/component_pdc.h"
 	.byte	0x3
 	.uleb128 0xfa
-	.uleb128 0x36
+	.uleb128 0x35
 	.byte	0x7
 	.4byte	.Ldebug_macro26
 	.byte	0x4
-	.file 55 ".././hal/sam3u1c/inc/component/component_pio.h"
+	.file 54 ".././hal/sam3u1c/inc/component/component_pio.h"
 	.byte	0x3
 	.uleb128 0xfb
-	.uleb128 0x37
+	.uleb128 0x36
 	.byte	0x7
 	.4byte	.Ldebug_macro27
 	.byte	0x4
-	.file 56 ".././hal/sam3u1c/inc/component/component_pmc.h"
+	.file 55 ".././hal/sam3u1c/inc/component/component_pmc.h"
 	.byte	0x3
 	.uleb128 0xfc
-	.uleb128 0x38
+	.uleb128 0x37
 	.byte	0x7
 	.4byte	.Ldebug_macro28
 	.byte	0x4
-	.file 57 ".././hal/sam3u1c/inc/component/component_pwm.h"
+	.file 56 ".././hal/sam3u1c/inc/component/component_pwm.h"
 	.byte	0x3
 	.uleb128 0xfd
-	.uleb128 0x39
+	.uleb128 0x38
 	.byte	0x7
 	.4byte	.Ldebug_macro29
 	.byte	0x4
-	.file 58 ".././hal/sam3u1c/inc/component/component_rstc.h"
+	.file 57 ".././hal/sam3u1c/inc/component/component_rstc.h"
 	.byte	0x3
 	.uleb128 0xfe
-	.uleb128 0x3a
+	.uleb128 0x39
 	.byte	0x7
 	.4byte	.Ldebug_macro30
 	.byte	0x4
-	.file 59 ".././hal/sam3u1c/inc/component/component_rtc.h"
+	.file 58 ".././hal/sam3u1c/inc/component/component_rtc.h"
 	.byte	0x3
 	.uleb128 0xff
-	.uleb128 0x3b
+	.uleb128 0x3a
 	.byte	0x7
 	.4byte	.Ldebug_macro31
 	.byte	0x4
-	.file 60 ".././hal/sam3u1c/inc/component/component_rtt.h"
+	.file 59 ".././hal/sam3u1c/inc/component/component_rtt.h"
 	.byte	0x3
 	.uleb128 0x100
-	.uleb128 0x3c
+	.uleb128 0x3b
 	.byte	0x7
 	.4byte	.Ldebug_macro32
 	.byte	0x4
-	.file 61 ".././hal/sam3u1c/inc/component/component_smc.h"
+	.file 60 ".././hal/sam3u1c/inc/component/component_smc.h"
 	.byte	0x3
 	.uleb128 0x101
-	.uleb128 0x3d
+	.uleb128 0x3c
 	.byte	0x7
 	.4byte	.Ldebug_macro33
 	.byte	0x4
-	.file 62 ".././hal/sam3u1c/inc/component/component_spi.h"
+	.file 61 ".././hal/sam3u1c/inc/component/component_spi.h"
 	.byte	0x3
 	.uleb128 0x102
-	.uleb128 0x3e
+	.uleb128 0x3d
 	.byte	0x7
 	.4byte	.Ldebug_macro34
 	.byte	0x4
-	.file 63 ".././hal/sam3u1c/inc/component/component_ssc.h"
+	.file 62 ".././hal/sam3u1c/inc/component/component_ssc.h"
 	.byte	0x3
 	.uleb128 0x103
-	.uleb128 0x3f
+	.uleb128 0x3e
 	.byte	0x7
 	.4byte	.Ldebug_macro35
 	.byte	0x4
-	.file 64 ".././hal/sam3u1c/inc/component/component_supc.h"
+	.file 63 ".././hal/sam3u1c/inc/component/component_supc.h"
 	.byte	0x3
 	.uleb128 0x104
-	.uleb128 0x40
+	.uleb128 0x3f
 	.byte	0x7
 	.4byte	.Ldebug_macro36
 	.byte	0x4
-	.file 65 ".././hal/sam3u1c/inc/component/component_tc.h"
+	.file 64 ".././hal/sam3u1c/inc/component/component_tc.h"
 	.byte	0x3
 	.uleb128 0x105
-	.uleb128 0x41
+	.uleb128 0x40
 	.byte	0x7
 	.4byte	.Ldebug_macro37
 	.byte	0x4
-	.file 66 ".././hal/sam3u1c/inc/component/component_twi.h"
+	.file 65 ".././hal/sam3u1c/inc/component/component_twi.h"
 	.byte	0x3
 	.uleb128 0x106
-	.uleb128 0x42
+	.uleb128 0x41
 	.byte	0x7
 	.4byte	.Ldebug_macro38
 	.byte	0x4
-	.file 67 ".././hal/sam3u1c/inc/component/component_uart.h"
+	.file 66 ".././hal/sam3u1c/inc/component/component_uart.h"
 	.byte	0x3
 	.uleb128 0x107
-	.uleb128 0x43
+	.uleb128 0x42
 	.byte	0x7
 	.4byte	.Ldebug_macro39
 	.byte	0x4
-	.file 68 ".././hal/sam3u1c/inc/component/component_udphs.h"
+	.file 67 ".././hal/sam3u1c/inc/component/component_udphs.h"
 	.byte	0x3
 	.uleb128 0x108
-	.uleb128 0x44
+	.uleb128 0x43
 	.byte	0x7
 	.4byte	.Ldebug_macro40
 	.byte	0x4
@@ -7548,222 +7560,222 @@ ctrlbuffer.8844:
 	.byte	0x7
 	.4byte	.Ldebug_macro41
 	.byte	0x4
-	.file 69 ".././hal/sam3u1c/inc/component/component_wdt.h"
+	.file 68 ".././hal/sam3u1c/inc/component/component_wdt.h"
 	.byte	0x3
 	.uleb128 0x10a
-	.uleb128 0x45
+	.uleb128 0x44
 	.byte	0x7
 	.4byte	.Ldebug_macro42
 	.byte	0x4
-	.file 70 ".././hal/sam3u1c/inc/instance/instance_hsmci.h"
+	.file 69 ".././hal/sam3u1c/inc/instance/instance_hsmci.h"
 	.byte	0x3
 	.uleb128 0x113
-	.uleb128 0x46
+	.uleb128 0x45
 	.byte	0x7
 	.4byte	.Ldebug_macro43
 	.byte	0x4
-	.file 71 ".././hal/sam3u1c/inc/instance/instance_ssc.h"
+	.file 70 ".././hal/sam3u1c/inc/instance/instance_ssc.h"
 	.byte	0x3
 	.uleb128 0x114
-	.uleb128 0x47
+	.uleb128 0x46
 	.byte	0x7
 	.4byte	.Ldebug_macro44
 	.byte	0x4
-	.file 72 ".././hal/sam3u1c/inc/instance/instance_spi.h"
+	.file 71 ".././hal/sam3u1c/inc/instance/instance_spi.h"
 	.byte	0x3
 	.uleb128 0x115
-	.uleb128 0x48
+	.uleb128 0x47
 	.byte	0x7
 	.4byte	.Ldebug_macro45
 	.byte	0x4
-	.file 73 ".././hal/sam3u1c/inc/instance/instance_tc0.h"
+	.file 72 ".././hal/sam3u1c/inc/instance/instance_tc0.h"
 	.byte	0x3
 	.uleb128 0x116
-	.uleb128 0x49
+	.uleb128 0x48
 	.byte	0x7
 	.4byte	.Ldebug_macro46
 	.byte	0x4
-	.file 74 ".././hal/sam3u1c/inc/instance/instance_twi0.h"
+	.file 73 ".././hal/sam3u1c/inc/instance/instance_twi0.h"
 	.byte	0x3
 	.uleb128 0x117
-	.uleb128 0x4a
+	.uleb128 0x49
 	.byte	0x7
 	.4byte	.Ldebug_macro47
 	.byte	0x4
-	.file 75 ".././hal/sam3u1c/inc/instance/instance_twi1.h"
+	.file 74 ".././hal/sam3u1c/inc/instance/instance_twi1.h"
 	.byte	0x3
 	.uleb128 0x118
-	.uleb128 0x4b
+	.uleb128 0x4a
 	.byte	0x7
 	.4byte	.Ldebug_macro48
 	.byte	0x4
-	.file 76 ".././hal/sam3u1c/inc/instance/instance_pwm.h"
+	.file 75 ".././hal/sam3u1c/inc/instance/instance_pwm.h"
 	.byte	0x3
 	.uleb128 0x119
-	.uleb128 0x4c
+	.uleb128 0x4b
 	.byte	0x7
 	.4byte	.Ldebug_macro49
 	.byte	0x4
-	.file 77 ".././hal/sam3u1c/inc/instance/instance_usart0.h"
+	.file 76 ".././hal/sam3u1c/inc/instance/instance_usart0.h"
 	.byte	0x3
 	.uleb128 0x11a
-	.uleb128 0x4d
+	.uleb128 0x4c
 	.byte	0x7
 	.4byte	.Ldebug_macro50
 	.byte	0x4
-	.file 78 ".././hal/sam3u1c/inc/instance/instance_usart1.h"
+	.file 77 ".././hal/sam3u1c/inc/instance/instance_usart1.h"
 	.byte	0x3
 	.uleb128 0x11b
-	.uleb128 0x4e
+	.uleb128 0x4d
 	.byte	0x7
 	.4byte	.Ldebug_macro51
 	.byte	0x4
-	.file 79 ".././hal/sam3u1c/inc/instance/instance_usart2.h"
+	.file 78 ".././hal/sam3u1c/inc/instance/instance_usart2.h"
 	.byte	0x3
 	.uleb128 0x11c
-	.uleb128 0x4f
+	.uleb128 0x4e
 	.byte	0x7
 	.4byte	.Ldebug_macro52
 	.byte	0x4
-	.file 80 ".././hal/sam3u1c/inc/instance/instance_udphs.h"
+	.file 79 ".././hal/sam3u1c/inc/instance/instance_udphs.h"
 	.byte	0x3
 	.uleb128 0x11d
-	.uleb128 0x50
+	.uleb128 0x4f
 	.byte	0x7
 	.4byte	.Ldebug_macro53
 	.byte	0x4
-	.file 81 ".././hal/sam3u1c/inc/instance/instance_adc12b.h"
+	.file 80 ".././hal/sam3u1c/inc/instance/instance_adc12b.h"
 	.byte	0x3
 	.uleb128 0x11e
-	.uleb128 0x51
+	.uleb128 0x50
 	.byte	0x7
 	.4byte	.Ldebug_macro54
 	.byte	0x4
-	.file 82 ".././hal/sam3u1c/inc/instance/instance_adc.h"
+	.file 81 ".././hal/sam3u1c/inc/instance/instance_adc.h"
 	.byte	0x3
 	.uleb128 0x11f
-	.uleb128 0x52
+	.uleb128 0x51
 	.byte	0x7
 	.4byte	.Ldebug_macro55
 	.byte	0x4
-	.file 83 ".././hal/sam3u1c/inc/instance/instance_dmac.h"
+	.file 82 ".././hal/sam3u1c/inc/instance/instance_dmac.h"
 	.byte	0x3
 	.uleb128 0x120
-	.uleb128 0x53
+	.uleb128 0x52
 	.byte	0x7
 	.4byte	.Ldebug_macro56
 	.byte	0x4
-	.file 84 ".././hal/sam3u1c/inc/instance/instance_smc.h"
+	.file 83 ".././hal/sam3u1c/inc/instance/instance_smc.h"
 	.byte	0x3
 	.uleb128 0x121
-	.uleb128 0x54
+	.uleb128 0x53
 	.byte	0x7
 	.4byte	.Ldebug_macro57
 	.byte	0x4
-	.file 85 ".././hal/sam3u1c/inc/instance/instance_matrix.h"
+	.file 84 ".././hal/sam3u1c/inc/instance/instance_matrix.h"
 	.byte	0x3
 	.uleb128 0x122
-	.uleb128 0x55
+	.uleb128 0x54
 	.byte	0x7
 	.4byte	.Ldebug_macro58
 	.byte	0x4
-	.file 86 ".././hal/sam3u1c/inc/instance/instance_pmc.h"
+	.file 85 ".././hal/sam3u1c/inc/instance/instance_pmc.h"
 	.byte	0x3
 	.uleb128 0x123
-	.uleb128 0x56
+	.uleb128 0x55
 	.byte	0x7
 	.4byte	.Ldebug_macro59
 	.byte	0x4
-	.file 87 ".././hal/sam3u1c/inc/instance/instance_uart.h"
+	.file 86 ".././hal/sam3u1c/inc/instance/instance_uart.h"
 	.byte	0x3
 	.uleb128 0x124
-	.uleb128 0x57
+	.uleb128 0x56
 	.byte	0x7
 	.4byte	.Ldebug_macro60
 	.byte	0x4
-	.file 88 ".././hal/sam3u1c/inc/instance/instance_chipid.h"
+	.file 87 ".././hal/sam3u1c/inc/instance/instance_chipid.h"
 	.byte	0x3
 	.uleb128 0x125
-	.uleb128 0x58
+	.uleb128 0x57
 	.byte	0x7
 	.4byte	.Ldebug_macro61
 	.byte	0x4
-	.file 89 ".././hal/sam3u1c/inc/instance/instance_efc0.h"
+	.file 88 ".././hal/sam3u1c/inc/instance/instance_efc0.h"
 	.byte	0x3
 	.uleb128 0x126
-	.uleb128 0x59
+	.uleb128 0x58
 	.byte	0x7
 	.4byte	.Ldebug_macro62
 	.byte	0x4
-	.file 90 ".././hal/sam3u1c/inc/instance/instance_efc1.h"
+	.file 89 ".././hal/sam3u1c/inc/instance/instance_efc1.h"
 	.byte	0x3
 	.uleb128 0x127
-	.uleb128 0x5a
+	.uleb128 0x59
 	.byte	0x7
 	.4byte	.Ldebug_macro63
 	.byte	0x4
-	.file 91 ".././hal/sam3u1c/inc/instance/instance_pioa.h"
+	.file 90 ".././hal/sam3u1c/inc/instance/instance_pioa.h"
 	.byte	0x3
 	.uleb128 0x128
-	.uleb128 0x5b
+	.uleb128 0x5a
 	.byte	0x7
 	.4byte	.Ldebug_macro64
 	.byte	0x4
-	.file 92 ".././hal/sam3u1c/inc/instance/instance_piob.h"
+	.file 91 ".././hal/sam3u1c/inc/instance/instance_piob.h"
 	.byte	0x3
 	.uleb128 0x129
-	.uleb128 0x5c
+	.uleb128 0x5b
 	.byte	0x7
 	.4byte	.Ldebug_macro65
 	.byte	0x4
-	.file 93 ".././hal/sam3u1c/inc/instance/instance_rstc.h"
+	.file 92 ".././hal/sam3u1c/inc/instance/instance_rstc.h"
 	.byte	0x3
 	.uleb128 0x12a
-	.uleb128 0x5d
+	.uleb128 0x5c
 	.byte	0x7
 	.4byte	.Ldebug_macro66
 	.byte	0x4
-	.file 94 ".././hal/sam3u1c/inc/instance/instance_supc.h"
+	.file 93 ".././hal/sam3u1c/inc/instance/instance_supc.h"
 	.byte	0x3
 	.uleb128 0x12b
-	.uleb128 0x5e
+	.uleb128 0x5d
 	.byte	0x7
 	.4byte	.Ldebug_macro67
 	.byte	0x4
-	.file 95 ".././hal/sam3u1c/inc/instance/instance_rtt.h"
+	.file 94 ".././hal/sam3u1c/inc/instance/instance_rtt.h"
 	.byte	0x3
 	.uleb128 0x12c
-	.uleb128 0x5f
+	.uleb128 0x5e
 	.byte	0x7
 	.4byte	.Ldebug_macro68
 	.byte	0x4
-	.file 96 ".././hal/sam3u1c/inc/instance/instance_wdt.h"
+	.file 95 ".././hal/sam3u1c/inc/instance/instance_wdt.h"
 	.byte	0x3
 	.uleb128 0x12d
-	.uleb128 0x60
+	.uleb128 0x5f
 	.byte	0x7
 	.4byte	.Ldebug_macro69
 	.byte	0x4
-	.file 97 ".././hal/sam3u1c/inc/instance/instance_rtc.h"
+	.file 96 ".././hal/sam3u1c/inc/instance/instance_rtc.h"
 	.byte	0x3
 	.uleb128 0x12e
-	.uleb128 0x61
+	.uleb128 0x60
 	.byte	0x7
 	.4byte	.Ldebug_macro70
 	.byte	0x4
-	.file 98 ".././hal/sam3u1c/inc/instance/instance_gpbr.h"
+	.file 97 ".././hal/sam3u1c/inc/instance/instance_gpbr.h"
 	.byte	0x3
 	.uleb128 0x12f
-	.uleb128 0x62
+	.uleb128 0x61
 	.byte	0x7
 	.4byte	.Ldebug_macro71
 	.byte	0x4
 	.byte	0x7
 	.4byte	.Ldebug_macro72
-	.file 99 ".././hal/sam3u1c/inc/pio/pio_sam3u1c.h"
+	.file 98 ".././hal/sam3u1c/inc/pio/pio_sam3u1c.h"
 	.byte	0x3
 	.uleb128 0x1b3
-	.uleb128 0x63
+	.uleb128 0x62
 	.byte	0x7
 	.4byte	.Ldebug_macro73
 	.byte	0x4
@@ -7772,9 +7784,10 @@ ctrlbuffer.8844:
 	.byte	0x4
 	.byte	0x4
 	.byte	0x4
+	.file 99 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\stdio.h"
 	.byte	0x3
 	.uleb128 0x46
-	.uleb128 0x1c
+	.uleb128 0x63
 	.byte	0x5
 	.uleb128 0x1b
 	.4byte	.LASF7710
@@ -8088,7 +8101,7 @@ ctrlbuffer.8844:
 	.4byte	.LASF8295
 	.byte	0x3
 	.uleb128 0x2e
-	.uleb128 0x20
+	.uleb128 0x1f
 	.byte	0x4
 	.file 126 "./conf_clock.h"
 	.byte	0x3
@@ -8143,7 +8156,7 @@ ctrlbuffer.8844:
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0x30
-	.uleb128 0x1d
+	.uleb128 0x1c
 	.byte	0x7
 	.4byte	.Ldebug_macro110
 	.byte	0x4
@@ -42964,7 +42977,11 @@ ctrlbuffer.8844:
 	.ascii	"REG_PWM_OSS (*(WoReg*)0x4008C04CU)\000"
 .LASF6604:
 	.ascii	"REG_SSC_RCMR (*(RwReg*)0x40004010U)\000"
+<<<<<<< HEAD
 .LASF9361:
+=======
+.LASF9357:
+>>>>>>> main
 	.ascii	"circ_buf_count\000"
 .LASF7702:
 	.ascii	"CHIP_FREQ_CPU_MAX (96000000UL)\000"
@@ -46241,7 +46258,11 @@ ctrlbuffer.8844:
 	.ascii	"_SYS__STDINT_H \000"
 .LASF35:
 	.ascii	"__WINT_TYPE__ unsigned int\000"
+<<<<<<< HEAD
 .LASF9364:
+=======
+.LASF9360:
+>>>>>>> main
 	.ascii	"GNU C99 9.3.1 20200408 (release) -mcpu=cortex-m3 -m"
 	.ascii	"long-calls -mfloat-abi=soft -mthumb -march=armv7-m "
 	.ascii	"-g3 -gdwarf-2 -O0 -std=gnu99 -fdata-sections -ffunc"
@@ -47861,7 +47882,11 @@ ctrlbuffer.8844:
 	.ascii	"( 40, data)\000"
 .LASF2793:
 	.ascii	"PIO_OER_P12 (0x1u << 12)\000"
+<<<<<<< HEAD
 .LASF9366:
+=======
+.LASF9362:
+>>>>>>> main
 	.ascii	"C:\\Users\\adewa\\Documents\\Atmel Studio\\7.0\\Chi"
 	.ascii	"pWhisperer-Husky\\ChipWhisperer-Husky\\src\000"
 .LASF3264:
@@ -47944,7 +47969,11 @@ ctrlbuffer.8844:
 	.ascii	"ID_TC0 (22)\000"
 .LASF7373:
 	.ascii	"GPBR ((Gpbr *)0x400E1290U)\000"
+<<<<<<< HEAD
 .LASF9362:
+=======
+.LASF9358:
+>>>>>>> main
 	.ascii	"pio_configure_pin\000"
 .LASF6369:
 	.ascii	"US_MR_CHMODE_Pos 14\000"
@@ -49437,7 +49466,11 @@ ctrlbuffer.8844:
 	.ascii	"PIO_PB21_IDX 53\000"
 .LASF1399:
 	.ascii	"TPI_TRIGGER_TRIGGER_Pos 0\000"
+<<<<<<< HEAD
 .LASF9363:
+=======
+.LASF9359:
+>>>>>>> main
 	.ascii	"pmc_enable_periph_clk\000"
 .LASF2628:
 	.ascii	"MATRIX_PRAS9_M0PR(value) ((MATRIX_PRAS9_M0PR_Msk & "
@@ -51218,7 +51251,11 @@ ctrlbuffer.8844:
 	.ascii	"TC_CMR_WAVSEL_UP_RC (0x2u << 13)\000"
 .LASF2162:
 	.ascii	"DMAC_CTRLB_DST_INCR_DECREMENTING (0x1u << 28)\000"
+<<<<<<< HEAD
 .LASF9358:
+=======
+.LASF9354:
+>>>>>>> main
 	.ascii	"usart_enable_rx\000"
 .LASF7707:
 	.ascii	"CHIP_FREQ_FWS_1 (40000000UL)\000"
@@ -51228,8 +51265,13 @@ ctrlbuffer.8844:
 	.ascii	"__UTA_FBIT__ 64\000"
 .LASF4382:
 	.ascii	"PWM_OOV_OOVH0 (0x1u << 0)\000"
+<<<<<<< HEAD
 .LASF9356:
 	.ascii	"iprintf\000"
+=======
+.LASF8194:
+	.ascii	"MSB0W(u32) (((U8 *)&(u32))[3])\000"
+>>>>>>> main
 .LASF3004:
 	.ascii	"PIO_SODR_P31 (0x1u << 31)\000"
 .LASF5143:
@@ -51378,7 +51420,11 @@ ctrlbuffer.8844:
 	.ascii	"___int32_t_defined 1\000"
 .LASF5726:
 	.ascii	"TC_CV_CV_Msk (0xffffffffu << TC_CV_CV_Pos)\000"
+<<<<<<< HEAD
 .LASF9359:
+=======
+.LASF9355:
+>>>>>>> main
 	.ascii	"usart_enable_tx\000"
 .LASF4073:
 	.ascii	"CKGR_MOR_MOSCRCF_Pos 4\000"
@@ -53172,8 +53218,6 @@ ctrlbuffer.8844:
 	.ascii	"CHIPID_CIDR_EPROC_CM4 (0x7u << 5)\000"
 .LASF1090:
 	.ascii	"UINT_LEAST32_MAX (__UINT_LEAST32_MAX__)\000"
-.LASF8194:
-	.ascii	"MSB0W(u32) (((U8 *)&(u32))[3])\000"
 .LASF5585:
 	.ascii	"SUPC_SR_WKUPIS7_DIS (0x0u << 23)\000"
 .LASF5206:
@@ -53309,7 +53353,11 @@ ctrlbuffer.8844:
 	.ascii	"PIO_ESR_P28 (0x1u << 28)\000"
 .LASF8781:
 	.ascii	"UDI_VENDOR_EPS_SIZE_ISO_FS 0\000"
+<<<<<<< HEAD
 .LASF9360:
+=======
+.LASF9356:
+>>>>>>> main
 	.ascii	"usart_disable_rx\000"
 .LASF8412:
 	.ascii	"PINS_ADC_TRIG PIO_PA17_IDX\000"
@@ -54444,7 +54492,11 @@ ctrlbuffer.8844:
 	.ascii	"PWM_IER1_CHID2 (0x1u << 2)\000"
 .LASF4843:
 	.ascii	"SMC_ECC_PR0_BITADDR_W9BIT_Pos 0\000"
+<<<<<<< HEAD
 .LASF9357:
+=======
+.LASF9353:
+>>>>>>> main
 	.ascii	"usart_init_rs232\000"
 .LASF2995:
 	.ascii	"PIO_SODR_P22 (0x1u << 22)\000"
@@ -55400,7 +55452,11 @@ ctrlbuffer.8844:
 .LASF1272:
 	.ascii	"SCnSCB_ICTR_INTLINESNUM_Msk (0xFUL << SCnSCB_ICTR_I"
 	.ascii	"NTLINESNUM_Pos)\000"
+<<<<<<< HEAD
 .LASF9365:
+=======
+.LASF9361:
+>>>>>>> main
 	.ascii	"usart_driver.c\000"
 .LASF3844:
 	.ascii	"PIO_FELLSR_P4 (0x1u << 4)\000"
