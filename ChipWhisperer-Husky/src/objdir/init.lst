@@ -894,7 +894,7 @@
   71:.././hal/sam3u1c/init.c **** 	gpio_configure_pin(PIN_PWRON_GPIO, PIN_PWRON_FLAGS);
  195              	 .loc 4 71 2
  196 0018 4FF04051 	 mov r1,#805306368
- 197 001c 1D20     	 movs r0,#29
+ 197 001c 3220     	 movs r0,#50
  198 001e 084B     	 ldr r3,.L9
  199 0020 9847     	 blx r3
  200              	.LVL5:
@@ -1258,7 +1258,7 @@ DEFINED SYMBOLS
                            .group:00000000 wm4.interrupt_sam_nvic.h.45.4876da6c127868305d66389e87e0876f
                            .group:00000000 wm4.compiler.h.425.66dd29c210af3287ed85ec3553a3e6b1
                            .group:00000000 wm4.board.h.69.393030e13de4d1fe453f71b0383cfb00
-                           .group:00000000 wm4.cw521.h.62.6f487d78438f1a237b2b554798be063f
+                           .group:00000000 wm4.cw521.h.62.6d49a8d57765058e16d369fae3635e9e
                            .group:00000000 wm4.conf_board.h.45.aac520ee9dd7e984e12efac1b366b8fe
                            .group:00000000 wm4.pio.h.45.95f22b0ea02ddc698ec54fc56bf6f38c
                            .group:00000000 wm4.sam_gpio.h.50.76a45c51855d665134f8211cd601d693

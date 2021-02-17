@@ -448,7 +448,7 @@ DEFINED SYMBOLS
                            .group:00000000 wm4.interrupt_sam_nvic.h.45.4876da6c127868305d66389e87e0876f
                            .group:00000000 wm4.compiler.h.425.66dd29c210af3287ed85ec3553a3e6b1
                            .group:00000000 wm4.board.h.69.393030e13de4d1fe453f71b0383cfb00
-                           .group:00000000 wm4.cw521.h.62.6f487d78438f1a237b2b554798be063f
+                           .group:00000000 wm4.cw521.h.62.6d49a8d57765058e16d369fae3635e9e
                            .group:00000000 wm4.pio.h.45.95f22b0ea02ddc698ec54fc56bf6f38c
                            .group:00000000 wm4.sam_gpio.h.50.76a45c51855d665134f8211cd601d693
 

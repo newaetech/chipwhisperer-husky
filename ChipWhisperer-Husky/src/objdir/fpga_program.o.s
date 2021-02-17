@@ -523,10 +523,10 @@ fpga_program_sendbyte:
 	.4byte	.Ldebug_abbrev0
 	.byte	0x4
 	.uleb128 0x1
-	.4byte	.LASF9316
-	.byte	0xc
-	.4byte	.LASF9317
 	.4byte	.LASF9318
+	.byte	0xc
+	.4byte	.LASF9319
+	.4byte	.LASF9320
 	.4byte	.Ldebug_ranges0+0
 	.4byte	0
 	.4byte	0
@@ -539,13 +539,13 @@ fpga_program_sendbyte:
 	.uleb128 0x3
 	.byte	0x4
 	.byte	0x7
-	.4byte	.LASF8999
+	.4byte	.LASF9001
 	.uleb128 0x3
 	.byte	0x1
 	.byte	0x6
-	.4byte	.LASF9000
+	.4byte	.LASF9002
 	.uleb128 0x4
-	.4byte	.LASF9003
+	.4byte	.LASF9005
 	.byte	0x4
 	.byte	0x2b
 	.byte	0x18
@@ -553,13 +553,13 @@ fpga_program_sendbyte:
 	.uleb128 0x3
 	.byte	0x1
 	.byte	0x8
-	.4byte	.LASF9001
+	.4byte	.LASF9003
 	.uleb128 0x3
 	.byte	0x2
 	.byte	0x5
-	.4byte	.LASF9002
-	.uleb128 0x4
 	.4byte	.LASF9004
+	.uleb128 0x4
+	.4byte	.LASF9006
 	.byte	0x4
 	.byte	0x39
 	.byte	0x19
@@ -567,9 +567,9 @@ fpga_program_sendbyte:
 	.uleb128 0x3
 	.byte	0x2
 	.byte	0x7
-	.4byte	.LASF9005
+	.4byte	.LASF9007
 	.uleb128 0x4
-	.4byte	.LASF9006
+	.4byte	.LASF9008
 	.byte	0x4
 	.byte	0x4d
 	.byte	0x18
@@ -577,9 +577,9 @@ fpga_program_sendbyte:
 	.uleb128 0x3
 	.byte	0x4
 	.byte	0x5
-	.4byte	.LASF9007
+	.4byte	.LASF9009
 	.uleb128 0x4
-	.4byte	.LASF9008
+	.4byte	.LASF9010
 	.byte	0x4
 	.byte	0x4f
 	.byte	0x19
@@ -587,29 +587,29 @@ fpga_program_sendbyte:
 	.uleb128 0x3
 	.byte	0x4
 	.byte	0x7
-	.4byte	.LASF9009
+	.4byte	.LASF9011
 	.uleb128 0x3
 	.byte	0x8
 	.byte	0x5
-	.4byte	.LASF9010
+	.4byte	.LASF9012
 	.uleb128 0x3
 	.byte	0x8
 	.byte	0x7
-	.4byte	.LASF9011
+	.4byte	.LASF9013
 	.uleb128 0x4
-	.4byte	.LASF9012
+	.4byte	.LASF9014
 	.byte	0x5
 	.byte	0x18
 	.byte	0x13
 	.4byte	0x42
 	.uleb128 0x4
-	.4byte	.LASF9013
+	.4byte	.LASF9015
 	.byte	0x5
 	.byte	0x24
 	.byte	0x14
 	.4byte	0x5c
 	.uleb128 0x4
-	.4byte	.LASF9014
+	.4byte	.LASF9016
 	.byte	0x5
 	.byte	0x2c
 	.byte	0x13
@@ -617,7 +617,7 @@ fpga_program_sendbyte:
 	.uleb128 0x5
 	.4byte	0xbb
 	.uleb128 0x4
-	.4byte	.LASF9015
+	.4byte	.LASF9017
 	.byte	0x5
 	.byte	0x30
 	.byte	0x14
@@ -629,19 +629,19 @@ fpga_program_sendbyte:
 	.uleb128 0x5
 	.4byte	0xcc
 	.uleb128 0x4
-	.4byte	.LASF9016
+	.4byte	.LASF9018
 	.byte	0x6
 	.byte	0x3d
 	.byte	0x21
 	.4byte	0xdd
 	.uleb128 0x4
-	.4byte	.LASF9017
+	.4byte	.LASF9019
 	.byte	0x6
 	.byte	0x41
 	.byte	0x21
 	.4byte	0xe2
 	.uleb128 0x4
-	.4byte	.LASF9018
+	.4byte	.LASF9020
 	.byte	0x6
 	.byte	0x42
 	.byte	0x21
@@ -649,7 +649,7 @@ fpga_program_sendbyte:
 	.uleb128 0x7
 	.byte	0x4
 	.uleb128 0x8
-	.4byte	.LASF9019
+	.4byte	.LASF9021
 	.byte	0x7
 	.2byte	0x5c9
 	.byte	0x19
@@ -657,7 +657,7 @@ fpga_program_sendbyte:
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x9
-	.4byte	.LASF9020
+	.4byte	.LASF9022
 	.byte	0x8
 	.byte	0x3b
 	.byte	0x11
@@ -724,7 +724,7 @@ fpga_program_sendbyte:
 	.byte	0x9
 	.4byte	0x4f6
 	.uleb128 0xd
-	.4byte	.LASF9021
+	.4byte	.LASF9023
 	.byte	0x9
 	.byte	0x36
 	.byte	0x9
@@ -733,7 +733,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0xd
-	.4byte	.LASF9022
+	.4byte	.LASF9024
 	.byte	0x9
 	.byte	0x37
 	.byte	0x9
@@ -742,7 +742,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0xd
-	.4byte	.LASF9023
+	.4byte	.LASF9025
 	.byte	0x9
 	.byte	0x38
 	.byte	0x9
@@ -751,7 +751,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0xd
-	.4byte	.LASF9024
+	.4byte	.LASF9026
 	.byte	0x9
 	.byte	0x39
 	.byte	0x9
@@ -760,7 +760,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xc
 	.uleb128 0xd
-	.4byte	.LASF9025
+	.4byte	.LASF9027
 	.byte	0x9
 	.byte	0x3a
 	.byte	0x9
@@ -769,7 +769,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x10
 	.uleb128 0xd
-	.4byte	.LASF9026
+	.4byte	.LASF9028
 	.byte	0x9
 	.byte	0x3b
 	.byte	0x9
@@ -778,7 +778,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x14
 	.uleb128 0xd
-	.4byte	.LASF9027
+	.4byte	.LASF9029
 	.byte	0x9
 	.byte	0x3c
 	.byte	0x9
@@ -787,7 +787,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x18
 	.uleb128 0xd
-	.4byte	.LASF9028
+	.4byte	.LASF9030
 	.byte	0x9
 	.byte	0x3d
 	.byte	0x9
@@ -796,7 +796,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x1c
 	.uleb128 0xd
-	.4byte	.LASF9029
+	.4byte	.LASF9031
 	.byte	0x9
 	.byte	0x3e
 	.byte	0x9
@@ -805,7 +805,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x20
 	.uleb128 0xd
-	.4byte	.LASF9030
+	.4byte	.LASF9032
 	.byte	0x9
 	.byte	0x3f
 	.byte	0x9
@@ -814,7 +814,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x24
 	.uleb128 0xd
-	.4byte	.LASF9031
+	.4byte	.LASF9033
 	.byte	0x9
 	.byte	0x40
 	.byte	0x9
@@ -823,7 +823,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x28
 	.uleb128 0xd
-	.4byte	.LASF9032
+	.4byte	.LASF9034
 	.byte	0x9
 	.byte	0x41
 	.byte	0x9
@@ -832,7 +832,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x2c
 	.uleb128 0xd
-	.4byte	.LASF9033
+	.4byte	.LASF9035
 	.byte	0x9
 	.byte	0x42
 	.byte	0x9
@@ -841,7 +841,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x30
 	.uleb128 0xd
-	.4byte	.LASF9034
+	.4byte	.LASF9036
 	.byte	0x9
 	.byte	0x43
 	.byte	0x9
@@ -850,7 +850,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x34
 	.uleb128 0xd
-	.4byte	.LASF9035
+	.4byte	.LASF9037
 	.byte	0x9
 	.byte	0x44
 	.byte	0x9
@@ -859,7 +859,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x38
 	.uleb128 0xd
-	.4byte	.LASF9036
+	.4byte	.LASF9038
 	.byte	0x9
 	.byte	0x45
 	.byte	0x9
@@ -868,7 +868,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x3c
 	.uleb128 0xd
-	.4byte	.LASF9037
+	.4byte	.LASF9039
 	.byte	0x9
 	.byte	0x46
 	.byte	0x9
@@ -877,7 +877,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x40
 	.uleb128 0xd
-	.4byte	.LASF9038
+	.4byte	.LASF9040
 	.byte	0x9
 	.byte	0x47
 	.byte	0x9
@@ -886,7 +886,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x44
 	.uleb128 0xd
-	.4byte	.LASF9039
+	.4byte	.LASF9041
 	.byte	0x9
 	.byte	0x48
 	.byte	0x9
@@ -895,7 +895,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x48
 	.uleb128 0xd
-	.4byte	.LASF9040
+	.4byte	.LASF9042
 	.byte	0x9
 	.byte	0x49
 	.byte	0x9
@@ -904,7 +904,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x4c
 	.uleb128 0xd
-	.4byte	.LASF9041
+	.4byte	.LASF9043
 	.byte	0x9
 	.byte	0x4a
 	.byte	0x9
@@ -913,7 +913,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x50
 	.uleb128 0xd
-	.4byte	.LASF9042
+	.4byte	.LASF9044
 	.byte	0x9
 	.byte	0x4b
 	.byte	0x9
@@ -922,7 +922,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x54
 	.uleb128 0xd
-	.4byte	.LASF9043
+	.4byte	.LASF9045
 	.byte	0x9
 	.byte	0x4c
 	.byte	0x9
@@ -931,7 +931,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x58
 	.uleb128 0xd
-	.4byte	.LASF9044
+	.4byte	.LASF9046
 	.byte	0x9
 	.byte	0x4d
 	.byte	0x9
@@ -940,7 +940,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x5c
 	.uleb128 0xd
-	.4byte	.LASF9045
+	.4byte	.LASF9047
 	.byte	0x9
 	.byte	0x4e
 	.byte	0x9
@@ -949,7 +949,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x60
 	.uleb128 0xd
-	.4byte	.LASF9046
+	.4byte	.LASF9048
 	.byte	0x9
 	.byte	0x4f
 	.byte	0x9
@@ -958,7 +958,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x64
 	.uleb128 0xd
-	.4byte	.LASF9047
+	.4byte	.LASF9049
 	.byte	0x9
 	.byte	0x50
 	.byte	0x9
@@ -967,7 +967,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x68
 	.uleb128 0xd
-	.4byte	.LASF9048
+	.4byte	.LASF9050
 	.byte	0x9
 	.byte	0x51
 	.byte	0x9
@@ -976,7 +976,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x6c
 	.uleb128 0xd
-	.4byte	.LASF9049
+	.4byte	.LASF9051
 	.byte	0x9
 	.byte	0x52
 	.byte	0x9
@@ -985,7 +985,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x70
 	.uleb128 0xd
-	.4byte	.LASF9050
+	.4byte	.LASF9052
 	.byte	0x9
 	.byte	0x53
 	.byte	0x9
@@ -994,7 +994,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x74
 	.uleb128 0xd
-	.4byte	.LASF9051
+	.4byte	.LASF9053
 	.byte	0x9
 	.byte	0x54
 	.byte	0x9
@@ -1003,7 +1003,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x80
 	.uleb128 0xd
-	.4byte	.LASF9052
+	.4byte	.LASF9054
 	.byte	0x9
 	.byte	0x55
 	.byte	0x9
@@ -1012,7 +1012,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x84
 	.uleb128 0xd
-	.4byte	.LASF9053
+	.4byte	.LASF9055
 	.byte	0x9
 	.byte	0x56
 	.byte	0x9
@@ -1021,7 +1021,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x88
 	.uleb128 0xd
-	.4byte	.LASF9054
+	.4byte	.LASF9056
 	.byte	0x9
 	.byte	0x57
 	.byte	0x9
@@ -1030,7 +1030,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x8c
 	.uleb128 0xd
-	.4byte	.LASF9055
+	.4byte	.LASF9057
 	.byte	0x9
 	.byte	0x58
 	.byte	0x9
@@ -1039,7 +1039,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x90
 	.uleb128 0xd
-	.4byte	.LASF9056
+	.4byte	.LASF9058
 	.byte	0x9
 	.byte	0x59
 	.byte	0x9
@@ -1048,7 +1048,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xa0
 	.uleb128 0xd
-	.4byte	.LASF9057
+	.4byte	.LASF9059
 	.byte	0x9
 	.byte	0x5a
 	.byte	0x9
@@ -1057,7 +1057,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xa4
 	.uleb128 0xd
-	.4byte	.LASF9058
+	.4byte	.LASF9060
 	.byte	0x9
 	.byte	0x5b
 	.byte	0x9
@@ -1066,7 +1066,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xa8
 	.uleb128 0xd
-	.4byte	.LASF9059
+	.4byte	.LASF9061
 	.byte	0x9
 	.byte	0x5c
 	.byte	0x9
@@ -1075,7 +1075,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xac
 	.uleb128 0xd
-	.4byte	.LASF9060
+	.4byte	.LASF9062
 	.byte	0x9
 	.byte	0x5d
 	.byte	0x9
@@ -1084,7 +1084,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xb0
 	.uleb128 0xd
-	.4byte	.LASF9061
+	.4byte	.LASF9063
 	.byte	0x9
 	.byte	0x5e
 	.byte	0x9
@@ -1093,7 +1093,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xb4
 	.uleb128 0xd
-	.4byte	.LASF9062
+	.4byte	.LASF9064
 	.byte	0x9
 	.byte	0x5f
 	.byte	0x9
@@ -1102,7 +1102,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xb8
 	.uleb128 0xd
-	.4byte	.LASF9063
+	.4byte	.LASF9065
 	.byte	0x9
 	.byte	0x60
 	.byte	0x9
@@ -1111,7 +1111,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xbc
 	.uleb128 0xd
-	.4byte	.LASF9064
+	.4byte	.LASF9066
 	.byte	0x9
 	.byte	0x61
 	.byte	0x9
@@ -1120,7 +1120,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xc0
 	.uleb128 0xd
-	.4byte	.LASF9065
+	.4byte	.LASF9067
 	.byte	0x9
 	.byte	0x62
 	.byte	0x9
@@ -1129,7 +1129,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xc4
 	.uleb128 0xd
-	.4byte	.LASF9066
+	.4byte	.LASF9068
 	.byte	0x9
 	.byte	0x63
 	.byte	0x9
@@ -1138,7 +1138,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xc8
 	.uleb128 0xd
-	.4byte	.LASF9067
+	.4byte	.LASF9069
 	.byte	0x9
 	.byte	0x64
 	.byte	0x9
@@ -1147,7 +1147,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xcc
 	.uleb128 0xd
-	.4byte	.LASF9068
+	.4byte	.LASF9070
 	.byte	0x9
 	.byte	0x65
 	.byte	0x9
@@ -1156,7 +1156,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xd0
 	.uleb128 0xd
-	.4byte	.LASF9069
+	.4byte	.LASF9071
 	.byte	0x9
 	.byte	0x66
 	.byte	0x9
@@ -1165,7 +1165,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xd4
 	.uleb128 0xd
-	.4byte	.LASF9070
+	.4byte	.LASF9072
 	.byte	0x9
 	.byte	0x67
 	.byte	0x9
@@ -1174,7 +1174,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xd8
 	.uleb128 0xd
-	.4byte	.LASF9071
+	.4byte	.LASF9073
 	.byte	0x9
 	.byte	0x68
 	.byte	0x9
@@ -1183,7 +1183,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xdc
 	.uleb128 0xd
-	.4byte	.LASF9072
+	.4byte	.LASF9074
 	.byte	0x9
 	.byte	0x69
 	.byte	0x9
@@ -1192,7 +1192,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xe0
 	.uleb128 0xd
-	.4byte	.LASF9073
+	.4byte	.LASF9075
 	.byte	0x9
 	.byte	0x6a
 	.byte	0x9
@@ -1201,7 +1201,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xe4
 	.uleb128 0xd
-	.4byte	.LASF9074
+	.4byte	.LASF9076
 	.byte	0x9
 	.byte	0x6b
 	.byte	0x9
@@ -1234,7 +1234,7 @@ fpga_program_sendbyte:
 	.byte	0x9
 	.4byte	0x705
 	.uleb128 0xd
-	.4byte	.LASF9075
+	.4byte	.LASF9077
 	.byte	0xa
 	.byte	0x36
 	.byte	0x9
@@ -1243,7 +1243,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0xd
-	.4byte	.LASF9076
+	.4byte	.LASF9078
 	.byte	0xa
 	.byte	0x37
 	.byte	0x9
@@ -1252,7 +1252,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0xd
-	.4byte	.LASF9077
+	.4byte	.LASF9079
 	.byte	0xa
 	.byte	0x38
 	.byte	0x9
@@ -1261,7 +1261,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0xd
-	.4byte	.LASF9078
+	.4byte	.LASF9080
 	.byte	0xa
 	.byte	0x39
 	.byte	0x9
@@ -1270,7 +1270,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xc
 	.uleb128 0xd
-	.4byte	.LASF9079
+	.4byte	.LASF9081
 	.byte	0xa
 	.byte	0x3a
 	.byte	0x9
@@ -1279,7 +1279,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x10
 	.uleb128 0xd
-	.4byte	.LASF9080
+	.4byte	.LASF9082
 	.byte	0xa
 	.byte	0x3b
 	.byte	0x9
@@ -1288,7 +1288,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x14
 	.uleb128 0xd
-	.4byte	.LASF9081
+	.4byte	.LASF9083
 	.byte	0xa
 	.byte	0x3c
 	.byte	0x9
@@ -1297,7 +1297,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x18
 	.uleb128 0xd
-	.4byte	.LASF9082
+	.4byte	.LASF9084
 	.byte	0xa
 	.byte	0x3d
 	.byte	0x9
@@ -1306,7 +1306,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x1c
 	.uleb128 0xd
-	.4byte	.LASF9083
+	.4byte	.LASF9085
 	.byte	0xa
 	.byte	0x3e
 	.byte	0x9
@@ -1315,7 +1315,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x20
 	.uleb128 0xd
-	.4byte	.LASF9084
+	.4byte	.LASF9086
 	.byte	0xa
 	.byte	0x3f
 	.byte	0x9
@@ -1324,7 +1324,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x24
 	.uleb128 0xd
-	.4byte	.LASF9085
+	.4byte	.LASF9087
 	.byte	0xa
 	.byte	0x40
 	.byte	0x9
@@ -1333,7 +1333,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x28
 	.uleb128 0xd
-	.4byte	.LASF9024
+	.4byte	.LASF9026
 	.byte	0xa
 	.byte	0x41
 	.byte	0x9
@@ -1342,7 +1342,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x2c
 	.uleb128 0xd
-	.4byte	.LASF9086
+	.4byte	.LASF9088
 	.byte	0xa
 	.byte	0x42
 	.byte	0x9
@@ -1351,7 +1351,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x40
 	.uleb128 0xd
-	.4byte	.LASF9087
+	.4byte	.LASF9089
 	.byte	0xa
 	.byte	0x43
 	.byte	0x9
@@ -1360,7 +1360,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x44
 	.uleb128 0xd
-	.4byte	.LASF9028
+	.4byte	.LASF9030
 	.byte	0xa
 	.byte	0x44
 	.byte	0x9
@@ -1369,7 +1369,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x48
 	.uleb128 0xd
-	.4byte	.LASF9088
+	.4byte	.LASF9090
 	.byte	0xa
 	.byte	0x45
 	.byte	0x9
@@ -1378,7 +1378,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x4c
 	.uleb128 0xd
-	.4byte	.LASF9089
+	.4byte	.LASF9091
 	.byte	0xa
 	.byte	0x46
 	.byte	0x9
@@ -1387,7 +1387,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x50
 	.uleb128 0xd
-	.4byte	.LASF9032
+	.4byte	.LASF9034
 	.byte	0xa
 	.byte	0x47
 	.byte	0x9
@@ -1396,7 +1396,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x54
 	.uleb128 0xd
-	.4byte	.LASF9090
+	.4byte	.LASF9092
 	.byte	0xa
 	.byte	0x48
 	.byte	0x9
@@ -1405,7 +1405,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xe4
 	.uleb128 0xd
-	.4byte	.LASF9091
+	.4byte	.LASF9093
 	.byte	0xa
 	.byte	0x49
 	.byte	0x9
@@ -1414,7 +1414,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xe8
 	.uleb128 0xd
-	.4byte	.LASF9044
+	.4byte	.LASF9046
 	.byte	0xa
 	.byte	0x4a
 	.byte	0x9
@@ -1423,7 +1423,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xec
 	.uleb128 0xd
-	.4byte	.LASF9092
+	.4byte	.LASF9094
 	.byte	0xa
 	.byte	0x4b
 	.byte	0x9
@@ -1432,7 +1432,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x100
 	.uleb128 0xd
-	.4byte	.LASF9093
+	.4byte	.LASF9095
 	.byte	0xa
 	.byte	0x4c
 	.byte	0x9
@@ -1441,7 +1441,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x104
 	.uleb128 0xd
-	.4byte	.LASF9094
+	.4byte	.LASF9096
 	.byte	0xa
 	.byte	0x4d
 	.byte	0x9
@@ -1450,7 +1450,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x108
 	.uleb128 0xd
-	.4byte	.LASF9095
+	.4byte	.LASF9097
 	.byte	0xa
 	.byte	0x4e
 	.byte	0x9
@@ -1459,7 +1459,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x10c
 	.uleb128 0xd
-	.4byte	.LASF9096
+	.4byte	.LASF9098
 	.byte	0xa
 	.byte	0x4f
 	.byte	0x9
@@ -1468,7 +1468,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x110
 	.uleb128 0xd
-	.4byte	.LASF9097
+	.4byte	.LASF9099
 	.byte	0xa
 	.byte	0x50
 	.byte	0x9
@@ -1477,7 +1477,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x114
 	.uleb128 0xd
-	.4byte	.LASF9098
+	.4byte	.LASF9100
 	.byte	0xa
 	.byte	0x51
 	.byte	0x9
@@ -1486,7 +1486,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x118
 	.uleb128 0xd
-	.4byte	.LASF9099
+	.4byte	.LASF9101
 	.byte	0xa
 	.byte	0x52
 	.byte	0x9
@@ -1495,7 +1495,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x11c
 	.uleb128 0xd
-	.4byte	.LASF9100
+	.4byte	.LASF9102
 	.byte	0xa
 	.byte	0x53
 	.byte	0x9
@@ -1504,7 +1504,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x120
 	.uleb128 0xd
-	.4byte	.LASF9101
+	.4byte	.LASF9103
 	.byte	0xa
 	.byte	0x54
 	.byte	0x9
@@ -1525,25 +1525,25 @@ fpga_program_sendbyte:
 	.uleb128 0x5
 	.4byte	0x715
 	.uleb128 0x4
-	.4byte	.LASF9102
+	.4byte	.LASF9104
 	.byte	0xa
 	.byte	0x55
 	.byte	0x3
 	.4byte	0x51c
 	.uleb128 0x10
-	.4byte	.LASF9103
+	.4byte	.LASF9105
 	.byte	0xb
 	.2byte	0x15e
 	.byte	0x17
 	.4byte	0x34
 	.uleb128 0x4
-	.4byte	.LASF9104
+	.4byte	.LASF9106
 	.byte	0xc
 	.byte	0x2e
 	.byte	0xe
 	.4byte	0x7b
 	.uleb128 0x4
-	.4byte	.LASF9105
+	.4byte	.LASF9107
 	.byte	0xc
 	.byte	0x74
 	.byte	0xe
@@ -1555,13 +1555,13 @@ fpga_program_sendbyte:
 	.byte	0x3
 	.4byte	0x772
 	.uleb128 0x12
-	.4byte	.LASF9106
+	.4byte	.LASF9108
 	.byte	0xc
 	.byte	0xa7
 	.byte	0xc
 	.4byte	0x72b
 	.uleb128 0x12
-	.4byte	.LASF9107
+	.4byte	.LASF9109
 	.byte	0xc
 	.byte	0xa8
 	.byte	0x13
@@ -1581,7 +1581,7 @@ fpga_program_sendbyte:
 	.byte	0x9
 	.4byte	0x7aa
 	.uleb128 0xd
-	.4byte	.LASF9108
+	.4byte	.LASF9110
 	.byte	0xc
 	.byte	0xa4
 	.byte	0x7
@@ -1590,7 +1590,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0xd
-	.4byte	.LASF9109
+	.4byte	.LASF9111
 	.byte	0xc
 	.byte	0xa9
 	.byte	0x5
@@ -1600,19 +1600,19 @@ fpga_program_sendbyte:
 	.uleb128 0x4
 	.byte	0
 	.uleb128 0x4
-	.4byte	.LASF9110
+	.4byte	.LASF9112
 	.byte	0xc
 	.byte	0xaa
 	.byte	0x3
 	.4byte	0x782
 	.uleb128 0x4
-	.4byte	.LASF9111
+	.4byte	.LASF9113
 	.byte	0xd
 	.byte	0x16
 	.byte	0x19
 	.4byte	0x8e
 	.uleb128 0x4
-	.4byte	.LASF9112
+	.4byte	.LASF9114
 	.byte	0xe
 	.byte	0x22
 	.byte	0x19
@@ -1621,23 +1621,23 @@ fpga_program_sendbyte:
 	.byte	0x4
 	.4byte	0x7d4
 	.uleb128 0x14
-	.4byte	.LASF9209
+	.4byte	.LASF9211
 	.byte	0x1
 	.uleb128 0x4
-	.4byte	.LASF9113
+	.4byte	.LASF9115
 	.byte	0xd
 	.byte	0x23
 	.byte	0x1b
 	.4byte	0x7c2
 	.uleb128 0x15
-	.4byte	.LASF9118
+	.4byte	.LASF9120
 	.byte	0x18
 	.byte	0xd
 	.byte	0x34
 	.byte	0x8
 	.4byte	0x84c
 	.uleb128 0xd
-	.4byte	.LASF9114
+	.4byte	.LASF9116
 	.byte	0xd
 	.byte	0x36
 	.byte	0x13
@@ -1655,7 +1655,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0xd
-	.4byte	.LASF9115
+	.4byte	.LASF9117
 	.byte	0xd
 	.byte	0x37
 	.byte	0xb
@@ -1664,7 +1664,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0xd
-	.4byte	.LASF9116
+	.4byte	.LASF9118
 	.byte	0xd
 	.byte	0x37
 	.byte	0x14
@@ -1673,7 +1673,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xc
 	.uleb128 0xd
-	.4byte	.LASF9117
+	.4byte	.LASF9119
 	.byte	0xd
 	.byte	0x37
 	.byte	0x1b
@@ -1702,14 +1702,14 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0
 	.uleb128 0x15
-	.4byte	.LASF9119
+	.4byte	.LASF9121
 	.byte	0x24
 	.byte	0xd
 	.byte	0x3c
 	.byte	0x8
 	.4byte	0x8f7
 	.uleb128 0xd
-	.4byte	.LASF9120
+	.4byte	.LASF9122
 	.byte	0xd
 	.byte	0x3e
 	.byte	0x9
@@ -1718,7 +1718,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0xd
-	.4byte	.LASF9121
+	.4byte	.LASF9123
 	.byte	0xd
 	.byte	0x3f
 	.byte	0x9
@@ -1727,7 +1727,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0xd
-	.4byte	.LASF9122
+	.4byte	.LASF9124
 	.byte	0xd
 	.byte	0x40
 	.byte	0x9
@@ -1736,7 +1736,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0xd
-	.4byte	.LASF9123
+	.4byte	.LASF9125
 	.byte	0xd
 	.byte	0x41
 	.byte	0x9
@@ -1745,7 +1745,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xc
 	.uleb128 0xd
-	.4byte	.LASF9124
+	.4byte	.LASF9126
 	.byte	0xd
 	.byte	0x42
 	.byte	0x9
@@ -1754,7 +1754,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x10
 	.uleb128 0xd
-	.4byte	.LASF9125
+	.4byte	.LASF9127
 	.byte	0xd
 	.byte	0x43
 	.byte	0x9
@@ -1763,7 +1763,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x14
 	.uleb128 0xd
-	.4byte	.LASF9126
+	.4byte	.LASF9128
 	.byte	0xd
 	.byte	0x44
 	.byte	0x9
@@ -1772,7 +1772,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x18
 	.uleb128 0xd
-	.4byte	.LASF9127
+	.4byte	.LASF9129
 	.byte	0xd
 	.byte	0x45
 	.byte	0x9
@@ -1781,7 +1781,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x1c
 	.uleb128 0xd
-	.4byte	.LASF9128
+	.4byte	.LASF9130
 	.byte	0xd
 	.byte	0x46
 	.byte	0x9
@@ -1791,14 +1791,14 @@ fpga_program_sendbyte:
 	.uleb128 0x20
 	.byte	0
 	.uleb128 0x17
-	.4byte	.LASF9129
+	.4byte	.LASF9131
 	.2byte	0x108
 	.byte	0xd
 	.byte	0x4f
 	.byte	0x8
 	.4byte	0x945
 	.uleb128 0xd
-	.4byte	.LASF9130
+	.4byte	.LASF9132
 	.byte	0xd
 	.byte	0x50
 	.byte	0xa
@@ -1807,7 +1807,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0xd
-	.4byte	.LASF9131
+	.4byte	.LASF9133
 	.byte	0xd
 	.byte	0x51
 	.byte	0x9
@@ -1816,7 +1816,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x80
 	.uleb128 0xd
-	.4byte	.LASF9132
+	.4byte	.LASF9134
 	.byte	0xd
 	.byte	0x53
 	.byte	0xa
@@ -1825,7 +1825,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x100
 	.uleb128 0xd
-	.4byte	.LASF9133
+	.4byte	.LASF9135
 	.byte	0xd
 	.byte	0x56
 	.byte	0xa
@@ -1842,14 +1842,14 @@ fpga_program_sendbyte:
 	.byte	0x1f
 	.byte	0
 	.uleb128 0x17
-	.4byte	.LASF9134
+	.4byte	.LASF9136
 	.2byte	0x190
 	.byte	0xd
 	.byte	0x62
 	.byte	0x8
 	.4byte	0x9a1
 	.uleb128 0xd
-	.4byte	.LASF9114
+	.4byte	.LASF9116
 	.byte	0xd
 	.byte	0x63
 	.byte	0x12
@@ -1858,7 +1858,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0xd
-	.4byte	.LASF9135
+	.4byte	.LASF9137
 	.byte	0xd
 	.byte	0x64
 	.byte	0x6
@@ -1867,7 +1867,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0xd
-	.4byte	.LASF9136
+	.4byte	.LASF9138
 	.byte	0xd
 	.byte	0x66
 	.byte	0x9
@@ -1876,7 +1876,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0xd
-	.4byte	.LASF9129
+	.4byte	.LASF9131
 	.byte	0xd
 	.byte	0x67
 	.byte	0x1e
@@ -1901,14 +1901,14 @@ fpga_program_sendbyte:
 	.uleb128 0x18
 	.byte	0x1
 	.uleb128 0x15
-	.4byte	.LASF9137
+	.4byte	.LASF9139
 	.byte	0x8
 	.byte	0xd
 	.byte	0x7a
 	.byte	0x8
 	.4byte	0x9eb
 	.uleb128 0xd
-	.4byte	.LASF9138
+	.4byte	.LASF9140
 	.byte	0xd
 	.byte	0x7b
 	.byte	0x11
@@ -1917,7 +1917,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0xd
-	.4byte	.LASF9139
+	.4byte	.LASF9141
 	.byte	0xd
 	.byte	0x7c
 	.byte	0x6
@@ -1930,7 +1930,7 @@ fpga_program_sendbyte:
 	.byte	0x4
 	.4byte	0x4e
 	.uleb128 0x15
-	.4byte	.LASF9140
+	.4byte	.LASF9142
 	.byte	0x68
 	.byte	0xd
 	.byte	0xba
@@ -1964,7 +1964,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0xd
-	.4byte	.LASF9141
+	.4byte	.LASF9143
 	.byte	0xd
 	.byte	0xbe
 	.byte	0x9
@@ -1973,7 +1973,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xc
 	.uleb128 0xd
-	.4byte	.LASF9142
+	.4byte	.LASF9144
 	.byte	0xd
 	.byte	0xbf
 	.byte	0x9
@@ -1991,7 +1991,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x10
 	.uleb128 0xd
-	.4byte	.LASF9143
+	.4byte	.LASF9145
 	.byte	0xd
 	.byte	0xc1
 	.byte	0x7
@@ -2000,7 +2000,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x18
 	.uleb128 0xd
-	.4byte	.LASF9144
+	.4byte	.LASF9146
 	.byte	0xd
 	.byte	0xc8
 	.byte	0xa
@@ -2009,7 +2009,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x1c
 	.uleb128 0xd
-	.4byte	.LASF9145
+	.4byte	.LASF9147
 	.byte	0xd
 	.byte	0xca
 	.byte	0x1d
@@ -2018,7 +2018,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x20
 	.uleb128 0xd
-	.4byte	.LASF9146
+	.4byte	.LASF9148
 	.byte	0xd
 	.byte	0xcc
 	.byte	0x1d
@@ -2027,7 +2027,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x24
 	.uleb128 0xd
-	.4byte	.LASF9147
+	.4byte	.LASF9149
 	.byte	0xd
 	.byte	0xcf
 	.byte	0xd
@@ -2036,7 +2036,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x28
 	.uleb128 0xd
-	.4byte	.LASF9148
+	.4byte	.LASF9150
 	.byte	0xd
 	.byte	0xd0
 	.byte	0x9
@@ -2072,7 +2072,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x3c
 	.uleb128 0xd
-	.4byte	.LASF9149
+	.4byte	.LASF9151
 	.byte	0xd
 	.byte	0xd8
 	.byte	0x11
@@ -2081,7 +2081,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x40
 	.uleb128 0xd
-	.4byte	.LASF9150
+	.4byte	.LASF9152
 	.byte	0xd
 	.byte	0xd9
 	.byte	0x11
@@ -2099,7 +2099,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x44
 	.uleb128 0xd
-	.4byte	.LASF9151
+	.4byte	.LASF9153
 	.byte	0xd
 	.byte	0xdf
 	.byte	0x7
@@ -2108,7 +2108,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x4c
 	.uleb128 0xd
-	.4byte	.LASF9152
+	.4byte	.LASF9154
 	.byte	0xd
 	.byte	0xe0
 	.byte	0xa
@@ -2117,7 +2117,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x50
 	.uleb128 0xd
-	.4byte	.LASF9153
+	.4byte	.LASF9155
 	.byte	0xd
 	.byte	0xe3
 	.byte	0x12
@@ -2126,7 +2126,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x54
 	.uleb128 0xd
-	.4byte	.LASF9154
+	.4byte	.LASF9156
 	.byte	0xd
 	.byte	0xe7
 	.byte	0xc
@@ -2135,7 +2135,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x58
 	.uleb128 0xd
-	.4byte	.LASF9155
+	.4byte	.LASF9157
 	.byte	0xd
 	.byte	0xe9
 	.byte	0xe
@@ -2144,7 +2144,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x5c
 	.uleb128 0xd
-	.4byte	.LASF9156
+	.4byte	.LASF9158
 	.byte	0xd
 	.byte	0xea
 	.byte	0x9
@@ -2172,14 +2172,14 @@ fpga_program_sendbyte:
 	.uleb128 0x6
 	.4byte	0xb83
 	.uleb128 0x1b
-	.4byte	.LASF9157
+	.4byte	.LASF9159
 	.2byte	0x428
 	.byte	0xd
 	.2byte	0x265
 	.byte	0x8
 	.4byte	0xd03
 	.uleb128 0x1c
-	.4byte	.LASF9158
+	.4byte	.LASF9160
 	.byte	0xd
 	.2byte	0x267
 	.byte	0x7
@@ -2188,7 +2188,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x1c
-	.4byte	.LASF9159
+	.4byte	.LASF9161
 	.byte	0xd
 	.2byte	0x26c
 	.byte	0xb
@@ -2197,7 +2197,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0x1c
-	.4byte	.LASF9160
+	.4byte	.LASF9162
 	.byte	0xd
 	.2byte	0x26c
 	.byte	0x14
@@ -2206,7 +2206,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0x1c
-	.4byte	.LASF9161
+	.4byte	.LASF9163
 	.byte	0xd
 	.2byte	0x26c
 	.byte	0x1e
@@ -2215,7 +2215,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xc
 	.uleb128 0x1c
-	.4byte	.LASF9162
+	.4byte	.LASF9164
 	.byte	0xd
 	.2byte	0x26e
 	.byte	0x8
@@ -2224,7 +2224,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x10
 	.uleb128 0x1c
-	.4byte	.LASF9163
+	.4byte	.LASF9165
 	.byte	0xd
 	.2byte	0x26f
 	.byte	0x8
@@ -2233,7 +2233,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x14
 	.uleb128 0x1c
-	.4byte	.LASF9164
+	.4byte	.LASF9166
 	.byte	0xd
 	.2byte	0x272
 	.byte	0x7
@@ -2242,7 +2242,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x30
 	.uleb128 0x1c
-	.4byte	.LASF9165
+	.4byte	.LASF9167
 	.byte	0xd
 	.2byte	0x273
 	.byte	0x16
@@ -2251,7 +2251,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x34
 	.uleb128 0x1c
-	.4byte	.LASF9166
+	.4byte	.LASF9168
 	.byte	0xd
 	.2byte	0x275
 	.byte	0x7
@@ -2260,7 +2260,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x38
 	.uleb128 0x1c
-	.4byte	.LASF9167
+	.4byte	.LASF9169
 	.byte	0xd
 	.2byte	0x277
 	.byte	0xa
@@ -2269,7 +2269,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x3c
 	.uleb128 0x1c
-	.4byte	.LASF9168
+	.4byte	.LASF9170
 	.byte	0xd
 	.2byte	0x27a
 	.byte	0x13
@@ -2278,7 +2278,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x40
 	.uleb128 0x1c
-	.4byte	.LASF9169
+	.4byte	.LASF9171
 	.byte	0xd
 	.2byte	0x27b
 	.byte	0x7
@@ -2287,7 +2287,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x44
 	.uleb128 0x1c
-	.4byte	.LASF9170
+	.4byte	.LASF9172
 	.byte	0xd
 	.2byte	0x27c
 	.byte	0x13
@@ -2296,7 +2296,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x48
 	.uleb128 0x1c
-	.4byte	.LASF9171
+	.4byte	.LASF9173
 	.byte	0xd
 	.2byte	0x27d
 	.byte	0x14
@@ -2305,7 +2305,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x4c
 	.uleb128 0x1c
-	.4byte	.LASF9172
+	.4byte	.LASF9174
 	.byte	0xd
 	.2byte	0x280
 	.byte	0x7
@@ -2314,7 +2314,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x50
 	.uleb128 0x1c
-	.4byte	.LASF9173
+	.4byte	.LASF9175
 	.byte	0xd
 	.2byte	0x281
 	.byte	0x9
@@ -2323,7 +2323,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x54
 	.uleb128 0x1c
-	.4byte	.LASF9174
+	.4byte	.LASF9176
 	.byte	0xd
 	.2byte	0x2a4
 	.byte	0x7
@@ -2332,7 +2332,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x58
 	.uleb128 0x1c
-	.4byte	.LASF9134
+	.4byte	.LASF9136
 	.byte	0xd
 	.2byte	0x2a8
 	.byte	0x13
@@ -2341,7 +2341,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x148
 	.uleb128 0x1c
-	.4byte	.LASF9175
+	.4byte	.LASF9177
 	.byte	0xd
 	.2byte	0x2a9
 	.byte	0x12
@@ -2350,7 +2350,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x14c
 	.uleb128 0x1c
-	.4byte	.LASF9176
+	.4byte	.LASF9178
 	.byte	0xd
 	.2byte	0x2ad
 	.byte	0xc
@@ -2359,7 +2359,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x2dc
 	.uleb128 0x1c
-	.4byte	.LASF9177
+	.4byte	.LASF9179
 	.byte	0xd
 	.2byte	0x2b2
 	.byte	0x10
@@ -2368,7 +2368,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x2e0
 	.uleb128 0x1c
-	.4byte	.LASF9178
+	.4byte	.LASF9180
 	.byte	0xd
 	.2byte	0x2b4
 	.byte	0xa
@@ -2451,20 +2451,20 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0
 	.uleb128 0x10
-	.4byte	.LASF9179
+	.4byte	.LASF9181
 	.byte	0xd
 	.2byte	0x124
 	.byte	0x1a
 	.4byte	0x9f1
 	.uleb128 0x1d
-	.4byte	.LASF9180
+	.4byte	.LASF9182
 	.byte	0xc
 	.byte	0xd
 	.2byte	0x128
 	.byte	0x8
 	.4byte	0xdf2
 	.uleb128 0x1c
-	.4byte	.LASF9114
+	.4byte	.LASF9116
 	.byte	0xd
 	.2byte	0x12a
 	.byte	0x11
@@ -2473,7 +2473,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x1c
-	.4byte	.LASF9181
+	.4byte	.LASF9183
 	.byte	0xd
 	.2byte	0x12b
 	.byte	0x7
@@ -2482,7 +2482,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0x1c
-	.4byte	.LASF9182
+	.4byte	.LASF9184
 	.byte	0xd
 	.2byte	0x12c
 	.byte	0xb
@@ -2498,14 +2498,14 @@ fpga_program_sendbyte:
 	.byte	0x4
 	.4byte	0xda6
 	.uleb128 0x1d
-	.4byte	.LASF9183
+	.4byte	.LASF9185
 	.byte	0xe
 	.byte	0xd
 	.2byte	0x144
 	.byte	0x8
 	.4byte	0xe3d
 	.uleb128 0x1c
-	.4byte	.LASF9184
+	.4byte	.LASF9186
 	.byte	0xd
 	.2byte	0x145
 	.byte	0x12
@@ -2514,7 +2514,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x1c
-	.4byte	.LASF9185
+	.4byte	.LASF9187
 	.byte	0xd
 	.2byte	0x146
 	.byte	0x12
@@ -2523,7 +2523,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x6
 	.uleb128 0x1c
-	.4byte	.LASF9186
+	.4byte	.LASF9188
 	.byte	0xd
 	.2byte	0x147
 	.byte	0x12
@@ -2546,7 +2546,7 @@ fpga_program_sendbyte:
 	.byte	0x7
 	.4byte	0xf91
 	.uleb128 0x1c
-	.4byte	.LASF9187
+	.4byte	.LASF9189
 	.byte	0xd
 	.2byte	0x287
 	.byte	0x18
@@ -2555,7 +2555,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x1c
-	.4byte	.LASF9188
+	.4byte	.LASF9190
 	.byte	0xd
 	.2byte	0x288
 	.byte	0x12
@@ -2564,7 +2564,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0x1c
-	.4byte	.LASF9189
+	.4byte	.LASF9191
 	.byte	0xd
 	.2byte	0x289
 	.byte	0x10
@@ -2573,7 +2573,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0x1c
-	.4byte	.LASF9190
+	.4byte	.LASF9192
 	.byte	0xd
 	.2byte	0x28a
 	.byte	0x17
@@ -2582,7 +2582,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x24
 	.uleb128 0x1c
-	.4byte	.LASF9191
+	.4byte	.LASF9193
 	.byte	0xd
 	.2byte	0x28b
 	.byte	0xf
@@ -2591,7 +2591,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x48
 	.uleb128 0x1c
-	.4byte	.LASF9192
+	.4byte	.LASF9194
 	.byte	0xd
 	.2byte	0x28c
 	.byte	0x2c
@@ -2600,7 +2600,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x50
 	.uleb128 0x1c
-	.4byte	.LASF9193
+	.4byte	.LASF9195
 	.byte	0xd
 	.2byte	0x28d
 	.byte	0x1a
@@ -2609,7 +2609,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x58
 	.uleb128 0x1c
-	.4byte	.LASF9194
+	.4byte	.LASF9196
 	.byte	0xd
 	.2byte	0x28e
 	.byte	0x16
@@ -2618,7 +2618,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x68
 	.uleb128 0x1c
-	.4byte	.LASF9195
+	.4byte	.LASF9197
 	.byte	0xd
 	.2byte	0x28f
 	.byte	0x16
@@ -2627,7 +2627,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x70
 	.uleb128 0x1c
-	.4byte	.LASF9196
+	.4byte	.LASF9198
 	.byte	0xd
 	.2byte	0x290
 	.byte	0x16
@@ -2636,7 +2636,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x78
 	.uleb128 0x1c
-	.4byte	.LASF9197
+	.4byte	.LASF9199
 	.byte	0xd
 	.2byte	0x291
 	.byte	0x10
@@ -2645,7 +2645,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x80
 	.uleb128 0x1c
-	.4byte	.LASF9198
+	.4byte	.LASF9200
 	.byte	0xd
 	.2byte	0x292
 	.byte	0x10
@@ -2654,7 +2654,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x88
 	.uleb128 0x1c
-	.4byte	.LASF9199
+	.4byte	.LASF9201
 	.byte	0xd
 	.2byte	0x293
 	.byte	0xf
@@ -2663,7 +2663,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xa0
 	.uleb128 0x1c
-	.4byte	.LASF9200
+	.4byte	.LASF9202
 	.byte	0xd
 	.2byte	0x294
 	.byte	0x16
@@ -2672,7 +2672,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xa4
 	.uleb128 0x1c
-	.4byte	.LASF9201
+	.4byte	.LASF9203
 	.byte	0xd
 	.2byte	0x295
 	.byte	0x16
@@ -2681,7 +2681,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xac
 	.uleb128 0x1c
-	.4byte	.LASF9202
+	.4byte	.LASF9204
 	.byte	0xd
 	.2byte	0x296
 	.byte	0x16
@@ -2690,7 +2690,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xb4
 	.uleb128 0x1c
-	.4byte	.LASF9203
+	.4byte	.LASF9205
 	.byte	0xd
 	.2byte	0x297
 	.byte	0x16
@@ -2699,7 +2699,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xbc
 	.uleb128 0x1c
-	.4byte	.LASF9204
+	.4byte	.LASF9206
 	.byte	0xd
 	.2byte	0x298
 	.byte	0x16
@@ -2708,7 +2708,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xc4
 	.uleb128 0x1c
-	.4byte	.LASF9205
+	.4byte	.LASF9207
 	.byte	0xd
 	.2byte	0x299
 	.byte	0x8
@@ -2745,7 +2745,7 @@ fpga_program_sendbyte:
 	.byte	0x7
 	.4byte	0xfec
 	.uleb128 0x1c
-	.4byte	.LASF9206
+	.4byte	.LASF9208
 	.byte	0xd
 	.2byte	0x2a1
 	.byte	0x1b
@@ -2754,7 +2754,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x1c
-	.4byte	.LASF9207
+	.4byte	.LASF9209
 	.byte	0xd
 	.2byte	0x2a2
 	.byte	0x18
@@ -2784,13 +2784,13 @@ fpga_program_sendbyte:
 	.byte	0x3
 	.4byte	0x1031
 	.uleb128 0x20
-	.4byte	.LASF9157
+	.4byte	.LASF9159
 	.byte	0xd
 	.2byte	0x29a
 	.byte	0xb
 	.4byte	0xe4d
 	.uleb128 0x20
-	.4byte	.LASF9208
+	.4byte	.LASF9210
 	.byte	0xd
 	.2byte	0x2a3
 	.byte	0xb
@@ -2804,7 +2804,7 @@ fpga_program_sendbyte:
 	.byte	0x18
 	.byte	0
 	.uleb128 0x14
-	.4byte	.LASF9210
+	.4byte	.LASF9212
 	.byte	0x1
 	.uleb128 0x13
 	.byte	0x4
@@ -2841,7 +2841,7 @@ fpga_program_sendbyte:
 	.byte	0x2
 	.byte	0
 	.uleb128 0x8
-	.4byte	.LASF9211
+	.4byte	.LASF9213
 	.byte	0xd
 	.2byte	0x333
 	.byte	0x17
@@ -2849,7 +2849,7 @@ fpga_program_sendbyte:
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x8
-	.4byte	.LASF9212
+	.4byte	.LASF9214
 	.byte	0xd
 	.2byte	0x334
 	.byte	0x1d
@@ -2857,7 +2857,7 @@ fpga_program_sendbyte:
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x9
-	.4byte	.LASF9213
+	.4byte	.LASF9215
 	.byte	0xf
 	.byte	0x67
 	.byte	0xe
@@ -2865,7 +2865,7 @@ fpga_program_sendbyte:
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x9
-	.4byte	.LASF9214
+	.4byte	.LASF9216
 	.byte	0x10
 	.byte	0x8c
 	.byte	0x16
@@ -2875,11 +2875,11 @@ fpga_program_sendbyte:
 	.uleb128 0x3
 	.byte	0x1
 	.byte	0x2
-	.4byte	.LASF9215
+	.4byte	.LASF9217
 	.uleb128 0x5
 	.4byte	0x10c7
 	.uleb128 0x22
-	.4byte	.LASF9216
+	.4byte	.LASF9218
 	.byte	0x10
 	.byte	0x91
 	.byte	0x1a
@@ -2888,7 +2888,7 @@ fpga_program_sendbyte:
 	.byte	0x3
 	.4byte	cpu_irq_critical_section_counter
 	.uleb128 0x22
-	.4byte	.LASF9217
+	.4byte	.LASF9219
 	.byte	0x10
 	.byte	0x92
 	.byte	0x1a
@@ -2897,7 +2897,7 @@ fpga_program_sendbyte:
 	.byte	0x3
 	.4byte	cpu_irq_prev_interrupt_state
 	.uleb128 0x4
-	.4byte	.LASF9218
+	.4byte	.LASF9220
 	.byte	0x11
 	.byte	0xff
 	.byte	0x21
@@ -2905,13 +2905,13 @@ fpga_program_sendbyte:
 	.uleb128 0x3
 	.byte	0x4
 	.byte	0x4
-	.4byte	.LASF9219
+	.4byte	.LASF9221
 	.uleb128 0x3
 	.byte	0x8
 	.byte	0x4
-	.4byte	.LASF9220
+	.4byte	.LASF9222
 	.uleb128 0x23
-	.4byte	.LASF9227
+	.4byte	.LASF9229
 	.byte	0x7
 	.byte	0x1
 	.4byte	0x4e
@@ -2920,26 +2920,26 @@ fpga_program_sendbyte:
 	.byte	0x6
 	.4byte	0x1148
 	.uleb128 0x24
-	.4byte	.LASF9221
+	.4byte	.LASF9223
 	.byte	0x3
 	.uleb128 0x24
-	.4byte	.LASF9222
+	.4byte	.LASF9224
 	.byte	0x4
 	.uleb128 0x24
-	.4byte	.LASF9223
+	.4byte	.LASF9225
 	.byte	0x5
 	.uleb128 0x24
-	.4byte	.LASF9224
+	.4byte	.LASF9226
 	.byte	0x6
 	.uleb128 0x24
-	.4byte	.LASF9225
+	.4byte	.LASF9227
 	.byte	0x7
 	.uleb128 0x24
-	.4byte	.LASF9226
+	.4byte	.LASF9228
 	.byte	0x8
 	.byte	0
 	.uleb128 0x23
-	.4byte	.LASF9228
+	.4byte	.LASF9230
 	.byte	0x7
 	.byte	0x4
 	.4byte	0x34
@@ -2948,22 +2948,22 @@ fpga_program_sendbyte:
 	.byte	0xe
 	.4byte	0x118e
 	.uleb128 0x24
-	.4byte	.LASF9229
+	.4byte	.LASF9231
 	.byte	0
 	.uleb128 0x25
-	.4byte	.LASF9230
+	.4byte	.LASF9232
 	.4byte	0x8000000
 	.uleb128 0x25
-	.4byte	.LASF9231
+	.4byte	.LASF9233
 	.4byte	0x10000000
 	.uleb128 0x25
-	.4byte	.LASF9232
+	.4byte	.LASF9234
 	.4byte	0x28000000
 	.uleb128 0x25
-	.4byte	.LASF9233
+	.4byte	.LASF9235
 	.4byte	0x30000000
 	.uleb128 0x25
-	.4byte	.LASF9234
+	.4byte	.LASF9236
 	.4byte	0x38000000
 	.byte	0
 	.uleb128 0xa
@@ -2972,7 +2972,7 @@ fpga_program_sendbyte:
 	.uleb128 0x26
 	.byte	0
 	.uleb128 0x9
-	.4byte	.LASF9235
+	.4byte	.LASF9237
 	.byte	0x14
 	.byte	0x6b
 	.byte	0x10
@@ -2986,7 +2986,7 @@ fpga_program_sendbyte:
 	.byte	0x9
 	.4byte	0x11ed
 	.uleb128 0xd
-	.4byte	.LASF9236
+	.4byte	.LASF9238
 	.byte	0x15
 	.byte	0xb1
 	.byte	0xb
@@ -2995,7 +2995,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0xd
-	.4byte	.LASF9237
+	.4byte	.LASF9239
 	.byte	0x15
 	.byte	0xb8
 	.byte	0xb
@@ -3004,7 +3004,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0xd
-	.4byte	.LASF9238
+	.4byte	.LASF9240
 	.byte	0x15
 	.byte	0xbe
 	.byte	0xb
@@ -3013,7 +3013,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0xd
-	.4byte	.LASF9239
+	.4byte	.LASF9241
 	.byte	0x15
 	.byte	0xc5
 	.byte	0xb
@@ -3023,7 +3023,7 @@ fpga_program_sendbyte:
 	.uleb128 0xc
 	.byte	0
 	.uleb128 0x4
-	.4byte	.LASF9240
+	.4byte	.LASF9242
 	.byte	0x15
 	.byte	0xc6
 	.byte	0x3
@@ -3036,7 +3036,7 @@ fpga_program_sendbyte:
 	.byte	0x20
 	.byte	0
 	.uleb128 0x9
-	.4byte	.LASF9241
+	.4byte	.LASF9243
 	.byte	0x16
 	.byte	0x45
 	.byte	0xd
@@ -3050,7 +3050,7 @@ fpga_program_sendbyte:
 	.byte	0x9
 	.4byte	0x1272
 	.uleb128 0x1c
-	.4byte	.LASF9242
+	.4byte	.LASF9244
 	.byte	0x17
 	.2byte	0x13d
 	.byte	0xa
@@ -3059,7 +3059,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x1c
-	.4byte	.LASF9243
+	.4byte	.LASF9245
 	.byte	0x17
 	.2byte	0x13e
 	.byte	0xa
@@ -3068,7 +3068,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x1
 	.uleb128 0x1c
-	.4byte	.LASF9244
+	.4byte	.LASF9246
 	.byte	0x17
 	.2byte	0x13f
 	.byte	0x9
@@ -3077,7 +3077,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x2
 	.uleb128 0x1c
-	.4byte	.LASF9245
+	.4byte	.LASF9247
 	.byte	0x17
 	.2byte	0x140
 	.byte	0x9
@@ -3086,7 +3086,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0x1c
-	.4byte	.LASF9246
+	.4byte	.LASF9248
 	.byte	0x17
 	.2byte	0x141
 	.byte	0x9
@@ -3096,7 +3096,7 @@ fpga_program_sendbyte:
 	.uleb128 0x6
 	.byte	0
 	.uleb128 0x10
-	.4byte	.LASF9247
+	.4byte	.LASF9249
 	.byte	0x17
 	.2byte	0x142
 	.byte	0x3
@@ -3108,7 +3108,7 @@ fpga_program_sendbyte:
 	.byte	0x9
 	.4byte	0x136a
 	.uleb128 0x1c
-	.4byte	.LASF9248
+	.4byte	.LASF9250
 	.byte	0x17
 	.2byte	0x148
 	.byte	0xa
@@ -3117,7 +3117,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x1c
-	.4byte	.LASF9249
+	.4byte	.LASF9251
 	.byte	0x17
 	.2byte	0x149
 	.byte	0xa
@@ -3126,7 +3126,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x1
 	.uleb128 0x1c
-	.4byte	.LASF9250
+	.4byte	.LASF9252
 	.byte	0x17
 	.2byte	0x14a
 	.byte	0x9
@@ -3135,7 +3135,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x2
 	.uleb128 0x1c
-	.4byte	.LASF9251
+	.4byte	.LASF9253
 	.byte	0x17
 	.2byte	0x14b
 	.byte	0xa
@@ -3144,7 +3144,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0x1c
-	.4byte	.LASF9252
+	.4byte	.LASF9254
 	.byte	0x17
 	.2byte	0x14c
 	.byte	0xa
@@ -3153,7 +3153,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x5
 	.uleb128 0x1c
-	.4byte	.LASF9253
+	.4byte	.LASF9255
 	.byte	0x17
 	.2byte	0x14d
 	.byte	0xa
@@ -3162,7 +3162,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x6
 	.uleb128 0x1c
-	.4byte	.LASF9254
+	.4byte	.LASF9256
 	.byte	0x17
 	.2byte	0x14e
 	.byte	0xa
@@ -3171,7 +3171,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x7
 	.uleb128 0x1c
-	.4byte	.LASF9255
+	.4byte	.LASF9257
 	.byte	0x17
 	.2byte	0x14f
 	.byte	0x9
@@ -3180,7 +3180,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0x1c
-	.4byte	.LASF9256
+	.4byte	.LASF9258
 	.byte	0x17
 	.2byte	0x150
 	.byte	0x9
@@ -3189,7 +3189,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xa
 	.uleb128 0x1c
-	.4byte	.LASF9257
+	.4byte	.LASF9259
 	.byte	0x17
 	.2byte	0x151
 	.byte	0x9
@@ -3198,7 +3198,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xc
 	.uleb128 0x1c
-	.4byte	.LASF9258
+	.4byte	.LASF9260
 	.byte	0x17
 	.2byte	0x152
 	.byte	0xa
@@ -3207,7 +3207,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xe
 	.uleb128 0x1c
-	.4byte	.LASF9259
+	.4byte	.LASF9261
 	.byte	0x17
 	.2byte	0x153
 	.byte	0xa
@@ -3216,7 +3216,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xf
 	.uleb128 0x1c
-	.4byte	.LASF9260
+	.4byte	.LASF9262
 	.byte	0x17
 	.2byte	0x154
 	.byte	0xa
@@ -3225,7 +3225,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x10
 	.uleb128 0x1c
-	.4byte	.LASF9261
+	.4byte	.LASF9263
 	.byte	0x17
 	.2byte	0x155
 	.byte	0xa
@@ -3235,7 +3235,7 @@ fpga_program_sendbyte:
 	.uleb128 0x11
 	.byte	0
 	.uleb128 0x10
-	.4byte	.LASF9262
+	.4byte	.LASF9264
 	.byte	0x17
 	.2byte	0x156
 	.byte	0x3
@@ -3247,7 +3247,7 @@ fpga_program_sendbyte:
 	.byte	0x9
 	.4byte	0x1412
 	.uleb128 0x1c
-	.4byte	.LASF9248
+	.4byte	.LASF9250
 	.byte	0x17
 	.2byte	0x161
 	.byte	0xa
@@ -3256,7 +3256,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x1c
-	.4byte	.LASF9249
+	.4byte	.LASF9251
 	.byte	0x17
 	.2byte	0x162
 	.byte	0xa
@@ -3265,7 +3265,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x1
 	.uleb128 0x1c
-	.4byte	.LASF9250
+	.4byte	.LASF9252
 	.byte	0x17
 	.2byte	0x163
 	.byte	0x9
@@ -3274,7 +3274,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x2
 	.uleb128 0x1c
-	.4byte	.LASF9251
+	.4byte	.LASF9253
 	.byte	0x17
 	.2byte	0x164
 	.byte	0xa
@@ -3283,7 +3283,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0x1c
-	.4byte	.LASF9252
+	.4byte	.LASF9254
 	.byte	0x17
 	.2byte	0x165
 	.byte	0xa
@@ -3292,7 +3292,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x5
 	.uleb128 0x1c
-	.4byte	.LASF9253
+	.4byte	.LASF9255
 	.byte	0x17
 	.2byte	0x166
 	.byte	0xa
@@ -3301,7 +3301,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x6
 	.uleb128 0x1c
-	.4byte	.LASF9254
+	.4byte	.LASF9256
 	.byte	0x17
 	.2byte	0x167
 	.byte	0xa
@@ -3310,7 +3310,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x7
 	.uleb128 0x1c
-	.4byte	.LASF9261
+	.4byte	.LASF9263
 	.byte	0x17
 	.2byte	0x168
 	.byte	0xa
@@ -3319,7 +3319,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0x1c
-	.4byte	.LASF9263
+	.4byte	.LASF9265
 	.byte	0x17
 	.2byte	0x169
 	.byte	0xa
@@ -3329,7 +3329,7 @@ fpga_program_sendbyte:
 	.uleb128 0x9
 	.byte	0
 	.uleb128 0x10
-	.4byte	.LASF9264
+	.4byte	.LASF9266
 	.byte	0x17
 	.2byte	0x16a
 	.byte	0x3
@@ -3341,7 +3341,7 @@ fpga_program_sendbyte:
 	.byte	0x9
 	.4byte	0x146a
 	.uleb128 0x1c
-	.4byte	.LASF9248
+	.4byte	.LASF9250
 	.byte	0x17
 	.2byte	0x179
 	.byte	0xa
@@ -3350,7 +3350,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x1c
-	.4byte	.LASF9249
+	.4byte	.LASF9251
 	.byte	0x17
 	.2byte	0x17a
 	.byte	0xa
@@ -3359,7 +3359,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x1
 	.uleb128 0x1c
-	.4byte	.LASF9265
+	.4byte	.LASF9267
 	.byte	0x17
 	.2byte	0x17b
 	.byte	0xa
@@ -3368,7 +3368,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x2
 	.uleb128 0x1c
-	.4byte	.LASF9266
+	.4byte	.LASF9268
 	.byte	0x17
 	.2byte	0x17c
 	.byte	0xa
@@ -3378,7 +3378,7 @@ fpga_program_sendbyte:
 	.uleb128 0x4
 	.byte	0
 	.uleb128 0x10
-	.4byte	.LASF9267
+	.4byte	.LASF9269
 	.byte	0x17
 	.2byte	0x17d
 	.byte	0x3
@@ -3390,7 +3390,7 @@ fpga_program_sendbyte:
 	.byte	0x9
 	.4byte	0x1502
 	.uleb128 0x1c
-	.4byte	.LASF9248
+	.4byte	.LASF9250
 	.byte	0x17
 	.2byte	0x1a9
 	.byte	0xa
@@ -3399,7 +3399,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x1c
-	.4byte	.LASF9249
+	.4byte	.LASF9251
 	.byte	0x17
 	.2byte	0x1aa
 	.byte	0xa
@@ -3408,7 +3408,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x1
 	.uleb128 0x1c
-	.4byte	.LASF9265
+	.4byte	.LASF9267
 	.byte	0x17
 	.2byte	0x1ab
 	.byte	0x9
@@ -3417,7 +3417,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x2
 	.uleb128 0x1c
-	.4byte	.LASF9268
+	.4byte	.LASF9270
 	.byte	0x17
 	.2byte	0x1ac
 	.byte	0xa
@@ -3426,7 +3426,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0x1c
-	.4byte	.LASF9269
+	.4byte	.LASF9271
 	.byte	0x17
 	.2byte	0x1ad
 	.byte	0xa
@@ -3435,7 +3435,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x5
 	.uleb128 0x1c
-	.4byte	.LASF9270
+	.4byte	.LASF9272
 	.byte	0x17
 	.2byte	0x1ae
 	.byte	0xa
@@ -3444,7 +3444,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x6
 	.uleb128 0x1c
-	.4byte	.LASF9271
+	.4byte	.LASF9273
 	.byte	0x17
 	.2byte	0x1af
 	.byte	0xa
@@ -3453,7 +3453,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x7
 	.uleb128 0x1c
-	.4byte	.LASF9272
+	.4byte	.LASF9274
 	.byte	0x17
 	.2byte	0x1b0
 	.byte	0xa
@@ -3463,7 +3463,7 @@ fpga_program_sendbyte:
 	.uleb128 0x8
 	.byte	0
 	.uleb128 0x10
-	.4byte	.LASF9273
+	.4byte	.LASF9275
 	.byte	0x17
 	.2byte	0x1b1
 	.byte	0x3
@@ -3475,7 +3475,7 @@ fpga_program_sendbyte:
 	.byte	0x9
 	.4byte	0x1564
 	.uleb128 0xd
-	.4byte	.LASF9274
+	.4byte	.LASF9276
 	.byte	0x18
 	.byte	0x52
 	.byte	0x8
@@ -3484,7 +3484,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0xd
-	.4byte	.LASF9275
+	.4byte	.LASF9277
 	.byte	0x18
 	.byte	0x5f
 	.byte	0x9
@@ -3493,7 +3493,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0xd
-	.4byte	.LASF9276
+	.4byte	.LASF9278
 	.byte	0x18
 	.byte	0x6c
 	.byte	0x8
@@ -3502,7 +3502,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0xd
-	.4byte	.LASF9277
+	.4byte	.LASF9279
 	.byte	0x18
 	.byte	0x75
 	.byte	0xb
@@ -3511,7 +3511,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xc
 	.uleb128 0xd
-	.4byte	.LASF9278
+	.4byte	.LASF9280
 	.byte	0x18
 	.byte	0x7a
 	.byte	0x8
@@ -3533,7 +3533,7 @@ fpga_program_sendbyte:
 	.byte	0x4
 	.4byte	0x1570
 	.uleb128 0x4
-	.4byte	.LASF9279
+	.4byte	.LASF9281
 	.byte	0x18
 	.byte	0x7b
 	.byte	0x3
@@ -3545,7 +3545,7 @@ fpga_program_sendbyte:
 	.byte	0x9
 	.4byte	0x15b0
 	.uleb128 0xd
-	.4byte	.LASF9280
+	.4byte	.LASF9282
 	.byte	0x19
 	.byte	0x63
 	.byte	0x24
@@ -3554,7 +3554,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0xd
-	.4byte	.LASF9281
+	.4byte	.LASF9283
 	.byte	0x19
 	.byte	0x65
 	.byte	0x31
@@ -3573,7 +3573,7 @@ fpga_program_sendbyte:
 	.byte	0x4
 	.4byte	0x157c
 	.uleb128 0x4
-	.4byte	.LASF9282
+	.4byte	.LASF9284
 	.byte	0x19
 	.byte	0x66
 	.byte	0x3
@@ -3585,7 +3585,7 @@ fpga_program_sendbyte:
 	.byte	0x9
 	.4byte	0x1632
 	.uleb128 0xd
-	.4byte	.LASF9283
+	.4byte	.LASF9285
 	.byte	0x19
 	.byte	0x6e
 	.byte	0x23
@@ -3594,7 +3594,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0xd
-	.4byte	.LASF9284
+	.4byte	.LASF9286
 	.byte	0x19
 	.byte	0x70
 	.byte	0x27
@@ -3603,7 +3603,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0xd
-	.4byte	.LASF9285
+	.4byte	.LASF9287
 	.byte	0x19
 	.byte	0x73
 	.byte	0x23
@@ -3612,7 +3612,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0xd
-	.4byte	.LASF9286
+	.4byte	.LASF9288
 	.byte	0x19
 	.byte	0x75
 	.byte	0x28
@@ -3621,7 +3621,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xc
 	.uleb128 0xd
-	.4byte	.LASF9287
+	.4byte	.LASF9289
 	.byte	0x19
 	.byte	0x77
 	.byte	0x27
@@ -3630,7 +3630,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x10
 	.uleb128 0xd
-	.4byte	.LASF9288
+	.4byte	.LASF9290
 	.byte	0x19
 	.byte	0x79
 	.byte	0x27
@@ -3652,13 +3652,13 @@ fpga_program_sendbyte:
 	.byte	0x4
 	.4byte	0x146a
 	.uleb128 0x4
-	.4byte	.LASF9289
+	.4byte	.LASF9291
 	.byte	0x19
 	.byte	0x7a
 	.byte	0x3
 	.4byte	0x15ce
 	.uleb128 0x9
-	.4byte	.LASF9290
+	.4byte	.LASF9292
 	.byte	0x19
 	.byte	0x7d
 	.byte	0x26
@@ -3681,7 +3681,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0xd
-	.4byte	.LASF9291
+	.4byte	.LASF9293
 	.byte	0x1a
 	.byte	0x58
 	.byte	0xb
@@ -3690,7 +3690,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0xd
-	.4byte	.LASF9292
+	.4byte	.LASF9294
 	.byte	0x1a
 	.byte	0x5b
 	.byte	0xb
@@ -3699,7 +3699,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0xc
 	.uleb128 0xd
-	.4byte	.LASF9293
+	.4byte	.LASF9295
 	.byte	0x1a
 	.byte	0x5e
 	.byte	0x9
@@ -3708,7 +3708,7 @@ fpga_program_sendbyte:
 	.byte	0x23
 	.uleb128 0x10
 	.uleb128 0xd
-	.4byte	.LASF9294
+	.4byte	.LASF9296
 	.byte	0x1a
 	.byte	0x62
 	.byte	0x8
@@ -3721,13 +3721,13 @@ fpga_program_sendbyte:
 	.byte	0x4
 	.4byte	0xa3
 	.uleb128 0x4
-	.4byte	.LASF9295
+	.4byte	.LASF9297
 	.byte	0x1a
 	.byte	0x63
 	.byte	0x3
 	.4byte	0x1664
 	.uleb128 0x9
-	.4byte	.LASF9296
+	.4byte	.LASF9298
 	.byte	0x1a
 	.byte	0x64
 	.byte	0x1b
@@ -3735,7 +3735,7 @@ fpga_program_sendbyte:
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x9
-	.4byte	.LASF9297
+	.4byte	.LASF9299
 	.byte	0x1b
 	.byte	0x57
 	.byte	0x23
@@ -3743,7 +3743,7 @@ fpga_program_sendbyte:
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x9
-	.4byte	.LASF9298
+	.4byte	.LASF9300
 	.byte	0x1c
 	.byte	0x65
 	.byte	0x10
@@ -3752,7 +3752,7 @@ fpga_program_sendbyte:
 	.byte	0x1
 	.uleb128 0x28
 	.byte	0x1
-	.4byte	.LASF9299
+	.4byte	.LASF9301
 	.byte	0x3
 	.byte	0x3e
 	.byte	0x6
@@ -3763,7 +3763,7 @@ fpga_program_sendbyte:
 	.byte	0x1
 	.4byte	0x1729
 	.uleb128 0x29
-	.4byte	.LASF9304
+	.4byte	.LASF9306
 	.byte	0x3
 	.byte	0x3e
 	.byte	0x24
@@ -3777,7 +3777,7 @@ fpga_program_sendbyte:
 	.byte	0
 	.uleb128 0x28
 	.byte	0x1
-	.4byte	.LASF9300
+	.4byte	.LASF9302
 	.byte	0x3
 	.byte	0x35
 	.byte	0x6
@@ -3793,7 +3793,7 @@ fpga_program_sendbyte:
 	.byte	0
 	.uleb128 0x28
 	.byte	0x1
-	.4byte	.LASF9301
+	.4byte	.LASF9303
 	.byte	0x3
 	.byte	0x1f
 	.byte	0x6
@@ -3804,7 +3804,7 @@ fpga_program_sendbyte:
 	.byte	0x1
 	.4byte	0x17b8
 	.uleb128 0x22
-	.4byte	.LASF9302
+	.4byte	.LASF9304
 	.byte	0x3
 	.byte	0x24
 	.byte	0x15
@@ -3836,7 +3836,7 @@ fpga_program_sendbyte:
 	.byte	0
 	.uleb128 0x28
 	.byte	0x1
-	.4byte	.LASF9303
+	.4byte	.LASF9305
 	.byte	0x3
 	.byte	0x18
 	.byte	0x6
@@ -3854,7 +3854,7 @@ fpga_program_sendbyte:
 	.4byte	0x18a9
 	.byte	0
 	.uleb128 0x2b
-	.4byte	.LASF9319
+	.4byte	.LASF9321
 	.byte	0x2
 	.2byte	0x14b
 	.byte	0x14
@@ -3865,7 +3865,7 @@ fpga_program_sendbyte:
 	.byte	0x1
 	.4byte	0x181b
 	.uleb128 0x2c
-	.4byte	.LASF9305
+	.4byte	.LASF9307
 	.byte	0x2
 	.2byte	0x14b
 	.byte	0x3c
@@ -3878,7 +3878,7 @@ fpga_program_sendbyte:
 	.4byte	0x18ef
 	.byte	0
 	.uleb128 0x2d
-	.4byte	.LASF9306
+	.4byte	.LASF9308
 	.byte	0x2
 	.2byte	0x11d
 	.byte	0x18
@@ -3894,7 +3894,7 @@ fpga_program_sendbyte:
 	.4byte	0x1844
 	.byte	0
 	.uleb128 0x2e
-	.4byte	.LASF9307
+	.4byte	.LASF9309
 	.byte	0x2
 	.byte	0xe7
 	.byte	0x18
@@ -3910,7 +3910,7 @@ fpga_program_sendbyte:
 	.4byte	0x186c
 	.byte	0
 	.uleb128 0x2e
-	.4byte	.LASF9308
+	.4byte	.LASF9310
 	.byte	0x1
 	.byte	0xca
 	.byte	0x18
@@ -3922,7 +3922,7 @@ fpga_program_sendbyte:
 	.byte	0x1
 	.4byte	0x189a
 	.uleb128 0x29
-	.4byte	.LASF9305
+	.4byte	.LASF9307
 	.byte	0x1
 	.byte	0xca
 	.byte	0x2e
@@ -3934,56 +3934,56 @@ fpga_program_sendbyte:
 	.uleb128 0x2f
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9309
-	.4byte	.LASF9309
+	.4byte	.LASF9311
+	.4byte	.LASF9311
 	.byte	0x15
 	.2byte	0x11f
 	.byte	0xa
 	.uleb128 0x30
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9310
-	.4byte	.LASF9310
+	.4byte	.LASF9312
+	.4byte	.LASF9312
 	.byte	0x13
 	.byte	0xc3
 	.byte	0x6
 	.uleb128 0x30
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9311
-	.4byte	.LASF9311
+	.4byte	.LASF9313
+	.4byte	.LASF9313
 	.byte	0x13
 	.byte	0xc4
 	.byte	0x6
 	.uleb128 0x30
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9312
-	.4byte	.LASF9312
+	.4byte	.LASF9314
+	.4byte	.LASF9314
 	.byte	0x15
 	.byte	0xdf
 	.byte	0xa
 	.uleb128 0x30
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9313
-	.4byte	.LASF9313
+	.4byte	.LASF9315
+	.4byte	.LASF9315
 	.byte	0x13
 	.byte	0xcb
 	.byte	0xa
 	.uleb128 0x30
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9314
-	.4byte	.LASF9314
+	.4byte	.LASF9316
+	.4byte	.LASF9316
 	.byte	0x15
 	.byte	0xfb
 	.byte	0x6
 	.uleb128 0x30
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9315
-	.4byte	.LASF9315
+	.4byte	.LASF9317
+	.4byte	.LASF9317
 	.byte	0x1d
 	.byte	0xcf
 	.byte	0xa
@@ -5916,7 +5916,7 @@ fpga_program_sendbyte:
 	.uleb128 0x83
 	.byte	0x5
 	.uleb128 0x2c
-	.4byte	.LASF8561
+	.4byte	.LASF8563
 	.byte	0x3
 	.uleb128 0x36
 	.uleb128 0x12
@@ -5951,7 +5951,7 @@ fpga_program_sendbyte:
 	.uleb128 0x86
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LASF8623
+	.4byte	.LASF8625
 	.byte	0x3
 	.uleb128 0x30
 	.uleb128 0x85
@@ -5965,14 +5965,14 @@ fpga_program_sendbyte:
 	.uleb128 0x87
 	.byte	0x5
 	.uleb128 0x2c
-	.4byte	.LASF8626
+	.4byte	.LASF8628
 	.file 136 ".././hal/sam3u1c/inc/sam_gpio/sam_gpio.h"
 	.byte	0x3
 	.uleb128 0x31
 	.uleb128 0x88
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LASF8627
+	.4byte	.LASF8629
 	.byte	0x3
 	.uleb128 0x30
 	.uleb128 0x13
@@ -5989,7 +5989,7 @@ fpga_program_sendbyte:
 	.uleb128 0x89
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LASF8662
+	.4byte	.LASF8664
 	.file 138 ".././hal/sam3u1c/inc/sam/ioport_pio.h"
 	.byte	0x3
 	.uleb128 0x87
@@ -6015,14 +6015,14 @@ fpga_program_sendbyte:
 	.uleb128 0x8c
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LASF8689
+	.4byte	.LASF8691
 	.byte	0x3
 	.uleb128 0x2f
 	.uleb128 0x87
 	.byte	0x4
 	.byte	0x5
 	.uleb128 0x47
-	.4byte	.LASF8690
+	.4byte	.LASF8692
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0x61
@@ -6047,7 +6047,7 @@ fpga_program_sendbyte:
 	.uleb128 0x14
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LASF8714
+	.4byte	.LASF8716
 	.file 143 "./conf_sleepmgr.h"
 	.byte	0x3
 	.uleb128 0x34
@@ -6062,7 +6062,7 @@ fpga_program_sendbyte:
 	.uleb128 0x90
 	.byte	0x5
 	.uleb128 0x2c
-	.4byte	.LASF8717
+	.4byte	.LASF8719
 	.byte	0x3
 	.uleb128 0x32
 	.uleb128 0x14
@@ -6074,7 +6074,7 @@ fpga_program_sendbyte:
 	.uleb128 0x91
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LASF8718
+	.4byte	.LASF8720
 	.byte	0x4
 	.file 146 ".././hal/sam3u1c/inc/sam_twi/twi_master.h"
 	.byte	0x3
@@ -6082,7 +6082,7 @@ fpga_program_sendbyte:
 	.uleb128 0x92
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LASF8719
+	.4byte	.LASF8721
 	.file 147 ".././hal/sam3u1c/inc/twi.h"
 	.byte	0x3
 	.uleb128 0x2f
@@ -6106,7 +6106,7 @@ fpga_program_sendbyte:
 	.uleb128 0x95
 	.byte	0x5
 	.uleb128 0x2c
-	.4byte	.LASF8737
+	.4byte	.LASF8739
 	.byte	0x3
 	.uleb128 0x33
 	.uleb128 0x92
@@ -6118,7 +6118,7 @@ fpga_program_sendbyte:
 	.uleb128 0x96
 	.byte	0x5
 	.uleb128 0x2c
-	.4byte	.LASF8738
+	.4byte	.LASF8740
 	.byte	0x3
 	.uleb128 0x32
 	.uleb128 0x94
@@ -6137,7 +6137,7 @@ fpga_program_sendbyte:
 	.uleb128 0x98
 	.byte	0x5
 	.uleb128 0x2c
-	.4byte	.LASF8743
+	.4byte	.LASF8745
 	.byte	0x3
 	.uleb128 0x2f
 	.uleb128 0x7b
@@ -6148,7 +6148,7 @@ fpga_program_sendbyte:
 	.uleb128 0x99
 	.byte	0x5
 	.uleb128 0x2c
-	.4byte	.LASF8744
+	.4byte	.LASF8746
 	.byte	0x3
 	.uleb128 0x36
 	.uleb128 0x15
@@ -6170,7 +6170,7 @@ fpga_program_sendbyte:
 	.uleb128 0x9b
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LASF8756
+	.4byte	.LASF8758
 	.byte	0x3
 	.uleb128 0x2f
 	.uleb128 0x16
@@ -6182,7 +6182,7 @@ fpga_program_sendbyte:
 	.uleb128 0x9c
 	.byte	0x5
 	.uleb128 0x2e
-	.4byte	.LASF8784
+	.4byte	.LASF8786
 	.byte	0x3
 	.uleb128 0x30
 	.uleb128 0x16
@@ -6194,13 +6194,13 @@ fpga_program_sendbyte:
 	.uleb128 0x1b
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LASF8797
+	.4byte	.LASF8799
 	.byte	0x3
 	.uleb128 0x30
 	.uleb128 0x17
 	.byte	0x5
 	.uleb128 0x30
-	.4byte	.LASF8798
+	.4byte	.LASF8800
 	.file 157 ".././hal/sam3u1c/inc/usb_atmel.h"
 	.byte	0x3
 	.uleb128 0x32
@@ -6223,19 +6223,19 @@ fpga_program_sendbyte:
 	.uleb128 0x1a
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LASF8948
+	.4byte	.LASF8950
 	.byte	0x3
 	.uleb128 0x30
 	.uleb128 0x19
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LASF8949
+	.4byte	.LASF8951
 	.byte	0x3
 	.uleb128 0x31
 	.uleb128 0x18
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LASF8950
+	.4byte	.LASF8952
 	.byte	0x4
 	.byte	0x7
 	.4byte	.Ldebug_macro136
@@ -6253,7 +6253,7 @@ fpga_program_sendbyte:
 	.uleb128 0x9f
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LASF8972
+	.4byte	.LASF8974
 	.byte	0x4
 	.file 160 ".././hal/sam3u1c/inc/main.h"
 	.byte	0x3
@@ -6261,7 +6261,7 @@ fpga_program_sendbyte:
 	.uleb128 0xa0
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LASF8973
+	.4byte	.LASF8975
 	.byte	0x4
 	.byte	0x4
 	.byte	0x4
@@ -6283,7 +6283,7 @@ fpga_program_sendbyte:
 	.uleb128 0xa1
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LASF8974
+	.4byte	.LASF8976
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0x91
@@ -31991,7 +31991,7 @@ fpga_program_sendbyte:
 	.uleb128 0xa6
 	.4byte	.LASF8397
 	.byte	0
-	.section	.debug_macro,"G",%progbits,wm4.cw521.h.62.6f487d78438f1a237b2b554798be063f,comdat
+	.section	.debug_macro,"G",%progbits,wm4.cw521.h.62.6d49a8d57765058e16d369fae3635e9e,comdat
 .Ldebug_macro109:
 	.2byte	0x4
 	.byte	0
@@ -32188,10 +32188,10 @@ fpga_program_sendbyte:
 	.uleb128 0xa6
 	.4byte	.LASF8463
 	.byte	0x5
-	.uleb128 0xa9
+	.uleb128 0xa8
 	.4byte	.LASF8464
 	.byte	0x5
-	.uleb128 0xaa
+	.uleb128 0xa9
 	.4byte	.LASF8465
 	.byte	0x5
 	.uleb128 0xac
@@ -32206,28 +32206,28 @@ fpga_program_sendbyte:
 	.uleb128 0xb0
 	.4byte	.LASF8469
 	.byte	0x5
-	.uleb128 0xb1
+	.uleb128 0xb2
 	.4byte	.LASF8470
 	.byte	0x5
-	.uleb128 0xb2
+	.uleb128 0xb3
 	.4byte	.LASF8471
 	.byte	0x5
-	.uleb128 0xb3
+	.uleb128 0xb4
 	.4byte	.LASF8472
 	.byte	0x5
-	.uleb128 0xb4
+	.uleb128 0xb5
 	.4byte	.LASF8473
 	.byte	0x5
-	.uleb128 0xb5
+	.uleb128 0xb6
 	.4byte	.LASF8474
 	.byte	0x5
-	.uleb128 0xb6
+	.uleb128 0xb7
 	.4byte	.LASF8475
 	.byte	0x5
-	.uleb128 0xc6
+	.uleb128 0xb8
 	.4byte	.LASF8476
 	.byte	0x5
-	.uleb128 0xc7
+	.uleb128 0xb9
 	.4byte	.LASF8477
 	.byte	0x5
 	.uleb128 0xc9
@@ -32242,10 +32242,10 @@ fpga_program_sendbyte:
 	.uleb128 0xcd
 	.4byte	.LASF8481
 	.byte	0x5
-	.uleb128 0xce
+	.uleb128 0xcf
 	.4byte	.LASF8482
 	.byte	0x5
-	.uleb128 0xcf
+	.uleb128 0xd0
 	.4byte	.LASF8483
 	.byte	0x5
 	.uleb128 0xd1
@@ -32254,7 +32254,7 @@ fpga_program_sendbyte:
 	.uleb128 0xd2
 	.4byte	.LASF8485
 	.byte	0x5
-	.uleb128 0xd3
+	.uleb128 0xd4
 	.4byte	.LASF8486
 	.byte	0x5
 	.uleb128 0xd5
@@ -32263,31 +32263,31 @@ fpga_program_sendbyte:
 	.uleb128 0xd6
 	.4byte	.LASF8488
 	.byte	0x5
-	.uleb128 0xd7
+	.uleb128 0xd8
 	.4byte	.LASF8489
 	.byte	0x5
-	.uleb128 0xd8
+	.uleb128 0xd9
 	.4byte	.LASF8490
 	.byte	0x5
-	.uleb128 0xdb
+	.uleb128 0xda
 	.4byte	.LASF8491
 	.byte	0x5
-	.uleb128 0xdc
+	.uleb128 0xdb
 	.4byte	.LASF8492
 	.byte	0x5
-	.uleb128 0xdd
+	.uleb128 0xde
 	.4byte	.LASF8493
 	.byte	0x5
-	.uleb128 0xde
+	.uleb128 0xdf
 	.4byte	.LASF8494
 	.byte	0x5
-	.uleb128 0xdf
+	.uleb128 0xe0
 	.4byte	.LASF8495
 	.byte	0x5
-	.uleb128 0xe0
+	.uleb128 0xe1
 	.4byte	.LASF8496
 	.byte	0x5
-	.uleb128 0xe1
+	.uleb128 0xe2
 	.4byte	.LASF8497
 	.byte	0x5
 	.uleb128 0xe3
@@ -32296,19 +32296,19 @@ fpga_program_sendbyte:
 	.uleb128 0xe4
 	.4byte	.LASF8499
 	.byte	0x5
-	.uleb128 0xe5
+	.uleb128 0xe6
 	.4byte	.LASF8500
 	.byte	0x5
-	.uleb128 0xe6
+	.uleb128 0xe7
 	.4byte	.LASF8501
 	.byte	0x5
-	.uleb128 0xe7
+	.uleb128 0xe8
 	.4byte	.LASF8502
 	.byte	0x5
-	.uleb128 0xe8
+	.uleb128 0xe9
 	.4byte	.LASF8503
 	.byte	0x5
-	.uleb128 0xe9
+	.uleb128 0xea
 	.4byte	.LASF8504
 	.byte	0x5
 	.uleb128 0xeb
@@ -32317,74 +32317,80 @@ fpga_program_sendbyte:
 	.uleb128 0xec
 	.4byte	.LASF8506
 	.byte	0x5
-	.uleb128 0xed
+	.uleb128 0xee
 	.4byte	.LASF8507
 	.byte	0x5
-	.uleb128 0xee
+	.uleb128 0xef
 	.4byte	.LASF8508
 	.byte	0x5
-	.uleb128 0xef
+	.uleb128 0xf0
 	.4byte	.LASF8509
 	.byte	0x5
-	.uleb128 0xf0
+	.uleb128 0xf1
 	.4byte	.LASF8510
 	.byte	0x5
-	.uleb128 0xf1
+	.uleb128 0xf2
 	.4byte	.LASF8511
 	.byte	0x5
-	.uleb128 0xf4
+	.uleb128 0xf3
 	.4byte	.LASF8512
 	.byte	0x5
-	.uleb128 0xf5
+	.uleb128 0xf4
 	.4byte	.LASF8513
 	.byte	0x5
-	.uleb128 0xf6
+	.uleb128 0xf7
 	.4byte	.LASF8514
 	.byte	0x5
-	.uleb128 0xf7
+	.uleb128 0xf8
 	.4byte	.LASF8515
 	.byte	0x5
-	.uleb128 0xfa
+	.uleb128 0xf9
 	.4byte	.LASF8516
 	.byte	0x5
-	.uleb128 0xfb
+	.uleb128 0xfa
 	.4byte	.LASF8517
 	.byte	0x5
-	.uleb128 0xfc
+	.uleb128 0xfd
 	.4byte	.LASF8518
 	.byte	0x5
-	.uleb128 0xfd
+	.uleb128 0xfe
 	.4byte	.LASF8519
 	.byte	0x5
-	.uleb128 0x105
+	.uleb128 0xff
 	.4byte	.LASF8520
 	.byte	0x5
-	.uleb128 0x108
+	.uleb128 0x100
 	.4byte	.LASF8521
 	.byte	0x5
-	.uleb128 0x109
+	.uleb128 0x108
 	.4byte	.LASF8522
 	.byte	0x5
-	.uleb128 0x10a
+	.uleb128 0x10b
 	.4byte	.LASF8523
 	.byte	0x5
-	.uleb128 0x10b
+	.uleb128 0x10c
 	.4byte	.LASF8524
 	.byte	0x5
-	.uleb128 0x10c
+	.uleb128 0x10d
 	.4byte	.LASF8525
 	.byte	0x5
-	.uleb128 0x110
+	.uleb128 0x10e
 	.4byte	.LASF8526
 	.byte	0x5
-	.uleb128 0x112
+	.uleb128 0x10f
 	.4byte	.LASF8527
 	.byte	0x5
 	.uleb128 0x113
 	.4byte	.LASF8528
 	.byte	0x5
-	.uleb128 0x116
+	.uleb128 0x115
 	.4byte	.LASF8529
+	.byte	0x5
+	.uleb128 0x116
+	.4byte	.LASF8530
+	.byte	0x5
+	.uleb128 0x119
+	.4byte	.LASF8531
 	.byte	0
 	.section	.debug_macro,"G",%progbits,wm4.pmc.h.45.bbe1bf97a811e3b283420b2eeadf0b35,comdat
 .Ldebug_macro110:
@@ -32392,49 +32398,49 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LASF8530
-	.byte	0x5
-	.uleb128 0x3a
-	.4byte	.LASF8531
-	.byte	0x5
-	.uleb128 0x3d
 	.4byte	.LASF8532
 	.byte	0x5
-	.uleb128 0x40
+	.uleb128 0x3a
 	.4byte	.LASF8533
 	.byte	0x5
-	.uleb128 0x44
+	.uleb128 0x3d
 	.4byte	.LASF8534
 	.byte	0x5
-	.uleb128 0x49
+	.uleb128 0x40
 	.4byte	.LASF8535
 	.byte	0x5
-	.uleb128 0x4d
+	.uleb128 0x44
 	.4byte	.LASF8536
 	.byte	0x5
-	.uleb128 0x51
+	.uleb128 0x49
 	.4byte	.LASF8537
 	.byte	0x5
-	.uleb128 0x55
+	.uleb128 0x4d
 	.4byte	.LASF8538
 	.byte	0x5
-	.uleb128 0x59
+	.uleb128 0x51
 	.4byte	.LASF8539
 	.byte	0x5
-	.uleb128 0x5c
+	.uleb128 0x55
 	.4byte	.LASF8540
 	.byte	0x5
-	.uleb128 0x5e
+	.uleb128 0x59
 	.4byte	.LASF8541
 	.byte	0x5
-	.uleb128 0x5f
+	.uleb128 0x5c
 	.4byte	.LASF8542
 	.byte	0x5
-	.uleb128 0x60
+	.uleb128 0x5e
 	.4byte	.LASF8543
 	.byte	0x5
-	.uleb128 0x71
+	.uleb128 0x5f
 	.4byte	.LASF8544
+	.byte	0x5
+	.uleb128 0x60
+	.4byte	.LASF8545
+	.byte	0x5
+	.uleb128 0x71
+	.4byte	.LASF8546
 	.byte	0
 	.section	.debug_macro,"G",%progbits,wm4.osc.h.94.b766cddafe899eca01d775f7b2906680,comdat
 .Ldebug_macro111:
@@ -32442,52 +32448,52 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0x5
 	.uleb128 0x5e
-	.4byte	.LASF8545
-	.byte	0x5
-	.uleb128 0x5f
-	.4byte	.LASF8546
-	.byte	0x5
-	.uleb128 0x60
 	.4byte	.LASF8547
 	.byte	0x5
-	.uleb128 0x61
+	.uleb128 0x5f
 	.4byte	.LASF8548
 	.byte	0x5
-	.uleb128 0x62
+	.uleb128 0x60
 	.4byte	.LASF8549
 	.byte	0x5
-	.uleb128 0x63
+	.uleb128 0x61
 	.4byte	.LASF8550
 	.byte	0x5
-	.uleb128 0x64
+	.uleb128 0x62
 	.4byte	.LASF8551
 	.byte	0x5
-	.uleb128 0x65
+	.uleb128 0x63
 	.4byte	.LASF8552
 	.byte	0x5
-	.uleb128 0x6a
+	.uleb128 0x64
 	.4byte	.LASF8553
 	.byte	0x5
-	.uleb128 0x6b
+	.uleb128 0x65
 	.4byte	.LASF8554
 	.byte	0x5
-	.uleb128 0x6c
+	.uleb128 0x6a
 	.4byte	.LASF8555
 	.byte	0x5
-	.uleb128 0x6d
+	.uleb128 0x6b
 	.4byte	.LASF8556
 	.byte	0x5
-	.uleb128 0x6e
+	.uleb128 0x6c
 	.4byte	.LASF8557
 	.byte	0x5
-	.uleb128 0x6f
+	.uleb128 0x6d
 	.4byte	.LASF8558
 	.byte	0x5
-	.uleb128 0x70
+	.uleb128 0x6e
 	.4byte	.LASF8559
 	.byte	0x5
-	.uleb128 0x71
+	.uleb128 0x6f
 	.4byte	.LASF8560
+	.byte	0x5
+	.uleb128 0x70
+	.4byte	.LASF8561
+	.byte	0x5
+	.uleb128 0x71
+	.4byte	.LASF8562
 	.byte	0
 	.section	.debug_macro,"G",%progbits,wm4.pll.h.45.a605c31ca466ae25752a678e8572be48,comdat
 .Ldebug_macro112:
@@ -32495,49 +32501,49 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LASF8562
-	.byte	0x5
-	.uleb128 0x3e
-	.4byte	.LASF8563
-	.byte	0x5
-	.uleb128 0x3f
 	.4byte	.LASF8564
 	.byte	0x5
-	.uleb128 0x41
+	.uleb128 0x3e
 	.4byte	.LASF8565
 	.byte	0x5
-	.uleb128 0x42
+	.uleb128 0x3f
 	.4byte	.LASF8566
 	.byte	0x5
-	.uleb128 0x44
+	.uleb128 0x41
 	.4byte	.LASF8567
 	.byte	0x5
-	.uleb128 0x45
+	.uleb128 0x42
 	.4byte	.LASF8568
 	.byte	0x5
-	.uleb128 0x46
+	.uleb128 0x44
 	.4byte	.LASF8569
 	.byte	0x5
-	.uleb128 0x48
+	.uleb128 0x45
 	.4byte	.LASF8570
 	.byte	0x5
-	.uleb128 0x4a
+	.uleb128 0x46
 	.4byte	.LASF8571
 	.byte	0x5
-	.uleb128 0x59
+	.uleb128 0x48
 	.4byte	.LASF8572
 	.byte	0x5
-	.uleb128 0x68
+	.uleb128 0x4a
 	.4byte	.LASF8573
 	.byte	0x5
-	.uleb128 0x69
+	.uleb128 0x59
 	.4byte	.LASF8574
 	.byte	0x5
-	.uleb128 0x6a
+	.uleb128 0x68
 	.4byte	.LASF8575
 	.byte	0x5
-	.uleb128 0x8b
+	.uleb128 0x69
 	.4byte	.LASF8576
+	.byte	0x5
+	.uleb128 0x6a
+	.4byte	.LASF8577
+	.byte	0x5
+	.uleb128 0x8b
+	.4byte	.LASF8578
 	.byte	0
 	.section	.debug_macro,"G",%progbits,wm4.sysclk.h.156.541a142b0016a365728ea1f7c0e3db84,comdat
 .Ldebug_macro113:
@@ -32545,58 +32551,58 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0x5
 	.uleb128 0x9c
-	.4byte	.LASF8577
-	.byte	0x5
-	.uleb128 0x9d
-	.4byte	.LASF8578
-	.byte	0x5
-	.uleb128 0x9e
 	.4byte	.LASF8579
 	.byte	0x5
-	.uleb128 0x9f
+	.uleb128 0x9d
 	.4byte	.LASF8580
 	.byte	0x5
-	.uleb128 0xa0
+	.uleb128 0x9e
 	.4byte	.LASF8581
 	.byte	0x5
-	.uleb128 0xa1
+	.uleb128 0x9f
 	.4byte	.LASF8582
 	.byte	0x5
-	.uleb128 0xa2
+	.uleb128 0xa0
 	.4byte	.LASF8583
 	.byte	0x5
-	.uleb128 0xa3
+	.uleb128 0xa1
 	.4byte	.LASF8584
 	.byte	0x5
-	.uleb128 0xa4
+	.uleb128 0xa2
 	.4byte	.LASF8585
 	.byte	0x5
-	.uleb128 0xa5
+	.uleb128 0xa3
 	.4byte	.LASF8586
 	.byte	0x5
-	.uleb128 0xaa
+	.uleb128 0xa4
 	.4byte	.LASF8587
 	.byte	0x5
-	.uleb128 0xab
+	.uleb128 0xa5
 	.4byte	.LASF8588
 	.byte	0x5
-	.uleb128 0xac
+	.uleb128 0xaa
 	.4byte	.LASF8589
 	.byte	0x5
-	.uleb128 0xad
+	.uleb128 0xab
 	.4byte	.LASF8590
 	.byte	0x5
-	.uleb128 0xae
+	.uleb128 0xac
 	.4byte	.LASF8591
 	.byte	0x5
-	.uleb128 0xaf
+	.uleb128 0xad
 	.4byte	.LASF8592
 	.byte	0x5
-	.uleb128 0xb0
+	.uleb128 0xae
 	.4byte	.LASF8593
 	.byte	0x5
-	.uleb128 0xb1
+	.uleb128 0xaf
 	.4byte	.LASF8594
+	.byte	0x5
+	.uleb128 0xb0
+	.4byte	.LASF8595
+	.byte	0x5
+	.uleb128 0xb1
+	.4byte	.LASF8596
 	.byte	0
 	.section	.debug_macro,"G",%progbits,wm4.cycle_counter.h.44.fde38fb1acfd6555d72e65fae6e86af5,comdat
 .Ldebug_macro114:
@@ -32604,22 +32610,22 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0x5
 	.uleb128 0x2c
-	.4byte	.LASF8595
-	.byte	0x5
-	.uleb128 0x5f
-	.4byte	.LASF8596
-	.byte	0x5
-	.uleb128 0x61
 	.4byte	.LASF8597
 	.byte	0x5
-	.uleb128 0x64
+	.uleb128 0x5f
 	.4byte	.LASF8598
 	.byte	0x5
-	.uleb128 0x66
+	.uleb128 0x61
 	.4byte	.LASF8599
 	.byte	0x5
-	.uleb128 0x67
+	.uleb128 0x64
 	.4byte	.LASF8600
+	.byte	0x5
+	.uleb128 0x66
+	.4byte	.LASF8601
+	.byte	0x5
+	.uleb128 0x67
+	.4byte	.LASF8602
 	.byte	0
 	.section	.debug_macro,"G",%progbits,wm4.delay.h.105.f2a8ab5e71eab0684cf6985b5c2fc9e8,comdat
 .Ldebug_macro115:
@@ -32627,16 +32633,16 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0x5
 	.uleb128 0x69
-	.4byte	.LASF8601
-	.byte	0x5
-	.uleb128 0x70
-	.4byte	.LASF8602
-	.byte	0x5
-	.uleb128 0x77
 	.4byte	.LASF8603
 	.byte	0x5
-	.uleb128 0x7e
+	.uleb128 0x70
 	.4byte	.LASF8604
+	.byte	0x5
+	.uleb128 0x77
+	.4byte	.LASF8605
+	.byte	0x5
+	.uleb128 0x7e
+	.4byte	.LASF8606
 	.byte	0
 	.section	.debug_macro,"G",%progbits,wm4.efc.h.45.ec5734119c630498df26106bacf9a684,comdat
 .Ldebug_macro116:
@@ -32644,58 +32650,58 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LASF8605
-	.byte	0x5
-	.uleb128 0x47
-	.4byte	.LASF8606
-	.byte	0x5
-	.uleb128 0x48
 	.4byte	.LASF8607
 	.byte	0x5
-	.uleb128 0x49
+	.uleb128 0x47
 	.4byte	.LASF8608
 	.byte	0x5
-	.uleb128 0x4a
+	.uleb128 0x48
 	.4byte	.LASF8609
 	.byte	0x5
-	.uleb128 0x4b
+	.uleb128 0x49
 	.4byte	.LASF8610
 	.byte	0x5
-	.uleb128 0x4c
+	.uleb128 0x4a
 	.4byte	.LASF8611
 	.byte	0x5
-	.uleb128 0x53
+	.uleb128 0x4b
 	.4byte	.LASF8612
 	.byte	0x5
-	.uleb128 0x54
+	.uleb128 0x4c
 	.4byte	.LASF8613
 	.byte	0x5
-	.uleb128 0x55
+	.uleb128 0x53
 	.4byte	.LASF8614
 	.byte	0x5
-	.uleb128 0x56
+	.uleb128 0x54
 	.4byte	.LASF8615
 	.byte	0x5
-	.uleb128 0x57
+	.uleb128 0x55
 	.4byte	.LASF8616
 	.byte	0x5
-	.uleb128 0x58
+	.uleb128 0x56
 	.4byte	.LASF8617
 	.byte	0x5
-	.uleb128 0x59
+	.uleb128 0x57
 	.4byte	.LASF8618
 	.byte	0x5
-	.uleb128 0x5a
+	.uleb128 0x58
 	.4byte	.LASF8619
 	.byte	0x5
-	.uleb128 0x68
+	.uleb128 0x59
 	.4byte	.LASF8620
 	.byte	0x5
-	.uleb128 0x6c
+	.uleb128 0x5a
 	.4byte	.LASF8621
 	.byte	0x5
-	.uleb128 0x6d
+	.uleb128 0x68
 	.4byte	.LASF8622
+	.byte	0x5
+	.uleb128 0x6c
+	.4byte	.LASF8623
+	.byte	0x5
+	.uleb128 0x6d
+	.4byte	.LASF8624
 	.byte	0
 	.section	.debug_macro,"G",%progbits,wm4.flash_efc.h.90.a4a39259055880dc10b861c5fe1b99e7,comdat
 .Ldebug_macro117:
@@ -32703,10 +32709,10 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0x5
 	.uleb128 0x5a
-	.4byte	.LASF8624
+	.4byte	.LASF8626
 	.byte	0x5
 	.uleb128 0x5b
-	.4byte	.LASF8625
+	.4byte	.LASF8627
 	.byte	0
 	.section	.debug_macro,"G",%progbits,wm4.pio.h.45.95f22b0ea02ddc698ec54fc56bf6f38c,comdat
 .Ldebug_macro118:
@@ -32714,76 +32720,76 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LASF8628
-	.byte	0x5
-	.uleb128 0x36
-	.4byte	.LASF8629
-	.byte	0x5
-	.uleb128 0x39
 	.4byte	.LASF8630
 	.byte	0x5
-	.uleb128 0x3b
+	.uleb128 0x36
 	.4byte	.LASF8631
 	.byte	0x5
-	.uleb128 0x3d
+	.uleb128 0x39
 	.4byte	.LASF8632
 	.byte	0x5
-	.uleb128 0x3f
+	.uleb128 0x3b
 	.4byte	.LASF8633
 	.byte	0x5
-	.uleb128 0x41
+	.uleb128 0x3d
 	.4byte	.LASF8634
 	.byte	0x5
-	.uleb128 0x43
+	.uleb128 0x3f
 	.4byte	.LASF8635
 	.byte	0x5
-	.uleb128 0x45
+	.uleb128 0x41
 	.4byte	.LASF8636
 	.byte	0x5
-	.uleb128 0x47
+	.uleb128 0x43
 	.4byte	.LASF8637
 	.byte	0x5
-	.uleb128 0x49
+	.uleb128 0x45
 	.4byte	.LASF8638
 	.byte	0x5
-	.uleb128 0x4b
+	.uleb128 0x47
 	.4byte	.LASF8639
 	.byte	0x5
-	.uleb128 0x5b
+	.uleb128 0x49
 	.4byte	.LASF8640
 	.byte	0x5
-	.uleb128 0x5d
+	.uleb128 0x4b
 	.4byte	.LASF8641
 	.byte	0x5
-	.uleb128 0x5f
+	.uleb128 0x5b
 	.4byte	.LASF8642
 	.byte	0x5
-	.uleb128 0x61
+	.uleb128 0x5d
 	.4byte	.LASF8643
 	.byte	0x5
-	.uleb128 0x64
+	.uleb128 0x5f
 	.4byte	.LASF8644
 	.byte	0x5
-	.uleb128 0x67
+	.uleb128 0x61
 	.4byte	.LASF8645
 	.byte	0x5
-	.uleb128 0x6a
+	.uleb128 0x64
 	.4byte	.LASF8646
 	.byte	0x5
-	.uleb128 0x6c
+	.uleb128 0x67
 	.4byte	.LASF8647
 	.byte	0x5
-	.uleb128 0x6f
+	.uleb128 0x6a
 	.4byte	.LASF8648
 	.byte	0x5
-	.uleb128 0x71
+	.uleb128 0x6c
 	.4byte	.LASF8649
 	.byte	0x5
-	.uleb128 0x73
+	.uleb128 0x6f
 	.4byte	.LASF8650
 	.byte	0x5
-	.uleb128 0x75
+	.uleb128 0x71
 	.4byte	.LASF8651
+	.byte	0x5
+	.uleb128 0x73
+	.4byte	.LASF8652
+	.byte	0x5
+	.uleb128 0x75
+	.4byte	.LASF8653
 	.byte	0
 	.section	.debug_macro,"G",%progbits,wm4.sam_gpio.h.50.76a45c51855d665134f8211cd601d693,comdat
 .Ldebug_macro119:
@@ -32791,34 +32797,34 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0x5
 	.uleb128 0x32
-	.4byte	.LASF8652
-	.byte	0x5
-	.uleb128 0x35
-	.4byte	.LASF8653
-	.byte	0x5
-	.uleb128 0x38
 	.4byte	.LASF8654
 	.byte	0x5
-	.uleb128 0x3b
+	.uleb128 0x35
 	.4byte	.LASF8655
 	.byte	0x5
-	.uleb128 0x3e
+	.uleb128 0x38
 	.4byte	.LASF8656
 	.byte	0x5
-	.uleb128 0x41
+	.uleb128 0x3b
 	.4byte	.LASF8657
 	.byte	0x5
-	.uleb128 0x44
+	.uleb128 0x3e
 	.4byte	.LASF8658
 	.byte	0x5
-	.uleb128 0x47
+	.uleb128 0x41
 	.4byte	.LASF8659
 	.byte	0x5
-	.uleb128 0x4a
+	.uleb128 0x44
 	.4byte	.LASF8660
 	.byte	0x5
-	.uleb128 0x4d
+	.uleb128 0x47
 	.4byte	.LASF8661
+	.byte	0x5
+	.uleb128 0x4a
+	.4byte	.LASF8662
+	.byte	0x5
+	.uleb128 0x4d
+	.4byte	.LASF8663
 	.byte	0
 	.section	.debug_macro,"G",%progbits,wm4.ioport_pio.h.44.373b34364b4ef25fac62017cd942a761,comdat
 .Ldebug_macro120:
@@ -32826,58 +32832,58 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0x5
 	.uleb128 0x2c
-	.4byte	.LASF8663
-	.byte	0x5
-	.uleb128 0x30
-	.4byte	.LASF8664
-	.byte	0x5
-	.uleb128 0x31
 	.4byte	.LASF8665
 	.byte	0x5
-	.uleb128 0x32
+	.uleb128 0x30
 	.4byte	.LASF8666
 	.byte	0x5
-	.uleb128 0x34
+	.uleb128 0x31
 	.4byte	.LASF8667
 	.byte	0x5
-	.uleb128 0x35
+	.uleb128 0x32
 	.4byte	.LASF8668
 	.byte	0x5
-	.uleb128 0x36
+	.uleb128 0x34
 	.4byte	.LASF8669
 	.byte	0x5
-	.uleb128 0x37
+	.uleb128 0x35
 	.4byte	.LASF8670
 	.byte	0x5
-	.uleb128 0x38
+	.uleb128 0x36
 	.4byte	.LASF8671
 	.byte	0x5
-	.uleb128 0x39
+	.uleb128 0x37
 	.4byte	.LASF8672
 	.byte	0x5
-	.uleb128 0x46
+	.uleb128 0x38
 	.4byte	.LASF8673
 	.byte	0x5
-	.uleb128 0x47
+	.uleb128 0x39
 	.4byte	.LASF8674
 	.byte	0x5
-	.uleb128 0x4d
+	.uleb128 0x46
 	.4byte	.LASF8675
 	.byte	0x5
-	.uleb128 0x4e
+	.uleb128 0x47
 	.4byte	.LASF8676
 	.byte	0x5
-	.uleb128 0x55
+	.uleb128 0x4d
 	.4byte	.LASF8677
 	.byte	0x5
-	.uleb128 0x5b
+	.uleb128 0x4e
 	.4byte	.LASF8678
 	.byte	0x5
-	.uleb128 0x5d
+	.uleb128 0x55
 	.4byte	.LASF8679
 	.byte	0x5
-	.uleb128 0x5e
+	.uleb128 0x5b
 	.4byte	.LASF8680
+	.byte	0x5
+	.uleb128 0x5d
+	.4byte	.LASF8681
+	.byte	0x5
+	.uleb128 0x5e
+	.4byte	.LASF8682
 	.byte	0
 	.section	.debug_macro,"G",%progbits,wm4.sleep.h.45.ef10e1aee6f903405be19980a8333b7f,comdat
 .Ldebug_macro121:
@@ -32885,28 +32891,28 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LASF8681
-	.byte	0x5
-	.uleb128 0x50
-	.4byte	.LASF8682
-	.byte	0x5
-	.uleb128 0x51
 	.4byte	.LASF8683
 	.byte	0x5
-	.uleb128 0x52
+	.uleb128 0x50
 	.4byte	.LASF8684
 	.byte	0x5
-	.uleb128 0x53
+	.uleb128 0x51
 	.4byte	.LASF8685
 	.byte	0x5
-	.uleb128 0x54
+	.uleb128 0x52
 	.4byte	.LASF8686
 	.byte	0x5
-	.uleb128 0x55
+	.uleb128 0x53
 	.4byte	.LASF8687
 	.byte	0x5
-	.uleb128 0x5d
+	.uleb128 0x54
 	.4byte	.LASF8688
+	.byte	0x5
+	.uleb128 0x55
+	.4byte	.LASF8689
+	.byte	0x5
+	.uleb128 0x5d
+	.4byte	.LASF8690
 	.byte	0
 	.section	.debug_macro,"G",%progbits,wm4.smc.h.45.17a94aa976bb62b1109d03e8a314a569,comdat
 .Ldebug_macro122:
@@ -32914,64 +32920,64 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LASF8691
-	.byte	0x5
-	.uleb128 0x45
-	.4byte	.LASF8692
-	.byte	0x5
-	.uleb128 0x46
 	.4byte	.LASF8693
 	.byte	0x5
-	.uleb128 0x47
+	.uleb128 0x45
 	.4byte	.LASF8694
 	.byte	0x5
-	.uleb128 0x48
+	.uleb128 0x46
 	.4byte	.LASF8695
 	.byte	0x5
-	.uleb128 0x49
+	.uleb128 0x47
 	.4byte	.LASF8696
 	.byte	0x5
-	.uleb128 0x4a
+	.uleb128 0x48
 	.4byte	.LASF8697
 	.byte	0x5
-	.uleb128 0x4b
+	.uleb128 0x49
 	.4byte	.LASF8698
 	.byte	0x5
-	.uleb128 0x4c
+	.uleb128 0x4a
 	.4byte	.LASF8699
 	.byte	0x5
-	.uleb128 0x4d
+	.uleb128 0x4b
 	.4byte	.LASF8700
 	.byte	0x5
-	.uleb128 0x4e
+	.uleb128 0x4c
 	.4byte	.LASF8701
 	.byte	0x5
-	.uleb128 0x4f
+	.uleb128 0x4d
 	.4byte	.LASF8702
 	.byte	0x5
-	.uleb128 0x50
+	.uleb128 0x4e
 	.4byte	.LASF8703
 	.byte	0x5
-	.uleb128 0x51
+	.uleb128 0x4f
 	.4byte	.LASF8704
 	.byte	0x5
-	.uleb128 0x52
+	.uleb128 0x50
 	.4byte	.LASF8705
 	.byte	0x5
-	.uleb128 0x53
+	.uleb128 0x51
 	.4byte	.LASF8706
 	.byte	0x5
-	.uleb128 0x54
+	.uleb128 0x52
 	.4byte	.LASF8707
 	.byte	0x5
-	.uleb128 0x55
+	.uleb128 0x53
 	.4byte	.LASF8708
 	.byte	0x5
-	.uleb128 0x57
+	.uleb128 0x54
 	.4byte	.LASF8709
 	.byte	0x5
-	.uleb128 0x58
+	.uleb128 0x55
 	.4byte	.LASF8710
+	.byte	0x5
+	.uleb128 0x57
+	.4byte	.LASF8711
+	.byte	0x5
+	.uleb128 0x58
+	.4byte	.LASF8712
 	.byte	0
 	.section	.debug_macro,"G",%progbits,wm4.spi.h.45.712c66be09ffbac297c2e00923077297,comdat
 .Ldebug_macro123:
@@ -32979,13 +32985,13 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LASF8711
+	.4byte	.LASF8713
 	.byte	0x5
 	.uleb128 0x3a
-	.4byte	.LASF8712
+	.4byte	.LASF8714
 	.byte	0x5
 	.uleb128 0x58
-	.4byte	.LASF8713
+	.4byte	.LASF8715
 	.byte	0
 	.section	.debug_macro,"G",%progbits,wm4.conf_sleepmgr.h.44.d825b913294720022fefe7201514fca3,comdat
 .Ldebug_macro124:
@@ -32993,10 +32999,10 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0x5
 	.uleb128 0x2c
-	.4byte	.LASF8715
+	.4byte	.LASF8717
 	.byte	0x5
 	.uleb128 0x2e
-	.4byte	.LASF8716
+	.4byte	.LASF8718
 	.byte	0
 	.section	.debug_macro,"G",%progbits,wm4.twi.h.45.ba70de99d200dafba570ce8f7058737a,comdat
 .Ldebug_macro125:
@@ -33004,40 +33010,40 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LASF8720
-	.byte	0x5
-	.uleb128 0x3a
-	.4byte	.LASF8721
-	.byte	0x5
-	.uleb128 0x40
 	.4byte	.LASF8722
 	.byte	0x5
-	.uleb128 0x41
+	.uleb128 0x3a
 	.4byte	.LASF8723
 	.byte	0x5
-	.uleb128 0x42
+	.uleb128 0x40
 	.4byte	.LASF8724
 	.byte	0x5
-	.uleb128 0x43
+	.uleb128 0x41
 	.4byte	.LASF8725
 	.byte	0x5
-	.uleb128 0x44
+	.uleb128 0x42
 	.4byte	.LASF8726
 	.byte	0x5
-	.uleb128 0x45
+	.uleb128 0x43
 	.4byte	.LASF8727
 	.byte	0x5
-	.uleb128 0x46
+	.uleb128 0x44
 	.4byte	.LASF8728
 	.byte	0x5
-	.uleb128 0x47
+	.uleb128 0x45
 	.4byte	.LASF8729
 	.byte	0x5
-	.uleb128 0x48
+	.uleb128 0x46
 	.4byte	.LASF8730
 	.byte	0x5
-	.uleb128 0x49
+	.uleb128 0x47
 	.4byte	.LASF8731
+	.byte	0x5
+	.uleb128 0x48
+	.4byte	.LASF8732
+	.byte	0x5
+	.uleb128 0x49
+	.4byte	.LASF8733
 	.byte	0
 	.section	.debug_macro,"G",%progbits,wm4.twi_master.h.90.08c062d0fa8f8aeea342ceeb79263395,comdat
 .Ldebug_macro126:
@@ -33045,10 +33051,10 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0x5
 	.uleb128 0x5a
-	.4byte	.LASF8732
+	.4byte	.LASF8734
 	.byte	0x5
 	.uleb128 0x5b
-	.4byte	.LASF8733
+	.4byte	.LASF8735
 	.byte	0
 	.section	.debug_macro,"G",%progbits,wm4.twi_slave.h.45.8b3d1a3d2e43ebc7d0161f4142989871,comdat
 .Ldebug_macro127:
@@ -33056,13 +33062,13 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LASF8734
+	.4byte	.LASF8736
 	.byte	0x5
 	.uleb128 0x53
-	.4byte	.LASF8735
+	.4byte	.LASF8737
 	.byte	0x5
 	.uleb128 0x55
-	.4byte	.LASF8736
+	.4byte	.LASF8738
 	.byte	0
 	.section	.debug_macro,"G",%progbits,wm4.uart.h.45.a5af743b8064bd84d1a6438457096e18,comdat
 .Ldebug_macro128:
@@ -33070,16 +33076,16 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LASF8739
-	.byte	0x5
-	.uleb128 0x3a
-	.4byte	.LASF8740
-	.byte	0x5
-	.uleb128 0x3c
 	.4byte	.LASF8741
 	.byte	0x5
-	.uleb128 0x3e
+	.uleb128 0x3a
 	.4byte	.LASF8742
+	.byte	0x5
+	.uleb128 0x3c
+	.4byte	.LASF8743
+	.byte	0x5
+	.uleb128 0x3e
+	.4byte	.LASF8744
 	.byte	0
 	.section	.debug_macro,"G",%progbits,wm4.usart.h.46.eae6fe592b7ea0768efef8d312e7f44f,comdat
 .Ldebug_macro129:
@@ -33087,25 +33093,25 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0x5
 	.uleb128 0x2e
-	.4byte	.LASF8745
-	.byte	0x5
-	.uleb128 0x47
-	.4byte	.LASF8746
-	.byte	0x5
-	.uleb128 0x4a
 	.4byte	.LASF8747
 	.byte	0x5
-	.uleb128 0x4d
+	.uleb128 0x47
 	.4byte	.LASF8748
 	.byte	0x5
-	.uleb128 0x4e
+	.uleb128 0x4a
 	.4byte	.LASF8749
 	.byte	0x5
-	.uleb128 0x4f
+	.uleb128 0x4d
 	.4byte	.LASF8750
 	.byte	0x5
-	.uleb128 0x50
+	.uleb128 0x4e
 	.4byte	.LASF8751
+	.byte	0x5
+	.uleb128 0x4f
+	.4byte	.LASF8752
+	.byte	0x5
+	.uleb128 0x50
+	.4byte	.LASF8753
 	.byte	0
 	.section	.debug_macro,"G",%progbits,wm4.conf_uart_serial.h.45.245cdceaa1a3811fd043bf660ce38054,comdat
 .Ldebug_macro130:
@@ -33113,16 +33119,16 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LASF8752
-	.byte	0x5
-	.uleb128 0x30
-	.4byte	.LASF8753
-	.byte	0x5
-	.uleb128 0x32
 	.4byte	.LASF8754
 	.byte	0x5
-	.uleb128 0x34
+	.uleb128 0x30
 	.4byte	.LASF8755
+	.byte	0x5
+	.uleb128 0x32
+	.4byte	.LASF8756
+	.byte	0x5
+	.uleb128 0x34
+	.4byte	.LASF8757
 	.byte	0
 	.section	.debug_macro,"G",%progbits,wm4.conf_usb.h.45.2f7207bed7467dcf9cb11fbc6ebe572c,comdat
 .Ldebug_macro131:
@@ -33130,85 +33136,85 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LASF8757
-	.byte	0x5
-	.uleb128 0x38
-	.4byte	.LASF8758
-	.byte	0x5
-	.uleb128 0x39
 	.4byte	.LASF8759
 	.byte	0x5
-	.uleb128 0x3a
+	.uleb128 0x38
 	.4byte	.LASF8760
 	.byte	0x5
-	.uleb128 0x3b
+	.uleb128 0x39
 	.4byte	.LASF8761
 	.byte	0x5
-	.uleb128 0x3c
+	.uleb128 0x3a
 	.4byte	.LASF8762
 	.byte	0x5
-	.uleb128 0x3d
+	.uleb128 0x3b
 	.4byte	.LASF8763
 	.byte	0x5
-	.uleb128 0x47
+	.uleb128 0x3c
 	.4byte	.LASF8764
 	.byte	0x5
-	.uleb128 0x48
+	.uleb128 0x3d
 	.4byte	.LASF8765
 	.byte	0x5
-	.uleb128 0x49
+	.uleb128 0x47
 	.4byte	.LASF8766
 	.byte	0x5
-	.uleb128 0x4a
+	.uleb128 0x48
 	.4byte	.LASF8767
 	.byte	0x5
-	.uleb128 0x57
+	.uleb128 0x49
 	.4byte	.LASF8768
 	.byte	0x5
-	.uleb128 0x60
+	.uleb128 0x4a
 	.4byte	.LASF8769
 	.byte	0x5
-	.uleb128 0x61
+	.uleb128 0x57
 	.4byte	.LASF8770
 	.byte	0x5
-	.uleb128 0x62
+	.uleb128 0x60
 	.4byte	.LASF8771
 	.byte	0x5
-	.uleb128 0x63
+	.uleb128 0x61
 	.4byte	.LASF8772
 	.byte	0x5
-	.uleb128 0x7b
+	.uleb128 0x62
 	.4byte	.LASF8773
 	.byte	0x5
-	.uleb128 0x7c
+	.uleb128 0x63
 	.4byte	.LASF8774
 	.byte	0x5
-	.uleb128 0x7d
+	.uleb128 0x7b
 	.4byte	.LASF8775
 	.byte	0x5
-	.uleb128 0x7e
+	.uleb128 0x7c
 	.4byte	.LASF8776
 	.byte	0x5
-	.uleb128 0x82
+	.uleb128 0x7d
 	.4byte	.LASF8777
 	.byte	0x5
-	.uleb128 0x83
+	.uleb128 0x7e
 	.4byte	.LASF8778
 	.byte	0x5
-	.uleb128 0x87
+	.uleb128 0x82
 	.4byte	.LASF8779
 	.byte	0x5
-	.uleb128 0x8b
+	.uleb128 0x83
 	.4byte	.LASF8780
 	.byte	0x5
-	.uleb128 0x8c
+	.uleb128 0x87
 	.4byte	.LASF8781
 	.byte	0x5
-	.uleb128 0x8d
+	.uleb128 0x8b
 	.4byte	.LASF8782
 	.byte	0x5
-	.uleb128 0x9a
+	.uleb128 0x8c
 	.4byte	.LASF8783
+	.byte	0x5
+	.uleb128 0x8d
+	.4byte	.LASF8784
+	.byte	0x5
+	.uleb128 0x9a
+	.4byte	.LASF8785
 	.byte	0
 	.section	.debug_macro,"G",%progbits,wm4.udi_vendor_conf.h.56.4348c8e521d040f44df868219dae6785,comdat
 .Ldebug_macro132:
@@ -33216,40 +33222,40 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0x5
 	.uleb128 0x38
-	.4byte	.LASF8785
-	.byte	0x5
-	.uleb128 0x45
-	.4byte	.LASF8786
-	.byte	0x5
-	.uleb128 0x46
 	.4byte	.LASF8787
 	.byte	0x5
-	.uleb128 0x47
+	.uleb128 0x45
 	.4byte	.LASF8788
 	.byte	0x5
-	.uleb128 0x48
+	.uleb128 0x46
 	.4byte	.LASF8789
 	.byte	0x5
-	.uleb128 0x49
+	.uleb128 0x47
 	.4byte	.LASF8790
 	.byte	0x5
-	.uleb128 0x4a
+	.uleb128 0x48
 	.4byte	.LASF8791
 	.byte	0x5
-	.uleb128 0x67
+	.uleb128 0x49
 	.4byte	.LASF8792
 	.byte	0x5
-	.uleb128 0x6e
+	.uleb128 0x4a
 	.4byte	.LASF8793
 	.byte	0x5
-	.uleb128 0x6f
+	.uleb128 0x67
 	.4byte	.LASF8794
 	.byte	0x5
-	.uleb128 0x70
+	.uleb128 0x6e
 	.4byte	.LASF8795
 	.byte	0x5
-	.uleb128 0x71
+	.uleb128 0x6f
 	.4byte	.LASF8796
+	.byte	0x5
+	.uleb128 0x70
+	.4byte	.LASF8797
+	.byte	0x5
+	.uleb128 0x71
+	.4byte	.LASF8798
 	.byte	0
 	.section	.debug_macro,"G",%progbits,wm4.usb_atmel.h.45.c31b525dbe01f8d9e2022a03356ec174,comdat
 .Ldebug_macro133:
@@ -33257,268 +33263,268 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LASF8799
-	.byte	0x5
-	.uleb128 0x43
-	.4byte	.LASF8800
-	.byte	0x5
-	.uleb128 0x4b
 	.4byte	.LASF8801
 	.byte	0x5
-	.uleb128 0x4c
+	.uleb128 0x43
 	.4byte	.LASF8802
 	.byte	0x5
-	.uleb128 0x4d
+	.uleb128 0x4b
 	.4byte	.LASF8803
 	.byte	0x5
-	.uleb128 0x4e
+	.uleb128 0x4c
 	.4byte	.LASF8804
 	.byte	0x5
-	.uleb128 0x4f
+	.uleb128 0x4d
 	.4byte	.LASF8805
 	.byte	0x5
-	.uleb128 0x50
+	.uleb128 0x4e
 	.4byte	.LASF8806
 	.byte	0x5
-	.uleb128 0x51
+	.uleb128 0x4f
 	.4byte	.LASF8807
 	.byte	0x5
-	.uleb128 0x52
+	.uleb128 0x50
 	.4byte	.LASF8808
 	.byte	0x5
-	.uleb128 0x53
+	.uleb128 0x51
 	.4byte	.LASF8809
 	.byte	0x5
-	.uleb128 0x54
+	.uleb128 0x52
 	.4byte	.LASF8810
 	.byte	0x5
-	.uleb128 0x55
+	.uleb128 0x53
 	.4byte	.LASF8811
 	.byte	0x5
-	.uleb128 0x56
+	.uleb128 0x54
 	.4byte	.LASF8812
 	.byte	0x5
-	.uleb128 0x57
+	.uleb128 0x55
 	.4byte	.LASF8813
 	.byte	0x5
-	.uleb128 0x58
+	.uleb128 0x56
 	.4byte	.LASF8814
 	.byte	0x5
-	.uleb128 0x59
+	.uleb128 0x57
 	.4byte	.LASF8815
 	.byte	0x5
-	.uleb128 0x5e
+	.uleb128 0x58
 	.4byte	.LASF8816
 	.byte	0x5
-	.uleb128 0x5f
+	.uleb128 0x59
 	.4byte	.LASF8817
 	.byte	0x5
-	.uleb128 0x60
+	.uleb128 0x5e
 	.4byte	.LASF8818
 	.byte	0x5
-	.uleb128 0x65
+	.uleb128 0x5f
 	.4byte	.LASF8819
 	.byte	0x5
-	.uleb128 0x66
+	.uleb128 0x60
 	.4byte	.LASF8820
 	.byte	0x5
-	.uleb128 0x67
+	.uleb128 0x65
 	.4byte	.LASF8821
 	.byte	0x5
-	.uleb128 0x68
+	.uleb128 0x66
 	.4byte	.LASF8822
 	.byte	0x5
-	.uleb128 0x69
+	.uleb128 0x67
 	.4byte	.LASF8823
 	.byte	0x5
-	.uleb128 0x6a
+	.uleb128 0x68
 	.4byte	.LASF8824
 	.byte	0x5
-	.uleb128 0x6b
+	.uleb128 0x69
 	.4byte	.LASF8825
 	.byte	0x5
-	.uleb128 0x6c
+	.uleb128 0x6a
 	.4byte	.LASF8826
 	.byte	0x5
-	.uleb128 0x6d
+	.uleb128 0x6b
 	.4byte	.LASF8827
 	.byte	0x5
-	.uleb128 0x6e
+	.uleb128 0x6c
 	.4byte	.LASF8828
 	.byte	0x5
-	.uleb128 0x6f
+	.uleb128 0x6d
 	.4byte	.LASF8829
 	.byte	0x5
-	.uleb128 0x70
+	.uleb128 0x6e
 	.4byte	.LASF8830
 	.byte	0x5
-	.uleb128 0x75
+	.uleb128 0x6f
 	.4byte	.LASF8831
 	.byte	0x5
-	.uleb128 0x76
+	.uleb128 0x70
 	.4byte	.LASF8832
 	.byte	0x5
-	.uleb128 0x77
+	.uleb128 0x75
 	.4byte	.LASF8833
 	.byte	0x5
-	.uleb128 0x78
+	.uleb128 0x76
 	.4byte	.LASF8834
 	.byte	0x5
-	.uleb128 0x79
+	.uleb128 0x77
 	.4byte	.LASF8835
 	.byte	0x5
-	.uleb128 0x7a
+	.uleb128 0x78
 	.4byte	.LASF8836
 	.byte	0x5
-	.uleb128 0x7b
+	.uleb128 0x79
 	.4byte	.LASF8837
 	.byte	0x5
-	.uleb128 0x7c
+	.uleb128 0x7a
 	.4byte	.LASF8838
 	.byte	0x5
-	.uleb128 0x7d
+	.uleb128 0x7b
 	.4byte	.LASF8839
 	.byte	0x5
-	.uleb128 0x7e
+	.uleb128 0x7c
 	.4byte	.LASF8840
 	.byte	0x5
-	.uleb128 0x7f
+	.uleb128 0x7d
 	.4byte	.LASF8841
 	.byte	0x5
-	.uleb128 0x80
+	.uleb128 0x7e
 	.4byte	.LASF8842
 	.byte	0x5
-	.uleb128 0x81
+	.uleb128 0x7f
 	.4byte	.LASF8843
 	.byte	0x5
-	.uleb128 0x82
+	.uleb128 0x80
 	.4byte	.LASF8844
 	.byte	0x5
-	.uleb128 0x83
+	.uleb128 0x81
 	.4byte	.LASF8845
 	.byte	0x5
-	.uleb128 0x84
+	.uleb128 0x82
 	.4byte	.LASF8846
 	.byte	0x5
-	.uleb128 0x85
+	.uleb128 0x83
 	.4byte	.LASF8847
 	.byte	0x5
-	.uleb128 0x86
+	.uleb128 0x84
 	.4byte	.LASF8848
 	.byte	0x5
-	.uleb128 0x8c
+	.uleb128 0x85
 	.4byte	.LASF8849
 	.byte	0x5
-	.uleb128 0x8d
+	.uleb128 0x86
 	.4byte	.LASF8850
 	.byte	0x5
-	.uleb128 0x8e
+	.uleb128 0x8c
 	.4byte	.LASF8851
 	.byte	0x5
-	.uleb128 0x8f
+	.uleb128 0x8d
 	.4byte	.LASF8852
 	.byte	0x5
-	.uleb128 0x90
+	.uleb128 0x8e
 	.4byte	.LASF8853
 	.byte	0x5
-	.uleb128 0x91
+	.uleb128 0x8f
 	.4byte	.LASF8854
 	.byte	0x5
-	.uleb128 0x92
+	.uleb128 0x90
 	.4byte	.LASF8855
 	.byte	0x5
-	.uleb128 0x93
+	.uleb128 0x91
 	.4byte	.LASF8856
 	.byte	0x5
-	.uleb128 0x94
+	.uleb128 0x92
 	.4byte	.LASF8857
 	.byte	0x5
-	.uleb128 0x96
+	.uleb128 0x93
 	.4byte	.LASF8858
 	.byte	0x5
-	.uleb128 0x97
+	.uleb128 0x94
 	.4byte	.LASF8859
 	.byte	0x5
-	.uleb128 0x98
+	.uleb128 0x96
 	.4byte	.LASF8860
 	.byte	0x5
-	.uleb128 0x99
+	.uleb128 0x97
 	.4byte	.LASF8861
 	.byte	0x5
-	.uleb128 0x9a
+	.uleb128 0x98
 	.4byte	.LASF8862
 	.byte	0x5
-	.uleb128 0x9b
+	.uleb128 0x99
 	.4byte	.LASF8863
 	.byte	0x5
-	.uleb128 0x9c
+	.uleb128 0x9a
 	.4byte	.LASF8864
 	.byte	0x5
-	.uleb128 0x9d
+	.uleb128 0x9b
 	.4byte	.LASF8865
 	.byte	0x5
-	.uleb128 0x9e
+	.uleb128 0x9c
 	.4byte	.LASF8866
 	.byte	0x5
-	.uleb128 0x9f
+	.uleb128 0x9d
 	.4byte	.LASF8867
 	.byte	0x5
-	.uleb128 0xa0
+	.uleb128 0x9e
 	.4byte	.LASF8868
 	.byte	0x5
-	.uleb128 0xa1
+	.uleb128 0x9f
 	.4byte	.LASF8869
 	.byte	0x5
-	.uleb128 0xa2
+	.uleb128 0xa0
 	.4byte	.LASF8870
 	.byte	0x5
-	.uleb128 0xa3
+	.uleb128 0xa1
 	.4byte	.LASF8871
 	.byte	0x5
-	.uleb128 0xa4
+	.uleb128 0xa2
 	.4byte	.LASF8872
 	.byte	0x5
-	.uleb128 0xa5
+	.uleb128 0xa3
 	.4byte	.LASF8873
 	.byte	0x5
-	.uleb128 0xa6
+	.uleb128 0xa4
 	.4byte	.LASF8874
 	.byte	0x5
-	.uleb128 0xa7
+	.uleb128 0xa5
 	.4byte	.LASF8875
 	.byte	0x5
-	.uleb128 0xa8
+	.uleb128 0xa6
 	.4byte	.LASF8876
 	.byte	0x5
-	.uleb128 0xa9
+	.uleb128 0xa7
 	.4byte	.LASF8877
 	.byte	0x5
-	.uleb128 0xaa
+	.uleb128 0xa8
 	.4byte	.LASF8878
 	.byte	0x5
-	.uleb128 0xab
+	.uleb128 0xa9
 	.4byte	.LASF8879
 	.byte	0x5
-	.uleb128 0xac
+	.uleb128 0xaa
 	.4byte	.LASF8880
 	.byte	0x5
-	.uleb128 0xad
+	.uleb128 0xab
 	.4byte	.LASF8881
 	.byte	0x5
-	.uleb128 0xae
+	.uleb128 0xac
 	.4byte	.LASF8882
 	.byte	0x5
-	.uleb128 0xaf
+	.uleb128 0xad
 	.4byte	.LASF8883
 	.byte	0x5
-	.uleb128 0xb0
+	.uleb128 0xae
 	.4byte	.LASF8884
 	.byte	0x5
-	.uleb128 0xb1
+	.uleb128 0xaf
 	.4byte	.LASF8885
 	.byte	0x5
-	.uleb128 0xb2
+	.uleb128 0xb0
 	.4byte	.LASF8886
+	.byte	0x5
+	.uleb128 0xb1
+	.4byte	.LASF8887
+	.byte	0x5
+	.uleb128 0xb2
+	.4byte	.LASF8888
 	.byte	0
 	.section	.debug_macro,"G",%progbits,wm4.usb_protocol.h.63.850c58f3469fce50a9ac9a6854f7594b,comdat
 .Ldebug_macro134:
@@ -33526,175 +33532,175 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0x5
 	.uleb128 0x3f
-	.4byte	.LASF8887
-	.byte	0x5
-	.uleb128 0x40
-	.4byte	.LASF8888
-	.byte	0x5
-	.uleb128 0x45
 	.4byte	.LASF8889
 	.byte	0x5
-	.uleb128 0x46
+	.uleb128 0x40
 	.4byte	.LASF8890
 	.byte	0x5
-	.uleb128 0x47
+	.uleb128 0x45
 	.4byte	.LASF8891
 	.byte	0x5
-	.uleb128 0x48
+	.uleb128 0x46
 	.4byte	.LASF8892
 	.byte	0x5
-	.uleb128 0x4d
+	.uleb128 0x47
 	.4byte	.LASF8893
 	.byte	0x5
-	.uleb128 0x4e
+	.uleb128 0x48
 	.4byte	.LASF8894
 	.byte	0x5
-	.uleb128 0x4f
+	.uleb128 0x4d
 	.4byte	.LASF8895
 	.byte	0x5
-	.uleb128 0x55
+	.uleb128 0x4e
 	.4byte	.LASF8896
 	.byte	0x5
-	.uleb128 0x56
+	.uleb128 0x4f
 	.4byte	.LASF8897
 	.byte	0x5
-	.uleb128 0x57
+	.uleb128 0x55
 	.4byte	.LASF8898
 	.byte	0x5
-	.uleb128 0x5c
+	.uleb128 0x56
 	.4byte	.LASF8899
 	.byte	0x5
-	.uleb128 0x5d
+	.uleb128 0x57
 	.4byte	.LASF8900
 	.byte	0x5
-	.uleb128 0x5e
+	.uleb128 0x5c
 	.4byte	.LASF8901
 	.byte	0x5
-	.uleb128 0x5f
+	.uleb128 0x5d
 	.4byte	.LASF8902
 	.byte	0x5
-	.uleb128 0x64
+	.uleb128 0x5e
 	.4byte	.LASF8903
 	.byte	0x5
-	.uleb128 0x65
+	.uleb128 0x5f
 	.4byte	.LASF8904
 	.byte	0x5
-	.uleb128 0x66
+	.uleb128 0x64
 	.4byte	.LASF8905
 	.byte	0x5
-	.uleb128 0x67
+	.uleb128 0x65
 	.4byte	.LASF8906
 	.byte	0x5
-	.uleb128 0x68
+	.uleb128 0x66
 	.4byte	.LASF8907
 	.byte	0x5
-	.uleb128 0xe4
+	.uleb128 0x67
 	.4byte	.LASF8908
 	.byte	0x5
-	.uleb128 0xe5
+	.uleb128 0x68
 	.4byte	.LASF8909
 	.byte	0x5
-	.uleb128 0xe6
+	.uleb128 0xe4
 	.4byte	.LASF8910
 	.byte	0x5
-	.uleb128 0xe7
+	.uleb128 0xe5
 	.4byte	.LASF8911
 	.byte	0x5
-	.uleb128 0xe9
+	.uleb128 0xe6
 	.4byte	.LASF8912
 	.byte	0x5
-	.uleb128 0xea
+	.uleb128 0xe7
 	.4byte	.LASF8913
 	.byte	0x5
-	.uleb128 0xeb
+	.uleb128 0xe9
 	.4byte	.LASF8914
 	.byte	0x5
-	.uleb128 0xec
+	.uleb128 0xea
 	.4byte	.LASF8915
 	.byte	0x5
-	.uleb128 0xed
+	.uleb128 0xeb
 	.4byte	.LASF8916
 	.byte	0x5
-	.uleb128 0xee
+	.uleb128 0xec
 	.4byte	.LASF8917
 	.byte	0x5
-	.uleb128 0xef
+	.uleb128 0xed
 	.4byte	.LASF8918
 	.byte	0x5
-	.uleb128 0xf0
+	.uleb128 0xee
 	.4byte	.LASF8919
 	.byte	0x5
-	.uleb128 0xf1
+	.uleb128 0xef
 	.4byte	.LASF8920
 	.byte	0x5
-	.uleb128 0xf2
+	.uleb128 0xf0
 	.4byte	.LASF8921
 	.byte	0x5
-	.uleb128 0xf3
+	.uleb128 0xf1
 	.4byte	.LASF8922
 	.byte	0x5
-	.uleb128 0xf4
+	.uleb128 0xf2
 	.4byte	.LASF8923
 	.byte	0x5
-	.uleb128 0xf5
+	.uleb128 0xf3
 	.4byte	.LASF8924
 	.byte	0x5
-	.uleb128 0xf6
+	.uleb128 0xf4
 	.4byte	.LASF8925
 	.byte	0x5
-	.uleb128 0xf7
+	.uleb128 0xf5
 	.4byte	.LASF8926
 	.byte	0x5
-	.uleb128 0xf8
+	.uleb128 0xf6
 	.4byte	.LASF8927
 	.byte	0x5
-	.uleb128 0xfb
+	.uleb128 0xf7
 	.4byte	.LASF8928
 	.byte	0x5
-	.uleb128 0xfc
+	.uleb128 0xf8
 	.4byte	.LASF8929
 	.byte	0x5
-	.uleb128 0xfd
+	.uleb128 0xfb
 	.4byte	.LASF8930
 	.byte	0x5
-	.uleb128 0xfe
+	.uleb128 0xfc
 	.4byte	.LASF8931
 	.byte	0x5
-	.uleb128 0xff
+	.uleb128 0xfd
 	.4byte	.LASF8932
 	.byte	0x5
-	.uleb128 0x100
+	.uleb128 0xfe
 	.4byte	.LASF8933
 	.byte	0x5
-	.uleb128 0x101
+	.uleb128 0xff
 	.4byte	.LASF8934
 	.byte	0x5
-	.uleb128 0x118
+	.uleb128 0x100
 	.4byte	.LASF8935
 	.byte	0x5
-	.uleb128 0x120
+	.uleb128 0x101
 	.4byte	.LASF8936
 	.byte	0x5
-	.uleb128 0x125
+	.uleb128 0x118
 	.4byte	.LASF8937
 	.byte	0x5
-	.uleb128 0x130
+	.uleb128 0x120
 	.4byte	.LASF8938
 	.byte	0x5
-	.uleb128 0x1b4
+	.uleb128 0x125
 	.4byte	.LASF8939
 	.byte	0x5
-	.uleb128 0x1b5
+	.uleb128 0x130
 	.4byte	.LASF8940
 	.byte	0x5
-	.uleb128 0x1b6
+	.uleb128 0x1b4
 	.4byte	.LASF8941
 	.byte	0x5
-	.uleb128 0x1b7
+	.uleb128 0x1b5
 	.4byte	.LASF8942
 	.byte	0x5
-	.uleb128 0x1b9
+	.uleb128 0x1b6
 	.4byte	.LASF8943
+	.byte	0x5
+	.uleb128 0x1b7
+	.4byte	.LASF8944
+	.byte	0x5
+	.uleb128 0x1b9
+	.4byte	.LASF8945
 	.byte	0
 	.section	.debug_macro,"G",%progbits,wm4.usb_protocol_vendor.h.45.83dfe073428ff799abc3ed1c7b04c77d,comdat
 .Ldebug_macro135:
@@ -33702,16 +33708,16 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LASF8944
-	.byte	0x5
-	.uleb128 0x3a
-	.4byte	.LASF8945
-	.byte	0x5
-	.uleb128 0x3b
 	.4byte	.LASF8946
 	.byte	0x5
-	.uleb128 0x3c
+	.uleb128 0x3a
 	.4byte	.LASF8947
+	.byte	0x5
+	.uleb128 0x3b
+	.4byte	.LASF8948
+	.byte	0x5
+	.uleb128 0x3c
+	.4byte	.LASF8949
 	.byte	0
 	.section	.debug_macro,"G",%progbits,wm4.udc_desc.h.77.5fec235bd7553e7256e345e020840072,comdat
 .Ldebug_macro136:
@@ -33719,13 +33725,13 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0x5
 	.uleb128 0x4d
-	.4byte	.LASF8951
+	.4byte	.LASF8953
 	.byte	0x5
 	.uleb128 0x58
-	.4byte	.LASF8952
+	.4byte	.LASF8954
 	.byte	0x5
 	.uleb128 0x59
-	.4byte	.LASF8953
+	.4byte	.LASF8955
 	.byte	0
 	.section	.debug_macro,"G",%progbits,wm4.udd.h.103.3ccc59b50c14ec70568e6136eeb22d56,comdat
 .Ldebug_macro137:
@@ -33733,16 +33739,16 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0x5
 	.uleb128 0x67
-	.4byte	.LASF8954
-	.byte	0x5
-	.uleb128 0x6b
-	.4byte	.LASF8955
-	.byte	0x5
-	.uleb128 0x6f
 	.4byte	.LASF8956
 	.byte	0x5
-	.uleb128 0x73
+	.uleb128 0x6b
 	.4byte	.LASF8957
+	.byte	0x5
+	.uleb128 0x6f
+	.4byte	.LASF8958
+	.byte	0x5
+	.uleb128 0x73
+	.4byte	.LASF8959
 	.byte	0
 	.section	.debug_macro,"G",%progbits,wm4.udi_vendor.h.125.7b9085237d4d4a9757f4c148fba1918d,comdat
 .Ldebug_macro138:
@@ -33750,55 +33756,55 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0x5
 	.uleb128 0x7d
-	.4byte	.LASF8958
-	.byte	0x5
-	.uleb128 0x7e
-	.4byte	.LASF8959
-	.byte	0x5
-	.uleb128 0x7f
 	.4byte	.LASF8960
 	.byte	0x5
-	.uleb128 0x83
+	.uleb128 0x7e
 	.4byte	.LASF8961
 	.byte	0x5
-	.uleb128 0x8f
+	.uleb128 0x7f
 	.4byte	.LASF8962
 	.byte	0x5
-	.uleb128 0x93
+	.uleb128 0x83
 	.4byte	.LASF8963
 	.byte	0x5
-	.uleb128 0xb3
+	.uleb128 0x8f
 	.4byte	.LASF8964
 	.byte	0x5
-	.uleb128 0xb4
+	.uleb128 0x93
 	.4byte	.LASF8965
 	.byte	0x5
-	.uleb128 0xb5
+	.uleb128 0xb3
 	.4byte	.LASF8966
 	.byte	0x5
-	.uleb128 0xce
+	.uleb128 0xb4
 	.4byte	.LASF8967
 	.byte	0x5
-	.uleb128 0xd2
-	.4byte	.LASF8793
-	.byte	0x5
-	.uleb128 0xd3
-	.4byte	.LASF8794
-	.byte	0x5
-	.uleb128 0xd4
-	.4byte	.LASF8795
-	.byte	0x5
-	.uleb128 0xd5
+	.uleb128 0xb5
 	.4byte	.LASF8968
 	.byte	0x5
-	.uleb128 0xe5
+	.uleb128 0xce
 	.4byte	.LASF8969
 	.byte	0x5
-	.uleb128 0xf4
+	.uleb128 0xd2
+	.4byte	.LASF8795
+	.byte	0x5
+	.uleb128 0xd3
+	.4byte	.LASF8796
+	.byte	0x5
+	.uleb128 0xd4
+	.4byte	.LASF8797
+	.byte	0x5
+	.uleb128 0xd5
 	.4byte	.LASF8970
 	.byte	0x5
-	.uleb128 0xfc
+	.uleb128 0xe5
 	.4byte	.LASF8971
+	.byte	0x5
+	.uleb128 0xf4
+	.4byte	.LASF8972
+	.byte	0x5
+	.uleb128 0xfc
+	.4byte	.LASF8973
 	.byte	0
 	.section	.debug_macro,"G",%progbits,wm4.fpga_program.h.36.190ebe3d8947892068b52cb69c85273d,comdat
 .Ldebug_macro139:
@@ -33806,76 +33812,76 @@ fpga_program_sendbyte:
 	.byte	0
 	.byte	0x5
 	.uleb128 0x24
-	.4byte	.LASF8975
-	.byte	0x5
-	.uleb128 0x35
-	.4byte	.LASF8976
-	.byte	0x5
-	.uleb128 0x36
 	.4byte	.LASF8977
 	.byte	0x5
-	.uleb128 0x37
+	.uleb128 0x35
 	.4byte	.LASF8978
 	.byte	0x5
-	.uleb128 0x38
+	.uleb128 0x36
 	.4byte	.LASF8979
 	.byte	0x5
-	.uleb128 0x39
+	.uleb128 0x37
 	.4byte	.LASF8980
 	.byte	0x5
-	.uleb128 0x3a
+	.uleb128 0x38
 	.4byte	.LASF8981
 	.byte	0x5
-	.uleb128 0x3b
+	.uleb128 0x39
 	.4byte	.LASF8982
 	.byte	0x5
-	.uleb128 0x3c
+	.uleb128 0x3a
 	.4byte	.LASF8983
 	.byte	0x5
-	.uleb128 0x3d
+	.uleb128 0x3b
 	.4byte	.LASF8984
 	.byte	0x5
-	.uleb128 0x40
+	.uleb128 0x3c
 	.4byte	.LASF8985
 	.byte	0x5
-	.uleb128 0x41
+	.uleb128 0x3d
 	.4byte	.LASF8986
 	.byte	0x5
-	.uleb128 0x42
+	.uleb128 0x40
 	.4byte	.LASF8987
 	.byte	0x5
-	.uleb128 0x43
+	.uleb128 0x41
 	.4byte	.LASF8988
 	.byte	0x5
-	.uleb128 0x45
+	.uleb128 0x42
 	.4byte	.LASF8989
 	.byte	0x5
-	.uleb128 0x46
+	.uleb128 0x43
 	.4byte	.LASF8990
 	.byte	0x5
-	.uleb128 0x47
+	.uleb128 0x45
 	.4byte	.LASF8991
 	.byte	0x5
-	.uleb128 0x48
+	.uleb128 0x46
 	.4byte	.LASF8992
 	.byte	0x5
-	.uleb128 0x4a
+	.uleb128 0x47
 	.4byte	.LASF8993
 	.byte	0x5
-	.uleb128 0x4b
+	.uleb128 0x48
 	.4byte	.LASF8994
 	.byte	0x5
-	.uleb128 0x4e
+	.uleb128 0x4a
 	.4byte	.LASF8995
 	.byte	0x5
-	.uleb128 0x5f
+	.uleb128 0x4b
 	.4byte	.LASF8996
 	.byte	0x5
-	.uleb128 0x62
+	.uleb128 0x4e
 	.4byte	.LASF8997
 	.byte	0x5
-	.uleb128 0x63
+	.uleb128 0x5f
 	.4byte	.LASF8998
+	.byte	0x5
+	.uleb128 0x62
+	.4byte	.LASF8999
+	.byte	0x5
+	.uleb128 0x63
+	.4byte	.LASF9000
 	.byte	0
 	.section	.debug_line,"",%progbits
 .Ldebug_line0:
@@ -33901,7 +33907,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_CODR_P5 (0x1u << 5)\000"
 .LASF2335:
 	.ascii	"HSMCI_CSTOR_CSTOMUL_128 (0x2u << 4)\000"
-.LASF9170:
+.LASF9172:
 	.ascii	"_p5s\000"
 .LASF1773:
 	.ascii	"ADC12B_SR_OVRE2 (0x1u << 10)\000"
@@ -33909,7 +33915,7 @@ fpga_program_sendbyte:
 	.ascii	"PMC_IMR_LOCKA (0x1u << 1)\000"
 .LASF5948:
 	.ascii	"UART_MR_PAR_Pos 9\000"
-.LASF8680:
+.LASF8682:
 	.ascii	"IOPORT_MODE_DEBOUNCE ( 1 << 7)\000"
 .LASF6572:
 	.ascii	"WDT_MR_WDDIS (0x1u << 15)\000"
@@ -33947,7 +33953,7 @@ fpga_program_sendbyte:
 	.ascii	"HSMCI_WPSR_WP_VS_WRITE (0x1u << 0)\000"
 .LASF2878:
 	.ascii	"PIO_IFER_P1 (0x1u << 1)\000"
-.LASF9311:
+.LASF9313:
 	.ascii	"pio_set_pin_low\000"
 .LASF194:
 	.ascii	"__FLT32_MAX_EXP__ 128\000"
@@ -33960,11 +33966,11 @@ fpga_program_sendbyte:
 	.ascii	"C_HALT_Pos)\000"
 .LASF5819:
 	.ascii	"TWI_CR_SVEN (0x1u << 4)\000"
-.LASF8504:
+.LASF8506:
 	.ascii	"PIN_EBI_NWE_ATTR PIO_PULLUP\000"
-.LASF8501:
+.LASF8503:
 	.ascii	"PIN_EBI_NWE_PIO PIOB\000"
-.LASF8557:
+.LASF8559:
 	.ascii	"OSC_MAINCK_8M_RC_HZ CHIP_FREQ_MAINCK_RC_8MHZ\000"
 .LASF2316:
 	.ascii	"HSMCI_CMDR_ATACS (0x1u << 26)\000"
@@ -33998,7 +34004,7 @@ fpga_program_sendbyte:
 	.ascii	"PMC_PCER0_PID12 (0x1u << 12)\000"
 .LASF8366:
 	.ascii	"SAM4C_EK 64\000"
-.LASF9115:
+.LASF9117:
 	.ascii	"_maxwds\000"
 .LASF985:
 	.ascii	"_DEFAULT_SOURCE 1\000"
@@ -34030,7 +34036,7 @@ fpga_program_sendbyte:
 	.ascii	"cpu_to_le32(x) (x)\000"
 .LASF7312:
 	.ascii	"ID_WDT ( 4)\000"
-.LASF8966:
+.LASF8968:
 	.ascii	"UDI_VENDOR_EPS_ISO_DESC_HS \000"
 .LASF5296:
 	.ascii	"SSC_TFMR_FSEDGE_POSITIVE (0x0u << 24)\000"
@@ -34061,7 +34067,7 @@ fpga_program_sendbyte:
 	.ascii	"__UDA_IBIT__ 32\000"
 .LASF2119:
 	.ascii	"DMAC_CTRLA_SCSIZE_CHK_128 (0x6u << 16)\000"
-.LASF9261:
+.LASF9263:
 	.ascii	"bNumConfigurations\000"
 .LASF320:
 	.ascii	"__ULACCUM_MIN__ 0.0ULK\000"
@@ -34076,11 +34082,11 @@ fpga_program_sendbyte:
 	.ascii	"s)\000"
 .LASF7540:
 	.ascii	"PIO_PB1A_PWMH1 (1u << 1)\000"
-.LASF8974:
+.LASF8976:
 	.ascii	"PIO_HANDLER_H_INCLUDED \000"
 .LASF1163:
 	.ascii	"SCB_CPUID_REVISION_Pos 0\000"
-.LASF9106:
+.LASF9108:
 	.ascii	"__wch\000"
 .LASF3486:
 	.ascii	"PIO_DIFSR_P1 (0x1u << 1)\000"
@@ -34088,7 +34094,7 @@ fpga_program_sendbyte:
 	.ascii	"PTHREAD_EXPLICIT_SCHED 2\000"
 .LASF3650:
 	.ascii	"PIO_AIMER_P2 (0x1u << 2)\000"
-.LASF8952:
+.LASF8954:
 	.ascii	"UDC_DATA(x) COMPILER_ALIGNED(x)\000"
 .LASF5823:
 	.ascii	"TWI_MMR_IADRSZ_Pos 8\000"
@@ -34118,10 +34124,10 @@ fpga_program_sendbyte:
 	.ascii	"ADC_CHSR_CH3 (0x1u << 3)\000"
 .LASF3292:
 	.ascii	"PIO_MDDR_P31 (0x1u << 31)\000"
-.LASF8764:
+.LASF8766:
 	.ascii	"USB_DEVICE_MANUFACTURE_NAME \"NewAE Technology Inc."
 	.ascii	"\"\000"
-.LASF8773:
+.LASF8775:
 	.ascii	"UDI_VENDOR_ENABLE_EXT() main_vendor_enable()\000"
 .LASF2896:
 	.ascii	"PIO_IFER_P19 (0x1u << 19)\000"
@@ -34141,9 +34147,9 @@ fpga_program_sendbyte:
 	.ascii	"UDPHS_IEN_DMA_1 (0x1u << 25)\000"
 .LASF7575:
 	.ascii	"PIO_PA0B_NPCS1 (1u << 0)\000"
-.LASF8543:
+.LASF8545:
 	.ascii	"PMC_PCK_2 2\000"
-.LASF9222:
+.LASF9224:
 	.ascii	"PLL_SRC_MAINCK_8M_RC\000"
 .LASF5869:
 	.ascii	"TWI_IER_NACK (0x1u << 8)\000"
@@ -34185,14 +34191,14 @@ fpga_program_sendbyte:
 	.ascii	"_REENT_SMALL_CHECK_INIT(ptr) \000"
 .LASF5488:
 	.ascii	"SUPC_WUIR_WKUPT0 (0x1u << 16)\000"
-.LASF8967:
+.LASF8969:
 	.ascii	"UDI_VENDOR_STRING_ID 0\000"
 .LASF1438:
 	.ascii	"TPI_DEVID_MANCVALID_Msk (0x1UL << TPI_DEVID_MANCVAL"
 	.ascii	"ID_Pos)\000"
 .LASF8126:
 	.ascii	"MB_CUR_MAX __locale_mb_cur_max()\000"
-.LASF8464:
+.LASF8466:
 	.ascii	"PIN_EBI_ADDR_BUS_NBS0 PIO_PB7_IDX\000"
 .LASF5881:
 	.ascii	"TWI_IDR_GACC (0x1u << 5)\000"
@@ -34206,7 +34212,7 @@ fpga_program_sendbyte:
 	.ascii	"SUPC_SR_WKUPIS8_DIS (0x0u << 24)\000"
 .LASF3656:
 	.ascii	"PIO_AIMER_P8 (0x1u << 8)\000"
-.LASF8503:
+.LASF8505:
 	.ascii	"PIN_EBI_NWE_TYPE PIO_PERIPH_A\000"
 .LASF697:
 	.ascii	"TPASTE9(a,b,c,d,e,f,g,h,i) a ##b ##c ##d ##e ##f ##"
@@ -34281,7 +34287,7 @@ fpga_program_sendbyte:
 	.ascii	"PMC_SR_CFDS (0x1u << 19)\000"
 .LASF2394:
 	.ascii	"HSMCI_IER_ACKRCV (0x1u << 28)\000"
-.LASF8591:
+.LASF8593:
 	.ascii	"SYSCLK_PRES_16 PMC_MCKR_PRES_CLK_16\000"
 .LASF2927:
 	.ascii	"PIO_IFDR_P18 (0x1u << 18)\000"
@@ -34322,12 +34328,10 @@ fpga_program_sendbyte:
 	.ascii	"R14_Pos)\000"
 .LASF4655:
 	.ascii	"RTC_CALR_DAY_Msk (0x7u << RTC_CALR_DAY_Pos)\000"
-.LASF8521:
-	.ascii	"PIN_PWRON_GPIO PIO_PA29_IDX\000"
 .LASF2582:
 	.ascii	"MATRIX_PRAS6_M0PR_Msk (0x3u << MATRIX_PRAS6_M0PR_Po"
 	.ascii	"s)\000"
-.LASF9080:
+.LASF9082:
 	.ascii	"US_CSR\000"
 .LASF8396:
 	.ascii	"USER_EXT_BOARD 99\000"
@@ -34338,7 +34342,7 @@ fpga_program_sendbyte:
 	.ascii	"TC_BCR_SYNC (0x1u << 0)\000"
 .LASF5092:
 	.ascii	"SPI_MR_MODFDIS (0x1u << 4)\000"
-.LASF8928:
+.LASF8930:
 	.ascii	"USB_LPM_ATTRIBUT_BLINKSTATE_MASK (0xF << 0)\000"
 .LASF6476:
 	.ascii	"US_RHR_RXCHR_Msk (0x1ffu << US_RHR_RXCHR_Pos)\000"
@@ -34346,7 +34350,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_PWM_CMPMUPD2 (*(WoReg*)0x4008C15CU)\000"
 .LASF4354:
 	.ascii	"PWM_IMR2_CMPU0 (0x1u << 16)\000"
-.LASF8551:
+.LASF8553:
 	.ascii	"OSC_MAINCK_XTAL 6\000"
 .LASF5411:
 	.ascii	"SUPC_MR_KEY(value) ((SUPC_MR_KEY_Msk & ((value) << "
@@ -34359,7 +34363,7 @@ fpga_program_sendbyte:
 	.ascii	"UDPHS_FNUM_FRAME_NUMBER_Pos 3\000"
 .LASF3505:
 	.ascii	"PIO_DIFSR_P20 (0x1u << 20)\000"
-.LASF8809:
+.LASF8811:
 	.ascii	"USB_PID_ATMEL_MEGA_CDC_MULTI 0x201E\000"
 .LASF2659:
 	.ascii	"PERIPH_RCR_RXCTR(value) ((PERIPH_RCR_RXCTR_Msk & (("
@@ -34374,7 +34378,7 @@ fpga_program_sendbyte:
 	.ascii	"TC_BMR_SPEEDEN (0x1u << 10)\000"
 .LASF3294:
 	.ascii	"PIO_MDSR_P1 (0x1u << 1)\000"
-.LASF8478:
+.LASF8480:
 	.ascii	"PIN_EBI_USB_SPARE0_FLAGS (PIO_TYPE_PIO_OUTPUT_0 | P"
 	.ascii	"IO_DEFAULT)\000"
 .LASF5846:
@@ -34409,7 +34413,7 @@ fpga_program_sendbyte:
 	.ascii	"US_MR_NBSTOP_1_5_BIT (0x1u << 12)\000"
 .LASF1023:
 	.ascii	"signed +0\000"
-.LASF9221:
+.LASF9223:
 	.ascii	"PLL_SRC_MAINCK_4M_RC\000"
 .LASF523:
 	.ascii	"UC3B0 ( AVR32_PART_IS_DEFINED(UC3B064) || AVR32_PAR"
@@ -34450,7 +34454,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PUSR_P10 (0x1u << 10)\000"
 .LASF165:
 	.ascii	"__DBL_MAX_EXP__ 1024\000"
-.LASF9266:
+.LASF9268:
 	.ascii	"bNumDeviceCaps\000"
 .LASF6493:
 	.ascii	"US_TTGR_TG(value) ((US_TTGR_TG_Msk & ((value) << US"
@@ -34482,7 +34486,7 @@ fpga_program_sendbyte:
 	.ascii	"SAM4CMS8 (SAM4CMS8_0 || SAM4CMS8_1)\000"
 .LASF135:
 	.ascii	"__UINT_FAST16_MAX__ 0xffffffffU\000"
-.LASF9016:
+.LASF9018:
 	.ascii	"RoReg\000"
 .LASF987:
 	.ascii	"_POSIX_SOURCE 1\000"
@@ -34517,7 +34521,7 @@ fpga_program_sendbyte:
 	.ascii	"__const const\000"
 .LASF6057:
 	.ascii	"UDPHS_IEN_INT_SOF (0x1u << 3)\000"
-.LASF8997:
+.LASF8999:
 	.ascii	"FPGA_CCLK_SETUP() gpio_configure_pin(PIN_FPGA_CCLK_"
 	.ascii	"GPIO, PIN_FPGA_CCLK_FLAGS)\000"
 .LASF3146:
@@ -34559,13 +34563,13 @@ fpga_program_sendbyte:
 	.ascii	"((value) << MATRIX_PRAS1_M2PR_Pos)))\000"
 .LASF4264:
 	.ascii	"PWM_IMR1_CHID1 (0x1u << 1)\000"
-.LASF9130:
+.LASF9132:
 	.ascii	"_fnargs\000"
 .LASF1610:
 	.ascii	"ADC_SR_EOC3 (0x1u << 3)\000"
 .LASF2722:
 	.ascii	"PIO_PDR_P5 (0x1u << 5)\000"
-.LASF8964:
+.LASF8966:
 	.ascii	"UDI_VENDOR_EPS_ISO_DESC \000"
 .LASF7004:
 	.ascii	"REG_ADC_MR (*(RwReg*)0x400AC004U)\000"
@@ -34669,7 +34673,7 @@ fpga_program_sendbyte:
 	.ascii	"__FLT32_MAX_10_EXP__ 38\000"
 .LASF42:
 	.ascii	"__INT16_TYPE__ short int\000"
-.LASF8549:
+.LASF8551:
 	.ascii	"OSC_MAINCK_8M_RC 4\000"
 .LASF5840:
 	.ascii	"TWI_CWGR_CLDIV_Msk (0xffu << TWI_CWGR_CLDIV_Pos)\000"
@@ -34763,9 +34767,9 @@ fpga_program_sendbyte:
 	.ascii	"s)\000"
 .LASF8117:
 	.ascii	"__need_wchar_t \000"
-.LASF9280:
+.LASF9282:
 	.ascii	"desc\000"
-.LASF8979:
+.LASF8981:
 	.ascii	"FPGA_PROG_USART USART0\000"
 .LASF2775:
 	.ascii	"PIO_PSR_P26 (0x1u << 26)\000"
@@ -34793,7 +34797,7 @@ fpga_program_sendbyte:
 	.ascii	"ADC_MR_TRGSEL_ADC_TRIG1 (0x1u << 1)\000"
 .LASF6792:
 	.ascii	"REG_PWM_CDTYUPD1 (*(WoReg*)0x4008C228U)\000"
-.LASF9072:
+.LASF9074:
 	.ascii	"PIO_LOCKSR\000"
 .LASF3888:
 	.ascii	"PIO_REHLSR_P16 (0x1u << 16)\000"
@@ -34810,7 +34814,7 @@ fpga_program_sendbyte:
 	.ascii	"SPI_IER_UNDES (0x1u << 10)\000"
 .LASF157:
 	.ascii	"__FLT_DENORM_MIN__ 1.4012984643248171e-45F\000"
-.LASF8727:
+.LASF8729:
 	.ascii	"TWI_RECEIVE_NACK 5\000"
 .LASF4945:
 	.ascii	"SMC_ECC_PR7_NPARITY_Pos 12\000"
@@ -34846,7 +34850,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PA7B_PWML0 (1u << 7)\000"
 .LASF2077:
 	.ascii	"DMAC_CHDR_DIS2 (0x1u << 2)\000"
-.LASF8902:
+.LASF8904:
 	.ascii	"USB_REQ_TYPE_MASK (3<<5)\000"
 .LASF1243:
 	.ascii	"SCB_SHCSR_USGFAULTACT_Pos 3\000"
@@ -34854,7 +34858,7 @@ fpga_program_sendbyte:
 	.ascii	"TC_CMR_BCPB_CLEAR (0x2u << 24)\000"
 .LASF6720:
 	.ascii	"REG_PWM_IMR1 (*(RoReg*)0x4008C018U)\000"
-.LASF9052:
+.LASF9054:
 	.ascii	"PIO_DIFSR\000"
 .LASF4847:
 	.ascii	"SMC_ECC_PR0_NPARITY_Pos 12\000"
@@ -34869,7 +34873,7 @@ fpga_program_sendbyte:
 	.ascii	"ITM_TCR_SYNCENA_Msk (1UL << ITM_TCR_SYNCENA_Pos)\000"
 .LASF6424:
 	.ascii	"US_IDR_RXBUFF (0x1u << 12)\000"
-.LASF9245:
+.LASF9247:
 	.ascii	"wIndex\000"
 .LASF1496:
 	.ascii	"CoreDebug_DHCSR_C_MASKINTS_Msk (1UL << CoreDebug_DH"
@@ -34922,12 +34926,12 @@ fpga_program_sendbyte:
 	.ascii	"ne__))\000"
 .LASF7065:
 	.ascii	"REG_SMC_IMR (*(RoReg*)0x400E0014U)\000"
-.LASF8481:
+.LASF8483:
 	.ascii	"PIN_PDIDTX_OUT_FLAGS (PIO_TYPE_PIO_OUTPUT_0 | PIO_D"
 	.ascii	"EFAULT)\000"
 .LASF8185:
 	.ascii	"Min(a,b) (((a) < (b)) ? (a) : (b))\000"
-.LASF9310:
+.LASF9312:
 	.ascii	"pio_set_pin_high\000"
 .LASF1172:
 	.ascii	"SCB_ICSR_PENDSTSET_Msk (1UL << SCB_ICSR_PENDSTSET_P"
@@ -34959,7 +34963,7 @@ fpga_program_sendbyte:
 	.ascii	"_REENT_STDIO_STREAM(var,index) &(var)->__sf[index]\000"
 .LASF3876:
 	.ascii	"PIO_REHLSR_P4 (0x1u << 4)\000"
-.LASF9198:
+.LASF9200:
 	.ascii	"_signal_buf\000"
 .LASF6996:
 	.ascii	"REG_ADC12B_RPR (*(RwReg*)0x400A8100U)\000"
@@ -34967,11 +34971,11 @@ fpga_program_sendbyte:
 	.ascii	"REG_USART1_RHR (*(RoReg*)0x40094018U)\000"
 .LASF1906:
 	.ascii	"CHIPID_CIDR_NVPSIZ2_32K (0x3u << 12)\000"
-.LASF9067:
+.LASF9069:
 	.ascii	"Reserved10\000"
-.LASF9071:
+.LASF9073:
 	.ascii	"Reserved11\000"
-.LASF8800:
+.LASF8802:
 	.ascii	"USB_VID_ATMEL 0x03EB\000"
 .LASF388:
 	.ascii	"__HAVE_SPECULATION_SAFE_VALUE 1\000"
@@ -35002,17 +35006,17 @@ fpga_program_sendbyte:
 	.ascii	"os)\000"
 .LASF6459:
 	.ascii	"US_CSR_TIMEOUT (0x1u << 8)\000"
-.LASF9143:
+.LASF9145:
 	.ascii	"_lbfsize\000"
 .LASF5563:
 	.ascii	"SUPC_SR_WKUPIS0 (0x1u << 16)\000"
 .LASF3760:
 	.ascii	"PIO_ESR_P16 (0x1u << 16)\000"
-.LASF8946:
+.LASF8948:
 	.ascii	"VENDOR_SUBCLASS 0xFF\000"
 .LASF5764:
 	.ascii	"TC_IMR_LOVRS (0x1u << 1)\000"
-.LASF9243:
+.LASF9245:
 	.ascii	"bRequest\000"
 .LASF3142:
 	.ascii	"PIO_IDR_P9 (0x1u << 9)\000"
@@ -35020,7 +35024,7 @@ fpga_program_sendbyte:
 	.ascii	"CHIPID_CIDR_EPROC_ARM926EJS (0x5u << 5)\000"
 .LASF2835:
 	.ascii	"PIO_ODR_P22 (0x1u << 22)\000"
-.LASF8990:
+.LASF8992:
 	.ascii	"FPGA_INITB_LOW() gpio_set_pin_low(PIN_FPGA_INITB_GP"
 	.ascii	"IO)\000"
 .LASF3258:
@@ -35056,7 +35060,7 @@ fpga_program_sendbyte:
 	.ascii	"ADC12B_CHDR_CH5 (0x1u << 5)\000"
 .LASF2848:
 	.ascii	"PIO_OSR_P3 (0x1u << 3)\000"
-.LASF8721:
+.LASF8723:
 	.ascii	"TWI_TIMEOUT 15000\000"
 .LASF340:
 	.ascii	"__DQ_IBIT__ 0\000"
@@ -35074,12 +35078,12 @@ fpga_program_sendbyte:
 	.ascii	"PMC_PCDR0_PID3 (0x1u << 3)\000"
 .LASF6557:
 	.ascii	"US_PTCR_TXTEN (0x1u << 8)\000"
-.LASF9282:
+.LASF9284:
 	.ascii	"udc_config_speed_t\000"
 .LASF545:
 	.ascii	"XMEGA_A4 ( AVR8_PART_IS_DEFINED(ATxmega16A4) || AVR"
 	.ascii	"8_PART_IS_DEFINED(ATxmega32A4) )\000"
-.LASF9128:
+.LASF9130:
 	.ascii	"__tm_isdst\000"
 .LASF5074:
 	.ascii	"SMC_KEY2_KEY2_Msk (0xffffffffu << SMC_KEY2_KEY2_Pos"
@@ -35116,7 +35120,7 @@ fpga_program_sendbyte:
 .LASF2631:
 	.ascii	"MATRIX_PRAS9_M1PR(value) ((MATRIX_PRAS9_M1PR_Msk & "
 	.ascii	"((value) << MATRIX_PRAS9_M1PR_Pos)))\000"
-.LASF9003:
+.LASF9005:
 	.ascii	"__uint8_t\000"
 .LASF345:
 	.ascii	"__UHQ_FBIT__ 16\000"
@@ -35189,7 +35193,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_PIOB_ODSR (*(RwReg*)0x400E0E38U)\000"
 .LASF3432:
 	.ascii	"PIO_ABSR_P11 (0x1u << 11)\000"
-.LASF8890:
+.LASF8892:
 	.ascii	"CLASS_VENDOR_SPECIFIC 0xFF\000"
 .LASF3762:
 	.ascii	"PIO_ESR_P18 (0x1u << 18)\000"
@@ -35198,7 +35202,7 @@ fpga_program_sendbyte:
 .LASF2239:
 	.ascii	"HSMCI_MR_PWSDIV(value) ((HSMCI_MR_PWSDIV_Msk & ((va"
 	.ascii	"lue) << HSMCI_MR_PWSDIV_Pos)))\000"
-.LASF9165:
+.LASF9167:
 	.ascii	"_locale\000"
 .LASF920:
 	.ascii	"MREPEAT206(macro,data) MREPEAT205(macro, data) macr"
@@ -35213,11 +35217,11 @@ fpga_program_sendbyte:
 	.ascii	"PIO_ODSR_P18 (0x1u << 18)\000"
 .LASF5904:
 	.ascii	"TWI_IMR_TXBUFE (0x1u << 15)\000"
-.LASF8643:
+.LASF8645:
 	.ascii	"PIO_OPENDRAIN (1u << 2)\000"
 .LASF512:
 	.ascii	"NULL ((void *)0)\000"
-.LASF8518:
+.LASF8520:
 	.ascii	"LED1_FLAGS (PIO_TYPE_PIO_OUTPUT_1 | PIO_DEFAULT)\000"
 .LASF7423:
 	.ascii	"PIO_PB16 (1u << 16)\000"
@@ -35232,7 +35236,7 @@ fpga_program_sendbyte:
 	.ascii	"UC3L3 ( AVR32_PART_IS_DEFINED(UC64L3U) || AVR32_PAR"
 	.ascii	"T_IS_DEFINED(UC128L3U) || AVR32_PART_IS_DEFINED(UC2"
 	.ascii	"56L3U) )\000"
-.LASF8497:
+.LASF8499:
 	.ascii	"PIN_EBI_NRD_ATTR PIO_PULLUP\000"
 .LASF5772:
 	.ascii	"TC_BMR_TC0XC0S_Pos 0\000"
@@ -35243,7 +35247,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_SSC_RC0R (*(RwReg*)0x40004038U)\000"
 .LASF6564:
 	.ascii	"WDT_CR_KEY_Msk (0xffu << WDT_CR_KEY_Pos)\000"
-.LASF9244:
+.LASF9246:
 	.ascii	"wValue\000"
 .LASF7013:
 	.ascii	"REG_ADC_CDR (*(RoReg*)0x400AC030U)\000"
@@ -35267,13 +35271,13 @@ fpga_program_sendbyte:
 	.ascii	"DMAC_EBCIDR_BTC3 (0x1u << 3)\000"
 .LASF6178:
 	.ascii	"UDPHS_EPTCTLENB_INTDIS_DMA (0x1u << 3)\000"
-.LASF9177:
+.LASF9179:
 	.ascii	"__sglue\000"
 .LASF4145:
 	.ascii	"PMC_IDR_MCKRDY (0x1u << 3)\000"
 .LASF6903:
 	.ascii	"REG_UDPHS_CLRINT (*(WoReg*)0x400A4018U)\000"
-.LASF9093:
+.LASF9095:
 	.ascii	"US_RCR\000"
 .LASF2291:
 	.ascii	"HSMCI_CMDR_OPDCMD_PUSHPULL (0x0u << 11)\000"
@@ -35294,7 +35298,7 @@ fpga_program_sendbyte:
 .LASF1530:
 	.ascii	"CoreDebug_DEMCR_VC_MMERR_Msk (1UL << CoreDebug_DEMC"
 	.ascii	"R_VC_MMERR_Pos)\000"
-.LASF9287:
+.LASF9289:
 	.ascii	"conf_hs\000"
 .LASF4205:
 	.ascii	"PMC_FSPR_FSTP9 (0x1u << 9)\000"
@@ -35309,7 +35313,7 @@ fpga_program_sendbyte:
 	.ascii	"lue) << TWI_TNCR_TXNCTR_Pos)))\000"
 .LASF7339:
 	.ascii	"TC0 ((Tc *)0x40080000U)\000"
-.LASF9039:
+.LASF9041:
 	.ascii	"PIO_IMR\000"
 .LASF7278:
 	.ascii	"REG_SUPC_SMMR (*(RwReg*)0x400E1214U)\000"
@@ -35381,7 +35385,7 @@ fpga_program_sendbyte:
 	.ascii	"MATRIX_PRAS4_M0PR_Pos 0\000"
 .LASF4604:
 	.ascii	"RSTC_CR_KEY_Pos 24\000"
-.LASF8735:
+.LASF8737:
 	.ascii	"twi_slave_enable(p_twi) twi_enable_slave_mode(p_twi"
 	.ascii	")\000"
 .LASF4610:
@@ -35413,7 +35417,7 @@ fpga_program_sendbyte:
 .LASF794:
 	.ascii	"MREPEAT80(macro,data) MREPEAT79( macro, data) macro"
 	.ascii	"( 79, data)\000"
-.LASF8927:
+.LASF8929:
 	.ascii	"BESL_10000_US 15\000"
 .LASF5862:
 	.ascii	"TWI_SR_TXBUFE (0x1u << 15)\000"
@@ -35428,13 +35432,13 @@ fpga_program_sendbyte:
 	.ascii	"PIO_REHLSR_P8 (0x1u << 8)\000"
 .LASF8023:
 	.ascii	"_OFF_T_DECLARED \000"
-.LASF8495:
+.LASF8497:
 	.ascii	"PIN_EBI_NRD_ID ID_PIOB\000"
 .LASF538:
 	.ascii	"UC3C (UC3C0 || UC3C1 || UC3C2)\000"
 .LASF983:
 	.ascii	"__GNUC_PREREQ__(ma,mi) __GNUC_PREREQ(ma, mi)\000"
-.LASF9181:
+.LASF9183:
 	.ascii	"_niobs\000"
 .LASF3637:
 	.ascii	"PIO_OWSR_P21 (0x1u << 21)\000"
@@ -35444,7 +35448,7 @@ fpga_program_sendbyte:
 	.ascii	"_SIZE_T \000"
 .LASF2133:
 	.ascii	"DMAC_CTRLA_SRC_WIDTH_BYTE (0x0u << 24)\000"
-.LASF9247:
+.LASF9249:
 	.ascii	"usb_setup_req_t\000"
 .LASF199:
 	.ascii	"__FLT32_EPSILON__ 1.1920928955078125e-7F32\000"
@@ -35520,7 +35524,7 @@ fpga_program_sendbyte:
 	.ascii	"CHIPID_CIDR_NVPSIZ_256K (0x9u << 8)\000"
 .LASF2852:
 	.ascii	"PIO_OSR_P7 (0x1u << 7)\000"
-.LASF8818:
+.LASF8820:
 	.ascii	"USB_PID_ATMEL_XMEGA_USB_ZIGBIT_SUBGHZ 0x214B\000"
 .LASF7094:
 	.ascii	"REG_SMC_PULSE1 (*(RwReg*)0x400E0088U)\000"
@@ -35543,7 +35547,7 @@ fpga_program_sendbyte:
 	.ascii	"STK600_RCUC3A0 38\000"
 .LASF3112:
 	.ascii	"PIO_IER_P11 (0x1u << 11)\000"
-.LASF9186:
+.LASF9188:
 	.ascii	"_add\000"
 .LASF3466:
 	.ascii	"PIO_SCIFSR_P13 (0x1u << 13)\000"
@@ -35556,7 +35560,7 @@ fpga_program_sendbyte:
 	.ascii	"s)\000"
 .LASF5371:
 	.ascii	"SUPC_SMMR_SMTH_2_0V (0x1u << 0)\000"
-.LASF8474:
+.LASF8476:
 	.ascii	"PIN_EBI_ADDR_BUS_A6 PIO_PB4_IDX\000"
 .LASF7140:
 	.ascii	"REG_PMC_MCKR (*(RwReg*)0x400E0430U)\000"
@@ -35573,7 +35577,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PA4A_MCCDA (1u << 4)\000"
 .LASF3266:
 	.ascii	"PIO_MDDR_P5 (0x1u << 5)\000"
-.LASF8841:
+.LASF8843:
 	.ascii	"USB_PID_ATMEL_ASF_MSC_CDC 0x2424\000"
 .LASF3828:
 	.ascii	"PIO_ELSR_P20 (0x1u << 20)\000"
@@ -35588,7 +35592,7 @@ fpga_program_sendbyte:
 .LASF4712:
 	.ascii	"RTC_WPMR_WPKEY_Msk (0xffffffu << RTC_WPMR_WPKEY_Pos"
 	.ascii	")\000"
-.LASF8704:
+.LASF8706:
 	.ascii	"NFCADDR_CMD_CSID(value) ((NFCADDR_CMD_CSID_Msk & (("
 	.ascii	"value) << NFCADDR_CMD_CSID_Pos)))\000"
 .LASF7830:
@@ -35597,7 +35601,7 @@ fpga_program_sendbyte:
 	.ascii	"MSH2(u64) (((U16 *)&(u64))[1])\000"
 .LASF5627:
 	.ascii	"TC_CMR_BURST_Pos 4\000"
-.LASF8755:
+.LASF8757:
 	.ascii	"CONF_UART_PARITY UART_MR_PAR_NO\000"
 .LASF8281:
 	.ascii	"CPU_ENDIAN_TO_LE64(x) (x)\000"
@@ -35631,13 +35635,13 @@ fpga_program_sendbyte:
 	.ascii	"REG_PIOB_PDSR (*(RoReg*)0x400E0E3CU)\000"
 .LASF8200:
 	.ascii	"LSB1W(u32) MSB2W(u32)\000"
-.LASF8715:
+.LASF8717:
 	.ascii	"CONF_SLEEPMGR_H \000"
-.LASF9013:
+.LASF9015:
 	.ascii	"uint16_t\000"
-.LASF9081:
+.LASF9083:
 	.ascii	"US_RHR\000"
-.LASF9171:
+.LASF9173:
 	.ascii	"_freelist\000"
 .LASF3311:
 	.ascii	"PIO_MDSR_P18 (0x1u << 18)\000"
@@ -35662,7 +35666,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_PWM_CMPVUPD1 (*(WoReg*)0x4008C144U)\000"
 .LASF7966:
 	.ascii	"__MACHINE_ENDIAN_H__ \000"
-.LASF9084:
+.LASF9086:
 	.ascii	"US_RTOR\000"
 .LASF5348:
 	.ascii	"SSC_IMR_CP1 (0x1u << 9)\000"
@@ -35747,7 +35751,7 @@ fpga_program_sendbyte:
 	.ascii	"__GCC_ATOMIC_CHAR32_T_LOCK_FREE 2\000"
 .LASF3030:
 	.ascii	"PIO_CODR_P25 (0x1u << 25)\000"
-.LASF9142:
+.LASF9144:
 	.ascii	"_file\000"
 .LASF3860:
 	.ascii	"PIO_FELLSR_P20 (0x1u << 20)\000"
@@ -35773,7 +35777,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_SSC_IDR (*(WoReg*)0x40004048U)\000"
 .LASF3988:
 	.ascii	"PMC_PCER0_PID5 (0x1u << 5)\000"
-.LASF8810:
+.LASF8812:
 	.ascii	"USB_PID_ATMEL_MEGA_MS_HIDMS_HID_USBKEY 0x2022\000"
 .LASF1651:
 	.ascii	"ADC_IDR_EOC2 (0x1u << 2)\000"
@@ -35782,11 +35786,11 @@ fpga_program_sendbyte:
 .LASF4091:
 	.ascii	"CKGR_PLLAR_DIVA(value) ((CKGR_PLLAR_DIVA_Msk & ((va"
 	.ascii	"lue) << CKGR_PLLAR_DIVA_Pos)))\000"
-.LASF9150:
+.LASF9152:
 	.ascii	"_nbuf\000"
 .LASF3260:
 	.ascii	"PIO_MDER_P31 (0x1u << 31)\000"
-.LASF8896:
+.LASF8898:
 	.ascii	"USB_REQ_DIR_OUT (0<<7)\000"
 .LASF4246:
 	.ascii	"PWM_SR_CHID3 (0x1u << 3)\000"
@@ -35846,7 +35850,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_SODR_P0 (0x1u << 0)\000"
 .LASF7914:
 	.ascii	"_RAND48_SEED_1 (0xabcd)\000"
-.LASF8612:
+.LASF8614:
 	.ascii	"EFC_FCMD_SLB 0x08\000"
 .LASF7815:
 	.ascii	"__generic(expr,t,yes,no) __builtin_choose_expr( __b"
@@ -35865,10 +35869,10 @@ fpga_program_sendbyte:
 	.ascii	"inline__))\000"
 .LASF7030:
 	.ascii	"REG_DMAC_CHER (*(WoReg*)0x400B0028U)\000"
-.LASF8954:
+.LASF8956:
 	.ascii	"Udd_setup_is_in() (USB_REQ_DIR_IN == (udd_g_ctrlreq"
 	.ascii	".req.bmRequestType & USB_REQ_DIR_MASK))\000"
-.LASF9065:
+.LASF9067:
 	.ascii	"PIO_LSR\000"
 .LASF5410:
 	.ascii	"SUPC_MR_KEY_Msk (0xffu << SUPC_MR_KEY_Pos)\000"
@@ -35881,7 +35885,7 @@ fpga_program_sendbyte:
 	.ascii	"s)\000"
 .LASF4290:
 	.ascii	"PWM_SCM_PTRCS_Msk (0x7u << PWM_SCM_PTRCS_Pos)\000"
-.LASF8719:
+.LASF8721:
 	.ascii	"_TWI_MASTER_H_ \000"
 .LASF4414:
 	.ascii	"PWM_OSSUPD_OSSUPH0 (0x1u << 0)\000"
@@ -35929,7 +35933,7 @@ fpga_program_sendbyte:
 	.ascii	"SCB_SHCSR_MEMFAULTACT_Pos 0\000"
 .LASF3757:
 	.ascii	"PIO_ESR_P13 (0x1u << 13)\000"
-.LASF9256:
+.LASF9258:
 	.ascii	"idProduct\000"
 .LASF4856:
 	.ascii	"SMC_ECC_PR1_NPARITY_Msk (0xffffu << SMC_ECC_PR1_NPA"
@@ -35965,7 +35969,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_FRLHSR_P0 (0x1u << 0)\000"
 .LASF5892:
 	.ascii	"TWI_IMR_RXRDY (0x1u << 1)\000"
-.LASF8868:
+.LASF8870:
 	.ascii	"USB_PID_ATMEL_DFU_ATUC3D 0x2FE9\000"
 .LASF2410:
 	.ascii	"HSMCI_IDR_RENDE (0x1u << 19)\000"
@@ -35979,7 +35983,7 @@ fpga_program_sendbyte:
 .LASF1360:
 	.ascii	"DWT_LSUCNT_LSUCNT_Msk (0xFFUL << DWT_LSUCNT_LSUCNT_"
 	.ascii	"Pos)\000"
-.LASF8814:
+.LASF8816:
 	.ascii	"USB_PID_ATMEL_MEGA_MS_3 0x2032\000"
 .LASF8370:
 	.ascii	"SAM4E_XPLAINED_PRO 68\000"
@@ -35988,13 +35992,13 @@ fpga_program_sendbyte:
 .LASF1864:
 	.ascii	"ADC12B_RCR_RXCTR(value) ((ADC12B_RCR_RXCTR_Msk & (("
 	.ascii	"value) << ADC12B_RCR_RXCTR_Pos)))\000"
-.LASF8777:
+.LASF8779:
 	.ascii	"UDI_VENDOR_EPS_SIZE_INT_FS 0\000"
-.LASF8995:
+.LASF8997:
 	.ascii	"FPGA_USE_BITBANG 0\000"
 .LASF245:
 	.ascii	"__DEC64_SUBNORMAL_MIN__ 0.000000000000001E-383DD\000"
-.LASF8540:
+.LASF8542:
 	.ascii	"PMC_OSC_BYPASS 1\000"
 .LASF6524:
 	.ascii	"US_WPMR_WPEN (0x1u << 0)\000"
@@ -36019,9 +36023,9 @@ fpga_program_sendbyte:
 	.ascii	"ADC_IMR_OVRE2 (0x1u << 10)\000"
 .LASF4814:
 	.ascii	"SMC_ECC_MD_TYPCORREC_C512B (0x2u << 4)\000"
-.LASF8826:
+.LASF8828:
 	.ascii	"USB_PID_ATMEL_UC3_CDC 0x2307\000"
-.LASF8871:
+.LASF8873:
 	.ascii	"USB_PID_ATMEL_DFU_ATXMEGA256A3U 0x2FEC\000"
 .LASF4525:
 	.ascii	"PWM_CMPVUPD_CVUPD(value) ((PWM_CMPVUPD_CVUPD_Msk & "
@@ -36036,7 +36040,7 @@ fpga_program_sendbyte:
 	.ascii	"HSMCI_CMDR_TRTYP_BLOCK (0x5u << 19)\000"
 .LASF347:
 	.ascii	"__USQ_FBIT__ 32\000"
-.LASF8931:
+.LASF8933:
 	.ascii	"USB_LPM_ATTRIBUT_BLINKSTATE(value) ((value & 0xF) <"
 	.ascii	"< 0)\000"
 .LASF4373:
@@ -36085,7 +36089,7 @@ fpga_program_sendbyte:
 .LASF8055:
 	.ascii	"_funlockfile(fp) (((fp)->_flags & __SSTR) ? 0 : __l"
 	.ascii	"ock_release_recursive((fp)->_lock))\000"
-.LASF9117:
+.LASF9119:
 	.ascii	"_wds\000"
 .LASF4833:
 	.ascii	"SMC_ECC_SR1_RECERR6 (0x1u << 24)\000"
@@ -36093,7 +36097,7 @@ fpga_program_sendbyte:
 	.ascii	"UDPHS_IPFEATURES_ISO_EPT_14 (0x1u << 30)\000"
 .LASF7342:
 	.ascii	"TWI1 ((Twi *)0x40088000U)\000"
-.LASF8812:
+.LASF8814:
 	.ascii	"USB_PID_ATMEL_MEGA_MS_2 0x2029\000"
 .LASF2367:
 	.ascii	"HSMCI_SR_FIFOEMPTY (0x1u << 26)\000"
@@ -36139,7 +36143,7 @@ fpga_program_sendbyte:
 	.ascii	"nop() (__NOP())\000"
 .LASF6447:
 	.ascii	"US_IMR_DSRIC (0x1u << 17)\000"
-.LASF8617:
+.LASF8619:
 	.ascii	"EFC_FCMD_GGPB 0x0D\000"
 .LASF2977:
 	.ascii	"PIO_SODR_P4 (0x1u << 4)\000"
@@ -36157,9 +36161,9 @@ fpga_program_sendbyte:
 	.ascii	"DMAC_CHER_SUSP0 (0x1u << 8)\000"
 .LASF7274:
 	.ascii	"REG_RSTC_SR (*(RoReg*)0x400E1204U)\000"
-.LASF9312:
+.LASF9314:
 	.ascii	"usart_init_spi_master\000"
-.LASF9134:
+.LASF9136:
 	.ascii	"_atexit\000"
 .LASF6377:
 	.ascii	"US_MR_MODE9 (0x1u << 17)\000"
@@ -36186,9 +36190,9 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PA29B_PWMH1 (1u << 29)\000"
 .LASF2509:
 	.ascii	"MATRIX_PRAS1_M1PR_Pos 4\000"
-.LASF8677:
+.LASF8679:
 	.ascii	"IOPORT_MODE_PULLUP ( 1 << 3)\000"
-.LASF9099:
+.LASF9101:
 	.ascii	"US_TNCR\000"
 .LASF3216:
 	.ascii	"PIO_ISR_P19 (0x1u << 19)\000"
@@ -36201,7 +36205,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_PIOB_SCDR (*(RwReg*)0x400E0E8CU)\000"
 .LASF6450:
 	.ascii	"US_IMR_MANE (0x1u << 24)\000"
-.LASF8582:
+.LASF8584:
 	.ascii	"SYSCLK_SRC_MAINCK_12M_RC 5\000"
 .LASF7293:
 	.ascii	"REG_RTC_CR (*(RwReg*)0x400E1260U)\000"
@@ -36212,7 +36216,7 @@ fpga_program_sendbyte:
 	.ascii	"((value) << MATRIX_PRAS6_M4PR_Pos)))\000"
 .LASF8107:
 	.ascii	"getchar_unlocked() _getchar_unlocked()\000"
-.LASF8770:
+.LASF8772:
 	.ascii	"UDC_SOF_EVENT() main_sof_action()\000"
 .LASF7365:
 	.ascii	"EFC1 ((Efc *)0x400E0A00U)\000"
@@ -36259,17 +36263,17 @@ fpga_program_sendbyte:
 	.ascii	"PIO_AIMER_P15 (0x1u << 15)\000"
 .LASF5770:
 	.ascii	"TC_IMR_ETRGS (0x1u << 7)\000"
-.LASF9092:
+.LASF9094:
 	.ascii	"US_RPR\000"
 .LASF2083:
 	.ascii	"DMAC_CHSR_ENA0 (0x1u << 0)\000"
-.LASF8938:
+.LASF8940:
 	.ascii	"USB_MAX_DESC_LEN 255\000"
-.LASF9294:
+.LASF9296:
 	.ascii	"over_under_run\000"
 .LASF8354:
 	.ascii	"ATMEGA256RFR2_XPLAINED_PRO 52\000"
-.LASF8898:
+.LASF8900:
 	.ascii	"USB_REQ_DIR_MASK (1<<7)\000"
 .LASF2023:
 	.ascii	"DMAC_EBCIER_ERR0 (0x1u << 16)\000"
@@ -36279,7 +36283,7 @@ fpga_program_sendbyte:
 	.ascii	"__NO_INLINE__ 1\000"
 .LASF2161:
 	.ascii	"DMAC_CTRLB_DST_INCR_INCREMENTING (0x0u << 28)\000"
-.LASF8605:
+.LASF8607:
 	.ascii	"EFC_H_INCLUDED \000"
 .LASF7398:
 	.ascii	"PIO_PA23 (1u << 23)\000"
@@ -36305,6 +36309,8 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PUER_P10 (0x1u << 10)\000"
 .LASF7986:
 	.ascii	"_SYS__TIMEVAL_H_ \000"
+.LASF8523:
+	.ascii	"PIN_PWRON_GPIO PIO_PB18_IDX\000"
 .LASF2196:
 	.ascii	"DMAC_WPMR_WPEN (0x1u << 0)\000"
 .LASF8359:
@@ -36323,7 +36329,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_TWI1_THR (*(WoReg*)0x40088034U)\000"
 .LASF3456:
 	.ascii	"PIO_SCIFSR_P3 (0x1u << 3)\000"
-.LASF8935:
+.LASF8937:
 	.ascii	"USB_EP_ADDR_MASK 0x0f\000"
 .LASF4099:
 	.ascii	"PMC_MCKR_CSS_Pos 0\000"
@@ -36337,12 +36343,12 @@ fpga_program_sendbyte:
 	.ascii	"REG_PWM_FPE (*(RwReg*)0x4008C06CU)\000"
 .LASF2680:
 	.ascii	"PERIPH_PTCR_TXTEN (0x1u << 8)\000"
-.LASF8751:
+.LASF8753:
 	.ascii	"SPI_MODE_3 (SPI_CPOL | SPI_CPHA)\000"
 .LASF7908:
 	.ascii	"__lock_release_recursive(lock) __retarget_lock_rele"
 	.ascii	"ase_recursive(lock)\000"
-.LASF9066:
+.LASF9068:
 	.ascii	"PIO_ELSR\000"
 .LASF633:
 	.ascii	"SAM4C16 (SAM4C16_0 || SAM4C16_1)\000"
@@ -36363,7 +36369,7 @@ fpga_program_sendbyte:
 	.ascii	"< PWM_FMR_FFIL_Pos)))\000"
 .LASF2416:
 	.ascii	"HSMCI_IDR_DMADONE (0x1u << 25)\000"
-.LASF8806:
+.LASF8808:
 	.ascii	"USB_PID_ATMEL_MEGA_AUDIO_IN_OUT 0x201B\000"
 .LASF2921:
 	.ascii	"PIO_IFDR_P12 (0x1u << 12)\000"
@@ -36375,7 +36381,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PDSR_P23 (0x1u << 23)\000"
 .LASF2930:
 	.ascii	"PIO_IFDR_P21 (0x1u << 21)\000"
-.LASF9213:
+.LASF9215:
 	.ascii	"suboptarg\000"
 .LASF8353:
 	.ascii	"SAM4E_EK 51\000"
@@ -36452,7 +36458,7 @@ fpga_program_sendbyte:
 	.ascii	"ITY_Pos)\000"
 .LASF3822:
 	.ascii	"PIO_ELSR_P14 (0x1u << 14)\000"
-.LASF8539:
+.LASF8541:
 	.ascii	"PMC_OSC_XTAL 0\000"
 .LASF5763:
 	.ascii	"TC_IMR_COVFS (0x1u << 0)\000"
@@ -36465,7 +36471,7 @@ fpga_program_sendbyte:
 	.ascii	"SMC_MODE_WRITE_MODE_NWE_CTRL (0x1u << 1)\000"
 .LASF3463:
 	.ascii	"PIO_SCIFSR_P10 (0x1u << 10)\000"
-.LASF8816:
+.LASF8818:
 	.ascii	"USB_PID_ATMEL_XPLAINED 0x2122\000"
 .LASF6186:
 	.ascii	"UDPHS_EPTCTLENB_ERR_TRANS (0x1u << 11)\000"
@@ -36536,7 +36542,7 @@ fpga_program_sendbyte:
 	.ascii	"_SIZE_T_DEFINED_ \000"
 .LASF6679:
 	.ascii	"REG_TWI0_RHR (*(RoReg*)0x40084030U)\000"
-.LASF9022:
+.LASF9024:
 	.ascii	"PIO_PDR\000"
 .LASF528:
 	.ascii	"UC3D3 ( AVR32_PART_IS_DEFINED(UC64D3) || AVR32_PART"
@@ -36551,7 +36557,7 @@ fpga_program_sendbyte:
 	.ascii	"MD21J17A) || SAM_PART_IS_DEFINED(SAMD21J18A) )\000"
 .LASF4109:
 	.ascii	"PMC_MCKR_PRES_CLK_4 (0x2u << 4)\000"
-.LASF8961:
+.LASF8963:
 	.ascii	"UDI_VENDOR_EPS_BULK_DESC .ep_bulk_in.bLength = size"
 	.ascii	"of(usb_ep_desc_t), .ep_bulk_in.bDescriptorType = US"
 	.ascii	"B_DT_ENDPOINT, .ep_bulk_in.bEndpointAddress = UDI_V"
@@ -36618,7 +36624,7 @@ fpga_program_sendbyte:
 	.ascii	"DMAC_CTRLB_SRC_INCR_FIXED (0x2u << 24)\000"
 .LASF289:
 	.ascii	"__ULLFRACT_IBIT__ 0\000"
-.LASF9021:
+.LASF9023:
 	.ascii	"PIO_PER\000"
 .LASF5508:
 	.ascii	"SUPC_WUIR_WKUPT6_LOW_TO_HIGH (0x1u << 22)\000"
@@ -36644,7 +36650,7 @@ fpga_program_sendbyte:
 	.ascii	"UDPHS_CTRL_FADDR_EN (0x1u << 7)\000"
 .LASF4350:
 	.ascii	"PWM_IMR2_CMPM4 (0x1u << 12)\000"
-.LASF9188:
+.LASF9190:
 	.ascii	"_strtok_last\000"
 .LASF5605:
 	.ascii	"SUPC_SR_WKUPIS14 (0x1u << 30)\000"
@@ -36662,7 +36668,7 @@ fpga_program_sendbyte:
 	.ascii	"s)\000"
 .LASF7400:
 	.ascii	"PIO_PA25 (1u << 25)\000"
-.LASF8772:
+.LASF8774:
 	.ascii	"UDC_RESUME_EVENT() main_resume_action()\000"
 .LASF691:
 	.ascii	"TPASTE3(a,b,c) a ##b ##c\000"
@@ -36672,7 +36678,7 @@ fpga_program_sendbyte:
 	.ascii	"UC3L4 ( AVR32_PART_IS_DEFINED(UC64L4U) || AVR32_PAR"
 	.ascii	"T_IS_DEFINED(UC128L4U) || AVR32_PART_IS_DEFINED(UC2"
 	.ascii	"56L4U) )\000"
-.LASF8689:
+.LASF8691:
 	.ascii	"_LED_H_ \000"
 .LASF4581:
 	.ascii	"PWM_CPRD_CPRD_Msk (0xffffffu << PWM_CPRD_CPRD_Pos)\000"
@@ -36699,7 +36705,7 @@ fpga_program_sendbyte:
 .LASF4934:
 	.ascii	"SMC_ECC_PR6_WORDADDR_Msk (0x1ffu << SMC_ECC_PR6_WOR"
 	.ascii	"DADDR_Pos)\000"
-.LASF8986:
+.LASF8988:
 	.ascii	"FPGA_NPROG_LOW() gpio_set_pin_low(PIN_FPGA_PROGRAM_"
 	.ascii	"GPIO)\000"
 .LASF7805:
@@ -36742,7 +36748,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_MDSR_P15 (0x1u << 15)\000"
 .LASF4963:
 	.ascii	"SMC_ECC_PR10_BITADDR_Pos 0\000"
-.LASF8634:
+.LASF8636:
 	.ascii	"PIO_TYPE_PIO_PERIPH_B (0x2u << PIO_TYPE_Pos)\000"
 .LASF2608:
 	.ascii	"MATRIX_PRAS7_M4PR_Pos 16\000"
@@ -36768,15 +36774,15 @@ fpga_program_sendbyte:
 	.ascii	"((value) << MATRIX_PRAS2_M4PR_Pos)))\000"
 .LASF7270:
 	.ascii	"REG_PIOB_WPMR (*(RwReg*)0x400E0EE4U)\000"
-.LASF9258:
+.LASF9260:
 	.ascii	"iManufacturer\000"
 .LASF2548:
 	.ascii	"MATRIX_PRAS3_M4PR_Pos 16\000"
 .LASF6784:
 	.ascii	"REG_PWM_CDTYUPD0 (*(WoReg*)0x4008C208U)\000"
-.LASF9272:
+.LASF9274:
 	.ascii	"bMaxPower\000"
-.LASF9246:
+.LASF9248:
 	.ascii	"wLength\000"
 .LASF558:
 	.ascii	"XMEGA_AU (XMEGA_A1U || XMEGA_A3U || XMEGA_A3BU || X"
@@ -36810,7 +36816,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_OSR_P28 (0x1u << 28)\000"
 .LASF3552:
 	.ascii	"PIO_OWER_P0 (0x1u << 0)\000"
-.LASF9298:
+.LASF9300:
 	.ascii	"USB_PWR_STATE\000"
 .LASF8443:
 	.ascii	"PIN_EBI_DATA_BUS_D6 PIO_PB15_IDX\000"
@@ -36846,7 +36852,7 @@ fpga_program_sendbyte:
 	.ascii	"ADC12B_MR_TRGSEL_ADC_TRIG2 (0x2u << 1)\000"
 .LASF7656:
 	.ascii	"PIO_PB0_IDX 32\000"
-.LASF9264:
+.LASF9266:
 	.ascii	"usb_dev_qual_desc_t\000"
 .LASF7506:
 	.ascii	"PIO_PC12A_NCS1 (1u << 12)\000"
@@ -36883,7 +36889,7 @@ fpga_program_sendbyte:
 	.ascii	"PWM_IDR2_ENDTX (0x1u << 1)\000"
 .LASF4248:
 	.ascii	"PWM_IER1_CHID1 (0x1u << 1)\000"
-.LASF8555:
+.LASF8557:
 	.ascii	"OSC_SLCK_32K_BYPASS_HZ BOARD_FREQ_SLCK_BYPASS\000"
 .LASF2652:
 	.ascii	"MATRIX_WPSR_WPVSRC_Msk (0xffffu << MATRIX_WPSR_WPVS"
@@ -36900,7 +36906,7 @@ fpga_program_sendbyte:
 	.ascii	"DMAC_CTRLB_DST_DSCR_FETCH_FROM_MEM (0x0u << 20)\000"
 .LASF3534:
 	.ascii	"PIO_IFDGSR_P17 (0x1u << 17)\000"
-.LASF8878:
+.LASF8880:
 	.ascii	"USB_PID_ATMEL_DFU_ATMEGA16U4 0x2FF3\000"
 .LASF1397:
 	.ascii	"TPI_FFCR_EnFCont_Pos 1\000"
@@ -36923,7 +36929,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_OER_P17 (0x1u << 17)\000"
 .LASF5598:
 	.ascii	"SUPC_SR_WKUPIS11_EN (0x1u << 27)\000"
-.LASF8533:
+.LASF8535:
 	.ascii	"PMC_TIMEOUT (2048)\000"
 .LASF2321:
 	.ascii	"HSMCI_BLKR_BCNT_Msk (0xffffu << HSMCI_BLKR_BCNT_Pos"
@@ -36939,7 +36945,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PB28B_PWML3 (1u << 28)\000"
 .LASF156:
 	.ascii	"__FLT_EPSILON__ 1.1920928955078125e-7F\000"
-.LASF8924:
+.LASF8926:
 	.ascii	"BESL_7000_US 12\000"
 .LASF8246:
 	.ascii	"Swap16(u16) ((U16)(((U16)(u16) >> 8) | ((U16)(u16) "
@@ -36965,7 +36971,7 @@ fpga_program_sendbyte:
 	.ascii	"__guarded_by(x) __lock_annotate(guarded_by(x))\000"
 .LASF1730:
 	.ascii	"ADC12B_MR_PRESCAL_Pos 8\000"
-.LASF8527:
+.LASF8529:
 	.ascii	"CONSOLE_UART UART\000"
 .LASF100:
 	.ascii	"__INT32_MAX__ 0x7fffffffL\000"
@@ -36994,7 +37000,7 @@ fpga_program_sendbyte:
 .LASF4647:
 	.ascii	"RTC_CALR_CENT(value) ((RTC_CALR_CENT_Msk & ((value)"
 	.ascii	" << RTC_CALR_CENT_Pos)))\000"
-.LASF8565:
+.LASF8567:
 	.ascii	"PLL_INPUT_MIN_HZ 8000000\000"
 .LASF6354:
 	.ascii	"US_MR_SYNC (0x1u << 8)\000"
@@ -37015,7 +37021,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_TWI0_THR (*(WoReg*)0x40084034U)\000"
 .LASF24:
 	.ascii	"__CHAR_BIT__ 8\000"
-.LASF8989:
+.LASF8991:
 	.ascii	"PIN_FPGA_INITB_FLAGS (PIO_TYPE_PIO_OUTPUT_1 | PIO_D"
 	.ascii	"EFAULT | PIO_OPENDRAIN)\000"
 .LASF6634:
@@ -37057,7 +37063,7 @@ fpga_program_sendbyte:
 	.ascii	"RZ600 31\000"
 .LASF6836:
 	.ascii	"REG_USART0_RNPR (*(RwReg*)0x40090110U)\000"
-.LASF8676:
+.LASF8678:
 	.ascii	"IOPORT_MODE_MUX_B ( 1 << 0)\000"
 .LASF7310:
 	.ascii	"ID_RTC ( 2)\000"
@@ -37091,7 +37097,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_FRLHSR_P28 (0x1u << 28)\000"
 .LASF6829:
 	.ascii	"REG_USART0_MAN (*(RwReg*)0x40090050U)\000"
-.LASF8985:
+.LASF8987:
 	.ascii	"PIN_FPGA_PROGRAM_FLAGS (PIO_TYPE_PIO_OUTPUT_1 | PIO"
 	.ascii	"_DEFAULT)\000"
 .LASF3773:
@@ -37118,7 +37124,7 @@ fpga_program_sendbyte:
 	.ascii	"20G16) || SAM_PART_IS_DEFINED(SAMD20G17) || SAM_PAR"
 	.ascii	"T_IS_DEFINED(SAMD20G17U) || SAM_PART_IS_DEFINED(SAM"
 	.ascii	"D20G18) || SAM_PART_IS_DEFINED(SAMD20G18U) )\000"
-.LASF9097:
+.LASF9099:
 	.ascii	"US_RNCR\000"
 .LASF2744:
 	.ascii	"PIO_PDR_P27 (0x1u << 27)\000"
@@ -37126,7 +37132,7 @@ fpga_program_sendbyte:
 	.ascii	"PMC_PCER0_PID22 (0x1u << 22)\000"
 .LASF7443:
 	.ascii	"PIO_PB3X1_AD12B2 (1u << 3)\000"
-.LASF9034:
+.LASF9036:
 	.ascii	"PIO_CODR\000"
 .LASF2388:
 	.ascii	"HSMCI_IER_DTOE (0x1u << 22)\000"
@@ -37193,9 +37199,9 @@ fpga_program_sendbyte:
 	.ascii	"PIO_SODR_P26 (0x1u << 26)\000"
 .LASF4137:
 	.ascii	"PMC_IER_PCKRDY0 (0x1u << 8)\000"
-.LASF8999:
+.LASF9001:
 	.ascii	"unsigned int\000"
-.LASF9175:
+.LASF9177:
 	.ascii	"_atexit0\000"
 .LASF1795:
 	.ascii	"ADC12B_IER_OVRE2 (0x1u << 10)\000"
@@ -37233,7 +37239,7 @@ fpga_program_sendbyte:
 	.ascii	"ADC_IER_OVRE5 (0x1u << 13)\000"
 .LASF8352:
 	.ascii	"XMEGA_E5_XPLAINED 50\000"
-.LASF8832:
+.LASF8834:
 	.ascii	"USB_PID_ATMEL_ASF_HIDKEYBOARD 0x2401\000"
 .LASF7340:
 	.ascii	"TWI0 ((Twi *)0x40084000U)\000"
@@ -37257,7 +37263,7 @@ fpga_program_sendbyte:
 	.ascii	"UDD_ENABLE 1\000"
 .LASF1033:
 	.ascii	"__INT8 \"hh\"\000"
-.LASF9120:
+.LASF9122:
 	.ascii	"__tm_sec\000"
 .LASF5336:
 	.ascii	"SSC_IDR_TXEMPTY (0x1u << 1)\000"
@@ -37270,7 +37276,7 @@ fpga_program_sendbyte:
 .LASF806:
 	.ascii	"MREPEAT92(macro,data) MREPEAT91( macro, data) macro"
 	.ascii	"( 91, data)\000"
-.LASF8731:
+.LASF8733:
 	.ascii	"TWI_ERROR_TIMEOUT 9\000"
 .LASF1224:
 	.ascii	"SCB_SHCSR_BUSFAULTENA_Msk (1UL << SCB_SHCSR_BUSFAUL"
@@ -37300,7 +37306,7 @@ fpga_program_sendbyte:
 	.ascii	"TMP_MAX 26\000"
 .LASF7785:
 	.ascii	"__CC_SUPPORTS___INLINE 1\000"
-.LASF9189:
+.LASF9191:
 	.ascii	"_asctime_buf\000"
 .LASF6852:
 	.ascii	"REG_USART1_RTOR (*(RwReg*)0x40094024U)\000"
@@ -37309,7 +37315,7 @@ fpga_program_sendbyte:
 .LASF1362:
 	.ascii	"DWT_FOLDCNT_FOLDCNT_Msk (0xFFUL << DWT_FOLDCNT_FOLD"
 	.ascii	"CNT_Pos)\000"
-.LASF9089:
+.LASF9091:
 	.ascii	"US_MAN\000"
 .LASF4280:
 	.ascii	"PWM_SCM_SYNC1 (0x1u << 1)\000"
@@ -37326,7 +37332,7 @@ fpga_program_sendbyte:
 	.ascii	"Pos)\000"
 .LASF6208:
 	.ascii	"UDPHS_EPTCTLDIS_RX_SETUP (0x1u << 12)\000"
-.LASF8703:
+.LASF8705:
 	.ascii	"NFCADDR_CMD_CSID_Msk (0x7u << NFCADDR_CMD_CSID_Pos)"
 	.ascii	"\000"
 .LASF3213:
@@ -37401,7 +37407,7 @@ fpga_program_sendbyte:
 	.ascii	"__STDC_HOSTED__ 1\000"
 .LASF6236:
 	.ascii	"UDPHS_EPTCTL_NAK_OUT (0x1u << 15)\000"
-.LASF8531:
+.LASF8533:
 	.ascii	"PMC_MASK_STATUS0 (0xFFFFFFFC)\000"
 .LASF219:
 	.ascii	"__FLT32X_DIG__ 15\000"
@@ -37416,7 +37422,7 @@ fpga_program_sendbyte:
 	.ascii	"SPI_CSR_BITS_13_BIT (0x5u << 4)\000"
 .LASF2361:
 	.ascii	"HSMCI_SR_RTOE (0x1u << 20)\000"
-.LASF8702:
+.LASF8704:
 	.ascii	"NFCADDR_CMD_CSID_Pos 22\000"
 .LASF1140:
 	.ascii	"__CORTEX_M (0x03)\000"
@@ -37439,7 +37445,7 @@ fpga_program_sendbyte:
 	.ascii	"e) << SSC_TSHR_TSDAT_Pos)))\000"
 .LASF7529:
 	.ascii	"PIO_PB23B_PCK2 (1u << 23)\000"
-.LASF8830:
+.LASF8832:
 	.ascii	"USB_PID_ATMEL_UC3_CDC_MSC 0x2312\000"
 .LASF6411:
 	.ascii	"US_IDR_RXRDY (0x1u << 0)\000"
@@ -37467,7 +37473,7 @@ fpga_program_sendbyte:
 	.ascii	"ITY_Pos)\000"
 .LASF6311:
 	.ascii	"_SAM3U_USART_COMPONENT_ \000"
-.LASF9064:
+.LASF9066:
 	.ascii	"PIO_ESR\000"
 .LASF6949:
 	.ascii	"REG_UDPHS_EPTCLRSTA5 (*(WoReg*)0x400A41B8U)\000"
@@ -37485,13 +37491,13 @@ fpga_program_sendbyte:
 	.ascii	"os)\000"
 .LASF2632:
 	.ascii	"MATRIX_PRAS9_M2PR_Pos 8\000"
-.LASF8821:
+.LASF8823:
 	.ascii	"USB_PID_ATMEL_UC3_MS_SDRAM_LOADER 0x2302\000"
 .LASF4758:
 	.ascii	"SMC_SR_NFCBUSY (0x1u << 8)\000"
 .LASF6165:
 	.ascii	"UDPHS_EPTCFG_EPT_TYPE_INT (0x3u << 4)\000"
-.LASF9271:
+.LASF9273:
 	.ascii	"bmAttributes\000"
 .LASF7073:
 	.ascii	"REG_SMC_ECC_SR2 (*(RoReg*)0x400E0034U)\000"
@@ -37515,7 +37521,7 @@ fpga_program_sendbyte:
 	.ascii	"PMC_PCSR0_PID7 (0x1u << 7)\000"
 .LASF6066:
 	.ascii	"UDPHS_IEN_EPT_4 (0x1u << 12)\000"
-.LASF8692:
+.LASF8694:
 	.ascii	"NFCADDR_CMD_CMD1 (0xFFu << 2)\000"
 .LASF3100:
 	.ascii	"PIO_PDSR_P31 (0x1u << 31)\000"
@@ -37549,7 +37555,7 @@ fpga_program_sendbyte:
 	.ascii	"_SIZE_Pos)\000"
 .LASF3409:
 	.ascii	"PIO_PUSR_P20 (0x1u << 20)\000"
-.LASF9226:
+.LASF9228:
 	.ascii	"PLL_NR_SOURCES\000"
 .LASF2500:
 	.ascii	"MATRIX_PRAS0_M3PR_Pos 12\000"
@@ -37568,7 +37574,7 @@ fpga_program_sendbyte:
 .LASF725:
 	.ascii	"MREPEAT11(macro,data) MREPEAT10( macro, data) macro"
 	.ascii	"( 10, data)\000"
-.LASF9157:
+.LASF9159:
 	.ascii	"_reent\000"
 .LASF4271:
 	.ascii	"PWM_ISR1_CHID0 (0x1u << 0)\000"
@@ -37597,11 +37603,11 @@ fpga_program_sendbyte:
 	.ascii	"PIO_AIMMR_P17 (0x1u << 17)\000"
 .LASF1581:
 	.ascii	"ADC_MR_SHTIM_Msk (0xfu << ADC_MR_SHTIM_Pos)\000"
-.LASF8803:
+.LASF8805:
 	.ascii	"USB_PID_ATMEL_MEGA_CDC 0x2018\000"
 .LASF7038:
 	.ascii	"REG_DMAC_CFG0 (*(RwReg*)0x400B0050U)\000"
-.LASF8904:
+.LASF8906:
 	.ascii	"USB_REQ_RECIP_INTERFACE (1<<0)\000"
 .LASF8071:
 	.ascii	"__SNLK 0x0001\000"
@@ -37613,11 +37619,11 @@ fpga_program_sendbyte:
 	.ascii	"SUPC_SMMR_SMSMPL_2048SLCK (0x4u << 8)\000"
 .LASF2120:
 	.ascii	"DMAC_CTRLA_SCSIZE_CHK_256 (0x7u << 16)\000"
-.LASF9148:
+.LASF9150:
 	.ascii	"_close\000"
-.LASF8907:
+.LASF8909:
 	.ascii	"USB_REQ_RECIP_MASK (0x1F)\000"
-.LASF8975:
+.LASF8977:
 	.ascii	"_FPGA_PROGRAM_H_ \000"
 .LASF5321:
 	.ascii	"SSC_SR_CP0 (0x1u << 8)\000"
@@ -37649,7 +37655,7 @@ fpga_program_sendbyte:
 .LASF2202:
 	.ascii	"DMAC_WPSR_WPVSRC_Msk (0xffffu << DMAC_WPSR_WPVSRC_P"
 	.ascii	"os)\000"
-.LASF9214:
+.LASF9216:
 	.ascii	"g_interrupt_enabled\000"
 .LASF6696:
 	.ascii	"REG_TWI1_CWGR (*(RwReg*)0x40088010U)\000"
@@ -37665,7 +37671,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_USART2_CSR (*(RoReg*)0x40098014U)\000"
 .LASF3479:
 	.ascii	"PIO_SCIFSR_P26 (0x1u << 26)\000"
-.LASF8884:
+.LASF8886:
 	.ascii	"USB_PID_ATMEL_DFU_AT90USB64 0x2FF9\000"
 .LASF716:
 	.ascii	"MREPEAT2(macro,data) MREPEAT1( macro, data) macro( "
@@ -37676,7 +37682,7 @@ fpga_program_sendbyte:
 	.ascii	"UDPHS_IEN_WAKE_UP (0x1u << 5)\000"
 .LASF3024:
 	.ascii	"PIO_CODR_P19 (0x1u << 19)\000"
-.LASF8510:
+.LASF8512:
 	.ascii	"PIN_EBI_NCS0_TYPE PIO_PERIPH_A\000"
 .LASF3854:
 	.ascii	"PIO_FELLSR_P14 (0x1u << 14)\000"
@@ -37697,7 +37703,7 @@ fpga_program_sendbyte:
 	.ascii	"SSC_IDR_OVRUN (0x1u << 5)\000"
 .LASF6382:
 	.ascii	"US_MR_VAR_SYNC (0x1u << 22)\000"
-.LASF9275:
+.LASF9277:
 	.ascii	"disable\000"
 .LASF7331:
 	.ascii	"ID_PWM (25)\000"
@@ -37706,7 +37712,7 @@ fpga_program_sendbyte:
 .LASF756:
 	.ascii	"MREPEAT42(macro,data) MREPEAT41( macro, data) macro"
 	.ascii	"( 41, data)\000"
-.LASF9219:
+.LASF9221:
 	.ascii	"float\000"
 .LASF1925:
 	.ascii	"CHIPID_CIDR_SRAMSIZ_32K (0xAu << 16)\000"
@@ -37737,7 +37743,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_MDSR_P12 (0x1u << 12)\000"
 .LASF5128:
 	.ascii	"SPI_IDR_TDRE (0x1u << 1)\000"
-.LASF8932:
+.LASF8934:
 	.ascii	"USB_LPM_ATTRIBUT_BESL(value) ((value & 0xF) << 4)\000"
 .LASF4703:
 	.ascii	"RTC_IMR_SEC (0x1u << 2)\000"
@@ -37754,11 +37760,11 @@ fpga_program_sendbyte:
 	.ascii	"alloca(size) __builtin_alloca(size)\000"
 .LASF6128:
 	.ascii	"UDPHS_IPFEATURES_DMA_FIFO_WORD_DEPTH_Pos 8\000"
-.LASF9131:
+.LASF9133:
 	.ascii	"_dso_handle\000"
 .LASF1537:
 	.ascii	"CoreDebug_BASE (0xE000EDF0UL)\000"
-.LASF8984:
+.LASF8986:
 	.ascii	"FPGA_PROG_USART_ID ID_USART0\000"
 .LASF6531:
 	.ascii	"US_RPR_RXPTR_Pos 0\000"
@@ -37771,12 +37777,12 @@ fpga_program_sendbyte:
 .LASF4231:
 	.ascii	"PWM_CLK_DIVB(value) ((PWM_CLK_DIVB_Msk & ((value) <"
 	.ascii	"< PWM_CLK_DIVB_Pos)))\000"
-.LASF9023:
+.LASF9025:
 	.ascii	"PIO_PSR\000"
 .LASF4954:
 	.ascii	"SMC_ECC_PR8_WORDADDR_Msk (0xffu << SMC_ECC_PR8_WORD"
 	.ascii	"ADDR_Pos)\000"
-.LASF8515:
+.LASF8517:
 	.ascii	"LED0_ACTIVE_LEVEL 1\000"
 .LASF5423:
 	.ascii	"SUPC_WUMR_RTCEN_ENABLE (0x1u << 3)\000"
@@ -37793,7 +37799,7 @@ fpga_program_sendbyte:
 	.ascii	"SMC_ECC_SR1_RECERR7 (0x1u << 28)\000"
 .LASF7327:
 	.ascii	"ID_SSC (21)\000"
-.LASF8663:
+.LASF8665:
 	.ascii	"IOPORT_SAM_H \000"
 .LASF3156:
 	.ascii	"PIO_IDR_P23 (0x1u << 23)\000"
@@ -37804,9 +37810,9 @@ fpga_program_sendbyte:
 	.ascii	"PIO_OWDR_P22 (0x1u << 22)\000"
 .LASF3166:
 	.ascii	"PIO_IMR_P1 (0x1u << 1)\000"
-.LASF8861:
+.LASF8863:
 	.ascii	"USB_PID_ATMEL_DFU_ATXMEGA256A3BU 0x2FE2\000"
-.LASF8711:
+.LASF8713:
 	.ascii	"SPI_H_INCLUDED \000"
 .LASF2870:
 	.ascii	"PIO_OSR_P25 (0x1u << 25)\000"
@@ -37834,7 +37840,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_PIOB_OWER (*(WoReg*)0x400E0EA0U)\000"
 .LASF5237:
 	.ascii	"SSC_RFMR_FSEDGE_POSITIVE (0x0u << 24)\000"
-.LASF8757:
+.LASF8759:
 	.ascii	"_CONF_USB_H_ \000"
 .LASF5329:
 	.ascii	"SSC_IER_RXRDY (0x1u << 4)\000"
@@ -37864,11 +37870,11 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PUDR_P27 (0x1u << 27)\000"
 .LASF4058:
 	.ascii	"PMC_PCSR0_PID22 (0x1u << 22)\000"
-.LASF8925:
+.LASF8927:
 	.ascii	"BESL_8000_US 13\000"
 .LASF6327:
 	.ascii	"US_CR_DTRDIS (0x1u << 17)\000"
-.LASF8749:
+.LASF8751:
 	.ascii	"SPI_MODE_1 (SPI_CPHA)\000"
 .LASF906:
 	.ascii	"MREPEAT192(macro,data) MREPEAT191(macro, data) macr"
@@ -37971,7 +37977,7 @@ fpga_program_sendbyte:
 	.ascii	"SMC_ECC_SR2_MULERR9 (0x1u << 6)\000"
 .LASF4562:
 	.ascii	"PWM_CMR_CPRE_MCK_DIV_128 (0x7u << 0)\000"
-.LASF9278:
+.LASF9280:
 	.ascii	"sof_notify\000"
 .LASF2347:
 	.ascii	"HSMCI_TDR_DATA(value) ((HSMCI_TDR_DATA_Msk & ((valu"
@@ -37988,7 +37994,7 @@ fpga_program_sendbyte:
 	.ascii	"MATRIX_SCFG_FIXED_DEFMSTR(value) ((MATRIX_SCFG_FIXE"
 	.ascii	"D_DEFMSTR_Msk & ((value) << MATRIX_SCFG_FIXED_DEFMS"
 	.ascii	"TR_Pos)))\000"
-.LASF8962:
+.LASF8964:
 	.ascii	"UDI_VENDOR_EPS_BULK_DESC_FS .ep_bulk_in.wMaxPacketS"
 	.ascii	"ize = LE16(UDI_VENDOR_EPS_SIZE_BULK_FS), .ep_bulk_o"
 	.ascii	"ut.wMaxPacketSize = LE16(UDI_VENDOR_EPS_SIZE_BULK_F"
@@ -38022,7 +38028,7 @@ fpga_program_sendbyte:
 	.ascii	"SEEK_END 2\000"
 .LASF2157:
 	.ascii	"DMAC_CTRLB_SRC_INCR_DECREMENTING (0x1u << 24)\000"
-.LASF8895:
+.LASF8897:
 	.ascii	"PROTOCOL_IAD 0x01\000"
 .LASF7128:
 	.ascii	"REG_MATRIX_WPSR (*(RoReg*)0x400E03E8U)\000"
@@ -38039,7 +38045,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_HSMCI_RSPR (*(RoReg*)0x40000020U)\000"
 .LASF5342:
 	.ascii	"SSC_IDR_RXSYN (0x1u << 11)\000"
-.LASF9008:
+.LASF9010:
 	.ascii	"__uint32_t\000"
 .LASF2539:
 	.ascii	"MATRIX_PRAS3_M1PR_Pos 4\000"
@@ -38051,14 +38057,14 @@ fpga_program_sendbyte:
 	.ascii	"REG_DMAC_CFG2 (*(RwReg*)0x400B00A0U)\000"
 .LASF3898:
 	.ascii	"PIO_REHLSR_P26 (0x1u << 26)\000"
-.LASF8905:
+.LASF8907:
 	.ascii	"USB_REQ_RECIP_ENDPOINT (2<<0)\000"
 .LASF7787:
 	.ascii	"__CC_SUPPORTS___FUNC__ 1\000"
 .LASF956:
 	.ascii	"MREPEAT242(macro,data) MREPEAT241(macro, data) macr"
 	.ascii	"o(241, data)\000"
-.LASF8870:
+.LASF8872:
 	.ascii	"USB_PID_ATMEL_DFU_AT32UC3C 0x2FEB\000"
 .LASF1310:
 	.ascii	"ITM_TCR_TXENA_Msk (1UL << ITM_TCR_TXENA_Pos)\000"
@@ -38098,9 +38104,9 @@ fpga_program_sendbyte:
 .LASF959:
 	.ascii	"MREPEAT245(macro,data) MREPEAT244(macro, data) macr"
 	.ascii	"o(244, data)\000"
-.LASF8622:
+.LASF8624:
 	.ascii	"EFC_ACCESS_MODE_64 EEFC_FMR_FAM\000"
-.LASF9153:
+.LASF9155:
 	.ascii	"_data\000"
 .LASF375:
 	.ascii	"__GCC_HAVE_SYNC_COMPARE_AND_SWAP_2 1\000"
@@ -38126,7 +38132,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_CODR_P9 (0x1u << 9)\000"
 .LASF4001:
 	.ascii	"PMC_PCER0_PID19 (0x1u << 19)\000"
-.LASF9173:
+.LASF9175:
 	.ascii	"_cvtbuf\000"
 .LASF2646:
 	.ascii	"MATRIX_WPMR_WPEN (0x1u << 0)\000"
@@ -38136,7 +38142,7 @@ fpga_program_sendbyte:
 	.ascii	"PWM_ELMR_CSEL2 (0x1u << 2)\000"
 .LASF1671:
 	.ascii	"ADC_IMR_EOC2 (0x1u << 2)\000"
-.LASF8670:
+.LASF8672:
 	.ascii	"IOPORT_PIOD 3\000"
 .LASF6743:
 	.ascii	"REG_PWM_WPSR (*(RoReg*)0x4008C0E8U)\000"
@@ -38173,7 +38179,7 @@ fpga_program_sendbyte:
 	.ascii	"UART_IMR_FRAME (0x1u << 6)\000"
 .LASF6632:
 	.ascii	"_SAM3U_TC0_INSTANCE_ \000"
-.LASF8723:
+.LASF8725:
 	.ascii	"TWI_INVALID_ARGUMENT 1\000"
 .LASF2996:
 	.ascii	"PIO_SODR_P23 (0x1u << 23)\000"
@@ -38191,12 +38197,12 @@ fpga_program_sendbyte:
 	.ascii	"US_MR_USART_MODE_RS485 (0x1u << 0)\000"
 .LASF5281:
 	.ascii	"SSC_TFMR_DATNB_Msk (0xfu << SSC_TFMR_DATNB_Pos)\000"
-.LASF9038:
+.LASF9040:
 	.ascii	"PIO_IDR\000"
 .LASF891:
 	.ascii	"MREPEAT177(macro,data) MREPEAT176(macro, data) macr"
 	.ascii	"o(176, data)\000"
-.LASF9012:
+.LASF9014:
 	.ascii	"uint8_t\000"
 .LASF4798:
 	.ascii	"SMC_ADDR_ADDR_CYCLE0(value) ((SMC_ADDR_ADDR_CYCLE0_"
@@ -38250,7 +38256,7 @@ fpga_program_sendbyte:
 	.ascii	"PWM_ISR2_CMPU4 (0x1u << 20)\000"
 .LASF4399:
 	.ascii	"PWM_OSS_OSSH1 (0x1u << 1)\000"
-.LASF8530:
+.LASF8532:
 	.ascii	"PMC_H_INCLUDED \000"
 .LASF336:
 	.ascii	"__HQ_IBIT__ 0\000"
@@ -38266,21 +38272,21 @@ fpga_program_sendbyte:
 	.ascii	"EEFC_FMR_FAM (0x1u << 24)\000"
 .LASF6205:
 	.ascii	"UDPHS_EPTCTLDIS_TX_COMPLT (0x1u << 10)\000"
-.LASF9037:
+.LASF9039:
 	.ascii	"PIO_IER\000"
 .LASF4895:
 	.ascii	"SMC_ECC_PR2_NPARITY_Pos 12\000"
 .LASF3770:
 	.ascii	"PIO_ESR_P26 (0x1u << 26)\000"
-.LASF8684:
+.LASF8686:
 	.ascii	"SAM_PM_SMODE_SLEEP_WFI 2\000"
 .LASF873:
 	.ascii	"MREPEAT159(macro,data) MREPEAT158(macro, data) macr"
 	.ascii	"o(158, data)\000"
-.LASF8795:
+.LASF8797:
 	.ascii	"UDI_VENDOR_EP_NB_ISO ((UDI_VENDOR_EPS_SIZE_ISO_FS)?"
 	.ascii	"2:0)\000"
-.LASF9168:
+.LASF9170:
 	.ascii	"_result\000"
 .LASF2741:
 	.ascii	"PIO_PDR_P24 (0x1u << 24)\000"
@@ -38290,7 +38296,7 @@ fpga_program_sendbyte:
 .LASF4998:
 	.ascii	"SMC_ECC_PR15_NPARITY_Msk (0x7ffu << SMC_ECC_PR15_NP"
 	.ascii	"ARITY_Pos)\000"
-.LASF8827:
+.LASF8829:
 	.ascii	"USB_PID_ATMEL_UC3_AUDIO_MICRO 0x2308\000"
 .LASF3065:
 	.ascii	"PIO_ODSR_P28 (0x1u << 28)\000"
@@ -38337,7 +38343,7 @@ fpga_program_sendbyte:
 	.ascii	"UDPHS_INTSTA_ENDOFRSM (0x1u << 6)\000"
 .LASF2749:
 	.ascii	"PIO_PSR_P0 (0x1u << 0)\000"
-.LASF8584:
+.LASF8586:
 	.ascii	"SYSCLK_SRC_MAINCK_BYPASS 7\000"
 .LASF4327:
 	.ascii	"PWM_IDR2_CMPM1 (0x1u << 9)\000"
@@ -38375,12 +38381,12 @@ fpga_program_sendbyte:
 	.ascii	"VR8_PART_IS_DEFINED(ATxmega128A1U) )\000"
 .LASF142:
 	.ascii	"__GCC_IEC_559_COMPLEX 0\000"
-.LASF8655:
+.LASF8657:
 	.ascii	"gpio_set_pin_low(io_id) pio_set_pin_low(io_id)\000"
 .LASF941:
 	.ascii	"MREPEAT227(macro,data) MREPEAT226(macro, data) macr"
 	.ascii	"o(226, data)\000"
-.LASF9164:
+.LASF9166:
 	.ascii	"_unspecified_locale_info\000"
 .LASF7410:
 	.ascii	"PIO_PB3 (1u << 3)\000"
@@ -38449,7 +38455,7 @@ fpga_program_sendbyte:
 	.ascii	"ADC_RCR_RXCTR_Msk (0xffffu << ADC_RCR_RXCTR_Pos)\000"
 .LASF5405:
 	.ascii	"SUPC_MR_VDDIORDYONREG (0x1u << 14)\000"
-.LASF9194:
+.LASF9196:
 	.ascii	"_mblen_state\000"
 .LASF2998:
 	.ascii	"PIO_SODR_P25 (0x1u << 25)\000"
@@ -38462,7 +38468,7 @@ fpga_program_sendbyte:
 	.ascii	"SMC_SR_AWB (0x1u << 22)\000"
 .LASF6024:
 	.ascii	"UART_RNCR_RXNCTR_Pos 0\000"
-.LASF9126:
+.LASF9128:
 	.ascii	"__tm_wday\000"
 .LASF3225:
 	.ascii	"PIO_ISR_P28 (0x1u << 28)\000"
@@ -38495,7 +38501,7 @@ fpga_program_sendbyte:
 	.ascii	"RSTC_MR_URSTEN (0x1u << 0)\000"
 .LASF1991:
 	.ascii	"DMAC_SREQ_SSREQ0 (0x1u << 0)\000"
-.LASF8713:
+.LASF8715:
 	.ascii	"spi_get_pcs(chip_sel_id) ((~(1u<<(chip_sel_id)))&0x"
 	.ascii	"F)\000"
 .LASF8151:
@@ -38505,7 +38511,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_USART2_IER (*(WoReg*)0x40098008U)\000"
 .LASF5961:
 	.ascii	"UART_IER_RXRDY (0x1u << 0)\000"
-.LASF8949:
+.LASF8951:
 	.ascii	"_UDC_DESC_H_ \000"
 .LASF5246:
 	.ascii	"SSC_TCMR_CKS_RK (0x2u << 0)\000"
@@ -38513,7 +38519,7 @@ fpga_program_sendbyte:
 	.ascii	"__UHA_FBIT__ 8\000"
 .LASF3628:
 	.ascii	"PIO_OWSR_P12 (0x1u << 12)\000"
-.LASF8552:
+.LASF8554:
 	.ascii	"OSC_MAINCK_BYPASS 7\000"
 .LASF1330:
 	.ascii	"DWT_CTRL_FOLDEVTENA_Msk (0x1UL << DWT_CTRL_FOLDEVTE"
@@ -38532,13 +38538,13 @@ fpga_program_sendbyte:
 	.ascii	"o(211, data)\000"
 .LASF164:
 	.ascii	"__DBL_MIN_10_EXP__ (-307)\000"
-.LASF8542:
+.LASF8544:
 	.ascii	"PMC_PCK_1 1\000"
 .LASF671:
 	.ascii	"SAMD11 (SAMD11C || SAMD11DS || SAMD11DM)\000"
 .LASF7347:
 	.ascii	"PDC_USART0 ((Pdc *)0x40090100U)\000"
-.LASF8568:
+.LASF8570:
 	.ascii	"PLLA_ID 0\000"
 .LASF6407:
 	.ascii	"US_IER_DSRIC (0x1u << 17)\000"
@@ -38556,7 +38562,7 @@ fpga_program_sendbyte:
 .LASF4811:
 	.ascii	"SMC_ECC_MD_TYPCORREC_Msk (0x3u << SMC_ECC_MD_TYPCOR"
 	.ascii	"REC_Pos)\000"
-.LASF8466:
+.LASF8468:
 	.ascii	"PIN_EBI_ADDR_BUS_FLAG1 PIO_PERIPH_B | PIO_PULLUP\000"
 .LASF6850:
 	.ascii	"REG_USART1_THR (*(WoReg*)0x4009401CU)\000"
@@ -38653,7 +38659,7 @@ fpga_program_sendbyte:
 	.ascii	"_SIZE_T_DECLARED \000"
 .LASF7653:
 	.ascii	"PIO_PA29_IDX 29\000"
-.LASF8876:
+.LASF8878:
 	.ascii	"USB_PID_ATMEL_DFU_AT32UC3A3 0x2FF1\000"
 .LASF8459:
 	.ascii	"SPI_MISO_FLAGS (PIO_PERIPH_A | PIO_DEFAULT)\000"
@@ -38729,7 +38735,7 @@ fpga_program_sendbyte:
 	.ascii	"HSMCI_CMDR_RSPTYP_Pos 6\000"
 .LASF1876:
 	.ascii	"ADC12B_PTSR_TXTEN (0x1u << 8)\000"
-.LASF8639:
+.LASF8641:
 	.ascii	"PIO_TYPE_PIO_OUTPUT_1 (0x7u << PIO_TYPE_Pos)\000"
 .LASF6254:
 	.ascii	"UDPHS_EPTSTA_TOGGLESQ_STA_Pos 6\000"
@@ -38738,7 +38744,7 @@ fpga_program_sendbyte:
 .LASF843:
 	.ascii	"MREPEAT129(macro,data) MREPEAT128(macro, data) macr"
 	.ascii	"o(128, data)\000"
-.LASF8587:
+.LASF8589:
 	.ascii	"SYSCLK_PRES_1 PMC_MCKR_PRES_CLK_1\000"
 .LASF6685:
 	.ascii	"REG_TWI0_RNPR (*(RwReg*)0x40084110U)\000"
@@ -38786,17 +38792,17 @@ fpga_program_sendbyte:
 .LASF5832:
 	.ascii	"TWI_MMR_DADR(value) ((TWI_MMR_DADR_Msk & ((value) <"
 	.ascii	"< TWI_MMR_DADR_Pos)))\000"
-.LASF8732:
+.LASF8734:
 	.ascii	"twi_master_enable(p_twi) twi_enable_master_mode(p_t"
 	.ascii	"wi)\000"
 .LASF6736:
 	.ascii	"REG_PWM_FMR (*(RwReg*)0x4008C05CU)\000"
-.LASF8620:
+.LASF8622:
 	.ascii	"CHIP_FLASH_IAP_ADDRESS (IROM_ADDR + 8)\000"
 .LASF6028:
 	.ascii	"UART_TNPR_TXNPTR_Msk (0xffffffffu << UART_TNPR_TXNP"
 	.ascii	"TR_Pos)\000"
-.LASF8786:
+.LASF8788:
 	.ascii	"UDI_VENDOR_EP_INTERRUPT_IN (3 | USB_EP_DIR_IN)\000"
 .LASF3153:
 	.ascii	"PIO_IDR_P20 (0x1u << 20)\000"
@@ -38830,11 +38836,11 @@ fpga_program_sendbyte:
 	.ascii	"CoreDebug_DEMCR_VC_NOCPERR_Pos 5\000"
 .LASF5393:
 	.ascii	"SUPC_SMMR_SMRSTEN (0x1u << 12)\000"
-.LASF9001:
+.LASF9003:
 	.ascii	"unsigned char\000"
 .LASF6541:
 	.ascii	"US_TCR_TXCTR_Msk (0xffffu << US_TCR_TXCTR_Pos)\000"
-.LASF9036:
+.LASF9038:
 	.ascii	"PIO_PDSR\000"
 .LASF8304:
 	.ascii	"CHIP_OSC_H_INCLUDED \000"
@@ -38842,14 +38848,14 @@ fpga_program_sendbyte:
 	.ascii	"RTC_TIMALR_SEC_Pos 0\000"
 .LASF2918:
 	.ascii	"PIO_IFDR_P9 (0x1u << 9)\000"
-.LASF8631:
+.LASF8633:
 	.ascii	"PIO_TYPE_Msk (0xFu << PIO_TYPE_Pos)\000"
 .LASF2227:
 	.ascii	"SYS_GPBR_GPBR_VALUE(value) ((SYS_GPBR_GPBR_VALUE_Ms"
 	.ascii	"k & ((value) << SYS_GPBR_GPBR_VALUE_Pos)))\000"
 .LASF3572:
 	.ascii	"PIO_OWER_P20 (0x1u << 20)\000"
-.LASF9225:
+.LASF9227:
 	.ascii	"PLL_SRC_MAINCK_BYPASS\000"
 .LASF3906:
 	.ascii	"PIO_FRLHSR_P2 (0x1u << 2)\000"
@@ -38926,13 +38932,13 @@ fpga_program_sendbyte:
 	.ascii	"SSC_RFMR_FSOS_Msk (0x7u << SSC_RFMR_FSOS_Pos)\000"
 .LASF7673:
 	.ascii	"PIO_PB17_IDX 49\000"
-.LASF8840:
+.LASF8842:
 	.ascii	"USB_PID_ATMEL_ASF_VENDOR_CLASS 0x2423\000"
 .LASF5743:
 	.ascii	"TC_SR_ETRGS (0x1u << 7)\000"
 .LASF3959:
 	.ascii	"PIO_LOCKSR_P23 (0x1u << 23)\000"
-.LASF9138:
+.LASF9140:
 	.ascii	"_base\000"
 .LASF7081:
 	.ascii	"REG_SMC_ECC_PR9 (*(RoReg*)0x400E0054U)\000"
@@ -38985,7 +38991,7 @@ fpga_program_sendbyte:
 .LASF6029:
 	.ascii	"UART_TNPR_TXNPTR(value) ((UART_TNPR_TXNPTR_Msk & (("
 	.ascii	"value) << UART_TNPR_TXNPTR_Pos)))\000"
-.LASF8641:
+.LASF8643:
 	.ascii	"PIO_PULLUP (1u << 0)\000"
 .LASF1111:
 	.ascii	"UINTMAX_MAX (__UINTMAX_MAX__)\000"
@@ -38995,16 +39001,16 @@ fpga_program_sendbyte:
 	.ascii	"PIO_ODSR_P3 (0x1u << 3)\000"
 .LASF5264:
 	.ascii	"SSC_TCMR_START_RF_FALLING (0x4u << 8)\000"
-.LASF8699:
+.LASF8701:
 	.ascii	"NFCADDR_CMD_ACYCLE_THREE (0x3u << 19)\000"
-.LASF9209:
+.LASF9211:
 	.ascii	"__lock\000"
 .LASF8234:
 	.ascii	"be16_to_cpu(x) Swap16(x)\000"
 .LASF7754:
 	.ascii	"__ASMNAME(cname) __XSTRING (__USER_LABEL_PREFIX__) "
 	.ascii	"cname\000"
-.LASF8782:
+.LASF8784:
 	.ascii	"UDI_VENDOR_EPS_SIZE_ISO_HS 0\000"
 .LASF4100:
 	.ascii	"PMC_MCKR_CSS_Msk (0x3u << PMC_MCKR_CSS_Pos)\000"
@@ -39024,7 +39030,7 @@ fpga_program_sendbyte:
 	.ascii	"__TA_FBIT__ 63\000"
 .LASF6168:
 	.ascii	"UDPHS_EPTCFG_BK_NUMBER_0 (0x0u << 6)\000"
-.LASF9151:
+.LASF9153:
 	.ascii	"_blksize\000"
 .LASF4678:
 	.ascii	"RTC_CALALR_DATE_Msk (0x3fu << RTC_CALALR_DATE_Pos)\000"
@@ -39058,7 +39064,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PUDR_P24 (0x1u << 24)\000"
 .LASF3191:
 	.ascii	"PIO_IMR_P26 (0x1u << 26)\000"
-.LASF8607:
+.LASF8609:
 	.ascii	"EFC_FCMD_WP 0x01\000"
 .LASF4689:
 	.ascii	"RTC_SCCR_TIMCLR (0x1u << 3)\000"
@@ -39100,11 +39106,11 @@ fpga_program_sendbyte:
 	.ascii	"ADC_SR_OVRE7 (0x1u << 15)\000"
 .LASF8414:
 	.ascii	"PINS_UART (PIO_PA11A_URXD | PIO_PA12A_UTXD)\000"
-.LASF8554:
+.LASF8556:
 	.ascii	"OSC_SLCK_32K_XTAL_HZ BOARD_FREQ_SLCK_XTAL\000"
 .LASF7632:
 	.ascii	"PIO_PA8_IDX 8\000"
-.LASF8498:
+.LASF8500:
 	.ascii	"PIN_EBI_NWE PIO_PB23_IDX\000"
 .LASF6219:
 	.ascii	"UDPHS_EPTCTL_AUTO_VALID (0x1u << 1)\000"
@@ -39138,7 +39144,7 @@ fpga_program_sendbyte:
 	.ascii	"HSMCI_IDR_CSTOE (0x1u << 23)\000"
 .LASF6491:
 	.ascii	"US_TTGR_TG_Pos 0\000"
-.LASF8991:
+.LASF8993:
 	.ascii	"FPGA_INITB_HIGH() gpio_set_pin_high(PIN_FPGA_INITB_"
 	.ascii	"GPIO)\000"
 .LASF6709:
@@ -39161,7 +39167,7 @@ fpga_program_sendbyte:
 	.ascii	"TC_CMR_ETRGEDG_Pos 8\000"
 .LASF7522:
 	.ascii	"PIO_PC29B_MCDA5 (1u << 29)\000"
-.LASF8694:
+.LASF8696:
 	.ascii	"NFCADDR_CMD_VCMD2 (0x1u << 18)\000"
 .LASF2297:
 	.ascii	"HSMCI_CMDR_TRCMD_Msk (0x3u << HSMCI_CMDR_TRCMD_Pos)"
@@ -39179,11 +39185,11 @@ fpga_program_sendbyte:
 	.ascii	"SCB_AIRCR_SYSRESETREQ_Pos 2\000"
 .LASF7544:
 	.ascii	"PIO_PA15B_PWMH2 (1u << 15)\000"
-.LASF8837:
+.LASF8839:
 	.ascii	"USB_PID_ATMEL_ASF_MSC_HIDMOUSE 0x2420\000"
 .LASF1223:
 	.ascii	"SCB_SHCSR_BUSFAULTENA_Pos 17\000"
-.LASF8590:
+.LASF8592:
 	.ascii	"SYSCLK_PRES_8 PMC_MCKR_PRES_CLK_8\000"
 .LASF4779:
 	.ascii	"SMC_IDR_RB_FALL (0x1u << 5)\000"
@@ -39284,13 +39290,13 @@ fpga_program_sendbyte:
 	.ascii	"_IN_PORT_T_DECLARED \000"
 .LASF116:
 	.ascii	"__INT64_C(c) c ## LL\000"
-.LASF8752:
+.LASF8754:
 	.ascii	"CONF_USART_SERIAL_H \000"
 .LASF3767:
 	.ascii	"PIO_ESR_P23 (0x1u << 23)\000"
 .LASF6714:
 	.ascii	"REG_PWM_CLK (*(RwReg*)0x4008C000U)\000"
-.LASF8973:
+.LASF8975:
 	.ascii	"_MAIN_H_ \000"
 .LASF7447:
 	.ascii	"PIO_PC17X1_AD12B6 (1u << 17)\000"
@@ -39329,7 +39335,7 @@ fpga_program_sendbyte:
 .LASF4295:
 	.ascii	"PWM_SCUP_UPR(value) ((PWM_SCUP_UPR_Msk & ((value) <"
 	.ascii	"< PWM_SCUP_UPR_Pos)))\000"
-.LASF8833:
+.LASF8835:
 	.ascii	"USB_PID_ATMEL_ASF_HIDGENERIC 0x2402\000"
 .LASF161:
 	.ascii	"__DBL_MANT_DIG__ 53\000"
@@ -39340,7 +39346,7 @@ fpga_program_sendbyte:
 	.ascii	"S_DEFINED(SAM3U1E) )\000"
 .LASF484:
 	.ascii	"_BSD_SIZE_T_ \000"
-.LASF8548:
+.LASF8550:
 	.ascii	"OSC_MAINCK_4M_RC 3\000"
 .LASF6213:
 	.ascii	"UDPHS_EPTCTLDIS_NAK_IN (0x1u << 14)\000"
@@ -39350,11 +39356,11 @@ fpga_program_sendbyte:
 	.ascii	"HSMCI_IER_UNRE (0x1u << 31)\000"
 .LASF1708:
 	.ascii	"ADC_PTSR_TXTEN (0x1u << 8)\000"
-.LASF8682:
+.LASF8684:
 	.ascii	"SAM_PM_SMODE_ACTIVE 0\000"
-.LASF8930:
+.LASF8932:
 	.ascii	"USB_LPM_ATTRIBUT_REMOTEWAKE_MASK (1 << 8)\000"
-.LASF8623:
+.LASF8625:
 	.ascii	"FLASH_H_INCLUDED \000"
 .LASF5801:
 	.ascii	"TC_QIER_IDX (0x1u << 0)\000"
@@ -39389,7 +39395,7 @@ fpga_program_sendbyte:
 	.ascii	"UDPHS_INTSTA_EPT_6 (0x1u << 14)\000"
 .LASF8221:
 	.ascii	"LSB6D(u64) MSB1D(u64)\000"
-.LASF8981:
+.LASF8983:
 	.ascii	"PIN_FPGA_DO_GPIO PIO_PA18_IDX\000"
 .LASF7528:
 	.ascii	"PIO_PB24B_PCK1 (1u << 24)\000"
@@ -39402,7 +39408,7 @@ fpga_program_sendbyte:
 	.ascii	"PIN_EBI_DATA_BUS_D5 PIO_PB14_IDX\000"
 .LASF6215:
 	.ascii	"UDPHS_EPTCTLDIS_NAK_OUT (0x1u << 15)\000"
-.LASF8998:
+.LASF9000:
 	.ascii	"FPGA_DO_SETUP() gpio_configure_pin(PIN_FPGA_DO_GPIO"
 	.ascii	", PIN_FPGA_DO_FLAGS)\000"
 .LASF2370:
@@ -39413,7 +39419,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_DIFSR_P4 (0x1u << 4)\000"
 .LASF5279:
 	.ascii	"SSC_TFMR_MSBF (0x1u << 7)\000"
-.LASF8717:
+.LASF8719:
 	.ascii	"SLEEPMGR_H \000"
 .LASF3653:
 	.ascii	"PIO_AIMER_P5 (0x1u << 5)\000"
@@ -39427,9 +39433,9 @@ fpga_program_sendbyte:
 	.ascii	"__ARM_FEATURE_IDIV 1\000"
 .LASF120:
 	.ascii	"__UINT_LEAST16_MAX__ 0xffff\000"
-.LASF8739:
+.LASF8741:
 	.ascii	"UART_H_INCLUDED \000"
-.LASF9145:
+.LASF9147:
 	.ascii	"_read\000"
 .LASF780:
 	.ascii	"MREPEAT66(macro,data) MREPEAT65( macro, data) macro"
@@ -39438,7 +39444,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_PWM_CMPV4 (*(RwReg*)0x4008C170U)\000"
 .LASF1605:
 	.ascii	"ADC_CHSR_CH6 (0x1u << 6)\000"
-.LASF9040:
+.LASF9042:
 	.ascii	"PIO_ISR\000"
 .LASF2407:
 	.ascii	"HSMCI_IDR_RINDE (0x1u << 16)\000"
@@ -39462,7 +39468,7 @@ fpga_program_sendbyte:
 	.ascii	"__ELF__ 1\000"
 .LASF1249:
 	.ascii	"SCB_CFSR_USGFAULTSR_Pos 16\000"
-.LASF8762:
+.LASF8764:
 	.ascii	"USB_DEVICE_POWER 500\000"
 .LASF6978:
 	.ascii	"REG_UDPHS_DMANXTDSC5 (*(RwReg*)0x400A4350U)\000"
@@ -39506,7 +39512,7 @@ fpga_program_sendbyte:
 	.ascii	"PDC_TWI0 ((Pdc *)0x40084100U)\000"
 .LASF4366:
 	.ascii	"PWM_ISR2_CMPM0 (0x1u << 8)\000"
-.LASF9031:
+.LASF9033:
 	.ascii	"PIO_IFSR\000"
 .LASF5165:
 	.ascii	"SPI_WPMR_WPEN (0x1u << 0)\000"
@@ -39519,7 +39525,7 @@ fpga_program_sendbyte:
 .LASF4898:
 	.ascii	"SMC_ECC_PR2_WORDADDR_W8BIT_Msk (0xffu << SMC_ECC_PR"
 	.ascii	"2_WORDADDR_W8BIT_Pos)\000"
-.LASF9223:
+.LASF9225:
 	.ascii	"PLL_SRC_MAINCK_12M_RC\000"
 .LASF1589:
 	.ascii	"ADC_CHER_CH6 (0x1u << 6)\000"
@@ -39537,7 +39543,7 @@ fpga_program_sendbyte:
 	.ascii	"PWM_CLK_DIVA_Msk (0xffu << PWM_CLK_DIVA_Pos)\000"
 .LASF4905:
 	.ascii	"SMC_ECC_PR3_NPARITY_Pos 12\000"
-.LASF8720:
+.LASF8722:
 	.ascii	"TWI_H_INCLUDED \000"
 .LASF2721:
 	.ascii	"PIO_PDR_P4 (0x1u << 4)\000"
@@ -39562,7 +39568,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_ELSR_P4 (0x1u << 4)\000"
 .LASF7323:
 	.ascii	"ID_HSMCI (17)\000"
-.LASF8843:
+.LASF8845:
 	.ascii	"USB_PID_ATMEL_ASF_SEVEN_CDC 0x2426\000"
 .LASF1036:
 	.ascii	"__INT64 \"ll\"\000"
@@ -39660,7 +39666,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_DMAC_DSCR3 (*(RwReg*)0x400B00BCU)\000"
 .LASF7536:
 	.ascii	"PIO_PB13B_PWMH0 (1u << 13)\000"
-.LASF8664:
+.LASF8666:
 	.ascii	"IOPORT_CREATE_PIN(port,pin) ((IOPORT_ ## port) * 32"
 	.ascii	" + (pin))\000"
 .LASF3297:
@@ -39669,7 +39675,7 @@ fpga_program_sendbyte:
 	.ascii	"ADC_SR_EOC6 (0x1u << 6)\000"
 .LASF6741:
 	.ascii	"REG_PWM_ELMR (*(RwReg*)0x4008C07CU)\000"
-.LASF9208:
+.LASF9210:
 	.ascii	"_unused\000"
 .LASF1927:
 	.ascii	"CHIPID_CIDR_SRAMSIZ_128K (0xCu << 16)\000"
@@ -39697,7 +39703,7 @@ fpga_program_sendbyte:
 	.ascii	"PMC_IDR_MOSCSELS (0x1u << 16)\000"
 .LASF1783:
 	.ascii	"ADC12B_LCDR_LDATA_Pos 0\000"
-.LASF8671:
+.LASF8673:
 	.ascii	"IOPORT_PIOE 4\000"
 .LASF3835:
 	.ascii	"PIO_ELSR_P27 (0x1u << 27)\000"
@@ -39711,7 +39717,7 @@ fpga_program_sendbyte:
 	.ascii	"US_MR_CHMODE_Pos 14\000"
 .LASF2289:
 	.ascii	"HSMCI_CMDR_SPCMD_EBO (0x7u << 8)\000"
-.LASF8747:
+.LASF8749:
 	.ascii	"SPI_CPOL (1 << 1)\000"
 .LASF5099:
 	.ascii	"SPI_MR_DLYBCS_Msk (0xffu << SPI_MR_DLYBCS_Pos)\000"
@@ -39719,7 +39725,7 @@ fpga_program_sendbyte:
 	.ascii	"DMAC_CTRLA_DST_WIDTH_BYTE (0x0u << 28)\000"
 .LASF3644:
 	.ascii	"PIO_OWSR_P28 (0x1u << 28)\000"
-.LASF9217:
+.LASF9219:
 	.ascii	"cpu_irq_prev_interrupt_state\000"
 .LASF4744:
 	.ascii	"SMC_CFG_DTOMUL_Msk (0x7u << SMC_CFG_DTOMUL_Pos)\000"
@@ -39745,7 +39751,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_AIMDR_P24 (0x1u << 24)\000"
 .LASF7267:
 	.ascii	"REG_PIOB_REHLSR (*(WoReg*)0x400E0ED4U)\000"
-.LASF8700:
+.LASF8702:
 	.ascii	"NFCADDR_CMD_ACYCLE_FOUR (0x4u << 19)\000"
 .LASF7927:
 	.ascii	"_REENT_CHECK_RAND48(ptr) \000"
@@ -39763,11 +39769,11 @@ fpga_program_sendbyte:
 	.ascii	"( 11, data)\000"
 .LASF3723:
 	.ascii	"PIO_AIMMR_P11 (0x1u << 11)\000"
-.LASF8595:
+.LASF8597:
 	.ascii	"_cycle_counter_h_ \000"
 .LASF4037:
 	.ascii	"PMC_PCDR0_PID28 (0x1u << 28)\000"
-.LASF8729:
+.LASF8731:
 	.ascii	"TWI_SEND_NACK 7\000"
 .LASF8198:
 	.ascii	"LSB3W(u32) MSB0W(u32)\000"
@@ -39889,7 +39895,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_ABSR_P8 (0x1u << 8)\000"
 .LASF6614:
 	.ascii	"REG_SSC_SR (*(RoReg*)0x40004040U)\000"
-.LASF8588:
+.LASF8590:
 	.ascii	"SYSCLK_PRES_2 PMC_MCKR_PRES_CLK_2\000"
 .LASF4292:
 	.ascii	"PWM_SCUC_UPDULOCK (0x1u << 0)\000"
@@ -39899,9 +39905,9 @@ fpga_program_sendbyte:
 	.ascii	"DMAC_CFG_DST_H2SEL_HW (0x1u << 13)\000"
 .LASF1002:
 	.ascii	"__EXP(x) __ ##x ##__\000"
-.LASF8529:
+.LASF8531:
 	.ascii	"BOARD_NF_DATA_ADDR 0x61000000\000"
-.LASF9113:
+.LASF9115:
 	.ascii	"_flock_t\000"
 .LASF4800:
 	.ascii	"SMC_BANK_BANK_Msk (0x7u << SMC_BANK_BANK_Pos)\000"
@@ -39934,17 +39940,17 @@ fpga_program_sendbyte:
 	.ascii	"CT_Pos)\000"
 .LASF3647:
 	.ascii	"PIO_OWSR_P31 (0x1u << 31)\000"
-.LASF9104:
+.LASF9106:
 	.ascii	"_off_t\000"
-.LASF8722:
+.LASF8724:
 	.ascii	"TWI_SUCCESS 0\000"
 .LASF1357:
 	.ascii	"DWT_SLEEPCNT_SLEEPCNT_Pos 0\000"
-.LASF9051:
+.LASF9053:
 	.ascii	"PIO_SCIFSR\000"
 .LASF1839:
 	.ascii	"ADC12B_IMR_OVRE6 (0x1u << 14)\000"
-.LASF9259:
+.LASF9261:
 	.ascii	"iProduct\000"
 .LASF2462:
 	.ascii	"HSMCI_WPMR_WP_KEY_Msk (0xffffffu << HSMCI_WPMR_WP_K"
@@ -39956,7 +39962,7 @@ fpga_program_sendbyte:
 	.ascii	"CKGR_MOR_MOSCXTST_Pos 8\000"
 .LASF7397:
 	.ascii	"PIO_PA22 (1u << 22)\000"
-.LASF8987:
+.LASF8989:
 	.ascii	"FPGA_NPROG_HIGH() gpio_set_pin_high(PIN_FPGA_PROGRA"
 	.ascii	"M_GPIO)\000"
 .LASF5916:
@@ -39982,17 +39988,17 @@ fpga_program_sendbyte:
 	.ascii	"_LONG_DOUBLE long double\000"
 .LASF3753:
 	.ascii	"PIO_ESR_P9 (0x1u << 9)\000"
-.LASF9269:
+.LASF9271:
 	.ascii	"bConfigurationValue\000"
 .LASF6307:
 	.ascii	"UDPHS_DMASTATUS_DESC_LDST (0x1u << 6)\000"
-.LASF8546:
+.LASF8548:
 	.ascii	"OSC_SLCK_32K_XTAL 1\000"
 .LASF5366:
 	.ascii	"SUPC_CR_KEY_Msk (0xffu << SUPC_CR_KEY_Pos)\000"
 .LASF6588:
 	.ascii	"REG_HSMCI_CSTOR (*(RwReg*)0x4000001CU)\000"
-.LASF9103:
+.LASF9105:
 	.ascii	"wint_t\000"
 .LASF5905:
 	.ascii	"TWI_RHR_RXDATA_Pos 0\000"
@@ -40017,7 +40023,7 @@ fpga_program_sendbyte:
 	.ascii	"DMAC_CHSR_EMPT2 (0x1u << 18)\000"
 .LASF6185:
 	.ascii	"UDPHS_EPTCTLENB_TX_PK_RDY (0x1u << 11)\000"
-.LASF8585:
+.LASF8587:
 	.ascii	"SYSCLK_SRC_PLLACK 8\000"
 .LASF2847:
 	.ascii	"PIO_OSR_P2 (0x1u << 2)\000"
@@ -40034,7 +40040,7 @@ fpga_program_sendbyte:
 	.ascii	"CHIPID_CIDR_ARCH_AT91SAM7SExx (0x72u << 20)\000"
 .LASF4921:
 	.ascii	"SMC_ECC_PR5_BITADDR_Pos 0\000"
-.LASF8853:
+.LASF8855:
 	.ascii	"USB_PID_ATMEL_DFU_ATXMEGA256C3 0x2FDA\000"
 .LASF1289:
 	.ascii	"SysTick_VAL_CURRENT_Pos 0\000"
@@ -40070,7 +40076,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PB5_IDX 37\000"
 .LASF700:
 	.ascii	"ATPASTE3(a,b,c) TPASTE3( a, b, c)\000"
-.LASF8785:
+.LASF8787:
 	.ascii	"USB_DEVICE_EP_CTRL_SIZE 64\000"
 .LASF5385:
 	.ascii	"SUPC_SMMR_SMTH_3_4V (0xFu << 0)\000"
@@ -40096,7 +40102,7 @@ fpga_program_sendbyte:
 	.ascii	"{0}}, {0, {0}}, {0, {0}}, \"\", \"\", 0, {0, {0}}, "
 	.ascii	"{0, {0}}, {0, {0}}, {0, {0}}, {0, {0}} } }, _REENT_"
 	.ascii	"INIT_ATEXIT _NULL, {_NULL, 0, _NULL} }\000"
-.LASF9118:
+.LASF9120:
 	.ascii	"_Bigint\000"
 .LASF2303:
 	.ascii	"HSMCI_CMDR_TRDIR_READ (0x1u << 18)\000"
@@ -40157,7 +40163,7 @@ fpga_program_sendbyte:
 .LASF732:
 	.ascii	"MREPEAT18(macro,data) MREPEAT17( macro, data) macro"
 	.ascii	"( 17, data)\000"
-.LASF9180:
+.LASF9182:
 	.ascii	"_glue\000"
 .LASF4721:
 	.ascii	"RTT_AR_ALMV_Pos 0\000"
@@ -40179,12 +40185,12 @@ fpga_program_sendbyte:
 .LASF4996:
 	.ascii	"SMC_ECC_PR15_WORDADDR_Msk (0xffu << SMC_ECC_PR15_WO"
 	.ascii	"RDADDR_Pos)\000"
-.LASF8535:
+.LASF8537:
 	.ascii	"SUPC_CR_KEY_PASSWD SUPC_CR_KEY(0xA5U)\000"
 .LASF4862:
 	.ascii	"SMC_ECC_PR1_NPARITY_W9BIT_Msk (0xfffu << SMC_ECC_PR"
 	.ascii	"1_NPARITY_W9BIT_Pos)\000"
-.LASF8865:
+.LASF8867:
 	.ascii	"USB_PID_ATMEL_DFU_ATXMEGA128A3U 0x2FE6\000"
 .LASF5727:
 	.ascii	"TC_RA_RA_Pos 0\000"
@@ -40194,29 +40200,29 @@ fpga_program_sendbyte:
 	.ascii	"ADC_IDR_OVRE7 (0x1u << 15)\000"
 .LASF1688:
 	.ascii	"ADC_IMR_RXBUFF (0x1u << 19)\000"
-.LASF8615:
+.LASF8617:
 	.ascii	"EFC_FCMD_SGPB 0x0B\000"
 .LASF50:
 	.ascii	"__INT_LEAST16_TYPE__ short int\000"
-.LASF8783:
+.LASF8785:
 	.ascii	"UDD_ISOCHRONOUS_NB_BANK(ep) 1\000"
 .LASF89:
 	.ascii	"__SIZE_WIDTH__ 32\000"
 .LASF8105:
 	.ascii	"ferror_unlocked(p) __sferror(p)\000"
-.LASF8742:
+.LASF8744:
 	.ascii	"UART_MCK_DIV_MAX_FACTOR 65535\000"
 .LASF2267:
 	.ascii	"HSMCI_SDCR_SDCBUS_8 (0x3u << 6)\000"
 .LASF309:
 	.ascii	"__UACCUM_IBIT__ 16\000"
-.LASF9009:
+.LASF9011:
 	.ascii	"long unsigned int\000"
 .LASF5867:
 	.ascii	"TWI_IER_GACC (0x1u << 5)\000"
-.LASF9162:
+.LASF9164:
 	.ascii	"_inc\000"
-.LASF9135:
+.LASF9137:
 	.ascii	"_ind\000"
 .LASF504:
 	.ascii	"_WCHAR_T_H \000"
@@ -40225,7 +40231,7 @@ fpga_program_sendbyte:
 .LASF4835:
 	.ascii	"SMC_ECC_SR1_ECCERR6_Msk (0x3u << SMC_ECC_SR1_ECCERR"
 	.ascii	"6_Pos)\000"
-.LASF8959:
+.LASF8961:
 	.ascii	"UDI_VENDOR_EPS_INT_DESC_FS \000"
 .LASF6465:
 	.ascii	"US_CSR_NACK (0x1u << 13)\000"
@@ -40260,13 +40266,13 @@ fpga_program_sendbyte:
 	.ascii	"STK600_RCUC3L0 6\000"
 .LASF1131:
 	.ascii	"_GCC_WRAP_STDINT_H \000"
-.LASF9265:
+.LASF9267:
 	.ascii	"wTotalLength\000"
 .LASF2386:
 	.ascii	"HSMCI_IER_RTOE (0x1u << 20)\000"
 .LASF1601:
 	.ascii	"ADC_CHSR_CH2 (0x1u << 2)\000"
-.LASF8574:
+.LASF8576:
 	.ascii	"CONFIG_PLL1_MUL 0\000"
 .LASF2328:
 	.ascii	"HSMCI_CSTOR_CSTOCYC_Pos 0\000"
@@ -40294,7 +40300,7 @@ fpga_program_sendbyte:
 .LASF844:
 	.ascii	"MREPEAT130(macro,data) MREPEAT129(macro, data) macr"
 	.ascii	"o(129, data)\000"
-.LASF9100:
+.LASF9102:
 	.ascii	"US_PTCR\000"
 .LASF3764:
 	.ascii	"PIO_ESR_P20 (0x1u << 20)\000"
@@ -40309,13 +40315,13 @@ fpga_program_sendbyte:
 	.ascii	"SPI_IDR_OVRES (0x1u << 3)\000"
 .LASF5049:
 	.ascii	"SMC_MODE_READ_MODE (0x1u << 0)\000"
-.LASF9192:
+.LASF9194:
 	.ascii	"_rand_next\000"
 .LASF2688:
 	.ascii	"PIO_PER_P3 (0x1u << 3)\000"
 .LASF8431:
 	.ascii	"PIN_USART2_RXD (PIO_PA23_IDX)\000"
-.LASF8883:
+.LASF8885:
 	.ascii	"USB_PID_ATMEL_DFU_AT32UC3A 0x2FF8\000"
 .LASF2839:
 	.ascii	"PIO_ODR_P26 (0x1u << 26)\000"
@@ -40335,7 +40341,7 @@ fpga_program_sendbyte:
 	.ascii	"PMC_PCER0_PID13 (0x1u << 13)\000"
 .LASF6627:
 	.ascii	"REG_SPI_IDR (*(WoReg*)0x40008018U)\000"
-.LASF8589:
+.LASF8591:
 	.ascii	"SYSCLK_PRES_4 PMC_MCKR_PRES_CLK_4\000"
 .LASF114:
 	.ascii	"__INT_LEAST32_WIDTH__ 32\000"
@@ -40345,7 +40351,7 @@ fpga_program_sendbyte:
 	.ascii	"TC_IMR_LDRBS (0x1u << 6)\000"
 .LASF4314:
 	.ascii	"PWM_IER2_CMPU0 (0x1u << 16)\000"
-.LASF8477:
+.LASF8479:
 	.ascii	"PIN_EBI_USB_SPARE1 PIO_PB17_IDX\000"
 .LASF2496:
 	.ascii	"MATRIX_PRAS0_M1PR(value) ((MATRIX_PRAS0_M1PR_Msk & "
@@ -40358,11 +40364,11 @@ fpga_program_sendbyte:
 	.ascii	"__FLT32_MANT_DIG__ 24\000"
 .LASF8295:
 	.ascii	"SYSCLK_H_INCLUDED \000"
-.LASF8921:
+.LASF8923:
 	.ascii	"BESL_4000_US 9\000"
 .LASF1215:
 	.ascii	"SCB_CCR_UNALIGN_TRP_Pos 3\000"
-.LASF8673:
+.LASF8675:
 	.ascii	"IOPORT_MODE_MUX_MASK (0x7 << 0)\000"
 .LASF1974:
 	.ascii	"CHIPID_CIDR_ARCH_AT75Cxx (0xF0u << 20)\000"
@@ -40407,7 +40413,7 @@ fpga_program_sendbyte:
 	.ascii	"TPI_FIFO0_ETM_bytecount_Pos 24\000"
 .LASF2593:
 	.ascii	"MATRIX_PRAS6_M4PR_Pos 16\000"
-.LASF8885:
+.LASF8887:
 	.ascii	"USB_PID_ATMEL_DFU_AT90USB162 0x2FFA\000"
 .LASF2270:
 	.ascii	"HSMCI_ARGR_ARG(value) ((HSMCI_ARGR_ARG_Msk & ((valu"
@@ -40437,9 +40443,9 @@ fpga_program_sendbyte:
 .LASF5367:
 	.ascii	"SUPC_CR_KEY(value) ((SUPC_CR_KEY_Msk & ((value) << "
 	.ascii	"SUPC_CR_KEY_Pos)))\000"
-.LASF9068:
+.LASF9070:
 	.ascii	"PIO_FELLSR\000"
-.LASF8697:
+.LASF8699:
 	.ascii	"NFCADDR_CMD_ACYCLE_ONE (0x1u << 19)\000"
 .LASF1241:
 	.ascii	"SCB_SHCSR_SVCALLACT_Pos 7\000"
@@ -40470,7 +40476,7 @@ fpga_program_sendbyte:
 	.ascii	"ADC_CHDR_CH0 (0x1u << 0)\000"
 .LASF3115:
 	.ascii	"PIO_IER_P14 (0x1u << 14)\000"
-.LASF8934:
+.LASF8936:
 	.ascii	"USB_LPM_ATTRIBUT_BLINKSTATE_L1 USB_LPM_ATTRIBUT_BLI"
 	.ascii	"NKSTATE(1)\000"
 .LASF7879:
@@ -40518,7 +40524,7 @@ fpga_program_sendbyte:
 	.ascii	"ID_SMC ( 9)\000"
 .LASF4773:
 	.ascii	"SMC_IER_DTOE (0x1u << 20)\000"
-.LASF8545:
+.LASF8547:
 	.ascii	"OSC_SLCK_32K_RC 0\000"
 .LASF4899:
 	.ascii	"SMC_ECC_PR2_NPARITY_W8BIT_Pos 12\000"
@@ -40638,7 +40644,7 @@ fpga_program_sendbyte:
 	.ascii	"PWM_IMR2_CMPU1 (0x1u << 17)\000"
 .LASF6492:
 	.ascii	"US_TTGR_TG_Msk (0xffu << US_TTGR_TG_Pos)\000"
-.LASF8888:
+.LASF8890:
 	.ascii	"USB_V2_1 0x0201\000"
 .LASF3987:
 	.ascii	"PMC_PCER0_PID4 (0x1u << 4)\000"
@@ -40663,7 +40669,7 @@ fpga_program_sendbyte:
 	.ascii	"PWM_IDR1_FCHID0 (0x1u << 16)\000"
 .LASF1913:
 	.ascii	"CHIPID_CIDR_SRAMSIZ_Pos 16\000"
-.LASF9262:
+.LASF9264:
 	.ascii	"usb_dev_desc_t\000"
 .LASF7965:
 	.ascii	"_SYS_TYPES_H \000"
@@ -40682,7 +40688,7 @@ fpga_program_sendbyte:
 	.ascii	"1)\000"
 .LASF2485:
 	.ascii	"MATRIX_SCFG_FIXED_DEFMSTR_Pos 18\000"
-.LASF9309:
+.LASF9311:
 	.ascii	"usart_putchar\000"
 .LASF2764:
 	.ascii	"PIO_PSR_P15 (0x1u << 15)\000"
@@ -40701,7 +40707,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_PIOA_DIFSR (*(WoReg*)0x400E0C84U)\000"
 .LASF7702:
 	.ascii	"CHIP_FREQ_CPU_MAX (96000000UL)\000"
-.LASF8613:
+.LASF8615:
 	.ascii	"EFC_FCMD_CLB 0x09\000"
 .LASF4138:
 	.ascii	"PMC_IER_PCKRDY1 (0x1u << 9)\000"
@@ -40744,7 +40750,7 @@ fpga_program_sendbyte:
 .LASF878:
 	.ascii	"MREPEAT164(macro,data) MREPEAT163(macro, data) macr"
 	.ascii	"o(163, data)\000"
-.LASF8611:
+.LASF8613:
 	.ascii	"EFC_FCMD_EA 0x05\000"
 .LASF3931:
 	.ascii	"PIO_FRLHSR_P27 (0x1u << 27)\000"
@@ -40831,7 +40837,7 @@ fpga_program_sendbyte:
 .LASF7952:
 	.ascii	"_REENT_MBSRTOWCS_STATE(ptr) ((ptr)->_new._reent._mb"
 	.ascii	"srtowcs_state)\000"
-.LASF9199:
+.LASF9201:
 	.ascii	"_getdate_err\000"
 .LASF4903:
 	.ascii	"SMC_ECC_PR3_WORDADDR_Pos 3\000"
@@ -40839,7 +40845,7 @@ fpga_program_sendbyte:
 	.ascii	"TC_CMR_TCCLKS_Msk (0x7u << TC_CMR_TCCLKS_Pos)\000"
 .LASF3122:
 	.ascii	"PIO_IER_P21 (0x1u << 21)\000"
-.LASF8564:
+.LASF8566:
 	.ascii	"PLL_OUTPUT_MAX_HZ 192000000\000"
 .LASF3165:
 	.ascii	"PIO_IMR_P0 (0x1u << 0)\000"
@@ -40877,7 +40883,7 @@ fpga_program_sendbyte:
 	.ascii	"ADC12B_IER_OVRE1 (0x1u << 9)\000"
 .LASF3566:
 	.ascii	"PIO_OWER_P14 (0x1u << 14)\000"
-.LASF8859:
+.LASF8861:
 	.ascii	"USB_PID_ATMEL_DFU_ATXMEGA128B3 0x2FE0\000"
 .LASF8332:
 	.ascii	"UC3B_BOARD_CONTROLLER 30\000"
@@ -40890,7 +40896,7 @@ fpga_program_sendbyte:
 .LASF2612:
 	.ascii	"MATRIX_PRAS8_M0PR_Msk (0x3u << MATRIX_PRAS8_M0PR_Po"
 	.ascii	"s)\000"
-.LASF9167:
+.LASF9169:
 	.ascii	"__cleanup\000"
 .LASF988:
 	.ascii	"_POSIX_C_SOURCE\000"
@@ -40898,7 +40904,7 @@ fpga_program_sendbyte:
 	.ascii	"TC_IDR_CPAS (0x1u << 2)\000"
 .LASF2001:
 	.ascii	"DMAC_CREQ_SCREQ1 (0x1u << 2)\000"
-.LASF8626:
+.LASF8628:
 	.ascii	"_GPIO_H_ \000"
 .LASF5595:
 	.ascii	"SUPC_SR_WKUPIS10_EN (0x1u << 26)\000"
@@ -40950,7 +40956,7 @@ fpga_program_sendbyte:
 	.ascii	"s)\000"
 .LASF2816:
 	.ascii	"PIO_ODR_P3 (0x1u << 3)\000"
-.LASF8791:
+.LASF8793:
 	.ascii	"UDI_VENDOR_EP_ISO_OUT (6 | USB_EP_DIR_OUT)\000"
 .LASF7471:
 	.ascii	"PIO_PC27A_A23 (1u << 27)\000"
@@ -40977,7 +40983,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_ODSR_P25 (0x1u << 25)\000"
 .LASF5429:
 	.ascii	"SUPC_WUMR_FWUPDBC_512_SCLK (0x3u << 8)\000"
-.LASF8707:
+.LASF8709:
 	.ascii	"NFCADDR_CMD_NFC_WIRTE (0x1u << 26)\000"
 .LASF1761:
 	.ascii	"ADC12B_CHSR_CH6 (0x1u << 6)\000"
@@ -41034,7 +41040,7 @@ fpga_program_sendbyte:
 	.ascii	")\000"
 .LASF8244:
 	.ascii	"BE32_TO_CPU(x) swap32(x)\000"
-.LASF9306:
+.LASF9308:
 	.ascii	"sysclk_get_cpu_hz\000"
 .LASF3553:
 	.ascii	"PIO_OWER_P1 (0x1u << 1)\000"
@@ -41082,12 +41088,12 @@ fpga_program_sendbyte:
 	.ascii	"SAM4S_EK2 49\000"
 .LASF4574:
 	.ascii	"PWM_CDTY_CDTY_Pos 0\000"
-.LASF8819:
+.LASF8821:
 	.ascii	"USB_PID_ATMEL_UC3_ENUM 0x2300\000"
 .LASF4994:
 	.ascii	"SMC_ECC_PR15_BITADDR_Msk (0x7u << SMC_ECC_PR15_BITA"
 	.ascii	"DDR_Pos)\000"
-.LASF9242:
+.LASF9244:
 	.ascii	"bmRequestType\000"
 .LASF1789:
 	.ascii	"ADC12B_IER_EOC4 (0x1u << 4)\000"
@@ -41119,7 +41125,7 @@ fpga_program_sendbyte:
 	.ascii	"US_IDR_ITER (0x1u << 10)\000"
 .LASF3521:
 	.ascii	"PIO_IFDGSR_P4 (0x1u << 4)\000"
-.LASF8969:
+.LASF8971:
 	.ascii	"UDI_VENDOR_DESC .iface0.bLength = sizeof(usb_iface_"
 	.ascii	"desc_t), .iface0.bDescriptorType = USB_DT_INTERFACE"
 	.ascii	", .iface0.bInterfaceNumber = UDI_VENDOR_IFACE_NUMBE"
@@ -41152,7 +41158,7 @@ fpga_program_sendbyte:
 	.ascii	"__LEAST16 \"h\"\000"
 .LASF6250:
 	.ascii	"UDPHS_EPTCLRSTA_NAK_IN (0x1u << 14)\000"
-.LASF9232:
+.LASF9234:
 	.ascii	"PIO_INPUT\000"
 .LASF6979:
 	.ascii	"REG_UDPHS_DMAADDRESS5 (*(RwReg*)0x400A4354U)\000"
@@ -41185,7 +41191,7 @@ fpga_program_sendbyte:
 	.ascii	"I_MR_PCS_Pos)))\000"
 .LASF6637:
 	.ascii	"REG_TC0_RB0 (*(RwReg*)0x40080018U)\000"
-.LASF9273:
+.LASF9275:
 	.ascii	"usb_conf_desc_t\000"
 .LASF2384:
 	.ascii	"HSMCI_IER_RCRCE (0x1u << 18)\000"
@@ -41200,7 +41206,7 @@ fpga_program_sendbyte:
 	.ascii	"os)\000"
 .LASF1766:
 	.ascii	"ADC12B_SR_EOC3 (0x1u << 3)\000"
-.LASF9109:
+.LASF9111:
 	.ascii	"__value\000"
 .LASF8169:
 	.ascii	"Set_bits(lvalue,mask) ((lvalue) |= (mask))\000"
@@ -41268,18 +41274,18 @@ fpga_program_sendbyte:
 	.ascii	"ADC_SR_RXBUFF (0x1u << 19)\000"
 .LASF1175:
 	.ascii	"SCB_ICSR_ISRPREEMPT_Pos 23\000"
-.LASF8807:
+.LASF8809:
 	.ascii	"USB_PID_ATMEL_MEGA_HIDMOUSE 0x201C\000"
-.LASF8659:
+.LASF8661:
 	.ascii	"gpio_set_pin_group_high(port_id,mask) pio_set_pin_g"
 	.ascii	"roup_high(port_id,mask)\000"
 .LASF2944:
 	.ascii	"PIO_IFSR_P3 (0x1u << 3)\000"
-.LASF8575:
+.LASF8577:
 	.ascii	"CONFIG_PLL1_DIV 0\000"
 .LASF6698:
 	.ascii	"REG_TWI1_IER (*(WoReg*)0x40088024U)\000"
-.LASF8610:
+.LASF8612:
 	.ascii	"EFC_FCMD_EWPL 0x04\000"
 .LASF1683:
 	.ascii	"ADC_IMR_OVRE6 (0x1u << 14)\000"
@@ -41292,7 +41298,7 @@ fpga_program_sendbyte:
 	.ascii	"SPI_IMR_NSSR (0x1u << 8)\000"
 .LASF5995:
 	.ascii	"UART_SR_OVRE (0x1u << 5)\000"
-.LASF8660:
+.LASF8662:
 	.ascii	"gpio_set_pin_group_low(port_id,mask) pio_set_pin_gr"
 	.ascii	"oup_low(port_id,mask)\000"
 .LASF2976:
@@ -41342,14 +41348,14 @@ fpga_program_sendbyte:
 	.ascii	"CHIPID_CIDR_ARCH_SAM3XxG (0x86u << 20)\000"
 .LASF4567:
 	.ascii	"PWM_CMR_CPRE_CLKB (0xCu << 0)\000"
-.LASF8648:
+.LASF8650:
 	.ascii	"PIO_IT_LOW_LEVEL (0 | 0 | PIO_IT_AIME)\000"
 .LASF5013:
 	.ascii	"SMC_PULSE_NWE_PULSE(value) ((SMC_PULSE_NWE_PULSE_Ms"
 	.ascii	"k & ((value) << SMC_PULSE_NWE_PULSE_Pos)))\000"
-.LASF9289:
+.LASF9291:
 	.ascii	"udc_config_t\000"
-.LASF8516:
+.LASF8518:
 	.ascii	"LED_1_NAME \"red TX\"\000"
 .LASF1391:
 	.ascii	"TPI_FFSR_FtStopped_Pos 1\000"
@@ -41401,7 +41407,7 @@ fpga_program_sendbyte:
 	.ascii	"3A0512) )\000"
 .LASF3975:
 	.ascii	"_SAM3U_PMC_COMPONENT_ \000"
-.LASF9237:
+.LASF9239:
 	.ascii	"char_length\000"
 .LASF5987:
 	.ascii	"UART_IMR_PARE (0x1u << 7)\000"
@@ -41449,9 +41455,9 @@ fpga_program_sendbyte:
 	.ascii	"PIO_SODR_P14 (0x1u << 14)\000"
 .LASF1969:
 	.ascii	"CHIPID_CIDR_ARCH_SAM3NxB (0x94u << 20)\000"
-.LASF8741:
+.LASF8743:
 	.ascii	"UART_MCK_DIV_MIN_FACTOR 1\000"
-.LASF8802:
+.LASF8804:
 	.ascii	"USB_PID_ATMEL_MEGA_HIDKEYBOARD 0x2017\000"
 .LASF2198:
 	.ascii	"DMAC_WPMR_WPKEY_Msk (0xffffffu << DMAC_WPMR_WPKEY_P"
@@ -41555,7 +41561,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PB6X1_AD1 (1u << 6)\000"
 .LASF6810:
 	.ascii	"REG_PWM_CPRDUPD3 (*(WoReg*)0x4008C270U)\000"
-.LASF8918:
+.LASF8920:
 	.ascii	"BESL_1000_US 6\000"
 .LASF1592:
 	.ascii	"ADC_CHDR_CH1 (0x1u << 1)\000"
@@ -41662,7 +41668,7 @@ fpga_program_sendbyte:
 	.ascii	"COMPILER_PRAGMA(arg) _Pragma(#arg)\000"
 .LASF2234:
 	.ascii	"HSMCI_MR_CLKDIV_Pos 0\000"
-.LASF9053:
+.LASF9055:
 	.ascii	"PIO_IFDGSR\000"
 .LASF4902:
 	.ascii	"SMC_ECC_PR3_BITADDR_Msk (0x7u << SMC_ECC_PR3_BITADD"
@@ -41689,20 +41695,20 @@ fpga_program_sendbyte:
 	.ascii	"\000"
 .LASF6318:
 	.ascii	"US_CR_RSTSTA (0x1u << 8)\000"
-.LASF8502:
+.LASF8504:
 	.ascii	"PIN_EBI_NWE_ID ID_PIOB\000"
 .LASF2288:
 	.ascii	"HSMCI_CMDR_SPCMD_BOR (0x6u << 8)\000"
 .LASF3398:
 	.ascii	"PIO_PUSR_P9 (0x1u << 9)\000"
-.LASF8862:
+.LASF8864:
 	.ascii	"USB_PID_ATMEL_DFU_ATXMEGA16A4U 0x2FE3\000"
 .LASF8049:
 	.ascii	"_PTHREAD_COND_INITIALIZER ((pthread_cond_t) 0xFFFFF"
 	.ascii	"FFF)\000"
 .LASF5448:
 	.ascii	"SUPC_WUIR_WKUPEN2_ENABLE (0x1u << 2)\000"
-.LASF9101:
+.LASF9103:
 	.ascii	"US_PTSR\000"
 .LASF7848:
 	.ascii	"__RCSID(s) struct __hack\000"
@@ -41737,7 +41743,7 @@ fpga_program_sendbyte:
 	.ascii	"T_Pos)\000"
 .LASF7862:
 	.ascii	"__lock_annotate(x) \000"
-.LASF8957:
+.LASF8959:
 	.ascii	"Udd_setup_recipient() (udd_g_ctrlreq.req.bmRequestT"
 	.ascii	"ype & USB_REQ_RECIP_MASK)\000"
 .LASF2086:
@@ -41862,7 +41868,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_LSR_P18 (0x1u << 18)\000"
 .LASF8092:
 	.ascii	"__VALIST __gnuc_va_list\000"
-.LASF8929:
+.LASF8931:
 	.ascii	"USB_LPM_ATTRIBUT_BESL_MASK (0xF << 4)\000"
 .LASF6526:
 	.ascii	"US_WPMR_WPKEY_Msk (0xffffffu << US_WPMR_WPKEY_Pos)\000"
@@ -41881,7 +41887,7 @@ fpga_program_sendbyte:
 	.ascii	"SE_Pos)\000"
 .LASF5108:
 	.ascii	"SPI_TDR_PCS_Pos 16\000"
-.LASF8614:
+.LASF8616:
 	.ascii	"EFC_FCMD_GLB 0x0A\000"
 .LASF6317:
 	.ascii	"US_CR_TXDIS (0x1u << 7)\000"
@@ -41895,7 +41901,7 @@ fpga_program_sendbyte:
 .LASF4080:
 	.ascii	"CKGR_MOR_MOSCXTST(value) ((CKGR_MOR_MOSCXTST_Msk & "
 	.ascii	"((value) << CKGR_MOR_MOSCXTST_Pos)))\000"
-.LASF9238:
+.LASF9240:
 	.ascii	"spi_mode\000"
 .LASF7220:
 	.ascii	"REG_PIOA_LSR (*(WoReg*)0x400E0CC4U)\000"
@@ -41918,7 +41924,7 @@ fpga_program_sendbyte:
 	.ascii	"SSC_TCMR_PERIOD_Msk (0xffu << SSC_TCMR_PERIOD_Pos)\000"
 .LASF4247:
 	.ascii	"PWM_IER1_CHID0 (0x1u << 0)\000"
-.LASF8606:
+.LASF8608:
 	.ascii	"EFC_FCMD_GETD 0x00\000"
 .LASF4458:
 	.ascii	"PWM_FPE_FPE1_Msk (0xffu << PWM_FPE_FPE1_Pos)\000"
@@ -41940,7 +41946,7 @@ fpga_program_sendbyte:
 	.ascii	"UDPHS_IEN_DMA_2 (0x1u << 26)\000"
 .LASF3563:
 	.ascii	"PIO_OWER_P11 (0x1u << 11)\000"
-.LASF9291:
+.LASF9293:
 	.ascii	"payload\000"
 .LASF7459:
 	.ascii	"PIO_PC22A_A16 (1u << 22)\000"
@@ -41951,7 +41957,7 @@ fpga_program_sendbyte:
 .LASF1701:
 	.ascii	"ADC_RNCR_RXNCTR_Msk (0xffffu << ADC_RNCR_RXNCTR_Pos"
 	.ascii	")\000"
-.LASF8892:
+.LASF8894:
 	.ascii	"NO_PROTOCOL 0x00\000"
 .LASF7145:
 	.ascii	"REG_PMC_IMR (*(RoReg*)0x400E046CU)\000"
@@ -41962,13 +41968,13 @@ fpga_program_sendbyte:
 .LASF2170:
 	.ascii	"DMAC_CFG_DST_PER(value) ((DMAC_CFG_DST_PER_Msk & (("
 	.ascii	"value) << DMAC_CFG_DST_PER_Pos)))\000"
-.LASF8586:
+.LASF8588:
 	.ascii	"SYSCLK_SRC_UPLLCK 9\000"
 .LASF1798:
 	.ascii	"ADC12B_IER_OVRE5 (0x1u << 13)\000"
 .LASF7321:
 	.ascii	"ID_USART1 (14)\000"
-.LASF8748:
+.LASF8750:
 	.ascii	"SPI_MODE_0 0\000"
 .LASF5067:
 	.ascii	"SMC_MODE_TDF_MODE (0x1u << 20)\000"
@@ -42007,7 +42013,7 @@ fpga_program_sendbyte:
 	.ascii	"o(201, data)\000"
 .LASF3950:
 	.ascii	"PIO_LOCKSR_P14 (0x1u << 14)\000"
-.LASF9216:
+.LASF9218:
 	.ascii	"cpu_irq_critical_section_counter\000"
 .LASF7062:
 	.ascii	"REG_SMC_SR (*(RoReg*)0x400E0008U)\000"
@@ -42022,7 +42028,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PA3_IDX 3\000"
 .LASF4783:
 	.ascii	"SMC_IDR_UNDEF (0x1u << 21)\000"
-.LASF8470:
+.LASF8472:
 	.ascii	"PIN_EBI_ADDR_BUS_A2 PIO_PB0_IDX\000"
 .LASF5028:
 	.ascii	"SMC_CYCLE_NRD_CYCLE(value) ((SMC_CYCLE_NRD_CYCLE_Ms"
@@ -42073,7 +42079,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_OER_P5 (0x1u << 5)\000"
 .LASF2858:
 	.ascii	"PIO_OSR_P13 (0x1u << 13)\000"
-.LASF9255:
+.LASF9257:
 	.ascii	"idVendor\000"
 .LASF3736:
 	.ascii	"PIO_AIMMR_P24 (0x1u << 24)\000"
@@ -42095,7 +42101,7 @@ fpga_program_sendbyte:
 	.ascii	")\000"
 .LASF7514:
 	.ascii	"PIO_PC15A_NBS1 (1u << 15)\000"
-.LASF9229:
+.LASF9231:
 	.ascii	"PIO_NOT_A_PIN\000"
 .LASF4969:
 	.ascii	"SMC_ECC_PR11_BITADDR_Pos 0\000"
@@ -42117,7 +42123,7 @@ fpga_program_sendbyte:
 	.ascii	"MATRIX_PRAS7_M1PR_Pos 4\000"
 .LASF1054:
 	.ascii	"__int32_t_defined 1\000"
-.LASF9125:
+.LASF9127:
 	.ascii	"__tm_year\000"
 .LASF5918:
 	.ascii	"TWI_TPR_TXPTR(value) ((TWI_TPR_TXPTR_Msk & ((value)"
@@ -42143,7 +42149,7 @@ fpga_program_sendbyte:
 	.ascii	"US_MR_USCLKS_Msk (0x3u << US_MR_USCLKS_Pos)\000"
 .LASF2941:
 	.ascii	"PIO_IFSR_P0 (0x1u << 0)\000"
-.LASF8834:
+.LASF8836:
 	.ascii	"USB_PID_ATMEL_ASF_MSC 0x2403\000"
 .LASF2425:
 	.ascii	"HSMCI_IMR_TXRDY (0x1u << 2)\000"
@@ -42173,7 +42179,7 @@ fpga_program_sendbyte:
 	.ascii	"SAMR21E ( SAM_PART_IS_DEFINED(SAMR21E16A) || SAM_PA"
 	.ascii	"RT_IS_DEFINED(SAMR21E17A) || SAM_PART_IS_DEFINED(SA"
 	.ascii	"MR21E18A) )\000"
-.LASF8492:
+.LASF8494:
 	.ascii	"PIN_EBI_NRD_FLAGS PIO_PERIPH_A | PIO_PULLUP\000"
 .LASF4116:
 	.ascii	"PMC_MCKR_UPLLDIV2 (0x1u << 13)\000"
@@ -42210,7 +42216,7 @@ fpga_program_sendbyte:
 	.ascii	"US_MR_CHMODE_LOCAL_LOOPBACK (0x2u << 14)\000"
 .LASF7066:
 	.ascii	"REG_SMC_ADDR (*(RwReg*)0x400E0018U)\000"
-.LASF9140:
+.LASF9142:
 	.ascii	"__sFILE\000"
 .LASF5921:
 	.ascii	"TWI_TCR_TXCTR(value) ((TWI_TCR_TXCTR_Msk & ((value)"
@@ -42296,7 +42302,7 @@ fpga_program_sendbyte:
 	.ascii	"__DBL_MAX__ ((double)1.7976931348623157e+308L)\000"
 .LASF4328:
 	.ascii	"PWM_IDR2_CMPM2 (0x1u << 10)\000"
-.LASF8559:
+.LASF8561:
 	.ascii	"OSC_MAINCK_XTAL_HZ BOARD_FREQ_MAINCK_XTAL\000"
 .LASF7422:
 	.ascii	"PIO_PB15 (1u << 15)\000"
@@ -42369,7 +42375,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PB4 (1u << 4)\000"
 .LASF1495:
 	.ascii	"CoreDebug_DHCSR_C_MASKINTS_Pos 3\000"
-.LASF9088:
+.LASF9090:
 	.ascii	"US_IF\000"
 .LASF4257:
 	.ascii	"PWM_IDR1_CHID2 (0x1u << 2)\000"
@@ -42388,9 +42394,9 @@ fpga_program_sendbyte:
 	.ascii	"t)\000"
 .LASF3538:
 	.ascii	"PIO_IFDGSR_P21 (0x1u << 21)\000"
-.LASF9274:
+.LASF9276:
 	.ascii	"enable\000"
-.LASF8730:
+.LASF8732:
 	.ascii	"TWI_BUSY 8\000"
 .LASF618:
 	.ascii	"SAMD10C ( SAM_PART_IS_DEFINED(SAMD10C12A) || SAM_PA"
@@ -42420,7 +42426,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_USART1_CSR (*(RoReg*)0x40094014U)\000"
 .LASF5278:
 	.ascii	"SSC_TFMR_DATDEF (0x1u << 5)\000"
-.LASF8842:
+.LASF8844:
 	.ascii	"USB_PID_ATMEL_ASF_TWO_CDC 0x2425\000"
 .LASF3334:
 	.ascii	"PIO_PUDR_P9 (0x1u << 9)\000"
@@ -42492,7 +42498,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_PIOA_ODR (*(WoReg*)0x400E0C14U)\000"
 .LASF4561:
 	.ascii	"PWM_CMR_CPRE_MCK_DIV_64 (0x6u << 0)\000"
-.LASF8760:
+.LASF8762:
 	.ascii	"USB_DEVICE_MAJOR_VERSION 1\000"
 .LASF1799:
 	.ascii	"ADC12B_IER_OVRE6 (0x1u << 14)\000"
@@ -42575,7 +42581,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_ABSR_P25 (0x1u << 25)\000"
 .LASF2966:
 	.ascii	"PIO_IFSR_P25 (0x1u << 25)\000"
-.LASF8583:
+.LASF8585:
 	.ascii	"SYSCLK_SRC_MAINCK_XTAL 6\000"
 .LASF7700:
 	.ascii	"CHIP_FREQ_MAINCK_RC_8MHZ (8000000UL)\000"
@@ -42597,7 +42603,7 @@ fpga_program_sendbyte:
 	.ascii	"SMC_ECC_PR1_NPARITY_Pos 0\000"
 .LASF4363:
 	.ascii	"PWM_ISR2_ENDTX (0x1u << 1)\000"
-.LASF8494:
+.LASF8496:
 	.ascii	"PIN_EBI_NRD_PIO PIOB\000"
 .LASF1492:
 	.ascii	"CoreDebug_DHCSR_S_REGRDY_Msk (1UL << CoreDebug_DHCS"
@@ -42617,7 +42623,7 @@ fpga_program_sendbyte:
 	.ascii	"__ARM_ARCH_PROFILE 77\000"
 .LASF452:
 	.ascii	"printf iprintf\000"
-.LASF8635:
+.LASF8637:
 	.ascii	"PIO_TYPE_PIO_PERIPH_C (0x3u << PIO_TYPE_Pos)\000"
 .LASF5132:
 	.ascii	"SPI_IDR_TXEMPTY (0x1u << 9)\000"
@@ -42630,18 +42636,18 @@ fpga_program_sendbyte:
 	.ascii	"TR_Pos)\000"
 .LASF5774:
 	.ascii	"TC_BMR_TC0XC0S_TCLK0 (0x0u << 0)\000"
-.LASF8813:
+.LASF8815:
 	.ascii	"USB_PID_ATMEL_MEGA_MS_HIDMS 0x202A\000"
 .LASF448:
 	.ascii	"__USES_INITFINI__ 1\000"
 .LASF4402:
 	.ascii	"PWM_OSS_OSSL0 (0x1u << 16)\000"
-.LASF8793:
+.LASF8795:
 	.ascii	"UDI_VENDOR_EP_NB_INT ((UDI_VENDOR_EPS_SIZE_INT_FS)?"
 	.ascii	"2:0)\000"
 .LASF8255:
 	.ascii	"_MEM_TYPE_MEDFAST_ \000"
-.LASF8624:
+.LASF8626:
 	.ascii	"FLASH_ACCESS_MODE_128 EFC_ACCESS_MODE_128\000"
 .LASF7430:
 	.ascii	"PIO_PB23 (1u << 23)\000"
@@ -42680,7 +42686,7 @@ fpga_program_sendbyte:
 	.ascii	"((value) << MATRIX_PRAS5_M0PR_Pos)))\000"
 .LASF5375:
 	.ascii	"SUPC_SMMR_SMTH_2_4V (0x5u << 0)\000"
-.LASF8734:
+.LASF8736:
 	.ascii	"_TWI_SLAVE_H_ \000"
 .LASF7504:
 	.ascii	"PIO_PB20A_NCS0 (1u << 20)\000"
@@ -42746,7 +42752,7 @@ fpga_program_sendbyte:
 	.ascii	"SAM4C8 (SAM4C8_0 || SAM4C8_1)\000"
 .LASF4453:
 	.ascii	"PWM_FPV_FPVL3 (0x1u << 19)\000"
-.LASF8625:
+.LASF8627:
 	.ascii	"FLASH_ACCESS_MODE_64 EFC_ACCESS_MODE_64\000"
 .LASF455:
 	.ascii	"scanf iscanf\000"
@@ -42781,7 +42787,7 @@ fpga_program_sendbyte:
 	.ascii	"HSMCI_IDR_CMDRDY (0x1u << 0)\000"
 .LASF7730:
 	.ascii	"__OBSOLETE_MATH_DEFAULT 1\000"
-.LASF8580:
+.LASF8582:
 	.ascii	"SYSCLK_SRC_MAINCK_4M_RC 3\000"
 .LASF4979:
 	.ascii	"SMC_ECC_PR12_NPARITY_Pos 12\000"
@@ -42852,7 +42858,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_LSR_P15 (0x1u << 15)\000"
 .LASF6747:
 	.ascii	"REG_PWM_TNCR (*(RwReg*)0x4008C11CU)\000"
-.LASF8511:
+.LASF8513:
 	.ascii	"PIN_EBI_NCS0_ATTR PIO_PULLUP\000"
 .LASF1822:
 	.ascii	"ADC12B_IDR_GOVRE (0x1u << 17)\000"
@@ -42868,13 +42874,13 @@ fpga_program_sendbyte:
 	.ascii	"__SEOF 0x0020\000"
 .LASF7463:
 	.ascii	"PIO_PB0B_A2 (1u << 0)\000"
-.LASF8899:
+.LASF8901:
 	.ascii	"USB_REQ_TYPE_STANDARD (0<<5)\000"
 .LASF7332:
 	.ascii	"ID_ADC12B (26)\000"
 .LASF8273:
 	.ascii	"FLASH_EXTERN(x) extern const x\000"
-.LASF8988:
+.LASF8990:
 	.ascii	"FPGA_NPROG_SETUP() gpio_configure_pin(PIN_FPGA_PROG"
 	.ascii	"RAM_GPIO, PIN_FPGA_PROGRAM_FLAGS)\000"
 .LASF8157:
@@ -42885,7 +42891,7 @@ fpga_program_sendbyte:
 	.ascii	"NO_INIT __attribute__((section(\".no_init\")))\000"
 .LASF6799:
 	.ascii	"REG_PWM_CDTY2 (*(RwReg*)0x4008C244U)\000"
-.LASF8759:
+.LASF8761:
 	.ascii	"USB_DEVICE_PRODUCT_ID 0xACE5\000"
 .LASF4337:
 	.ascii	"PWM_IDR2_CMPU3 (0x1u << 19)\000"
@@ -42936,9 +42942,9 @@ fpga_program_sendbyte:
 	.ascii	"((value) << MATRIX_PRAS3_M4PR_Pos)))\000"
 .LASF8458:
 	.ascii	"SPI_MISO_GPIO (PIO_PA13_IDX)\000"
-.LASF8771:
+.LASF8773:
 	.ascii	"UDC_SUSPEND_EVENT() main_suspend_action()\000"
-.LASF8994:
+.LASF8996:
 	.ascii	"FPGA_ISDONE() gpio_pin_is_high(PIN_FPGA_DONE_GPIO)\000"
 .LASF7670:
 	.ascii	"PIO_PB14_IDX 46\000"
@@ -42953,7 +42959,7 @@ fpga_program_sendbyte:
 	.ascii	"PMC_FSMR_FSTT2 (0x1u << 2)\000"
 .LASF5600:
 	.ascii	"SUPC_SR_WKUPIS12_DIS (0x0u << 28)\000"
-.LASF9061:
+.LASF9063:
 	.ascii	"PIO_AIMDR\000"
 .LASF85:
 	.ascii	"__LONG_LONG_WIDTH__ 64\000"
@@ -42973,7 +42979,7 @@ fpga_program_sendbyte:
 	.ascii	"CHIPID_CIDR_ARCH_SAM3XxC (0x84u << 20)\000"
 .LASF8383:
 	.ascii	"CW1190 107\000"
-.LASF8796:
+.LASF8798:
 	.ascii	"USB_DEVICE_MAX_EP (UDI_VENDOR_EP_NB_INT+UDI_VENDOR_"
 	.ascii	"EP_NB_BULK+UDI_VENDOR_EP_NB_ISO)\000"
 .LASF4851:
@@ -42988,13 +42994,13 @@ fpga_program_sendbyte:
 	.ascii	"PWM_OS_OSL3 (0x1u << 19)\000"
 .LASF8231:
 	.ascii	"cpu_to_le16(x) (x)\000"
-.LASF9096:
+.LASF9098:
 	.ascii	"US_RNPR\000"
 .LASF1315:
 	.ascii	"ITM_TCR_ITMENA_Pos 0\000"
 .LASF6331:
 	.ascii	"US_CR_RCS (0x1u << 19)\000"
-.LASF8804:
+.LASF8806:
 	.ascii	"USB_PID_ATMEL_MEGA_AUDIO_IN 0x2019\000"
 .LASF4070:
 	.ascii	"CKGR_MOR_MOSCXTEN (0x1u << 0)\000"
@@ -43018,7 +43024,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_ADC12B_IMR (*(RoReg*)0x400A802CU)\000"
 .LASF5709:
 	.ascii	"TC_CMR_BCPC_NONE (0x0u << 26)\000"
-.LASF8562:
+.LASF8564:
 	.ascii	"CHIP_PLL_H_INCLUDED \000"
 .LASF7149:
 	.ascii	"REG_PMC_WPMR (*(RwReg*)0x400E04E4U)\000"
@@ -43046,19 +43052,19 @@ fpga_program_sendbyte:
 .LASF789:
 	.ascii	"MREPEAT75(macro,data) MREPEAT74( macro, data) macro"
 	.ascii	"( 74, data)\000"
-.LASF9159:
+.LASF9161:
 	.ascii	"_stdin\000"
-.LASF9060:
+.LASF9062:
 	.ascii	"PIO_AIMER\000"
 .LASF4938:
 	.ascii	"SMC_ECC_PR6_WORDADDR_W8BIT_Msk (0xffu << SMC_ECC_PR"
 	.ascii	"6_WORDADDR_W8BIT_Pos)\000"
-.LASF8488:
+.LASF8490:
 	.ascii	"PIN_PDIC_OUT_FLAGS (PIO_TYPE_PIO_OUTPUT_0 | PIO_DEF"
 	.ascii	"AULT)\000"
 .LASF2909:
 	.ascii	"PIO_IFDR_P0 (0x1u << 0)\000"
-.LASF9076:
+.LASF9078:
 	.ascii	"US_MR\000"
 .LASF4861:
 	.ascii	"SMC_ECC_PR1_NPARITY_W9BIT_Pos 12\000"
@@ -43182,7 +43188,7 @@ fpga_program_sendbyte:
 	.ascii	"os)\000"
 .LASF2099:
 	.ascii	"DMAC_SADDR_SADDR_Pos 0\000"
-.LASF8765:
+.LASF8767:
 	.ascii	"USB_DEVICE_PRODUCT_NAME \"ChipWhisperer-Husky\"\000"
 .LASF4267:
 	.ascii	"PWM_IMR1_FCHID0 (0x1u << 16)\000"
@@ -43207,7 +43213,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PB25B_PWML0 (1u << 25)\000"
 .LASF4571:
 	.ascii	"PWM_CMR_DTE (0x1u << 16)\000"
-.LASF9158:
+.LASF9160:
 	.ascii	"_errno\000"
 .LASF3619:
 	.ascii	"PIO_OWSR_P3 (0x1u << 3)\000"
@@ -43243,7 +43249,7 @@ fpga_program_sendbyte:
 	.ascii	"_SAM3U_SMC_COMPONENT_ \000"
 .LASF7395:
 	.ascii	"PIO_PA20 (1u << 20)\000"
-.LASF8600:
+.LASF8602:
 	.ascii	"cpu_delay_us(delay,f_cpu) delay_cycles(cpu_us_2_cy("
 	.ascii	"delay, f_cpu))\000"
 .LASF1714:
@@ -43351,7 +43357,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PUER_P8 (0x1u << 8)\000"
 .LASF7894:
 	.ascii	"__Long long\000"
-.LASF8541:
+.LASF8543:
 	.ascii	"PMC_PCK_0 0\000"
 .LASF4552:
 	.ascii	"PWM_CMPMUPD_CUPRUPD(value) ((PWM_CMPMUPD_CUPRUPD_Ms"
@@ -43369,7 +43375,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PA5 (1u << 5)\000"
 .LASF1745:
 	.ascii	"ADC12B_CHER_CH6 (0x1u << 6)\000"
-.LASF8846:
+.LASF8848:
 	.ascii	"USB_PID_ATMEL_ASF_XPLAIN_BC_TOUCH 0x2432\000"
 .LASF681:
 	.ascii	"SAM4CM (SAM4CMP8 || SAM4CMP16 || SAM4CMP32 || SAM4C"
@@ -43378,7 +43384,7 @@ fpga_program_sendbyte:
 	.ascii	"PMC_PCSR0_PID26 (0x1u << 26)\000"
 .LASF6295:
 	.ascii	"UDPHS_DMACONTROL_END_B_EN (0x1u << 3)\000"
-.LASF8743:
+.LASF8745:
 	.ascii	"SERIAL_H_INCLUDED \000"
 .LASF2913:
 	.ascii	"PIO_IFDR_P4 (0x1u << 4)\000"
@@ -43420,7 +43426,7 @@ fpga_program_sendbyte:
 	.ascii	"SAM4CMS16_1 ( SAM_PART_IS_DEFINED(SAM4CMS16C_1) )\000"
 .LASF3966:
 	.ascii	"PIO_LOCKSR_P30 (0x1u << 30)\000"
-.LASF9207:
+.LASF9209:
 	.ascii	"_nmalloc\000"
 .LASF520:
 	.ascii	"UC3A1 ( AVR32_PART_IS_DEFINED(UC3A1128) || AVR32_PA"
@@ -43447,7 +43453,7 @@ fpga_program_sendbyte:
 	.ascii	"__FLT64_MIN__ 2.2250738585072014e-308F64\000"
 .LASF3144:
 	.ascii	"PIO_IDR_P11 (0x1u << 11)\000"
-.LASF9019:
+.LASF9021:
 	.ascii	"ITM_RxBuffer\000"
 .LASF5855:
 	.ascii	"TWI_SR_NACK (0x1u << 8)\000"
@@ -43455,7 +43461,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PC16B_PWML3 (1u << 16)\000"
 .LASF7744:
 	.ascii	"_ELIDABLE_INLINE static __inline__\000"
-.LASF8705:
+.LASF8707:
 	.ascii	"NFCADDR_CMD_NFCEN (0x1u << 25)\000"
 .LASF8258:
 	.ascii	"memcmp_code2ram memcmp\000"
@@ -43478,11 +43484,11 @@ fpga_program_sendbyte:
 .LASF551:
 	.ascii	"XMEGA_B3 ( AVR8_PART_IS_DEFINED(ATxmega64B3) || AVR"
 	.ascii	"8_PART_IS_DEFINED(ATxmega128B3) )\000"
-.LASF9241:
+.LASF9243:
 	.ascii	"usb_serial_number\000"
 .LASF5981:
 	.ascii	"UART_IMR_RXRDY (0x1u << 0)\000"
-.LASF8799:
+.LASF8801:
 	.ascii	"_USB_ATMEL_H_ \000"
 .LASF5544:
 	.ascii	"SUPC_SR_SMWS_PRESENT (0x1u << 2)\000"
@@ -43499,7 +43505,7 @@ fpga_program_sendbyte:
 	.ascii	"o(186, data)\000"
 .LASF6063:
 	.ascii	"UDPHS_IEN_EPT_1 (0x1u << 9)\000"
-.LASF8858:
+.LASF8860:
 	.ascii	"USB_PID_ATMEL_DFU_ATXMEGA64B3 0x2FDF\000"
 .LASF7227:
 	.ascii	"REG_PIOA_WPSR (*(RoReg*)0x400E0CE8U)\000"
@@ -43514,9 +43520,9 @@ fpga_program_sendbyte:
 	.ascii	"DMAC_CFG_SRC_H2SEL_SW (0x0u << 9)\000"
 .LASF150:
 	.ascii	"__FLT_MIN_10_EXP__ (-37)\000"
-.LASF8879:
+.LASF8881:
 	.ascii	"USB_PID_ATMEL_DFU_ATMEGA32U4 0x2FF4\000"
-.LASF8499:
+.LASF8501:
 	.ascii	"PIN_EBI_NWE_FLAGS PIO_PERIPH_A | PIO_PULLUP\000"
 .LASF8307:
 	.ascii	"EVK1101 2\000"
@@ -43530,7 +43536,7 @@ fpga_program_sendbyte:
 	.ascii	"__QQ_FBIT__ 7\000"
 .LASF7564:
 	.ascii	"PIO_PB27B_PWML2 (1u << 27)\000"
-.LASF8836:
+.LASF8838:
 	.ascii	"USB_PID_ATMEL_ASF_PHDC 0x2405\000"
 .LASF7858:
 	.ascii	"__NULLABILITY_PRAGMA_PUSH \000"
@@ -43546,7 +43552,7 @@ fpga_program_sendbyte:
 	.ascii	"ID_SPI (20)\000"
 .LASF2439:
 	.ascii	"HSMCI_IMR_CSTOE (0x1u << 23)\000"
-.LASF9240:
+.LASF9242:
 	.ascii	"usart_spi_opt_t\000"
 .LASF6665:
 	.ascii	"REG_TC0_QIER (*(WoReg*)0x400800C8U)\000"
@@ -43611,7 +43617,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PDR_P28 (0x1u << 28)\000"
 .LASF4005:
 	.ascii	"PMC_PCER0_PID23 (0x1u << 23)\000"
-.LASF8476:
+.LASF8478:
 	.ascii	"PIN_EBI_USB_SPARE0 PIO_PB6_IDX\000"
 .LASF2549:
 	.ascii	"MATRIX_PRAS3_M4PR_Msk (0x3u << MATRIX_PRAS3_M4PR_Po"
@@ -43634,7 +43640,7 @@ fpga_program_sendbyte:
 .LASF4972:
 	.ascii	"SMC_ECC_PR11_WORDADDR_Msk (0xffu << SMC_ECC_PR11_WO"
 	.ascii	"RDADDR_Pos)\000"
-.LASF8578:
+.LASF8580:
 	.ascii	"SYSCLK_SRC_SLCK_XTAL 1\000"
 .LASF5852:
 	.ascii	"TWI_SR_SVACC (0x1u << 4)\000"
@@ -43672,7 +43678,7 @@ fpga_program_sendbyte:
 	.ascii	"SSC_IDR_CP0 (0x1u << 8)\000"
 .LASF62:
 	.ascii	"__UINT_FAST16_TYPE__ unsigned int\000"
-.LASF9075:
+.LASF9077:
 	.ascii	"US_CR\000"
 .LASF6895:
 	.ascii	"REG_USART2_TNCR (*(RwReg*)0x4009811CU)\000"
@@ -43684,15 +43690,15 @@ fpga_program_sendbyte:
 	.ascii	"ADC12B_IER_OVRE3 (0x1u << 11)\000"
 .LASF8104:
 	.ascii	"feof_unlocked(p) __sfeof(p)\000"
-.LASF8965:
+.LASF8967:
 	.ascii	"UDI_VENDOR_EPS_ISO_DESC_FS \000"
-.LASF8647:
+.LASF8649:
 	.ascii	"PIO_IT_EDGE (1u << 6)\000"
 .LASF5211:
 	.ascii	"SSC_RCMR_STTDLY_Pos 16\000"
 .LASF2888:
 	.ascii	"PIO_IFER_P11 (0x1u << 11)\000"
-.LASF9317:
+.LASF9319:
 	.ascii	"fpga_program.c\000"
 .LASF5083:
 	.ascii	"SMC_WPSR_WP_VSRC_Msk (0xffffu << SMC_WPSR_WP_VSRC_P"
@@ -43716,7 +43722,7 @@ fpga_program_sendbyte:
 	.ascii	"o(200, data)\000"
 .LASF1643:
 	.ascii	"ADC_IER_OVRE6 (0x1u << 14)\000"
-.LASF9062:
+.LASF9064:
 	.ascii	"PIO_AIMMR\000"
 .LASF2174:
 	.ascii	"DMAC_CFG_DST_H2SEL (0x1u << 13)\000"
@@ -43751,12 +43757,12 @@ fpga_program_sendbyte:
 	.ascii	"SUPC_SR_OSCSEL_CRYST (0x1u << 7)\000"
 .LASF7602:
 	.ascii	"PIO_PA24A_TWD1 (1u << 24)\000"
-.LASF8642:
+.LASF8644:
 	.ascii	"PIO_DEGLITCH (1u << 1)\000"
 .LASF4930:
 	.ascii	"SMC_ECC_PR5_NPARITY_W8BIT_Msk (0x7ffu << SMC_ECC_PR"
 	.ascii	"5_NPARITY_W8BIT_Pos)\000"
-.LASF9239:
+.LASF9241:
 	.ascii	"channel_mode\000"
 .LASF6824:
 	.ascii	"REG_USART0_RTOR (*(RwReg*)0x40090024U)\000"
@@ -43799,7 +43805,7 @@ fpga_program_sendbyte:
 	.ascii	"IFLASH0_LOCK_REGION_SIZE (8192u)\000"
 .LASF2476:
 	.ascii	"MATRIX_MCFG_ULBT_Pos 0\000"
-.LASF8980:
+.LASF8982:
 	.ascii	"PIN_FPGA_CCLK_GPIO PIO_PA17_IDX\000"
 .LASF7316:
 	.ascii	"ID_UART ( 8)\000"
@@ -43822,7 +43828,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_ADC_RNCR (*(RwReg*)0x400AC114U)\000"
 .LASF6316:
 	.ascii	"US_CR_TXEN (0x1u << 6)\000"
-.LASF9236:
+.LASF9238:
 	.ascii	"baudrate\000"
 .LASF5691:
 	.ascii	"TC_CMR_AEEVT_NONE (0x0u << 20)\000"
@@ -43849,7 +43855,7 @@ fpga_program_sendbyte:
 .LASF4445:
 	.ascii	"PWM_FCR_FCLR(value) ((PWM_FCR_FCLR_Msk & ((value) <"
 	.ascii	"< PWM_FCR_FCLR_Pos)))\000"
-.LASF9303:
+.LASF9305:
 	.ascii	"fpga_program_init\000"
 .LASF6971:
 	.ascii	"REG_UDPHS_DMAADDRESS3 (*(RwReg*)0x400A4334U)\000"
@@ -43859,7 +43865,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_UDPHS_EPTCLRSTA1 (*(WoReg*)0x400A4138U)\000"
 .LASF5521:
 	.ascii	"SUPC_WUIR_WKUPT11 (0x1u << 27)\000"
-.LASF8886:
+.LASF8888:
 	.ascii	"USB_PID_ATMEL_DFU_AT90USB128 0x2FFB\000"
 .LASF5889:
 	.ascii	"TWI_IDR_RXBUFF (0x1u << 14)\000"
@@ -43891,7 +43897,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_IFER_P30 (0x1u << 30)\000"
 .LASF5051:
 	.ascii	"SMC_MODE_READ_MODE_NRD_CTRL (0x1u << 0)\000"
-.LASF8489:
+.LASF8491:
 	.ascii	"PIN_PDIC_IN_FLAGS (PIO_TYPE_PIO_INPUT | PIO_DEFAULT"
 	.ascii	")\000"
 .LASF801:
@@ -43910,24 +43916,26 @@ fpga_program_sendbyte:
 	.ascii	" AVR8_PART_IS_DEFINED(ATmega168A) || AVR8_PART_IS_D"
 	.ascii	"EFINED(ATmega168PA) || AVR8_PART_IS_DEFINED(ATmega3"
 	.ascii	"28) || AVR8_PART_IS_DEFINED(ATmega328P) )\000"
-.LASF9136:
+.LASF9138:
 	.ascii	"_fns\000"
 .LASF4450:
 	.ascii	"PWM_FPV_FPVL0 (0x1u << 16)\000"
 .LASF1860:
 	.ascii	"ADC12B_RPR_RXPTR_Msk (0xffffffffu << ADC12B_RPR_RXP"
 	.ascii	"TR_Pos)\000"
-.LASF8536:
+.LASF8538:
 	.ascii	"SUPC_MR_KEY_PASSWD SUPC_MR_KEY(0xA5U)\000"
 .LASF5401:
 	.ascii	"SUPC_MR_BODRSTEN_ENABLE (0x1u << 12)\000"
+.LASF8924:
+	.ascii	"BESL_5000_US 10\000"
 .LASF5584:
 	.ascii	"SUPC_SR_WKUPIS7 (0x1u << 23)\000"
 .LASF7574:
 	.ascii	"PIO_PA16A_NPCS0 (1u << 16)\000"
 .LASF5979:
 	.ascii	"UART_IDR_TXBUFE (0x1u << 11)\000"
-.LASF9045:
+.LASF9047:
 	.ascii	"PIO_PUDR\000"
 .LASF3648:
 	.ascii	"PIO_AIMER_P0 (0x1u << 0)\000"
@@ -43972,7 +43980,7 @@ fpga_program_sendbyte:
 	.ascii	"_SYS__STDINT_H \000"
 .LASF35:
 	.ascii	"__WINT_TYPE__ unsigned int\000"
-.LASF9316:
+.LASF9318:
 	.ascii	"GNU C99 9.3.1 20200408 (release) -mcpu=cortex-m3 -m"
 	.ascii	"long-calls -mfloat-abi=soft -mthumb -march=armv7-m "
 	.ascii	"-g3 -gdwarf-2 -O0 -std=gnu99 -fdata-sections -ffunc"
@@ -43997,7 +44005,7 @@ fpga_program_sendbyte:
 	.ascii	"os)\000"
 .LASF1477:
 	.ascii	"MPU_RASR_ENABLE_Pos 0\000"
-.LASF8958:
+.LASF8960:
 	.ascii	"UDI_VENDOR_EPS_INT_DESC \000"
 .LASF1412:
 	.ascii	"TPI_FIFO0_ETM1_Msk (0xFFUL << TPI_FIFO0_ETM1_Pos)\000"
@@ -44021,7 +44029,7 @@ fpga_program_sendbyte:
 	.ascii	"LER_Pos)\000"
 .LASF7583:
 	.ascii	"PIO_PA15A_SPCK (1u << 15)\000"
-.LASF9046:
+.LASF9048:
 	.ascii	"PIO_PUER\000"
 .LASF7483:
 	.ascii	"PIO_PC6A_A8 (1u << 6)\000"
@@ -44044,7 +44052,7 @@ fpga_program_sendbyte:
 	.ascii	"__ARMEL__ 1\000"
 .LASF3410:
 	.ascii	"PIO_PUSR_P21 (0x1u << 21)\000"
-.LASF8916:
+.LASF8918:
 	.ascii	"BESL_400_US 4\000"
 .LASF4729:
 	.ascii	"SMCCS_NUMBER_NUMBER 4\000"
@@ -44123,7 +44131,7 @@ fpga_program_sendbyte:
 	.ascii	"HSMCI_IMR_UNRE (0x1u << 31)\000"
 .LASF7588:
 	.ascii	"PIO_PA30A_TF (1u << 30)\000"
-.LASF9302:
+.LASF9304:
 	.ascii	"spiopts\000"
 .LASF5173:
 	.ascii	"SPI_WPSR_WPVSRC_Msk (0xffu << SPI_WPSR_WPVSRC_Pos)\000"
@@ -44170,17 +44178,17 @@ fpga_program_sendbyte:
 	.ascii	"PMC_PCSR0_PID5 (0x1u << 5)\000"
 .LASF6587:
 	.ascii	"REG_HSMCI_BLKR (*(RwReg*)0x40000018U)\000"
-.LASF8693:
+.LASF8695:
 	.ascii	"NFCADDR_CMD_CMD2 (0xFFu << 10)\000"
 .LASF506:
 	.ascii	"__INT_WCHAR_T_H \000"
-.LASF8844:
+.LASF8846:
 	.ascii	"USB_PID_ATMEL_ASF_XPLAIN_BC_POWERONLY 0x2430\000"
 .LASF6293:
 	.ascii	"UDPHS_DMACONTROL_LDNXT_DSC (0x1u << 1)\000"
 .LASF7194:
 	.ascii	"REG_PIOA_SODR (*(WoReg*)0x400E0C30U)\000"
-.LASF8500:
+.LASF8502:
 	.ascii	"PIN_EBI_NWE_MASK 1 << 23\000"
 .LASF4563:
 	.ascii	"PWM_CMR_CPRE_MCK_DIV_256 (0x8u << 0)\000"
@@ -44192,7 +44200,7 @@ fpga_program_sendbyte:
 	.ascii	"__CHAR16_TYPE__ short unsigned int\000"
 .LASF3267:
 	.ascii	"PIO_MDDR_P6 (0x1u << 6)\000"
-.LASF9268:
+.LASF9270:
 	.ascii	"bNumInterfaces\000"
 .LASF2655:
 	.ascii	"PERIPH_RPR_RXPTR_Msk (0xffffffffu << PERIPH_RPR_RXP"
@@ -44253,7 +44261,7 @@ fpga_program_sendbyte:
 	.ascii	"HSMCI_IMR_XFRDONE (0x1u << 27)\000"
 .LASF31:
 	.ascii	"__SIZEOF_POINTER__ 4\000"
-.LASF8943:
+.LASF8945:
 	.ascii	"USB_CONFIG_MAX_POWER(ma) (((ma) + 1) / 2)\000"
 .LASF3776:
 	.ascii	"PIO_LSR_P0 (0x1u << 0)\000"
@@ -44287,7 +44295,7 @@ fpga_program_sendbyte:
 	.ascii	"__EXP\000"
 .LASF2767:
 	.ascii	"PIO_PSR_P18 (0x1u << 18)\000"
-.LASF9035:
+.LASF9037:
 	.ascii	"PIO_ODSR\000"
 .LASF6277:
 	.ascii	"UDPHS_EPTSTA_CONTROL_DIR_Msk (0x3u << UDPHS_EPTSTA_"
@@ -44340,7 +44348,7 @@ fpga_program_sendbyte:
 	.ascii	"DMAC_CTRLA_DST_WIDTH_Pos 28\000"
 .LASF6061:
 	.ascii	"UDPHS_IEN_UPSTR_RES (0x1u << 7)\000"
-.LASF8788:
+.LASF8790:
 	.ascii	"UDI_VENDOR_EP_BULK_IN (1 | USB_EP_DIR_IN)\000"
 .LASF1517:
 	.ascii	"CoreDebug_DEMCR_VC_HARDERR_Pos 10\000"
@@ -44379,23 +44387,23 @@ fpga_program_sendbyte:
 	.ascii	"PIO_IFDGSR_P15 (0x1u << 15)\000"
 .LASF2197:
 	.ascii	"DMAC_WPMR_WPKEY_Pos 8\000"
-.LASF9024:
+.LASF9026:
 	.ascii	"Reserved1\000"
-.LASF9028:
+.LASF9030:
 	.ascii	"Reserved2\000"
-.LASF9032:
+.LASF9034:
 	.ascii	"Reserved3\000"
-.LASF9044:
+.LASF9046:
 	.ascii	"Reserved4\000"
-.LASF9048:
-	.ascii	"Reserved5\000"
 .LASF9050:
+	.ascii	"Reserved5\000"
+.LASF9052:
 	.ascii	"Reserved6\000"
-.LASF9055:
+.LASF9057:
 	.ascii	"Reserved7\000"
-.LASF9059:
+.LASF9061:
 	.ascii	"Reserved8\000"
-.LASF9063:
+.LASF9065:
 	.ascii	"Reserved9\000"
 .LASF3963:
 	.ascii	"PIO_LOCKSR_P27 (0x1u << 27)\000"
@@ -44417,7 +44425,7 @@ fpga_program_sendbyte:
 .LASF2132:
 	.ascii	"DMAC_CTRLA_SRC_WIDTH_Msk (0x3u << DMAC_CTRLA_SRC_WI"
 	.ascii	"DTH_Pos)\000"
-.LASF8683:
+.LASF8685:
 	.ascii	"SAM_PM_SMODE_SLEEP_WFE 1\000"
 .LASF379:
 	.ascii	"__GCC_ATOMIC_CHAR16_T_LOCK_FREE 2\000"
@@ -44434,7 +44442,7 @@ fpga_program_sendbyte:
 	.ascii	"INT_LEAST16_MIN (-__INT_LEAST16_MAX__ - 1)\000"
 .LASF7541:
 	.ascii	"PIO_PB14B_PWMH1 (1u << 14)\000"
-.LASF8668:
+.LASF8670:
 	.ascii	"IOPORT_PIOB 1\000"
 .LASF286:
 	.ascii	"__LLFRACT_MAX__ 0X7FFFFFFFFFFFFFFFP-63LLR\000"
@@ -44491,7 +44499,7 @@ fpga_program_sendbyte:
 	.ascii	"SMC_ECC_PR3_BITADDR_Pos 0\000"
 .LASF3617:
 	.ascii	"PIO_OWSR_P1 (0x1u << 1)\000"
-.LASF8798:
+.LASF8800:
 	.ascii	"_USB_PROTOCOL_H_ \000"
 .LASF127:
 	.ascii	"__INT_FAST8_WIDTH__ 32\000"
@@ -44534,7 +44542,7 @@ fpga_program_sendbyte:
 	.ascii	"CHIPID_CIDR_ARCH_SAM5A (0xA5u << 20)\000"
 .LASF7856:
 	.ascii	"_Nullable \000"
-.LASF9002:
+.LASF9004:
 	.ascii	"short int\000"
 .LASF8247:
 	.ascii	"Swap32(u32) ((U32)(((U32)Swap16((U32)(u32) >> 16)) "
@@ -44549,7 +44557,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_LOCKSR_P0 (0x1u << 0)\000"
 .LASF2720:
 	.ascii	"PIO_PDR_P3 (0x1u << 3)\000"
-.LASF9005:
+.LASF9007:
 	.ascii	"short unsigned int\000"
 .LASF6330:
 	.ascii	"US_CR_RTSDIS (0x1u << 19)\000"
@@ -44580,7 +44588,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_ESR_P14 (0x1u << 14)\000"
 .LASF20:
 	.ascii	"__SIZEOF_FLOAT__ 4\000"
-.LASF8736:
+.LASF8738:
 	.ascii	"twi_slave_disable(p_twi) twi_disable_slave_mode(p_t"
 	.ascii	"wi)\000"
 .LASF5960:
@@ -44651,7 +44659,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_MATRIX_MRCR (*(RwReg*)0x400E0300U)\000"
 .LASF1481:
 	.ascii	"CoreDebug_DHCSR_S_RESET_ST_Pos 25\000"
-.LASF8567:
+.LASF8569:
 	.ascii	"NR_PLLS 2\000"
 .LASF7297:
 	.ascii	"REG_RTC_TIMALR (*(RwReg*)0x400E1270U)\000"
@@ -44659,7 +44667,7 @@ fpga_program_sendbyte:
 	.ascii	"__WINT_MAX__ 0xffffffffU\000"
 .LASF7708:
 	.ascii	"CHIP_FREQ_FWS_2 (72000000UL)\000"
-.LASF8528:
+.LASF8530:
 	.ascii	"CONSOLE_UART_ID ID_UART\000"
 .LASF2296:
 	.ascii	"HSMCI_CMDR_TRCMD_Pos 16\000"
@@ -44675,7 +44683,7 @@ fpga_program_sendbyte:
 	.ascii	"_MACHINE__TYPES_H \000"
 .LASF5217:
 	.ascii	"SSC_RFMR_DATLEN_Pos 0\000"
-.LASF9006:
+.LASF9008:
 	.ascii	"__int32_t\000"
 .LASF6435:
 	.ascii	"US_IMR_ENDTX (0x1u << 4)\000"
@@ -44693,7 +44701,7 @@ fpga_program_sendbyte:
 	.ascii	"DMAC_EBCIDR_ERR3 (0x1u << 19)\000"
 .LASF8043:
 	.ascii	"PTHREAD_SCOPE_SYSTEM 1\000"
-.LASF8917:
+.LASF8919:
 	.ascii	"BESL_500_US 5\000"
 .LASF2501:
 	.ascii	"MATRIX_PRAS0_M3PR_Msk (0x3u << MATRIX_PRAS0_M3PR_Po"
@@ -44712,7 +44720,7 @@ fpga_program_sendbyte:
 .LASF905:
 	.ascii	"MREPEAT191(macro,data) MREPEAT190(macro, data) macr"
 	.ascii	"o(190, data)\000"
-.LASF8724:
+.LASF8726:
 	.ascii	"TWI_ARBITRATION_LOST 2\000"
 .LASF5942:
 	.ascii	"UART_CR_RSTTX (0x1u << 3)\000"
@@ -44729,7 +44737,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_IFER_P7 (0x1u << 7)\000"
 .LASF979:
 	.ascii	"__NEWLIB__ 3\000"
-.LASF9284:
+.LASF9286:
 	.ascii	"conf_lsfs\000"
 .LASF5974:
 	.ascii	"UART_IDR_ENDTX (0x1u << 4)\000"
@@ -44758,7 +44766,7 @@ fpga_program_sendbyte:
 	.ascii	"DMAC_LAST_SLAST3 (0x1u << 6)\000"
 .LASF2286:
 	.ascii	"HSMCI_CMDR_SPCMD_IT_CMD (0x4u << 8)\000"
-.LASF8963:
+.LASF8965:
 	.ascii	"UDI_VENDOR_EPS_BULK_DESC_HS .ep_bulk_in.wMaxPacketS"
 	.ascii	"ize = LE16(UDI_VENDOR_EPS_SIZE_BULK_HS), .ep_bulk_o"
 	.ascii	"ut.wMaxPacketSize = LE16(UDI_VENDOR_EPS_SIZE_BULK_H"
@@ -44798,7 +44806,7 @@ fpga_program_sendbyte:
 .LASF911:
 	.ascii	"MREPEAT197(macro,data) MREPEAT196(macro, data) macr"
 	.ascii	"o(196, data)\000"
-.LASF8566:
+.LASF8568:
 	.ascii	"PLL_INPUT_MAX_HZ 16000000\000"
 .LASF3972:
 	.ascii	"PIO_WPSR_WPVS (0x1u << 0)\000"
@@ -44844,7 +44852,7 @@ fpga_program_sendbyte:
 	.ascii	"TC_RB_RB_Pos 0\000"
 .LASF4266:
 	.ascii	"PWM_IMR1_CHID3 (0x1u << 3)\000"
-.LASF8738:
+.LASF8740:
 	.ascii	"TWI_SLAVE_H_INCLUDED \000"
 .LASF902:
 	.ascii	"MREPEAT188(macro,data) MREPEAT187(macro, data) macr"
@@ -44872,7 +44880,7 @@ fpga_program_sendbyte:
 	.ascii	"ADC12B_MR_TRGEN_DIS (0x0u << 0)\000"
 .LASF1115:
 	.ascii	"PTRDIFF_MAX (__PTRDIFF_MAX__)\000"
-.LASF9193:
+.LASF9195:
 	.ascii	"_r48\000"
 .LASF5439:
 	.ascii	"SUPC_WUMR_WKUPDBC_32768_SCLK (0x5u << 12)\000"
@@ -44924,11 +44932,11 @@ fpga_program_sendbyte:
 	.ascii	"ADC_LCDR_LDATA_Msk (0x3ffu << ADC_LCDR_LDATA_Pos)\000"
 .LASF2057:
 	.ascii	"DMAC_EBCISR_CBTC2 (0x1u << 10)\000"
-.LASF8915:
+.LASF8917:
 	.ascii	"BESL_300_US 3\000"
 .LASF5665:
 	.ascii	"TC_CMR_EEVT_Msk (0x3u << TC_CMR_EEVT_Pos)\000"
-.LASF8869:
+.LASF8871:
 	.ascii	"USB_PID_ATMEL_DFU_ATXMEGA128B1 0x2FEA\000"
 .LASF7436:
 	.ascii	"PIO_PC28X1_AD4 (1u << 28)\000"
@@ -44937,7 +44945,7 @@ fpga_program_sendbyte:
 .LASF1234:
 	.ascii	"SCB_SHCSR_USGFAULTPENDED_Msk (1UL << SCB_SHCSR_USGF"
 	.ascii	"AULTPENDED_Pos)\000"
-.LASF9121:
+.LASF9123:
 	.ascii	"__tm_min\000"
 .LASF7507:
 	.ascii	"PIO_PC16A_NCS2 (1u << 16)\000"
@@ -45032,12 +45040,12 @@ fpga_program_sendbyte:
 .LASF1352:
 	.ascii	"DWT_CTRL_CYCCNTENA_Msk (0x1UL << DWT_CTRL_CYCCNTENA"
 	.ascii	"_Pos)\000"
-.LASF8758:
+.LASF8760:
 	.ascii	"USB_DEVICE_VENDOR_ID 0x2B3E\000"
 .LASF5164:
 	.ascii	"SPI_CSR_DLYBCT(value) ((SPI_CSR_DLYBCT_Msk & ((valu"
 	.ascii	"e) << SPI_CSR_DLYBCT_Pos)))\000"
-.LASF9307:
+.LASF9309:
 	.ascii	"sysclk_get_main_hz\000"
 .LASF2724:
 	.ascii	"PIO_PDR_P7 (0x1u << 7)\000"
@@ -45049,7 +45057,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_AIMDR_P28 (0x1u << 28)\000"
 .LASF3784:
 	.ascii	"PIO_LSR_P8 (0x1u << 8)\000"
-.LASF9137:
+.LASF9139:
 	.ascii	"__sbuf\000"
 .LASF515:
 	.ascii	"ATMEL_PARTS_H \000"
@@ -45100,7 +45108,7 @@ fpga_program_sendbyte:
 .LASF5285:
 	.ascii	"SSC_TFMR_FSLEN(value) ((SSC_TFMR_FSLEN_Msk & ((valu"
 	.ascii	"e) << SSC_TFMR_FSLEN_Pos)))\000"
-.LASF9201:
+.LASF9203:
 	.ascii	"_mbrtowc_state\000"
 .LASF5575:
 	.ascii	"SUPC_SR_WKUPIS4 (0x1u << 20)\000"
@@ -45114,6 +45122,8 @@ fpga_program_sendbyte:
 	.ascii	"PIO_DIFSR_P14 (0x1u << 14)\000"
 .LASF102:
 	.ascii	"__UINT8_MAX__ 0xff\000"
+.LASF8465:
+	.ascii	"SPI_CS_FLAGS (PIO_TYPE_PIO_OUTPUT_0 | PIO_DEFAULT)\000"
 .LASF6464:
 	.ascii	"US_CSR_RXBUFF (0x1u << 12)\000"
 .LASF5988:
@@ -45135,7 +45145,7 @@ fpga_program_sendbyte:
 	.ascii	"o(157, data)\000"
 .LASF3477:
 	.ascii	"PIO_SCIFSR_P24 (0x1u << 24)\000"
-.LASF9152:
+.LASF9154:
 	.ascii	"_offset\000"
 .LASF3314:
 	.ascii	"PIO_MDSR_P21 (0x1u << 21)\000"
@@ -45194,7 +45204,7 @@ fpga_program_sendbyte:
 	.ascii	"o(160, data)\000"
 .LASF6967:
 	.ascii	"REG_UDPHS_DMAADDRESS2 (*(RwReg*)0x400A4324U)\000"
-.LASF8824:
+.LASF8826:
 	.ascii	"USB_PID_ATMEL_UC3_EVK1101_CTRLPANEL_HID 0x2305\000"
 .LASF6404:
 	.ascii	"US_IER_RXBUFF (0x1u << 12)\000"
@@ -45210,7 +45220,7 @@ fpga_program_sendbyte:
 	.ascii	"SMC_TIMINGS_TAR_Pos 8\000"
 .LASF7012:
 	.ascii	"REG_ADC_IMR (*(RoReg*)0x400AC02CU)\000"
-.LASF9149:
+.LASF9151:
 	.ascii	"_ubuf\000"
 .LASF5762:
 	.ascii	"TC_IDR_ETRGS (0x1u << 7)\000"
@@ -45243,7 +45253,7 @@ fpga_program_sendbyte:
 	.ascii	"US_MR_USART_MODE_NORMAL (0x0u << 0)\000"
 .LASF454:
 	.ascii	"BOARD CW1190\000"
-.LASF8753:
+.LASF8755:
 	.ascii	"CONF_UART CONSOLE_UART\000"
 .LASF6617:
 	.ascii	"REG_SSC_IMR (*(RoReg*)0x4000404CU)\000"
@@ -45335,7 +45345,7 @@ fpga_program_sendbyte:
 	.ascii	" e, f, g, h, i, j)\000"
 .LASF1117:
 	.ascii	"WCHAR_MIN (__WCHAR_MIN__)\000"
-.LASF8950:
+.LASF8952:
 	.ascii	"_UDI_H_ \000"
 .LASF2850:
 	.ascii	"PIO_OSR_P5 (0x1u << 5)\000"
@@ -45353,7 +45363,7 @@ fpga_program_sendbyte:
 .LASF863:
 	.ascii	"MREPEAT149(macro,data) MREPEAT148(macro, data) macr"
 	.ascii	"o(148, data)\000"
-.LASF9111:
+.LASF9113:
 	.ascii	"__ULong\000"
 .LASF6111:
 	.ascii	"UDPHS_TST_SPEED_CFG_Msk (0x3u << UDPHS_TST_SPEED_CF"
@@ -45369,7 +45379,7 @@ fpga_program_sendbyte:
 .LASF763:
 	.ascii	"MREPEAT49(macro,data) MREPEAT48( macro, data) macro"
 	.ascii	"( 48, data)\000"
-.LASF9047:
+.LASF9049:
 	.ascii	"PIO_PUSR\000"
 .LASF5380:
 	.ascii	"SUPC_SMMR_SMTH_2_9V (0xAu << 0)\000"
@@ -45433,7 +45443,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_MDSR_P29 (0x1u << 29)\000"
 .LASF4077:
 	.ascii	"CKGR_MOR_MOSCRCF_12_MHz (0x2u << 4)\000"
-.LASF9124:
+.LASF9126:
 	.ascii	"__tm_mon\000"
 .LASF2249:
 	.ascii	"HSMCI_DTOR_DTOMUL_1 (0x0u << 4)\000"
@@ -45476,7 +45486,7 @@ fpga_program_sendbyte:
 	.ascii	"__INTMAX_C(c) c ## LL\000"
 .LASF5681:
 	.ascii	"TC_CMR_ACPA_CLEAR (0x2u << 16)\000"
-.LASF8767:
+.LASF8769:
 	.ascii	"USB_DEVICE_GET_SERIAL_NAME_LENGTH 32\000"
 .LASF8035:
 	.ascii	"_TIMER_T_DECLARED \000"
@@ -45496,7 +45506,7 @@ fpga_program_sendbyte:
 	.ascii	"HSMCI_CMDR_TRDIR_WRITE (0x0u << 18)\000"
 .LASF7111:
 	.ascii	"REG_SMC_WPCR (*(WoReg*)0x400E01E4U)\000"
-.LASF8532:
+.LASF8534:
 	.ascii	"PMC_MASK_STATUS1 (0xFFFFFFFF)\000"
 .LASF5180:
 	.ascii	"SSC_CMR_DIV_Pos 0\000"
@@ -45535,7 +45545,7 @@ fpga_program_sendbyte:
 	.ascii	"DMAC_EBCIMR_CBTC0 (0x1u << 8)\000"
 .LASF6862:
 	.ascii	"REG_USART1_TPR (*(RwReg*)0x40094108U)\000"
-.LASF8654:
+.LASF8656:
 	.ascii	"gpio_set_pin_high(io_id) pio_set_pin_high(io_id)\000"
 .LASF6257:
 	.ascii	"UDPHS_EPTSTA_TOGGLESQ_STA_DATA1 (0x1u << 6)\000"
@@ -45579,12 +45589,12 @@ fpga_program_sendbyte:
 	.ascii	"( 40, data)\000"
 .LASF2793:
 	.ascii	"PIO_OER_P12 (0x1u << 12)\000"
-.LASF9318:
+.LASF9320:
 	.ascii	"C:\\Users\\adewa\\Documents\\Atmel Studio\\7.0\\Chi"
 	.ascii	"pWhisperer-Husky\\ChipWhisperer-Husky\\src\000"
 .LASF3264:
 	.ascii	"PIO_MDDR_P3 (0x1u << 3)\000"
-.LASF8750:
+.LASF8752:
 	.ascii	"SPI_MODE_2 (SPI_CPOL)\000"
 .LASF6235:
 	.ascii	"UDPHS_EPTCTL_ERR_FLUSH (0x1u << 14)\000"
@@ -45627,9 +45637,9 @@ fpga_program_sendbyte:
 	.ascii	"os)\000"
 .LASF5479:
 	.ascii	"SUPC_WUIR_WKUPEN13 (0x1u << 13)\000"
-.LASF9230:
+.LASF9232:
 	.ascii	"PIO_PERIPH_A\000"
-.LASF9231:
+.LASF9233:
 	.ascii	"PIO_PERIPH_B\000"
 .LASF299:
 	.ascii	"__USACCUM_IBIT__ 8\000"
@@ -45647,7 +45657,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PB6A_TIOB1 (1u << 6)\000"
 .LASF335:
 	.ascii	"__HQ_FBIT__ 15\000"
-.LASF9277:
+.LASF9279:
 	.ascii	"getsetting\000"
 .LASF1345:
 	.ascii	"DWT_CTRL_CYCTAP_Pos 9\000"
@@ -45664,9 +45674,9 @@ fpga_program_sendbyte:
 	.ascii	"ADC12B_SR_OVRE7 (0x1u << 15)\000"
 .LASF7328:
 	.ascii	"ID_TC0 (22)\000"
-.LASF9299:
+.LASF9301:
 	.ascii	"fpga_program_sendbyte\000"
-.LASF9313:
+.LASF9315:
 	.ascii	"pio_configure_pin\000"
 .LASF1434:
 	.ascii	"TPI_ITCTRL_Mode_Msk (0x1UL << TPI_ITCTRL_Mode_Pos)\000"
@@ -45682,12 +45692,12 @@ fpga_program_sendbyte:
 	.ascii	"SUPC_SR_BODRSTS (0x1u << 3)\000"
 .LASF1113:
 	.ascii	"SIG_ATOMIC_MIN (-__STDINT_EXP(INT_MAX) - 1)\000"
-.LASF8835:
+.LASF8837:
 	.ascii	"USB_PID_ATMEL_ASF_CDC 0x2404\000"
 .LASF786:
 	.ascii	"MREPEAT72(macro,data) MREPEAT71( macro, data) macro"
 	.ascii	"( 71, data)\000"
-.LASF8873:
+.LASF8875:
 	.ascii	"USB_PID_ATMEL_DFU_ATMEGA8U2 0x2FEE\000"
 .LASF5594:
 	.ascii	"SUPC_SR_WKUPIS10_DIS (0x0u << 26)\000"
@@ -45711,7 +45721,7 @@ fpga_program_sendbyte:
 	.ascii	"__sgetc_r(__ptr,__p) __sgetc_raw_r(__ptr, __p)\000"
 .LASF3437:
 	.ascii	"PIO_ABSR_P16 (0x1u << 16)\000"
-.LASF8690:
+.LASF8692:
 	.ascii	"LED_Toggle(led_gpio) gpio_toggle_pin(led_gpio)\000"
 .LASF997:
 	.ascii	"__MISC_VISIBLE 1\000"
@@ -45727,7 +45737,7 @@ fpga_program_sendbyte:
 	.ascii	"US_CR_RSTNACK (0x1u << 14)\000"
 .LASF2843:
 	.ascii	"PIO_ODR_P30 (0x1u << 30)\000"
-.LASF8710:
+.LASF8712:
 	.ascii	"ECC_STATUS_MASK 0x07\000"
 .LASF7185:
 	.ascii	"REG_PIOA_PER (*(WoReg*)0x400E0C00U)\000"
@@ -45746,7 +45756,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_USART2_TNPR (*(RwReg*)0x40098118U)\000"
 .LASF2691:
 	.ascii	"PIO_PER_P6 (0x1u << 6)\000"
-.LASF8951:
+.LASF8953:
 	.ascii	"UDC_DESC_STORAGE \000"
 .LASF6739:
 	.ascii	"REG_PWM_FPV (*(RwReg*)0x4008C068U)\000"
@@ -45754,7 +45764,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_ODR_P1 (0x1u << 1)\000"
 .LASF1999:
 	.ascii	"DMAC_CREQ_SCREQ0 (0x1u << 0)\000"
-.LASF8480:
+.LASF8482:
 	.ascii	"PIN_PDIDTX_GPIO (PIO_PA20_IDX)\000"
 .LASF6751:
 	.ascii	"REG_PWM_CMPVUPD0 (*(WoReg*)0x4008C134U)\000"
@@ -45771,7 +45781,7 @@ fpga_program_sendbyte:
 	.ascii	"bit_reverse64(u64) ((U64)(((U64)bit_reverse32((U64)"
 	.ascii	"(u64) >> 32)) | ((U64)bit_reverse32((U64)(u64)) << "
 	.ascii	"32)))\000"
-.LASF9133:
+.LASF9135:
 	.ascii	"_is_cxa\000"
 .LASF8346:
 	.ascii	"STK600_RCUC3L3 44\000"
@@ -45816,7 +45826,7 @@ fpga_program_sendbyte:
 .LASF8135:
 	.ascii	"COMPILER_ALIGNED(a) __attribute__((__aligned__(a)))"
 	.ascii	"\000"
-.LASF8911:
+.LASF8913:
 	.ascii	"USB_DC_EXT_BESL_BASELINE(besl) ((besl & 0xF) << USB"
 	.ascii	"_DC_EXT_BESL_BASELINE_OFFSET)\000"
 .LASF8386:
@@ -45849,7 +45859,7 @@ fpga_program_sendbyte:
 	.ascii	"SUPC_SR_WKUPIS15_EN (0x1u << 31)\000"
 .LASF342:
 	.ascii	"__TQ_IBIT__ 0\000"
-.LASF8866:
+.LASF8868:
 	.ascii	"USB_PID_ATMEL_DFU_ATXMEGA192A3U 0x2FE7\000"
 .LASF2271:
 	.ascii	"HSMCI_CMDR_CMDNB_Pos 0\000"
@@ -45862,7 +45872,7 @@ fpga_program_sendbyte:
 	.ascii	"SUPC_CR_XTALSEL_CRYSTAL_SEL (0x1u << 3)\000"
 .LASF8342:
 	.ascii	"MEGA_1284P_XPLAINED 40\000"
-.LASF8792:
+.LASF8794:
 	.ascii	"UDI_VENDOR_IFACE_NUMBER 0\000"
 .LASF4760:
 	.ascii	"SMC_SR_NFCSID_Pos 12\000"
@@ -45903,7 +45913,7 @@ fpga_program_sendbyte:
 	.ascii	"___int_least16_t_defined 1\000"
 .LASF6015:
 	.ascii	"UART_TPR_TXPTR_Pos 0\000"
-.LASF9252:
+.LASF9254:
 	.ascii	"bDeviceSubClass\000"
 .LASF7645:
 	.ascii	"PIO_PA21_IDX 21\000"
@@ -45912,7 +45922,7 @@ fpga_program_sendbyte:
 .LASF1220:
 	.ascii	"SCB_CCR_NONBASETHRDENA_Msk (1UL << SCB_CCR_NONBASET"
 	.ascii	"HRDENA_Pos)\000"
-.LASF8968:
+.LASF8970:
 	.ascii	"UDI_VENDOR_EP_NB (UDI_VENDOR_EP_NB_INT+UDI_VENDOR_E"
 	.ascii	"P_NB_BULK+UDI_VENDOR_EP_NB_ISO)\000"
 .LASF1594:
@@ -45946,7 +45956,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_ISR_P11 (0x1u << 11)\000"
 .LASF3626:
 	.ascii	"PIO_OWSR_P10 (0x1u << 10)\000"
-.LASF9178:
+.LASF9180:
 	.ascii	"__sf\000"
 .LASF6779:
 	.ascii	"REG_PWM_CMPVUPD7 (*(WoReg*)0x4008C1A4U)\000"
@@ -45981,7 +45991,7 @@ fpga_program_sendbyte:
 	.ascii	"_IS_DEFINED(SAM3N00B) )\000"
 .LASF3084:
 	.ascii	"PIO_PDSR_P15 (0x1u << 15)\000"
-.LASF8746:
+.LASF8748:
 	.ascii	"SPI_CPHA (1 << 0)\000"
 .LASF6693:
 	.ascii	"REG_TWI1_MMR (*(RwReg*)0x40088004U)\000"
@@ -45997,7 +46007,7 @@ fpga_program_sendbyte:
 	.ascii	"char +0\000"
 .LASF39:
 	.ascii	"__CHAR32_TYPE__ long unsigned int\000"
-.LASF8848:
+.LASF8850:
 	.ascii	"USB_PID_ATMEL_ASF_XMEGA_B1_XPLAINED 0x2434\000"
 .LASF1744:
 	.ascii	"ADC12B_CHER_CH5 (0x1u << 5)\000"
@@ -46010,7 +46020,7 @@ fpga_program_sendbyte:
 	.ascii	"CLE_Pos)\000"
 .LASF693:
 	.ascii	"TPASTE5(a,b,c,d,e) a ##b ##c ##d ##e\000"
-.LASF8675:
+.LASF8677:
 	.ascii	"IOPORT_MODE_MUX_A ( 0 << 0)\000"
 .LASF5319:
 	.ascii	"SSC_SR_RXRDY (0x1u << 4)\000"
@@ -46019,13 +46029,13 @@ fpga_program_sendbyte:
 .LASF2674:
 	.ascii	"PERIPH_TNPR_TXNPTR(value) ((PERIPH_TNPR_TXNPTR_Msk "
 	.ascii	"& ((value) << PERIPH_TNPR_TXNPTR_Pos)))\000"
-.LASF8825:
+.LASF8827:
 	.ascii	"USB_PID_ATMEL_UC3_EVK1101_CTRLPANEL_HID_MS 0x2306\000"
 .LASF4544:
 	.ascii	"PWM_CMPMUPD_CTRUPD_Pos 4\000"
 .LASF5822:
 	.ascii	"TWI_CR_SWRST (0x1u << 7)\000"
-.LASF9119:
+.LASF9121:
 	.ascii	"__tm\000"
 .LASF5672:
 	.ascii	"TC_CMR_WAVSEL_Msk (0x3u << TC_CMR_WAVSEL_Pos)\000"
@@ -46036,7 +46046,7 @@ fpga_program_sendbyte:
 	.ascii	"CLE_Pos)\000"
 .LASF3256:
 	.ascii	"PIO_MDER_P27 (0x1u << 27)\000"
-.LASF9220:
+.LASF9222:
 	.ascii	"double\000"
 .LASF4943:
 	.ascii	"SMC_ECC_PR7_WORDADDR_Pos 3\000"
@@ -46105,7 +46115,7 @@ fpga_program_sendbyte:
 	.ascii	"SPI_CSR_CPOL (0x1u << 0)\000"
 .LASF7578:
 	.ascii	"PIO_PA1B_NPCS2 (1u << 1)\000"
-.LASF9250:
+.LASF9252:
 	.ascii	"bcdUSB\000"
 .LASF4780:
 	.ascii	"SMC_IDR_XFRDONE (0x1u << 16)\000"
@@ -46115,15 +46125,15 @@ fpga_program_sendbyte:
 	.ascii	"SMC_SETUP_NCS_RD_SETUP_Pos 24\000"
 .LASF2683:
 	.ascii	"PERIPH_PTSR_TXTEN (0x1u << 8)\000"
-.LASF9187:
+.LASF9189:
 	.ascii	"_unused_rand\000"
-.LASF8718:
+.LASF8720:
 	.ascii	"TC_H_INCLUDED \000"
 .LASF8090:
 	.ascii	"_stdout_r(x) ((x)->_stdout)\000"
 .LASF418:
 	.ascii	"__thumb__ 1\000"
-.LASF9078:
+.LASF9080:
 	.ascii	"US_IDR\000"
 .LASF5094:
 	.ascii	"SPI_MR_LLB (0x1u << 7)\000"
@@ -46138,7 +46148,7 @@ fpga_program_sendbyte:
 	.ascii	"__int20__\000"
 .LASF107:
 	.ascii	"__INT8_C(c) c\000"
-.LASF8517:
+.LASF8519:
 	.ascii	"LED1_GPIO (PIO_PA31_IDX)\000"
 .LASF5200:
 	.ascii	"SSC_RCMR_START_Msk (0xfu << SSC_RCMR_START_Pos)\000"
@@ -46179,7 +46189,7 @@ fpga_program_sendbyte:
 	.ascii	"SUPC_WUIR_WKUPEN0 (0x1u << 0)\000"
 .LASF7076:
 	.ascii	"REG_SMC_ECC_PR4 (*(RoReg*)0x400E0040U)\000"
-.LASF8640:
+.LASF8642:
 	.ascii	"PIO_DEFAULT (0u << 0)\000"
 .LASF2530:
 	.ascii	"MATRIX_PRAS2_M3PR_Pos 12\000"
@@ -46199,13 +46209,13 @@ fpga_program_sendbyte:
 	.ascii	"ADC12B_MR_TRGSEL_ADC_TRIG3 (0x3u << 1)\000"
 .LASF75:
 	.ascii	"__WCHAR_MAX__ 0xffffffffU\000"
-.LASF9233:
+.LASF9235:
 	.ascii	"PIO_OUTPUT_0\000"
-.LASF9234:
+.LASF9236:
 	.ascii	"PIO_OUTPUT_1\000"
-.LASF8941:
+.LASF8943:
 	.ascii	"USB_CONFIG_ATTR_SELF_POWERED (1 << 6)\000"
-.LASF9077:
+.LASF9079:
 	.ascii	"US_IER\000"
 .LASF1341:
 	.ascii	"DWT_CTRL_PCSAMPLENA_Pos 12\000"
@@ -46331,13 +46341,13 @@ fpga_program_sendbyte:
 	.ascii	"PIO_FELLSR_P28 (0x1u << 28)\000"
 .LASF5298:
 	.ascii	"SSC_TFMR_FSLEN_EXT_Pos 28\000"
-.LASF8544:
+.LASF8546:
 	.ascii	"pmc_us_to_moscxtst(startup_us,slowck_freq) ((startu"
 	.ascii	"p_us * slowck_freq / 8 / 1000000) < 0x100 ? (startu"
 	.ascii	"p_us * slowck_freq / 8 / 1000000) : 0xFF)\000"
-.LASF9095:
+.LASF9097:
 	.ascii	"US_TCR\000"
-.LASF9235:
+.LASF9237:
 	.ascii	"sleepmgr_locks\000"
 .LASF1784:
 	.ascii	"ADC12B_LCDR_LDATA_Msk (0xfffu << ADC12B_LCDR_LDATA_"
@@ -46357,7 +46367,7 @@ fpga_program_sendbyte:
 	.ascii	"DADDR_Pos)\000"
 .LASF6951:
 	.ascii	"REG_UDPHS_EPTCFG6 (*(RwReg*)0x400A41C0U)\000"
-.LASF9155:
+.LASF9157:
 	.ascii	"_mbstate\000"
 .LASF4088:
 	.ascii	"CKGR_MCFR_MAINFRDY (0x1u << 16)\000"
@@ -46392,7 +46402,7 @@ fpga_program_sendbyte:
 .LASF767:
 	.ascii	"MREPEAT53(macro,data) MREPEAT52( macro, data) macro"
 	.ascii	"( 52, data)\000"
-.LASF9288:
+.LASF9290:
 	.ascii	"conf_bos\000"
 .LASF3556:
 	.ascii	"PIO_OWER_P4 (0x1u << 4)\000"
@@ -46433,7 +46443,7 @@ fpga_program_sendbyte:
 	.ascii	"SSC_RFMR_FSLEN_EXT_Pos 28\000"
 .LASF7626:
 	.ascii	"PIO_PA2_IDX 2\000"
-.LASF8852:
+.LASF8854:
 	.ascii	"USB_PID_ATMEL_DFU_ATXMEGA32C4 0x2FD9\000"
 .LASF6443:
 	.ascii	"US_IMR_TXBUFE (0x1u << 11)\000"
@@ -46463,7 +46473,7 @@ fpga_program_sendbyte:
 	.ascii	"UART_PTSR_RXTEN (0x1u << 0)\000"
 .LASF6663:
 	.ascii	"REG_TC0_BCR (*(WoReg*)0x400800C0U)\000"
-.LASF9254:
+.LASF9256:
 	.ascii	"bMaxPacketSize0\000"
 .LASF5513:
 	.ascii	"SUPC_WUIR_WKUPT8_HIGH_TO_LOW (0x0u << 24)\000"
@@ -46509,15 +46519,15 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PB10B_DSR0 (1u << 10)\000"
 .LASF163:
 	.ascii	"__DBL_MIN_EXP__ (-1021)\000"
-.LASF9105:
+.LASF9107:
 	.ascii	"_fpos_t\000"
 .LASF5486:
 	.ascii	"SUPC_WUIR_WKUPEN15_NOT_ENABLE (0x0u << 15)\000"
-.LASF9123:
+.LASF9125:
 	.ascii	"__tm_mday\000"
 .LASF978:
 	.ascii	"_NEWLIB_VERSION \"3.3.0\"\000"
-.LASF9147:
+.LASF9149:
 	.ascii	"_seek\000"
 .LASF1769:
 	.ascii	"ADC12B_SR_EOC6 (0x1u << 6)\000"
@@ -46529,17 +46539,17 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PUSR_P8 (0x1u << 8)\000"
 .LASF6719:
 	.ascii	"REG_PWM_IDR1 (*(WoReg*)0x4008C014U)\000"
-.LASF8789:
+.LASF8791:
 	.ascii	"UDI_VENDOR_EP_BULK_OUT (2 | USB_EP_DIR_OUT)\000"
 .LASF3319:
 	.ascii	"PIO_MDSR_P26 (0x1u << 26)\000"
 .LASF235:
 	.ascii	"__DEC32_MIN__ 1E-95DF\000"
-.LASF9290:
+.LASF9292:
 	.ascii	"udc_config\000"
 .LASF7085:
 	.ascii	"REG_SMC_ECC_PR13 (*(RoReg*)0x400E0064U)\000"
-.LASF8953:
+.LASF8955:
 	.ascii	"UDC_BSS(x) COMPILER_ALIGNED(x)\000"
 .LASF4409:
 	.ascii	"PWM_OSC_OSCH3 (0x1u << 3)\000"
@@ -46557,7 +46567,7 @@ fpga_program_sendbyte:
 	.ascii	"DMAC_EBCIER_BTC1 (0x1u << 1)\000"
 .LASF1093:
 	.ascii	"UINT64_MAX (__UINT64_MAX__)\000"
-.LASF8604:
+.LASF8606:
 	.ascii	"delay_us(delay) cpu_delay_us(delay, F_CPU)\000"
 .LASF6238:
 	.ascii	"UDPHS_EPTCTL_SHRT_PCKT (0x1u << 31)\000"
@@ -46590,7 +46600,7 @@ fpga_program_sendbyte:
 	.ascii	"__INTMAX_MAX__ 0x7fffffffffffffffLL\000"
 .LASF7999:
 	.ascii	"_howmany(x,y) (((x)+((y)-1))/(y))\000"
-.LASF8632:
+.LASF8634:
 	.ascii	"PIO_TYPE_NOT_A_PIN (0x0u << PIO_TYPE_Pos)\000"
 .LASF6936:
 	.ascii	"REG_UDPHS_EPTSTA3 (*(RoReg*)0x400A417CU)\000"
@@ -46647,7 +46657,7 @@ fpga_program_sendbyte:
 .LASF5926:
 	.ascii	"TWI_RNCR_RXNCTR_Msk (0xffffu << TWI_RNCR_RXNCTR_Pos"
 	.ascii	")\000"
-.LASF8923:
+.LASF8925:
 	.ascii	"BESL_6000_US 11\000"
 .LASF4825:
 	.ascii	"SMC_ECC_SR1_ECCERR3 (0x1u << 13)\000"
@@ -46676,7 +46686,7 @@ fpga_program_sendbyte:
 	.ascii	"unsigned signed\000"
 .LASF5250:
 	.ascii	"SSC_TCMR_CKO_CONTINUOUS (0x1u << 2)\000"
-.LASF8945:
+.LASF8947:
 	.ascii	"VENDOR_CLASS 0xFF\000"
 .LASF6196:
 	.ascii	"UDPHS_EPTCTLENB_SHRT_PCKT (0x1u << 31)\000"
@@ -46686,7 +46696,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PA25B_SCK2 (1u << 25)\000"
 .LASF6329:
 	.ascii	"US_CR_FCS (0x1u << 18)\000"
-.LASF8857:
+.LASF8859:
 	.ascii	"USB_PID_ATMEL_DFU_ATXMEGA128A4U 0x2FDE\000"
 .LASF8225:
 	.ascii	"LSB2D(u64) MSB5D(u64)\000"
@@ -46703,7 +46713,7 @@ fpga_program_sendbyte:
 	.ascii	"_DEFINED(ATmega644A) || AVR8_PART_IS_DEFINED(ATmega"
 	.ascii	"644PA) || AVR8_PART_IS_DEFINED(ATmega1284P) || AVR8"
 	.ascii	"_PART_IS_DEFINED(ATmega128RFA1) )\000"
-.LASF9224:
+.LASF9226:
 	.ascii	"PLL_SRC_MAINCK_XTAL\000"
 .LASF2840:
 	.ascii	"PIO_ODR_P27 (0x1u << 27)\000"
@@ -46729,14 +46739,14 @@ fpga_program_sendbyte:
 	.ascii	"RSTC_MR_KEY_Msk (0xffu << RSTC_MR_KEY_Pos)\000"
 .LASF7849:
 	.ascii	"__RCSID_SOURCE(s) struct __hack\000"
-.LASF9082:
+.LASF9084:
 	.ascii	"US_THR\000"
 .LASF2705:
 	.ascii	"PIO_PER_P20 (0x1u << 20)\000"
 .LASF717:
 	.ascii	"MREPEAT3(macro,data) MREPEAT2( macro, data) macro( "
 	.ascii	"2, data)\000"
-.LASF8592:
+.LASF8594:
 	.ascii	"SYSCLK_PRES_32 PMC_MCKR_PRES_CLK_32\000"
 .LASF2617:
 	.ascii	"MATRIX_PRAS8_M2PR_Pos 8\000"
@@ -46756,7 +46766,7 @@ fpga_program_sendbyte:
 	.ascii	"PWM_IER2_ENDTX (0x1u << 1)\000"
 .LASF2085:
 	.ascii	"DMAC_CHSR_ENA2 (0x1u << 2)\000"
-.LASF9205:
+.LASF9207:
 	.ascii	"_h_errno\000"
 .LASF3550:
 	.ascii	"PIO_SCDR_DIV_Msk (0x3fffu << PIO_SCDR_DIV_Pos)\000"
@@ -46781,7 +46791,7 @@ fpga_program_sendbyte:
 	.ascii	"TPI_FFCR_TrigIn_Msk (0x1UL << TPI_FFCR_TrigIn_Pos)\000"
 .LASF5147:
 	.ascii	"SPI_CSR_BITS_8_BIT (0x0u << 4)\000"
-.LASF8897:
+.LASF8899:
 	.ascii	"USB_REQ_DIR_IN (1<<7)\000"
 .LASF6489:
 	.ascii	"US_RTOR_TO_Msk (0xffffu << US_RTOR_TO_Pos)\000"
@@ -46830,7 +46840,7 @@ fpga_program_sendbyte:
 .LASF774:
 	.ascii	"MREPEAT60(macro,data) MREPEAT59( macro, data) macro"
 	.ascii	"( 59, data)\000"
-.LASF8630:
+.LASF8632:
 	.ascii	"PIO_TYPE_Pos 27\000"
 .LASF7923:
 	.ascii	"_N_LISTS 30\000"
@@ -46851,7 +46861,7 @@ fpga_program_sendbyte:
 .LASF1456:
 	.ascii	"MPU_TYPE_SEPARATE_Msk (1UL << MPU_TYPE_SEPARATE_Pos"
 	.ascii	")\000"
-.LASF9079:
+.LASF9081:
 	.ascii	"US_IMR\000"
 .LASF7724:
 	.ascii	"_FSEEK_OPTIMIZATION 1\000"
@@ -46864,7 +46874,7 @@ fpga_program_sendbyte:
 .LASF4549:
 	.ascii	"PWM_CMPMUPD_CPRUPD(value) ((PWM_CMPMUPD_CPRUPD_Msk "
 	.ascii	"& ((value) << PWM_CMPMUPD_CPRUPD_Pos)))\000"
-.LASF8936:
+.LASF8938:
 	.ascii	"USB_EP_DIR_IN 0x80\000"
 .LASF6470:
 	.ascii	"US_CSR_RI (0x1u << 20)\000"
@@ -46884,20 +46894,20 @@ fpga_program_sendbyte:
 	.ascii	"SSC_WPSR_WPVS (0x1u << 0)\000"
 .LASF6977:
 	.ascii	"REG_UDPHS_DMASTATUS4 (*(RwReg*)0x400A434CU)\000"
-.LASF8658:
+.LASF8660:
 	.ascii	"gpio_configure_group(port_id,port_mask,io_flags) pi"
 	.ascii	"o_configure_pin_group(port_id,port_mask,io_flags)\000"
 .LASF5446:
 	.ascii	"SUPC_WUIR_WKUPEN2 (0x1u << 2)\000"
 .LASF7499:
 	.ascii	"PIO_PB25A_D8 (1u << 25)\000"
-.LASF9054:
+.LASF9056:
 	.ascii	"PIO_SCDR\000"
 .LASF5785:
 	.ascii	"TC_BMR_TC2XC2S_TIOA1 (0x2u << 4)\000"
 .LASF6753:
 	.ascii	"REG_PWM_CMPMUPD0 (*(WoReg*)0x4008C13CU)\000"
-.LASF8829:
+.LASF8831:
 	.ascii	"USB_PID_ATMEL_UC3_AUDIO_SPEAKER_MICRO 0x2311\000"
 .LASF4636:
 	.ascii	"RTC_TIMR_SEC_Msk (0x7fu << RTC_TIMR_SEC_Pos)\000"
@@ -46963,7 +46973,7 @@ fpga_program_sendbyte:
 	.ascii	"STK600_RC044X 24\000"
 .LASF420:
 	.ascii	"__THUMBEL__ 1\000"
-.LASF9163:
+.LASF9165:
 	.ascii	"_emergency\000"
 .LASF7461:
 	.ascii	"PIO_PC24A_A18 (1u << 24)\000"
@@ -47011,13 +47021,13 @@ fpga_program_sendbyte:
 	.ascii	"PIO_AIMER_P23 (0x1u << 23)\000"
 .LASF8410:
 	.ascii	"PINS_ADC12B_TRIG PIO_PA2_IDX\000"
-.LASF9174:
+.LASF9176:
 	.ascii	"_new\000"
 .LASF1521:
 	.ascii	"CoreDebug_DEMCR_VC_BUSERR_Pos 8\000"
 .LASF4841:
 	.ascii	"SMC_ECC_PR0_WORDADDR_Pos 4\000"
-.LASF8646:
+.LASF8648:
 	.ascii	"PIO_IT_RE_OR_HL (1u << 5)\000"
 .LASF4824:
 	.ascii	"SMC_ECC_SR1_RECERR3 (0x1u << 12)\000"
@@ -47027,7 +47037,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PC2A_A4 (1u << 2)\000"
 .LASF1786:
 	.ascii	"ADC12B_IER_EOC1 (0x1u << 1)\000"
-.LASF9249:
+.LASF9251:
 	.ascii	"bDescriptorType\000"
 .LASF2577:
 	.ascii	"MATRIX_PRAS5_M3PR(value) ((MATRIX_PRAS5_M3PR_Msk & "
@@ -47060,7 +47070,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_SMC_ECC_CTRL (*(WoReg*)0x400E0020U)\000"
 .LASF1644:
 	.ascii	"ADC_IER_OVRE7 (0x1u << 15)\000"
-.LASF8756:
+.LASF8758:
 	.ascii	"_UDC_H_ \000"
 .LASF6347:
 	.ascii	"US_MR_USCLKS_SCK (0x3u << 4)\000"
@@ -47085,11 +47095,11 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PA14 (1u << 14)\000"
 .LASF8110:
 	.ascii	"L_ctermid 16\000"
-.LASF9211:
+.LASF9213:
 	.ascii	"_impure_ptr\000"
 .LASF4594:
 	.ascii	"PWM_DTUPD_DTHUPD_Pos 0\000"
-.LASF8940:
+.LASF8942:
 	.ascii	"USB_CONFIG_ATTR_BUS_POWERED (0 << 6)\000"
 .LASF2638:
 	.ascii	"MATRIX_PRAS9_M4PR_Pos 16\000"
@@ -47097,7 +47107,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_UART_PTCR (*(WoReg*)0x400E0720U)\000"
 .LASF6396:
 	.ascii	"US_IER_OVRE (0x1u << 5)\000"
-.LASF8893:
+.LASF8895:
 	.ascii	"CLASS_IAD 0xEF\000"
 .LASF3982:
 	.ascii	"PMC_SCSR_PCK0 (0x1u << 8)\000"
@@ -47106,7 +47116,7 @@ fpga_program_sendbyte:
 	.ascii	"( 33, data)\000"
 .LASF6047:
 	.ascii	"UDPHS_CTRL_DETACH (0x1u << 9)\000"
-.LASF9184:
+.LASF9186:
 	.ascii	"_seed\000"
 .LASF7573:
 	.ascii	"PIO_PA14A_MOSI (1u << 14)\000"
@@ -47122,7 +47132,7 @@ fpga_program_sendbyte:
 	.ascii	"ADC_SR_OVRE3 (0x1u << 11)\000"
 .LASF3642:
 	.ascii	"PIO_OWSR_P26 (0x1u << 26)\000"
-.LASF8465:
+.LASF8467:
 	.ascii	"PIN_EBI_ADDR_BUS_NBS1 PIO_PC15_IDX\000"
 .LASF7971:
 	.ascii	"_QUAD_HIGHWORD 1\000"
@@ -47153,13 +47163,13 @@ fpga_program_sendbyte:
 	.ascii	"PIO_AIMDR_P22 (0x1u << 22)\000"
 .LASF7619:
 	.ascii	"PIO_PB22B_CTS2 (1u << 22)\000"
-.LASF8650:
+.LASF8652:
 	.ascii	"PIO_IT_FALL_EDGE (0 | PIO_IT_EDGE | PIO_IT_AIME)\000"
 .LASF7677:
 	.ascii	"PIO_PB21_IDX 53\000"
 .LASF1399:
 	.ascii	"TPI_TRIGGER_TRIGGER_Pos 0\000"
-.LASF9315:
+.LASF9317:
 	.ascii	"pmc_enable_periph_clk\000"
 .LASF2628:
 	.ascii	"MATRIX_PRAS9_M0PR(value) ((MATRIX_PRAS9_M0PR_Msk & "
@@ -47199,7 +47209,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_IDR_P15 (0x1u << 15)\000"
 .LASF4477:
 	.ascii	"PWM_WPCR_WPRG0 (0x1u << 2)\000"
-.LASF8914:
+.LASF8916:
 	.ascii	"BESL_200_US 2\000"
 .LASF8145:
 	.ascii	"UTILS_INTERRUPT_H \000"
@@ -47219,7 +47229,7 @@ fpga_program_sendbyte:
 	.ascii	"os)\000"
 .LASF459:
 	.ascii	"F_CPU 7372800UL\000"
-.LASF8889:
+.LASF8891:
 	.ascii	"NO_CLASS 0x00\000"
 .LASF416:
 	.ascii	"__ARM_ARCH 7\000"
@@ -47291,11 +47301,11 @@ fpga_program_sendbyte:
 	.ascii	"PIO_FELLSR_P25 (0x1u << 25)\000"
 .LASF7658:
 	.ascii	"PIO_PB2_IDX 34\000"
-.LASF8579:
+.LASF8581:
 	.ascii	"SYSCLK_SRC_SLCK_BYPASS 2\000"
 .LASF5751:
 	.ascii	"TC_IER_CPCS (0x1u << 4)\000"
-.LASF8706:
+.LASF8708:
 	.ascii	"NFCADDR_CMD_NFC_READ (0x0u << 26)\000"
 .LASF5717:
 	.ascii	"TC_CMR_BEEVT_CLEAR (0x2u << 28)\000"
@@ -47332,7 +47342,7 @@ fpga_program_sendbyte:
 	.ascii	"ON_Pos)\000"
 .LASF7107:
 	.ascii	"REG_SMC_MODE3 (*(RwReg*)0x400E00BCU)\000"
-.LASF8850:
+.LASF8852:
 	.ascii	"USB_PID_ATMEL_DFU_ATXMEGA128C3 0x2FD7\000"
 .LASF2048:
 	.ascii	"DMAC_EBCIMR_ERR1 (0x1u << 17)\000"
@@ -47364,7 +47374,7 @@ fpga_program_sendbyte:
 	.ascii	"SUPC_WUIR_WKUPEN6 (0x1u << 6)\000"
 .LASF8338:
 	.ascii	"SAM3S_EK2 36\000"
-.LASF8820:
+.LASF8822:
 	.ascii	"USB_PID_ATMEL_UC3_MS 0x2301\000"
 .LASF5718:
 	.ascii	"TC_CMR_BEEVT_TOGGLE (0x3u << 28)\000"
@@ -47384,7 +47394,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_OWDR_P14 (0x1u << 14)\000"
 .LASF7723:
 	.ascii	"_FVWRITE_IN_STREAMIO 1\000"
-.LASF9094:
+.LASF9096:
 	.ascii	"US_TPR\000"
 .LASF6193:
 	.ascii	"UDPHS_EPTCTLENB_ERR_FLUSH (0x1u << 14)\000"
@@ -47402,15 +47412,15 @@ fpga_program_sendbyte:
 	.ascii	"TC_BMR_TC1XC1S_Msk (0x3u << TC_BMR_TC1XC1S_Pos)\000"
 .LASF8156:
 	.ascii	"DISABLE 0\000"
-.LASF8616:
+.LASF8618:
 	.ascii	"EFC_FCMD_CGPB 0x0C\000"
-.LASF8563:
+.LASF8565:
 	.ascii	"PLL_OUTPUT_MIN_HZ 96000000\000"
 .LASF6030:
 	.ascii	"UART_TNCR_TXNCTR_Pos 0\000"
 .LASF6506:
 	.ascii	"US_MAN_TX_PP_Msk (0x3u << US_MAN_TX_PP_Pos)\000"
-.LASF8919:
+.LASF8921:
 	.ascii	"BESL_2000_US 7\000"
 .LASF2610:
 	.ascii	"MATRIX_PRAS7_M4PR(value) ((MATRIX_PRAS7_M4PR_Msk & "
@@ -47440,7 +47450,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_UART_TPR (*(RwReg*)0x400E0708U)\000"
 .LASF6746:
 	.ascii	"REG_PWM_TNPR (*(RwReg*)0x4008C118U)\000"
-.LASF8523:
+.LASF8525:
 	.ascii	"board_power(a) if (a){gpio_set_pin_high(PIN_PWRON_G"
 	.ascii	"PIO);} else {gpio_set_pin_low(PIN_PWRON_GPIO);}\000"
 .LASF3045:
@@ -47490,9 +47500,9 @@ fpga_program_sendbyte:
 	.ascii	"< PWM_FMR_FMOD_Pos)))\000"
 .LASF60:
 	.ascii	"__INT_FAST64_TYPE__ long long int\000"
-.LASF9107:
+.LASF9109:
 	.ascii	"__wchb\000"
-.LASF8696:
+.LASF8698:
 	.ascii	"NFCADDR_CMD_ACYCLE_NONE (0x0u << 19)\000"
 .LASF6923:
 	.ascii	"REG_UDPHS_EPTCFG2 (*(RwReg*)0x400A4140U)\000"
@@ -47514,7 +47524,7 @@ fpga_program_sendbyte:
 	.ascii	"SMC_ECC_MD_TYPCORREC_C256B (0x1u << 4)\000"
 .LASF7286:
 	.ascii	"REG_RTT_VR (*(RoReg*)0x400E1238U)\000"
-.LASF8781:
+.LASF8783:
 	.ascii	"UDI_VENDOR_EPS_SIZE_BULK_HS 512\000"
 .LASF4194:
 	.ascii	"PMC_FSMR_USBAL (0x1u << 18)\000"
@@ -47540,7 +47550,7 @@ fpga_program_sendbyte:
 	.ascii	"SUPC_WUIR_WKUPT14 (0x1u << 30)\000"
 .LASF7383:
 	.ascii	"PIO_PA8 (1u << 8)\000"
-.LASF8695:
+.LASF8697:
 	.ascii	"NFCADDR_CMD_ACYCLE (0x7u << 19)\000"
 .LASF1061:
 	.ascii	"_UINTPTR_T_DECLARED \000"
@@ -47551,7 +47561,7 @@ fpga_program_sendbyte:
 .LASF7873:
 	.ascii	"__requires_unlocked(...) __lock_annotate(locks_excl"
 	.ascii	"uded(__VA_ARGS__))\000"
-.LASF9020:
+.LASF9022:
 	.ascii	"SystemCoreClock\000"
 .LASF4873:
 	.ascii	"SMC_ECC_SR2_RECERR10 (0x1u << 8)\000"
@@ -47562,20 +47572,20 @@ fpga_program_sendbyte:
 .LASF746:
 	.ascii	"MREPEAT32(macro,data) MREPEAT31( macro, data) macro"
 	.ascii	"( 31, data)\000"
-.LASF9160:
+.LASF9162:
 	.ascii	"_stdout\000"
 .LASF5395:
 	.ascii	"SUPC_SMMR_SMRSTEN_ENABLE (0x1u << 12)\000"
-.LASF8745:
+.LASF8747:
 	.ascii	"USART_H_INCLUDED \000"
 .LASF1276:
 	.ascii	"SCnSCB_ACTLR_DISDEFWBUF_Msk (1UL << SCnSCB_ACTLR_DI"
 	.ascii	"SDEFWBUF_Pos)\000"
 .LASF4682:
 	.ascii	"RTC_SR_ALARM (0x1u << 1)\000"
-.LASF9301:
+.LASF9303:
 	.ascii	"fpga_program_setup1\000"
-.LASF9300:
+.LASF9302:
 	.ascii	"fpga_program_setup2\000"
 .LASF6721:
 	.ascii	"REG_PWM_ISR1 (*(RoReg*)0x4008C01CU)\000"
@@ -47625,7 +47635,7 @@ fpga_program_sendbyte:
 	.ascii	"TPI ((TPI_Type *) TPI_BASE )\000"
 .LASF5514:
 	.ascii	"SUPC_WUIR_WKUPT8_LOW_TO_HIGH (0x1u << 24)\000"
-.LASF8577:
+.LASF8579:
 	.ascii	"SYSCLK_SRC_SLCK_RC 0\000"
 .LASF7508:
 	.ascii	"PIO_PC17A_NCS3 (1u << 17)\000"
@@ -47661,7 +47671,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_RTT_SR (*(RoReg*)0x400E123CU)\000"
 .LASF3431:
 	.ascii	"PIO_ABSR_P10 (0x1u << 10)\000"
-.LASF8744:
+.LASF8746:
 	.ascii	"_UART_SERIAL_H_ \000"
 .LASF2951:
 	.ascii	"PIO_IFSR_P10 (0x1u << 10)\000"
@@ -47701,7 +47711,7 @@ fpga_program_sendbyte:
 	.ascii	"memory\")\000"
 .LASF2733:
 	.ascii	"PIO_PDR_P16 (0x1u << 16)\000"
-.LASF8877:
+.LASF8879:
 	.ascii	"USB_PID_ATMEL_DFU_ATMEGA32U6 0x2FF2\000"
 .LASF3994:
 	.ascii	"PMC_PCER0_PID11 (0x1u << 11)\000"
@@ -47711,7 +47721,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PC31A_PWML2 (1u << 31)\000"
 .LASF1016:
 	.ascii	"signed\000"
-.LASF8725:
+.LASF8727:
 	.ascii	"TWI_NO_CHIP_FOUND 3\000"
 .LASF6853:
 	.ascii	"REG_USART1_TTGR (*(RwReg*)0x40094028U)\000"
@@ -47754,11 +47764,11 @@ fpga_program_sendbyte:
 	.ascii	"PIO_FELLSR_P1 (0x1u << 1)\000"
 .LASF2004:
 	.ascii	"DMAC_CREQ_DCREQ2 (0x1u << 5)\000"
-.LASF8645:
+.LASF8647:
 	.ascii	"PIO_IT_AIME (1u << 4)\000"
 .LASF1899:
 	.ascii	"CHIPID_CIDR_NVPSIZ_1024K (0xCu << 8)\000"
-.LASF9056:
+.LASF9058:
 	.ascii	"PIO_OWER\000"
 .LASF4808:
 	.ascii	"SMC_ECC_MD_ECC_PAGESIZE_PS2048_64 (0x2u << 0)\000"
@@ -47807,7 +47817,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_OWSR_P27 (0x1u << 27)\000"
 .LASF183:
 	.ascii	"__LDBL_MAX__ 1.7976931348623157e+308L\000"
-.LASF9191:
+.LASF9193:
 	.ascii	"_gamma_signgam\000"
 .LASF2685:
 	.ascii	"PIO_PER_P0 (0x1u << 0)\000"
@@ -47823,9 +47833,9 @@ fpga_program_sendbyte:
 	.ascii	"__INT_LEAST64_WIDTH__ 64\000"
 .LASF2430:
 	.ascii	"HSMCI_IMR_SDIOWAIT (0x1u << 12)\000"
-.LASF9014:
+.LASF9016:
 	.ascii	"int32_t\000"
-.LASF9279:
+.LASF9281:
 	.ascii	"udi_api_t\000"
 .LASF7032:
 	.ascii	"REG_DMAC_CHSR (*(RoReg*)0x400B0030U)\000"
@@ -47843,7 +47853,7 @@ fpga_program_sendbyte:
 	.ascii	"INT_FAST64_MIN (-__INT_FAST64_MAX__ - 1)\000"
 .LASF5370:
 	.ascii	"SUPC_SMMR_SMTH_1_9V (0x0u << 0)\000"
-.LASF8913:
+.LASF8915:
 	.ascii	"BESL_150_US 1\000"
 .LASF2420:
 	.ascii	"HSMCI_IDR_ACKRCVE (0x1u << 29)\000"
@@ -47886,7 +47896,7 @@ fpga_program_sendbyte:
 	.ascii	"PMC_MCKR_CSS_MAIN_CLK (0x1u << 0)\000"
 .LASF1478:
 	.ascii	"MPU_RASR_ENABLE_Msk (1UL << MPU_RASR_ENABLE_Pos)\000"
-.LASF8839:
+.LASF8841:
 	.ascii	"USB_PID_ATMEL_ASF_MSC_HIDKEYBOARD 0x2422\000"
 .LASF2837:
 	.ascii	"PIO_ODR_P24 (0x1u << 24)\000"
@@ -47915,7 +47925,7 @@ fpga_program_sendbyte:
 .LASF4990:
 	.ascii	"SMC_ECC_PR14_WORDADDR_Msk (0xffu << SMC_ECC_PR14_WO"
 	.ascii	"RDADDR_Pos)\000"
-.LASF8472:
+.LASF8474:
 	.ascii	"PIN_EBI_ADDR_BUS_A4 PIO_PB2_IDX\000"
 .LASF1952:
 	.ascii	"CHIPID_CIDR_ARCH_SAM3UxE (0x81u << 20)\000"
@@ -47936,7 +47946,7 @@ fpga_program_sendbyte:
 	.ascii	"0_WORDADDR_W8BIT_Pos)\000"
 .LASF4474:
 	.ascii	"PWM_WPCR_WPCMD_Pos 0\000"
-.LASF8534:
+.LASF8536:
 	.ascii	"CKGR_MOR_KEY_PASSWD CKGR_MOR_KEY(0x37U)\000"
 .LASF791:
 	.ascii	"MREPEAT77(macro,data) MREPEAT76( macro, data) macro"
@@ -47945,7 +47955,7 @@ fpga_program_sendbyte:
 	.ascii	"PWM_ISR1_CHID2 (0x1u << 2)\000"
 .LASF8292:
 	.ascii	"ADDR_COPY_DST_SRC_64(dst,src) ((dst) = (src))\000"
-.LASF8784:
+.LASF8786:
 	.ascii	"_UDI_VENDOR_CONF_H_ \000"
 .LASF764:
 	.ascii	"MREPEAT50(macro,data) MREPEAT49( macro, data) macro"
@@ -47955,7 +47965,7 @@ fpga_program_sendbyte:
 	.ascii	"( 37, data)\000"
 .LASF6116:
 	.ascii	"UDPHS_TST_TST_K (0x1u << 3)\000"
-.LASF9203:
+.LASF9205:
 	.ascii	"_wcrtomb_state\000"
 .LASF694:
 	.ascii	"TPASTE6(a,b,c,d,e,f) a ##b ##c ##d ##e ##f\000"
@@ -47968,7 +47978,7 @@ fpga_program_sendbyte:
 	.ascii	"PWM_FPV_FPVH0 (0x1u << 0)\000"
 .LASF2276:
 	.ascii	"HSMCI_CMDR_RSPTYP_NORESP (0x0u << 6)\000"
-.LASF8780:
+.LASF8782:
 	.ascii	"UDI_VENDOR_EPS_SIZE_INT_HS 0\000"
 .LASF377:
 	.ascii	"__GCC_ATOMIC_BOOL_LOCK_FREE 2\000"
@@ -47980,7 +47990,7 @@ fpga_program_sendbyte:
 	.ascii	"HSMCI_IMR_NOTBUSY (0x1u << 5)\000"
 .LASF1943:
 	.ascii	"CHIPID_CIDR_ARCH_AT91SAM7AQxx (0x61u << 20)\000"
-.LASF8553:
+.LASF8555:
 	.ascii	"OSC_SLCK_32K_RC_HZ CHIP_FREQ_SLCK_RC\000"
 .LASF2948:
 	.ascii	"PIO_IFSR_P7 (0x1u << 7)\000"
@@ -47992,7 +48002,7 @@ fpga_program_sendbyte:
 	.ascii	"IRAM0_ADDR (0x20000000u)\000"
 .LASF2934:
 	.ascii	"PIO_IFDR_P25 (0x1u << 25)\000"
-.LASF9283:
+.LASF9285:
 	.ascii	"confdev_lsfs\000"
 .LASF647:
 	.ascii	"SAM4CMS8_1 ( SAM_PART_IS_DEFINED(SAM4CMS8C_1) )\000"
@@ -48005,9 +48015,9 @@ fpga_program_sendbyte:
 	.ascii	"SPI_SR_RDRF (0x1u << 0)\000"
 .LASF5484:
 	.ascii	"SUPC_WUIR_WKUPEN14_ENABLE (0x1u << 14)\000"
-.LASF8787:
+.LASF8789:
 	.ascii	"UDI_VENDOR_EP_INTERRUPT_OUT (4 | USB_EP_DIR_OUT)\000"
-.LASF8874:
+.LASF8876:
 	.ascii	"USB_PID_ATMEL_DFU_ATMEGA16U2 0x2FEF\000"
 .LASF5044:
 	.ascii	"SMC_TIMINGS_TWB(value) ((SMC_TIMINGS_TWB_Msk & ((va"
@@ -48050,7 +48060,7 @@ fpga_program_sendbyte:
 	.ascii	"UDPHS_EPTCTLENB_NAK_OUT (0x1u << 15)\000"
 .LASF241:
 	.ascii	"__DEC64_MAX_EXP__ 385\000"
-.LASF8649:
+.LASF8651:
 	.ascii	"PIO_IT_HIGH_LEVEL (PIO_IT_RE_OR_HL | 0 | PIO_IT_AIM"
 	.ascii	"E)\000"
 .LASF6482:
@@ -48108,13 +48118,13 @@ fpga_program_sendbyte:
 	.ascii	"SUPC_SR_SMWS_NO (0x0u << 2)\000"
 .LASF6648:
 	.ascii	"REG_TC0_RC1 (*(RwReg*)0x4008005CU)\000"
-.LASF8910:
+.LASF8912:
 	.ascii	"USB_DC_EXT_BESL_BASELINE_OFFSET 12\000"
 .LASF4370:
 	.ascii	"PWM_ISR2_CMPM4 (0x1u << 12)\000"
 .LASF2468:
 	.ascii	"HSMCI_WPSR_WP_VS_RESET (0x2u << 0)\000"
-.LASF9086:
+.LASF9088:
 	.ascii	"US_FIDI\000"
 .LASF3339:
 	.ascii	"PIO_PUDR_P14 (0x1u << 14)\000"
@@ -48135,7 +48145,7 @@ fpga_program_sendbyte:
 .LASF8099:
 	.ascii	"__sclearerr(p) ((void)((p)->_flags &= ~(__SERR|__SE"
 	.ascii	"OF)))\000"
-.LASF8947:
+.LASF8949:
 	.ascii	"VENDOR_PROTOCOL 0xFF\000"
 .LASF8413:
 	.ascii	"PINS_ADC_TRIG_FLAG (PIO_PERIPH_B | PIO_DEFAULT)\000"
@@ -48193,7 +48203,7 @@ fpga_program_sendbyte:
 	.ascii	"SAM4CP16BMB 67\000"
 .LASF1669:
 	.ascii	"ADC_IMR_EOC0 (0x1u << 0)\000"
-.LASF8656:
+.LASF8658:
 	.ascii	"gpio_toggle_pin(io_id) pio_toggle_pin(io_id)\000"
 .LASF6641:
 	.ascii	"REG_TC0_IDR0 (*(WoReg*)0x40080028U)\000"
@@ -48209,7 +48219,7 @@ fpga_program_sendbyte:
 	.ascii	"\000"
 .LASF6726:
 	.ascii	"REG_PWM_IER2 (*(WoReg*)0x4008C034U)\000"
-.LASF8831:
+.LASF8833:
 	.ascii	"USB_PID_ATMEL_ASF_HIDMOUSE 0x2400\000"
 .LASF1364:
 	.ascii	"DWT_MASK_MASK_Msk (0x1FUL << DWT_MASK_MASK_Pos)\000"
@@ -48230,7 +48240,7 @@ fpga_program_sendbyte:
 	.ascii	"__printf0like(fmtarg,firstvararg) \000"
 .LASF1854:
 	.ascii	"ADC12B_ACR_OFFSET (0x1u << 17)\000"
-.LASF9074:
+.LASF9076:
 	.ascii	"PIO_WPSR\000"
 .LASF3667:
 	.ascii	"PIO_AIMER_P19 (0x1u << 19)\000"
@@ -48254,7 +48264,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_DMAC_EBCIER (*(WoReg*)0x400B0018U)\000"
 .LASF6391:
 	.ascii	"US_IER_RXRDY (0x1u << 0)\000"
-.LASF8537:
+.LASF8539:
 	.ascii	"PMC_FAST_STARTUP_Msk (0x7FFFFu)\000"
 .LASF3468:
 	.ascii	"PIO_SCIFSR_P15 (0x1u << 15)\000"
@@ -48265,12 +48275,12 @@ fpga_program_sendbyte:
 	.ascii	"_bytecount_Pos)\000"
 .LASF1050:
 	.ascii	"_UINT16_T_DECLARED \000"
-.LASF9197:
+.LASF9199:
 	.ascii	"_l64a_buf\000"
 .LASF7956:
 	.ascii	"_REENT_SIGNAL_BUF(ptr) ((ptr)->_new._reent._signal_"
 	.ascii	"buf)\000"
-.LASF8971:
+.LASF8973:
 	.ascii	"UDI_VENDOR_DESC_HS { UDI_VENDOR_DESC UDI_VENDOR_EPS"
 	.ascii	"_INT_DESC_HS UDI_VENDOR_EPS_BULK_DESC_HS UDI_VENDOR"
 	.ascii	"_EPS_ISO_DESC_HS }\000"
@@ -48278,11 +48288,11 @@ fpga_program_sendbyte:
 	.ascii	"REG_SPI_WPMR (*(RwReg*)0x400080E4U)\000"
 .LASF566:
 	.ascii	"MEGA_XX0_1 (MEGA_XX0 || MEGA_XX1)\000"
-.LASF9295:
+.LASF9297:
 	.ascii	"udd_ctrl_request_t\000"
 .LASF1375:
 	.ascii	"DWT_FUNCTION_DATAVMATCH_Pos 8\000"
-.LASF8560:
+.LASF8562:
 	.ascii	"OSC_MAINCK_BYPASS_HZ BOARD_FREQ_MAINCK_BYPASS\000"
 .LASF5528:
 	.ascii	"SUPC_WUIR_WKUPT13_HIGH_TO_LOW (0x0u << 29)\000"
@@ -48294,9 +48304,9 @@ fpga_program_sendbyte:
 	.ascii	"PIO_ELSR_P22 (0x1u << 22)\000"
 .LASF4285:
 	.ascii	"PWM_SCM_UPDM_MODE0 (0x0u << 16)\000"
-.LASF8672:
+.LASF8674:
 	.ascii	"IOPORT_PIOF 5\000"
-.LASF9069:
+.LASF9071:
 	.ascii	"PIO_REHLSR\000"
 .LASF4028:
 	.ascii	"PMC_PCDR0_PID19 (0x1u << 19)\000"
@@ -48304,7 +48314,7 @@ fpga_program_sendbyte:
 	.ascii	"PMC_FSMR_FSTT5 (0x1u << 5)\000"
 .LASF6265:
 	.ascii	"UDPHS_EPTSTA_ERR_TRANS (0x1u << 11)\000"
-.LASF8525:
+.LASF8527:
 	.ascii	"board_sram_pwroff() gpio_set_pin_high(PIN_PWRON_GPI"
 	.ascii	"O)\000"
 .LASF5226:
@@ -48317,13 +48327,13 @@ fpga_program_sendbyte:
 	.ascii	"TWI_SR_ARBLST (0x1u << 9)\000"
 .LASF6796:
 	.ascii	"REG_PWM_DT1 (*(RwReg*)0x4008C238U)\000"
-.LASF8526:
+.LASF8528:
 	.ascii	"BOARD_PSRAM_ADDR (0x60000000)\000"
-.LASF8601:
+.LASF8603:
 	.ascii	"delay_init(fcpu_hz) \000"
 .LASF4159:
 	.ascii	"PMC_SR_PCKRDY1 (0x1u << 9)\000"
-.LASF9263:
+.LASF9265:
 	.ascii	"bReserved\000"
 .LASF1848:
 	.ascii	"ADC12B_ACR_GAIN_Msk (0x3u << ADC12B_ACR_GAIN_Pos)\000"
@@ -48337,7 +48347,7 @@ fpga_program_sendbyte:
 	.ascii	"DWT_CTRL_CPIEVTENA_Pos 17\000"
 .LASF7599:
 	.ascii	"PIO_PA10A_TWCK0 (1u << 10)\000"
-.LASF8636:
+.LASF8638:
 	.ascii	"PIO_TYPE_PIO_PERIPH_D (0x4u << PIO_TYPE_Pos)\000"
 .LASF4139:
 	.ascii	"PMC_IER_PCKRDY2 (0x1u << 10)\000"
@@ -48376,9 +48386,9 @@ fpga_program_sendbyte:
 	.ascii	"UART_IMR_OVRE (0x1u << 5)\000"
 .LASF4151:
 	.ascii	"PMC_IDR_MOSCRCS (0x1u << 17)\000"
-.LASF8740:
+.LASF8742:
 	.ascii	"UART_MCK_DIV 16\000"
-.LASF9098:
+.LASF9100:
 	.ascii	"US_TNPR\000"
 .LASF7900:
 	.ascii	"__lock_init_recursive(lock) __retarget_lock_init_re"
@@ -48394,7 +48404,7 @@ fpga_program_sendbyte:
 .LASF1290:
 	.ascii	"SysTick_VAL_CURRENT_Msk (0xFFFFFFUL << SysTick_VAL_"
 	.ascii	"CURRENT_Pos)\000"
-.LASF8880:
+.LASF8882:
 	.ascii	"USB_PID_ATMEL_DFU_AT32AP7200 0x2FF5\000"
 .LASF2859:
 	.ascii	"PIO_OSR_P14 (0x1u << 14)\000"
@@ -48402,7 +48412,7 @@ fpga_program_sendbyte:
 	.ascii	"__BSD_VISIBLE 1\000"
 .LASF3737:
 	.ascii	"PIO_AIMMR_P25 (0x1u << 25)\000"
-.LASF8507:
+.LASF8509:
 	.ascii	"PIN_EBI_NCS0_MASK 1 << 20\000"
 .LASF7319:
 	.ascii	"ID_PIOB (11)\000"
@@ -48421,7 +48431,7 @@ fpga_program_sendbyte:
 .LASF2525:
 	.ascii	"MATRIX_PRAS2_M1PR_Msk (0x3u << MATRIX_PRAS2_M1PR_Po"
 	.ascii	"s)\000"
-.LASF8653:
+.LASF8655:
 	.ascii	"gpio_pin_is_high(io_id) (pio_get_pin_value(io_id) ?"
 	.ascii	" 1 : 0)\000"
 .LASF4755:
@@ -48438,17 +48448,17 @@ fpga_program_sendbyte:
 	.ascii	"SUPC_WUIR_WKUPT4_HIGH_TO_LOW (0x0u << 20)\000"
 .LASF5781:
 	.ascii	"TC_BMR_TC1XC1S_TIOA2 (0x3u << 2)\000"
-.LASF8828:
+.LASF8830:
 	.ascii	"USB_PID_ATMEL_UC3_CDC_DEBUG 0x2310\000"
-.LASF8490:
+.LASF8492:
 	.ascii	"PIN_PDIC_USART_FLAGS (PIO_PERIPH_B | PIO_DEFAULT)\000"
 .LASF7547:
 	.ascii	"PIO_PC26B_PWMH2 (1u << 26)\000"
-.LASF8644:
+.LASF8646:
 	.ascii	"PIO_DEBOUNCE (1u << 3)\000"
 .LASF7451:
 	.ascii	"PIO_PB7B_NBS0 (1u << 7)\000"
-.LASF8598:
+.LASF8600:
 	.ascii	"delay_cycles portable_delay_cycles\000"
 .LASF1433:
 	.ascii	"TPI_ITCTRL_Mode_Pos 0\000"
@@ -48499,7 +48509,7 @@ fpga_program_sendbyte:
 	.ascii	"MSB0D(u64) (((U8 *)&(u64))[7])\000"
 .LASF5330:
 	.ascii	"SSC_IER_OVRUN (0x1u << 5)\000"
-.LASF8571:
+.LASF8573:
 	.ascii	"PLL_COUNT 0x3fU\000"
 .LASF5292:
 	.ascii	"SSC_TFMR_FSOS_HIGH (0x4u << 20)\000"
@@ -48549,7 +48559,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_DMAC_CTRLA3 (*(RwReg*)0x400B00C0U)\000"
 .LASF55:
 	.ascii	"__UINT_LEAST32_TYPE__ long unsigned int\000"
-.LASF8996:
+.LASF8998:
 	.ascii	"FPGA_USE_USART 0\000"
 .LASF7940:
 	.ascii	"_REENT_MP_RESULT_K(ptr) ((ptr)->_result_k)\000"
@@ -48568,14 +48578,14 @@ fpga_program_sendbyte:
 	.ascii	"PDC_USART2 ((Pdc *)0x40098100U)\000"
 .LASF2369:
 	.ascii	"HSMCI_SR_ACKRCV (0x1u << 28)\000"
-.LASF9166:
+.LASF9168:
 	.ascii	"__sdidinit\000"
 .LASF8134:
 	.ascii	"COMPILER_PACK_RESET() COMPILER_PRAGMA(pack())\000"
 .LASF1446:
 	.ascii	"TPI_DEVID_NrTraceInput_Msk (0x1FUL << TPI_DEVID_NrT"
 	.ascii	"raceInput_Pos)\000"
-.LASF9257:
+.LASF9259:
 	.ascii	"bcdDevice\000"
 .LASF7214:
 	.ascii	"REG_PIOA_OWDR (*(WoReg*)0x400E0CA4U)\000"
@@ -48617,7 +48627,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PC8B_PWML2 (1u << 8)\000"
 .LASF5658:
 	.ascii	"TC_CMR_EEVTEDG_Pos 8\000"
-.LASF8652:
+.LASF8654:
 	.ascii	"gpio_pin_is_low(io_id) (pio_get_pin_value(io_id) ? "
 	.ascii	"0 : 1)\000"
 .LASF3418:
@@ -48728,7 +48738,7 @@ fpga_program_sendbyte:
 	.ascii	"CHIPID_CIDR_ARCH_AT91SAM7Xxx (0x75u << 20)\000"
 .LASF6114:
 	.ascii	"UDPHS_TST_SPEED_CFG_FULL_SPEED (0x3u << 0)\000"
-.LASF8666:
+.LASF8668:
 	.ascii	"IOPORT_PIO_OFFSET ((uintptr_t)PIOB - (uintptr_t)PIO"
 	.ascii	"A)\000"
 .LASF864:
@@ -48762,7 +48772,7 @@ fpga_program_sendbyte:
 .LASF803:
 	.ascii	"MREPEAT89(macro,data) MREPEAT88( macro, data) macro"
 	.ascii	"( 88, data)\000"
-.LASF8901:
+.LASF8903:
 	.ascii	"USB_REQ_TYPE_VENDOR (2<<5)\000"
 .LASF8124:
 	.ascii	"EXIT_SUCCESS 0\000"
@@ -48778,12 +48788,12 @@ fpga_program_sendbyte:
 	.ascii	"PWM_CMPV_CV_Msk (0xffffffu << PWM_CMPV_CV_Pos)\000"
 .LASF1975:
 	.ascii	"CHIPID_CIDR_NVPTYP_Pos 28\000"
-.LASF8524:
+.LASF8526:
 	.ascii	"board_sram_pwron() gpio_set_pin_low(PIN_PWRON_GPIO)"
 	.ascii	"\000"
 .LASF5539:
 	.ascii	"SUPC_SR_WKUPS (0x1u << 1)\000"
-.LASF8978:
+.LASF8980:
 	.ascii	"PIN_FPGA_DONE_GPIO PIO_PA7_IDX\000"
 .LASF4227:
 	.ascii	"PWM_CLK_PREA_Msk (0xfu << PWM_CLK_PREA_Pos)\000"
@@ -48813,7 +48823,7 @@ fpga_program_sendbyte:
 	.ascii	"SMC_WPCR_WP_KEY_Pos 8\000"
 .LASF207:
 	.ascii	"__FLT64_MIN_10_EXP__ (-307)\000"
-.LASF9285:
+.LASF9287:
 	.ascii	"confdev_hs\000"
 .LASF356:
 	.ascii	"__SA_IBIT__ 16\000"
@@ -48827,7 +48837,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_IFDR_P5 (0x1u << 5)\000"
 .LASF3759:
 	.ascii	"PIO_ESR_P15 (0x1u << 15)\000"
-.LASF9083:
+.LASF9085:
 	.ascii	"US_BRGR\000"
 .LASF6260:
 	.ascii	"UDPHS_EPTSTA_ERR_OVFLW (0x1u << 8)\000"
@@ -48861,23 +48871,23 @@ fpga_program_sendbyte:
 	.ascii	"PIN_USART1_RXD_FLAGS (PIO_PERIPH_A | PIO_DEFAULT)\000"
 .LASF3389:
 	.ascii	"PIO_PUSR_P0 (0x1u << 0)\000"
-.LASF8508:
+.LASF8510:
 	.ascii	"PIN_EBI_NCS0_PIO PIOB\000"
-.LASF8933:
+.LASF8935:
 	.ascii	"USB_LPM_ATTRIBUT_REMOTEWAKE(value) ((value & 1) << "
 	.ascii	"8)\000"
-.LASF8872:
+.LASF8874:
 	.ascii	"USB_PID_ATMEL_DFU_ATXMEGA128A1U 0x2FED\000"
-.LASF8875:
+.LASF8877:
 	.ascii	"USB_PID_ATMEL_DFU_ATMEGA32U2 0x2FF0\000"
 .LASF6950:
 	.ascii	"REG_UDPHS_EPTSTA5 (*(RoReg*)0x400A41BCU)\000"
-.LASF8483:
+.LASF8485:
 	.ascii	"PIN_PDIDTX_USART_FLAGS (PIO_PERIPH_A | PIO_DEFAULT)"
 	.ascii	"\000"
-.LASF8801:
+.LASF8803:
 	.ascii	"USB_PID_ATMEL_MEGA_HIDGENERIC 0x2013\000"
-.LASF8669:
+.LASF8671:
 	.ascii	"IOPORT_PIOC 2\000"
 .LASF2422:
 	.ascii	"HSMCI_IDR_UNRE (0x1u << 31)\000"
@@ -48892,7 +48902,7 @@ fpga_program_sendbyte:
 .LASF2532:
 	.ascii	"MATRIX_PRAS2_M3PR(value) ((MATRIX_PRAS2_M3PR_Msk & "
 	.ascii	"((value) << MATRIX_PRAS2_M3PR_Pos)))\000"
-.LASF9058:
+.LASF9060:
 	.ascii	"PIO_OWSR\000"
 .LASF7216:
 	.ascii	"REG_PIOA_AIMER (*(WoReg*)0x400E0CB0U)\000"
@@ -48907,7 +48917,7 @@ fpga_program_sendbyte:
 	.ascii	"D(ATmega128) || AVR8_PART_IS_DEFINED(ATmega128A) )\000"
 .LASF2055:
 	.ascii	"DMAC_EBCISR_CBTC0 (0x1u << 8)\000"
-.LASF8714:
+.LASF8716:
 	.ascii	"SAM_SLEEPMGR_INCLUDED \000"
 .LASF2110:
 	.ascii	"DMAC_CTRLA_BTSIZE(value) ((DMAC_CTRLA_BTSIZE_Msk & "
@@ -48929,7 +48939,7 @@ fpga_program_sendbyte:
 	.ascii	"__USACCUM_MIN__ 0.0UHK\000"
 .LASF367:
 	.ascii	"__UTA_FBIT__ 64\000"
-.LASF8811:
+.LASF8813:
 	.ascii	"USB_PID_ATMEL_MEGA_MS_HIDMS_HID_STK525 0x2023\000"
 .LASF8194:
 	.ascii	"MSB0W(u32) (((U8 *)&(u32))[3])\000"
@@ -48963,7 +48973,7 @@ fpga_program_sendbyte:
 	.ascii	"DMAC_SREQ_SSREQ2 (0x1u << 4)\000"
 .LASF2892:
 	.ascii	"PIO_IFER_P15 (0x1u << 15)\000"
-.LASF9293:
+.LASF9295:
 	.ascii	"callback\000"
 .LASF2965:
 	.ascii	"PIO_IFSR_P24 (0x1u << 24)\000"
@@ -48971,7 +48981,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_MDDR_P27 (0x1u << 27)\000"
 .LASF7600:
 	.ascii	"PIO_PA9A_TWD0 (1u << 9)\000"
-.LASF8493:
+.LASF8495:
 	.ascii	"PIN_EBI_NRD_MASK 1 << 19\000"
 .LASF6127:
 	.ascii	"UDPHS_IPFEATURES_DMA_B_SIZ (0x1u << 7)\000"
@@ -49003,7 +49013,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_PWM_IER1 (*(WoReg*)0x4008C010U)\000"
 .LASF1562:
 	.ascii	"ADC_MR_TRGSEL_ADC_TRIG0 (0x0u << 1)\000"
-.LASF8513:
+.LASF8515:
 	.ascii	"LED0_GPIO (PIO_PA29_IDX)\000"
 .LASF6760:
 	.ascii	"REG_PWM_CMPM2 (*(RwReg*)0x4008C158U)\000"
@@ -49016,7 +49026,7 @@ fpga_program_sendbyte:
 	.ascii	")\000"
 .LASF3054:
 	.ascii	"PIO_ODSR_P17 (0x1u << 17)\000"
-.LASF9210:
+.LASF9212:
 	.ascii	"__locale_t\000"
 .LASF7406:
 	.ascii	"PIO_PA31 (1u << 31)\000"
@@ -49024,7 +49034,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PA23A_RXD2 (1u << 23)\000"
 .LASF7941:
 	.ascii	"_REENT_MP_P5S(ptr) ((ptr)->_p5s)\000"
-.LASF9304:
+.LASF9306:
 	.ascii	"databyte\000"
 .LASF483:
 	.ascii	"_SIZE_T_ \000"
@@ -49048,7 +49058,7 @@ fpga_program_sendbyte:
 	.ascii	"PMC_SR_LOCKA (0x1u << 1)\000"
 .LASF386:
 	.ascii	"__GCC_ATOMIC_TEST_AND_SET_TRUEVAL 1\000"
-.LASF8522:
+.LASF8524:
 	.ascii	"PIN_PWRON_FLAGS (PIO_TYPE_PIO_OUTPUT_0 | PIO_DEFAUL"
 	.ascii	"T)\000"
 .LASF4493:
@@ -49057,7 +49067,7 @@ fpga_program_sendbyte:
 	.ascii	"PMC_FSMR_RTCAL (0x1u << 17)\000"
 .LASF7767:
 	.ascii	"__BEGIN_DECLS \000"
-.LASF8691:
+.LASF8693:
 	.ascii	"SMC_H_INCLUDED \000"
 .LASF5698:
 	.ascii	"TC_CMR_ASWTRG_SET (0x1u << 22)\000"
@@ -49065,11 +49075,11 @@ fpga_program_sendbyte:
 	.ascii	"DMAC_CTRLB_SRC_DSCR_FETCH_DISABLE (0x1u << 16)\000"
 .LASF5048:
 	.ascii	"SMC_TIMINGS_NFSEL (0x1u << 31)\000"
-.LASF9179:
+.LASF9181:
 	.ascii	"__FILE\000"
 .LASF3218:
 	.ascii	"PIO_ISR_P21 (0x1u << 21)\000"
-.LASF9146:
+.LASF9148:
 	.ascii	"_write\000"
 .LASF2879:
 	.ascii	"PIO_IFER_P2 (0x1u << 2)\000"
@@ -49081,7 +49091,7 @@ fpga_program_sendbyte:
 	.ascii	"___int32_t_defined 1\000"
 .LASF5726:
 	.ascii	"TC_CV_CV_Msk (0xffffffffu << TC_CV_CV_Pos)\000"
-.LASF9314:
+.LASF9316:
 	.ascii	"usart_enable_tx\000"
 .LASF4073:
 	.ascii	"CKGR_MOR_MOSCRCF_Pos 4\000"
@@ -49096,7 +49106,7 @@ fpga_program_sendbyte:
 	.ascii	"((value) << MATRIX_PRAS4_M4PR_Pos)))\000"
 .LASF5295:
 	.ascii	"SSC_TFMR_FSEDGE (0x1u << 24)\000"
-.LASF9200:
+.LASF9202:
 	.ascii	"_mbrlen_state\000"
 .LASF2923:
 	.ascii	"PIO_IFDR_P14 (0x1u << 14)\000"
@@ -49104,7 +49114,7 @@ fpga_program_sendbyte:
 	.ascii	"__USAT(ARG1,ARG2) ({ uint32_t __RES, __ARG1 = (ARG1"
 	.ascii	"); __ASM (\"usat %0, %1, %2\" : \"=r\" (__RES) : \""
 	.ascii	"I\" (ARG2), \"r\" (__ARG1) ); __RES; })\000"
-.LASF9042:
+.LASF9044:
 	.ascii	"PIO_MDDR\000"
 .LASF5352:
 	.ascii	"SSC_WPMR_WPKEY_Pos 8\000"
@@ -49132,9 +49142,9 @@ fpga_program_sendbyte:
 	.ascii	"REG_USART2_RTOR (*(RwReg*)0x40098024U)\000"
 .LASF1979:
 	.ascii	"CHIPID_CIDR_NVPTYP_FLASH (0x2u << 28)\000"
-.LASF9132:
+.LASF9134:
 	.ascii	"_fntypes\000"
-.LASF8519:
+.LASF8521:
 	.ascii	"LED1_ACTIVE_LEVEL 1\000"
 .LASF8215:
 	.ascii	"MSB3D(u64) (((U8 *)&(u64))[4])\000"
@@ -49169,7 +49179,7 @@ fpga_program_sendbyte:
 	.ascii	"( 73, data)\000"
 .LASF1109:
 	.ascii	"INTMAX_MAX (__INTMAX_MAX__)\000"
-.LASF8602:
+.LASF8604:
 	.ascii	"delay_s(delay) cpu_delay_ms(1000 * delay, F_CPU)\000"
 .LASF5653:
 	.ascii	"TC_CMR_LDRB_RISING (0x1u << 18)\000"
@@ -49184,7 +49194,7 @@ fpga_program_sendbyte:
 	.ascii	"s)\000"
 .LASF2159:
 	.ascii	"DMAC_CTRLB_DST_INCR_Pos 28\000"
-.LASF9041:
+.LASF9043:
 	.ascii	"PIO_MDER\000"
 .LASF278:
 	.ascii	"__ULFRACT_FBIT__ 32\000"
@@ -49196,7 +49206,7 @@ fpga_program_sendbyte:
 	.ascii	"ADC12B_SR_GOVRE (0x1u << 17)\000"
 .LASF3011:
 	.ascii	"PIO_CODR_P6 (0x1u << 6)\000"
-.LASF9156:
+.LASF9158:
 	.ascii	"_flags2\000"
 .LASF1014:
 	.ascii	"_SYS__INTSUP_H \000"
@@ -49208,7 +49218,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PB7X1_AD2 (1u << 7)\000"
 .LASF1583:
 	.ascii	"ADC_CHER_CH0 (0x1u << 0)\000"
-.LASF9141:
+.LASF9143:
 	.ascii	"_flags\000"
 .LASF2392:
 	.ascii	"HSMCI_IER_FIFOEMPTY (0x1u << 26)\000"
@@ -49235,7 +49245,7 @@ fpga_program_sendbyte:
 	.ascii	"PMC_PCDR0_PID16 (0x1u << 16)\000"
 .LASF7367:
 	.ascii	"PIOB ((Pio *)0x400E0E00U)\000"
-.LASF8766:
+.LASF8768:
 	.ascii	"USB_DEVICE_GET_SERIAL_NAME_POINTER usb_serial_numbe"
 	.ascii	"r\000"
 .LASF3827:
@@ -49248,14 +49258,14 @@ fpga_program_sendbyte:
 	.ascii	"SSC_SR_RXEN (0x1u << 17)\000"
 .LASF2382:
 	.ascii	"HSMCI_IER_RINDE (0x1u << 16)\000"
-.LASF8686:
+.LASF8688:
 	.ascii	"SAM_PM_SMODE_WAIT 4\000"
 .LASF5664:
 	.ascii	"TC_CMR_EEVT_Pos 10\000"
 .LASF1226:
 	.ascii	"SCB_SHCSR_MEMFAULTENA_Msk (1UL << SCB_SHCSR_MEMFAUL"
 	.ascii	"TENA_Pos)\000"
-.LASF8484:
+.LASF8486:
 	.ascii	"PIN_PDIDRX_GPIO (PIO_PA21_IDX)\000"
 .LASF7467:
 	.ascii	"PIO_PB21A_A21 (1u << 21)\000"
@@ -49289,13 +49299,13 @@ fpga_program_sendbyte:
 	.ascii	"SCB_CCR_USERSETMPEND_Pos 1\000"
 .LASF7973:
 	.ascii	"LITTLE_ENDIAN _LITTLE_ENDIAN\000"
-.LASF9144:
+.LASF9146:
 	.ascii	"_cookie\000"
-.LASF9204:
+.LASF9206:
 	.ascii	"_wcsrtombs_state\000"
 .LASF5103:
 	.ascii	"SPI_RDR_PCS_Pos 16\000"
-.LASF9195:
+.LASF9197:
 	.ascii	"_mbtowc_state\000"
 .LASF4585:
 	.ascii	"PWM_CPRDUPD_CPRDUPD(value) ((PWM_CPRDUPD_CPRDUPD_Ms"
@@ -49393,7 +49403,7 @@ fpga_program_sendbyte:
 	.ascii	"UDPHS_EPTCFG_EPT_TYPE_ISO (0x1u << 4)\000"
 .LASF5580:
 	.ascii	"SUPC_SR_WKUPIS5_EN (0x1u << 21)\000"
-.LASF9011:
+.LASF9013:
 	.ascii	"long long unsigned int\000"
 .LASF2201:
 	.ascii	"DMAC_WPSR_WPVSRC_Pos 8\000"
@@ -49448,7 +49458,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_LOCKSR_P12 (0x1u << 12)\000"
 .LASF4730:
 	.ascii	"SMC_CFG_PAGESIZE_Pos 0\000"
-.LASF8619:
+.LASF8621:
 	.ascii	"EFC_FCMD_SPUI 0x0F\000"
 .LASF675:
 	.ascii	"SAM4N (SAM4N8 || SAM4N16)\000"
@@ -49456,7 +49466,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_TWI0_PTCR (*(WoReg*)0x40084120U)\000"
 .LASF4045:
 	.ascii	"PMC_PCSR0_PID8 (0x1u << 8)\000"
-.LASF8863:
+.LASF8865:
 	.ascii	"USB_PID_ATMEL_DFU_ATXMEGA32A4U 0x2FE4\000"
 .LASF5837:
 	.ascii	"TWI_IADR_IADR_Msk (0xffffffu << TWI_IADR_IADR_Pos)\000"
@@ -49464,7 +49474,7 @@ fpga_program_sendbyte:
 	.ascii	"ADC_IMR_OVRE0 (0x1u << 8)\000"
 .LASF128:
 	.ascii	"__INT_FAST16_MAX__ 0x7fffffff\000"
-.LASF9215:
+.LASF9217:
 	.ascii	"_Bool\000"
 .LASF2606:
 	.ascii	"MATRIX_PRAS7_M3PR_Msk (0x3u << MATRIX_PRAS7_M3PR_Po"
@@ -49493,7 +49503,7 @@ fpga_program_sendbyte:
 	.ascii	"_QUAD_LOWWORD 0\000"
 .LASF3135:
 	.ascii	"PIO_IDR_P2 (0x1u << 2)\000"
-.LASF8768:
+.LASF8770:
 	.ascii	"USB_DEVICE_HS_SUPPORT \000"
 .LASF1631:
 	.ascii	"ADC_IER_EOC2 (0x1u << 2)\000"
@@ -49557,7 +49567,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_TC0_IER0 (*(WoReg*)0x40080024U)\000"
 .LASF3611:
 	.ascii	"PIO_OWDR_P27 (0x1u << 27)\000"
-.LASF9085:
+.LASF9087:
 	.ascii	"US_TTGR\000"
 .LASF6668:
 	.ascii	"REG_TC0_QISR (*(RoReg*)0x400800D4U)\000"
@@ -49598,7 +49608,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PC9A_A11 (1u << 9)\000"
 .LASF5512:
 	.ascii	"SUPC_WUIR_WKUPT8 (0x1u << 24)\000"
-.LASF9182:
+.LASF9184:
 	.ascii	"_iobs\000"
 .LASF1502:
 	.ascii	"CoreDebug_DHCSR_C_DEBUGEN_Msk (1UL << CoreDebug_DHC"
@@ -49625,7 +49635,7 @@ fpga_program_sendbyte:
 	.ascii	"RT_IS_DEFINED(SAM4SD32C) )\000"
 .LASF3859:
 	.ascii	"PIO_FELLSR_P19 (0x1u << 19)\000"
-.LASF8558:
+.LASF8560:
 	.ascii	"OSC_MAINCK_12M_RC_HZ CHIP_FREQ_MAINCK_RC_12MHZ\000"
 .LASF1328:
 	.ascii	"DWT_CTRL_CYCEVTENA_Msk (0x1UL << DWT_CTRL_CYCEVTENA"
@@ -49700,7 +49710,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_OER_P19 (0x1u << 19)\000"
 .LASF7714:
 	.ascii	"_WANT_IO_LONG_LONG 1\000"
-.LASF8856:
+.LASF8858:
 	.ascii	"USB_PID_ATMEL_DFU_ATXMEGA64A4U 0x2FDD\000"
 .LASF7444:
 	.ascii	"PIO_PB4X1_AD12B3 (1u << 4)\000"
@@ -49712,7 +49722,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_MATRIX_PRAS3 (*(RwReg*)0x400E0298U)\000"
 .LASF3655:
 	.ascii	"PIO_AIMER_P7 (0x1u << 7)\000"
-.LASF8514:
+.LASF8516:
 	.ascii	"LED0_FLAGS (PIO_TYPE_PIO_OUTPUT_1 | PIO_DEFAULT)\000"
 .LASF8279:
 	.ascii	"CPU_ENDIAN_TO_LE16(x) (x)\000"
@@ -49727,7 +49737,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_PIOB_AIMMR (*(RoReg*)0x400E0EB8U)\000"
 .LASF450:
 	.ascii	"__SAM3U1C__ 1\000"
-.LASF8860:
+.LASF8862:
 	.ascii	"USB_PID_ATMEL_DFU_ATXMEGA64B1 0x2FE1\000"
 .LASF8358:
 	.ascii	"XMEGA_RF233_ZIGBIT 56\000"
@@ -49739,13 +49749,13 @@ fpga_program_sendbyte:
 	.ascii	"HSMCI_DTOR_DTOMUL_Pos 4\000"
 .LASF4788:
 	.ascii	"SMC_IMR_RB_FALL (0x1u << 5)\000"
-.LASF8845:
+.LASF8847:
 	.ascii	"USB_PID_ATMEL_ASF_XPLAIN_BC_TERMINAL 0x2431\000"
-.LASF8701:
+.LASF8703:
 	.ascii	"NFCADDR_CMD_ACYCLE_FIVE (0x5u << 19)\000"
 .LASF7246:
 	.ascii	"REG_PIOB_MDER (*(WoReg*)0x400E0E50U)\000"
-.LASF9090:
+.LASF9092:
 	.ascii	"US_WPMR\000"
 .LASF2662:
 	.ascii	"PERIPH_TPR_TXPTR(value) ((PERIPH_TPR_TXPTR_Msk & (("
@@ -49755,13 +49765,13 @@ fpga_program_sendbyte:
 	.ascii	"s)\000"
 .LASF462:
 	.ascii	"UTILS_COMPILER_H \000"
-.LASF9129:
+.LASF9131:
 	.ascii	"_on_exit_args\000"
 .LASF7685:
 	.ascii	"IRAM0_SIZE (0x2000u)\000"
 .LASF2411:
 	.ascii	"HSMCI_IDR_RTOE (0x1u << 20)\000"
-.LASF8576:
+.LASF8578:
 	.ascii	"pll_config_defaults(cfg,pll_id) pll_config_init(cfg"
 	.ascii	", CONFIG_PLL ##pll_id ##_SOURCE, CONFIG_PLL ##pll_i"
 	.ascii	"d ##_DIV, CONFIG_PLL ##pll_id ##_MUL)\000"
@@ -49771,17 +49781,17 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PSR_P7 (0x1u << 7)\000"
 .LASF8289:
 	.ascii	"CCPU_ENDIAN_TO_LE32(x) (x)\000"
-.LASF8944:
+.LASF8946:
 	.ascii	"_USB_PROTOCOL_VENDOR_H_ \000"
-.LASF8790:
+.LASF8792:
 	.ascii	"UDI_VENDOR_EP_ISO_IN (5 | USB_EP_DIR_IN)\000"
 .LASF4198:
 	.ascii	"PMC_FSPR_FSTP2 (0x1u << 2)\000"
-.LASF8822:
+.LASF8824:
 	.ascii	"USB_PID_ATMEL_UC3_EVK1100_CTRLPANEL 0x2303\000"
 .LASF561:
 	.ascii	"XMEGA_D (XMEGA_D3 || XMEGA_D4)\000"
-.LASF8887:
+.LASF8889:
 	.ascii	"USB_V2_0 0x0200\000"
 .LASF3620:
 	.ascii	"PIO_OWSR_P4 (0x1u << 4)\000"
@@ -49794,7 +49804,7 @@ fpga_program_sendbyte:
 .LASF807:
 	.ascii	"MREPEAT93(macro,data) MREPEAT92( macro, data) macro"
 	.ascii	"( 92, data)\000"
-.LASF8569:
+.LASF8571:
 	.ascii	"UPLL_ID 1\000"
 .LASF1940:
 	.ascii	"CHIPID_CIDR_ARCH_AT91x42 (0x42u << 20)\000"
@@ -49806,7 +49816,7 @@ fpga_program_sendbyte:
 	.ascii	"TPASTE7(a,b,c,d,e,f,g) a ##b ##c ##d ##e ##f ##g\000"
 .LASF8286:
 	.ascii	"CLE32_TO_CPU_ENDIAN(x) (x)\000"
-.LASF9017:
+.LASF9019:
 	.ascii	"WoReg\000"
 .LASF3357:
 	.ascii	"PIO_PUER_P0 (0x1u << 0)\000"
@@ -49834,7 +49844,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_IFSR_P23 (0x1u << 23)\000"
 .LASF134:
 	.ascii	"__UINT_FAST8_MAX__ 0xffffffffU\000"
-.LASF8815:
+.LASF8817:
 	.ascii	"USB_PID_ATMEL_MEGA_LIBUSB 0x2050\000"
 .LASF1532:
 	.ascii	"CoreDebug_DEMCR_VC_CORERESET_Msk (1UL << CoreDebug_"
@@ -49920,7 +49930,7 @@ fpga_program_sendbyte:
 	.ascii	"PMC_MCKR_PRES_CLK_1 (0x0u << 4)\000"
 .LASF4372:
 	.ascii	"PWM_ISR2_CMPM6 (0x1u << 14)\000"
-.LASF9292:
+.LASF9294:
 	.ascii	"payload_size\000"
 .LASF7586:
 	.ascii	"PIO_PA29A_RK (1u << 29)\000"
@@ -49932,7 +49942,7 @@ fpga_program_sendbyte:
 	.ascii	"MEGA_XX0 ( AVR8_PART_IS_DEFINED(ATmega640) || AVR8_"
 	.ascii	"PART_IS_DEFINED(ATmega1280) || AVR8_PART_IS_DEFINED"
 	.ascii	"(ATmega2560) )\000"
-.LASF8665:
+.LASF8667:
 	.ascii	"IOPORT_BASE_ADDRESS (uintptr_t)PIOA\000"
 .LASF1829:
 	.ascii	"ADC12B_IMR_EOC4 (0x1u << 4)\000"
@@ -49942,7 +49952,7 @@ fpga_program_sendbyte:
 	.ascii	"DMAC_CTRLA_SRC_WIDTH_Pos 24\000"
 .LASF6515:
 	.ascii	"US_MAN_RX_PP_Pos 24\000"
-.LASF9176:
+.LASF9178:
 	.ascii	"_sig_func\000"
 .LASF1785:
 	.ascii	"ADC12B_IER_EOC0 (0x1u << 0)\000"
@@ -49996,7 +50006,7 @@ fpga_program_sendbyte:
 	.ascii	"DMAC_SREQ_DSREQ2 (0x1u << 5)\000"
 .LASF2254:
 	.ascii	"HSMCI_DTOR_DTOMUL_4096 (0x5u << 4)\000"
-.LASF8473:
+.LASF8475:
 	.ascii	"PIN_EBI_ADDR_BUS_A5 PIO_PB3_IDX\000"
 .LASF5666:
 	.ascii	"TC_CMR_EEVT_TIOB (0x0u << 10)\000"
@@ -50008,18 +50018,18 @@ fpga_program_sendbyte:
 	.ascii	"__u_int_defined \000"
 .LASF8388:
 	.ascii	"SENSORS_XPLAINED_PRESSURE_1 5\000"
-.LASF9110:
+.LASF9112:
 	.ascii	"_mbstate_t\000"
 .LASF3775:
 	.ascii	"PIO_ESR_P31 (0x1u << 31)\000"
 .LASF250:
 	.ascii	"__DEC128_MAX__ 9.999999999999999999999999999999999E"
 	.ascii	"6144DL\000"
-.LASF8629:
+.LASF8631:
 	.ascii	"PIO_DELTA ((uint32_t) PIOB - (uint32_t) PIOA)\000"
 .LASF8308:
 	.ascii	"UC3C_EK 3\000"
-.LASF9070:
+.LASF9072:
 	.ascii	"PIO_FRLHSR\000"
 .LASF5293:
 	.ascii	"SSC_TFMR_FSOS_TOGGLING (0x5u << 20)\000"
@@ -50035,7 +50045,7 @@ fpga_program_sendbyte:
 	.ascii	"stderr (_REENT->_stderr)\000"
 .LASF3584:
 	.ascii	"PIO_OWDR_P0 (0x1u << 0)\000"
-.LASF8993:
+.LASF8995:
 	.ascii	"PIN_FPGA_DONE_FLAGS (PIO_TYPE_PIO_INPUT | PIO_DEFAU"
 	.ascii	"LT)\000"
 .LASF4750:
@@ -50048,7 +50058,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PDR_P29 (0x1u << 29)\000"
 .LASF4006:
 	.ascii	"PMC_PCER0_PID24 (0x1u << 24)\000"
-.LASF8891:
+.LASF8893:
 	.ascii	"NO_SUBCLASS 0x00\000"
 .LASF1818:
 	.ascii	"ADC12B_IDR_OVRE5 (0x1u << 13)\000"
@@ -50064,7 +50074,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_USART0_TPR (*(RwReg*)0x40090108U)\000"
 .LASF8141:
 	.ascii	"WEAK __attribute__ ((weak))\000"
-.LASF8638:
+.LASF8640:
 	.ascii	"PIO_TYPE_PIO_OUTPUT_0 (0x6u << PIO_TYPE_Pos)\000"
 .LASF3215:
 	.ascii	"PIO_ISR_P18 (0x1u << 18)\000"
@@ -50072,7 +50082,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_MDDR_P15 (0x1u << 15)\000"
 .LASF5116:
 	.ascii	"SPI_SR_NSSR (0x1u << 8)\000"
-.LASF8661:
+.LASF8663:
 	.ascii	"gpio_toggle_pin_group(port_id,mask) pio_toggle_pin_"
 	.ascii	"group(port_id,mask)\000"
 .LASF148:
@@ -50103,11 +50113,11 @@ fpga_program_sendbyte:
 	.ascii	"DMAC_CTRLB_SRC_DSCR_FETCH_FROM_MEM (0x0u << 16)\000"
 .LASF6571:
 	.ascii	"WDT_MR_WDRPROC (0x1u << 14)\000"
-.LASF8948:
+.LASF8950:
 	.ascii	"_UDD_H_ \000"
 .LASF4735:
 	.ascii	"SMC_CFG_PAGESIZE_PS4096_128 (0x3u << 0)\000"
-.LASF8651:
+.LASF8653:
 	.ascii	"PIO_IT_RISE_EDGE (PIO_IT_RE_OR_HL | PIO_IT_EDGE | P"
 	.ascii	"IO_IT_AIME)\000"
 .LASF2579:
@@ -50179,7 +50189,7 @@ fpga_program_sendbyte:
 	.ascii	"PIN_USART1_TXD_FLAGS (PIO_PERIPH_A | PIO_DEFAULT)\000"
 .LASF6691:
 	.ascii	"_SAM3U_TWI1_INSTANCE_ \000"
-.LASF8775:
+.LASF8777:
 	.ascii	"UDI_VENDOR_SETUP_OUT_RECEIVED() main_setup_out_rece"
 	.ascii	"ived()\000"
 .LASF3498:
@@ -50211,11 +50221,11 @@ fpga_program_sendbyte:
 .LASF6020:
 	.ascii	"UART_TCR_TXCTR(value) ((UART_TCR_TXCTR_Msk & ((valu"
 	.ascii	"e) << UART_TCR_TXCTR_Pos)))\000"
-.LASF9206:
+.LASF9208:
 	.ascii	"_nextf\000"
-.LASF8573:
+.LASF8575:
 	.ascii	"CONFIG_PLL1_SOURCE PLL_SRC_MAINCK_XTAL\000"
-.LASF8633:
+.LASF8635:
 	.ascii	"PIO_TYPE_PIO_PERIPH_A (0x1u << PIO_TYPE_Pos)\000"
 .LASF5052:
 	.ascii	"SMC_MODE_WRITE_MODE (0x1u << 1)\000"
@@ -50230,7 +50240,7 @@ fpga_program_sendbyte:
 .LASF580:
 	.ascii	"MEGA_UNSPECIFIED (MEGA_XX_UN0 || MEGA_XX_UN1 || MEG"
 	.ascii	"A_XX_UN2 || MEGA_UNCATEGORIZED)\000"
-.LASF8854:
+.LASF8856:
 	.ascii	"USB_PID_ATMEL_DFU_ATXMEGA384C3 0x2FDB\000"
 .LASF3877:
 	.ascii	"PIO_REHLSR_P5 (0x1u << 5)\000"
@@ -50256,19 +50266,19 @@ fpga_program_sendbyte:
 	.ascii	"REG_PIOB_PUER (*(WoReg*)0x400E0E64U)\000"
 .LASF3633:
 	.ascii	"PIO_OWSR_P17 (0x1u << 17)\000"
-.LASF9091:
+.LASF9093:
 	.ascii	"US_WPSR\000"
 .LASF4717:
 	.ascii	"RTT_MR_RTPRES(value) ((RTT_MR_RTPRES_Msk & ((value)"
 	.ascii	" << RTT_MR_RTPRES_Pos)))\000"
 .LASF6522:
 	.ascii	"US_MAN_STUCKTO1 (0x1u << 29)\000"
-.LASF8733:
+.LASF8735:
 	.ascii	"twi_master_disable(p_twi) twi_disable_master_mode(p"
 	.ascii	"_twi)\000"
 .LASF6204:
 	.ascii	"UDPHS_EPTCTLDIS_RX_BK_RDY (0x1u << 9)\000"
-.LASF8906:
+.LASF8908:
 	.ascii	"USB_REQ_RECIP_OTHER (3<<0)\000"
 .LASF2686:
 	.ascii	"PIO_PER_P1 (0x1u << 1)\000"
@@ -50289,7 +50299,7 @@ fpga_program_sendbyte:
 	.ascii	"_Pos)\000"
 .LASF6413:
 	.ascii	"US_IDR_RXBRK (0x1u << 2)\000"
-.LASF8716:
+.LASF8718:
 	.ascii	"CONFIG_SLEEPMGR_ENABLE \000"
 .LASF4470:
 	.ascii	"PWM_ELMR_CSEL4 (0x1u << 4)\000"
@@ -50299,7 +50309,7 @@ fpga_program_sendbyte:
 .LASF1452:
 	.ascii	"MPU_TYPE_IREGION_Msk (0xFFUL << MPU_TYPE_IREGION_Po"
 	.ascii	"s)\000"
-.LASF8486:
+.LASF8488:
 	.ascii	"PIN_PDIDRX_USART_FLAGS (PIO_PERIPH_A | PIO_DEFAULT)"
 	.ascii	"\000"
 .LASF5190:
@@ -50326,12 +50336,12 @@ fpga_program_sendbyte:
 	.ascii	"SMC_ECC_PR13_BITADDR_Pos 0\000"
 .LASF7272:
 	.ascii	"_SAM3U_RSTC_INSTANCE_ \000"
-.LASF8479:
+.LASF8481:
 	.ascii	"PIN_EBI_USB_SPARE1_FLAGS (PIO_TYPE_PIO_OUTPUT_1 | P"
 	.ascii	"IO_DEFAULT)\000"
 .LASF2424:
 	.ascii	"HSMCI_IMR_RXRDY (0x1u << 1)\000"
-.LASF8681:
+.LASF8683:
 	.ascii	"SLEEP_H \000"
 .LASF5777:
 	.ascii	"TC_BMR_TC1XC1S_Pos 2\000"
@@ -50358,15 +50368,15 @@ fpga_program_sendbyte:
 	.ascii	"PIO_IFER_P31 (0x1u << 31)\000"
 .LASF645:
 	.ascii	"SAM4CMP32 (SAM4CMP32_0 || SAM4CMP32_1)\000"
-.LASF9043:
+.LASF9045:
 	.ascii	"PIO_MDSR\000"
 .LASF383:
 	.ascii	"__GCC_ATOMIC_INT_LOCK_FREE 2\000"
 .LASF6618:
 	.ascii	"REG_SSC_WPMR (*(RwReg*)0x400040E4U)\000"
-.LASF9057:
+.LASF9059:
 	.ascii	"PIO_OWDR\000"
-.LASF9281:
+.LASF9283:
 	.ascii	"udi_apis\000"
 .LASF1992:
 	.ascii	"DMAC_SREQ_DSREQ0 (0x1u << 1)\000"
@@ -50384,7 +50394,7 @@ fpga_program_sendbyte:
 	.ascii	"UDPHS_FNUM_FNUM_ERR (0x1u << 31)\000"
 .LASF1814:
 	.ascii	"ADC12B_IDR_OVRE1 (0x1u << 9)\000"
-.LASF9004:
+.LASF9006:
 	.ascii	"__uint16_t\000"
 .LASF296:
 	.ascii	"__SACCUM_MAX__ 0X7FFFP-7HK\000"
@@ -50476,7 +50486,7 @@ fpga_program_sendbyte:
 	.ascii	"UDPHS_IPFEATURES_ISO_EPT_7 (0x1u << 23)\000"
 .LASF2337:
 	.ascii	"HSMCI_CSTOR_CSTOMUL_1024 (0x4u << 4)\000"
-.LASF8955:
+.LASF8957:
 	.ascii	"Udd_setup_is_out() (USB_REQ_DIR_OUT == (udd_g_ctrlr"
 	.ascii	"eq.req.bmRequestType & USB_REQ_DIR_MASK))\000"
 .LASF7701:
@@ -50512,7 +50522,7 @@ fpga_program_sendbyte:
 .LASF597:
 	.ascii	"SAM3X4 ( SAM_PART_IS_DEFINED(SAM3X4C) || SAM_PART_I"
 	.ascii	"S_DEFINED(SAM3X4E) )\000"
-.LASF9297:
+.LASF9299:
 	.ascii	"udi_api_vendor\000"
 .LASF5562:
 	.ascii	"SUPC_SR_FWUPIS_HIGH (0x1u << 12)\000"
@@ -50663,7 +50673,7 @@ fpga_program_sendbyte:
 	.ascii	")\000"
 .LASF4018:
 	.ascii	"PMC_PCDR0_PID8 (0x1u << 8)\000"
-.LASF8520:
+.LASF8522:
 	.ascii	"BOARD_NUM_OF_LED 2\000"
 .LASF6906:
 	.ascii	"REG_UDPHS_IPNAME1 (*(RoReg*)0x400A40F0U)\000"
@@ -50681,7 +50691,7 @@ fpga_program_sendbyte:
 	.ascii	"TC_RC_RC_Msk (0xffffffffu << TC_RC_RC_Pos)\000"
 .LASF4909:
 	.ascii	"SMC_ECC_PR3_NPARITY_W8BIT_Pos 12\000"
-.LASF9270:
+.LASF9272:
 	.ascii	"iConfiguration\000"
 .LASF8287:
 	.ascii	"CLE64_TO_CPU_ENDIAN(x) (x)\000"
@@ -50737,7 +50747,7 @@ fpga_program_sendbyte:
 	.ascii	"Z_Pos)\000"
 .LASF203:
 	.ascii	"__FLT32_HAS_QUIET_NAN__ 1\000"
-.LASF9116:
+.LASF9118:
 	.ascii	"_sign\000"
 .LASF3608:
 	.ascii	"PIO_OWDR_P24 (0x1u << 24)\000"
@@ -50767,7 +50777,7 @@ fpga_program_sendbyte:
 	.ascii	"ARITY_Pos)\000"
 .LASF3102:
 	.ascii	"PIO_IER_P1 (0x1u << 1)\000"
-.LASF8976:
+.LASF8978:
 	.ascii	"PIN_FPGA_PROGRAM_GPIO PIO_PA25_IDX\000"
 .LASF2188:
 	.ascii	"DMAC_CFG_AHB_PROT_Pos 24\000"
@@ -50778,9 +50788,9 @@ fpga_program_sendbyte:
 .LASF4906:
 	.ascii	"SMC_ECC_PR3_NPARITY_Msk (0xfffu << SMC_ECC_PR3_NPAR"
 	.ascii	"ITY_Pos)\000"
-.LASF9139:
+.LASF9141:
 	.ascii	"_size\000"
-.LASF8594:
+.LASF8596:
 	.ascii	"SYSCLK_PRES_3 PMC_MCKR_PRES_CLK_3\000"
 .LASF6300:
 	.ascii	"UDPHS_DMACONTROL_BUFF_LENGTH_Pos 16\000"
@@ -50794,7 +50804,7 @@ fpga_program_sendbyte:
 	.ascii	"PWM_ISR2_CMPM5 (0x1u << 13)\000"
 .LASF2060:
 	.ascii	"DMAC_EBCISR_ERR1 (0x1u << 17)\000"
-.LASF8506:
+.LASF8508:
 	.ascii	"PIN_EBI_NCS0_FLAGS PIO_PERIPH_A | PIO_PULLUP\000"
 .LASF3196:
 	.ascii	"PIO_IMR_P31 (0x1u << 31)\000"
@@ -50806,14 +50816,14 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PUDR_P29 (0x1u << 29)\000"
 .LASF4060:
 	.ascii	"PMC_PCSR0_PID24 (0x1u << 24)\000"
-.LASF8808:
+.LASF8810:
 	.ascii	"USB_PID_ATMEL_MEGA_HIDMOUSE_CERTIF_U4 0x201D\000"
 .LASF3900:
 	.ascii	"PIO_REHLSR_P28 (0x1u << 28)\000"
 .LASF2520:
 	.ascii	"MATRIX_PRAS1_M4PR(value) ((MATRIX_PRAS1_M4PR_Msk & "
 	.ascii	"((value) << MATRIX_PRAS1_M4PR_Pos)))\000"
-.LASF8737:
+.LASF8739:
 	.ascii	"TWI_MASTER_H_INCLUDED \000"
 .LASF400:
 	.ascii	"__ARM_FEATURE_CRC32\000"
@@ -50821,7 +50831,7 @@ fpga_program_sendbyte:
 	.ascii	"PMC_IDR_PCKRDY1 (0x1u << 9)\000"
 .LASF7311:
 	.ascii	"ID_RTT ( 3)\000"
-.LASF9073:
+.LASF9075:
 	.ascii	"PIO_WPMR\000"
 .LASF5365:
 	.ascii	"SUPC_CR_KEY_Pos 24\000"
@@ -50839,15 +50849,15 @@ fpga_program_sendbyte:
 	.ascii	"PIO_IFDGSR_P16 (0x1u << 16)\000"
 .LASF6102:
 	.ascii	"UDPHS_CLRINT_UPSTR_RES (0x1u << 7)\000"
-.LASF8867:
+.LASF8869:
 	.ascii	"USB_PID_ATMEL_DFU_ATXMEGA64A1U 0x2FE8\000"
 .LASF7031:
 	.ascii	"REG_DMAC_CHDR (*(WoReg*)0x400B002CU)\000"
-.LASF9305:
+.LASF9307:
 	.ascii	"ul_id\000"
 .LASF4120:
 	.ascii	"PMC_PCK_CSS_MAIN_CLK (0x1u << 0)\000"
-.LASF8512:
+.LASF8514:
 	.ascii	"LED_0_NAME \"green LEDHB\"\000"
 .LASF5123:
 	.ascii	"SPI_IER_OVRES (0x1u << 3)\000"
@@ -50859,7 +50869,7 @@ fpga_program_sendbyte:
 	.ascii	"PWM_FMR_FFIL_Pos 16\000"
 .LASF6096:
 	.ascii	"UDPHS_CLRINT_DET_SUSPD (0x1u << 1)\000"
-.LASF8847:
+.LASF8849:
 	.ascii	"USB_PID_ATMEL_ASF_AUDIO_SPEAKER 0x2433\000"
 .LASF1888:
 	.ascii	"CHIPID_CIDR_EPROC_CM4 (0x7u << 5)\000"
@@ -50897,7 +50907,7 @@ fpga_program_sendbyte:
 	.ascii	"__RAND_MAX 0x7fffffff\000"
 .LASF4369:
 	.ascii	"PWM_ISR2_CMPM3 (0x1u << 11)\000"
-.LASF9190:
+.LASF9192:
 	.ascii	"_localtime_buf\000"
 .LASF1764:
 	.ascii	"ADC12B_SR_EOC1 (0x1u << 1)\000"
@@ -50905,7 +50915,7 @@ fpga_program_sendbyte:
 	.ascii	"EXT1102 1\000"
 .LASF8302:
 	.ascii	"CHIP_SYSCLK_H_INCLUDED \000"
-.LASF8581:
+.LASF8583:
 	.ascii	"SYSCLK_SRC_MAINCK_8M_RC 4\000"
 .LASF3379:
 	.ascii	"PIO_PUER_P22 (0x1u << 22)\000"
@@ -50921,7 +50931,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_MDSR_P27 (0x1u << 27)\000"
 .LASF4834:
 	.ascii	"SMC_ECC_SR1_ECCERR6_Pos 25\000"
-.LASF8851:
+.LASF8853:
 	.ascii	"USB_PID_ATMEL_DFU_ATXMEGA16C4 0x2FD8\000"
 .LASF2531:
 	.ascii	"MATRIX_PRAS2_M3PR_Msk (0x3u << MATRIX_PRAS2_M3PR_Po"
@@ -50944,7 +50954,7 @@ fpga_program_sendbyte:
 	.ascii	"DR_Pos)\000"
 .LASF6090:
 	.ascii	"UDPHS_INTSTA_DMA_1 (0x1u << 25)\000"
-.LASF8674:
+.LASF8676:
 	.ascii	"IOPORT_MODE_MUX_BIT0 ( 1 << 0)\000"
 .LASF8394:
 	.ascii	"SENSORS_XPLAINED_BREADBOARD 11\000"
@@ -50956,19 +50966,19 @@ fpga_program_sendbyte:
 	.ascii	"US_WPMR_WPKEY_Pos 8\000"
 .LASF6510:
 	.ascii	"US_MAN_TX_PP_ONE_ZERO (0x3u << 8)\000"
-.LASF8922:
-	.ascii	"BESL_5000_US 10\000"
+.LASF8464:
+	.ascii	"SPI_CS_GPIO (PIO_PA16_IDX)\000"
 .LASF8207:
 	.ascii	"MSH3(u64) (((U16 *)&(u64))[0])\000"
 .LASF4611:
 	.ascii	"RSTC_SR_SRCMP (0x1u << 17)\000"
 .LASF6360:
 	.ascii	"US_MR_PAR_SPACE (0x2u << 9)\000"
-.LASF8817:
+.LASF8819:
 	.ascii	"USB_PID_ATMEL_XMEGA_USB_ZIGBIT_2_4GHZ 0x214A\000"
 .LASF5157:
 	.ascii	"SPI_CSR_SCBR_Msk (0xffu << SPI_CSR_SCBR_Pos)\000"
-.LASF9227:
+.LASF9229:
 	.ascii	"pll_source\000"
 .LASF1787:
 	.ascii	"ADC12B_IER_EOC2 (0x1u << 2)\000"
@@ -50978,7 +50988,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_ODSR_P11 (0x1u << 11)\000"
 .LASF3592:
 	.ascii	"PIO_OWDR_P8 (0x1u << 8)\000"
-.LASF8628:
+.LASF8630:
 	.ascii	"PIO_H_INCLUDED \000"
 .LASF3441:
 	.ascii	"PIO_ABSR_P20 (0x1u << 20)\000"
@@ -50990,7 +51000,7 @@ fpga_program_sendbyte:
 	.ascii	"TC_CMR_EEVTEDG_NONE (0x0u << 8)\000"
 .LASF1525:
 	.ascii	"CoreDebug_DEMCR_VC_CHKERR_Pos 6\000"
-.LASF8637:
+.LASF8639:
 	.ascii	"PIO_TYPE_PIO_INPUT (0x5u << PIO_TYPE_Pos)\000"
 .LASF1743:
 	.ascii	"ADC12B_CHER_CH4 (0x1u << 4)\000"
@@ -51000,7 +51010,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_IFDGSR_P2 (0x1u << 2)\000"
 .LASF3772:
 	.ascii	"PIO_ESR_P28 (0x1u << 28)\000"
-.LASF8779:
+.LASF8781:
 	.ascii	"UDI_VENDOR_EPS_SIZE_ISO_FS 0\000"
 .LASF7405:
 	.ascii	"PIO_PA30 (1u << 30)\000"
@@ -51048,9 +51058,9 @@ fpga_program_sendbyte:
 	.ascii	"PWM_FPV_FPVH2 (0x1u << 2)\000"
 .LASF3461:
 	.ascii	"PIO_SCIFSR_P8 (0x1u << 8)\000"
-.LASF8754:
+.LASF8756:
 	.ascii	"CONF_UART_BAUDRATE 115200\000"
-.LASF8547:
+.LASF8549:
 	.ascii	"OSC_SLCK_32K_BYPASS 2\000"
 .LASF4379:
 	.ascii	"PWM_ISR2_CMPU5 (0x1u << 21)\000"
@@ -51072,7 +51082,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PUSR_P3 (0x1u << 3)\000"
 .LASF5638:
 	.ascii	"TC_CMR_ETRGEDG_RISING (0x1u << 8)\000"
-.LASF8467:
+.LASF8469:
 	.ascii	"PIN_EBI_ADDR_BUS_FLAG2 PIO_PERIPH_A | PIO_PULLUP\000"
 .LASF7021:
 	.ascii	"REG_DMAC_GCFG (*(RwReg*)0x400B0000U)\000"
@@ -51124,7 +51134,7 @@ fpga_program_sendbyte:
 .LASF2604:
 	.ascii	"MATRIX_PRAS7_M2PR(value) ((MATRIX_PRAS7_M2PR_Msk & "
 	.ascii	"((value) << MATRIX_PRAS7_M2PR_Pos)))\000"
-.LASF8712:
+.LASF8714:
 	.ascii	"SPI_TIMEOUT 15000\000"
 .LASF67:
 	.ascii	"__has_include(STR) __has_include__(STR)\000"
@@ -51192,7 +51202,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_ODSR_P30 (0x1u << 30)\000"
 .LASF1619:
 	.ascii	"ADC_SR_OVRE4 (0x1u << 12)\000"
-.LASF8864:
+.LASF8866:
 	.ascii	"USB_PID_ATMEL_DFU_ATXMEGA64A3U 0x2FE5\000"
 .LASF2584:
 	.ascii	"MATRIX_PRAS6_M1PR_Pos 4\000"
@@ -51244,11 +51254,11 @@ fpga_program_sendbyte:
 	.ascii	"US_IER_UNRE (0x1u << 10)\000"
 .LASF2961:
 	.ascii	"PIO_IFSR_P20 (0x1u << 20)\000"
-.LASF9030:
+.LASF9032:
 	.ascii	"PIO_IFDR\000"
 .LASF4957:
 	.ascii	"SMC_ECC_PR9_BITADDR_Pos 0\000"
-.LASF9026:
+.LASF9028:
 	.ascii	"PIO_ODR\000"
 .LASF1318:
 	.ascii	"DWT_CTRL_NUMCOMP_Msk (0xFUL << DWT_CTRL_NUMCOMP_Pos"
@@ -51298,7 +51308,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_LOCKSR_P3 (0x1u << 3)\000"
 .LASF3169:
 	.ascii	"PIO_IMR_P4 (0x1u << 4)\000"
-.LASF8469:
+.LASF8471:
 	.ascii	"PIN_EBI_ADDR_BUS_A1 PIO_PB8_IDX\000"
 .LASF1378:
 	.ascii	"DWT_FUNCTION_CYCMATCH_Msk (0x1UL << DWT_FUNCTION_CY"
@@ -51311,7 +51321,7 @@ fpga_program_sendbyte:
 	.ascii	"SIG_ATOMIC_MAX (__STDINT_EXP(INT_MAX))\000"
 .LASF7917:
 	.ascii	"_RAND48_MULT_1 (0xdeec)\000"
-.LASF9154:
+.LASF9156:
 	.ascii	"_lock\000"
 .LASF5633:
 	.ascii	"TC_CMR_LDBSTOP (0x1u << 6)\000"
@@ -51339,17 +51349,17 @@ fpga_program_sendbyte:
 	.ascii	"k & ((value) << SMC_PULSE_NRD_PULSE_Pos)))\000"
 .LASF5548:
 	.ascii	"SUPC_SR_SMRSTS (0x1u << 4)\000"
-.LASF9029:
+.LASF9031:
 	.ascii	"PIO_IFER\000"
 .LASF3678:
 	.ascii	"PIO_AIMER_P30 (0x1u << 30)\000"
-.LASF9025:
+.LASF9027:
 	.ascii	"PIO_OER\000"
 .LASF7549:
 	.ascii	"PIO_PB3A_PWMH3 (1u << 3)\000"
 .LASF7812:
 	.ascii	"_Atomic(T) struct { T volatile __val; }\000"
-.LASF8797:
+.LASF8799:
 	.ascii	"_UDI_VENDOR_H_ \000"
 .LASF6422:
 	.ascii	"US_IDR_UNRE (0x1u << 10)\000"
@@ -51411,9 +51421,9 @@ fpga_program_sendbyte:
 	.ascii	"__GNUCLIKE_ASM 3\000"
 .LASF3821:
 	.ascii	"PIO_ELSR_P13 (0x1u << 13)\000"
-.LASF8881:
+.LASF8883:
 	.ascii	"USB_PID_ATMEL_DFU_AT32UC3B 0x2FF6\000"
-.LASF8972:
+.LASF8974:
 	.ascii	"_UI_H_ \000"
 .LASF6313:
 	.ascii	"US_CR_RSTTX (0x1u << 3)\000"
@@ -51492,7 +51502,7 @@ fpga_program_sendbyte:
 	.ascii	"MPU_RASR_ATTRS_Pos 16\000"
 .LASF3523:
 	.ascii	"PIO_IFDGSR_P6 (0x1u << 6)\000"
-.LASF8894:
+.LASF8896:
 	.ascii	"SUB_CLASS_IAD 0x02\000"
 .LASF2336:
 	.ascii	"HSMCI_CSTOR_CSTOMUL_256 (0x3u << 4)\000"
@@ -51515,16 +51525,16 @@ fpga_program_sendbyte:
 	.ascii	"( 89, data)\000"
 .LASF1616:
 	.ascii	"ADC_SR_OVRE1 (0x1u << 9)\000"
-.LASF8599:
+.LASF8601:
 	.ascii	"cpu_delay_ms(delay,f_cpu) delay_cycles(cpu_ms_2_cy("
 	.ascii	"delay, f_cpu))\000"
 .LASF4558:
 	.ascii	"PWM_CMR_CPRE_MCK_DIV_8 (0x3u << 0)\000"
-.LASF9015:
+.LASF9017:
 	.ascii	"uint32_t\000"
 .LASF1266:
 	.ascii	"SCB_DFSR_DWTTRAP_Msk (1UL << SCB_DFSR_DWTTRAP_Pos)\000"
-.LASF8657:
+.LASF8659:
 	.ascii	"gpio_configure_pin(io_id,io_flags) pio_configure_pi"
 	.ascii	"n(io_id,io_flags)\000"
 .LASF4093:
@@ -51532,7 +51542,7 @@ fpga_program_sendbyte:
 	.ascii	"OUNT_Pos)\000"
 .LASF365:
 	.ascii	"__UDA_FBIT__ 32\000"
-.LASF9286:
+.LASF9288:
 	.ascii	"qualifier\000"
 .LASF2821:
 	.ascii	"PIO_ODR_P8 (0x1u << 8)\000"
@@ -51541,7 +51551,7 @@ fpga_program_sendbyte:
 .LASF4087:
 	.ascii	"CKGR_MCFR_MAINF_Msk (0xffffu << CKGR_MCFR_MAINF_Pos"
 	.ascii	")\000"
-.LASF8505:
+.LASF8507:
 	.ascii	"PIN_EBI_NCS0 PIO_PB20_IDX\000"
 .LASF7181:
 	.ascii	"REG_EFC1_FCR (*(WoReg*)0x400E0A04U)\000"
@@ -51560,7 +51570,7 @@ fpga_program_sendbyte:
 	.ascii	"TWI_MMR_IADRSZ_3_BYTE (0x3u << 8)\000"
 .LASF7895:
 	.ascii	"__SYS_LOCK_H__ \000"
-.LASF8903:
+.LASF8905:
 	.ascii	"USB_REQ_RECIP_DEVICE (0<<0)\000"
 .LASF6737:
 	.ascii	"REG_PWM_FSR (*(RoReg*)0x4008C060U)\000"
@@ -51568,7 +51578,7 @@ fpga_program_sendbyte:
 	.ascii	"HSMCI_CMDR_IOSPCMD_Pos 24\000"
 .LASF5379:
 	.ascii	"SUPC_SMMR_SMTH_2_8V (0x9u << 0)\000"
-.LASF8482:
+.LASF8484:
 	.ascii	"PIN_PDIDTX_IN_FLAGS (PIO_TYPE_PIO_INPUT | PIO_DEFAU"
 	.ascii	"LT)\000"
 .LASF1030:
@@ -51585,7 +51595,7 @@ fpga_program_sendbyte:
 	.ascii	"US_IDR_PARE (0x1u << 7)\000"
 .LASF64:
 	.ascii	"__UINT_FAST64_TYPE__ long long unsigned int\000"
-.LASF8992:
+.LASF8994:
 	.ascii	"FPGA_INITB_SETUP() gpio_configure_pin(PIN_FPGA_INIT"
 	.ascii	"B_GPIO, PIN_FPGA_INITB_FLAGS)\000"
 .LASF6410:
@@ -51619,7 +51629,7 @@ fpga_program_sendbyte:
 	.ascii	"DMAC_CHSR_ENA1 (0x1u << 1)\000"
 .LASF3909:
 	.ascii	"PIO_FRLHSR_P5 (0x1u << 5)\000"
-.LASF8778:
+.LASF8780:
 	.ascii	"UDI_VENDOR_EPS_SIZE_BULK_FS 64\000"
 .LASF7934:
 	.ascii	"_REENT_SIGNGAM(ptr) ((ptr)->_new._reent._gamma_sign"
@@ -51632,7 +51642,7 @@ fpga_program_sendbyte:
 	.ascii	"TC_CMR_ACPC_Msk (0x3u << TC_CMR_ACPC_Pos)\000"
 .LASF352:
 	.ascii	"__UTQ_IBIT__ 0\000"
-.LASF8609:
+.LASF8611:
 	.ascii	"EFC_FCMD_EWP 0x03\000"
 .LASF6731:
 	.ascii	"REG_PWM_OS (*(RwReg*)0x4008C048U)\000"
@@ -51668,7 +51678,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PB22 (1u << 22)\000"
 .LASF7334:
 	.ascii	"ID_DMAC (28)\000"
-.LASF9169:
+.LASF9171:
 	.ascii	"_result_k\000"
 .LASF5992:
 	.ascii	"UART_SR_TXRDY (0x1u << 1)\000"
@@ -51748,7 +51758,7 @@ fpga_program_sendbyte:
 	.ascii	"_SAM3U1C_PIO_ \000"
 .LASF1557:
 	.ascii	"ADC_MR_TRGEN_DIS (0x0u << 0)\000"
-.LASF9248:
+.LASF9250:
 	.ascii	"bLength\000"
 .LASF2319:
 	.ascii	"HSMCI_CMDR_BOOT_ACK (0x1u << 27)\000"
@@ -51768,7 +51778,7 @@ fpga_program_sendbyte:
 	.ascii	"o(165, data)\000"
 .LASF7320:
 	.ascii	"ID_USART0 (13)\000"
-.LASF8627:
+.LASF8629:
 	.ascii	"SAM_GPIO_H_INCLUDED \000"
 .LASF2395:
 	.ascii	"HSMCI_IER_ACKRCVE (0x1u << 29)\000"
@@ -51796,7 +51806,7 @@ fpga_program_sendbyte:
 	.ascii	"SSC_RCMR_START_TRANSMIT (0x1u << 8)\000"
 .LASF5542:
 	.ascii	"SUPC_SR_SMWS (0x1u << 2)\000"
-.LASF8496:
+.LASF8498:
 	.ascii	"PIN_EBI_NRD_TYPE PIO_PERIPH_A\000"
 .LASF6394:
 	.ascii	"US_IER_ENDRX (0x1u << 3)\000"
@@ -51829,7 +51839,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_OER_P28 (0x1u << 28)\000"
 .LASF1161:
 	.ascii	"SCB_CPUID_PARTNO_Pos 4\000"
-.LASF8763:
+.LASF8765:
 	.ascii	"USB_DEVICE_ATTR (USB_CONFIG_ATTR_BUS_POWERED)\000"
 .LASF2124:
 	.ascii	"DMAC_CTRLA_DCSIZE_CHK_4 (0x1u << 20)\000"
@@ -51840,7 +51850,7 @@ fpga_program_sendbyte:
 	.ascii	"eed)\000"
 .LASF8074:
 	.ascii	"_IOLBF 1\000"
-.LASF8487:
+.LASF8489:
 	.ascii	"PIN_PDIC_GPIO (PIO_PA24_IDX)\000"
 .LASF3328:
 	.ascii	"PIO_PUDR_P3 (0x1u << 3)\000"
@@ -51855,13 +51865,13 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PUSR_P7 (0x1u << 7)\000"
 .LASF2348:
 	.ascii	"HSMCI_SR_CMDRDY (0x1u << 0)\000"
-.LASF9172:
+.LASF9174:
 	.ascii	"_cvtlen\000"
 .LASF8188:
 	.ascii	"max(a,b) Max(a, b)\000"
 .LASF1737:
 	.ascii	"ADC12B_MR_SHTIM_Msk (0xfu << ADC12B_MR_SHTIM_Pos)\000"
-.LASF9000:
+.LASF9002:
 	.ascii	"signed char\000"
 .LASF93:
 	.ascii	"__UINTMAX_C(c) c ## ULL\000"
@@ -51869,7 +51879,7 @@ fpga_program_sendbyte:
 	.ascii	"DMAC_CTRLB_FC_MEM2PER_DMA_FC (0x1u << 21)\000"
 .LASF7945:
 	.ascii	"_REENT_EMERGENCY(ptr) ((ptr)->_emergency)\000"
-.LASF9308:
+.LASF9310:
 	.ascii	"osc_get_rate\000"
 .LASF1561:
 	.ascii	"ADC_MR_TRGSEL(value) ((ADC_MR_TRGSEL_Msk & ((value)"
@@ -51912,7 +51922,7 @@ fpga_program_sendbyte:
 .LASF865:
 	.ascii	"MREPEAT151(macro,data) MREPEAT150(macro, data) macr"
 	.ascii	"o(150, data)\000"
-.LASF8942:
+.LASF8944:
 	.ascii	"USB_CONFIG_ATTR_REMOTE_WAKEUP (1 << 5)\000"
 .LASF3197:
 	.ascii	"PIO_ISR_P0 (0x1u << 0)\000"
@@ -51961,9 +51971,9 @@ fpga_program_sendbyte:
 .LASF856:
 	.ascii	"MREPEAT142(macro,data) MREPEAT141(macro, data) macr"
 	.ascii	"o(141, data)\000"
-.LASF8774:
+.LASF8776:
 	.ascii	"UDI_VENDOR_DISABLE_EXT() main_vendor_disable()\000"
-.LASF8728:
+.LASF8730:
 	.ascii	"TWI_SEND_OVERRUN 6\000"
 .LASF6713:
 	.ascii	"_SAM3U_PWM_INSTANCE_ \000"
@@ -51971,7 +51981,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_FRLHSR_P26 (0x1u << 26)\000"
 .LASF133:
 	.ascii	"__INT_FAST64_WIDTH__ 64\000"
-.LASF8485:
+.LASF8487:
 	.ascii	"PIN_PDIDRX_FLAGS (PIO_TYPE_PIO_INPUT | PIO_DEFAULT)"
 	.ascii	"\000"
 .LASF5025:
@@ -52099,7 +52109,7 @@ fpga_program_sendbyte:
 	.ascii	"__ARM_FEATURE_CLZ 1\000"
 .LASF4937:
 	.ascii	"SMC_ECC_PR6_WORDADDR_W8BIT_Pos 3\000"
-.LASF8977:
+.LASF8979:
 	.ascii	"PIN_FPGA_INITB_GPIO PIO_PA26_IDX\000"
 .LASF5634:
 	.ascii	"TC_CMR_LDBDIS (0x1u << 7)\000"
@@ -52132,7 +52142,7 @@ fpga_program_sendbyte:
 .LASF918:
 	.ascii	"MREPEAT204(macro,data) MREPEAT203(macro, data) macr"
 	.ascii	"o(203, data)\000"
-.LASF9007:
+.LASF9009:
 	.ascii	"long int\000"
 .LASF5949:
 	.ascii	"UART_MR_PAR_Msk (0x7u << UART_MR_PAR_Pos)\000"
@@ -52170,9 +52180,9 @@ fpga_program_sendbyte:
 	.ascii	"PMC_MCKR_CSS_UPLL_CLK (0x3u << 0)\000"
 .LASF499:
 	.ascii	"__WCHAR_T \000"
-.LASF8855:
+.LASF8857:
 	.ascii	"USB_PID_ATMEL_DFU_ATUCL3_L4 0x2FDC\000"
-.LASF8900:
+.LASF8902:
 	.ascii	"USB_REQ_TYPE_CLASS (1<<5)\000"
 .LASF921:
 	.ascii	"MREPEAT207(macro,data) MREPEAT206(macro, data) macr"
@@ -52205,7 +52215,7 @@ fpga_program_sendbyte:
 .LASF835:
 	.ascii	"MREPEAT121(macro,data) MREPEAT120(macro, data) macr"
 	.ascii	"o(120, data)\000"
-.LASF9185:
+.LASF9187:
 	.ascii	"_mult\000"
 .LASF7489:
 	.ascii	"PIO_PB29A_D12 (1u << 29)\000"
@@ -52235,11 +52245,11 @@ fpga_program_sendbyte:
 	.ascii	"((value) << HSMCI_BLKR_BLKLEN_Pos)))\000"
 .LASF5394:
 	.ascii	"SUPC_SMMR_SMRSTEN_NOT_ENABLE (0x0u << 12)\000"
-.LASF9251:
+.LASF9253:
 	.ascii	"bDeviceClass\000"
 .LASF2844:
 	.ascii	"PIO_ODR_P31 (0x1u << 31)\000"
-.LASF9276:
+.LASF9278:
 	.ascii	"setup\000"
 .LASF838:
 	.ascii	"MREPEAT124(macro,data) MREPEAT123(macro, data) macr"
@@ -52255,7 +52265,7 @@ fpga_program_sendbyte:
 	.ascii	"o(111, data)\000"
 .LASF7997:
 	.ascii	"FD_SETSIZE 64\000"
-.LASF8608:
+.LASF8610:
 	.ascii	"EFC_FCMD_WPL 0x02\000"
 .LASF1749:
 	.ascii	"ADC12B_CHDR_CH2 (0x1u << 2)\000"
@@ -52275,7 +52285,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_ISR_P12 (0x1u << 12)\000"
 .LASF6708:
 	.ascii	"REG_TWI1_RNCR (*(RwReg*)0x40088114U)\000"
-.LASF8849:
+.LASF8851:
 	.ascii	"USB_PID_ATMEL_DFU_ATXMEGA64C3 0x2FD6\000"
 .LASF6346:
 	.ascii	"US_MR_USCLKS_DIV (0x1u << 4)\000"
@@ -52333,12 +52343,12 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PUDR_P7 (0x1u << 7)\000"
 .LASF6177:
 	.ascii	"UDPHS_EPTCTLENB_AUTO_VALID (0x1u << 1)\000"
-.LASF8662:
+.LASF8664:
 	.ascii	"IOPORT_H \000"
 .LASF6051:
 	.ascii	"UDPHS_FNUM_MICRO_FRAME_NUM_Msk (0x7u << UDPHS_FNUM_"
 	.ascii	"MICRO_FRAME_NUM_Pos)\000"
-.LASF9018:
+.LASF9020:
 	.ascii	"RwReg\000"
 .LASF3044:
 	.ascii	"PIO_ODSR_P7 (0x1u << 7)\000"
@@ -52346,7 +52356,7 @@ fpga_program_sendbyte:
 	.ascii	"BIG_ENDIAN _BIG_ENDIAN\000"
 .LASF7223:
 	.ascii	"REG_PIOA_REHLSR (*(WoReg*)0x400E0CD4U)\000"
-.LASF8475:
+.LASF8477:
 	.ascii	"PIN_EBI_ADDR_BUS_A7 PIO_PB5_IDX\000"
 .LASF2672:
 	.ascii	"PERIPH_TNPR_TXNPTR_Pos 0\000"
@@ -52374,7 +52384,7 @@ fpga_program_sendbyte:
 .LASF1440:
 	.ascii	"TPI_DEVID_PTINVALID_Msk (0x1UL << TPI_DEVID_PTINVAL"
 	.ascii	"ID_Pos)\000"
-.LASF8983:
+.LASF8985:
 	.ascii	"PIN_FPGA_DO_FLAGS (PIO_PERIPH_A | PIO_DEFAULT)\000"
 .LASF8018:
 	.ascii	"__daddr_t_defined \000"
@@ -52403,7 +52413,7 @@ fpga_program_sendbyte:
 	.ascii	"__SIZEOF_WCHAR_T__ 4\000"
 .LASF4480:
 	.ascii	"PWM_WPCR_WPRG3 (0x1u << 5)\000"
-.LASF8794:
+.LASF8796:
 	.ascii	"UDI_VENDOR_EP_NB_BULK ((UDI_VENDOR_EPS_SIZE_BULK_FS"
 	.ascii	")?2:0)\000"
 .LASF5884:
@@ -52435,14 +52445,14 @@ fpga_program_sendbyte:
 	.ascii	"PIO_OWSR_P11 (0x1u << 11)\000"
 .LASF7813:
 	.ascii	"_Noreturn __dead2\000"
-.LASF8982:
+.LASF8984:
 	.ascii	"PIN_FPGA_CCLK_FLAGS (PIO_PERIPH_A | PIO_DEFAULT)\000"
 .LASF7789:
 	.ascii	"__CC_SUPPORTS_VARADIC_XXX 1\000"
 .LASF2493:
 	.ascii	"MATRIX_PRAS0_M0PR(value) ((MATRIX_PRAS0_M0PR_Msk & "
 	.ascii	"((value) << MATRIX_PRAS0_M0PR_Pos)))\000"
-.LASF9122:
+.LASF9124:
 	.ascii	"__tm_hour\000"
 .LASF86:
 	.ascii	"__WCHAR_WIDTH__ 32\000"
@@ -52459,7 +52469,7 @@ fpga_program_sendbyte:
 	.ascii	"PWM_DIS_CHID0 (0x1u << 0)\000"
 .LASF5268:
 	.ascii	"SSC_TCMR_START_CMP_0 (0x8u << 8)\000"
-.LASF9183:
+.LASF9185:
 	.ascii	"_rand48\000"
 .LASF3646:
 	.ascii	"PIO_OWSR_P30 (0x1u << 30)\000"
@@ -52480,7 +52490,7 @@ fpga_program_sendbyte:
 	.ascii	"TPI_ITATBCTR2_ATREADY_Pos 0\000"
 .LASF7861:
 	.ascii	"__datatype_type_tag(kind,type) \000"
-.LASF8908:
+.LASF8910:
 	.ascii	"USB_DC_EXT_BESL_DEEP_OFFSET 8\000"
 .LASF5294:
 	.ascii	"SSC_TFMR_FSDEN (0x1u << 23)\000"
@@ -52488,7 +52498,7 @@ fpga_program_sendbyte:
 	.ascii	"SCB_CPUID_ARCHITECTURE_Pos 16\000"
 .LASF1812:
 	.ascii	"ADC12B_IDR_EOC7 (0x1u << 7)\000"
-.LASF8570:
+.LASF8572:
 	.ascii	"PLL_UPLL_HZ 480000000\000"
 .LASF6207:
 	.ascii	"UDPHS_EPTCTLDIS_ERR_TRANS (0x1u << 11)\000"
@@ -52520,7 +52530,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_LSR_P26 (0x1u << 26)\000"
 .LASF5826:
 	.ascii	"TWI_MMR_IADRSZ_1_BYTE (0x1u << 8)\000"
-.LASF9027:
+.LASF9029:
 	.ascii	"PIO_OSR\000"
 .LASF2125:
 	.ascii	"DMAC_CTRLA_DCSIZE_CHK_8 (0x2u << 20)\000"
@@ -52545,11 +52555,11 @@ fpga_program_sendbyte:
 	.ascii	"ile char *)__x - __offsetof(s, m));})\000"
 .LASF1753:
 	.ascii	"ADC12B_CHDR_CH6 (0x1u << 6)\000"
-.LASF9161:
+.LASF9163:
 	.ascii	"_stderr\000"
 .LASF2408:
 	.ascii	"HSMCI_IDR_RDIRE (0x1u << 17)\000"
-.LASF8956:
+.LASF8958:
 	.ascii	"Udd_setup_type() (udd_g_ctrlreq.req.bmRequestType &"
 	.ascii	" USB_REQ_TYPE_MASK)\000"
 .LASF5140:
@@ -52601,7 +52611,7 @@ fpga_program_sendbyte:
 .LASF5835:
 	.ascii	"TWI_SMR_SADR(value) ((TWI_SMR_SADR_Msk & ((value) <"
 	.ascii	"< TWI_SMR_SADR_Pos)))\000"
-.LASF8678:
+.LASF8680:
 	.ascii	"IOPORT_MODE_OPEN_DRAIN ( 1 << 5)\000"
 .LASF1678:
 	.ascii	"ADC_IMR_OVRE1 (0x1u << 9)\000"
@@ -52627,7 +52637,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_FELLSR_P0 (0x1u << 0)\000"
 .LASF4035:
 	.ascii	"PMC_PCDR0_PID26 (0x1u << 26)\000"
-.LASF8538:
+.LASF8540:
 	.ascii	"PMC_WPMR_WPKEY_PASSWD PMC_WPMR_WPKEY((uint32_t) 0x5"
 	.ascii	"04D43)\000"
 .LASF1127:
@@ -52666,7 +52676,7 @@ fpga_program_sendbyte:
 	.ascii	"PMC_FSMR_FSTT0 (0x1u << 0)\000"
 .LASF4410:
 	.ascii	"PWM_OSC_OSCL0 (0x1u << 16)\000"
-.LASF9114:
+.LASF9116:
 	.ascii	"_next\000"
 .LASF8341:
 	.ascii	"STK600_MEGA 39\000"
@@ -52682,7 +52692,7 @@ fpga_program_sendbyte:
 	.ascii	"TC_SR_LDRAS (0x1u << 5)\000"
 .LASF5412:
 	.ascii	"SUPC_WUMR_FWUPEN (0x1u << 0)\000"
-.LASF8471:
+.LASF8473:
 	.ascii	"PIN_EBI_ADDR_BUS_A3 PIO_PB1_IDX\000"
 .LASF5125:
 	.ascii	"SPI_IER_TXEMPTY (0x1u << 9)\000"
@@ -52693,7 +52703,7 @@ fpga_program_sendbyte:
 	.ascii	"R_Pos)\000"
 .LASF4281:
 	.ascii	"PWM_SCM_SYNC2 (0x1u << 2)\000"
-.LASF9033:
+.LASF9035:
 	.ascii	"PIO_SODR\000"
 .LASF4656:
 	.ascii	"RTC_CALR_DAY(value) ((RTC_CALR_DAY_Msk & ((value) <"
@@ -52716,7 +52726,7 @@ fpga_program_sendbyte:
 	.ascii	"((n) % NFDBITS)))\000"
 .LASF1297:
 	.ascii	"ITM_TPR_PRIVMASK_Pos 0\000"
-.LASF8621:
+.LASF8623:
 	.ascii	"EFC_ACCESS_MODE_128 0\000"
 .LASF7481:
 	.ascii	"PIO_PB5B_A7 (1u << 5)\000"
@@ -52761,7 +52771,7 @@ fpga_program_sendbyte:
 	.ascii	"TWI_PTCR_RXTDIS (0x1u << 1)\000"
 .LASF6801:
 	.ascii	"REG_PWM_CPRD2 (*(RwReg*)0x4008C24CU)\000"
-.LASF9253:
+.LASF9255:
 	.ascii	"bDeviceProtocol\000"
 .LASF1819:
 	.ascii	"ADC12B_IDR_OVRE6 (0x1u << 14)\000"
@@ -52800,7 +52810,7 @@ fpga_program_sendbyte:
 	.ascii	"PMC_IDR_LOCKA (0x1u << 1)\000"
 .LASF7337:
 	.ascii	"SSC ((Ssc *)0x40004000U)\000"
-.LASF8618:
+.LASF8620:
 	.ascii	"EFC_FCMD_STUI 0x0E\000"
 .LASF5786:
 	.ascii	"TC_BMR_TC2XC2S_TIOA2 (0x3u << 4)\000"
@@ -52817,15 +52827,15 @@ fpga_program_sendbyte:
 	.ascii	"PIO_IFSR_P6 (0x1u << 6)\000"
 .LASF3958:
 	.ascii	"PIO_LOCKSR_P22 (0x1u << 22)\000"
-.LASF8572:
+.LASF8574:
 	.ascii	"pll_get_default_rate(pll_id) ((osc_get_rate(CONFIG_"
 	.ascii	"PLL ##pll_id ##_SOURCE) * CONFIG_PLL ##pll_id ##_MU"
 	.ascii	"L) / CONFIG_PLL ##pll_id ##_DIV)\000"
 .LASF374:
 	.ascii	"__GCC_HAVE_SYNC_COMPARE_AND_SWAP_1 1\000"
-.LASF9218:
+.LASF9220:
 	.ascii	"le16_t\000"
-.LASF9212:
+.LASF9214:
 	.ascii	"_global_impure_ptr\000"
 .LASF1285:
 	.ascii	"SysTick_CTRL_ENABLE_Pos 0\000"
@@ -52872,7 +52882,7 @@ fpga_program_sendbyte:
 	.ascii	"TIO_Pos)\000"
 .LASF1813:
 	.ascii	"ADC12B_IDR_OVRE0 (0x1u << 8)\000"
-.LASF8593:
+.LASF8595:
 	.ascii	"SYSCLK_PRES_64 PMC_MCKR_PRES_CLK_64\000"
 .LASF5611:
 	.ascii	"_SAM3U_TC_COMPONENT_ \000"
@@ -52894,7 +52904,7 @@ fpga_program_sendbyte:
 	.ascii	"PWM_IDR2_CMPU7 (0x1u << 23)\000"
 .LASF298:
 	.ascii	"__USACCUM_FBIT__ 8\000"
-.LASF9049:
+.LASF9051:
 	.ascii	"PIO_ABSR\000"
 .LASF1918:
 	.ascii	"CHIPID_CIDR_SRAMSIZ_6K (0x3u << 16)\000"
@@ -52904,7 +52914,7 @@ fpga_program_sendbyte:
 	.ascii	"TC_QISR_DIR (0x1u << 8)\000"
 .LASF8336:
 	.ascii	"SAM3X_EK 34\000"
-.LASF9267:
+.LASF9269:
 	.ascii	"usb_dev_bos_desc_t\000"
 .LASF5506:
 	.ascii	"SUPC_WUIR_WKUPT6 (0x1u << 22)\000"
@@ -52937,7 +52947,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_ADC_SR (*(RoReg*)0x400AC01CU)\000"
 .LASF5017:
 	.ascii	"SMC_PULSE_NRD_PULSE_Pos 16\000"
-.LASF8726:
+.LASF8728:
 	.ascii	"TWI_RECEIVE_OVERRUN 4\000"
 .LASF3348:
 	.ascii	"PIO_PUDR_P23 (0x1u << 23)\000"
@@ -52952,7 +52962,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_REHLSR_P22 (0x1u << 22)\000"
 .LASF1625:
 	.ascii	"ADC_SR_ENDRX (0x1u << 18)\000"
-.LASF9202:
+.LASF9204:
 	.ascii	"_mbsrtowcs_state\000"
 .LASF8260:
 	.ascii	"memcpy_code2ram memcpy\000"
@@ -53008,9 +53018,9 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PA22X1_AD12B0 (1u << 22)\000"
 .LASF4423:
 	.ascii	"PWM_OSCUPD_OSCUPH1 (0x1u << 1)\000"
-.LASF9296:
+.LASF9298:
 	.ascii	"udd_g_ctrlreq\000"
-.LASF8556:
+.LASF8558:
 	.ascii	"OSC_MAINCK_4M_RC_HZ CHIP_FREQ_MAINCK_RC_4MHZ\000"
 .LASF2841:
 	.ascii	"PIO_ODR_P28 (0x1u << 28)\000"
@@ -53036,7 +53046,7 @@ fpga_program_sendbyte:
 .LASF1232:
 	.ascii	"SCB_SHCSR_MEMFAULTPENDED_Msk (1UL << SCB_SHCSR_MEMF"
 	.ascii	"AULTPENDED_Pos)\000"
-.LASF8698:
+.LASF8700:
 	.ascii	"NFCADDR_CMD_ACYCLE_TWO (0x2u << 19)\000"
 .LASF7681:
 	.ascii	"IFLASH0_SIZE (0x10000u)\000"
@@ -53049,9 +53059,9 @@ fpga_program_sendbyte:
 .LASF1984:
 	.ascii	"CHIPID_EXID_EXID_Msk (0xffffffffu << CHIPID_EXID_EX"
 	.ascii	"ID_Pos)\000"
-.LASF9228:
+.LASF9230:
 	.ascii	"_pio_type\000"
-.LASF8761:
+.LASF8763:
 	.ascii	"USB_DEVICE_MINOR_VERSION 0\000"
 .LASF2706:
 	.ascii	"PIO_PER_P21 (0x1u << 21)\000"
@@ -53062,7 +53072,7 @@ fpga_program_sendbyte:
 	.ascii	")\000"
 .LASF2810:
 	.ascii	"PIO_OER_P29 (0x1u << 29)\000"
-.LASF8939:
+.LASF8941:
 	.ascii	"USB_CONFIG_ATTR_MUST_SET (1 << 7)\000"
 .LASF4815:
 	.ascii	"SMC_ECC_SR1_RECERR0 (0x1u << 0)\000"
@@ -53072,14 +53082,14 @@ fpga_program_sendbyte:
 	.ascii	"PTHREAD_INHERIT_SCHED 1\000"
 .LASF5171:
 	.ascii	"SPI_WPSR_WPVS_Msk (0x1u << SPI_WPSR_WPVS_Pos)\000"
-.LASF8882:
+.LASF8884:
 	.ascii	"USB_PID_ATMEL_DFU_AT90USB82 0x2FF7\000"
 .LASF4881:
 	.ascii	"SMC_ECC_SR2_ECCERR12_Msk (0x3u << SMC_ECC_SR2_ECCER"
 	.ascii	"R12_Pos)\000"
 .LASF8063:
 	.ascii	"__SMBF 0x0080\000"
-.LASF9127:
+.LASF9129:
 	.ascii	"__tm_yday\000"
 .LASF1359:
 	.ascii	"DWT_LSUCNT_LSUCNT_Pos 0\000"
@@ -53122,7 +53132,7 @@ fpga_program_sendbyte:
 .LASF6161:
 	.ascii	"UDPHS_EPTCFG_EPT_TYPE_Msk (0x3u << UDPHS_EPTCFG_EPT"
 	.ascii	"_TYPE_Pos)\000"
-.LASF9112:
+.LASF9114:
 	.ascii	"_LOCK_T\000"
 .LASF4030:
 	.ascii	"PMC_PCDR0_PID21 (0x1u << 21)\000"
@@ -53146,7 +53156,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_USART1_TCR (*(RwReg*)0x4009410CU)\000"
 .LASF5193:
 	.ascii	"SSC_RCMR_CKI (0x1u << 5)\000"
-.LASF9196:
+.LASF9198:
 	.ascii	"_wctomb_state\000"
 .LASF4761:
 	.ascii	"SMC_SR_NFCSID_Msk (0x7u << SMC_SR_NFCSID_Pos)\000"
@@ -53165,7 +53175,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_ADC12B_RNPR (*(RwReg*)0x400A8110U)\000"
 .LASF3284:
 	.ascii	"PIO_MDDR_P23 (0x1u << 23)\000"
-.LASF8688:
+.LASF8690:
 	.ascii	"SCR_SLEEPDEEP (0x1 << 2)\000"
 .LASF5163:
 	.ascii	"SPI_CSR_DLYBCT_Msk (0xffu << SPI_CSR_DLYBCT_Pos)\000"
@@ -53189,7 +53199,7 @@ fpga_program_sendbyte:
 .LASF785:
 	.ascii	"MREPEAT71(macro,data) MREPEAT70( macro, data) macro"
 	.ascii	"( 70, data)\000"
-.LASF9108:
+.LASF9110:
 	.ascii	"__count\000"
 .LASF1531:
 	.ascii	"CoreDebug_DEMCR_VC_CORERESET_Pos 0\000"
@@ -53209,7 +53219,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_ESR_P10 (0x1u << 10)\000"
 .LASF7165:
 	.ascii	"REG_UART_RNPR (*(RwReg*)0x400E0710U)\000"
-.LASF8468:
+.LASF8470:
 	.ascii	"PIN_EBI_ADDR_BUS_A0 PIO_PB7_IDX\000"
 .LASF3363:
 	.ascii	"PIO_PUER_P6 (0x1u << 6)\000"
@@ -53243,7 +53253,7 @@ fpga_program_sendbyte:
 	.ascii	"((value) << MATRIX_PRAS6_M3PR_Pos)))\000"
 .LASF4947:
 	.ascii	"SMC_ECC_PR7_WORDADDR_W8BIT_Pos 3\000"
-.LASF9260:
+.LASF9262:
 	.ascii	"iSerialNumber\000"
 .LASF2911:
 	.ascii	"PIO_IFDR_P2 (0x1u << 2)\000"
@@ -53302,13 +53312,13 @@ fpga_program_sendbyte:
 .LASF4968:
 	.ascii	"SMC_ECC_PR10_NPARITY_Msk (0x7ffu << SMC_ECC_PR10_NP"
 	.ascii	"ARITY_Pos)\000"
-.LASF8687:
+.LASF8689:
 	.ascii	"SAM_PM_SMODE_BACKUP 5\000"
 .LASF4469:
 	.ascii	"PWM_ELMR_CSEL3 (0x1u << 3)\000"
 .LASF7532:
 	.ascii	"PIO_PA18B_PWMFI2 (1u << 18)\000"
-.LASF8909:
+.LASF8911:
 	.ascii	"USB_DC_EXT_BESL_DEEP(besl) ((besl & 0xF) << USB_DC_"
 	.ascii	"EXT_BESL_DEEP_OFFSET)\000"
 .LASF1844:
@@ -53333,7 +53343,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_IFDR_P27 (0x1u << 27)\000"
 .LASF1122:
 	.ascii	"UINT8_C(x) __UINT8_C(x)\000"
-.LASF8597:
+.LASF8599:
 	.ascii	"cpu_us_2_cy(us,f_cpu) (((uint64_t)(us) * (f_cpu) + "
 	.ascii	"(uint64_t)(14e6-1ul)) / (uint64_t)14e6)\000"
 .LASF1908:
@@ -53363,7 +53373,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_AIMDR_P7 (0x1u << 7)\000"
 .LASF8065:
 	.ascii	"__SSTR 0x0200\000"
-.LASF8960:
+.LASF8962:
 	.ascii	"UDI_VENDOR_EPS_INT_DESC_HS \000"
 .LASF1098:
 	.ascii	"INT_FAST8_MAX (__INT_FAST8_MAX__)\000"
@@ -53410,7 +53420,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PDSR_P13 (0x1u << 13)\000"
 .LASF4254:
 	.ascii	"PWM_IER1_FCHID3 (0x1u << 19)\000"
-.LASF8970:
+.LASF8972:
 	.ascii	"UDI_VENDOR_DESC_FS { UDI_VENDOR_DESC UDI_VENDOR_EPS"
 	.ascii	"_INT_DESC_FS UDI_VENDOR_EPS_BULK_DESC_FS UDI_VENDOR"
 	.ascii	"_EPS_ISO_DESC_FS }\000"
@@ -53440,7 +53450,7 @@ fpga_program_sendbyte:
 .LASF6533:
 	.ascii	"US_RPR_RXPTR(value) ((US_RPR_RXPTR_Msk & ((value) <"
 	.ascii	"< US_RPR_RXPTR_Pos)))\000"
-.LASF8912:
+.LASF8914:
 	.ascii	"BESL_125_US 0\000"
 .LASF6656:
 	.ascii	"REG_TC0_RA2 (*(RwReg*)0x40080094U)\000"
@@ -53454,7 +53464,7 @@ fpga_program_sendbyte:
 	.ascii	"SUPC_SR_WKUPIS9_EN (0x1u << 25)\000"
 .LASF1079:
 	.ascii	"INT16_MIN (-__INT16_MAX__ - 1)\000"
-.LASF8667:
+.LASF8669:
 	.ascii	"IOPORT_PIOA 0\000"
 .LASF3171:
 	.ascii	"PIO_IMR_P6 (0x1u << 6)\000"
@@ -53494,7 +53504,7 @@ fpga_program_sendbyte:
 	.ascii	"SMC_IDR_RB_EDGE0 (0x1u << 24)\000"
 .LASF3127:
 	.ascii	"PIO_IER_P26 (0x1u << 26)\000"
-.LASF8685:
+.LASF8687:
 	.ascii	"SAM_PM_SMODE_WAIT_FAST 3\000"
 .LASF2226:
 	.ascii	"SYS_GPBR_GPBR_VALUE_Msk (0xffffffffu << SYS_GPBR_GP"
@@ -53606,7 +53616,7 @@ fpga_program_sendbyte:
 	.ascii	"REG_UART_IMR (*(RoReg*)0x400E0610U)\000"
 .LASF7939:
 	.ascii	"_REENT_MP_RESULT(ptr) ((ptr)->_result)\000"
-.LASF9319:
+.LASF9321:
 	.ascii	"sysclk_enable_peripheral_clock\000"
 .LASF5447:
 	.ascii	"SUPC_WUIR_WKUPEN2_NOT_ENABLE (0x0u << 2)\000"
@@ -53623,18 +53633,18 @@ fpga_program_sendbyte:
 	.ascii	"ADC_IMR_ENDRX (0x1u << 18)\000"
 .LASF5307:
 	.ascii	"SSC_RSHR_RSDAT_Msk (0xffffu << SSC_RSHR_RSDAT_Pos)\000"
-.LASF8776:
+.LASF8778:
 	.ascii	"UDI_VENDOR_SETUP_IN_RECEIVED() main_setup_in_receiv"
 	.ascii	"ed()\000"
 .LASF3916:
 	.ascii	"PIO_FRLHSR_P12 (0x1u << 12)\000"
-.LASF9087:
+.LASF9089:
 	.ascii	"US_NER\000"
-.LASF8709:
+.LASF8711:
 	.ascii	"NFC_BUSY_FLAG 0x8000000\000"
 .LASF2253:
 	.ascii	"HSMCI_DTOR_DTOMUL_1024 (0x4u << 4)\000"
-.LASF8708:
+.LASF8710:
 	.ascii	"NFCADDR_CMD_NFCCMD (0x1u << 27)\000"
 .LASF8418:
 	.ascii	"PINS_UART_ID ID_PIOA\000"
@@ -53666,7 +53676,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_AIMMR_P10 (0x1u << 10)\000"
 .LASF2080:
 	.ascii	"DMAC_CHDR_RES1 (0x1u << 9)\000"
-.LASF8509:
+.LASF8511:
 	.ascii	"PIN_EBI_NCS0_ID ID_PIOB\000"
 .LASF5156:
 	.ascii	"SPI_CSR_SCBR_Pos 8\000"
@@ -53675,7 +53685,7 @@ fpga_program_sendbyte:
 .LASF4650:
 	.ascii	"RTC_CALR_YEAR(value) ((RTC_CALR_YEAR_Msk & ((value)"
 	.ascii	" << RTC_CALR_YEAR_Pos)))\000"
-.LASF8679:
+.LASF8681:
 	.ascii	"IOPORT_MODE_GLITCH_FILTER ( 1 << 6)\000"
 .LASF5148:
 	.ascii	"SPI_CSR_BITS_9_BIT (0x1u << 4)\000"
@@ -53689,15 +53699,15 @@ fpga_program_sendbyte:
 	.ascii	"SMC_CFG_WSPARE (0x1u << 8)\000"
 .LASF7258:
 	.ascii	"REG_PIOB_OWDR (*(WoReg*)0x400E0EA4U)\000"
-.LASF8805:
+.LASF8807:
 	.ascii	"USB_PID_ATMEL_MEGA_MS 0x201A\000"
 .LASF7988:
 	.ascii	"__time_t_defined \000"
-.LASF8491:
+.LASF8493:
 	.ascii	"PIN_EBI_NRD PIO_PB19_IDX\000"
 .LASF2620:
 	.ascii	"MATRIX_PRAS8_M3PR_Pos 12\000"
-.LASF8550:
+.LASF8552:
 	.ascii	"OSC_MAINCK_12M_RC 5\000"
 .LASF3605:
 	.ascii	"PIO_OWDR_P21 (0x1u << 21)\000"
@@ -53711,7 +53721,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PSR_P10 (0x1u << 10)\000"
 .LASF2213:
 	.ascii	"EEFC_FCR_FARG_Pos 8\000"
-.LASF8561:
+.LASF8563:
 	.ascii	"CLK_PLL_H_INCLUDED \000"
 .LASF813:
 	.ascii	"MREPEAT99(macro,data) MREPEAT98( macro, data) macro"
@@ -53748,7 +53758,7 @@ fpga_program_sendbyte:
 	.ascii	"1ENA_Pos)\000"
 .LASF1931:
 	.ascii	"CHIPID_CIDR_ARCH_Pos 20\000"
-.LASF8603:
+.LASF8605:
 	.ascii	"delay_ms(delay) cpu_delay_ms(delay, F_CPU)\000"
 .LASF1020:
 	.ascii	"__int20\000"
@@ -53777,7 +53787,7 @@ fpga_program_sendbyte:
 	.ascii	"SUPC_WUIR_WKUPEN5_ENABLE (0x1u << 5)\000"
 .LASF3036:
 	.ascii	"PIO_CODR_P31 (0x1u << 31)\000"
-.LASF8926:
+.LASF8928:
 	.ascii	"BESL_9000_US 14\000"
 .LASF735:
 	.ascii	"MREPEAT21(macro,data) MREPEAT20( macro, data) macro"
@@ -53846,7 +53856,7 @@ fpga_program_sendbyte:
 	.ascii	"_Alignas(x) __aligned(x)\000"
 .LASF254:
 	.ascii	"__SFRACT_IBIT__ 0\000"
-.LASF9010:
+.LASF9012:
 	.ascii	"long long int\000"
 .LASF946:
 	.ascii	"MREPEAT232(macro,data) MREPEAT231(macro, data) macr"
@@ -53864,7 +53874,7 @@ fpga_program_sendbyte:
 	.ascii	"DMAC_CHER_SUSP2 (0x1u << 10)\000"
 .LASF5053:
 	.ascii	"SMC_MODE_WRITE_MODE_NCS_CTRL (0x0u << 1)\000"
-.LASF8769:
+.LASF8771:
 	.ascii	"UDC_VBUS_EVENT(b_vbus_high) \000"
 .LASF6609:
 	.ascii	"REG_SSC_THR (*(WoReg*)0x40004024U)\000"
@@ -53886,7 +53896,7 @@ fpga_program_sendbyte:
 	.ascii	"_SAM3U_PDC_COMPONENT_ \000"
 .LASF6758:
 	.ascii	"REG_PWM_CMPV2 (*(RwReg*)0x4008C150U)\000"
-.LASF8596:
+.LASF8598:
 	.ascii	"cpu_ms_2_cy(ms,f_cpu) (((uint64_t)(ms) * (f_cpu) + "
 	.ascii	"(uint64_t)(14e3-1ul)) / (uint64_t)14e3)\000"
 .LASF6819:
@@ -53955,14 +53965,14 @@ fpga_program_sendbyte:
 	.ascii	"__offsetof(type, start))\000"
 .LASF5858:
 	.ascii	"TWI_SR_EOSACC (0x1u << 11)\000"
-.LASF8920:
+.LASF8922:
 	.ascii	"BESL_3000_US 8\000"
 .LASF2536:
 	.ascii	"MATRIX_PRAS3_M0PR_Pos 0\000"
 .LASF6025:
 	.ascii	"UART_RNCR_RXNCTR_Msk (0xffffu << UART_RNCR_RXNCTR_P"
 	.ascii	"os)\000"
-.LASF8823:
+.LASF8825:
 	.ascii	"USB_PID_ATMEL_UC3_HID 0x2304\000"
 .LASF6380:
 	.ascii	"US_MR_INACK (0x1u << 20)\000"
@@ -53979,13 +53989,13 @@ fpga_program_sendbyte:
 	.ascii	"TWI_CWGR_CKDIV_Pos 16\000"
 .LASF667:
 	.ascii	"SAM4L (SAM4LS || SAM4LC)\000"
-.LASF8838:
+.LASF8840:
 	.ascii	"USB_PID_ATMEL_ASF_MSC_HIDS_CDC 0x2421\000"
 .LASF6600:
 	.ascii	"REG_HSMCI_FIFO (*(RwReg*)0x40000200U)\000"
 .LASF2396:
 	.ascii	"HSMCI_IER_OVRE (0x1u << 30)\000"
-.LASF9102:
+.LASF9104:
 	.ascii	"Usart\000"
 .LASF2754:
 	.ascii	"PIO_PSR_P5 (0x1u << 5)\000"
@@ -54017,7 +54027,7 @@ fpga_program_sendbyte:
 	.ascii	"PIO_PA30_IDX 30\000"
 .LASF7284:
 	.ascii	"REG_RTT_MR (*(RwReg*)0x400E1230U)\000"
-.LASF8937:
+.LASF8939:
 	.ascii	"USB_EP_DIR_OUT 0x00\000"
 .LASF5091:
 	.ascii	"SPI_MR_PCSDEC (0x1u << 2)\000"

@@ -47,6 +47,7 @@
 #define REQ_CC_PROGRAM 0x23
 #define REQ_CHANGE_PWR 0x24
 #define REQ_FPGA_RESET 0x25
+#define REQ_SPI 0x26
 
 #define USART_TARGET USART0
 #define PIN_USART0_RXD	         (PIO_PA19_IDX)
@@ -303,6 +304,11 @@ static void ctrl_usart_cb_data(void)
 	}
 }
 
+static void ctrl_spi_cb(void)
+{
+    ctrl_spi(SPI, false);
+}
+
 void ctrl_xmega_program_void(void)
 {
 	XPROGProtocol_Command();
@@ -385,7 +391,9 @@ bool main_setup_out_received(void)
     case REQ_FPGA_RESET:
         udd_g_ctrlreq.callback = ctrl_fpga_reset;
         return true;
-
+    case REQ_SPI:
+        udd_g_ctrlreq.callback = ctrl_spi_cb;
+        return true;
     default:
         return false;
     }

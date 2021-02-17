@@ -4136,7 +4136,7 @@ DEFINED SYMBOLS
                            .group:00000000 wm4.compiler.h.425.66dd29c210af3287ed85ec3553a3e6b1
                            .group:00000000 wm4.conf_clock.h.45.5dc276d21b4d793a62f1a9757cc18d5c
                            .group:00000000 wm4.board.h.48.3fc21f768e842120f151448a98046af0
-                           .group:00000000 wm4.cw521.h.62.6f487d78438f1a237b2b554798be063f
+                           .group:00000000 wm4.cw521.h.62.6d49a8d57765058e16d369fae3635e9e
                            .group:00000000 wm4.pmc.h.45.bbe1bf97a811e3b283420b2eeadf0b35
                            .group:00000000 wm4.osc.h.94.b766cddafe899eca01d775f7b2906680
                            .group:00000000 wm4.pll.h.45.a605c31ca466ae25752a678e8572be48
@@ -4166,7 +4166,7 @@ DEFINED SYMBOLS
                            .group:00000000 wm4.udc_desc.h.77.5fec235bd7553e7256e345e020840072
                            .group:00000000 wm4.udd.h.103.3ccc59b50c14ec70568e6136eeb22d56
                            .group:00000000 wm4.udi_vendor.h.125.7b9085237d4d4a9757f4c148fba1918d
-                           .group:00000000 wm4.circbuffer.h.31.0442f870f01f735eed031e2e924982ce
+                           .group:00000000 wm4.circbuffer.h.31.4149e39e4888e1a5cfa2187a0570dc84
 
 UNDEFINED SYMBOLS
 pmc_enable_periph_clk

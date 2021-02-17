@@ -4643,7 +4643,7 @@ DEFINED SYMBOLS
                            .group:00000000 wm4.compiler.h.425.66dd29c210af3287ed85ec3553a3e6b1
                            .group:00000000 wm4.conf_clock.h.45.5dc276d21b4d793a62f1a9757cc18d5c
                            .group:00000000 wm4.board.h.48.3fc21f768e842120f151448a98046af0
-                           .group:00000000 wm4.cw521.h.62.6f487d78438f1a237b2b554798be063f
+                           .group:00000000 wm4.cw521.h.62.6d49a8d57765058e16d369fae3635e9e
                            .group:00000000 wm4.pmc.h.45.bbe1bf97a811e3b283420b2eeadf0b35
                            .group:00000000 wm4.osc.h.94.b766cddafe899eca01d775f7b2906680
                            .group:00000000 wm4.pll.h.45.a605c31ca466ae25752a678e8572be48

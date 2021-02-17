@@ -13,7 +13,7 @@
 #include "spi.h"
 
 bool ctrl_spi(Spi * usart, bool directionIn);
-void spi_driver_putchar(Spi * usart, tcirc_buf * txbuf, uint8_t data);
-uint8_t spi_driver_getchar(Spi * usart);
+void spi_driver_putword(Spi * usart, tcirc_buf * txbuf, uint16_t data);
+// uint8_t spi_driver_getchar(Spi * usart);
 
 #endif /* USART_DRIVER_H_ */
