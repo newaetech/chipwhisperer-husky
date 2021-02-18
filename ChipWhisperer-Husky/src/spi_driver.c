@@ -19,48 +19,57 @@ tcirc_buf spi_rx_buf, spi_tx_buf;
 
 static inline void spi_driver_enable(void)
 {
-    pmc_enable_periph_clk(ID_SPI);
+    //pmc_enable_periph_clk(ID_SPI);
 	gpio_configure_pin(SPI_MISO_GPIO, SPI_MISO_FLAGS);
 	gpio_configure_pin(SPI_MOSI_GPIO, SPI_MOSI_FLAGS);
     gpio_configure_pin(SPI_SPCK_GPIO, SPI_SPCK_FLAGS);
     gpio_configure_pin(ADC_SPI_CS, SPI_CS_FLAGS);
     gpio_set_pin_high(ADC_SPI_CS);
     gpio_configure_pin(ADC_RESET, SPI_CS_FLAGS);
+    // gpio_set_pin_low(ADC_RESET);
     gpio_set_pin_high(ADC_RESET);
     for (volatile uint32_t i = 0; i < 500; i++);
     gpio_set_pin_low(ADC_RESET);
+    for (volatile uint32_t i = 0; i < 500; i++);
 }
 
 bool ctrl_spi(Spi * spi, bool directionIn)
 {
-    uint32_t baud;
-    spi_driver_enable();
+    static bool is_setup;
+    if (!is_setup) {
 
-    switch(udd_g_ctrlreq.req.wValue & 0xFF) {
-        case SPI_WVREQ_INIT:
-            if (directionIn) {
-                if (udd_g_ctrlreq.req.wLength == 4) {
-                    return true;
-                }
-            } else {
-                if (udd_g_ctrlreq.req.wLength == 4) {
-                    buf2word(baud, udd_g_ctrlreq.payload);
-                    int16_t div = spi_calc_baudrate_div(960E3, 96E6);
-                    if (div == -1) {
-                        return false;
+        uint32_t baud;
+        spi_enable_clock(spi);
+        spi_driver_enable();
+
+        switch(udd_g_ctrlreq.req.wValue & 0xFF) {
+            case SPI_WVREQ_INIT:
+                if (directionIn) {
+                    if (udd_g_ctrlreq.req.wLength == 4) {
+                        return true;
                     }
-                    spi_set_baudrate_div(spi, 0, div);
+                } else {
+                    if (udd_g_ctrlreq.req.wLength == 4) {
+                        buf2word(baud, udd_g_ctrlreq.payload);
+                        int16_t div = spi_calc_baudrate_div(960E3, 96E6);
+                        if (div == -1) {
+                            return false;
+                        }
+                        spi_set_baudrate_div(spi, 0, div);
+                    }
                 }
-            }
+        }
+
+        spi_set_master_mode(spi);
+        spi_set_clock_polarity(spi, 0, 0);
+        spi_set_bits_per_transfer(spi, 0, 8);
+        spi_set_clock_phase(spi, 0, 1);
+
+        spi_enable(spi);
+        is_setup = true;
     }
-
-    spi_set_master_mode(spi);
-    spi_set_clock_polarity(spi, 0, 1);
-    spi_set_bits_per_transfer(spi, 0, 8);
-    spi_set_clock_phase(spi, 0, 0);
-
-    spi_enable(spi);
     spi_driver_putword(spi, NULL, NULL);
+    return true;
 }
 
 void spi_driver_putword(Spi *spi, tcirc_buf *txbuf, uint16_t data)

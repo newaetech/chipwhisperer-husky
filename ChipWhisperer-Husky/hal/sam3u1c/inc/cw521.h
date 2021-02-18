@@ -264,7 +264,7 @@
 #define BOARD_NUM_OF_LED 2
 
 //! General Pins
-#define PIN_PWRON_GPIO	  PIO_PB18_IDX
+#define PIN_PWRON_GPIO	  PIO_PA29_IDX
 #define PIN_PWRON_FLAGS  (PIO_TYPE_PIO_OUTPUT_0 | PIO_DEFAULT) 
 #define board_power(a)	 if (a){gpio_set_pin_high(PIN_PWRON_GPIO);} else {gpio_set_pin_low(PIN_PWRON_GPIO);}
 #define board_sram_pwron() gpio_set_pin_low(PIN_PWRON_GPIO)

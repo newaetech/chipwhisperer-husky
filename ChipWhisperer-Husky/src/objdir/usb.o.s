@@ -1510,193 +1510,202 @@ main_setup_out_received:
 .LCFI69:
 	.cfi_def_cfa_register 7
 	.loc 4 325 27
-	ldr	r3, .L135
-	ldr	r2, .L135+4
+	ldr	r3, .L136
+	ldr	r2, .L136+4
 	str	r2, [r3, #8]
 	.loc 4 326 34
-	ldr	r3, .L135
+	ldr	r3, .L136
 	ldrh	r3, [r3, #6]
 	cmp	r3, #64
 	it	cs
 	movcs	r3, #64
 	uxth	r2, r3
 	.loc 4 326 32
-	ldr	r3, .L135
+	ldr	r3, .L136
 	strh	r2, [r3, #12]	@ movhi
 	.loc 4 328 25
-	ldr	r3, .L135+8
+	ldr	r3, .L136+8
 	movs	r2, #0
 	strb	r2, [r3]
 	.loc 4 330 29
-	ldr	r3, .L135
+	ldr	r3, .L136
 	ldrb	r3, [r3, #1]	@ zero_extendqisi2
 	subs	r3, r3, #16
-	cmp	r3, #21
+	cmp	r3, #22
 	bhi	.L114
 	adr	r2, .L116
 	ldr	pc, [r2, r3, lsl #2]
 	.p2align 2
 .L116:
+	.word	.L125+1
 	.word	.L124+1
 	.word	.L123+1
 	.word	.L122+1
+	.word	.L114+1
+	.word	.L114+1
 	.word	.L121+1
 	.word	.L114+1
 	.word	.L114+1
+	.word	.L114+1
 	.word	.L120+1
-	.word	.L114+1
-	.word	.L114+1
-	.word	.L114+1
 	.word	.L119+1
+	.word	.L114+1
+	.word	.L114+1
+	.word	.L114+1
+	.word	.L114+1
+	.word	.L114+1
+	.word	.L114+1
 	.word	.L118+1
 	.word	.L114+1
 	.word	.L114+1
-	.word	.L114+1
-	.word	.L114+1
-	.word	.L114+1
-	.word	.L114+1
 	.word	.L117+1
-	.word	.L114+1
-	.word	.L114+1
 	.word	.L115+1
 	.p2align 1
-.L124:
+.L125:
 	.loc 4 333 13
 	movs	r0, #6
-	ldr	r3, .L135+12
+	ldr	r3, .L136+12
 	blx	r3
 .LVL49:
 	mov	r3, r0
 	.loc 4 333 12
 	cmp	r3, #0
-	beq	.L131
+	beq	.L132
 	.loc 4 334 36
-	ldr	r3, .L135
-	ldr	r2, .L135+16
+	ldr	r3, .L136
+	ldr	r2, .L136+16
 	str	r2, [r3, #16]
 	.loc 4 335 20
 	movs	r3, #1
-	b	.L126
-.L122:
+	b	.L127
+.L123:
 	.loc 4 339 13
 	movs	r0, #6
-	ldr	r3, .L135+12
+	ldr	r3, .L136+12
 	blx	r3
 .LVL50:
 	mov	r3, r0
 	.loc 4 339 12
 	cmp	r3, #0
-	beq	.L132
+	beq	.L133
 	.loc 4 340 36
-	ldr	r3, .L135
-	ldr	r2, .L135+20
+	ldr	r3, .L136
+	ldr	r2, .L136+20
 	str	r2, [r3, #16]
 	.loc 4 341 20
 	movs	r3, #1
-	b	.L126
-.L123:
+	b	.L127
+.L124:
 	.loc 4 348 13
 	movs	r0, #6
-	ldr	r3, .L135+12
+	ldr	r3, .L136+12
 	blx	r3
 .LVL51:
 	mov	r3, r0
 	.loc 4 348 12
 	cmp	r3, #0
-	beq	.L133
+	beq	.L134
 	.loc 4 349 36
-	ldr	r3, .L135
-	ldr	r2, .L135+24
+	ldr	r3, .L136
+	ldr	r2, .L136+24
 	str	r2, [r3, #16]
 	.loc 4 350 20
 	movs	r3, #1
-	b	.L126
-.L121:
+	b	.L127
+.L122:
 	.loc 4 368 13
 	movs	r0, #6
-	ldr	r3, .L135+12
+	ldr	r3, .L136+12
 	blx	r3
 .LVL52:
 	mov	r3, r0
 	.loc 4 368 12
 	cmp	r3, #0
-	beq	.L134
+	beq	.L135
 	.loc 4 369 36
-	ldr	r3, .L135
-	ldr	r2, .L135+28
+	ldr	r3, .L136
+	ldr	r2, .L136+28
 	str	r2, [r3, #16]
 	.loc 4 370 20
 	movs	r3, #1
-	b	.L126
-.L118:
+	b	.L127
+.L119:
 	.loc 4 376 32
-	ldr	r3, .L135
-	ldr	r2, .L135+32
+	ldr	r3, .L136
+	ldr	r2, .L136+32
 	str	r2, [r3, #16]
 	.loc 4 377 16
 	movs	r3, #1
-	b	.L126
-.L119:
+	b	.L127
+.L120:
 	.loc 4 380 32
-	ldr	r3, .L135
-	ldr	r2, .L135+36
+	ldr	r3, .L136
+	ldr	r2, .L136+36
 	str	r2, [r3, #16]
 	.loc 4 381 16
 	movs	r3, #1
-	b	.L126
-.L120:
+	b	.L127
+.L121:
 	.loc 4 384 32
-	ldr	r3, .L135
-	ldr	r2, .L135+40
+	ldr	r3, .L136
+	ldr	r2, .L136+40
 	str	r2, [r3, #16]
 	.loc 4 385 16
 	movs	r3, #1
-	b	.L126
-.L117:
+	b	.L127
+.L118:
 	.loc 4 388 32
-	ldr	r3, .L135
-	ldr	r2, .L135+44
+	ldr	r3, .L136
+	ldr	r2, .L136+44
 	str	r2, [r3, #16]
 	.loc 4 389 16
 	movs	r3, #1
-	b	.L126
-.L115:
+	b	.L127
+.L117:
 	.loc 4 392 32
-	ldr	r3, .L135
-	ldr	r2, .L135+48
+	ldr	r3, .L136
+	ldr	r2, .L136+48
 	str	r2, [r3, #16]
 	.loc 4 393 16
 	movs	r3, #1
-	b	.L126
+	b	.L127
+.L115:
+	.loc 4 395 32
+	ldr	r3, .L136
+	ldr	r2, .L136+52
+	str	r2, [r3, #16]
+	.loc 4 396 16
+	movs	r3, #1
+	b	.L127
 .L114:
 	.loc 4 398 16
 	movs	r3, #0
-	b	.L126
-.L131:
-	.loc 4 337 9
-	nop
 	b	.L127
 .L132:
+	.loc 4 337 9
+	nop
+	b	.L128
+.L133:
 	.loc 4 343 9
 	nop
-	b	.L127
-.L133:
+	b	.L128
+.L134:
 	.loc 4 352 9
 	nop
-	b	.L127
-.L134:
+	b	.L128
+.L135:
 	.loc 4 372 9
 	nop
-.L127:
+.L128:
 	.loc 4 401 12
 	movs	r3, #0
-.L126:
+.L127:
 	.loc 4 402 1
 	mov	r0, r3
 	pop	{r7, pc}
-.L136:
+.L137:
 	.align	2
-.L135:
+.L136:
 	.word	udd_g_ctrlreq
 	.word	ctrlbuffer
 	.word	blockendpoint_usage
@@ -1710,6 +1719,7 @@ main_setup_out_received:
 	.word	ctrl_progfpga_bulk
 	.word	ctrl_sam3ucfg_cb
 	.word	ctrl_fpga_reset
+	.word	ctrl_spi_cb
 	.cfi_endproc
 .LFE207:
 	.size	main_setup_out_received, .-main_setup_out_received
@@ -1739,65 +1749,65 @@ main_setup_in_received:
 .LCFI72:
 	.cfi_def_cfa_register 7
 	.loc 4 423 29
-	ldr	r3, .L149
+	ldr	r3, .L150
 	ldrb	r3, [r3, #1]	@ zero_extendqisi2
 	subs	r3, r3, #18
 	cmp	r3, #9
-	bhi	.L138
-	adr	r2, .L140
+	bhi	.L139
+	adr	r2, .L141
 	ldr	pc, [r2, r3, lsl #2]
 	.p2align 2
-.L140:
-	.word	.L144+1
-	.word	.L138+1
-	.word	.L138+1
-	.word	.L143+1
-	.word	.L138+1
-	.word	.L142+1
-	.word	.L138+1
-	.word	.L138+1
-	.word	.L141+1
+.L141:
+	.word	.L145+1
 	.word	.L139+1
+	.word	.L139+1
+	.word	.L144+1
+	.word	.L139+1
+	.word	.L143+1
+	.word	.L139+1
+	.word	.L139+1
+	.word	.L142+1
+	.word	.L140+1
 	.p2align 1
-.L144:
+.L145:
 .LBB5:
 	.loc 4 425 31
-	ldr	r3, .L149+4
+	ldr	r3, .L150+4
 	ldr	r3, [r3]
-	ldr	r2, .L149
+	ldr	r2, .L150
 	str	r3, [r2, #8]
 	.loc 4 426 36
-	ldr	r3, .L149+8
+	ldr	r3, .L150+8
 	ldr	r3, [r3]
 	uxth	r2, r3
-	ldr	r3, .L149
+	ldr	r3, .L150
 	strh	r2, [r3, #12]	@ movhi
 	.loc 4 427 26
-	ldr	r3, .L149+8
+	ldr	r3, .L150+8
 	movs	r2, #0
 	str	r2, [r3]
 	.loc 4 429 13
-	ldr	r3, .L149+12
+	ldr	r3, .L150+12
 	blx	r3
 .LVL53:
 	mov	r3, r0
 	.loc 4 429 12
 	cmp	r3, #5
-	bne	.L145
+	bne	.L146
 	.loc 4 430 13
 	movs	r0, #0
-	ldr	r3, .L149+16
+	ldr	r3, .L150+16
 	blx	r3
 .LVL54:
-.L145:
+.L146:
 	.loc 4 433 16
 	movs	r3, #1
-	b	.L146
-.L139:
+	b	.L147
+.L140:
 	.loc 4 446 16
 	movs	r1, #1
-	ldr	r0, .L149+20
-	ldr	r3, .L149+24
+	ldr	r0, .L150+20
+	ldr	r3, .L150+24
 	blx	r3
 .LVL55:
 	mov	r3, r0
@@ -1806,24 +1816,24 @@ main_setup_in_received:
 	movne	r3, #1
 	moveq	r3, #0
 	uxtb	r3, r3
-	b	.L146
-.L141:
+	b	.L147
+.L142:
 	.loc 4 450 17
 	movs	r3, #0
 	str	r3, [r7, #4]
 	.loc 4 450 9
-	b	.L147
-.L148:
+	b	.L148
+.L149:
 .LBB6:
 	.loc 4 451 28 discriminator 3
-	ldr	r0, .L149+20
-	ldr	r3, .L149+28
+	ldr	r0, .L150+20
+	ldr	r3, .L150+28
 	blx	r3
 .LVL56:
 	mov	r3, r0
 	.loc 4 451 26 discriminator 3
 	uxtb	r1, r3
-	ldr	r2, .L149+32
+	ldr	r2, .L150+32
 	ldr	r3, [r7, #4]
 	add	r3, r3, r2
 	mov	r2, r1
@@ -1833,55 +1843,55 @@ main_setup_in_received:
 	ldr	r3, [r7, #4]
 	adds	r3, r3, #1
 	str	r3, [r7, #4]
-.L147:
+.L148:
 	.loc 4 450 45 discriminator 1
-	ldr	r3, .L149
+	ldr	r3, .L150
 	ldrh	r3, [r3, #6]
 	mov	r2, r3
 	.loc 4 450 9 discriminator 1
 	ldr	r3, [r7, #4]
 	cmp	r3, r2
-	bcc	.L148
+	bcc	.L149
 	.loc 4 453 31
-	ldr	r3, .L149
-	ldr	r2, .L149+32
+	ldr	r3, .L150
+	ldr	r2, .L150+32
 	str	r2, [r3, #8]
 	.loc 4 454 36
 	ldr	r3, [r7, #4]
 	uxth	r2, r3
-	ldr	r3, .L149
+	ldr	r3, .L150
 	strh	r2, [r3, #12]	@ movhi
 	.loc 4 455 16
 	movs	r3, #1
-	b	.L146
-.L142:
+	b	.L147
+.L143:
 	.loc 4 458 20
-	ldr	r3, .L149+32
+	ldr	r3, .L150+32
 	movs	r2, #1
 	strb	r2, [r3]
 	.loc 4 459 20
-	ldr	r3, .L149+32
+	ldr	r3, .L150+32
 	movs	r2, #1
 	strb	r2, [r3, #1]
 	.loc 4 460 20
-	ldr	r3, .L149+32
+	ldr	r3, .L150+32
 	movs	r2, #0
 	strb	r2, [r3, #2]
 	.loc 4 461 31
-	ldr	r3, .L149
-	ldr	r2, .L149+32
+	ldr	r3, .L150
+	ldr	r2, .L150+32
 	str	r2, [r3, #8]
 	.loc 4 462 36
-	ldr	r3, .L149
+	ldr	r3, .L150
 	movs	r2, #3
 	strh	r2, [r3, #12]	@ movhi
 	.loc 4 463 16
 	movs	r3, #1
-	b	.L146
-.L143:
+	b	.L147
+.L144:
 	.loc 4 467 22
 	movs	r0, #7
-	ldr	r3, .L149+36
+	ldr	r3, .L150+36
 	blx	r3
 .LVL57:
 	mov	r3, r0
@@ -1892,35 +1902,35 @@ main_setup_in_received:
 	uxtb	r3, r3
 	mov	r2, r3
 	.loc 4 467 20
-	ldr	r3, .L149+32
+	ldr	r3, .L150+32
 	strb	r2, [r3]
 	.loc 4 468 20
-	ldr	r3, .L149+32
+	ldr	r3, .L150+32
 	movs	r2, #0
 	strb	r2, [r3, #1]
 	.loc 4 469 20
-	ldr	r3, .L149+32
+	ldr	r3, .L150+32
 	movs	r2, #0
 	strb	r2, [r3, #2]
 	.loc 4 470 20
-	ldr	r3, .L149+32
+	ldr	r3, .L150+32
 	movs	r2, #0
 	strb	r2, [r3, #3]
 	.loc 4 471 31
-	ldr	r3, .L149
-	ldr	r2, .L149+32
+	ldr	r3, .L150
+	ldr	r2, .L150+32
 	str	r2, [r3, #8]
 	.loc 4 472 36
-	ldr	r3, .L149
+	ldr	r3, .L150
 	movs	r2, #4
 	strh	r2, [r3, #12]	@ movhi
 	.loc 4 473 16
 	movs	r3, #1
-	b	.L146
-.L138:
+	b	.L147
+.L139:
 	.loc 4 476 16
 	movs	r3, #0
-.L146:
+.L147:
 .LBE5:
 	.loc 4 479 1
 	mov	r0, r3
@@ -1932,9 +1942,9 @@ main_setup_in_received:
 	.cfi_def_cfa_register 13
 	@ sp needed
 	pop	{r7, pc}
-.L150:
+.L151:
 	.align	2
-.L149:
+.L150:
 	.word	udd_g_ctrlreq
 	.word	ctrlmemread_buf
 	.word	ctrlmemread_size
@@ -1943,7 +1953,7 @@ main_setup_in_received:
 	.word	1074331648
 	.word	ctrl_usart
 	.word	usart_driver_getchar
-	.word	respbuf.9302
+	.word	respbuf.9303
 	.word	pio_get_pin_value
 	.cfi_endproc
 .LFE208:
@@ -1981,25 +1991,25 @@ main_vendor_bulk_in_received:
 	.loc 4 486 8
 	ldrb	r3, [r7, #7]	@ zero_extendqisi2
 	cmp	r3, #0
-	bne	.L154
+	bne	.L155
 	.loc 4 490 9
-	ldr	r3, .L155
+	ldr	r3, .L156
 	blx	r3
 .LVL58:
 	mov	r3, r0
 	.loc 4 490 8
 	cmp	r3, #2
-	bne	.L151
+	bne	.L152
 	.loc 4 491 9
 	movs	r0, #0
-	ldr	r3, .L155+4
+	ldr	r3, .L156+4
 	blx	r3
 .LVL59:
-	b	.L151
-.L154:
+	b	.L152
+.L155:
 	.loc 4 487 9
 	nop
-.L151:
+.L152:
 	.loc 4 493 1
 	adds	r7, r7, #8
 .LCFI78:
@@ -2009,9 +2019,9 @@ main_vendor_bulk_in_received:
 	.cfi_def_cfa_register 13
 	@ sp needed
 	pop	{r7, pc}
-.L156:
+.L157:
 	.align	2
-.L155:
+.L156:
 	.word	FPGA_lockstatus
 	.word	FPGA_setlock
 	.cfi_endproc
@@ -2050,37 +2060,37 @@ main_vendor_bulk_out_received:
 	.loc 4 499 8
 	ldrb	r3, [r7, #7]	@ zero_extendqisi2
 	cmp	r3, #0
-	beq	.L158
+	beq	.L159
 	.loc 4 503 9
-	ldr	r2, .L166
+	ldr	r2, .L167
 	mov	r1, #1024
-	ldr	r0, .L166+4
-	ldr	r3, .L166+8
+	ldr	r0, .L167+4
+	ldr	r3, .L167+8
 	blx	r3
 .LVL60:
 	.loc 4 508 9
-	b	.L157
-.L158:
+	b	.L158
+.L159:
 	.loc 4 511 29
-	ldr	r3, .L166+12
+	ldr	r3, .L167+12
 	ldrb	r3, [r3]	@ zero_extendqisi2
 	.loc 4 511 8
 	cmp	r3, #0
-	bne	.L160
+	bne	.L161
 .LBB7:
 	.loc 4 512 26
 	movs	r3, #0
 	str	r3, [r7, #12]
 	.loc 4 512 9
-	b	.L161
-.L162:
+	b	.L162
+.L163:
 	.loc 4 513 17 discriminator 3
-	ldr	r3, .L166+16
+	ldr	r3, .L167+16
 	ldr	r2, [r3]
 	ldr	r3, [r7, #12]
 	add	r3, r3, r2
 	.loc 4 513 40 discriminator 3
-	ldr	r1, .L166+4
+	ldr	r1, .L167+4
 	ldr	r2, [r7, #12]
 	add	r2, r2, r1
 	ldrb	r2, [r2]	@ zero_extendqisi2
@@ -2090,69 +2100,69 @@ main_vendor_bulk_out_received:
 	ldr	r3, [r7, #12]
 	adds	r3, r3, #1
 	str	r3, [r7, #12]
-.L161:
+.L162:
 	.loc 4 512 9 discriminator 1
 	ldr	r2, [r7, #12]
 	ldr	r3, [r7]
 	cmp	r2, r3
-	bcc	.L162
+	bcc	.L163
 .LBE7:
 	.loc 4 516 13
-	ldr	r3, .L166+20
+	ldr	r3, .L167+20
 	blx	r3
 .LVL61:
 	mov	r3, r0
 	.loc 4 516 12
 	cmp	r3, #4
-	bne	.L163
+	bne	.L164
 	.loc 4 517 13
-	ldr	r3, .L166+24
+	ldr	r3, .L167+24
 	blx	r3
 .LVL62:
-	b	.L163
-.L160:
+	b	.L164
+.L161:
 	.loc 4 519 36
-	ldr	r3, .L166+12
+	ldr	r3, .L167+12
 	ldrb	r3, [r3]	@ zero_extendqisi2
 	.loc 4 519 15
 	cmp	r3, #10
-	bne	.L163
+	bne	.L164
 .LBB8:
 	.loc 4 523 26
 	movs	r3, #0
 	str	r3, [r7, #8]
 	.loc 4 523 9
-	b	.L164
-.L165:
+	b	.L165
+.L166:
 	.loc 4 524 13 discriminator 3
-	ldr	r2, .L166+4
+	ldr	r2, .L167+4
 	ldr	r3, [r7, #8]
 	add	r3, r3, r2
 	ldrb	r3, [r3]	@ zero_extendqisi2
 	mov	r0, r3
-	ldr	r3, .L166+28
+	ldr	r3, .L167+28
 	blx	r3
 .LVL63:
 	.loc 4 523 53 discriminator 3
 	ldr	r3, [r7, #8]
 	adds	r3, r3, #1
 	str	r3, [r7, #8]
-.L164:
+.L165:
 	.loc 4 523 9 discriminator 1
 	ldr	r2, [r7, #8]
 	ldr	r3, [r7]
 	cmp	r2, r3
-	bcc	.L165
-.L163:
+	bcc	.L166
+.L164:
 .LBE8:
 	.loc 4 533 5
-	ldr	r2, .L166
+	ldr	r2, .L167
 	mov	r1, #1024
-	ldr	r0, .L166+4
-	ldr	r3, .L166+8
+	ldr	r0, .L167+4
+	ldr	r3, .L167+8
 	blx	r3
 .LVL64:
-.L157:
+.L158:
 	.loc 4 537 1
 	adds	r7, r7, #16
 .LCFI83:
@@ -2162,9 +2172,9 @@ main_vendor_bulk_out_received:
 	.cfi_def_cfa_register 13
 	@ sp needed
 	pop	{r7, pc}
-.L167:
+.L168:
 	.align	2
-.L166:
+.L167:
 	.word	main_vendor_bulk_out_received
 	.word	main_buf_loopback
 	.word	udi_vendor_bulk_out_run
@@ -2182,11 +2192,11 @@ main_vendor_bulk_out_received:
 	.size	respbuf.9287, 128
 respbuf.9287:
 	.space	128
-	.section	.bss.respbuf.9302,"aw",%nobits
+	.section	.bss.respbuf.9303,"aw",%nobits
 	.align	2
-	.type	respbuf.9302, %object
-	.size	respbuf.9302, 64
-respbuf.9302:
+	.type	respbuf.9303, %object
+	.size	respbuf.9303, 64
+respbuf.9303:
 	.space	64
 	.text
 .Letext0:
@@ -5483,7 +5493,7 @@ respbuf.9302:
 	.4byte	0x1596
 	.byte	0x5
 	.byte	0x3
-	.4byte	respbuf.9302
+	.4byte	respbuf.9303
 	.uleb128 0x30
 	.ascii	"cnt\000"
 	.byte	0x4
@@ -35402,7 +35412,7 @@ respbuf.9302:
 	.uleb128 0xa6
 	.4byte	.LASF8397
 	.byte	0
-	.section	.debug_macro,"G",%progbits,wm4.cw521.h.62.6d49a8d57765058e16d369fae3635e9e,comdat
+	.section	.debug_macro,"G",%progbits,wm4.cw521.h.62.38d76eca36ece19cb9950be38af128c7,comdat
 .Ldebug_macro109:
 	.2byte	0x4
 	.byte	0
@@ -37814,6 +37824,8 @@ respbuf.9302:
 	.ascii	"R14_Pos)\000"
 .LASF4655:
 	.ascii	"RTC_CALR_DAY_Msk (0x7u << RTC_CALR_DAY_Pos)\000"
+.LASF8523:
+	.ascii	"PIN_PWRON_GPIO PIO_PA29_IDX\000"
 .LASF2582:
 	.ascii	"MATRIX_PRAS6_M0PR_Msk (0x3u << MATRIX_PRAS6_M0PR_Po"
 	.ascii	"s)\000"
@@ -39826,8 +39838,6 @@ respbuf.9302:
 	.ascii	"PIO_PUER_P10 (0x1u << 10)\000"
 .LASF7986:
 	.ascii	"_SYS__TIMEVAL_H_ \000"
-.LASF8523:
-	.ascii	"PIN_PWRON_GPIO PIO_PB18_IDX\000"
 .LASF2196:
 	.ascii	"DMAC_WPMR_WPEN (0x1u << 0)\000"
 .LASF8359:

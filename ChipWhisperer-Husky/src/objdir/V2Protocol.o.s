@@ -31521,7 +31521,7 @@ avr_rambuf.9107:
 	.uleb128 0xa6
 	.4byte	.LASF8399
 	.byte	0
-	.section	.debug_macro,"G",%progbits,wm4.cw521.h.62.6d49a8d57765058e16d369fae3635e9e,comdat
+	.section	.debug_macro,"G",%progbits,wm4.cw521.h.62.38d76eca36ece19cb9950be38af128c7,comdat
 .Ldebug_macro109:
 	.2byte	0x4
 	.byte	0
@@ -34027,6 +34027,8 @@ avr_rambuf.9107:
 	.ascii	"R14_Pos)\000"
 .LASF4657:
 	.ascii	"RTC_CALR_DAY_Msk (0x7u << RTC_CALR_DAY_Pos)\000"
+.LASF8525:
+	.ascii	"PIN_PWRON_GPIO PIO_PA29_IDX\000"
 .LASF2584:
 	.ascii	"MATRIX_PRAS6_M0PR_Msk (0x3u << MATRIX_PRAS6_M0PR_Po"
 	.ascii	"s)\000"
@@ -35927,8 +35929,6 @@ avr_rambuf.9107:
 	.ascii	"PIO_PUER_P10 (0x1u << 10)\000"
 .LASF7988:
 	.ascii	"_SYS__TIMEVAL_H_ \000"
-.LASF8525:
-	.ascii	"PIN_PWRON_GPIO PIO_PB18_IDX\000"
 .LASF2198:
 	.ascii	"DMAC_WPMR_WPEN (0x1u << 0)\000"
 .LASF8361:

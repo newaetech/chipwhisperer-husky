@@ -391,9 +391,9 @@ bool main_setup_out_received(void)
     case REQ_FPGA_RESET:
         udd_g_ctrlreq.callback = ctrl_fpga_reset;
         return true;
-    // case REQ_SPI:
-    //     udd_g_ctrlreq.callback = ctrl_spi_cb;
-    //     return true;
+    case REQ_SPI:
+        udd_g_ctrlreq.callback = ctrl_spi_cb;
+        return true;
     default:
         return false;
     }
