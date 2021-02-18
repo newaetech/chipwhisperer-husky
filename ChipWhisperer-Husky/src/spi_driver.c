@@ -33,81 +33,72 @@ static inline void spi_driver_enable(void)
     for (volatile uint32_t i = 0; i < 500; i++);
 }
 
-bool ctrl_spi(Spi * spi, bool directionIn)
+bool write_spi_adc(uint8_t addr, uint8_t data)
 {
-    static bool is_setup;
-    if (!is_setup) {
+    gpio_set_pin_low(ADC_SPI_CS);
 
-        uint32_t baud;
-        spi_enable_clock(spi);
-        spi_driver_enable();
+    spi_put(SPI, addr);
+    while(!spi_is_tx_empty(SPI));
+    spi_put(SPI, data);
+    while(!spi_is_tx_empty(SPI));
 
-        switch(udd_g_ctrlreq.req.wValue & 0xFF) {
-            case SPI_WVREQ_INIT:
-                if (directionIn) {
-                    if (udd_g_ctrlreq.req.wLength == 4) {
-                        return true;
-                    }
-                } else {
-                    if (udd_g_ctrlreq.req.wLength == 4) {
-                        buf2word(baud, udd_g_ctrlreq.payload);
-                        int16_t div = spi_calc_baudrate_div(960E3, 96E6);
-                        if (div == -1) {
-                            return false;
-                        }
-                        spi_set_baudrate_div(spi, 0, div);
-                    }
-                }
-        }
+    gpio_set_pin_high(ADC_SPI_CS);
 
-        spi_set_master_mode(spi);
-        spi_set_clock_polarity(spi, 0, 0);
-        spi_set_bits_per_transfer(spi, 0, 8);
-        spi_set_clock_phase(spi, 0, 1);
-
-        spi_enable(spi);
-        is_setup = true;
-    }
-    spi_driver_putword(spi, NULL, NULL);
     return true;
 }
 
-void spi_driver_putword(Spi *spi, tcirc_buf *txbuf, uint16_t data)
+uint8_t read_spi_adc(uint8_t addr)
 {
-    // add_to_circ_buf(txbuf, data & 0xFF, false);
-    // add_to_circ_buf(txbuf, (data >> 8), false);
-
-    // if (spi_is_tx_ready(spi)) {
-
-    // }
-
+    write_spi_adc(0x00, 0x01); //enable read, disable write
     gpio_set_pin_low(ADC_SPI_CS);
-    spi_put(spi, 0b1);
-    while(!spi_is_tx_empty(spi));
-    spi_put(spi, (0b11011 << 2));
-    while(!spi_is_tx_empty(spi));
+    spi_put(SPI, addr);
+    while(!spi_is_tx_empty(SPI));
+    spi_put(SPI, 0x00); //shift data in
+    while(!spi_is_tx_empty(SPI));
+
+    uint8_t rtn = spi_get(SPI);
     gpio_set_pin_high(ADC_SPI_CS);
 
-    volatile uint16_t i = 0;
-    gpio_set_pin_low(ADC_SPI_CS);
-    spi_put(spi, 0x00); // enable rdout
-    while(!spi_is_tx_empty(spi));
-    spi_put(spi, 0x01); // enable rdout
-    while(!spi_is_tx_empty(spi));
-    gpio_set_pin_high(ADC_SPI_CS);
-
-    gpio_set_pin_low(ADC_SPI_CS);
-    spi_put(spi, (0b1)); // enable rdout
-    while(!spi_is_tx_empty(spi));
-    spi_put(spi, (0b0)); // enable rdout
-    while(!spi_is_tx_empty(spi));
-    i = spi_get(spi);
-    gpio_set_pin_high(ADC_SPI_CS);
-
-    gpio_set_pin_low(ADC_SPI_CS);
-    spi_put(spi, 0x00); // enable rdout
-    while(!spi_is_tx_empty(spi));
-    spi_put(spi, 0x00); // enable rdout
-    while(!spi_is_tx_empty(spi));
-    gpio_set_pin_high(ADC_SPI_CS);
+    write_spi_adc(0x00, 0x00); //disable read, enable write
+    return rtn;
 }
+
+// void spi_driver_putword(Spi *spi, tcirc_buf *txbuf, uint16_t data)
+// {
+//     // add_to_circ_buf(txbuf, data & 0xFF, false);
+//     // add_to_circ_buf(txbuf, (data >> 8), false);
+
+//     // if (spi_is_tx_ready(spi)) {
+
+//     // }
+
+//     gpio_set_pin_low(ADC_SPI_CS);
+//     spi_put(spi, 0b1);
+//     while(!spi_is_tx_empty(spi));
+//     spi_put(spi, (0b11011 << 2));
+//     while(!spi_is_tx_empty(spi));
+//     gpio_set_pin_high(ADC_SPI_CS);
+
+//     volatile uint16_t i = 0;
+//     gpio_set_pin_low(ADC_SPI_CS);
+//     spi_put(spi, 0x00); // enable rdout
+//     while(!spi_is_tx_empty(spi));
+//     spi_put(spi, 0x01); // enable rdout
+//     while(!spi_is_tx_empty(spi));
+//     gpio_set_pin_high(ADC_SPI_CS);
+
+//     gpio_set_pin_low(ADC_SPI_CS);
+//     spi_put(spi, (0b1)); // enable rdout
+//     while(!spi_is_tx_empty(spi));
+//     spi_put(spi, (0b0)); // enable rdout
+//     while(!spi_is_tx_empty(spi));
+//     i = spi_get(spi);
+//     gpio_set_pin_high(ADC_SPI_CS);
+
+//     gpio_set_pin_low(ADC_SPI_CS);
+//     spi_put(spi, 0x00); // enable rdout
+//     while(!spi_is_tx_empty(spi));
+//     spi_put(spi, 0x00); // enable rdout
+//     while(!spi_is_tx_empty(spi));
+//     gpio_set_pin_high(ADC_SPI_CS);
+// }

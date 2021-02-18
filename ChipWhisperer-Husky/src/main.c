@@ -80,6 +80,37 @@ static inline void genclk_enable_config(unsigned int id, enum genclk_source src,
     genclk_config_set_divider(&gcfg, divider);
     genclk_enable(&gcfg, id);
 }
+#include <spi.h>
+
+#define ADC_SPI_CS PIO_PA3_IDX
+#define ADC_RESET PIO_PA4_IDX
+
+void enable_spi(void)
+{
+	gpio_configure_pin(SPI_MISO_GPIO, SPI_MISO_FLAGS);
+	gpio_configure_pin(SPI_MOSI_GPIO, SPI_MOSI_FLAGS);
+    gpio_configure_pin(SPI_SPCK_GPIO, SPI_SPCK_FLAGS);
+    gpio_configure_pin(ADC_SPI_CS, SPI_CS_FLAGS);
+    gpio_set_pin_high(ADC_SPI_CS);
+    gpio_configure_pin(ADC_RESET, SPI_CS_FLAGS);
+    // gpio_set_pin_low(ADC_RESET);
+    gpio_set_pin_high(ADC_RESET);
+    for (volatile uint32_t i = 0; i < 500; i++);
+    gpio_set_pin_low(ADC_RESET);
+    for (volatile uint32_t i = 0; i < 500; i++);
+
+    uint32_t baud;
+    spi_enable_clock(SPI);
+    int16_t div = spi_calc_baudrate_div(960E3, 96E6); //960kHz
+    spi_set_baudrate_div(SPI, 0, div);
+
+    spi_set_master_mode(SPI);
+    spi_set_clock_polarity(SPI, 0, 0);
+    spi_set_bits_per_transfer(SPI, 0, 8);
+    spi_set_clock_phase(SPI, 0, 1);
+
+    spi_enable(SPI);
+}
 
 
 int main(void)
@@ -108,6 +139,7 @@ int main(void)
 	usb_serial_number[32] = 0;
 
     genclk_enable_config(GENCLK_PCK_1, GENCLK_PCK_SRC_MCK, GENCLK_PCK_PRES_1);
+    enable_spi();
     udc_start();
 
     ui_init();

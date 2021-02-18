@@ -856,6 +856,101 @@ pll_enable_config_defaults:
 	.cfi_endproc
 .LFE81:
 	.size	pll_enable_config_defaults, .-pll_enable_config_defaults
+	.section	.text.spi_enable,"ax",%progbits
+	.align	1
+	.syntax unified
+	.thumb
+	.thumb_func
+	.fpu softvfp
+	.type	spi_enable, %function
+spi_enable:
+.LFB132:
+	.file 4 ".././hal/sam3u1c/inc/spi.h"
+	.loc 4 106 1
+	.cfi_startproc
+	@ args = 0, pretend = 0, frame = 8
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI46:
+	.cfi_def_cfa_offset 4
+	.cfi_offset 7, -4
+	sub	sp, sp, #12
+.LCFI47:
+	.cfi_def_cfa_offset 16
+	add	r7, sp, #0
+.LCFI48:
+	.cfi_def_cfa_register 7
+	str	r0, [r7, #4]
+	.loc 4 107 16
+	ldr	r3, [r7, #4]
+	movs	r2, #1
+	str	r2, [r3]
+	.loc 4 108 1
+	nop
+	adds	r7, r7, #12
+.LCFI49:
+	.cfi_def_cfa_offset 4
+	mov	sp, r7
+.LCFI50:
+	.cfi_def_cfa_register 13
+	@ sp needed
+	pop	{r7}
+.LCFI51:
+	.cfi_restore 7
+	.cfi_def_cfa_offset 0
+	bx	lr
+	.cfi_endproc
+.LFE132:
+	.size	spi_enable, .-spi_enable
+	.section	.text.spi_set_master_mode,"ax",%progbits
+	.align	1
+	.syntax unified
+	.thumb
+	.thumb_func
+	.fpu softvfp
+	.type	spi_set_master_mode, %function
+spi_set_master_mode:
+.LFB135:
+	.loc 4 140 1
+	.cfi_startproc
+	@ args = 0, pretend = 0, frame = 8
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI52:
+	.cfi_def_cfa_offset 4
+	.cfi_offset 7, -4
+	sub	sp, sp, #12
+.LCFI53:
+	.cfi_def_cfa_offset 16
+	add	r7, sp, #0
+.LCFI54:
+	.cfi_def_cfa_register 7
+	str	r0, [r7, #4]
+	.loc 4 141 16
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #4]
+	orr	r2, r3, #1
+	ldr	r3, [r7, #4]
+	str	r2, [r3, #4]
+	.loc 4 142 1
+	nop
+	adds	r7, r7, #12
+.LCFI55:
+	.cfi_def_cfa_offset 4
+	mov	sp, r7
+.LCFI56:
+	.cfi_def_cfa_register 13
+	@ sp needed
+	pop	{r7}
+.LCFI57:
+	.cfi_restore 7
+	.cfi_def_cfa_offset 0
+	bx	lr
+	.cfi_endproc
+.LFE135:
+	.size	spi_set_master_mode, .-spi_set_master_mode
 	.section	.text.sleepmgr_sleep,"ax",%progbits
 	.align	1
 	.syntax unified
@@ -865,33 +960,33 @@ pll_enable_config_defaults:
 	.type	sleepmgr_sleep, %function
 sleepmgr_sleep:
 .LFB165:
-	.file 4 ".././hal/sam3u1c/inc/sam/sleepmgr.h"
-	.loc 4 113 1
+	.file 5 ".././hal/sam3u1c/inc/sam/sleepmgr.h"
+	.loc 5 113 1
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 8
 	@ frame_needed = 1, uses_anonymous_args = 0
 	push	{r7, lr}
-.LCFI46:
+.LCFI58:
 	.cfi_def_cfa_offset 8
 	.cfi_offset 7, -8
 	.cfi_offset 14, -4
 	sub	sp, sp, #8
-.LCFI47:
+.LCFI59:
 	.cfi_def_cfa_offset 16
 	add	r7, sp, #0
-.LCFI48:
+.LCFI60:
 	.cfi_def_cfa_register 7
 	mov	r3, r0
 	strb	r3, [r7, #7]
 .LBB15:
 .LBB16:
-	.file 5 ".././hal/sam3u1c/inc/core_cmFunc.h"
-	.loc 5 328 3
+	.file 6 ".././hal/sam3u1c/inc/core_cmFunc.h"
+	.loc 6 328 3
 	.syntax unified
 @ 328 ".././hal/sam3u1c/inc/core_cmFunc.h" 1
 	cpsid i
 @ 0 "" 2
-	.loc 5 329 1
+	.loc 6 329 1
 	.thumb
 	.syntax unified
 	nop
@@ -899,41 +994,41 @@ sleepmgr_sleep:
 .LBE15:
 .LBB17:
 .LBB18:
-	.file 6 ".././hal/sam3u1c/inc/core_cmInstr.h"
-	.loc 6 354 3
+	.file 7 ".././hal/sam3u1c/inc/core_cmInstr.h"
+	.loc 7 354 3
 	.syntax unified
 @ 354 ".././hal/sam3u1c/inc/core_cmInstr.h" 1
 	dmb
 @ 0 "" 2
-	.loc 6 355 1
+	.loc 7 355 1
 	.thumb
 	.syntax unified
 	nop
 .LBE18:
 .LBE17:
-	.loc 4 116 2
-	ldr	r3, .L80
+	.loc 5 116 2
+	ldr	r3, .L82
 	movs	r2, #0
 	strb	r2, [r3]
-	.loc 4 119 2
+	.loc 5 119 2
 	ldrb	r3, [r7, #7]	@ zero_extendqisi2
 	mov	r0, r3
-	ldr	r3, .L80+4
+	ldr	r3, .L82+4
 	blx	r3
 .LVL27:
-	.loc 4 125 1
+	.loc 5 125 1
 	nop
 	adds	r7, r7, #8
-.LCFI49:
+.LCFI61:
 	.cfi_def_cfa_offset 8
 	mov	sp, r7
-.LCFI50:
+.LCFI62:
 	.cfi_def_cfa_register 13
 	@ sp needed
 	pop	{r7, pc}
-.L81:
+.L83:
 	.align	2
-.L80:
+.L82:
 	.word	g_interrupt_enabled
 	.word	pmc_sleep
 	.cfi_endproc
@@ -948,64 +1043,64 @@ sleepmgr_sleep:
 	.type	sleepmgr_init, %function
 sleepmgr_init:
 .LFB166:
-	.file 7 ".././hal/sam3u1c/inc/sleepmgr.h"
-	.loc 7 121 1
+	.file 8 ".././hal/sam3u1c/inc/sleepmgr.h"
+	.loc 8 121 1
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 8
 	@ frame_needed = 1, uses_anonymous_args = 0
 	@ link register save eliminated.
 	push	{r7}
-.LCFI51:
+.LCFI63:
 	.cfi_def_cfa_offset 4
 	.cfi_offset 7, -4
 	sub	sp, sp, #12
-.LCFI52:
+.LCFI64:
 	.cfi_def_cfa_offset 16
 	add	r7, sp, #0
-.LCFI53:
+.LCFI65:
 	.cfi_def_cfa_register 7
-	.loc 7 125 9
+	.loc 8 125 9
 	movs	r3, #0
 	strb	r3, [r7, #7]
-	.loc 7 125 2
-	b	.L83
-.L84:
-	.loc 7 126 17 discriminator 3
+	.loc 8 125 2
+	b	.L85
+.L86:
+	.loc 8 126 17 discriminator 3
 	ldrb	r3, [r7, #7]	@ zero_extendqisi2
-	.loc 7 126 21 discriminator 3
-	ldr	r2, .L85
+	.loc 8 126 21 discriminator 3
+	ldr	r2, .L87
 	movs	r1, #0
 	strb	r1, [r2, r3]
-	.loc 7 125 45 discriminator 3
+	.loc 8 125 45 discriminator 3
 	ldrb	r3, [r7, #7]	@ zero_extendqisi2
 	adds	r3, r3, #1
 	strb	r3, [r7, #7]
-.L83:
-	.loc 7 125 2 discriminator 1
+.L85:
+	.loc 8 125 2 discriminator 1
 	ldrb	r3, [r7, #7]	@ zero_extendqisi2
 	cmp	r3, #4
-	bls	.L84
-	.loc 7 128 43
-	ldr	r3, .L85
+	bls	.L86
+	.loc 8 128 43
+	ldr	r3, .L87
 	movs	r2, #1
 	strb	r2, [r3, #5]
-	.loc 7 130 1
+	.loc 8 130 1
 	nop
 	adds	r7, r7, #12
-.LCFI54:
+.LCFI66:
 	.cfi_def_cfa_offset 4
 	mov	sp, r7
-.LCFI55:
+.LCFI67:
 	.cfi_def_cfa_register 13
 	@ sp needed
 	pop	{r7}
-.LCFI56:
+.LCFI68:
 	.cfi_restore 7
 	.cfi_def_cfa_offset 0
 	bx	lr
-.L86:
+.L88:
 	.align	2
-.L85:
+.L87:
 	.word	sleepmgr_locks
 	.cfi_endproc
 .LFE166:
@@ -1019,64 +1114,64 @@ sleepmgr_init:
 	.type	sleepmgr_get_sleep_mode, %function
 sleepmgr_get_sleep_mode:
 .LFB169:
-	.loc 7 194 1
+	.loc 8 194 1
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 8
 	@ frame_needed = 1, uses_anonymous_args = 0
 	@ link register save eliminated.
 	push	{r7}
-.LCFI57:
+.LCFI69:
 	.cfi_def_cfa_offset 4
 	.cfi_offset 7, -4
 	sub	sp, sp, #12
-.LCFI58:
+.LCFI70:
 	.cfi_def_cfa_offset 16
 	add	r7, sp, #0
-.LCFI59:
+.LCFI71:
 	.cfi_def_cfa_register 7
-	.loc 7 195 21
+	.loc 8 195 21
 	movs	r3, #0
 	strb	r3, [r7, #7]
-	.loc 7 198 11
-	ldr	r3, .L91
+	.loc 8 198 11
+	ldr	r3, .L93
 	str	r3, [r7]
-	.loc 7 201 8
-	b	.L88
-.L89:
-	.loc 7 202 11
+	.loc 8 201 8
+	b	.L90
+.L91:
+	.loc 8 202 11
 	ldr	r3, [r7]
 	adds	r3, r3, #1
 	str	r3, [r7]
-	.loc 7 203 14
+	.loc 8 203 14
 	ldrb	r3, [r7, #7]
 	adds	r3, r3, #1
 	strb	r3, [r7, #7]
-.L88:
-	.loc 7 201 11
+.L90:
+	.loc 8 201 11
 	ldr	r3, [r7]
 	ldrb	r3, [r3]	@ zero_extendqisi2
-	.loc 7 201 8
+	.loc 8 201 8
 	cmp	r3, #0
-	beq	.L89
-	.loc 7 212 9
+	beq	.L91
+	.loc 8 212 9
 	ldrb	r3, [r7, #7]	@ zero_extendqisi2
-	.loc 7 213 1
+	.loc 8 213 1
 	mov	r0, r3
 	adds	r7, r7, #12
-.LCFI60:
+.LCFI72:
 	.cfi_def_cfa_offset 4
 	mov	sp, r7
-.LCFI61:
+.LCFI73:
 	.cfi_def_cfa_register 13
 	@ sp needed
 	pop	{r7}
-.LCFI62:
+.LCFI74:
 	.cfi_restore 7
 	.cfi_def_cfa_offset 0
 	bx	lr
-.L92:
+.L94:
 	.align	2
-.L91:
+.L93:
 	.word	sleepmgr_locks
 	.cfi_endproc
 .LFE169:
@@ -1090,43 +1185,43 @@ sleepmgr_get_sleep_mode:
 	.type	sleepmgr_enter_sleep, %function
 sleepmgr_enter_sleep:
 .LFB170:
-	.loc 7 229 1
+	.loc 8 229 1
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 8
 	@ frame_needed = 1, uses_anonymous_args = 0
 	push	{r7, lr}
-.LCFI63:
+.LCFI75:
 	.cfi_def_cfa_offset 8
 	.cfi_offset 7, -8
 	.cfi_offset 14, -4
 	sub	sp, sp, #8
-.LCFI64:
+.LCFI76:
 	.cfi_def_cfa_offset 16
 	add	r7, sp, #0
-.LCFI65:
+.LCFI77:
 	.cfi_def_cfa_register 7
-	.loc 7 236 15
-	ldr	r3, .L96
+	.loc 8 236 15
+	ldr	r3, .L98
 	blx	r3
 .LVL28:
 	mov	r3, r0
 	strb	r3, [r7, #7]
-	.loc 7 238 5
+	.loc 8 238 5
 	ldrb	r3, [r7, #7]	@ zero_extendqisi2
 	cmp	r3, #0
-	bne	.L94
-	.loc 7 239 3
-	ldr	r3, .L96+4
+	bne	.L96
+	.loc 8 239 3
+	ldr	r3, .L98+4
 	movs	r2, #1
 	strb	r2, [r3]
 .LBB19:
 .LBB20:
-	.loc 6 354 3
+	.loc 7 354 3
 	.syntax unified
 @ 354 ".././hal/sam3u1c/inc/core_cmInstr.h" 1
 	dmb
 @ 0 "" 2
-	.loc 6 355 1
+	.loc 7 355 1
 	.thumb
 	.syntax unified
 	nop
@@ -1134,39 +1229,39 @@ sleepmgr_enter_sleep:
 .LBE19:
 .LBB21:
 .LBB22:
-	.loc 5 317 3
+	.loc 6 317 3
 	.syntax unified
 @ 317 ".././hal/sam3u1c/inc/core_cmFunc.h" 1
 	cpsie i
 @ 0 "" 2
-	.loc 5 318 1
+	.loc 6 318 1
 	.thumb
 	.syntax unified
 	nop
 .LBE22:
 .LBE21:
-	.loc 7 240 3
-	b	.L93
-.L94:
-	.loc 7 243 2
+	.loc 8 240 3
+	b	.L95
+.L96:
+	.loc 8 243 2
 	ldrb	r3, [r7, #7]	@ zero_extendqisi2
 	mov	r0, r3
-	ldr	r3, .L96+8
+	ldr	r3, .L98+8
 	blx	r3
 .LVL29:
-.L93:
-	.loc 7 247 1
+.L95:
+	.loc 8 247 1
 	adds	r7, r7, #8
-.LCFI66:
+.LCFI78:
 	.cfi_def_cfa_offset 8
 	mov	sp, r7
-.LCFI67:
+.LCFI79:
 	.cfi_def_cfa_register 13
 	@ sp needed
 	pop	{r7, pc}
-.L97:
+.L99:
 	.align	2
-.L96:
+.L98:
 	.word	sleepmgr_get_sleep_mode
 	.word	g_interrupt_enabled
 	.word	sleepmgr_sleep
@@ -1182,171 +1277,8 @@ sleepmgr_enter_sleep:
 	.type	genclk_config_defaults, %function
 genclk_config_defaults:
 .LFB182:
-	.file 8 ".././hal/sam3u1c/inc/genclk.h"
-	.loc 8 110 1
-	.cfi_startproc
-	@ args = 0, pretend = 0, frame = 8
-	@ frame_needed = 1, uses_anonymous_args = 0
-	@ link register save eliminated.
-	push	{r7}
-.LCFI68:
-	.cfi_def_cfa_offset 4
-	.cfi_offset 7, -4
-	sub	sp, sp, #12
-.LCFI69:
-	.cfi_def_cfa_offset 16
-	add	r7, sp, #0
-.LCFI70:
-	.cfi_def_cfa_register 7
-	str	r0, [r7, #4]
-	str	r1, [r7]
-	.loc 8 112 14
-	ldr	r3, [r7, #4]
-	movs	r2, #0
-	str	r2, [r3]
-	.loc 8 113 1
-	nop
-	adds	r7, r7, #12
-.LCFI71:
-	.cfi_def_cfa_offset 4
-	mov	sp, r7
-.LCFI72:
-	.cfi_def_cfa_register 13
-	@ sp needed
-	pop	{r7}
-.LCFI73:
-	.cfi_restore 7
-	.cfi_def_cfa_offset 0
-	bx	lr
-	.cfi_endproc
-.LFE182:
-	.size	genclk_config_defaults, .-genclk_config_defaults
-	.section	.text.genclk_config_set_source,"ax",%progbits
-	.align	1
-	.syntax unified
-	.thumb
-	.thumb_func
-	.fpu softvfp
-	.type	genclk_config_set_source, %function
-genclk_config_set_source:
-.LFB185:
-	.loc 8 132 1
-	.cfi_startproc
-	@ args = 0, pretend = 0, frame = 8
-	@ frame_needed = 1, uses_anonymous_args = 0
-	@ link register save eliminated.
-	push	{r7}
-.LCFI74:
-	.cfi_def_cfa_offset 4
-	.cfi_offset 7, -4
-	sub	sp, sp, #12
-.LCFI75:
-	.cfi_def_cfa_offset 16
-	add	r7, sp, #0
-.LCFI76:
-	.cfi_def_cfa_register 7
-	str	r0, [r7, #4]
-	mov	r3, r1
-	strb	r3, [r7, #3]
-	.loc 8 133 14
-	ldr	r3, [r7, #4]
-	ldr	r3, [r3]
-	bic	r2, r3, #7
-	ldr	r3, [r7, #4]
-	str	r2, [r3]
-	.loc 8 135 2
-	ldrb	r3, [r7, #3]	@ zero_extendqisi2
-	cmp	r3, #10
-	bhi	.L107
-	adr	r2, .L102
-	ldr	pc, [r2, r3, lsl #2]
-	.p2align 2
-.L102:
-	.word	.L106+1
-	.word	.L106+1
-	.word	.L106+1
-	.word	.L105+1
-	.word	.L105+1
-	.word	.L105+1
-	.word	.L105+1
-	.word	.L105+1
-	.word	.L104+1
-	.word	.L103+1
-	.word	.L101+1
-	.p2align 1
-.L106:
-	.loc 8 139 15
-	ldr	r3, [r7, #4]
-	ldr	r2, [r3]
-	ldr	r3, [r7, #4]
-	str	r2, [r3]
-	.loc 8 140 3
-	b	.L100
-.L105:
-	.loc 8 147 15
-	ldr	r3, [r7, #4]
-	ldr	r3, [r3]
-	orr	r2, r3, #1
-	ldr	r3, [r7, #4]
-	str	r2, [r3]
-	.loc 8 148 3
-	b	.L100
-.L104:
-	.loc 8 151 15
-	ldr	r3, [r7, #4]
-	ldr	r3, [r3]
-	orr	r2, r3, #2
-	ldr	r3, [r7, #4]
-	str	r2, [r3]
-	.loc 8 152 3
-	b	.L100
-.L103:
-	.loc 8 155 15
-	ldr	r3, [r7, #4]
-	ldr	r3, [r3]
-	orr	r2, r3, #3
-	ldr	r3, [r7, #4]
-	str	r2, [r3]
-	.loc 8 156 3
-	b	.L100
-.L101:
-	.loc 8 159 15
-	ldr	r3, [r7, #4]
-	ldr	r3, [r3]
-	orr	r2, r3, #4
-	ldr	r3, [r7, #4]
-	str	r2, [r3]
-	.loc 8 160 3
-	nop
-.L100:
-.L107:
-	.loc 8 162 1
-	nop
-	adds	r7, r7, #12
-.LCFI77:
-	.cfi_def_cfa_offset 4
-	mov	sp, r7
-.LCFI78:
-	.cfi_def_cfa_register 13
-	@ sp needed
-	pop	{r7}
-.LCFI79:
-	.cfi_restore 7
-	.cfi_def_cfa_offset 0
-	bx	lr
-	.cfi_endproc
-.LFE185:
-	.size	genclk_config_set_source, .-genclk_config_set_source
-	.section	.text.genclk_config_set_divider,"ax",%progbits
-	.align	1
-	.syntax unified
-	.thumb
-	.thumb_func
-	.fpu softvfp
-	.type	genclk_config_set_divider, %function
-genclk_config_set_divider:
-.LFB186:
-	.loc 8 166 1
+	.file 9 ".././hal/sam3u1c/inc/genclk.h"
+	.loc 9 110 1
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 8
 	@ frame_needed = 1, uses_anonymous_args = 0
@@ -1363,20 +1295,11 @@ genclk_config_set_divider:
 	.cfi_def_cfa_register 7
 	str	r0, [r7, #4]
 	str	r1, [r7]
-	.loc 8 167 14
+	.loc 9 112 14
 	ldr	r3, [r7, #4]
-	ldr	r3, [r3]
-	bic	r2, r3, #112
-	ldr	r3, [r7, #4]
+	movs	r2, #0
 	str	r2, [r3]
-	.loc 8 168 14
-	ldr	r3, [r7, #4]
-	ldr	r2, [r3]
-	ldr	r3, [r7]
-	orrs	r2, r2, r3
-	ldr	r3, [r7, #4]
-	str	r2, [r3]
-	.loc 8 169 1
+	.loc 9 113 1
 	nop
 	adds	r7, r7, #12
 .LCFI83:
@@ -1387,6 +1310,178 @@ genclk_config_set_divider:
 	@ sp needed
 	pop	{r7}
 .LCFI85:
+	.cfi_restore 7
+	.cfi_def_cfa_offset 0
+	bx	lr
+	.cfi_endproc
+.LFE182:
+	.size	genclk_config_defaults, .-genclk_config_defaults
+	.section	.text.genclk_config_set_source,"ax",%progbits
+	.align	1
+	.syntax unified
+	.thumb
+	.thumb_func
+	.fpu softvfp
+	.type	genclk_config_set_source, %function
+genclk_config_set_source:
+.LFB185:
+	.loc 9 132 1
+	.cfi_startproc
+	@ args = 0, pretend = 0, frame = 8
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI86:
+	.cfi_def_cfa_offset 4
+	.cfi_offset 7, -4
+	sub	sp, sp, #12
+.LCFI87:
+	.cfi_def_cfa_offset 16
+	add	r7, sp, #0
+.LCFI88:
+	.cfi_def_cfa_register 7
+	str	r0, [r7, #4]
+	mov	r3, r1
+	strb	r3, [r7, #3]
+	.loc 9 133 14
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3]
+	bic	r2, r3, #7
+	ldr	r3, [r7, #4]
+	str	r2, [r3]
+	.loc 9 135 2
+	ldrb	r3, [r7, #3]	@ zero_extendqisi2
+	cmp	r3, #10
+	bhi	.L109
+	adr	r2, .L104
+	ldr	pc, [r2, r3, lsl #2]
+	.p2align 2
+.L104:
+	.word	.L108+1
+	.word	.L108+1
+	.word	.L108+1
+	.word	.L107+1
+	.word	.L107+1
+	.word	.L107+1
+	.word	.L107+1
+	.word	.L107+1
+	.word	.L106+1
+	.word	.L105+1
+	.word	.L103+1
+	.p2align 1
+.L108:
+	.loc 9 139 15
+	ldr	r3, [r7, #4]
+	ldr	r2, [r3]
+	ldr	r3, [r7, #4]
+	str	r2, [r3]
+	.loc 9 140 3
+	b	.L102
+.L107:
+	.loc 9 147 15
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3]
+	orr	r2, r3, #1
+	ldr	r3, [r7, #4]
+	str	r2, [r3]
+	.loc 9 148 3
+	b	.L102
+.L106:
+	.loc 9 151 15
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3]
+	orr	r2, r3, #2
+	ldr	r3, [r7, #4]
+	str	r2, [r3]
+	.loc 9 152 3
+	b	.L102
+.L105:
+	.loc 9 155 15
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3]
+	orr	r2, r3, #3
+	ldr	r3, [r7, #4]
+	str	r2, [r3]
+	.loc 9 156 3
+	b	.L102
+.L103:
+	.loc 9 159 15
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3]
+	orr	r2, r3, #4
+	ldr	r3, [r7, #4]
+	str	r2, [r3]
+	.loc 9 160 3
+	nop
+.L102:
+.L109:
+	.loc 9 162 1
+	nop
+	adds	r7, r7, #12
+.LCFI89:
+	.cfi_def_cfa_offset 4
+	mov	sp, r7
+.LCFI90:
+	.cfi_def_cfa_register 13
+	@ sp needed
+	pop	{r7}
+.LCFI91:
+	.cfi_restore 7
+	.cfi_def_cfa_offset 0
+	bx	lr
+	.cfi_endproc
+.LFE185:
+	.size	genclk_config_set_source, .-genclk_config_set_source
+	.section	.text.genclk_config_set_divider,"ax",%progbits
+	.align	1
+	.syntax unified
+	.thumb
+	.thumb_func
+	.fpu softvfp
+	.type	genclk_config_set_divider, %function
+genclk_config_set_divider:
+.LFB186:
+	.loc 9 166 1
+	.cfi_startproc
+	@ args = 0, pretend = 0, frame = 8
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI92:
+	.cfi_def_cfa_offset 4
+	.cfi_offset 7, -4
+	sub	sp, sp, #12
+.LCFI93:
+	.cfi_def_cfa_offset 16
+	add	r7, sp, #0
+.LCFI94:
+	.cfi_def_cfa_register 7
+	str	r0, [r7, #4]
+	str	r1, [r7]
+	.loc 9 167 14
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3]
+	bic	r2, r3, #112
+	ldr	r3, [r7, #4]
+	str	r2, [r3]
+	.loc 9 168 14
+	ldr	r3, [r7, #4]
+	ldr	r2, [r3]
+	ldr	r3, [r7]
+	orrs	r2, r2, r3
+	ldr	r3, [r7, #4]
+	str	r2, [r3]
+	.loc 9 169 1
+	nop
+	adds	r7, r7, #12
+.LCFI95:
+	.cfi_def_cfa_offset 4
+	mov	sp, r7
+.LCFI96:
+	.cfi_def_cfa_register 13
+	@ sp needed
+	pop	{r7}
+.LCFI97:
 	.cfi_restore 7
 	.cfi_def_cfa_offset 0
 	bx	lr
@@ -1402,50 +1497,50 @@ genclk_config_set_divider:
 	.type	genclk_enable, %function
 genclk_enable:
 .LFB187:
-	.loc 8 175 1
+	.loc 9 175 1
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 8
 	@ frame_needed = 1, uses_anonymous_args = 0
 	push	{r7, lr}
-.LCFI86:
+.LCFI98:
 	.cfi_def_cfa_offset 8
 	.cfi_offset 7, -8
 	.cfi_offset 14, -4
 	sub	sp, sp, #8
-.LCFI87:
+.LCFI99:
 	.cfi_def_cfa_offset 16
 	add	r7, sp, #0
-.LCFI88:
+.LCFI100:
 	.cfi_def_cfa_register 7
 	str	r0, [r7, #4]
 	str	r1, [r7]
-	.loc 8 176 5
-	ldr	r1, .L110
-	.loc 8 176 29
+	.loc 9 176 5
+	ldr	r1, .L112
+	.loc 9 176 29
 	ldr	r3, [r7, #4]
 	ldr	r2, [r3]
-	.loc 8 176 22
+	.loc 9 176 22
 	ldr	r3, [r7]
 	adds	r3, r3, #16
 	str	r2, [r1, r3, lsl #2]
-	.loc 8 177 2
+	.loc 9 177 2
 	ldr	r0, [r7]
-	ldr	r3, .L110+4
+	ldr	r3, .L112+4
 	blx	r3
 .LVL30:
-	.loc 8 178 1
+	.loc 9 178 1
 	nop
 	adds	r7, r7, #8
-.LCFI89:
+.LCFI101:
 	.cfi_def_cfa_offset 8
 	mov	sp, r7
-.LCFI90:
+.LCFI102:
 	.cfi_def_cfa_register 13
 	@ sp needed
 	pop	{r7, pc}
-.L111:
+.L113:
 	.align	2
-.L110:
+.L112:
 	.word	1074660352
 	.word	pmc_enable_pck
 	.cfi_endproc
@@ -1460,31 +1555,33 @@ genclk_enable:
 	.type	genclk_enable_source, %function
 genclk_enable_source:
 .LFB189:
-	.loc 8 186 1
+	.loc 9 186 1
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 8
 	@ frame_needed = 1, uses_anonymous_args = 0
 	push	{r7, lr}
-.LCFI91:
+.LCFI103:
 	.cfi_def_cfa_offset 8
 	.cfi_offset 7, -8
 	.cfi_offset 14, -4
 	sub	sp, sp, #8
-.LCFI92:
+.LCFI104:
 	.cfi_def_cfa_offset 16
 	add	r7, sp, #0
-.LCFI93:
+.LCFI105:
 	.cfi_def_cfa_register 7
 	mov	r3, r0
 	strb	r3, [r7, #7]
-	.loc 8 187 2
+	.loc 9 187 2
 	ldrb	r3, [r7, #7]	@ zero_extendqisi2
 	cmp	r3, #10
-	bhi	.L135
-	adr	r2, .L115
+	bhi	.L137
+	adr	r2, .L117
 	ldr	pc, [r2, r3, lsl #2]
 	.p2align 2
-.L115:
+.L117:
+	.word	.L127+1
+	.word	.L126+1
 	.word	.L125+1
 	.word	.L124+1
 	.word	.L123+1
@@ -1493,276 +1590,274 @@ genclk_enable_source:
 	.word	.L120+1
 	.word	.L119+1
 	.word	.L118+1
-	.word	.L117+1
-	.word	.L116+1
-	.word	.L135+1
+	.word	.L137+1
 	.p2align 1
-.L125:
-	.loc 8 189 8
+.L127:
+	.loc 9 189 8
 	movs	r0, #0
-	ldr	r3, .L145
+	ldr	r3, .L147
 	blx	r3
 .LVL31:
 	mov	r3, r0
-	.loc 8 189 7
+	.loc 9 189 7
 	eor	r3, r3, #1
 	uxtb	r3, r3
-	.loc 8 189 6
+	.loc 9 189 6
 	cmp	r3, #0
-	beq	.L136
-	.loc 8 190 4
+	beq	.L138
+	.loc 9 190 4
 	movs	r0, #0
-	ldr	r3, .L145+4
+	ldr	r3, .L147+4
 	blx	r3
 .LVL32:
-	.loc 8 191 4
+	.loc 9 191 4
 	movs	r0, #0
-	ldr	r3, .L145+8
+	ldr	r3, .L147+8
 	blx	r3
 .LVL33:
-	.loc 8 193 3
-	b	.L136
-.L124:
-	.loc 8 196 8
+	.loc 9 193 3
+	b	.L138
+.L126:
+	.loc 9 196 8
 	movs	r0, #1
-	ldr	r3, .L145
+	ldr	r3, .L147
 	blx	r3
 .LVL34:
 	mov	r3, r0
-	.loc 8 196 7
+	.loc 9 196 7
 	eor	r3, r3, #1
 	uxtb	r3, r3
-	.loc 8 196 6
+	.loc 9 196 6
 	cmp	r3, #0
-	beq	.L137
-	.loc 8 197 4
+	beq	.L139
+	.loc 9 197 4
 	movs	r0, #1
-	ldr	r3, .L145+4
+	ldr	r3, .L147+4
 	blx	r3
 .LVL35:
-	.loc 8 198 4
+	.loc 9 198 4
 	movs	r0, #1
-	ldr	r3, .L145+8
+	ldr	r3, .L147+8
 	blx	r3
 .LVL36:
-	.loc 8 200 3
-	b	.L137
-.L123:
-	.loc 8 203 8
+	.loc 9 200 3
+	b	.L139
+.L125:
+	.loc 9 203 8
 	movs	r0, #2
-	ldr	r3, .L145
+	ldr	r3, .L147
 	blx	r3
 .LVL37:
 	mov	r3, r0
-	.loc 8 203 7
+	.loc 9 203 7
 	eor	r3, r3, #1
 	uxtb	r3, r3
-	.loc 8 203 6
+	.loc 9 203 6
 	cmp	r3, #0
-	beq	.L138
-	.loc 8 204 4
+	beq	.L140
+	.loc 9 204 4
 	movs	r0, #2
-	ldr	r3, .L145+4
+	ldr	r3, .L147+4
 	blx	r3
 .LVL38:
-	.loc 8 205 4
+	.loc 9 205 4
 	movs	r0, #2
-	ldr	r3, .L145+8
+	ldr	r3, .L147+8
 	blx	r3
 .LVL39:
-	.loc 8 207 3
-	b	.L138
-.L122:
-	.loc 8 210 8
+	.loc 9 207 3
+	b	.L140
+.L124:
+	.loc 9 210 8
 	movs	r0, #3
-	ldr	r3, .L145
+	ldr	r3, .L147
 	blx	r3
 .LVL40:
 	mov	r3, r0
-	.loc 8 210 7
+	.loc 9 210 7
 	eor	r3, r3, #1
 	uxtb	r3, r3
-	.loc 8 210 6
+	.loc 9 210 6
 	cmp	r3, #0
-	beq	.L139
-	.loc 8 211 4
+	beq	.L141
+	.loc 9 211 4
 	movs	r0, #3
-	ldr	r3, .L145+4
+	ldr	r3, .L147+4
 	blx	r3
 .LVL41:
-	.loc 8 212 4
+	.loc 9 212 4
 	movs	r0, #3
-	ldr	r3, .L145+8
+	ldr	r3, .L147+8
 	blx	r3
 .LVL42:
-	.loc 8 214 3
-	b	.L139
-.L121:
-	.loc 8 217 8
+	.loc 9 214 3
+	b	.L141
+.L123:
+	.loc 9 217 8
 	movs	r0, #4
-	ldr	r3, .L145
+	ldr	r3, .L147
 	blx	r3
 .LVL43:
 	mov	r3, r0
-	.loc 8 217 7
+	.loc 9 217 7
 	eor	r3, r3, #1
 	uxtb	r3, r3
-	.loc 8 217 6
+	.loc 9 217 6
 	cmp	r3, #0
-	beq	.L140
-	.loc 8 218 4
+	beq	.L142
+	.loc 9 218 4
 	movs	r0, #4
-	ldr	r3, .L145+4
+	ldr	r3, .L147+4
 	blx	r3
 .LVL44:
-	.loc 8 219 4
+	.loc 9 219 4
 	movs	r0, #4
-	ldr	r3, .L145+8
+	ldr	r3, .L147+8
 	blx	r3
 .LVL45:
-	.loc 8 221 3
-	b	.L140
-.L120:
-	.loc 8 224 8
+	.loc 9 221 3
+	b	.L142
+.L122:
+	.loc 9 224 8
 	movs	r0, #5
-	ldr	r3, .L145
+	ldr	r3, .L147
 	blx	r3
 .LVL46:
 	mov	r3, r0
-	.loc 8 224 7
+	.loc 9 224 7
 	eor	r3, r3, #1
 	uxtb	r3, r3
-	.loc 8 224 6
+	.loc 9 224 6
 	cmp	r3, #0
-	beq	.L141
-	.loc 8 225 4
+	beq	.L143
+	.loc 9 225 4
 	movs	r0, #5
-	ldr	r3, .L145+4
+	ldr	r3, .L147+4
 	blx	r3
 .LVL47:
-	.loc 8 226 4
+	.loc 9 226 4
 	movs	r0, #5
-	ldr	r3, .L145+8
+	ldr	r3, .L147+8
 	blx	r3
 .LVL48:
-	.loc 8 228 3
-	b	.L141
-.L119:
-	.loc 8 231 8
+	.loc 9 228 3
+	b	.L143
+.L121:
+	.loc 9 231 8
 	movs	r0, #6
-	ldr	r3, .L145
+	ldr	r3, .L147
 	blx	r3
 .LVL49:
 	mov	r3, r0
-	.loc 8 231 7
+	.loc 9 231 7
 	eor	r3, r3, #1
 	uxtb	r3, r3
-	.loc 8 231 6
+	.loc 9 231 6
 	cmp	r3, #0
-	beq	.L142
-	.loc 8 232 4
+	beq	.L144
+	.loc 9 232 4
 	movs	r0, #6
-	ldr	r3, .L145+4
+	ldr	r3, .L147+4
 	blx	r3
 .LVL50:
-	.loc 8 233 4
+	.loc 9 233 4
 	movs	r0, #6
-	ldr	r3, .L145+8
+	ldr	r3, .L147+8
 	blx	r3
 .LVL51:
-	.loc 8 235 3
-	b	.L142
-.L118:
-	.loc 8 238 8
+	.loc 9 235 3
+	b	.L144
+.L120:
+	.loc 9 238 8
 	movs	r0, #7
-	ldr	r3, .L145
+	ldr	r3, .L147
 	blx	r3
 .LVL52:
 	mov	r3, r0
-	.loc 8 238 7
+	.loc 9 238 7
 	eor	r3, r3, #1
 	uxtb	r3, r3
-	.loc 8 238 6
+	.loc 9 238 6
 	cmp	r3, #0
-	beq	.L143
-	.loc 8 239 4
+	beq	.L145
+	.loc 9 239 4
 	movs	r0, #7
-	ldr	r3, .L145+4
+	ldr	r3, .L147+4
 	blx	r3
 .LVL53:
-	.loc 8 240 4
+	.loc 9 240 4
 	movs	r0, #7
-	ldr	r3, .L145+8
+	ldr	r3, .L147+8
 	blx	r3
 .LVL54:
-	.loc 8 242 3
-	b	.L143
-.L117:
-	.loc 8 246 3
+	.loc 9 242 3
+	b	.L145
+.L119:
+	.loc 9 246 3
 	movs	r0, #0
-	ldr	r3, .L145+12
+	ldr	r3, .L147+12
 	blx	r3
 .LVL55:
-	.loc 8 247 3
-	b	.L127
-.L116:
-	.loc 8 252 3
+	.loc 9 247 3
+	b	.L129
+.L118:
+	.loc 9 252 3
 	movs	r0, #1
-	ldr	r3, .L145+12
+	ldr	r3, .L147+12
 	blx	r3
 .LVL56:
-	.loc 8 253 3
-	b	.L127
-.L135:
-	.loc 8 261 3
-	nop
-	b	.L144
-.L136:
-	.loc 8 193 3
-	nop
-	b	.L144
+	.loc 9 253 3
+	b	.L129
 .L137:
-	.loc 8 200 3
+	.loc 9 261 3
 	nop
-	b	.L144
+	b	.L146
 .L138:
-	.loc 8 207 3
+	.loc 9 193 3
 	nop
-	b	.L144
+	b	.L146
 .L139:
-	.loc 8 214 3
+	.loc 9 200 3
 	nop
-	b	.L144
+	b	.L146
 .L140:
-	.loc 8 221 3
+	.loc 9 207 3
 	nop
-	b	.L144
+	b	.L146
 .L141:
-	.loc 8 228 3
+	.loc 9 214 3
 	nop
-	b	.L144
+	b	.L146
 .L142:
-	.loc 8 235 3
+	.loc 9 221 3
 	nop
-	b	.L144
+	b	.L146
 .L143:
-	.loc 8 242 3
+	.loc 9 228 3
 	nop
-.L127:
+	b	.L146
 .L144:
-	.loc 8 263 1
+	.loc 9 235 3
+	nop
+	b	.L146
+.L145:
+	.loc 9 242 3
+	nop
+.L129:
+.L146:
+	.loc 9 263 1
 	nop
 	adds	r7, r7, #8
-.LCFI94:
+.LCFI106:
 	.cfi_def_cfa_offset 8
 	mov	sp, r7
-.LCFI95:
+.LCFI107:
 	.cfi_def_cfa_register 13
 	@ sp needed
 	pop	{r7, pc}
-.L146:
+.L148:
 	.align	2
-.L145:
+.L147:
 	.word	osc_is_ready
 	.word	osc_enable
 	.word	osc_wait_ready
@@ -1788,205 +1883,205 @@ usb_serial_number:
 	.type	phywhisperer_setup_pins, %function
 phywhisperer_setup_pins:
 .LFB190:
-	.file 9 "main.c"
-	.loc 9 18 1
+	.file 10 "main.c"
+	.loc 10 18 1
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 1, uses_anonymous_args = 0
 	push	{r7, lr}
-.LCFI96:
+.LCFI108:
 	.cfi_def_cfa_offset 8
 	.cfi_offset 7, -8
 	.cfi_offset 14, -4
 	add	r7, sp, #0
-.LCFI97:
+.LCFI109:
 	.cfi_def_cfa_register 7
-	.loc 9 19 5
-	ldr	r3, .L148
+	.loc 10 19 5
+	ldr	r3, .L150
 	blx	r3
 .LVL57:
-	.loc 9 23 5
-	ldr	r3, .L148+4
+	.loc 10 23 5
+	ldr	r3, .L150+4
 	blx	r3
 .LVL58:
-	.loc 9 26 5
+	.loc 10 26 5
 	movs	r0, #9
-	ldr	r3, .L148+8
+	ldr	r3, .L150+8
 	blx	r3
 .LVL59:
-	.loc 9 27 5
-	ldr	r1, .L148+12
+	.loc 10 27 5
+	ldr	r1, .L150+12
 	movs	r0, #41
-	ldr	r3, .L148+16
+	ldr	r3, .L150+16
 	blx	r3
 .LVL60:
-	.loc 9 28 5
-	ldr	r1, .L148+12
+	.loc 10 28 5
+	ldr	r1, .L150+12
 	movs	r0, #42
-	ldr	r3, .L148+16
+	ldr	r3, .L150+16
 	blx	r3
 .LVL61:
-	.loc 9 29 5
-	ldr	r1, .L148+12
+	.loc 10 29 5
+	ldr	r1, .L150+12
 	movs	r0, #43
-	ldr	r3, .L148+16
+	ldr	r3, .L150+16
 	blx	r3
 .LVL62:
-	.loc 9 30 5
-	ldr	r1, .L148+12
+	.loc 10 30 5
+	ldr	r1, .L150+12
 	movs	r0, #44
-	ldr	r3, .L148+16
+	ldr	r3, .L150+16
 	blx	r3
 .LVL63:
-	.loc 9 31 5
-	ldr	r1, .L148+12
+	.loc 10 31 5
+	ldr	r1, .L150+12
 	movs	r0, #45
-	ldr	r3, .L148+16
+	ldr	r3, .L150+16
 	blx	r3
 .LVL64:
-	.loc 9 32 5
-	ldr	r1, .L148+12
+	.loc 10 32 5
+	ldr	r1, .L150+12
 	movs	r0, #46
-	ldr	r3, .L148+16
+	ldr	r3, .L150+16
 	blx	r3
 .LVL65:
-	.loc 9 33 5
-	ldr	r1, .L148+12
+	.loc 10 33 5
+	ldr	r1, .L150+12
 	movs	r0, #47
-	ldr	r3, .L148+16
+	ldr	r3, .L150+16
 	blx	r3
 .LVL66:
-	.loc 9 34 5
-	ldr	r1, .L148+12
+	.loc 10 34 5
+	ldr	r1, .L150+12
 	movs	r0, #48
-	ldr	r3, .L148+16
+	ldr	r3, .L150+16
 	blx	r3
 .LVL67:
-	.loc 9 35 5
-	ldr	r1, .L148+12
+	.loc 10 35 5
+	ldr	r1, .L150+12
 	movs	r0, #51
-	ldr	r3, .L148+16
+	ldr	r3, .L150+16
 	blx	r3
 .LVL68:
-	.loc 9 36 5
-	ldr	r1, .L148+12
+	.loc 10 36 5
+	ldr	r1, .L150+12
 	movs	r0, #55
-	ldr	r3, .L148+16
+	ldr	r3, .L150+16
 	blx	r3
 .LVL69:
-	.loc 9 37 5
-	ldr	r1, .L148+12
+	.loc 10 37 5
+	ldr	r1, .L150+12
 	movs	r0, #52
-	ldr	r3, .L148+16
+	ldr	r3, .L150+16
 	blx	r3
 .LVL70:
-	.loc 9 39 5
+	.loc 10 39 5
 	mov	r2, #805306368
 	movw	r1, #447
-	ldr	r0, .L148+20
-	ldr	r3, .L148+24
+	ldr	r0, .L150+20
+	ldr	r3, .L150+24
 	blx	r3
 .LVL71:
-	.loc 9 40 5
+	.loc 10 40 5
 	movw	r1, #447
-	ldr	r0, .L148+20
-	ldr	r3, .L148+28
+	ldr	r0, .L150+20
+	ldr	r3, .L150+28
 	blx	r3
 .LVL72:
-	.loc 9 42 5
-	ldr	r1, .L148+32
+	.loc 10 42 5
+	ldr	r1, .L150+32
 	movs	r0, #39
-	ldr	r3, .L148+16
+	ldr	r3, .L150+16
 	blx	r3
 .LVL73:
-	.loc 9 43 5
-	ldr	r1, .L148+32
+	.loc 10 43 5
+	ldr	r1, .L150+32
 	movs	r0, #40
-	ldr	r3, .L148+16
+	ldr	r3, .L150+16
 	blx	r3
 .LVL74:
-	.loc 9 44 5
-	ldr	r1, .L148+32
+	.loc 10 44 5
+	ldr	r1, .L150+32
 	movs	r0, #32
-	ldr	r3, .L148+16
+	ldr	r3, .L150+16
 	blx	r3
 .LVL75:
-	.loc 9 45 5
-	ldr	r1, .L148+32
+	.loc 10 45 5
+	ldr	r1, .L150+32
 	movs	r0, #33
-	ldr	r3, .L148+16
+	ldr	r3, .L150+16
 	blx	r3
 .LVL76:
-	.loc 9 46 5
-	ldr	r1, .L148+32
+	.loc 10 46 5
+	ldr	r1, .L150+32
 	movs	r0, #34
-	ldr	r3, .L148+16
+	ldr	r3, .L150+16
 	blx	r3
 .LVL77:
-	.loc 9 47 5
-	ldr	r1, .L148+32
+	.loc 10 47 5
+	ldr	r1, .L150+32
 	movs	r0, #35
-	ldr	r3, .L148+16
+	ldr	r3, .L150+16
 	blx	r3
 .LVL78:
-	.loc 9 48 5
-	ldr	r1, .L148+32
+	.loc 10 48 5
+	ldr	r1, .L150+32
 	movs	r0, #36
-	ldr	r3, .L148+16
+	ldr	r3, .L150+16
 	blx	r3
 .LVL79:
-	.loc 9 49 5
-	ldr	r1, .L148+32
+	.loc 10 49 5
+	ldr	r1, .L150+32
 	movs	r0, #37
-	ldr	r3, .L148+16
+	ldr	r3, .L150+16
 	blx	r3
 .LVL80:
-	.loc 9 51 5
+	.loc 10 51 5
 	mov	r1, #805306368
 	movs	r0, #38
-	ldr	r3, .L148+16
+	ldr	r3, .L150+16
 	blx	r3
 .LVL81:
-	.loc 9 52 5
+	.loc 10 52 5
 	mov	r1, #939524096
 	movs	r0, #49
-	ldr	r3, .L148+16
+	ldr	r3, .L150+16
 	blx	r3
 .LVL82:
-	.loc 9 54 5
+	.loc 10 54 5
 	movs	r2, #0
 	movs	r1, #0
-	ldr	r0, .L148+36
-	ldr	r3, .L148+40
+	ldr	r0, .L150+36
+	ldr	r3, .L150+40
 	blx	r3
 .LVL83:
-	.loc 9 58 5
+	.loc 10 58 5
 	movs	r2, #0
 	movs	r1, #0
-	ldr	r0, .L148+36
-	ldr	r3, .L148+44
+	ldr	r0, .L150+36
+	ldr	r3, .L150+44
 	blx	r3
 .LVL84:
-	.loc 9 62 5
+	.loc 10 62 5
 	mov	r2, #65537
 	movs	r1, #0
-	ldr	r0, .L148+36
-	ldr	r3, .L148+48
+	ldr	r0, .L150+36
+	ldr	r3, .L150+48
 	blx	r3
 .LVL85:
-	.loc 9 64 5
+	.loc 10 64 5
 	movs	r2, #3
 	movs	r1, #0
-	ldr	r0, .L148+36
-	ldr	r3, .L148+52
+	ldr	r0, .L150+36
+	ldr	r3, .L150+52
 	blx	r3
 .LVL86:
-	.loc 9 66 1
+	.loc 10 66 1
 	nop
 	pop	{r7, pc}
-.L149:
+.L151:
 	.align	2
-.L148:
+.L150:
 	.word	board_init
 	.word	fpga_program_init
 	.word	pmc_enable_periph_clk
@@ -2014,58 +2109,58 @@ phywhisperer_setup_pins:
 	.type	hacky_delay, %function
 hacky_delay:
 .LFB191:
-	.loc 9 69 1
+	.loc 10 69 1
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 8
 	@ frame_needed = 1, uses_anonymous_args = 0
 	@ link register save eliminated.
 	push	{r7}
-.LCFI98:
+.LCFI110:
 	.cfi_def_cfa_offset 4
 	.cfi_offset 7, -4
 	sub	sp, sp, #12
-.LCFI99:
+.LCFI111:
 	.cfi_def_cfa_offset 16
 	add	r7, sp, #0
-.LCFI100:
+.LCFI112:
 	.cfi_def_cfa_register 7
 .LBB23:
-	.loc 9 70 28
+	.loc 10 70 28
 	movs	r3, #0
 	str	r3, [r7, #4]
-	.loc 9 70 5
-	b	.L151
-.L152:
-	.loc 9 70 48 discriminator 3
+	.loc 10 70 5
+	b	.L153
+.L154:
+	.loc 10 70 48 discriminator 3
 	ldr	r3, [r7, #4]
 	adds	r3, r3, #1
 	str	r3, [r7, #4]
-.L151:
-	.loc 9 70 37 discriminator 1
+.L153:
+	.loc 10 70 37 discriminator 1
 	ldr	r3, [r7, #4]
-	.loc 9 70 5 discriminator 1
-	ldr	r2, .L153
+	.loc 10 70 5 discriminator 1
+	ldr	r2, .L155
 	cmp	r3, r2
-	bls	.L152
+	bls	.L154
 .LBE23:
-	.loc 9 71 1
+	.loc 10 71 1
 	nop
 	nop
 	adds	r7, r7, #12
-.LCFI101:
+.LCFI113:
 	.cfi_def_cfa_offset 4
 	mov	sp, r7
-.LCFI102:
+.LCFI114:
 	.cfi_def_cfa_register 13
 	@ sp needed
 	pop	{r7}
-.LCFI103:
+.LCFI115:
 	.cfi_restore 7
 	.cfi_def_cfa_offset 0
 	bx	lr
-.L154:
+.L156:
 	.align	2
-.L153:
+.L155:
 	.word	249999
 	.cfi_endproc
 .LFE191:
@@ -2079,73 +2174,73 @@ hacky_delay:
 	.type	genclk_enable_config, %function
 genclk_enable_config:
 .LFB192:
-	.loc 9 74 1
+	.loc 10 74 1
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 24
 	@ frame_needed = 1, uses_anonymous_args = 0
 	push	{r7, lr}
-.LCFI104:
+.LCFI116:
 	.cfi_def_cfa_offset 8
 	.cfi_offset 7, -8
 	.cfi_offset 14, -4
 	sub	sp, sp, #24
-.LCFI105:
+.LCFI117:
 	.cfi_def_cfa_offset 32
 	add	r7, sp, #0
-.LCFI106:
+.LCFI118:
 	.cfi_def_cfa_register 7
 	str	r0, [r7, #12]
 	mov	r3, r1
 	str	r2, [r7, #4]
 	strb	r3, [r7, #11]
-	.loc 9 77 5
+	.loc 10 77 5
 	add	r3, r7, #20
 	ldr	r1, [r7, #12]
 	mov	r0, r3
-	ldr	r3, .L156
+	ldr	r3, .L158
 	blx	r3
 .LVL87:
-	.loc 9 78 5
+	.loc 10 78 5
 	ldrb	r3, [r7, #11]	@ zero_extendqisi2
 	mov	r0, r3
-	ldr	r3, .L156+4
+	ldr	r3, .L158+4
 	blx	r3
 .LVL88:
-	.loc 9 79 5
+	.loc 10 79 5
 	ldrb	r2, [r7, #11]	@ zero_extendqisi2
 	add	r3, r7, #20
 	mov	r1, r2
 	mov	r0, r3
-	ldr	r3, .L156+8
+	ldr	r3, .L158+8
 	blx	r3
 .LVL89:
-	.loc 9 80 5
+	.loc 10 80 5
 	add	r3, r7, #20
 	ldr	r1, [r7, #4]
 	mov	r0, r3
-	ldr	r3, .L156+12
+	ldr	r3, .L158+12
 	blx	r3
 .LVL90:
-	.loc 9 81 5
+	.loc 10 81 5
 	add	r3, r7, #20
 	ldr	r1, [r7, #12]
 	mov	r0, r3
-	ldr	r3, .L156+16
+	ldr	r3, .L158+16
 	blx	r3
 .LVL91:
-	.loc 9 82 1
+	.loc 10 82 1
 	nop
 	adds	r7, r7, #24
-.LCFI107:
+.LCFI119:
 	.cfi_def_cfa_offset 8
 	mov	sp, r7
-.LCFI108:
+.LCFI120:
 	.cfi_def_cfa_register 13
 	@ sp needed
 	pop	{r7, pc}
-.L157:
+.L159:
 	.align	2
-.L156:
+.L158:
 	.word	genclk_config_defaults
 	.word	genclk_enable_source
 	.word	genclk_config_set_source
@@ -2154,6 +2249,195 @@ genclk_enable_config:
 	.cfi_endproc
 .LFE192:
 	.size	genclk_enable_config, .-genclk_enable_config
+	.section	.text.enable_spi,"ax",%progbits
+	.align	1
+	.global	enable_spi
+	.syntax unified
+	.thumb
+	.thumb_func
+	.fpu softvfp
+	.type	enable_spi, %function
+enable_spi:
+.LFB193:
+	.loc 10 89 1
+	.cfi_startproc
+	@ args = 0, pretend = 0, frame = 16
+	@ frame_needed = 1, uses_anonymous_args = 0
+	push	{r7, lr}
+.LCFI121:
+	.cfi_def_cfa_offset 8
+	.cfi_offset 7, -8
+	.cfi_offset 14, -4
+	sub	sp, sp, #16
+.LCFI122:
+	.cfi_def_cfa_offset 24
+	add	r7, sp, #0
+.LCFI123:
+	.cfi_def_cfa_register 7
+	.loc 10 90 2
+	mov	r1, #134217728
+	movs	r0, #13
+	ldr	r3, .L165
+	blx	r3
+.LVL92:
+	.loc 10 91 2
+	mov	r1, #134217728
+	movs	r0, #14
+	ldr	r3, .L165
+	blx	r3
+.LVL93:
+	.loc 10 92 5
+	mov	r1, #134217728
+	movs	r0, #15
+	ldr	r3, .L165
+	blx	r3
+.LVL94:
+	.loc 10 93 5
+	mov	r1, #805306368
+	movs	r0, #3
+	ldr	r3, .L165
+	blx	r3
+.LVL95:
+	.loc 10 94 5
+	movs	r0, #3
+	ldr	r3, .L165+4
+	blx	r3
+.LVL96:
+	.loc 10 95 5
+	mov	r1, #805306368
+	movs	r0, #4
+	ldr	r3, .L165
+	blx	r3
+.LVL97:
+	.loc 10 97 5
+	movs	r0, #4
+	ldr	r3, .L165+4
+	blx	r3
+.LVL98:
+.LBB24:
+	.loc 10 98 28
+	movs	r3, #0
+	str	r3, [r7, #8]
+	.loc 10 98 5
+	b	.L161
+.L162:
+	.loc 10 98 45 discriminator 3
+	ldr	r3, [r7, #8]
+	adds	r3, r3, #1
+	str	r3, [r7, #8]
+.L161:
+	.loc 10 98 37 discriminator 1
+	ldr	r3, [r7, #8]
+	.loc 10 98 5 discriminator 1
+	cmp	r3, #500
+	bcc	.L162
+.LBE24:
+	.loc 10 99 5
+	movs	r0, #4
+	ldr	r3, .L165+8
+	blx	r3
+.LVL99:
+.LBB25:
+	.loc 10 100 28
+	movs	r3, #0
+	str	r3, [r7, #4]
+	.loc 10 100 5
+	b	.L163
+.L164:
+	.loc 10 100 45 discriminator 3
+	ldr	r3, [r7, #4]
+	adds	r3, r3, #1
+	str	r3, [r7, #4]
+.L163:
+	.loc 10 100 37 discriminator 1
+	ldr	r3, [r7, #4]
+	.loc 10 100 5 discriminator 1
+	cmp	r3, #500
+	bcc	.L164
+.LBE25:
+	.loc 10 103 5
+	ldr	r0, .L165+12
+	ldr	r3, .L165+16
+	blx	r3
+.LVL100:
+	.loc 10 104 19
+	ldr	r1, .L165+20
+	ldr	r0, .L165+24
+	ldr	r3, .L165+28
+	blx	r3
+.LVL101:
+	mov	r3, r0
+	strh	r3, [r7, #14]	@ movhi
+	.loc 10 105 5
+	ldrh	r3, [r7, #14]	@ movhi
+	uxtb	r3, r3
+	mov	r2, r3
+	movs	r1, #0
+	ldr	r0, .L165+12
+	ldr	r3, .L165+32
+	blx	r3
+.LVL102:
+	.loc 10 107 5
+	ldr	r0, .L165+12
+	ldr	r3, .L165+36
+	blx	r3
+.LVL103:
+	.loc 10 108 5
+	movs	r2, #0
+	movs	r1, #0
+	ldr	r0, .L165+12
+	ldr	r3, .L165+40
+	blx	r3
+.LVL104:
+	.loc 10 109 5
+	movs	r2, #8
+	movs	r1, #0
+	ldr	r0, .L165+12
+	ldr	r3, .L165+44
+	blx	r3
+.LVL105:
+	.loc 10 110 5
+	movs	r2, #1
+	movs	r1, #0
+	ldr	r0, .L165+12
+	ldr	r3, .L165+48
+	blx	r3
+.LVL106:
+	.loc 10 112 5
+	ldr	r0, .L165+12
+	ldr	r3, .L165+52
+	blx	r3
+.LVL107:
+	.loc 10 113 1
+	nop
+	adds	r7, r7, #16
+.LCFI124:
+	.cfi_def_cfa_offset 8
+	mov	sp, r7
+.LCFI125:
+	.cfi_def_cfa_register 13
+	@ sp needed
+	pop	{r7, pc}
+.L166:
+	.align	2
+.L165:
+	.word	pio_configure_pin
+	.word	pio_set_pin_high
+	.word	pio_set_pin_low
+	.word	1073774592
+	.word	spi_enable_clock
+	.word	96000000
+	.word	960000
+	.word	spi_calc_baudrate_div
+	.word	spi_set_baudrate_div
+	.word	spi_set_master_mode
+	.word	spi_set_clock_polarity
+	.word	spi_set_bits_per_transfer
+	.word	spi_set_clock_phase
+	.word	spi_enable
+	.cfi_endproc
+.LFE193:
+	.size	enable_spi, .-enable_spi
 	.section	.rodata
 	.align	2
 .LC0:
@@ -2167,134 +2451,138 @@ genclk_enable_config:
 	.fpu softvfp
 	.type	main, %function
 main:
-.LFB193:
-	.loc 9 86 1
+.LFB194:
+	.loc 10 117 1
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 24
 	@ frame_needed = 1, uses_anonymous_args = 0
 	push	{r7, lr}
-.LCFI109:
+.LCFI126:
 	.cfi_def_cfa_offset 8
 	.cfi_offset 7, -8
 	.cfi_offset 14, -4
 	sub	sp, sp, #24
-.LCFI110:
+.LCFI127:
 	.cfi_def_cfa_offset 32
 	add	r7, sp, #0
-.LCFI111:
+.LCFI128:
 	.cfi_def_cfa_register 7
-	.loc 9 90 5
+	.loc 10 121 5
 	adds	r3, r7, #4
 	movs	r1, #16
 	mov	r0, r3
-	ldr	r3, .L162
+	ldr	r3, .L171
 	blx	r3
-.LVL92:
-	.loc 9 93 5
-	ldr	r3, .L162+4
+.LVL108:
+	.loc 10 124 5
+	ldr	r3, .L171+4
 	movs	r2, #1
 	strb	r2, [r3]
-.LBB24:
-.LBB25:
-	.loc 6 354 3
+.LBB26:
+.LBB27:
+	.loc 7 354 3
 	.syntax unified
 @ 354 ".././hal/sam3u1c/inc/core_cmInstr.h" 1
 	dmb
 @ 0 "" 2
-	.loc 6 355 1
-	.thumb
-	.syntax unified
-	nop
-.LBE25:
-.LBE24:
-.LBB26:
-.LBB27:
-	.loc 5 317 3
-	.syntax unified
-@ 317 ".././hal/sam3u1c/inc/core_cmFunc.h" 1
-	cpsie i
-@ 0 "" 2
-	.loc 5 318 1
+	.loc 7 355 1
 	.thumb
 	.syntax unified
 	nop
 .LBE27:
 .LBE26:
-	.loc 9 96 5
-	ldr	r3, .L162+8
-	blx	r3
-.LVL93:
-	.loc 9 98 5
-	ldr	r3, .L162+12
-	blx	r3
-.LVL94:
-	.loc 9 99 5
-	ldr	r3, .L162+16
-	blx	r3
-.LVL95:
 .LBB28:
-	.loc 9 105 19
+.LBB29:
+	.loc 6 317 3
+	.syntax unified
+@ 317 ".././hal/sam3u1c/inc/core_cmFunc.h" 1
+	cpsie i
+@ 0 "" 2
+	.loc 6 318 1
+	.thumb
+	.syntax unified
+	nop
+.LBE29:
+.LBE28:
+	.loc 10 127 5
+	ldr	r3, .L171+8
+	blx	r3
+.LVL109:
+	.loc 10 129 5
+	ldr	r3, .L171+12
+	blx	r3
+.LVL110:
+	.loc 10 130 5
+	ldr	r3, .L171+16
+	blx	r3
+.LVL111:
+.LBB30:
+	.loc 10 136 19
 	movs	r3, #0
 	str	r3, [r7, #20]
-	.loc 9 105 2
-	b	.L159
-.L160:
-	.loc 9 106 31 discriminator 3
+	.loc 10 136 2
+	b	.L168
+.L169:
+	.loc 10 137 31 discriminator 3
 	ldr	r3, [r7, #20]
 	lsls	r3, r3, #3
-	.loc 9 106 3 discriminator 3
-	ldr	r2, .L162+20
+	.loc 10 137 3 discriminator 3
+	ldr	r2, .L171+20
 	adds	r0, r3, r2
-	.loc 9 106 71 discriminator 3
+	.loc 10 137 71 discriminator 3
 	ldr	r3, [r7, #20]
 	lsls	r3, r3, #2
 	add	r2, r7, #24
 	add	r3, r3, r2
 	ldr	r3, [r3, #-20]
-	.loc 9 106 3 discriminator 3
+	.loc 10 137 3 discriminator 3
 	mov	r2, r3
-	ldr	r1, .L162+24
-	ldr	r3, .L162+28
+	ldr	r1, .L171+24
+	ldr	r3, .L171+28
 	blx	r3
-.LVL96:
-	.loc 9 105 34 discriminator 3
+.LVL112:
+	.loc 10 136 34 discriminator 3
 	ldr	r3, [r7, #20]
 	adds	r3, r3, #1
 	str	r3, [r7, #20]
-.L159:
-	.loc 9 105 2 discriminator 1
+.L168:
+	.loc 10 136 2 discriminator 1
 	ldr	r3, [r7, #20]
 	cmp	r3, #3
-	bls	.L160
-.LBE28:
-	.loc 9 108 24
-	ldr	r3, .L162+20
+	bls	.L169
+.LBE30:
+	.loc 10 139 24
+	ldr	r3, .L171+20
 	movs	r2, #0
 	strb	r2, [r3, #32]
-	.loc 9 110 5
+	.loc 10 141 5
 	movs	r2, #0
 	movs	r1, #10
 	movs	r0, #1
-	ldr	r3, .L162+32
+	ldr	r3, .L171+32
 	blx	r3
-.LVL97:
-	.loc 9 111 5
-	ldr	r3, .L162+36
+.LVL113:
+	.loc 10 142 5
+	ldr	r3, .L171+36
 	blx	r3
-.LVL98:
-	.loc 9 113 5
-	ldr	r3, .L162+40
+.LVL114:
+	.loc 10 143 5
+	ldr	r3, .L171+40
 	blx	r3
-.LVL99:
-.L161:
-	.loc 9 115 9 discriminator 1
-	ldr	r3, .L162+44
+.LVL115:
+	.loc 10 145 5
+	ldr	r3, .L171+44
 	blx	r3
-.LVL100:
-	b	.L161
-.L163:
+.LVL116:
+.L170:
+	.loc 10 147 9 discriminator 1
+	ldr	r3, .L171+48
+	blx	r3
+.LVL117:
+	b	.L170
+.L172:
 	.align	2
-.L162:
+.L171:
 	.word	flash_read_unique_id
 	.word	g_interrupt_enabled
 	.word	sleepmgr_init
@@ -2304,61 +2592,63 @@ main:
 	.word	.LC0
 	.word	sprintf
 	.word	genclk_enable_config
+	.word	enable_spi
 	.word	udc_start
 	.word	ui_init
 	.word	sleepmgr_enter_sleep
 	.cfi_endproc
-.LFE193:
+.LFE194:
 	.size	main, .-main
 	.text
 .Letext0:
-	.file 10 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\machine\\_default_types.h"
-	.file 11 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_stdint.h"
-	.file 12 ".././hal/sam3u1c/inc/sam3u1c.h"
-	.file 13 ".././hal/sam3u1c/inc/core_cm3.h"
-	.file 14 ".././hal/sam3u1c/inc/system_sam3u.h"
-	.file 15 ".././hal/sam3u1c/inc/component/component_pio.h"
-	.file 16 ".././hal/sam3u1c/inc/component/component_pmc.h"
-	.file 17 ".././hal/sam3u1c/inc/component/component_smc.h"
-	.file 18 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\lib\\gcc\\arm-none-eabi\\9.3.1\\include\\stddef.h"
-	.file 19 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_types.h"
-	.file 20 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\reent.h"
-	.file 21 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\lock.h"
-	.file 22 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\stdlib.h"
-	.file 23 ".././hal/sam3u1c/inc/interrupt/interrupt_sam_nvic.h"
-	.file 24 ".././hal/sam3u1c/inc/compiler.h"
-	.file 25 ".././hal/sam3u1c/inc/pio.h"
-	.file 26 "./conf_usb.h"
-	.file 27 ".././hal/sam3u1c/inc/usb_protocol.h"
-	.file 28 ".././hal/sam3u1c/inc/udi.h"
-	.file 29 ".././hal/sam3u1c/inc/udc_desc.h"
-	.file 30 ".././hal/sam3u1c/inc/udd.h"
-	.file 31 ".././hal/sam3u1c/inc/udi_vendor.h"
-	.file 32 ".././hal/sam3u1c/inc/stdio_serial.h"
-	.file 33 ".././hal/sam3u1c/inc/tasks.h"
-	.file 34 "usb_xmem.h"
-	.file 35 "fpga_program.h"
-	.file 36 ".././hal/sam3u1c/inc/usb.h"
-	.file 37 ".././hal/sam3u1c/inc/flash_efc.h"
-	.file 38 ".././hal/sam3u1c/inc/sam3u/sysclk.h"
-	.file 39 ".././hal/sam3u1c/inc/udc.h"
-	.file 40 ".././hal/sam3u1c/inc/ui.h"
-	.file 41 ".././hal/sam3u1c/inc/board.h"
-	.file 42 ".././hal/sam3u1c/inc/pmc.h"
-	.file 43 ".././hal/sam3u1c/inc/smc.h"
-	.file 44 ".././hal/sam3u1c/inc/sleep.h"
-	.file 45 "<built-in>"
+	.file 11 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\machine\\_default_types.h"
+	.file 12 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_stdint.h"
+	.file 13 ".././hal/sam3u1c/inc/sam3u1c.h"
+	.file 14 ".././hal/sam3u1c/inc/core_cm3.h"
+	.file 15 ".././hal/sam3u1c/inc/system_sam3u.h"
+	.file 16 ".././hal/sam3u1c/inc/component/component_pio.h"
+	.file 17 ".././hal/sam3u1c/inc/component/component_pmc.h"
+	.file 18 ".././hal/sam3u1c/inc/component/component_smc.h"
+	.file 19 ".././hal/sam3u1c/inc/component/component_spi.h"
+	.file 20 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\lib\\gcc\\arm-none-eabi\\9.3.1\\include\\stddef.h"
+	.file 21 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_types.h"
+	.file 22 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\reent.h"
+	.file 23 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\lock.h"
+	.file 24 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\stdlib.h"
+	.file 25 ".././hal/sam3u1c/inc/interrupt/interrupt_sam_nvic.h"
+	.file 26 ".././hal/sam3u1c/inc/compiler.h"
+	.file 27 ".././hal/sam3u1c/inc/pio.h"
+	.file 28 "./conf_usb.h"
+	.file 29 ".././hal/sam3u1c/inc/usb_protocol.h"
+	.file 30 ".././hal/sam3u1c/inc/udi.h"
+	.file 31 ".././hal/sam3u1c/inc/udc_desc.h"
+	.file 32 ".././hal/sam3u1c/inc/udd.h"
+	.file 33 ".././hal/sam3u1c/inc/udi_vendor.h"
+	.file 34 ".././hal/sam3u1c/inc/stdio_serial.h"
+	.file 35 ".././hal/sam3u1c/inc/tasks.h"
+	.file 36 "usb_xmem.h"
+	.file 37 "fpga_program.h"
+	.file 38 ".././hal/sam3u1c/inc/usb.h"
+	.file 39 ".././hal/sam3u1c/inc/flash_efc.h"
+	.file 40 ".././hal/sam3u1c/inc/sam3u/sysclk.h"
+	.file 41 ".././hal/sam3u1c/inc/udc.h"
+	.file 42 ".././hal/sam3u1c/inc/ui.h"
+	.file 43 ".././hal/sam3u1c/inc/board.h"
+	.file 44 ".././hal/sam3u1c/inc/pmc.h"
+	.file 45 ".././hal/sam3u1c/inc/smc.h"
+	.file 46 ".././hal/sam3u1c/inc/sleep.h"
+	.file 47 "<built-in>"
 	.section	.debug_info,"",%progbits
 .Ldebug_info0:
-	.4byte	0x2575
+	.4byte	0x2872
 	.2byte	0x2
 	.4byte	.Ldebug_abbrev0
 	.byte	0x4
 	.uleb128 0x1
-	.4byte	.LASF9448
+	.4byte	.LASF9475
 	.byte	0xc
-	.4byte	.LASF9449
-	.4byte	.LASF9450
+	.4byte	.LASF9476
+	.4byte	.LASF9477
 	.4byte	.Ldebug_ranges0+0
 	.4byte	0
 	.4byte	0
@@ -2371,1442 +2661,1606 @@ main:
 	.uleb128 0x3
 	.byte	0x4
 	.byte	0x7
-	.4byte	.LASF9016
+	.4byte	.LASF9018
 	.uleb128 0x3
 	.byte	0x1
 	.byte	0x6
-	.4byte	.LASF9017
+	.4byte	.LASF9019
 	.uleb128 0x4
-	.4byte	.LASF9020
-	.byte	0xa
+	.4byte	.LASF9021
+	.byte	0xb
 	.byte	0x2b
 	.byte	0x18
 	.4byte	0x4e
 	.uleb128 0x3
 	.byte	0x1
 	.byte	0x8
-	.4byte	.LASF9018
+	.4byte	.LASF9020
+	.uleb128 0x4
+	.4byte	.LASF9022
+	.byte	0xb
+	.byte	0x37
+	.byte	0x18
+	.4byte	0x61
 	.uleb128 0x3
 	.byte	0x2
 	.byte	0x5
-	.4byte	.LASF9019
+	.4byte	.LASF9023
 	.uleb128 0x4
-	.4byte	.LASF9021
-	.byte	0xa
+	.4byte	.LASF9024
+	.byte	0xb
 	.byte	0x39
 	.byte	0x19
-	.4byte	0x68
+	.4byte	0x74
 	.uleb128 0x3
 	.byte	0x2
 	.byte	0x7
-	.4byte	.LASF9022
+	.4byte	.LASF9025
 	.uleb128 0x4
-	.4byte	.LASF9023
-	.byte	0xa
+	.4byte	.LASF9026
+	.byte	0xb
 	.byte	0x4d
 	.byte	0x18
-	.4byte	0x7b
+	.4byte	0x87
 	.uleb128 0x3
 	.byte	0x4
-	.byte	0x5
-	.4byte	.LASF9024
-	.uleb128 0x4
-	.4byte	.LASF9025
-	.byte	0xa
-	.byte	0x4f
-	.byte	0x19
-	.4byte	0x8e
-	.uleb128 0x3
-	.byte	0x4
-	.byte	0x7
-	.4byte	.LASF9026
-	.uleb128 0x3
-	.byte	0x8
 	.byte	0x5
 	.4byte	.LASF9027
+	.uleb128 0x4
+	.4byte	.LASF9028
+	.byte	0xb
+	.byte	0x4f
+	.byte	0x19
+	.4byte	0x9a
+	.uleb128 0x3
+	.byte	0x4
+	.byte	0x7
+	.4byte	.LASF9029
+	.uleb128 0x3
+	.byte	0x8
+	.byte	0x5
+	.4byte	.LASF9030
 	.uleb128 0x3
 	.byte	0x8
 	.byte	0x7
-	.4byte	.LASF9028
+	.4byte	.LASF9031
 	.uleb128 0x4
-	.4byte	.LASF9029
-	.byte	0xb
+	.4byte	.LASF9032
+	.byte	0xc
 	.byte	0x18
 	.byte	0x13
 	.4byte	0x42
 	.uleb128 0x5
-	.4byte	0xa3
-	.uleb128 0x4
-	.4byte	.LASF9030
-	.byte	0xb
-	.byte	0x24
-	.byte	0x14
-	.4byte	0x5c
-	.uleb128 0x4
-	.4byte	.LASF9031
-	.byte	0xb
-	.byte	0x2c
-	.byte	0x13
-	.4byte	0x6f
-	.uleb128 0x5
-	.4byte	0xc0
-	.uleb128 0x4
-	.4byte	.LASF9032
-	.byte	0xb
-	.byte	0x30
-	.byte	0x14
-	.4byte	0x82
-	.uleb128 0x6
-	.4byte	0xd1
-	.uleb128 0x5
-	.4byte	0xdd
-	.uleb128 0x5
-	.4byte	0xd1
+	.4byte	0xaf
 	.uleb128 0x4
 	.4byte	.LASF9033
 	.byte	0xc
-	.byte	0x3d
-	.byte	0x21
-	.4byte	0xe2
+	.byte	0x20
+	.byte	0x13
+	.4byte	0x55
 	.uleb128 0x4
 	.4byte	.LASF9034
 	.byte	0xc
-	.byte	0x41
-	.byte	0x21
-	.4byte	0xe7
+	.byte	0x24
+	.byte	0x14
+	.4byte	0x68
 	.uleb128 0x4
 	.4byte	.LASF9035
 	.byte	0xc
+	.byte	0x2c
+	.byte	0x13
+	.4byte	0x7b
+	.uleb128 0x5
+	.4byte	0xd8
+	.uleb128 0x4
+	.4byte	.LASF9036
+	.byte	0xc
+	.byte	0x30
+	.byte	0x14
+	.4byte	0x8e
+	.uleb128 0x6
+	.4byte	0xe9
+	.uleb128 0x5
+	.4byte	0xf5
+	.uleb128 0x5
+	.4byte	0xe9
+	.uleb128 0x4
+	.4byte	.LASF9037
+	.byte	0xd
+	.byte	0x3d
+	.byte	0x21
+	.4byte	0xfa
+	.uleb128 0x4
+	.4byte	.LASF9038
+	.byte	0xd
+	.byte	0x41
+	.byte	0x21
+	.4byte	0xff
+	.uleb128 0x4
+	.4byte	.LASF9039
+	.byte	0xd
 	.byte	0x42
 	.byte	0x21
-	.4byte	0xe7
+	.4byte	0xff
 	.uleb128 0x7
 	.byte	0x4
 	.uleb128 0x8
-	.4byte	.LASF9036
-	.byte	0xd
+	.4byte	.LASF9040
+	.byte	0xe
 	.2byte	0x5c9
 	.byte	0x19
-	.4byte	0xcc
+	.4byte	0xe4
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x9
-	.4byte	.LASF9037
-	.byte	0xe
+	.4byte	.LASF9041
+	.byte	0xf
 	.byte	0x3b
 	.byte	0x11
-	.4byte	0xd1
+	.4byte	0xe9
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xa
-	.4byte	0xec
-	.4byte	0x13f
+	.4byte	0x104
+	.4byte	0x157
 	.uleb128 0xb
 	.4byte	0x34
 	.byte	0x4
 	.byte	0
 	.uleb128 0x6
-	.4byte	0x12f
+	.4byte	0x147
 	.uleb128 0x5
-	.4byte	0x13f
+	.4byte	0x157
 	.uleb128 0xa
-	.4byte	0xec
-	.4byte	0x159
+	.4byte	0x104
+	.4byte	0x171
 	.uleb128 0xb
 	.4byte	0x34
 	.byte	0x3
 	.byte	0
 	.uleb128 0x6
-	.4byte	0x149
+	.4byte	0x161
 	.uleb128 0x5
-	.4byte	0x159
+	.4byte	0x171
+	.uleb128 0x5
+	.4byte	0x171
 	.uleb128 0xa
-	.4byte	0xec
-	.4byte	0x173
+	.4byte	0x104
+	.4byte	0x190
 	.uleb128 0xb
 	.4byte	0x34
 	.byte	0
 	.byte	0
 	.uleb128 0x6
-	.4byte	0x163
+	.4byte	0x180
 	.uleb128 0x5
-	.4byte	0x173
+	.4byte	0x190
 	.uleb128 0x5
-	.4byte	0x173
+	.4byte	0x190
 	.uleb128 0x5
-	.4byte	0x173
+	.4byte	0x190
 	.uleb128 0x5
-	.4byte	0x173
+	.4byte	0x190
 	.uleb128 0x5
-	.4byte	0x173
+	.4byte	0x190
 	.uleb128 0x5
-	.4byte	0x173
+	.4byte	0x190
 	.uleb128 0x5
-	.4byte	0x173
+	.4byte	0x190
 	.uleb128 0x5
-	.4byte	0x173
+	.4byte	0x190
 	.uleb128 0x5
-	.4byte	0x173
+	.4byte	0x190
 	.uleb128 0x5
-	.4byte	0x173
+	.4byte	0x190
 	.uleb128 0x5
-	.4byte	0x173
+	.4byte	0x190
+	.uleb128 0xa
+	.4byte	0x11c
+	.4byte	0x1dc
+	.uleb128 0xb
+	.4byte	0x34
+	.byte	0x3
+	.byte	0
+	.uleb128 0x5
+	.4byte	0x1cc
 	.uleb128 0xc
 	.byte	0xec
-	.byte	0xf
+	.byte	0x10
 	.byte	0x35
 	.byte	0x9
-	.4byte	0x4fb
+	.4byte	0x52d
 	.uleb128 0xd
-	.4byte	.LASF9038
-	.byte	0xf
+	.4byte	.LASF9042
+	.byte	0x10
 	.byte	0x36
 	.byte	0x9
-	.4byte	0xf8
+	.4byte	0x110
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0xd
-	.4byte	.LASF9039
-	.byte	0xf
+	.4byte	.LASF9043
+	.byte	0x10
 	.byte	0x37
 	.byte	0x9
-	.4byte	0xf8
+	.4byte	0x110
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0xd
-	.4byte	.LASF9040
-	.byte	0xf
+	.4byte	.LASF9044
+	.byte	0x10
 	.byte	0x38
 	.byte	0x9
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0xd
-	.4byte	.LASF9041
-	.byte	0xf
+	.4byte	.LASF9045
+	.byte	0x10
 	.byte	0x39
 	.byte	0x9
-	.4byte	0x178
+	.4byte	0x195
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0xc
 	.uleb128 0xd
-	.4byte	.LASF9042
-	.byte	0xf
+	.4byte	.LASF9046
+	.byte	0x10
 	.byte	0x3a
 	.byte	0x9
-	.4byte	0xf8
+	.4byte	0x110
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x10
 	.uleb128 0xd
-	.4byte	.LASF9043
-	.byte	0xf
+	.4byte	.LASF9047
+	.byte	0x10
 	.byte	0x3b
 	.byte	0x9
-	.4byte	0xf8
+	.4byte	0x110
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x14
 	.uleb128 0xd
-	.4byte	.LASF9044
-	.byte	0xf
+	.4byte	.LASF9048
+	.byte	0x10
 	.byte	0x3c
 	.byte	0x9
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x18
 	.uleb128 0xd
-	.4byte	.LASF9045
-	.byte	0xf
+	.4byte	.LASF9049
+	.byte	0x10
 	.byte	0x3d
 	.byte	0x9
-	.4byte	0x17d
+	.4byte	0x19a
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x1c
 	.uleb128 0xd
-	.4byte	.LASF9046
-	.byte	0xf
+	.4byte	.LASF9050
+	.byte	0x10
 	.byte	0x3e
 	.byte	0x9
-	.4byte	0xf8
+	.4byte	0x110
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x20
 	.uleb128 0xd
-	.4byte	.LASF9047
-	.byte	0xf
+	.4byte	.LASF9051
+	.byte	0x10
 	.byte	0x3f
 	.byte	0x9
-	.4byte	0xf8
+	.4byte	0x110
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x24
 	.uleb128 0xd
-	.4byte	.LASF9048
-	.byte	0xf
+	.4byte	.LASF9052
+	.byte	0x10
 	.byte	0x40
 	.byte	0x9
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x28
 	.uleb128 0xd
-	.4byte	.LASF9049
-	.byte	0xf
+	.4byte	.LASF9053
+	.byte	0x10
 	.byte	0x41
 	.byte	0x9
-	.4byte	0x182
+	.4byte	0x19f
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x2c
 	.uleb128 0xd
-	.4byte	.LASF9050
-	.byte	0xf
+	.4byte	.LASF9054
+	.byte	0x10
 	.byte	0x42
 	.byte	0x9
-	.4byte	0xf8
+	.4byte	0x110
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x30
 	.uleb128 0xd
-	.4byte	.LASF9051
-	.byte	0xf
+	.4byte	.LASF9055
+	.byte	0x10
 	.byte	0x43
 	.byte	0x9
-	.4byte	0xf8
+	.4byte	0x110
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x34
 	.uleb128 0xd
-	.4byte	.LASF9052
-	.byte	0xf
+	.4byte	.LASF9056
+	.byte	0x10
 	.byte	0x44
 	.byte	0x9
-	.4byte	0x104
+	.4byte	0x11c
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x38
 	.uleb128 0xd
-	.4byte	.LASF9053
-	.byte	0xf
-	.byte	0x45
-	.byte	0x9
-	.4byte	0xec
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x3c
-	.uleb128 0xd
-	.4byte	.LASF9054
-	.byte	0xf
-	.byte	0x46
-	.byte	0x9
-	.4byte	0xf8
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x40
-	.uleb128 0xd
-	.4byte	.LASF9055
-	.byte	0xf
-	.byte	0x47
-	.byte	0x9
-	.4byte	0xf8
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x44
-	.uleb128 0xd
-	.4byte	.LASF9056
-	.byte	0xf
-	.byte	0x48
-	.byte	0x9
-	.4byte	0xec
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x48
-	.uleb128 0xd
 	.4byte	.LASF9057
-	.byte	0xf
-	.byte	0x49
-	.byte	0x9
-	.4byte	0xec
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x4c
-	.uleb128 0xd
-	.4byte	.LASF9058
-	.byte	0xf
-	.byte	0x4a
-	.byte	0x9
-	.4byte	0xf8
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x50
-	.uleb128 0xd
-	.4byte	.LASF9059
-	.byte	0xf
-	.byte	0x4b
-	.byte	0x9
-	.4byte	0xf8
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x54
-	.uleb128 0xd
-	.4byte	.LASF9060
-	.byte	0xf
-	.byte	0x4c
-	.byte	0x9
-	.4byte	0xec
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x58
-	.uleb128 0xd
-	.4byte	.LASF9061
-	.byte	0xf
-	.byte	0x4d
-	.byte	0x9
-	.4byte	0x187
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x5c
-	.uleb128 0xd
-	.4byte	.LASF9062
-	.byte	0xf
-	.byte	0x4e
-	.byte	0x9
-	.4byte	0xf8
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x60
-	.uleb128 0xd
-	.4byte	.LASF9063
-	.byte	0xf
-	.byte	0x4f
-	.byte	0x9
-	.4byte	0xf8
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x64
-	.uleb128 0xd
-	.4byte	.LASF9064
-	.byte	0xf
-	.byte	0x50
-	.byte	0x9
-	.4byte	0xec
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x68
-	.uleb128 0xd
-	.4byte	.LASF9065
-	.byte	0xf
-	.byte	0x51
-	.byte	0x9
-	.4byte	0x1aa
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x6c
-	.uleb128 0xd
-	.4byte	.LASF9066
-	.byte	0xf
-	.byte	0x52
+	.byte	0x10
+	.byte	0x45
 	.byte	0x9
 	.4byte	0x104
 	.byte	0x2
 	.byte	0x23
-	.uleb128 0x70
+	.uleb128 0x3c
+	.uleb128 0xd
+	.4byte	.LASF9058
+	.byte	0x10
+	.byte	0x46
+	.byte	0x9
+	.4byte	0x110
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x40
+	.uleb128 0xd
+	.4byte	.LASF9059
+	.byte	0x10
+	.byte	0x47
+	.byte	0x9
+	.4byte	0x110
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x44
+	.uleb128 0xd
+	.4byte	.LASF9060
+	.byte	0x10
+	.byte	0x48
+	.byte	0x9
+	.4byte	0x104
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x48
+	.uleb128 0xd
+	.4byte	.LASF9061
+	.byte	0x10
+	.byte	0x49
+	.byte	0x9
+	.4byte	0x104
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x4c
+	.uleb128 0xd
+	.4byte	.LASF9062
+	.byte	0x10
+	.byte	0x4a
+	.byte	0x9
+	.4byte	0x110
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x50
+	.uleb128 0xd
+	.4byte	.LASF9063
+	.byte	0x10
+	.byte	0x4b
+	.byte	0x9
+	.4byte	0x110
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x54
+	.uleb128 0xd
+	.4byte	.LASF9064
+	.byte	0x10
+	.byte	0x4c
+	.byte	0x9
+	.4byte	0x104
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x58
+	.uleb128 0xd
+	.4byte	.LASF9065
+	.byte	0x10
+	.byte	0x4d
+	.byte	0x9
+	.4byte	0x1a4
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x5c
+	.uleb128 0xd
+	.4byte	.LASF9066
+	.byte	0x10
+	.byte	0x4e
+	.byte	0x9
+	.4byte	0x110
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x60
 	.uleb128 0xd
 	.4byte	.LASF9067
-	.byte	0xf
+	.byte	0x10
+	.byte	0x4f
+	.byte	0x9
+	.4byte	0x110
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x64
+	.uleb128 0xd
+	.4byte	.LASF9068
+	.byte	0x10
+	.byte	0x50
+	.byte	0x9
+	.4byte	0x104
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x68
+	.uleb128 0xd
+	.4byte	.LASF9069
+	.byte	0x10
+	.byte	0x51
+	.byte	0x9
+	.4byte	0x1c7
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x6c
+	.uleb128 0xd
+	.4byte	.LASF9070
+	.byte	0x10
+	.byte	0x52
+	.byte	0x9
+	.4byte	0x11c
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x70
+	.uleb128 0xd
+	.4byte	.LASF9071
+	.byte	0x10
 	.byte	0x53
 	.byte	0x9
-	.4byte	0x510
+	.4byte	0x542
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x74
 	.uleb128 0xd
-	.4byte	.LASF9068
-	.byte	0xf
+	.4byte	.LASF9072
+	.byte	0x10
 	.byte	0x54
 	.byte	0x9
-	.4byte	0xf8
+	.4byte	0x110
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0x80
 	.uleb128 0xd
-	.4byte	.LASF9069
-	.byte	0xf
+	.4byte	.LASF9073
+	.byte	0x10
 	.byte	0x55
 	.byte	0x9
-	.4byte	0xf8
+	.4byte	0x110
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0x84
 	.uleb128 0xd
-	.4byte	.LASF9070
-	.byte	0xf
+	.4byte	.LASF9074
+	.byte	0x10
 	.byte	0x56
 	.byte	0x9
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0x88
 	.uleb128 0xd
-	.4byte	.LASF9071
-	.byte	0xf
+	.4byte	.LASF9075
+	.byte	0x10
 	.byte	0x57
 	.byte	0x9
-	.4byte	0x104
+	.4byte	0x11c
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0x8c
 	.uleb128 0xd
-	.4byte	.LASF9072
-	.byte	0xf
+	.4byte	.LASF9076
+	.byte	0x10
 	.byte	0x58
 	.byte	0x9
-	.4byte	0x15e
+	.4byte	0x176
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0x90
 	.uleb128 0xd
-	.4byte	.LASF9073
-	.byte	0xf
+	.4byte	.LASF9077
+	.byte	0x10
 	.byte	0x59
 	.byte	0x9
-	.4byte	0xf8
+	.4byte	0x110
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0xa0
 	.uleb128 0xd
-	.4byte	.LASF9074
-	.byte	0xf
+	.4byte	.LASF9078
+	.byte	0x10
 	.byte	0x5a
 	.byte	0x9
-	.4byte	0xf8
+	.4byte	0x110
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0xa4
 	.uleb128 0xd
-	.4byte	.LASF9075
-	.byte	0xf
-	.byte	0x5b
-	.byte	0x9
-	.4byte	0xec
-	.byte	0x3
-	.byte	0x23
-	.uleb128 0xa8
-	.uleb128 0xd
-	.4byte	.LASF9076
-	.byte	0xf
-	.byte	0x5c
-	.byte	0x9
-	.4byte	0x1a5
-	.byte	0x3
-	.byte	0x23
-	.uleb128 0xac
-	.uleb128 0xd
-	.4byte	.LASF9077
-	.byte	0xf
-	.byte	0x5d
-	.byte	0x9
-	.4byte	0xf8
-	.byte	0x3
-	.byte	0x23
-	.uleb128 0xb0
-	.uleb128 0xd
-	.4byte	.LASF9078
-	.byte	0xf
-	.byte	0x5e
-	.byte	0x9
-	.4byte	0xf8
-	.byte	0x3
-	.byte	0x23
-	.uleb128 0xb4
-	.uleb128 0xd
 	.4byte	.LASF9079
-	.byte	0xf
-	.byte	0x5f
-	.byte	0x9
-	.4byte	0xec
-	.byte	0x3
-	.byte	0x23
-	.uleb128 0xb8
-	.uleb128 0xd
-	.4byte	.LASF9080
-	.byte	0xf
-	.byte	0x60
-	.byte	0x9
-	.4byte	0x1a0
-	.byte	0x3
-	.byte	0x23
-	.uleb128 0xbc
-	.uleb128 0xd
-	.4byte	.LASF9081
-	.byte	0xf
-	.byte	0x61
-	.byte	0x9
-	.4byte	0xf8
-	.byte	0x3
-	.byte	0x23
-	.uleb128 0xc0
-	.uleb128 0xd
-	.4byte	.LASF9082
-	.byte	0xf
-	.byte	0x62
-	.byte	0x9
-	.4byte	0xf8
-	.byte	0x3
-	.byte	0x23
-	.uleb128 0xc4
-	.uleb128 0xd
-	.4byte	.LASF9083
-	.byte	0xf
-	.byte	0x63
-	.byte	0x9
-	.4byte	0xec
-	.byte	0x3
-	.byte	0x23
-	.uleb128 0xc8
-	.uleb128 0xd
-	.4byte	.LASF9084
-	.byte	0xf
-	.byte	0x64
-	.byte	0x9
-	.4byte	0x19b
-	.byte	0x3
-	.byte	0x23
-	.uleb128 0xcc
-	.uleb128 0xd
-	.4byte	.LASF9085
-	.byte	0xf
-	.byte	0x65
-	.byte	0x9
-	.4byte	0xf8
-	.byte	0x3
-	.byte	0x23
-	.uleb128 0xd0
-	.uleb128 0xd
-	.4byte	.LASF9086
-	.byte	0xf
-	.byte	0x66
-	.byte	0x9
-	.4byte	0xf8
-	.byte	0x3
-	.byte	0x23
-	.uleb128 0xd4
-	.uleb128 0xd
-	.4byte	.LASF9087
-	.byte	0xf
-	.byte	0x67
-	.byte	0x9
-	.4byte	0xec
-	.byte	0x3
-	.byte	0x23
-	.uleb128 0xd8
-	.uleb128 0xd
-	.4byte	.LASF9088
-	.byte	0xf
-	.byte	0x68
-	.byte	0x9
-	.4byte	0x196
-	.byte	0x3
-	.byte	0x23
-	.uleb128 0xdc
-	.uleb128 0xd
-	.4byte	.LASF9089
-	.byte	0xf
-	.byte	0x69
-	.byte	0x9
-	.4byte	0xec
-	.byte	0x3
-	.byte	0x23
-	.uleb128 0xe0
-	.uleb128 0xd
-	.4byte	.LASF9090
-	.byte	0xf
-	.byte	0x6a
+	.byte	0x10
+	.byte	0x5b
 	.byte	0x9
 	.4byte	0x104
 	.byte	0x3
 	.byte	0x23
-	.uleb128 0xe4
+	.uleb128 0xa8
+	.uleb128 0xd
+	.4byte	.LASF9080
+	.byte	0x10
+	.byte	0x5c
+	.byte	0x9
+	.4byte	0x1c2
+	.byte	0x3
+	.byte	0x23
+	.uleb128 0xac
+	.uleb128 0xd
+	.4byte	.LASF9081
+	.byte	0x10
+	.byte	0x5d
+	.byte	0x9
+	.4byte	0x110
+	.byte	0x3
+	.byte	0x23
+	.uleb128 0xb0
+	.uleb128 0xd
+	.4byte	.LASF9082
+	.byte	0x10
+	.byte	0x5e
+	.byte	0x9
+	.4byte	0x110
+	.byte	0x3
+	.byte	0x23
+	.uleb128 0xb4
+	.uleb128 0xd
+	.4byte	.LASF9083
+	.byte	0x10
+	.byte	0x5f
+	.byte	0x9
+	.4byte	0x104
+	.byte	0x3
+	.byte	0x23
+	.uleb128 0xb8
+	.uleb128 0xd
+	.4byte	.LASF9084
+	.byte	0x10
+	.byte	0x60
+	.byte	0x9
+	.4byte	0x1bd
+	.byte	0x3
+	.byte	0x23
+	.uleb128 0xbc
+	.uleb128 0xd
+	.4byte	.LASF9085
+	.byte	0x10
+	.byte	0x61
+	.byte	0x9
+	.4byte	0x110
+	.byte	0x3
+	.byte	0x23
+	.uleb128 0xc0
+	.uleb128 0xd
+	.4byte	.LASF9086
+	.byte	0x10
+	.byte	0x62
+	.byte	0x9
+	.4byte	0x110
+	.byte	0x3
+	.byte	0x23
+	.uleb128 0xc4
+	.uleb128 0xd
+	.4byte	.LASF9087
+	.byte	0x10
+	.byte	0x63
+	.byte	0x9
+	.4byte	0x104
+	.byte	0x3
+	.byte	0x23
+	.uleb128 0xc8
+	.uleb128 0xd
+	.4byte	.LASF9088
+	.byte	0x10
+	.byte	0x64
+	.byte	0x9
+	.4byte	0x1b8
+	.byte	0x3
+	.byte	0x23
+	.uleb128 0xcc
+	.uleb128 0xd
+	.4byte	.LASF9089
+	.byte	0x10
+	.byte	0x65
+	.byte	0x9
+	.4byte	0x110
+	.byte	0x3
+	.byte	0x23
+	.uleb128 0xd0
+	.uleb128 0xd
+	.4byte	.LASF9090
+	.byte	0x10
+	.byte	0x66
+	.byte	0x9
+	.4byte	0x110
+	.byte	0x3
+	.byte	0x23
+	.uleb128 0xd4
 	.uleb128 0xd
 	.4byte	.LASF9091
-	.byte	0xf
+	.byte	0x10
+	.byte	0x67
+	.byte	0x9
+	.4byte	0x104
+	.byte	0x3
+	.byte	0x23
+	.uleb128 0xd8
+	.uleb128 0xd
+	.4byte	.LASF9092
+	.byte	0x10
+	.byte	0x68
+	.byte	0x9
+	.4byte	0x1b3
+	.byte	0x3
+	.byte	0x23
+	.uleb128 0xdc
+	.uleb128 0xd
+	.4byte	.LASF9093
+	.byte	0x10
+	.byte	0x69
+	.byte	0x9
+	.4byte	0x104
+	.byte	0x3
+	.byte	0x23
+	.uleb128 0xe0
+	.uleb128 0xd
+	.4byte	.LASF9094
+	.byte	0x10
+	.byte	0x6a
+	.byte	0x9
+	.4byte	0x11c
+	.byte	0x3
+	.byte	0x23
+	.uleb128 0xe4
+	.uleb128 0xd
+	.4byte	.LASF9095
+	.byte	0x10
 	.byte	0x6b
 	.byte	0x9
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0xe8
 	.byte	0
 	.uleb128 0xa
-	.4byte	0xec
-	.4byte	0x50b
+	.4byte	0x104
+	.4byte	0x53d
 	.uleb128 0xb
 	.4byte	0x34
 	.byte	0x2
 	.byte	0
 	.uleb128 0x6
-	.4byte	0x4fb
+	.4byte	0x52d
 	.uleb128 0x5
-	.4byte	0x50b
+	.4byte	0x53d
 	.uleb128 0x5
-	.4byte	0x50b
+	.4byte	0x53d
 	.uleb128 0xe
 	.ascii	"Pio\000"
-	.byte	0xf
+	.byte	0x10
 	.byte	0x6c
 	.byte	0x3
-	.4byte	0x1af
+	.4byte	0x1e1
 	.uleb128 0xc
 	.byte	0xec
-	.byte	0x10
+	.byte	0x11
 	.byte	0x35
 	.byte	0x9
-	.4byte	0x6b8
+	.4byte	0x6ea
 	.uleb128 0xd
-	.4byte	.LASF9092
-	.byte	0x10
+	.4byte	.LASF9096
+	.byte	0x11
 	.byte	0x36
 	.byte	0x9
-	.4byte	0xf8
+	.4byte	0x110
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0xd
-	.4byte	.LASF9093
-	.byte	0x10
+	.4byte	.LASF9097
+	.byte	0x11
 	.byte	0x37
 	.byte	0x9
-	.4byte	0xf8
+	.4byte	0x110
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0xd
-	.4byte	.LASF9094
-	.byte	0x10
+	.4byte	.LASF9098
+	.byte	0x11
 	.byte	0x38
 	.byte	0x9
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0xd
-	.4byte	.LASF9041
-	.byte	0x10
+	.4byte	.LASF9045
+	.byte	0x11
 	.byte	0x39
 	.byte	0x9
-	.4byte	0x191
+	.4byte	0x1ae
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0xc
 	.uleb128 0xd
-	.4byte	.LASF9095
-	.byte	0x10
+	.4byte	.LASF9099
+	.byte	0x11
 	.byte	0x3a
 	.byte	0x9
-	.4byte	0xf8
+	.4byte	0x110
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x10
 	.uleb128 0xd
-	.4byte	.LASF9096
-	.byte	0x10
+	.4byte	.LASF9100
+	.byte	0x11
 	.byte	0x3b
 	.byte	0x9
-	.4byte	0xf8
+	.4byte	0x110
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x14
 	.uleb128 0xd
-	.4byte	.LASF9097
-	.byte	0x10
+	.4byte	.LASF9101
+	.byte	0x11
 	.byte	0x3c
 	.byte	0x9
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x18
 	.uleb128 0xd
-	.4byte	.LASF9098
-	.byte	0x10
+	.4byte	.LASF9102
+	.byte	0x11
 	.byte	0x3d
 	.byte	0x9
-	.4byte	0x104
+	.4byte	0x11c
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x1c
 	.uleb128 0xd
-	.4byte	.LASF9099
-	.byte	0x10
+	.4byte	.LASF9103
+	.byte	0x11
 	.byte	0x3e
 	.byte	0x9
-	.4byte	0x104
+	.4byte	0x11c
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x20
 	.uleb128 0xd
-	.4byte	.LASF9100
-	.byte	0x10
+	.4byte	.LASF9104
+	.byte	0x11
 	.byte	0x3f
 	.byte	0x9
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x24
 	.uleb128 0xd
-	.4byte	.LASF9101
-	.byte	0x10
+	.4byte	.LASF9105
+	.byte	0x11
 	.byte	0x40
 	.byte	0x9
-	.4byte	0x104
+	.4byte	0x11c
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x28
 	.uleb128 0xd
-	.4byte	.LASF9045
-	.byte	0x10
+	.4byte	.LASF9049
+	.byte	0x11
 	.byte	0x41
 	.byte	0x9
-	.4byte	0x18c
+	.4byte	0x1a9
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x2c
 	.uleb128 0xd
-	.4byte	.LASF9102
-	.byte	0x10
+	.4byte	.LASF9106
+	.byte	0x11
 	.byte	0x42
 	.byte	0x9
-	.4byte	0x104
+	.4byte	0x11c
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x30
 	.uleb128 0xd
-	.4byte	.LASF9049
-	.byte	0x10
+	.4byte	.LASF9053
+	.byte	0x11
 	.byte	0x43
 	.byte	0x9
-	.4byte	0x515
+	.4byte	0x547
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x34
 	.uleb128 0xd
-	.4byte	.LASF9103
-	.byte	0x10
+	.4byte	.LASF9107
+	.byte	0x11
 	.byte	0x44
 	.byte	0x9
-	.4byte	0x6c8
+	.4byte	0x6fa
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x40
 	.uleb128 0xd
-	.4byte	.LASF9061
-	.byte	0x10
+	.4byte	.LASF9065
+	.byte	0x11
 	.byte	0x45
 	.byte	0x9
-	.4byte	0x144
+	.4byte	0x15c
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x4c
 	.uleb128 0xd
-	.4byte	.LASF9104
-	.byte	0x10
+	.4byte	.LASF9108
+	.byte	0x11
 	.byte	0x46
 	.byte	0x9
-	.4byte	0xf8
+	.4byte	0x110
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x60
 	.uleb128 0xd
-	.4byte	.LASF9105
-	.byte	0x10
+	.4byte	.LASF9109
+	.byte	0x11
 	.byte	0x47
 	.byte	0x9
-	.4byte	0xf8
+	.4byte	0x110
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x64
 	.uleb128 0xd
-	.4byte	.LASF9106
-	.byte	0x10
+	.4byte	.LASF9110
+	.byte	0x11
 	.byte	0x48
 	.byte	0x9
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x68
 	.uleb128 0xd
-	.4byte	.LASF9107
-	.byte	0x10
+	.4byte	.LASF9111
+	.byte	0x11
 	.byte	0x49
 	.byte	0x9
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x6c
 	.uleb128 0xd
-	.4byte	.LASF9108
-	.byte	0x10
+	.4byte	.LASF9112
+	.byte	0x11
 	.byte	0x4a
 	.byte	0x9
-	.4byte	0x104
+	.4byte	0x11c
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x70
 	.uleb128 0xd
-	.4byte	.LASF9109
-	.byte	0x10
+	.4byte	.LASF9113
+	.byte	0x11
 	.byte	0x4b
 	.byte	0x9
-	.4byte	0x104
+	.4byte	0x11c
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x74
 	.uleb128 0xd
-	.4byte	.LASF9110
-	.byte	0x10
+	.4byte	.LASF9114
+	.byte	0x11
 	.byte	0x4c
 	.byte	0x9
-	.4byte	0xf8
+	.4byte	0x110
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x78
 	.uleb128 0xd
-	.4byte	.LASF9065
-	.byte	0x10
+	.4byte	.LASF9069
+	.byte	0x11
 	.byte	0x4d
 	.byte	0x9
-	.4byte	0x6e2
+	.4byte	0x714
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x7c
 	.uleb128 0xd
-	.4byte	.LASF9111
-	.byte	0x10
+	.4byte	.LASF9115
+	.byte	0x11
 	.byte	0x4e
 	.byte	0x9
-	.4byte	0x104
+	.4byte	0x11c
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0xe4
 	.uleb128 0xd
-	.4byte	.LASF9112
-	.byte	0x10
+	.4byte	.LASF9116
+	.byte	0x11
 	.byte	0x4f
 	.byte	0x9
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0xe8
 	.byte	0
 	.uleb128 0xa
-	.4byte	0x104
-	.4byte	0x6c8
+	.4byte	0x11c
+	.4byte	0x6fa
 	.uleb128 0xb
 	.4byte	0x34
 	.byte	0x2
 	.byte	0
 	.uleb128 0x5
-	.4byte	0x6b8
+	.4byte	0x6ea
 	.uleb128 0xa
-	.4byte	0xec
-	.4byte	0x6dd
+	.4byte	0x104
+	.4byte	0x70f
 	.uleb128 0xb
 	.4byte	0x34
 	.byte	0x19
 	.byte	0
 	.uleb128 0x6
-	.4byte	0x6cd
+	.4byte	0x6ff
 	.uleb128 0x5
-	.4byte	0x6dd
+	.4byte	0x70f
 	.uleb128 0xe
 	.ascii	"Pmc\000"
-	.byte	0x10
+	.byte	0x11
 	.byte	0x50
 	.byte	0x3
-	.4byte	0x526
+	.4byte	0x558
 	.uleb128 0xa
-	.4byte	0xec
-	.4byte	0x703
+	.4byte	0x104
+	.4byte	0x735
 	.uleb128 0xb
 	.4byte	0x34
 	.byte	0x13
 	.byte	0
 	.uleb128 0x6
-	.4byte	0x6f3
+	.4byte	0x725
 	.uleb128 0x5
-	.4byte	0x703
+	.4byte	0x735
 	.uleb128 0xc
 	.byte	0x14
-	.byte	0x11
+	.byte	0x12
 	.byte	0x35
 	.byte	0x9
-	.4byte	0x762
+	.4byte	0x794
 	.uleb128 0xd
-	.4byte	.LASF9113
-	.byte	0x11
+	.4byte	.LASF9117
+	.byte	0x12
 	.byte	0x36
 	.byte	0x11
-	.4byte	0x104
+	.4byte	0x11c
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0xd
-	.4byte	.LASF9114
-	.byte	0x11
+	.4byte	.LASF9118
+	.byte	0x12
 	.byte	0x37
 	.byte	0x11
-	.4byte	0x104
+	.4byte	0x11c
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0xd
-	.4byte	.LASF9115
-	.byte	0x11
+	.4byte	.LASF9119
+	.byte	0x12
 	.byte	0x38
 	.byte	0x11
-	.4byte	0x104
+	.4byte	0x11c
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0xd
-	.4byte	.LASF9116
-	.byte	0x11
+	.4byte	.LASF9120
+	.byte	0x12
 	.byte	0x39
 	.byte	0x11
-	.4byte	0x104
+	.4byte	0x11c
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0xc
 	.uleb128 0xd
-	.4byte	.LASF9117
-	.byte	0x11
+	.4byte	.LASF9121
+	.byte	0x12
 	.byte	0x3a
 	.byte	0x11
-	.4byte	0x104
+	.4byte	0x11c
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x10
 	.byte	0
 	.uleb128 0x4
-	.4byte	.LASF9118
-	.byte	0x11
+	.4byte	.LASF9122
+	.byte	0x12
 	.byte	0x3b
 	.byte	0x3
-	.4byte	0x70d
+	.4byte	0x73f
 	.uleb128 0xf
 	.2byte	0x1ec
-	.byte	0x11
+	.byte	0x12
 	.byte	0x3e
 	.byte	0x9
-	.4byte	0x99c
+	.4byte	0x9ce
 	.uleb128 0xd
-	.4byte	.LASF9119
-	.byte	0x11
+	.4byte	.LASF9123
+	.byte	0x12
 	.byte	0x3f
 	.byte	0x11
-	.4byte	0x104
+	.4byte	0x11c
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0xd
-	.4byte	.LASF9120
-	.byte	0x11
+	.4byte	.LASF9124
+	.byte	0x12
 	.byte	0x40
 	.byte	0x11
-	.4byte	0xf8
+	.4byte	0x110
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0xd
-	.4byte	.LASF9121
-	.byte	0x11
+	.4byte	.LASF9125
+	.byte	0x12
 	.byte	0x41
 	.byte	0x11
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0xd
-	.4byte	.LASF9122
-	.byte	0x11
+	.4byte	.LASF9126
+	.byte	0x12
 	.byte	0x42
 	.byte	0x11
-	.4byte	0xf8
+	.4byte	0x110
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0xc
 	.uleb128 0xd
-	.4byte	.LASF9123
-	.byte	0x11
+	.4byte	.LASF9127
+	.byte	0x12
 	.byte	0x43
 	.byte	0x11
-	.4byte	0xf8
+	.4byte	0x110
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x10
 	.uleb128 0xd
-	.4byte	.LASF9124
-	.byte	0x11
+	.4byte	.LASF9128
+	.byte	0x12
 	.byte	0x44
 	.byte	0x11
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x14
 	.uleb128 0xd
-	.4byte	.LASF9125
-	.byte	0x11
+	.4byte	.LASF9129
+	.byte	0x12
 	.byte	0x45
 	.byte	0x11
-	.4byte	0x104
+	.4byte	0x11c
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x18
 	.uleb128 0xd
-	.4byte	.LASF9126
-	.byte	0x11
+	.4byte	.LASF9130
+	.byte	0x12
 	.byte	0x46
 	.byte	0x11
-	.4byte	0x104
+	.4byte	0x11c
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x1c
 	.uleb128 0xd
-	.4byte	.LASF9127
-	.byte	0x11
+	.4byte	.LASF9131
+	.byte	0x12
 	.byte	0x47
 	.byte	0x11
-	.4byte	0xf8
+	.4byte	0x110
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x20
 	.uleb128 0xd
-	.4byte	.LASF9128
-	.byte	0x11
+	.4byte	.LASF9132
+	.byte	0x12
 	.byte	0x48
 	.byte	0x11
-	.4byte	0x104
+	.4byte	0x11c
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x24
 	.uleb128 0xd
-	.4byte	.LASF9129
-	.byte	0x11
+	.4byte	.LASF9133
+	.byte	0x12
 	.byte	0x49
 	.byte	0x11
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x28
 	.uleb128 0xd
-	.4byte	.LASF9130
-	.byte	0x11
+	.4byte	.LASF9134
+	.byte	0x12
 	.byte	0x4a
 	.byte	0x11
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x2c
 	.uleb128 0xd
-	.4byte	.LASF9131
-	.byte	0x11
+	.4byte	.LASF9135
+	.byte	0x12
 	.byte	0x4b
 	.byte	0x11
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x30
 	.uleb128 0xd
-	.4byte	.LASF9132
-	.byte	0x11
+	.4byte	.LASF9136
+	.byte	0x12
 	.byte	0x4c
 	.byte	0x11
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x34
 	.uleb128 0xd
-	.4byte	.LASF9133
-	.byte	0x11
+	.4byte	.LASF9137
+	.byte	0x12
 	.byte	0x4d
 	.byte	0x11
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x38
 	.uleb128 0xd
-	.4byte	.LASF9134
-	.byte	0x11
+	.4byte	.LASF9138
+	.byte	0x12
 	.byte	0x4e
 	.byte	0x11
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x3c
 	.uleb128 0xd
-	.4byte	.LASF9135
-	.byte	0x11
+	.4byte	.LASF9139
+	.byte	0x12
 	.byte	0x4f
 	.byte	0x11
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x40
 	.uleb128 0xd
-	.4byte	.LASF9136
-	.byte	0x11
+	.4byte	.LASF9140
+	.byte	0x12
 	.byte	0x50
 	.byte	0x11
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x44
 	.uleb128 0xd
-	.4byte	.LASF9137
-	.byte	0x11
+	.4byte	.LASF9141
+	.byte	0x12
 	.byte	0x51
 	.byte	0x11
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x48
 	.uleb128 0xd
-	.4byte	.LASF9138
-	.byte	0x11
+	.4byte	.LASF9142
+	.byte	0x12
 	.byte	0x52
 	.byte	0x11
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x4c
 	.uleb128 0xd
-	.4byte	.LASF9139
-	.byte	0x11
+	.4byte	.LASF9143
+	.byte	0x12
 	.byte	0x53
 	.byte	0x11
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x50
 	.uleb128 0xd
-	.4byte	.LASF9140
-	.byte	0x11
+	.4byte	.LASF9144
+	.byte	0x12
 	.byte	0x54
 	.byte	0x11
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x54
 	.uleb128 0xd
-	.4byte	.LASF9141
-	.byte	0x11
+	.4byte	.LASF9145
+	.byte	0x12
 	.byte	0x55
 	.byte	0x11
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x58
 	.uleb128 0xd
-	.4byte	.LASF9142
-	.byte	0x11
+	.4byte	.LASF9146
+	.byte	0x12
 	.byte	0x56
 	.byte	0x11
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x5c
 	.uleb128 0xd
-	.4byte	.LASF9143
-	.byte	0x11
+	.4byte	.LASF9147
+	.byte	0x12
 	.byte	0x57
 	.byte	0x11
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x60
 	.uleb128 0xd
-	.4byte	.LASF9144
-	.byte	0x11
+	.4byte	.LASF9148
+	.byte	0x12
 	.byte	0x58
 	.byte	0x11
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x64
 	.uleb128 0xd
-	.4byte	.LASF9145
-	.byte	0x11
+	.4byte	.LASF9149
+	.byte	0x12
 	.byte	0x59
 	.byte	0x11
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x68
 	.uleb128 0xd
-	.4byte	.LASF9146
-	.byte	0x11
+	.4byte	.LASF9150
+	.byte	0x12
 	.byte	0x5a
 	.byte	0x11
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x6c
 	.uleb128 0xd
-	.4byte	.LASF9147
-	.byte	0x11
+	.4byte	.LASF9151
+	.byte	0x12
 	.byte	0x5b
 	.byte	0x11
-	.4byte	0x99c
+	.4byte	0x9ce
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x70
 	.uleb128 0xd
-	.4byte	.LASF9041
-	.byte	0x11
+	.4byte	.LASF9045
+	.byte	0x12
 	.byte	0x5c
 	.byte	0x11
-	.4byte	0x708
+	.4byte	0x73a
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0xc0
 	.uleb128 0xd
-	.4byte	.LASF9148
-	.byte	0x11
+	.4byte	.LASF9152
+	.byte	0x12
 	.byte	0x5d
 	.byte	0x11
-	.4byte	0x104
+	.4byte	0x11c
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0x110
 	.uleb128 0xd
-	.4byte	.LASF9149
-	.byte	0x11
+	.4byte	.LASF9153
+	.byte	0x12
 	.byte	0x5e
 	.byte	0x11
-	.4byte	0xf8
+	.4byte	0x110
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0x114
 	.uleb128 0xd
-	.4byte	.LASF9150
-	.byte	0x11
+	.4byte	.LASF9154
+	.byte	0x12
 	.byte	0x5f
 	.byte	0x11
-	.4byte	0xf8
+	.4byte	0x110
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0x118
 	.uleb128 0xd
-	.4byte	.LASF9045
-	.byte	0x11
+	.4byte	.LASF9049
+	.byte	0x12
 	.byte	0x60
 	.byte	0x11
-	.4byte	0x9c1
+	.4byte	0x9f3
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0x11c
 	.uleb128 0xd
-	.4byte	.LASF9151
-	.byte	0x11
+	.4byte	.LASF9155
+	.byte	0x12
 	.byte	0x61
 	.byte	0x11
-	.4byte	0xf8
+	.4byte	0x110
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0x1e4
 	.uleb128 0xd
-	.4byte	.LASF9152
-	.byte	0x11
+	.4byte	.LASF9156
+	.byte	0x12
 	.byte	0x62
 	.byte	0x11
-	.4byte	0xec
+	.4byte	0x104
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0x1e8
 	.byte	0
 	.uleb128 0xa
-	.4byte	0x762
-	.4byte	0x9ac
+	.4byte	0x794
+	.4byte	0x9de
 	.uleb128 0xb
 	.4byte	0x34
 	.byte	0x3
 	.byte	0
 	.uleb128 0xa
-	.4byte	0xec
-	.4byte	0x9bc
+	.4byte	0x104
+	.4byte	0x9ee
 	.uleb128 0xb
 	.4byte	0x34
 	.byte	0x31
 	.byte	0
 	.uleb128 0x6
-	.4byte	0x9ac
+	.4byte	0x9de
 	.uleb128 0x5
-	.4byte	0x9bc
+	.4byte	0x9ee
 	.uleb128 0xe
 	.ascii	"Smc\000"
-	.byte	0x11
+	.byte	0x12
 	.byte	0x63
 	.byte	0x3
-	.4byte	0x76e
+	.4byte	0x7a0
+	.uleb128 0xc
+	.byte	0xec
+	.byte	0x13
+	.byte	0x35
+	.byte	0x9
+	.4byte	0xad3
+	.uleb128 0xd
+	.4byte	.LASF9157
+	.byte	0x13
+	.byte	0x36
+	.byte	0x9
+	.4byte	0x110
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0
+	.uleb128 0xd
+	.4byte	.LASF9158
+	.byte	0x13
+	.byte	0x37
+	.byte	0x9
+	.4byte	0x11c
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x4
+	.uleb128 0xd
+	.4byte	.LASF9159
+	.byte	0x13
+	.byte	0x38
+	.byte	0x9
+	.4byte	0x104
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x8
+	.uleb128 0xd
+	.4byte	.LASF9160
+	.byte	0x13
+	.byte	0x39
+	.byte	0x9
+	.4byte	0x110
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0xc
+	.uleb128 0xd
+	.4byte	.LASF9161
+	.byte	0x13
+	.byte	0x3a
+	.byte	0x9
+	.4byte	0x104
+	.byte	0x2
+	.byte	0x23
 	.uleb128 0x10
-	.4byte	.LASF9153
-	.byte	0x12
+	.uleb128 0xd
+	.4byte	.LASF9162
+	.byte	0x13
+	.byte	0x3b
+	.byte	0x9
+	.4byte	0x110
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x14
+	.uleb128 0xd
+	.4byte	.LASF9163
+	.byte	0x13
+	.byte	0x3c
+	.byte	0x9
+	.4byte	0x110
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x18
+	.uleb128 0xd
+	.4byte	.LASF9164
+	.byte	0x13
+	.byte	0x3d
+	.byte	0x9
+	.4byte	0x104
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x1c
+	.uleb128 0xd
+	.4byte	.LASF9045
+	.byte	0x13
+	.byte	0x3e
+	.byte	0x9
+	.4byte	0x17b
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x20
+	.uleb128 0xd
+	.4byte	.LASF9165
+	.byte	0x13
+	.byte	0x3f
+	.byte	0x9
+	.4byte	0x1dc
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x30
+	.uleb128 0xd
+	.4byte	.LASF9049
+	.byte	0x13
+	.byte	0x40
+	.byte	0x9
+	.4byte	0xae8
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x40
+	.uleb128 0xd
+	.4byte	.LASF9166
+	.byte	0x13
+	.byte	0x41
+	.byte	0x9
+	.4byte	0x11c
+	.byte	0x3
+	.byte	0x23
+	.uleb128 0xe4
+	.uleb128 0xd
+	.4byte	.LASF9167
+	.byte	0x13
+	.byte	0x42
+	.byte	0x9
+	.4byte	0x104
+	.byte	0x3
+	.byte	0x23
+	.uleb128 0xe8
+	.byte	0
+	.uleb128 0xa
+	.4byte	0x104
+	.4byte	0xae3
+	.uleb128 0xb
+	.4byte	0x34
+	.byte	0x28
+	.byte	0
+	.uleb128 0x6
+	.4byte	0xad3
+	.uleb128 0x5
+	.4byte	0xae3
+	.uleb128 0xe
+	.ascii	"Spi\000"
+	.byte	0x13
+	.byte	0x43
+	.byte	0x3
+	.4byte	0xa04
+	.uleb128 0x10
+	.4byte	.LASF9168
+	.byte	0x14
 	.2byte	0x15e
 	.byte	0x17
 	.4byte	0x34
 	.uleb128 0x4
-	.4byte	.LASF9154
-	.byte	0x13
+	.4byte	.LASF9169
+	.byte	0x15
 	.byte	0x2e
 	.byte	0xe
-	.4byte	0x7b
+	.4byte	0x87
 	.uleb128 0x4
-	.4byte	.LASF9155
-	.byte	0x13
+	.4byte	.LASF9170
+	.byte	0x15
 	.byte	0x74
 	.byte	0xe
-	.4byte	0x7b
+	.4byte	0x87
 	.uleb128 0x11
 	.byte	0x4
-	.byte	0x13
+	.byte	0x15
 	.byte	0xa5
 	.byte	0x3
-	.4byte	0xa19
+	.4byte	0xb40
 	.uleb128 0x12
-	.4byte	.LASF9156
-	.byte	0x13
+	.4byte	.LASF9171
+	.byte	0x15
 	.byte	0xa7
 	.byte	0xc
-	.4byte	0x9d2
+	.4byte	0xaf9
 	.uleb128 0x12
-	.4byte	.LASF9157
-	.byte	0x13
+	.4byte	.LASF9172
+	.byte	0x15
 	.byte	0xa8
 	.byte	0x13
-	.4byte	0xa19
+	.4byte	0xb40
 	.byte	0
 	.uleb128 0xa
 	.4byte	0x4e
-	.4byte	0xa29
+	.4byte	0xb50
 	.uleb128 0xb
 	.4byte	0x34
 	.byte	0x3
 	.byte	0
 	.uleb128 0xc
 	.byte	0x8
-	.byte	0x13
+	.byte	0x15
 	.byte	0xa2
 	.byte	0x9
-	.4byte	0xa51
+	.4byte	0xb78
 	.uleb128 0xd
-	.4byte	.LASF9158
-	.byte	0x13
+	.4byte	.LASF9173
+	.byte	0x15
 	.byte	0xa4
 	.byte	0x7
 	.4byte	0x2d
@@ -3814,64 +4268,64 @@ main:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0xd
-	.4byte	.LASF9159
-	.byte	0x13
+	.4byte	.LASF9174
+	.byte	0x15
 	.byte	0xa9
 	.byte	0x5
-	.4byte	0x9f7
+	.4byte	0xb1e
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x4
 	.byte	0
 	.uleb128 0x4
-	.4byte	.LASF9160
-	.byte	0x13
+	.4byte	.LASF9175
+	.byte	0x15
 	.byte	0xaa
 	.byte	0x3
-	.4byte	0xa29
+	.4byte	0xb50
 	.uleb128 0x4
-	.4byte	.LASF9161
-	.byte	0x14
+	.4byte	.LASF9176
+	.byte	0x16
 	.byte	0x16
 	.byte	0x19
-	.4byte	0x8e
+	.4byte	0x9a
 	.uleb128 0x4
-	.4byte	.LASF9162
-	.byte	0x15
+	.4byte	.LASF9177
+	.byte	0x17
 	.byte	0x22
 	.byte	0x19
-	.4byte	0xa75
+	.4byte	0xb9c
 	.uleb128 0x13
 	.byte	0x4
-	.4byte	0xa7b
+	.4byte	0xba2
 	.uleb128 0x14
-	.4byte	.LASF9259
+	.4byte	.LASF9274
 	.byte	0x1
 	.uleb128 0x4
-	.4byte	.LASF9163
-	.byte	0x14
+	.4byte	.LASF9178
+	.byte	0x16
 	.byte	0x23
 	.byte	0x1b
-	.4byte	0xa69
+	.4byte	0xb90
 	.uleb128 0x15
-	.4byte	.LASF9168
+	.4byte	.LASF9183
 	.byte	0x18
-	.byte	0x14
+	.byte	0x16
 	.byte	0x34
 	.byte	0x8
-	.4byte	0xaf3
+	.4byte	0xc1a
 	.uleb128 0xd
-	.4byte	.LASF9164
-	.byte	0x14
+	.4byte	.LASF9179
+	.byte	0x16
 	.byte	0x36
 	.byte	0x13
-	.4byte	0xaf3
+	.4byte	0xc1a
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x16
 	.ascii	"_k\000"
-	.byte	0x14
+	.byte	0x16
 	.byte	0x37
 	.byte	0x7
 	.4byte	0x2d
@@ -3879,8 +4333,8 @@ main:
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0xd
-	.4byte	.LASF9165
-	.byte	0x14
+	.4byte	.LASF9180
+	.byte	0x16
 	.byte	0x37
 	.byte	0xb
 	.4byte	0x2d
@@ -3888,8 +4342,8 @@ main:
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0xd
-	.4byte	.LASF9166
-	.byte	0x14
+	.4byte	.LASF9181
+	.byte	0x16
 	.byte	0x37
 	.byte	0x14
 	.4byte	0x2d
@@ -3897,8 +4351,8 @@ main:
 	.byte	0x23
 	.uleb128 0xc
 	.uleb128 0xd
-	.4byte	.LASF9167
-	.byte	0x14
+	.4byte	.LASF9182
+	.byte	0x16
 	.byte	0x37
 	.byte	0x1b
 	.4byte	0x2d
@@ -3907,34 +4361,34 @@ main:
 	.uleb128 0x10
 	.uleb128 0x16
 	.ascii	"_x\000"
-	.byte	0x14
+	.byte	0x16
 	.byte	0x38
 	.byte	0xb
-	.4byte	0xaf9
+	.4byte	0xc20
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x14
 	.byte	0
 	.uleb128 0x13
 	.byte	0x4
-	.4byte	0xa8d
+	.4byte	0xbb4
 	.uleb128 0xa
-	.4byte	0xa5d
-	.4byte	0xb09
+	.4byte	0xb84
+	.4byte	0xc30
 	.uleb128 0xb
 	.4byte	0x34
 	.byte	0
 	.byte	0
 	.uleb128 0x15
-	.4byte	.LASF9169
+	.4byte	.LASF9184
 	.byte	0x24
-	.byte	0x14
+	.byte	0x16
 	.byte	0x3c
 	.byte	0x8
-	.4byte	0xb9e
+	.4byte	0xcc5
 	.uleb128 0xd
-	.4byte	.LASF9170
-	.byte	0x14
+	.4byte	.LASF9185
+	.byte	0x16
 	.byte	0x3e
 	.byte	0x9
 	.4byte	0x2d
@@ -3942,8 +4396,8 @@ main:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0xd
-	.4byte	.LASF9171
-	.byte	0x14
+	.4byte	.LASF9186
+	.byte	0x16
 	.byte	0x3f
 	.byte	0x9
 	.4byte	0x2d
@@ -3951,8 +4405,8 @@ main:
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0xd
-	.4byte	.LASF9172
-	.byte	0x14
+	.4byte	.LASF9187
+	.byte	0x16
 	.byte	0x40
 	.byte	0x9
 	.4byte	0x2d
@@ -3960,8 +4414,8 @@ main:
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0xd
-	.4byte	.LASF9173
-	.byte	0x14
+	.4byte	.LASF9188
+	.byte	0x16
 	.byte	0x41
 	.byte	0x9
 	.4byte	0x2d
@@ -3969,8 +4423,8 @@ main:
 	.byte	0x23
 	.uleb128 0xc
 	.uleb128 0xd
-	.4byte	.LASF9174
-	.byte	0x14
+	.4byte	.LASF9189
+	.byte	0x16
 	.byte	0x42
 	.byte	0x9
 	.4byte	0x2d
@@ -3978,8 +4432,8 @@ main:
 	.byte	0x23
 	.uleb128 0x10
 	.uleb128 0xd
-	.4byte	.LASF9175
-	.byte	0x14
+	.4byte	.LASF9190
+	.byte	0x16
 	.byte	0x43
 	.byte	0x9
 	.4byte	0x2d
@@ -3987,8 +4441,8 @@ main:
 	.byte	0x23
 	.uleb128 0x14
 	.uleb128 0xd
-	.4byte	.LASF9176
-	.byte	0x14
+	.4byte	.LASF9191
+	.byte	0x16
 	.byte	0x44
 	.byte	0x9
 	.4byte	0x2d
@@ -3996,8 +4450,8 @@ main:
 	.byte	0x23
 	.uleb128 0x18
 	.uleb128 0xd
-	.4byte	.LASF9177
-	.byte	0x14
+	.4byte	.LASF9192
+	.byte	0x16
 	.byte	0x45
 	.byte	0x9
 	.4byte	0x2d
@@ -4005,8 +4459,8 @@ main:
 	.byte	0x23
 	.uleb128 0x1c
 	.uleb128 0xd
-	.4byte	.LASF9178
-	.byte	0x14
+	.4byte	.LASF9193
+	.byte	0x16
 	.byte	0x46
 	.byte	0x9
 	.4byte	0x2d
@@ -4015,75 +4469,75 @@ main:
 	.uleb128 0x20
 	.byte	0
 	.uleb128 0x17
-	.4byte	.LASF9179
+	.4byte	.LASF9194
 	.2byte	0x108
-	.byte	0x14
+	.byte	0x16
 	.byte	0x4f
 	.byte	0x8
-	.4byte	0xbec
+	.4byte	0xd13
 	.uleb128 0xd
-	.4byte	.LASF9180
-	.byte	0x14
+	.4byte	.LASF9195
+	.byte	0x16
 	.byte	0x50
 	.byte	0xa
-	.4byte	0xbec
+	.4byte	0xd13
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0xd
-	.4byte	.LASF9181
-	.byte	0x14
+	.4byte	.LASF9196
+	.byte	0x16
 	.byte	0x51
 	.byte	0x9
-	.4byte	0xbec
+	.4byte	0xd13
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0x80
 	.uleb128 0xd
-	.4byte	.LASF9182
-	.byte	0x14
+	.4byte	.LASF9197
+	.byte	0x16
 	.byte	0x53
 	.byte	0xa
-	.4byte	0xa5d
+	.4byte	0xb84
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0x100
 	.uleb128 0xd
-	.4byte	.LASF9183
-	.byte	0x14
+	.4byte	.LASF9198
+	.byte	0x16
 	.byte	0x56
 	.byte	0xa
-	.4byte	0xa5d
+	.4byte	0xb84
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0x104
 	.byte	0
 	.uleb128 0xa
-	.4byte	0x110
-	.4byte	0xbfc
+	.4byte	0x128
+	.4byte	0xd23
 	.uleb128 0xb
 	.4byte	0x34
 	.byte	0x1f
 	.byte	0
 	.uleb128 0x17
-	.4byte	.LASF9184
+	.4byte	.LASF9199
 	.2byte	0x190
-	.byte	0x14
+	.byte	0x16
 	.byte	0x62
 	.byte	0x8
-	.4byte	0xc48
+	.4byte	0xd6f
 	.uleb128 0xd
-	.4byte	.LASF9164
-	.byte	0x14
+	.4byte	.LASF9179
+	.byte	0x16
 	.byte	0x63
 	.byte	0x12
-	.4byte	0xc48
+	.4byte	0xd6f
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0xd
-	.4byte	.LASF9185
-	.byte	0x14
+	.4byte	.LASF9200
+	.byte	0x16
 	.byte	0x64
 	.byte	0x6
 	.4byte	0x2d
@@ -4091,58 +4545,58 @@ main:
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0xd
-	.4byte	.LASF9186
-	.byte	0x14
+	.4byte	.LASF9201
+	.byte	0x16
 	.byte	0x66
 	.byte	0x9
-	.4byte	0xc4e
+	.4byte	0xd75
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0xd
-	.4byte	.LASF9179
-	.byte	0x14
+	.4byte	.LASF9194
+	.byte	0x16
 	.byte	0x67
 	.byte	0x1e
-	.4byte	0xb9e
+	.4byte	0xcc5
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0x88
 	.byte	0
 	.uleb128 0x13
 	.byte	0x4
-	.4byte	0xbfc
+	.4byte	0xd23
 	.uleb128 0xa
-	.4byte	0xc5e
-	.4byte	0xc5e
+	.4byte	0xd85
+	.4byte	0xd85
 	.uleb128 0xb
 	.4byte	0x34
 	.byte	0x1f
 	.byte	0
 	.uleb128 0x13
 	.byte	0x4
-	.4byte	0xc64
+	.4byte	0xd8b
 	.uleb128 0x18
 	.byte	0x1
 	.uleb128 0x15
-	.4byte	.LASF9187
+	.4byte	.LASF9202
 	.byte	0x8
-	.byte	0x14
+	.byte	0x16
 	.byte	0x7a
 	.byte	0x8
-	.4byte	0xc92
+	.4byte	0xdb9
 	.uleb128 0xd
-	.4byte	.LASF9188
-	.byte	0x14
+	.4byte	.LASF9203
+	.byte	0x16
 	.byte	0x7b
 	.byte	0x11
-	.4byte	0xc92
+	.4byte	0xdb9
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0xd
-	.4byte	.LASF9189
-	.byte	0x14
+	.4byte	.LASF9204
+	.byte	0x16
 	.byte	0x7c
 	.byte	0x6
 	.4byte	0x2d
@@ -4154,24 +4608,24 @@ main:
 	.byte	0x4
 	.4byte	0x4e
 	.uleb128 0x15
-	.4byte	.LASF9190
+	.4byte	.LASF9205
 	.byte	0x68
-	.byte	0x14
+	.byte	0x16
 	.byte	0xba
 	.byte	0x8
-	.4byte	0xe0b
+	.4byte	0xf32
 	.uleb128 0x16
 	.ascii	"_p\000"
-	.byte	0x14
+	.byte	0x16
 	.byte	0xbb
 	.byte	0x12
-	.4byte	0xc92
+	.4byte	0xdb9
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x16
 	.ascii	"_r\000"
-	.byte	0x14
+	.byte	0x16
 	.byte	0xbc
 	.byte	0x7
 	.4byte	0x2d
@@ -4180,7 +4634,7 @@ main:
 	.uleb128 0x4
 	.uleb128 0x16
 	.ascii	"_w\000"
-	.byte	0x14
+	.byte	0x16
 	.byte	0xbd
 	.byte	0x7
 	.4byte	0x2d
@@ -4188,35 +4642,35 @@ main:
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0xd
-	.4byte	.LASF9191
-	.byte	0x14
+	.4byte	.LASF9206
+	.byte	0x16
 	.byte	0xbe
 	.byte	0x9
-	.4byte	0x55
+	.4byte	0x61
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0xc
 	.uleb128 0xd
-	.4byte	.LASF9192
-	.byte	0x14
+	.4byte	.LASF9207
+	.byte	0x16
 	.byte	0xbf
 	.byte	0x9
-	.4byte	0x55
+	.4byte	0x61
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0xe
 	.uleb128 0x16
 	.ascii	"_bf\000"
-	.byte	0x14
+	.byte	0x16
 	.byte	0xc0
 	.byte	0x11
-	.4byte	0xc66
+	.4byte	0xd8d
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x10
 	.uleb128 0xd
-	.4byte	.LASF9193
-	.byte	0x14
+	.4byte	.LASF9208
+	.byte	0x16
 	.byte	0xc1
 	.byte	0x7
 	.4byte	0x2d
@@ -4224,71 +4678,71 @@ main:
 	.byte	0x23
 	.uleb128 0x18
 	.uleb128 0xd
-	.4byte	.LASF9194
-	.byte	0x14
+	.4byte	.LASF9209
+	.byte	0x16
 	.byte	0xc8
 	.byte	0xa
-	.4byte	0x110
+	.4byte	0x128
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x1c
 	.uleb128 0xd
-	.4byte	.LASF9195
-	.byte	0x14
+	.4byte	.LASF9210
+	.byte	0x16
 	.byte	0xca
 	.byte	0x1d
-	.4byte	0xfbc
+	.4byte	0x10e3
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x20
 	.uleb128 0xd
-	.4byte	.LASF9196
-	.byte	0x14
+	.4byte	.LASF9211
+	.byte	0x16
 	.byte	0xcc
 	.byte	0x1d
-	.4byte	0xfe7
+	.4byte	0x110e
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x24
 	.uleb128 0xd
-	.4byte	.LASF9197
-	.byte	0x14
+	.4byte	.LASF9212
+	.byte	0x16
 	.byte	0xcf
 	.byte	0xd
-	.4byte	0x100c
+	.4byte	0x1133
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x28
 	.uleb128 0xd
-	.4byte	.LASF9198
-	.byte	0x14
+	.4byte	.LASF9213
+	.byte	0x16
 	.byte	0xd0
 	.byte	0x9
-	.4byte	0x1027
+	.4byte	0x114e
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x2c
 	.uleb128 0x16
 	.ascii	"_ub\000"
-	.byte	0x14
+	.byte	0x16
 	.byte	0xd3
 	.byte	0x11
-	.4byte	0xc66
+	.4byte	0xd8d
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x30
 	.uleb128 0x16
 	.ascii	"_up\000"
-	.byte	0x14
+	.byte	0x16
 	.byte	0xd4
 	.byte	0x12
-	.4byte	0xc92
+	.4byte	0xdb9
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x38
 	.uleb128 0x16
 	.ascii	"_ur\000"
-	.byte	0x14
+	.byte	0x16
 	.byte	0xd5
 	.byte	0x7
 	.4byte	0x2d
@@ -4296,35 +4750,35 @@ main:
 	.byte	0x23
 	.uleb128 0x3c
 	.uleb128 0xd
-	.4byte	.LASF9199
-	.byte	0x14
+	.4byte	.LASF9214
+	.byte	0x16
 	.byte	0xd8
 	.byte	0x11
-	.4byte	0x102d
+	.4byte	0x1154
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x40
 	.uleb128 0xd
-	.4byte	.LASF9200
-	.byte	0x14
+	.4byte	.LASF9215
+	.byte	0x16
 	.byte	0xd9
 	.byte	0x11
-	.4byte	0x103d
+	.4byte	0x1164
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x43
 	.uleb128 0x16
 	.ascii	"_lb\000"
-	.byte	0x14
+	.byte	0x16
 	.byte	0xdc
 	.byte	0x11
-	.4byte	0xc66
+	.4byte	0xd8d
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x44
 	.uleb128 0xd
-	.4byte	.LASF9201
-	.byte	0x14
+	.4byte	.LASF9216
+	.byte	0x16
 	.byte	0xdf
 	.byte	0x7
 	.4byte	0x2d
@@ -4332,44 +4786,44 @@ main:
 	.byte	0x23
 	.uleb128 0x4c
 	.uleb128 0xd
-	.4byte	.LASF9202
-	.byte	0x14
+	.4byte	.LASF9217
+	.byte	0x16
 	.byte	0xe0
 	.byte	0xa
-	.4byte	0x9df
+	.4byte	0xb06
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x50
 	.uleb128 0xd
-	.4byte	.LASF9203
-	.byte	0x14
+	.4byte	.LASF9218
+	.byte	0x16
 	.byte	0xe3
 	.byte	0x12
-	.4byte	0xe2a
+	.4byte	0xf51
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x54
 	.uleb128 0xd
-	.4byte	.LASF9204
-	.byte	0x14
+	.4byte	.LASF9219
+	.byte	0x16
 	.byte	0xe7
 	.byte	0xc
-	.4byte	0xa81
+	.4byte	0xba8
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x58
 	.uleb128 0xd
-	.4byte	.LASF9205
-	.byte	0x14
+	.4byte	.LASF9220
+	.byte	0x16
 	.byte	0xe9
 	.byte	0xe
-	.4byte	0xa51
+	.4byte	0xb78
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x5c
 	.uleb128 0xd
-	.4byte	.LASF9206
-	.byte	0x14
+	.4byte	.LASF9221
+	.byte	0x16
 	.byte	0xea
 	.byte	0x9
 	.4byte	0x2d
@@ -4380,31 +4834,31 @@ main:
 	.uleb128 0x19
 	.byte	0x1
 	.4byte	0x2d
-	.4byte	0xe2a
+	.4byte	0xf51
 	.uleb128 0x1a
-	.4byte	0xe2a
+	.4byte	0xf51
 	.uleb128 0x1a
-	.4byte	0x110
+	.4byte	0x128
 	.uleb128 0x1a
-	.4byte	0xfaa
+	.4byte	0x10d1
 	.uleb128 0x1a
 	.4byte	0x2d
 	.byte	0
 	.uleb128 0x13
 	.byte	0x4
-	.4byte	0xe35
+	.4byte	0xf5c
 	.uleb128 0x6
-	.4byte	0xe2a
+	.4byte	0xf51
 	.uleb128 0x1b
-	.4byte	.LASF9207
+	.4byte	.LASF9222
 	.2byte	0x428
-	.byte	0x14
+	.byte	0x16
 	.2byte	0x265
 	.byte	0x8
-	.4byte	0xfaa
+	.4byte	0x10d1
 	.uleb128 0x1c
-	.4byte	.LASF9208
-	.byte	0x14
+	.4byte	.LASF9223
+	.byte	0x16
 	.2byte	0x267
 	.byte	0x7
 	.4byte	0x2d
@@ -4412,35 +4866,35 @@ main:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x1c
-	.4byte	.LASF9209
-	.byte	0x14
+	.4byte	.LASF9224
+	.byte	0x16
 	.2byte	0x26c
 	.byte	0xb
-	.4byte	0x109f
+	.4byte	0x11c6
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0x1c
-	.4byte	.LASF9210
-	.byte	0x14
+	.4byte	.LASF9225
+	.byte	0x16
 	.2byte	0x26c
 	.byte	0x14
-	.4byte	0x109f
+	.4byte	0x11c6
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0x1c
-	.4byte	.LASF9211
-	.byte	0x14
+	.4byte	.LASF9226
+	.byte	0x16
 	.2byte	0x26c
 	.byte	0x1e
-	.4byte	0x109f
+	.4byte	0x11c6
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0xc
 	.uleb128 0x1c
-	.4byte	.LASF9212
-	.byte	0x14
+	.4byte	.LASF9227
+	.byte	0x16
 	.2byte	0x26e
 	.byte	0x8
 	.4byte	0x2d
@@ -4448,17 +4902,17 @@ main:
 	.byte	0x23
 	.uleb128 0x10
 	.uleb128 0x1c
-	.4byte	.LASF9213
-	.byte	0x14
+	.4byte	.LASF9228
+	.byte	0x16
 	.2byte	0x26f
 	.byte	0x8
-	.4byte	0x12d8
+	.4byte	0x13ff
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x14
 	.uleb128 0x1c
-	.4byte	.LASF9214
-	.byte	0x14
+	.4byte	.LASF9229
+	.byte	0x16
 	.2byte	0x272
 	.byte	0x7
 	.4byte	0x2d
@@ -4466,17 +4920,17 @@ main:
 	.byte	0x23
 	.uleb128 0x30
 	.uleb128 0x1c
-	.4byte	.LASF9215
-	.byte	0x14
+	.4byte	.LASF9230
+	.byte	0x16
 	.2byte	0x273
 	.byte	0x16
-	.4byte	0x12ee
+	.4byte	0x1415
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x34
 	.uleb128 0x1c
-	.4byte	.LASF9216
-	.byte	0x14
+	.4byte	.LASF9231
+	.byte	0x16
 	.2byte	0x275
 	.byte	0x7
 	.4byte	0x2d
@@ -4484,26 +4938,26 @@ main:
 	.byte	0x23
 	.uleb128 0x38
 	.uleb128 0x1c
-	.4byte	.LASF9217
-	.byte	0x14
+	.4byte	.LASF9232
+	.byte	0x16
 	.2byte	0x277
 	.byte	0xa
-	.4byte	0x1300
+	.4byte	0x1427
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x3c
 	.uleb128 0x1c
-	.4byte	.LASF9218
-	.byte	0x14
+	.4byte	.LASF9233
+	.byte	0x16
 	.2byte	0x27a
 	.byte	0x13
-	.4byte	0xaf3
+	.4byte	0xc1a
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x40
 	.uleb128 0x1c
-	.4byte	.LASF9219
-	.byte	0x14
+	.4byte	.LASF9234
+	.byte	0x16
 	.2byte	0x27b
 	.byte	0x7
 	.4byte	0x2d
@@ -4511,26 +4965,26 @@ main:
 	.byte	0x23
 	.uleb128 0x44
 	.uleb128 0x1c
-	.4byte	.LASF9220
-	.byte	0x14
+	.4byte	.LASF9235
+	.byte	0x16
 	.2byte	0x27c
 	.byte	0x13
-	.4byte	0xaf3
+	.4byte	0xc1a
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x48
 	.uleb128 0x1c
-	.4byte	.LASF9221
-	.byte	0x14
+	.4byte	.LASF9236
+	.byte	0x16
 	.2byte	0x27d
 	.byte	0x14
-	.4byte	0x1306
+	.4byte	0x142d
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x4c
 	.uleb128 0x1c
-	.4byte	.LASF9222
-	.byte	0x14
+	.4byte	.LASF9237
+	.byte	0x16
 	.2byte	0x280
 	.byte	0x7
 	.4byte	0x2d
@@ -4538,167 +4992,167 @@ main:
 	.byte	0x23
 	.uleb128 0x50
 	.uleb128 0x1c
-	.4byte	.LASF9223
-	.byte	0x14
+	.4byte	.LASF9238
+	.byte	0x16
 	.2byte	0x281
 	.byte	0x9
-	.4byte	0xfaa
+	.4byte	0x10d1
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x54
 	.uleb128 0x1c
-	.4byte	.LASF9224
-	.byte	0x14
+	.4byte	.LASF9239
+	.byte	0x16
 	.2byte	0x2a4
 	.byte	0x7
-	.4byte	0x12b3
+	.4byte	0x13da
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x58
 	.uleb128 0x1c
-	.4byte	.LASF9184
-	.byte	0x14
+	.4byte	.LASF9199
+	.byte	0x16
 	.2byte	0x2a8
 	.byte	0x13
-	.4byte	0xc48
+	.4byte	0xd6f
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0x148
 	.uleb128 0x1c
-	.4byte	.LASF9225
-	.byte	0x14
+	.4byte	.LASF9240
+	.byte	0x16
 	.2byte	0x2a9
 	.byte	0x12
-	.4byte	0xbfc
+	.4byte	0xd23
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0x14c
 	.uleb128 0x1c
-	.4byte	.LASF9226
-	.byte	0x14
+	.4byte	.LASF9241
+	.byte	0x16
 	.2byte	0x2ad
 	.byte	0xc
-	.4byte	0x1318
+	.4byte	0x143f
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0x2dc
 	.uleb128 0x1c
-	.4byte	.LASF9227
-	.byte	0x14
+	.4byte	.LASF9242
+	.byte	0x16
 	.2byte	0x2b2
 	.byte	0x10
-	.4byte	0x105a
+	.4byte	0x1181
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0x2e0
 	.uleb128 0x1c
-	.4byte	.LASF9228
-	.byte	0x14
+	.4byte	.LASF9243
+	.byte	0x16
 	.2byte	0x2b4
 	.byte	0xa
-	.4byte	0x1324
+	.4byte	0x144b
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0x2ec
 	.byte	0
 	.uleb128 0x13
 	.byte	0x4
-	.4byte	0xfb0
+	.4byte	0x10d7
 	.uleb128 0x3
 	.byte	0x1
 	.byte	0x8
 	.4byte	.LASF1018
 	.uleb128 0x6
-	.4byte	0xfb0
+	.4byte	0x10d7
 	.uleb128 0x13
 	.byte	0x4
-	.4byte	0xe0b
+	.4byte	0xf32
 	.uleb128 0x19
 	.byte	0x1
 	.4byte	0x2d
-	.4byte	0xfe1
+	.4byte	0x1108
 	.uleb128 0x1a
-	.4byte	0xe2a
+	.4byte	0xf51
 	.uleb128 0x1a
-	.4byte	0x110
+	.4byte	0x128
 	.uleb128 0x1a
-	.4byte	0xfe1
+	.4byte	0x1108
 	.uleb128 0x1a
 	.4byte	0x2d
 	.byte	0
 	.uleb128 0x13
 	.byte	0x4
-	.4byte	0xfb7
+	.4byte	0x10de
 	.uleb128 0x13
 	.byte	0x4
-	.4byte	0xfc2
+	.4byte	0x10e9
 	.uleb128 0x19
 	.byte	0x1
-	.4byte	0x9eb
-	.4byte	0x100c
+	.4byte	0xb12
+	.4byte	0x1133
 	.uleb128 0x1a
-	.4byte	0xe2a
+	.4byte	0xf51
 	.uleb128 0x1a
-	.4byte	0x110
+	.4byte	0x128
 	.uleb128 0x1a
-	.4byte	0x9eb
+	.4byte	0xb12
 	.uleb128 0x1a
 	.4byte	0x2d
 	.byte	0
 	.uleb128 0x13
 	.byte	0x4
-	.4byte	0xfed
+	.4byte	0x1114
 	.uleb128 0x19
 	.byte	0x1
 	.4byte	0x2d
-	.4byte	0x1027
+	.4byte	0x114e
 	.uleb128 0x1a
-	.4byte	0xe2a
+	.4byte	0xf51
 	.uleb128 0x1a
-	.4byte	0x110
+	.4byte	0x128
 	.byte	0
 	.uleb128 0x13
 	.byte	0x4
-	.4byte	0x1012
+	.4byte	0x1139
 	.uleb128 0xa
 	.4byte	0x4e
-	.4byte	0x103d
+	.4byte	0x1164
 	.uleb128 0xb
 	.4byte	0x34
 	.byte	0x2
 	.byte	0
 	.uleb128 0xa
 	.4byte	0x4e
-	.4byte	0x104d
+	.4byte	0x1174
 	.uleb128 0xb
 	.4byte	0x34
 	.byte	0
 	.byte	0
 	.uleb128 0x10
-	.4byte	.LASF9229
-	.byte	0x14
+	.4byte	.LASF9244
+	.byte	0x16
 	.2byte	0x124
 	.byte	0x1a
-	.4byte	0xc98
+	.4byte	0xdbf
 	.uleb128 0x1d
-	.4byte	.LASF9230
+	.4byte	.LASF9245
 	.byte	0xc
-	.byte	0x14
+	.byte	0x16
 	.2byte	0x128
 	.byte	0x8
-	.4byte	0x1099
+	.4byte	0x11c0
 	.uleb128 0x1c
-	.4byte	.LASF9164
-	.byte	0x14
+	.4byte	.LASF9179
+	.byte	0x16
 	.2byte	0x12a
 	.byte	0x11
-	.4byte	0x1099
+	.4byte	0x11c0
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x1c
-	.4byte	.LASF9231
-	.byte	0x14
+	.4byte	.LASF9246
+	.byte	0x16
 	.2byte	0x12b
 	.byte	0x7
 	.4byte	0x2d
@@ -4706,72 +5160,72 @@ main:
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0x1c
-	.4byte	.LASF9232
-	.byte	0x14
+	.4byte	.LASF9247
+	.byte	0x16
 	.2byte	0x12c
 	.byte	0xb
-	.4byte	0x109f
+	.4byte	0x11c6
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x8
 	.byte	0
 	.uleb128 0x13
 	.byte	0x4
-	.4byte	0x105a
+	.4byte	0x1181
 	.uleb128 0x13
 	.byte	0x4
-	.4byte	0x104d
+	.4byte	0x1174
 	.uleb128 0x1d
-	.4byte	.LASF9233
+	.4byte	.LASF9248
 	.byte	0xe
-	.byte	0x14
+	.byte	0x16
 	.2byte	0x144
 	.byte	0x8
-	.4byte	0x10e4
+	.4byte	0x120b
 	.uleb128 0x1c
-	.4byte	.LASF9234
-	.byte	0x14
+	.4byte	.LASF9249
+	.byte	0x16
 	.2byte	0x145
 	.byte	0x12
-	.4byte	0x10e4
+	.4byte	0x120b
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x1c
-	.4byte	.LASF9235
-	.byte	0x14
+	.4byte	.LASF9250
+	.byte	0x16
 	.2byte	0x146
 	.byte	0x12
-	.4byte	0x10e4
+	.4byte	0x120b
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x6
 	.uleb128 0x1c
-	.4byte	.LASF9236
-	.byte	0x14
+	.4byte	.LASF9251
+	.byte	0x16
 	.2byte	0x147
 	.byte	0x12
-	.4byte	0x68
+	.4byte	0x74
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0xc
 	.byte	0
 	.uleb128 0xa
-	.4byte	0x68
-	.4byte	0x10f4
+	.4byte	0x74
+	.4byte	0x121b
 	.uleb128 0xb
 	.4byte	0x34
 	.byte	0x2
 	.byte	0
 	.uleb128 0x1e
 	.byte	0xd0
-	.byte	0x14
+	.byte	0x16
 	.2byte	0x285
 	.byte	0x7
-	.4byte	0x1238
+	.4byte	0x135f
 	.uleb128 0x1c
-	.4byte	.LASF9237
-	.byte	0x14
+	.4byte	.LASF9252
+	.byte	0x16
 	.2byte	0x287
 	.byte	0x18
 	.4byte	0x34
@@ -4779,35 +5233,35 @@ main:
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x1c
-	.4byte	.LASF9238
-	.byte	0x14
+	.4byte	.LASF9253
+	.byte	0x16
 	.2byte	0x288
 	.byte	0x12
-	.4byte	0xfaa
+	.4byte	0x10d1
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0x1c
-	.4byte	.LASF9239
-	.byte	0x14
+	.4byte	.LASF9254
+	.byte	0x16
 	.2byte	0x289
 	.byte	0x10
-	.4byte	0x1238
+	.4byte	0x135f
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0x1c
-	.4byte	.LASF9240
-	.byte	0x14
+	.4byte	.LASF9255
+	.byte	0x16
 	.2byte	0x28a
 	.byte	0x17
-	.4byte	0xb09
+	.4byte	0xc30
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x24
 	.uleb128 0x1c
-	.4byte	.LASF9241
-	.byte	0x14
+	.4byte	.LASF9256
+	.byte	0x16
 	.2byte	0x28b
 	.byte	0xf
 	.4byte	0x2d
@@ -4815,71 +5269,71 @@ main:
 	.byte	0x23
 	.uleb128 0x48
 	.uleb128 0x1c
-	.4byte	.LASF9242
-	.byte	0x14
+	.4byte	.LASF9257
+	.byte	0x16
 	.2byte	0x28c
 	.byte	0x2c
-	.4byte	0x9c
+	.4byte	0xa8
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x50
 	.uleb128 0x1c
-	.4byte	.LASF9243
-	.byte	0x14
+	.4byte	.LASF9258
+	.byte	0x16
 	.2byte	0x28d
 	.byte	0x1a
-	.4byte	0x10a5
+	.4byte	0x11cc
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x58
 	.uleb128 0x1c
-	.4byte	.LASF9244
-	.byte	0x14
+	.4byte	.LASF9259
+	.byte	0x16
 	.2byte	0x28e
 	.byte	0x16
-	.4byte	0xa51
+	.4byte	0xb78
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x68
 	.uleb128 0x1c
-	.4byte	.LASF9245
-	.byte	0x14
+	.4byte	.LASF9260
+	.byte	0x16
 	.2byte	0x28f
 	.byte	0x16
-	.4byte	0xa51
+	.4byte	0xb78
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x70
 	.uleb128 0x1c
-	.4byte	.LASF9246
-	.byte	0x14
+	.4byte	.LASF9261
+	.byte	0x16
 	.2byte	0x290
 	.byte	0x16
-	.4byte	0xa51
+	.4byte	0xb78
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x78
 	.uleb128 0x1c
-	.4byte	.LASF9247
-	.byte	0x14
+	.4byte	.LASF9262
+	.byte	0x16
 	.2byte	0x291
 	.byte	0x10
-	.4byte	0x1248
+	.4byte	0x136f
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0x80
 	.uleb128 0x1c
-	.4byte	.LASF9248
-	.byte	0x14
+	.4byte	.LASF9263
+	.byte	0x16
 	.2byte	0x292
 	.byte	0x10
-	.4byte	0x1258
+	.4byte	0x137f
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0x88
 	.uleb128 0x1c
-	.4byte	.LASF9249
-	.byte	0x14
+	.4byte	.LASF9264
+	.byte	0x16
 	.2byte	0x293
 	.byte	0xf
 	.4byte	0x2d
@@ -4887,53 +5341,53 @@ main:
 	.byte	0x23
 	.uleb128 0xa0
 	.uleb128 0x1c
-	.4byte	.LASF9250
-	.byte	0x14
+	.4byte	.LASF9265
+	.byte	0x16
 	.2byte	0x294
 	.byte	0x16
-	.4byte	0xa51
+	.4byte	0xb78
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0xa4
 	.uleb128 0x1c
-	.4byte	.LASF9251
-	.byte	0x14
+	.4byte	.LASF9266
+	.byte	0x16
 	.2byte	0x295
 	.byte	0x16
-	.4byte	0xa51
+	.4byte	0xb78
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0xac
 	.uleb128 0x1c
-	.4byte	.LASF9252
-	.byte	0x14
+	.4byte	.LASF9267
+	.byte	0x16
 	.2byte	0x296
 	.byte	0x16
-	.4byte	0xa51
+	.4byte	0xb78
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0xb4
 	.uleb128 0x1c
-	.4byte	.LASF9253
-	.byte	0x14
+	.4byte	.LASF9268
+	.byte	0x16
 	.2byte	0x297
 	.byte	0x16
-	.4byte	0xa51
+	.4byte	0xb78
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0xbc
 	.uleb128 0x1c
-	.4byte	.LASF9254
-	.byte	0x14
+	.4byte	.LASF9269
+	.byte	0x16
 	.2byte	0x298
 	.byte	0x16
-	.4byte	0xa51
+	.4byte	0xb78
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0xc4
 	.uleb128 0x1c
-	.4byte	.LASF9255
-	.byte	0x14
+	.4byte	.LASF9270
+	.byte	0x16
 	.2byte	0x299
 	.byte	0x8
 	.4byte	0x2d
@@ -4942,1217 +5396,1217 @@ main:
 	.uleb128 0xcc
 	.byte	0
 	.uleb128 0xa
-	.4byte	0xfb0
-	.4byte	0x1248
+	.4byte	0x10d7
+	.4byte	0x136f
 	.uleb128 0xb
 	.4byte	0x34
 	.byte	0x19
 	.byte	0
 	.uleb128 0xa
-	.4byte	0xfb0
-	.4byte	0x1258
+	.4byte	0x10d7
+	.4byte	0x137f
 	.uleb128 0xb
 	.4byte	0x34
 	.byte	0x7
 	.byte	0
 	.uleb128 0xa
-	.4byte	0xfb0
-	.4byte	0x1268
+	.4byte	0x10d7
+	.4byte	0x138f
 	.uleb128 0xb
 	.4byte	0x34
 	.byte	0x17
 	.byte	0
 	.uleb128 0x1e
 	.byte	0xf0
-	.byte	0x14
+	.byte	0x16
 	.2byte	0x29e
 	.byte	0x7
-	.4byte	0x1293
+	.4byte	0x13ba
 	.uleb128 0x1c
-	.4byte	.LASF9256
-	.byte	0x14
+	.4byte	.LASF9271
+	.byte	0x16
 	.2byte	0x2a1
 	.byte	0x1b
-	.4byte	0x1293
+	.4byte	0x13ba
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x1c
-	.4byte	.LASF9257
-	.byte	0x14
+	.4byte	.LASF9272
+	.byte	0x16
 	.2byte	0x2a2
 	.byte	0x18
-	.4byte	0x12a3
+	.4byte	0x13ca
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x78
 	.byte	0
 	.uleb128 0xa
-	.4byte	0xc92
-	.4byte	0x12a3
+	.4byte	0xdb9
+	.4byte	0x13ca
 	.uleb128 0xb
 	.4byte	0x34
 	.byte	0x1d
 	.byte	0
 	.uleb128 0xa
 	.4byte	0x34
-	.4byte	0x12b3
+	.4byte	0x13da
 	.uleb128 0xb
 	.4byte	0x34
 	.byte	0x1d
 	.byte	0
 	.uleb128 0x1f
 	.byte	0xf0
-	.byte	0x14
+	.byte	0x16
 	.2byte	0x283
 	.byte	0x3
-	.4byte	0x12d8
+	.4byte	0x13ff
 	.uleb128 0x20
-	.4byte	.LASF9207
-	.byte	0x14
+	.4byte	.LASF9222
+	.byte	0x16
 	.2byte	0x29a
 	.byte	0xb
-	.4byte	0x10f4
+	.4byte	0x121b
 	.uleb128 0x20
-	.4byte	.LASF9258
-	.byte	0x14
+	.4byte	.LASF9273
+	.byte	0x16
 	.2byte	0x2a3
 	.byte	0xb
-	.4byte	0x1268
+	.4byte	0x138f
 	.byte	0
 	.uleb128 0xa
-	.4byte	0xfb0
-	.4byte	0x12e8
+	.4byte	0x10d7
+	.4byte	0x140f
 	.uleb128 0xb
 	.4byte	0x34
 	.byte	0x18
 	.byte	0
 	.uleb128 0x14
-	.4byte	.LASF9260
+	.4byte	.LASF9275
 	.byte	0x1
 	.uleb128 0x13
 	.byte	0x4
-	.4byte	0x12e8
+	.4byte	0x140f
 	.uleb128 0x21
 	.byte	0x1
-	.4byte	0x1300
+	.4byte	0x1427
 	.uleb128 0x1a
-	.4byte	0xe2a
+	.4byte	0xf51
 	.byte	0
 	.uleb128 0x13
 	.byte	0x4
-	.4byte	0x12f4
+	.4byte	0x141b
 	.uleb128 0x13
 	.byte	0x4
-	.4byte	0xaf3
+	.4byte	0xc1a
 	.uleb128 0x21
 	.byte	0x1
-	.4byte	0x1318
+	.4byte	0x143f
 	.uleb128 0x1a
 	.4byte	0x2d
 	.byte	0
 	.uleb128 0x13
 	.byte	0x4
-	.4byte	0x131e
+	.4byte	0x1445
 	.uleb128 0x13
 	.byte	0x4
-	.4byte	0x130c
+	.4byte	0x1433
 	.uleb128 0xa
-	.4byte	0x104d
-	.4byte	0x1334
+	.4byte	0x1174
+	.4byte	0x145b
 	.uleb128 0xb
 	.4byte	0x34
 	.byte	0x2
 	.byte	0
 	.uleb128 0x8
-	.4byte	.LASF9261
-	.byte	0x14
+	.4byte	.LASF9276
+	.byte	0x16
 	.2byte	0x333
 	.byte	0x17
-	.4byte	0xe2a
+	.4byte	0xf51
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x8
-	.4byte	.LASF9262
-	.byte	0x14
+	.4byte	.LASF9277
+	.byte	0x16
 	.2byte	0x334
 	.byte	0x1d
-	.4byte	0xe30
+	.4byte	0xf57
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x9
-	.4byte	.LASF9263
-	.byte	0x16
+	.4byte	.LASF9278
+	.byte	0x18
 	.byte	0x67
 	.byte	0xe
-	.4byte	0xfaa
+	.4byte	0x10d1
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x9
-	.4byte	.LASF9264
-	.byte	0x17
+	.4byte	.LASF9279
+	.byte	0x19
 	.byte	0x8c
 	.byte	0x16
-	.4byte	0x1375
+	.4byte	0x149c
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x3
 	.byte	0x1
 	.byte	0x2
-	.4byte	.LASF9265
+	.4byte	.LASF9280
 	.uleb128 0x5
-	.4byte	0x136e
+	.4byte	0x1495
 	.uleb128 0x22
-	.4byte	.LASF9266
-	.byte	0x17
+	.4byte	.LASF9281
+	.byte	0x19
 	.byte	0x91
 	.byte	0x1a
-	.4byte	0xe7
+	.4byte	0xff
 	.byte	0x5
 	.byte	0x3
 	.4byte	cpu_irq_critical_section_counter
 	.uleb128 0x22
-	.4byte	.LASF9267
-	.byte	0x17
+	.4byte	.LASF9282
+	.byte	0x19
 	.byte	0x92
 	.byte	0x1a
-	.4byte	0x1375
+	.4byte	0x149c
 	.byte	0x5
 	.byte	0x3
 	.4byte	cpu_irq_prev_interrupt_state
 	.uleb128 0x4
-	.4byte	.LASF9268
-	.byte	0x18
+	.4byte	.LASF9283
+	.byte	0x1a
 	.byte	0xff
 	.byte	0x21
-	.4byte	0xb4
+	.4byte	0xcc
 	.uleb128 0x3
 	.byte	0x4
 	.byte	0x4
-	.4byte	.LASF9269
+	.4byte	.LASF9284
 	.uleb128 0x3
 	.byte	0x8
 	.byte	0x4
-	.4byte	.LASF9270
+	.4byte	.LASF9285
 	.uleb128 0x23
-	.4byte	.LASF9279
+	.4byte	.LASF9294
 	.byte	0x7
 	.byte	0x1
 	.4byte	0x4e
 	.byte	0x3
 	.byte	0x4c
 	.byte	0x6
-	.4byte	0x13ef
+	.4byte	0x1516
 	.uleb128 0x24
-	.4byte	.LASF9271
+	.4byte	.LASF9286
 	.byte	0x3
 	.uleb128 0x24
-	.4byte	.LASF9272
+	.4byte	.LASF9287
 	.byte	0x4
 	.uleb128 0x24
-	.4byte	.LASF9273
+	.4byte	.LASF9288
 	.byte	0x5
 	.uleb128 0x24
-	.4byte	.LASF9274
+	.4byte	.LASF9289
 	.byte	0x6
 	.uleb128 0x24
-	.4byte	.LASF9275
+	.4byte	.LASF9290
 	.byte	0x7
 	.uleb128 0x24
-	.4byte	.LASF9276
+	.4byte	.LASF9291
 	.byte	0x8
 	.byte	0
 	.uleb128 0x15
-	.4byte	.LASF9277
+	.4byte	.LASF9292
 	.byte	0x4
 	.byte	0x3
 	.byte	0x55
 	.byte	0x8
-	.4byte	0x140c
+	.4byte	0x1533
 	.uleb128 0xd
-	.4byte	.LASF9278
+	.4byte	.LASF9293
 	.byte	0x3
 	.byte	0x56
 	.byte	0xb
-	.4byte	0xd1
+	.4byte	0xe9
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0
 	.byte	0
 	.uleb128 0x6
-	.4byte	0x13ef
+	.4byte	0x1516
 	.uleb128 0x23
-	.4byte	.LASF9280
+	.4byte	.LASF9295
 	.byte	0x7
 	.byte	0x4
 	.4byte	0x34
-	.byte	0x19
+	.byte	0x1b
 	.byte	0x4d
 	.byte	0xe
-	.4byte	0x1457
+	.4byte	0x157e
 	.uleb128 0x24
-	.4byte	.LASF9281
+	.4byte	.LASF9296
 	.byte	0
 	.uleb128 0x25
-	.4byte	.LASF9282
+	.4byte	.LASF9297
 	.4byte	0x8000000
 	.uleb128 0x25
-	.4byte	.LASF9283
+	.4byte	.LASF9298
 	.4byte	0x10000000
 	.uleb128 0x25
-	.4byte	.LASF9284
+	.4byte	.LASF9299
 	.4byte	0x28000000
 	.uleb128 0x25
-	.4byte	.LASF9285
+	.4byte	.LASF9300
 	.4byte	0x30000000
 	.uleb128 0x25
-	.4byte	.LASF9286
+	.4byte	.LASF9301
 	.4byte	0x38000000
 	.byte	0
 	.uleb128 0x23
-	.4byte	.LASF9287
+	.4byte	.LASF9302
 	.byte	0x7
 	.byte	0x1
 	.4byte	0x4e
-	.byte	0x4
+	.byte	0x5
 	.byte	0x4b
 	.byte	0x6
-	.4byte	0x1494
+	.4byte	0x15bb
 	.uleb128 0x24
-	.4byte	.LASF9288
+	.4byte	.LASF9303
 	.byte	0
 	.uleb128 0x24
-	.4byte	.LASF9289
+	.4byte	.LASF9304
 	.byte	0x1
 	.uleb128 0x24
-	.4byte	.LASF9290
+	.4byte	.LASF9305
 	.byte	0x2
 	.uleb128 0x24
-	.4byte	.LASF9291
+	.4byte	.LASF9306
 	.byte	0x3
 	.uleb128 0x24
-	.4byte	.LASF9292
+	.4byte	.LASF9307
 	.byte	0x4
 	.uleb128 0x24
-	.4byte	.LASF9293
+	.4byte	.LASF9308
 	.byte	0x5
 	.uleb128 0x24
-	.4byte	.LASF9294
+	.4byte	.LASF9309
 	.byte	0x6
 	.byte	0
 	.uleb128 0x6
-	.4byte	0x1457
+	.4byte	0x157e
 	.uleb128 0xa
-	.4byte	0xa3
-	.4byte	0x14a4
+	.4byte	0xaf
+	.4byte	0x15cb
 	.uleb128 0x26
 	.byte	0
 	.uleb128 0x9
-	.4byte	.LASF9295
-	.byte	0x4
+	.4byte	.LASF9310
+	.byte	0x5
 	.byte	0x6b
 	.byte	0x10
-	.4byte	0x1499
+	.4byte	0x15c0
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xa
-	.4byte	0xfb0
-	.4byte	0x14c2
+	.4byte	0x10d7
+	.4byte	0x15e9
 	.uleb128 0xb
 	.4byte	0x34
 	.byte	0x20
 	.byte	0
 	.uleb128 0x9
-	.4byte	.LASF9296
-	.byte	0x1a
+	.4byte	.LASF9311
+	.byte	0x1c
 	.byte	0x45
 	.byte	0xd
-	.4byte	0x14b2
+	.4byte	0x15d9
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x1e
 	.byte	0x8
-	.byte	0x1b
+	.byte	0x1d
 	.2byte	0x13c
 	.byte	0x9
-	.4byte	0x152b
-	.uleb128 0x1c
-	.4byte	.LASF9297
-	.byte	0x1b
-	.2byte	0x13d
-	.byte	0xa
-	.4byte	0xa3
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0
-	.uleb128 0x1c
-	.4byte	.LASF9298
-	.byte	0x1b
-	.2byte	0x13e
-	.byte	0xa
-	.4byte	0xa3
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x1
-	.uleb128 0x1c
-	.4byte	.LASF9299
-	.byte	0x1b
-	.2byte	0x13f
-	.byte	0x9
-	.4byte	0x139e
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x2
-	.uleb128 0x1c
-	.4byte	.LASF9300
-	.byte	0x1b
-	.2byte	0x140
-	.byte	0x9
-	.4byte	0x139e
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x4
-	.uleb128 0x1c
-	.4byte	.LASF9301
-	.byte	0x1b
-	.2byte	0x141
-	.byte	0x9
-	.4byte	0x139e
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x6
-	.byte	0
-	.uleb128 0x10
-	.4byte	.LASF9302
-	.byte	0x1b
-	.2byte	0x142
-	.byte	0x3
-	.4byte	0x14d0
-	.uleb128 0x1e
-	.byte	0x12
-	.byte	0x1b
-	.2byte	0x147
-	.byte	0x9
-	.4byte	0x1623
-	.uleb128 0x1c
-	.4byte	.LASF9303
-	.byte	0x1b
-	.2byte	0x148
-	.byte	0xa
-	.4byte	0xa3
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0
-	.uleb128 0x1c
-	.4byte	.LASF9304
-	.byte	0x1b
-	.2byte	0x149
-	.byte	0xa
-	.4byte	0xa3
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x1
-	.uleb128 0x1c
-	.4byte	.LASF9305
-	.byte	0x1b
-	.2byte	0x14a
-	.byte	0x9
-	.4byte	0x139e
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x2
-	.uleb128 0x1c
-	.4byte	.LASF9306
-	.byte	0x1b
-	.2byte	0x14b
-	.byte	0xa
-	.4byte	0xa3
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x4
-	.uleb128 0x1c
-	.4byte	.LASF9307
-	.byte	0x1b
-	.2byte	0x14c
-	.byte	0xa
-	.4byte	0xa3
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x5
-	.uleb128 0x1c
-	.4byte	.LASF9308
-	.byte	0x1b
-	.2byte	0x14d
-	.byte	0xa
-	.4byte	0xa3
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x6
-	.uleb128 0x1c
-	.4byte	.LASF9309
-	.byte	0x1b
-	.2byte	0x14e
-	.byte	0xa
-	.4byte	0xa3
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x7
-	.uleb128 0x1c
-	.4byte	.LASF9310
-	.byte	0x1b
-	.2byte	0x14f
-	.byte	0x9
-	.4byte	0x139e
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x8
-	.uleb128 0x1c
-	.4byte	.LASF9311
-	.byte	0x1b
-	.2byte	0x150
-	.byte	0x9
-	.4byte	0x139e
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0xa
+	.4byte	0x1652
 	.uleb128 0x1c
 	.4byte	.LASF9312
-	.byte	0x1b
-	.2byte	0x151
-	.byte	0x9
-	.4byte	0x139e
+	.byte	0x1d
+	.2byte	0x13d
+	.byte	0xa
+	.4byte	0xaf
 	.byte	0x2
 	.byte	0x23
-	.uleb128 0xc
+	.uleb128 0
 	.uleb128 0x1c
 	.4byte	.LASF9313
-	.byte	0x1b
-	.2byte	0x152
+	.byte	0x1d
+	.2byte	0x13e
 	.byte	0xa
-	.4byte	0xa3
+	.4byte	0xaf
 	.byte	0x2
 	.byte	0x23
-	.uleb128 0xe
+	.uleb128 0x1
 	.uleb128 0x1c
 	.4byte	.LASF9314
-	.byte	0x1b
-	.2byte	0x153
-	.byte	0xa
-	.4byte	0xa3
+	.byte	0x1d
+	.2byte	0x13f
+	.byte	0x9
+	.4byte	0x14c5
 	.byte	0x2
 	.byte	0x23
-	.uleb128 0xf
+	.uleb128 0x2
 	.uleb128 0x1c
 	.4byte	.LASF9315
-	.byte	0x1b
-	.2byte	0x154
-	.byte	0xa
-	.4byte	0xa3
+	.byte	0x1d
+	.2byte	0x140
+	.byte	0x9
+	.4byte	0x14c5
 	.byte	0x2
 	.byte	0x23
-	.uleb128 0x10
+	.uleb128 0x4
 	.uleb128 0x1c
 	.4byte	.LASF9316
-	.byte	0x1b
-	.2byte	0x155
-	.byte	0xa
-	.4byte	0xa3
+	.byte	0x1d
+	.2byte	0x141
+	.byte	0x9
+	.4byte	0x14c5
 	.byte	0x2
 	.byte	0x23
-	.uleb128 0x11
+	.uleb128 0x6
 	.byte	0
 	.uleb128 0x10
 	.4byte	.LASF9317
-	.byte	0x1b
-	.2byte	0x156
+	.byte	0x1d
+	.2byte	0x142
 	.byte	0x3
-	.4byte	0x1538
+	.4byte	0x15f7
 	.uleb128 0x1e
-	.byte	0xa
-	.byte	0x1b
-	.2byte	0x160
+	.byte	0x12
+	.byte	0x1d
+	.2byte	0x147
 	.byte	0x9
-	.4byte	0x16cb
-	.uleb128 0x1c
-	.4byte	.LASF9303
-	.byte	0x1b
-	.2byte	0x161
-	.byte	0xa
-	.4byte	0xa3
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0
-	.uleb128 0x1c
-	.4byte	.LASF9304
-	.byte	0x1b
-	.2byte	0x162
-	.byte	0xa
-	.4byte	0xa3
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x1
-	.uleb128 0x1c
-	.4byte	.LASF9305
-	.byte	0x1b
-	.2byte	0x163
-	.byte	0x9
-	.4byte	0x139e
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x2
-	.uleb128 0x1c
-	.4byte	.LASF9306
-	.byte	0x1b
-	.2byte	0x164
-	.byte	0xa
-	.4byte	0xa3
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x4
-	.uleb128 0x1c
-	.4byte	.LASF9307
-	.byte	0x1b
-	.2byte	0x165
-	.byte	0xa
-	.4byte	0xa3
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x5
-	.uleb128 0x1c
-	.4byte	.LASF9308
-	.byte	0x1b
-	.2byte	0x166
-	.byte	0xa
-	.4byte	0xa3
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x6
-	.uleb128 0x1c
-	.4byte	.LASF9309
-	.byte	0x1b
-	.2byte	0x167
-	.byte	0xa
-	.4byte	0xa3
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x7
-	.uleb128 0x1c
-	.4byte	.LASF9316
-	.byte	0x1b
-	.2byte	0x168
-	.byte	0xa
-	.4byte	0xa3
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x8
+	.4byte	0x174a
 	.uleb128 0x1c
 	.4byte	.LASF9318
-	.byte	0x1b
-	.2byte	0x169
+	.byte	0x1d
+	.2byte	0x148
 	.byte	0xa
-	.4byte	0xa3
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x9
-	.byte	0
-	.uleb128 0x10
-	.4byte	.LASF9319
-	.byte	0x1b
-	.2byte	0x16a
-	.byte	0x3
-	.4byte	0x1630
-	.uleb128 0x1e
-	.byte	0x5
-	.byte	0x1b
-	.2byte	0x178
-	.byte	0x9
-	.4byte	0x1723
-	.uleb128 0x1c
-	.4byte	.LASF9303
-	.byte	0x1b
-	.2byte	0x179
-	.byte	0xa
-	.4byte	0xa3
+	.4byte	0xaf
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x1c
-	.4byte	.LASF9304
-	.byte	0x1b
-	.2byte	0x17a
+	.4byte	.LASF9319
+	.byte	0x1d
+	.2byte	0x149
 	.byte	0xa
-	.4byte	0xa3
+	.4byte	0xaf
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x1
 	.uleb128 0x1c
 	.4byte	.LASF9320
-	.byte	0x1b
-	.2byte	0x17b
-	.byte	0xa
-	.4byte	0x139e
+	.byte	0x1d
+	.2byte	0x14a
+	.byte	0x9
+	.4byte	0x14c5
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x2
 	.uleb128 0x1c
 	.4byte	.LASF9321
-	.byte	0x1b
-	.2byte	0x17c
+	.byte	0x1d
+	.2byte	0x14b
 	.byte	0xa
-	.4byte	0xa3
+	.4byte	0xaf
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x4
+	.uleb128 0x1c
+	.4byte	.LASF9322
+	.byte	0x1d
+	.2byte	0x14c
+	.byte	0xa
+	.4byte	0xaf
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x5
+	.uleb128 0x1c
+	.4byte	.LASF9323
+	.byte	0x1d
+	.2byte	0x14d
+	.byte	0xa
+	.4byte	0xaf
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x6
+	.uleb128 0x1c
+	.4byte	.LASF9324
+	.byte	0x1d
+	.2byte	0x14e
+	.byte	0xa
+	.4byte	0xaf
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x7
+	.uleb128 0x1c
+	.4byte	.LASF9325
+	.byte	0x1d
+	.2byte	0x14f
+	.byte	0x9
+	.4byte	0x14c5
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x8
+	.uleb128 0x1c
+	.4byte	.LASF9326
+	.byte	0x1d
+	.2byte	0x150
+	.byte	0x9
+	.4byte	0x14c5
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0xa
+	.uleb128 0x1c
+	.4byte	.LASF9327
+	.byte	0x1d
+	.2byte	0x151
+	.byte	0x9
+	.4byte	0x14c5
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0xc
+	.uleb128 0x1c
+	.4byte	.LASF9328
+	.byte	0x1d
+	.2byte	0x152
+	.byte	0xa
+	.4byte	0xaf
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0xe
+	.uleb128 0x1c
+	.4byte	.LASF9329
+	.byte	0x1d
+	.2byte	0x153
+	.byte	0xa
+	.4byte	0xaf
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0xf
+	.uleb128 0x1c
+	.4byte	.LASF9330
+	.byte	0x1d
+	.2byte	0x154
+	.byte	0xa
+	.4byte	0xaf
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x10
+	.uleb128 0x1c
+	.4byte	.LASF9331
+	.byte	0x1d
+	.2byte	0x155
+	.byte	0xa
+	.4byte	0xaf
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x11
 	.byte	0
 	.uleb128 0x10
-	.4byte	.LASF9322
-	.byte	0x1b
-	.2byte	0x17d
+	.4byte	.LASF9332
+	.byte	0x1d
+	.2byte	0x156
 	.byte	0x3
-	.4byte	0x16d8
+	.4byte	0x165f
 	.uleb128 0x1e
-	.byte	0x9
-	.byte	0x1b
-	.2byte	0x1a8
-	.byte	0x9
-	.4byte	0x17bb
-	.uleb128 0x1c
-	.4byte	.LASF9303
-	.byte	0x1b
-	.2byte	0x1a9
 	.byte	0xa
-	.4byte	0xa3
+	.byte	0x1d
+	.2byte	0x160
+	.byte	0x9
+	.4byte	0x17f2
+	.uleb128 0x1c
+	.4byte	.LASF9318
+	.byte	0x1d
+	.2byte	0x161
+	.byte	0xa
+	.4byte	0xaf
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x1c
-	.4byte	.LASF9304
-	.byte	0x1b
-	.2byte	0x1aa
+	.4byte	.LASF9319
+	.byte	0x1d
+	.2byte	0x162
 	.byte	0xa
-	.4byte	0xa3
+	.4byte	0xaf
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x1
 	.uleb128 0x1c
 	.4byte	.LASF9320
-	.byte	0x1b
-	.2byte	0x1ab
+	.byte	0x1d
+	.2byte	0x163
 	.byte	0x9
-	.4byte	0x139e
+	.4byte	0x14c5
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x2
 	.uleb128 0x1c
-	.4byte	.LASF9323
-	.byte	0x1b
-	.2byte	0x1ac
+	.4byte	.LASF9321
+	.byte	0x1d
+	.2byte	0x164
 	.byte	0xa
-	.4byte	0xa3
+	.4byte	0xaf
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0x1c
-	.4byte	.LASF9324
-	.byte	0x1b
-	.2byte	0x1ad
+	.4byte	.LASF9322
+	.byte	0x1d
+	.2byte	0x165
 	.byte	0xa
-	.4byte	0xa3
+	.4byte	0xaf
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x5
 	.uleb128 0x1c
-	.4byte	.LASF9325
-	.byte	0x1b
-	.2byte	0x1ae
+	.4byte	.LASF9323
+	.byte	0x1d
+	.2byte	0x166
 	.byte	0xa
-	.4byte	0xa3
+	.4byte	0xaf
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x6
 	.uleb128 0x1c
-	.4byte	.LASF9326
-	.byte	0x1b
-	.2byte	0x1af
+	.4byte	.LASF9324
+	.byte	0x1d
+	.2byte	0x167
 	.byte	0xa
-	.4byte	0xa3
+	.4byte	0xaf
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x7
 	.uleb128 0x1c
-	.4byte	.LASF9327
-	.byte	0x1b
-	.2byte	0x1b0
+	.4byte	.LASF9331
+	.byte	0x1d
+	.2byte	0x168
 	.byte	0xa
-	.4byte	0xa3
+	.4byte	0xaf
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x8
+	.uleb128 0x1c
+	.4byte	.LASF9333
+	.byte	0x1d
+	.2byte	0x169
+	.byte	0xa
+	.4byte	0xaf
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x9
 	.byte	0
 	.uleb128 0x10
-	.4byte	.LASF9328
-	.byte	0x1b
-	.2byte	0x1b1
+	.4byte	.LASF9334
+	.byte	0x1d
+	.2byte	0x16a
 	.byte	0x3
-	.4byte	0x1730
-	.uleb128 0xc
-	.byte	0x14
-	.byte	0x1c
-	.byte	0x47
+	.4byte	0x1757
+	.uleb128 0x1e
+	.byte	0x5
+	.byte	0x1d
+	.2byte	0x178
 	.byte	0x9
-	.4byte	0x181d
-	.uleb128 0xd
-	.4byte	.LASF9329
-	.byte	0x1c
-	.byte	0x52
-	.byte	0x8
-	.4byte	0x1823
+	.4byte	0x184a
+	.uleb128 0x1c
+	.4byte	.LASF9318
+	.byte	0x1d
+	.2byte	0x179
+	.byte	0xa
+	.4byte	0xaf
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0
-	.uleb128 0xd
-	.4byte	.LASF9330
-	.byte	0x1c
-	.byte	0x5f
-	.byte	0x9
-	.4byte	0xc5e
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x4
-	.uleb128 0xd
-	.4byte	.LASF9331
-	.byte	0x1c
-	.byte	0x6c
-	.byte	0x8
-	.4byte	0x1823
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x8
-	.uleb128 0xd
-	.4byte	.LASF9332
-	.byte	0x1c
-	.byte	0x75
-	.byte	0xb
-	.4byte	0x182f
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0xc
-	.uleb128 0xd
-	.4byte	.LASF9333
-	.byte	0x1c
-	.byte	0x7a
-	.byte	0x8
-	.4byte	0xc5e
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x10
-	.byte	0
-	.uleb128 0x27
-	.byte	0x1
-	.4byte	0x136e
-	.uleb128 0x13
-	.byte	0x4
-	.4byte	0x181d
-	.uleb128 0x27
-	.byte	0x1
-	.4byte	0xa3
-	.uleb128 0x13
-	.byte	0x4
-	.4byte	0x1829
-	.uleb128 0x4
-	.4byte	.LASF9334
-	.byte	0x1c
-	.byte	0x7b
-	.byte	0x3
-	.4byte	0x17c8
-	.uleb128 0xc
-	.byte	0x8
+	.uleb128 0x1c
+	.4byte	.LASF9319
 	.byte	0x1d
-	.byte	0x61
-	.byte	0x9
-	.4byte	0x1869
-	.uleb128 0xd
+	.2byte	0x17a
+	.byte	0xa
+	.4byte	0xaf
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x1
+	.uleb128 0x1c
 	.4byte	.LASF9335
 	.byte	0x1d
-	.byte	0x63
-	.byte	0x24
-	.4byte	0x1869
+	.2byte	0x17b
+	.byte	0xa
+	.4byte	0x14c5
 	.byte	0x2
 	.byte	0x23
-	.uleb128 0
-	.uleb128 0xd
+	.uleb128 0x2
+	.uleb128 0x1c
 	.4byte	.LASF9336
 	.byte	0x1d
-	.byte	0x65
-	.byte	0x31
-	.4byte	0x186f
+	.2byte	0x17c
+	.byte	0xa
+	.4byte	0xaf
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x4
 	.byte	0
-	.uleb128 0x13
-	.byte	0x4
-	.4byte	0x17bb
-	.uleb128 0x13
-	.byte	0x4
-	.4byte	0x1875
-	.uleb128 0x13
-	.byte	0x4
-	.4byte	0x1835
-	.uleb128 0x4
+	.uleb128 0x10
 	.4byte	.LASF9337
 	.byte	0x1d
-	.byte	0x66
+	.2byte	0x17d
 	.byte	0x3
-	.4byte	0x1841
-	.uleb128 0xc
-	.byte	0x18
-	.byte	0x1d
-	.byte	0x6c
+	.4byte	0x17ff
+	.uleb128 0x1e
 	.byte	0x9
-	.4byte	0x18eb
-	.uleb128 0xd
-	.4byte	.LASF9338
 	.byte	0x1d
-	.byte	0x6e
-	.byte	0x23
-	.4byte	0x18eb
+	.2byte	0x1a8
+	.byte	0x9
+	.4byte	0x18e2
+	.uleb128 0x1c
+	.4byte	.LASF9318
+	.byte	0x1d
+	.2byte	0x1a9
+	.byte	0xa
+	.4byte	0xaf
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0
-	.uleb128 0xd
-	.4byte	.LASF9339
+	.uleb128 0x1c
+	.4byte	.LASF9319
 	.byte	0x1d
-	.byte	0x70
-	.byte	0x27
-	.4byte	0x18f1
+	.2byte	0x1aa
+	.byte	0xa
+	.4byte	0xaf
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x1
+	.uleb128 0x1c
+	.4byte	.LASF9335
+	.byte	0x1d
+	.2byte	0x1ab
+	.byte	0x9
+	.4byte	0x14c5
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x2
+	.uleb128 0x1c
+	.4byte	.LASF9338
+	.byte	0x1d
+	.2byte	0x1ac
+	.byte	0xa
+	.4byte	0xaf
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x4
-	.uleb128 0xd
+	.uleb128 0x1c
+	.4byte	.LASF9339
+	.byte	0x1d
+	.2byte	0x1ad
+	.byte	0xa
+	.4byte	0xaf
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x5
+	.uleb128 0x1c
 	.4byte	.LASF9340
 	.byte	0x1d
-	.byte	0x73
+	.2byte	0x1ae
+	.byte	0xa
+	.4byte	0xaf
+	.byte	0x2
 	.byte	0x23
-	.4byte	0x18eb
+	.uleb128 0x6
+	.uleb128 0x1c
+	.4byte	.LASF9341
+	.byte	0x1d
+	.2byte	0x1af
+	.byte	0xa
+	.4byte	0xaf
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x7
+	.uleb128 0x1c
+	.4byte	.LASF9342
+	.byte	0x1d
+	.2byte	0x1b0
+	.byte	0xa
+	.4byte	0xaf
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x8
-	.uleb128 0xd
-	.4byte	.LASF9341
-	.byte	0x1d
-	.byte	0x75
-	.byte	0x28
-	.4byte	0x18f7
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0xc
-	.uleb128 0xd
-	.4byte	.LASF9342
-	.byte	0x1d
-	.byte	0x77
-	.byte	0x27
-	.4byte	0x18f1
-	.byte	0x2
-	.byte	0x23
+	.byte	0
 	.uleb128 0x10
-	.uleb128 0xd
 	.4byte	.LASF9343
 	.byte	0x1d
-	.byte	0x79
-	.byte	0x27
-	.4byte	0x18fd
-	.byte	0x2
-	.byte	0x23
-	.uleb128 0x14
-	.byte	0
-	.uleb128 0x13
-	.byte	0x4
-	.4byte	0x1623
-	.uleb128 0x13
-	.byte	0x4
-	.4byte	0x187b
-	.uleb128 0x13
-	.byte	0x4
-	.4byte	0x16cb
-	.uleb128 0x13
-	.byte	0x4
-	.4byte	0x1723
-	.uleb128 0x4
-	.4byte	.LASF9344
-	.byte	0x1d
-	.byte	0x7a
+	.2byte	0x1b1
 	.byte	0x3
-	.4byte	0x1887
-	.uleb128 0x9
-	.4byte	.LASF9345
-	.byte	0x1d
-	.byte	0x7d
-	.byte	0x26
-	.4byte	0x1903
-	.byte	0x1
-	.byte	0x1
+	.4byte	0x1857
 	.uleb128 0xc
-	.byte	0x18
+	.byte	0x14
 	.byte	0x1e
-	.byte	0x51
+	.byte	0x47
 	.byte	0x9
-	.4byte	0x1972
-	.uleb128 0x16
-	.ascii	"req\000"
+	.4byte	0x1944
+	.uleb128 0xd
+	.4byte	.LASF9344
 	.byte	0x1e
-	.byte	0x54
-	.byte	0x12
-	.4byte	0x152b
+	.byte	0x52
+	.byte	0x8
+	.4byte	0x194a
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0
+	.uleb128 0xd
+	.4byte	.LASF9345
+	.byte	0x1e
+	.byte	0x5f
+	.byte	0x9
+	.4byte	0xd85
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x4
 	.uleb128 0xd
 	.4byte	.LASF9346
 	.byte	0x1e
-	.byte	0x58
-	.byte	0xb
-	.4byte	0x1972
+	.byte	0x6c
+	.byte	0x8
+	.4byte	0x194a
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x8
 	.uleb128 0xd
 	.4byte	.LASF9347
 	.byte	0x1e
-	.byte	0x5b
+	.byte	0x75
 	.byte	0xb
-	.4byte	0xb4
+	.4byte	0x1956
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0xc
 	.uleb128 0xd
 	.4byte	.LASF9348
 	.byte	0x1e
-	.byte	0x5e
+	.byte	0x7a
+	.byte	0x8
+	.4byte	0xd85
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x10
+	.byte	0
+	.uleb128 0x27
+	.byte	0x1
+	.4byte	0x1495
+	.uleb128 0x13
+	.byte	0x4
+	.4byte	0x1944
+	.uleb128 0x27
+	.byte	0x1
+	.4byte	0xaf
+	.uleb128 0x13
+	.byte	0x4
+	.4byte	0x1950
+	.uleb128 0x4
+	.4byte	.LASF9349
+	.byte	0x1e
+	.byte	0x7b
+	.byte	0x3
+	.4byte	0x18ef
+	.uleb128 0xc
+	.byte	0x8
+	.byte	0x1f
+	.byte	0x61
 	.byte	0x9
-	.4byte	0xc5e
+	.4byte	0x1990
+	.uleb128 0xd
+	.4byte	.LASF9350
+	.byte	0x1f
+	.byte	0x63
+	.byte	0x24
+	.4byte	0x1990
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0
+	.uleb128 0xd
+	.4byte	.LASF9351
+	.byte	0x1f
+	.byte	0x65
+	.byte	0x31
+	.4byte	0x1996
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x4
+	.byte	0
+	.uleb128 0x13
+	.byte	0x4
+	.4byte	0x18e2
+	.uleb128 0x13
+	.byte	0x4
+	.4byte	0x199c
+	.uleb128 0x13
+	.byte	0x4
+	.4byte	0x195c
+	.uleb128 0x4
+	.4byte	.LASF9352
+	.byte	0x1f
+	.byte	0x66
+	.byte	0x3
+	.4byte	0x1968
+	.uleb128 0xc
+	.byte	0x18
+	.byte	0x1f
+	.byte	0x6c
+	.byte	0x9
+	.4byte	0x1a12
+	.uleb128 0xd
+	.4byte	.LASF9353
+	.byte	0x1f
+	.byte	0x6e
+	.byte	0x23
+	.4byte	0x1a12
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0
+	.uleb128 0xd
+	.4byte	.LASF9354
+	.byte	0x1f
+	.byte	0x70
+	.byte	0x27
+	.4byte	0x1a18
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x4
+	.uleb128 0xd
+	.4byte	.LASF9355
+	.byte	0x1f
+	.byte	0x73
+	.byte	0x23
+	.4byte	0x1a12
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x8
+	.uleb128 0xd
+	.4byte	.LASF9356
+	.byte	0x1f
+	.byte	0x75
+	.byte	0x28
+	.4byte	0x1a1e
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0xc
+	.uleb128 0xd
+	.4byte	.LASF9357
+	.byte	0x1f
+	.byte	0x77
+	.byte	0x27
+	.4byte	0x1a18
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x10
 	.uleb128 0xd
-	.4byte	.LASF9349
-	.byte	0x1e
-	.byte	0x62
-	.byte	0x8
-	.4byte	0x1823
+	.4byte	.LASF9358
+	.byte	0x1f
+	.byte	0x79
+	.byte	0x27
+	.4byte	0x1a24
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x14
 	.byte	0
 	.uleb128 0x13
 	.byte	0x4
-	.4byte	0xa3
+	.4byte	0x174a
+	.uleb128 0x13
+	.byte	0x4
+	.4byte	0x19a2
+	.uleb128 0x13
+	.byte	0x4
+	.4byte	0x17f2
+	.uleb128 0x13
+	.byte	0x4
+	.4byte	0x184a
 	.uleb128 0x4
-	.4byte	.LASF9350
-	.byte	0x1e
+	.4byte	.LASF9359
+	.byte	0x1f
+	.byte	0x7a
+	.byte	0x3
+	.4byte	0x19ae
+	.uleb128 0x9
+	.4byte	.LASF9360
+	.byte	0x1f
+	.byte	0x7d
+	.byte	0x26
+	.4byte	0x1a2a
+	.byte	0x1
+	.byte	0x1
+	.uleb128 0xc
+	.byte	0x18
+	.byte	0x20
+	.byte	0x51
+	.byte	0x9
+	.4byte	0x1a99
+	.uleb128 0x16
+	.ascii	"req\000"
+	.byte	0x20
+	.byte	0x54
+	.byte	0x12
+	.4byte	0x1652
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0
+	.uleb128 0xd
+	.4byte	.LASF9361
+	.byte	0x20
+	.byte	0x58
+	.byte	0xb
+	.4byte	0x1a99
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x8
+	.uleb128 0xd
+	.4byte	.LASF9362
+	.byte	0x20
+	.byte	0x5b
+	.byte	0xb
+	.4byte	0xcc
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0xc
+	.uleb128 0xd
+	.4byte	.LASF9363
+	.byte	0x20
+	.byte	0x5e
+	.byte	0x9
+	.4byte	0xd85
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x10
+	.uleb128 0xd
+	.4byte	.LASF9364
+	.byte	0x20
+	.byte	0x62
+	.byte	0x8
+	.4byte	0x194a
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x14
+	.byte	0
+	.uleb128 0x13
+	.byte	0x4
+	.4byte	0xaf
+	.uleb128 0x4
+	.4byte	.LASF9365
+	.byte	0x20
 	.byte	0x63
 	.byte	0x3
-	.4byte	0x191d
+	.4byte	0x1a44
 	.uleb128 0x9
-	.4byte	.LASF9351
-	.byte	0x1e
+	.4byte	.LASF9366
+	.byte	0x20
 	.byte	0x64
 	.byte	0x1b
-	.4byte	0x1978
+	.4byte	0x1a9f
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x9
-	.4byte	.LASF9352
-	.byte	0x1f
+	.4byte	.LASF9367
+	.byte	0x21
 	.byte	0x57
 	.byte	0x23
-	.4byte	0x1835
+	.4byte	0x195c
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x9
-	.4byte	.LASF9353
-	.byte	0x20
+	.4byte	.LASF9368
+	.byte	0x22
 	.byte	0x4c
 	.byte	0x20
-	.4byte	0x19b4
+	.4byte	0x1adb
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x13
 	.byte	0x4
-	.4byte	0x19b9
+	.4byte	0x1ae0
 	.uleb128 0x5
-	.4byte	0x19ae
+	.4byte	0x1ad5
 	.uleb128 0x28
 	.uleb128 0x19
 	.byte	0x1
 	.4byte	0x2d
-	.4byte	0x19cf
+	.4byte	0x1af6
 	.uleb128 0x1a
-	.4byte	0x19ae
+	.4byte	0x1ad5
 	.uleb128 0x1a
-	.4byte	0xfb0
+	.4byte	0x10d7
 	.byte	0
 	.uleb128 0x9
-	.4byte	.LASF9354
-	.byte	0x20
+	.4byte	.LASF9369
+	.byte	0x22
 	.byte	0x4e
 	.byte	0xe
-	.4byte	0x19dd
+	.4byte	0x1b04
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x13
 	.byte	0x4
-	.4byte	0x19ba
+	.4byte	0x1ae1
 	.uleb128 0x21
 	.byte	0x1
-	.4byte	0x19f4
+	.4byte	0x1b1b
 	.uleb128 0x1a
-	.4byte	0x19ae
+	.4byte	0x1ad5
 	.uleb128 0x1a
-	.4byte	0xfaa
+	.4byte	0x10d1
 	.byte	0
 	.uleb128 0x9
-	.4byte	.LASF9355
-	.byte	0x20
+	.4byte	.LASF9370
+	.byte	0x22
 	.byte	0x51
 	.byte	0xf
-	.4byte	0x1a02
+	.4byte	0x1b29
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x13
 	.byte	0x4
-	.4byte	0x19e3
+	.4byte	0x1b0a
 	.uleb128 0x23
-	.4byte	.LASF9356
+	.4byte	.LASF9371
 	.byte	0x7
 	.byte	0x1
 	.4byte	0x4e
-	.byte	0x8
+	.byte	0x9
 	.byte	0x49
 	.byte	0x6
-	.4byte	0x1a5d
+	.4byte	0x1b84
 	.uleb128 0x24
-	.4byte	.LASF9357
+	.4byte	.LASF9372
 	.byte	0
 	.uleb128 0x24
-	.4byte	.LASF9358
+	.4byte	.LASF9373
 	.byte	0x1
 	.uleb128 0x24
-	.4byte	.LASF9359
+	.4byte	.LASF9374
 	.byte	0x2
 	.uleb128 0x24
-	.4byte	.LASF9360
+	.4byte	.LASF9375
 	.byte	0x3
 	.uleb128 0x24
-	.4byte	.LASF9361
+	.4byte	.LASF9376
 	.byte	0x4
 	.uleb128 0x24
-	.4byte	.LASF9362
+	.4byte	.LASF9377
 	.byte	0x5
 	.uleb128 0x24
-	.4byte	.LASF9363
+	.4byte	.LASF9378
 	.byte	0x6
 	.uleb128 0x24
-	.4byte	.LASF9364
+	.4byte	.LASF9379
 	.byte	0x7
 	.uleb128 0x24
-	.4byte	.LASF9365
+	.4byte	.LASF9380
 	.byte	0x8
 	.uleb128 0x24
-	.4byte	.LASF9366
+	.4byte	.LASF9381
 	.byte	0x9
 	.uleb128 0x24
-	.4byte	.LASF9367
+	.4byte	.LASF9382
 	.byte	0xa
 	.byte	0
 	.uleb128 0x23
-	.4byte	.LASF9368
+	.4byte	.LASF9383
 	.byte	0x7
 	.byte	0x1
 	.4byte	0x4e
-	.byte	0x8
+	.byte	0x9
 	.byte	0x5c
 	.byte	0x6
-	.4byte	0x1a9a
+	.4byte	0x1bc1
 	.uleb128 0x24
-	.4byte	.LASF9369
+	.4byte	.LASF9384
 	.byte	0
 	.uleb128 0x24
-	.4byte	.LASF9370
+	.4byte	.LASF9385
 	.byte	0x10
 	.uleb128 0x24
-	.4byte	.LASF9371
+	.4byte	.LASF9386
 	.byte	0x20
 	.uleb128 0x24
-	.4byte	.LASF9372
+	.4byte	.LASF9387
 	.byte	0x30
 	.uleb128 0x24
-	.4byte	.LASF9373
+	.4byte	.LASF9388
 	.byte	0x40
 	.uleb128 0x24
-	.4byte	.LASF9374
+	.4byte	.LASF9389
 	.byte	0x50
 	.uleb128 0x24
-	.4byte	.LASF9375
+	.4byte	.LASF9390
 	.byte	0x60
 	.byte	0
 	.uleb128 0x15
-	.4byte	.LASF9376
+	.4byte	.LASF9391
 	.byte	0x4
-	.byte	0x8
+	.byte	0x9
 	.byte	0x68
 	.byte	0x8
-	.4byte	0x1ab7
+	.4byte	0x1bde
 	.uleb128 0xd
-	.4byte	.LASF9278
-	.byte	0x8
+	.4byte	.LASF9293
+	.byte	0x9
 	.byte	0x69
 	.byte	0xb
-	.4byte	0xd1
+	.4byte	0xe9
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0
 	.byte	0
 	.uleb128 0x6
-	.4byte	0x1a9a
+	.4byte	0x1bc1
 	.uleb128 0x9
-	.4byte	.LASF9377
-	.byte	0x21
+	.4byte	.LASF9392
+	.byte	0x23
 	.byte	0xb
 	.byte	0x1a
-	.4byte	0xe7
+	.4byte	0xff
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x9
-	.4byte	.LASF9378
-	.byte	0x22
+	.4byte	.LASF9393
+	.byte	0x24
 	.byte	0x36
 	.byte	0x1a
-	.4byte	0x1ad8
+	.4byte	0x1bff
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x13
 	.byte	0x4
-	.4byte	0xaf
+	.4byte	0xbb
 	.uleb128 0x9
-	.4byte	.LASF9379
-	.byte	0x23
+	.4byte	.LASF9394
+	.byte	0x25
 	.byte	0x65
 	.byte	0x10
-	.4byte	0xa3
+	.4byte	0xaf
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x9
-	.4byte	.LASF9380
-	.byte	0x24
+	.4byte	.LASF9395
+	.byte	0x26
 	.byte	0x1a
 	.byte	0x16
-	.4byte	0x1375
+	.4byte	0x149c
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x29
-	.4byte	0x14c2
-	.byte	0x9
+	.4byte	0x15e9
+	.byte	0xa
 	.byte	0xe
 	.byte	0x6
 	.byte	0x5
@@ -6160,121 +6614,228 @@ main:
 	.4byte	usb_serial_number
 	.uleb128 0x2a
 	.byte	0x1
-	.4byte	.LASF9451
-	.byte	0x9
-	.byte	0x55
+	.4byte	.LASF9478
+	.byte	0xa
+	.byte	0x74
 	.byte	0x5
 	.byte	0x1
 	.4byte	0x2d
-	.4byte	.LFB193
-	.4byte	.LFE193
-	.4byte	.LLST21
+	.4byte	.LFB194
+	.4byte	.LFE194
+	.4byte	.LLST24
 	.byte	0x1
-	.4byte	0x1bc3
+	.4byte	0x1cf3
 	.uleb128 0x22
-	.4byte	.LASF9381
-	.byte	0x9
-	.byte	0x57
+	.4byte	.LASF9396
+	.byte	0xa
+	.byte	0x76
 	.byte	0xe
-	.4byte	0x1bc3
+	.4byte	0x1cf3
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -28
 	.uleb128 0x2b
-	.4byte	.LBB28
-	.4byte	.LBE28
-	.4byte	0x1b5a
+	.4byte	.LBB30
+	.4byte	.LBE30
+	.4byte	0x1c81
 	.uleb128 0x2c
 	.ascii	"i\000"
-	.byte	0x9
-	.byte	0x69
+	.byte	0xa
+	.byte	0x88
 	.byte	0x13
 	.4byte	0x34
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -12
 	.uleb128 0x2d
-	.4byte	.LVL96
-	.4byte	0x23d3
+	.4byte	.LVL112
+	.4byte	0x265a
 	.byte	0
 	.uleb128 0x2e
-	.4byte	0x23c8
-	.4byte	.LBB24
-	.4byte	.LBE24
-	.byte	0x9
-	.byte	0x5d
-	.byte	0x5
-	.uleb128 0x2e
-	.4byte	0x23bd
+	.4byte	0x264f
 	.4byte	.LBB26
 	.4byte	.LBE26
-	.byte	0x9
-	.byte	0x5d
+	.byte	0xa
+	.byte	0x7c
+	.byte	0x5
+	.uleb128 0x2e
+	.4byte	0x2644
+	.4byte	.LBB28
+	.4byte	.LBE28
+	.byte	0xa
+	.byte	0x7c
 	.byte	0x5
 	.uleb128 0x2d
-	.4byte	.LVL92
-	.4byte	0x23e0
+	.4byte	.LVL108
+	.4byte	0x2667
 	.uleb128 0x2d
-	.4byte	.LVL93
-	.4byte	0x2059
+	.4byte	.LVL109
+	.4byte	0x2286
 	.uleb128 0x2d
-	.4byte	.LVL94
-	.4byte	0x23ee
+	.4byte	.LVL110
+	.4byte	0x2675
 	.uleb128 0x2d
-	.4byte	.LVL95
-	.4byte	0x1c89
+	.4byte	.LVL111
+	.4byte	0x1eb6
 	.uleb128 0x2d
-	.4byte	.LVL97
-	.4byte	0x1bd3
+	.4byte	.LVL113
+	.4byte	0x1e00
 	.uleb128 0x2d
-	.4byte	.LVL98
-	.4byte	0x23fd
+	.4byte	.LVL114
+	.4byte	0x1d03
 	.uleb128 0x2d
-	.4byte	.LVL99
-	.4byte	0x240b
+	.4byte	.LVL115
+	.4byte	0x2684
 	.uleb128 0x2d
-	.4byte	.LVL100
-	.4byte	0x1fc0
+	.4byte	.LVL116
+	.4byte	0x2692
+	.uleb128 0x2d
+	.4byte	.LVL117
+	.4byte	0x21ed
 	.byte	0
 	.uleb128 0xa
-	.4byte	0xd1
-	.4byte	0x1bd3
+	.4byte	0xe9
+	.4byte	0x1d03
 	.uleb128 0xb
 	.4byte	0x34
 	.byte	0x3
 	.byte	0
 	.uleb128 0x2f
-	.4byte	.LASF9386
-	.byte	0x9
+	.byte	0x1
+	.4byte	.LASF9399
+	.byte	0xa
+	.byte	0x58
+	.byte	0x6
+	.byte	0x1
+	.4byte	.LFB193
+	.4byte	.LFE193
+	.4byte	.LLST23
+	.byte	0x1
+	.4byte	0x1e00
+	.uleb128 0x30
+	.4byte	.LASF9479
+	.byte	0xa
+	.byte	0x66
+	.byte	0xe
+	.4byte	0xe9
+	.uleb128 0x2c
+	.ascii	"div\000"
+	.byte	0xa
+	.byte	0x68
+	.byte	0xd
+	.4byte	0xc0
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -10
+	.uleb128 0x2b
+	.4byte	.LBB24
+	.4byte	.LBE24
+	.4byte	0x1d54
+	.uleb128 0x2c
+	.ascii	"i\000"
+	.byte	0xa
+	.byte	0x62
+	.byte	0x1c
+	.4byte	0xff
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -16
+	.byte	0
+	.uleb128 0x2b
+	.4byte	.LBB25
+	.4byte	.LBE25
+	.4byte	0x1d6f
+	.uleb128 0x2c
+	.ascii	"i\000"
+	.byte	0xa
+	.byte	0x64
+	.byte	0x1c
+	.4byte	0xff
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -20
+	.byte	0
+	.uleb128 0x2d
+	.4byte	.LVL92
+	.4byte	0x26a0
+	.uleb128 0x2d
+	.4byte	.LVL93
+	.4byte	0x26a0
+	.uleb128 0x2d
+	.4byte	.LVL94
+	.4byte	0x26a0
+	.uleb128 0x2d
+	.4byte	.LVL95
+	.4byte	0x26a0
+	.uleb128 0x2d
+	.4byte	.LVL96
+	.4byte	0x26ae
+	.uleb128 0x2d
+	.4byte	.LVL97
+	.4byte	0x26a0
+	.uleb128 0x2d
+	.4byte	.LVL98
+	.4byte	0x26ae
+	.uleb128 0x2d
+	.4byte	.LVL99
+	.4byte	0x26bc
+	.uleb128 0x2d
+	.4byte	.LVL100
+	.4byte	0x26ca
+	.uleb128 0x2d
+	.4byte	.LVL101
+	.4byte	0x26d9
+	.uleb128 0x2d
+	.4byte	.LVL102
+	.4byte	0x26e8
+	.uleb128 0x2d
+	.4byte	.LVL103
+	.4byte	0x2301
+	.uleb128 0x2d
+	.4byte	.LVL104
+	.4byte	0x26f7
+	.uleb128 0x2d
+	.4byte	.LVL105
+	.4byte	0x2706
+	.uleb128 0x2d
+	.4byte	.LVL106
+	.4byte	0x2715
+	.uleb128 0x2d
+	.4byte	.LVL107
+	.4byte	0x2331
+	.byte	0
+	.uleb128 0x31
+	.4byte	.LASF9402
+	.byte	0xa
 	.byte	0x49
 	.byte	0x14
 	.byte	0x1
 	.4byte	.LFB192
 	.4byte	.LFE192
-	.4byte	.LLST20
+	.4byte	.LLST22
 	.byte	0x1
-	.4byte	0x1c56
-	.uleb128 0x30
+	.4byte	0x1e83
+	.uleb128 0x32
 	.ascii	"id\000"
-	.byte	0x9
+	.byte	0xa
 	.byte	0x49
 	.byte	0x36
 	.4byte	0x34
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -20
-	.uleb128 0x30
+	.uleb128 0x32
 	.ascii	"src\000"
-	.byte	0x9
+	.byte	0xa
 	.byte	0x49
 	.byte	0x4d
-	.4byte	0x1a08
+	.4byte	0x1b2f
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -21
-	.uleb128 0x31
-	.4byte	.LASF9382
-	.byte	0x9
+	.uleb128 0x33
+	.4byte	.LASF9397
+	.byte	0xa
 	.byte	0x49
 	.byte	0x5f
 	.4byte	0x34
@@ -6282,520 +6843,565 @@ main:
 	.byte	0x91
 	.sleb128 -28
 	.uleb128 0x22
-	.4byte	.LASF9383
-	.byte	0x9
+	.4byte	.LASF9398
+	.byte	0xa
 	.byte	0x4b
 	.byte	0x1a
-	.4byte	0x1a9a
+	.4byte	0x1bc1
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -12
 	.uleb128 0x2d
 	.4byte	.LVL87
-	.4byte	0x1f87
+	.4byte	0x21b4
 	.uleb128 0x2d
 	.4byte	.LVL88
-	.4byte	0x1db3
+	.4byte	0x1fe0
 	.uleb128 0x2d
 	.4byte	.LVL89
-	.4byte	0x1f4e
+	.4byte	0x217b
 	.uleb128 0x2d
 	.4byte	.LVL90
-	.4byte	0x1f0f
+	.4byte	0x213c
 	.uleb128 0x2d
 	.4byte	.LVL91
-	.4byte	0x1ec7
+	.4byte	0x20f4
 	.byte	0
-	.uleb128 0x32
+	.uleb128 0x2f
 	.byte	0x1
-	.4byte	.LASF9384
-	.byte	0x9
+	.4byte	.LASF9400
+	.byte	0xa
 	.byte	0x44
 	.byte	0x6
 	.byte	0x1
 	.4byte	.LFB191
 	.4byte	.LFE191
-	.4byte	.LLST19
+	.4byte	.LLST21
 	.byte	0x1
-	.4byte	0x1c89
-	.uleb128 0x33
+	.4byte	0x1eb6
+	.uleb128 0x34
 	.4byte	.LBB23
 	.4byte	.LBE23
 	.uleb128 0x2c
 	.ascii	"i\000"
-	.byte	0x9
+	.byte	0xa
 	.byte	0x46
 	.byte	0x1c
-	.4byte	0xe7
+	.4byte	0xff
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -12
 	.byte	0
 	.byte	0
-	.uleb128 0x32
+	.uleb128 0x2f
 	.byte	0x1
-	.4byte	.LASF9385
-	.byte	0x9
+	.4byte	.LASF9401
+	.byte	0xa
 	.byte	0x11
 	.byte	0x6
 	.byte	0x1
 	.4byte	.LFB190
 	.4byte	.LFE190
-	.4byte	.LLST18
+	.4byte	.LLST20
 	.byte	0x1
-	.4byte	0x1db3
+	.4byte	0x1fe0
 	.uleb128 0x2d
 	.4byte	.LVL57
-	.4byte	0x2419
+	.4byte	0x2724
 	.uleb128 0x2d
 	.4byte	.LVL58
-	.4byte	0x2428
+	.4byte	0x2733
 	.uleb128 0x2d
 	.4byte	.LVL59
-	.4byte	0x2436
+	.4byte	0x2741
 	.uleb128 0x2d
 	.4byte	.LVL60
-	.4byte	0x2444
+	.4byte	0x26a0
 	.uleb128 0x2d
 	.4byte	.LVL61
-	.4byte	0x2444
+	.4byte	0x26a0
 	.uleb128 0x2d
 	.4byte	.LVL62
-	.4byte	0x2444
+	.4byte	0x26a0
 	.uleb128 0x2d
 	.4byte	.LVL63
-	.4byte	0x2444
+	.4byte	0x26a0
 	.uleb128 0x2d
 	.4byte	.LVL64
-	.4byte	0x2444
+	.4byte	0x26a0
 	.uleb128 0x2d
 	.4byte	.LVL65
-	.4byte	0x2444
+	.4byte	0x26a0
 	.uleb128 0x2d
 	.4byte	.LVL66
-	.4byte	0x2444
+	.4byte	0x26a0
 	.uleb128 0x2d
 	.4byte	.LVL67
-	.4byte	0x2444
+	.4byte	0x26a0
 	.uleb128 0x2d
 	.4byte	.LVL68
-	.4byte	0x2444
+	.4byte	0x26a0
 	.uleb128 0x2d
 	.4byte	.LVL69
-	.4byte	0x2444
+	.4byte	0x26a0
 	.uleb128 0x2d
 	.4byte	.LVL70
-	.4byte	0x2444
+	.4byte	0x26a0
 	.uleb128 0x2d
 	.4byte	.LVL71
-	.4byte	0x2452
+	.4byte	0x274f
 	.uleb128 0x2d
 	.4byte	.LVL72
-	.4byte	0x2460
+	.4byte	0x275d
 	.uleb128 0x2d
 	.4byte	.LVL73
-	.4byte	0x2444
+	.4byte	0x26a0
 	.uleb128 0x2d
 	.4byte	.LVL74
-	.4byte	0x2444
+	.4byte	0x26a0
 	.uleb128 0x2d
 	.4byte	.LVL75
-	.4byte	0x2444
+	.4byte	0x26a0
 	.uleb128 0x2d
 	.4byte	.LVL76
-	.4byte	0x2444
+	.4byte	0x26a0
 	.uleb128 0x2d
 	.4byte	.LVL77
-	.4byte	0x2444
+	.4byte	0x26a0
 	.uleb128 0x2d
 	.4byte	.LVL78
-	.4byte	0x2444
+	.4byte	0x26a0
 	.uleb128 0x2d
 	.4byte	.LVL79
-	.4byte	0x2444
+	.4byte	0x26a0
 	.uleb128 0x2d
 	.4byte	.LVL80
-	.4byte	0x2444
+	.4byte	0x26a0
 	.uleb128 0x2d
 	.4byte	.LVL81
-	.4byte	0x2444
+	.4byte	0x26a0
 	.uleb128 0x2d
 	.4byte	.LVL82
-	.4byte	0x2444
+	.4byte	0x26a0
 	.uleb128 0x2d
 	.4byte	.LVL83
-	.4byte	0x246e
+	.4byte	0x276b
 	.uleb128 0x2d
 	.4byte	.LVL84
-	.4byte	0x247c
+	.4byte	0x2779
 	.uleb128 0x2d
 	.4byte	.LVL85
-	.4byte	0x248a
+	.4byte	0x2787
 	.uleb128 0x2d
 	.4byte	.LVL86
-	.4byte	0x2498
+	.4byte	0x2795
 	.byte	0
-	.uleb128 0x2f
-	.4byte	.LASF9387
-	.byte	0x8
+	.uleb128 0x31
+	.4byte	.LASF9403
+	.byte	0x9
 	.byte	0xb9
 	.byte	0x14
 	.byte	0x1
 	.4byte	.LFB189
 	.4byte	.LFE189
-	.4byte	.LLST17
+	.4byte	.LLST19
 	.byte	0x1
-	.4byte	0x1ec7
-	.uleb128 0x31
-	.4byte	.LASF9388
-	.byte	0x8
+	.4byte	0x20f4
+	.uleb128 0x33
+	.4byte	.LASF9404
+	.byte	0x9
 	.byte	0xb9
 	.byte	0x3c
-	.4byte	0x1a08
+	.4byte	0x1b2f
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -9
 	.uleb128 0x2d
 	.4byte	.LVL31
-	.4byte	0x2300
+	.4byte	0x2587
 	.uleb128 0x2d
 	.4byte	.LVL32
-	.4byte	0x2349
+	.4byte	0x25d0
 	.uleb128 0x2d
 	.4byte	.LVL33
-	.4byte	0x22a0
+	.4byte	0x2527
 	.uleb128 0x2d
 	.4byte	.LVL34
-	.4byte	0x2300
+	.4byte	0x2587
 	.uleb128 0x2d
 	.4byte	.LVL35
-	.4byte	0x2349
+	.4byte	0x25d0
 	.uleb128 0x2d
 	.4byte	.LVL36
-	.4byte	0x22a0
+	.4byte	0x2527
 	.uleb128 0x2d
 	.4byte	.LVL37
-	.4byte	0x2300
+	.4byte	0x2587
 	.uleb128 0x2d
 	.4byte	.LVL38
-	.4byte	0x2349
+	.4byte	0x25d0
 	.uleb128 0x2d
 	.4byte	.LVL39
-	.4byte	0x22a0
+	.4byte	0x2527
 	.uleb128 0x2d
 	.4byte	.LVL40
-	.4byte	0x2300
+	.4byte	0x2587
 	.uleb128 0x2d
 	.4byte	.LVL41
-	.4byte	0x2349
+	.4byte	0x25d0
 	.uleb128 0x2d
 	.4byte	.LVL42
-	.4byte	0x22a0
+	.4byte	0x2527
 	.uleb128 0x2d
 	.4byte	.LVL43
-	.4byte	0x2300
+	.4byte	0x2587
 	.uleb128 0x2d
 	.4byte	.LVL44
-	.4byte	0x2349
+	.4byte	0x25d0
 	.uleb128 0x2d
 	.4byte	.LVL45
-	.4byte	0x22a0
+	.4byte	0x2527
 	.uleb128 0x2d
 	.4byte	.LVL46
-	.4byte	0x2300
+	.4byte	0x2587
 	.uleb128 0x2d
 	.4byte	.LVL47
-	.4byte	0x2349
+	.4byte	0x25d0
 	.uleb128 0x2d
 	.4byte	.LVL48
-	.4byte	0x22a0
+	.4byte	0x2527
 	.uleb128 0x2d
 	.4byte	.LVL49
-	.4byte	0x2300
+	.4byte	0x2587
 	.uleb128 0x2d
 	.4byte	.LVL50
-	.4byte	0x2349
+	.4byte	0x25d0
 	.uleb128 0x2d
 	.4byte	.LVL51
-	.4byte	0x22a0
+	.4byte	0x2527
 	.uleb128 0x2d
 	.4byte	.LVL52
-	.4byte	0x2300
+	.4byte	0x2587
 	.uleb128 0x2d
 	.4byte	.LVL53
-	.4byte	0x2349
+	.4byte	0x25d0
 	.uleb128 0x2d
 	.4byte	.LVL54
-	.4byte	0x22a0
+	.4byte	0x2527
 	.uleb128 0x2d
 	.4byte	.LVL55
-	.4byte	0x20d4
+	.4byte	0x235b
 	.uleb128 0x2d
 	.4byte	.LVL56
-	.4byte	0x20d4
+	.4byte	0x235b
 	.byte	0
-	.uleb128 0x2f
-	.4byte	.LASF9389
-	.byte	0x8
+	.uleb128 0x31
+	.4byte	.LASF9405
+	.byte	0x9
 	.byte	0xad
 	.byte	0x14
 	.byte	0x1
 	.4byte	.LFB187
 	.4byte	.LFE187
-	.4byte	.LLST16
+	.4byte	.LLST18
 	.byte	0x1
-	.4byte	0x1f09
-	.uleb128 0x31
-	.4byte	.LASF9390
-	.byte	0x8
+	.4byte	0x2136
+	.uleb128 0x33
+	.4byte	.LASF9406
+	.byte	0x9
 	.byte	0xad
 	.byte	0x3e
-	.4byte	0x1f09
+	.4byte	0x2136
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -12
-	.uleb128 0x31
-	.4byte	.LASF9391
-	.byte	0x8
+	.uleb128 0x33
+	.4byte	.LASF9407
+	.byte	0x9
 	.byte	0xae
 	.byte	0xc
-	.4byte	0xd1
+	.4byte	0xe9
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -16
 	.uleb128 0x2d
 	.4byte	.LVL30
-	.4byte	0x24a6
+	.4byte	0x27a3
 	.byte	0
 	.uleb128 0x13
 	.byte	0x4
-	.4byte	0x1ab7
-	.uleb128 0x2f
-	.4byte	.LASF9392
-	.byte	0x8
+	.4byte	0x1bde
+	.uleb128 0x31
+	.4byte	.LASF9408
+	.byte	0x9
 	.byte	0xa4
 	.byte	0x14
 	.byte	0x1
 	.4byte	.LFB186
 	.4byte	.LFE186
-	.4byte	.LLST15
+	.4byte	.LLST17
 	.byte	0x1
-	.4byte	0x1f48
-	.uleb128 0x31
-	.4byte	.LASF9390
-	.byte	0x8
+	.4byte	0x2175
+	.uleb128 0x33
+	.4byte	.LASF9406
+	.byte	0x9
 	.byte	0xa4
 	.byte	0x44
-	.4byte	0x1f48
+	.4byte	0x2175
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -12
-	.uleb128 0x31
-	.4byte	.LASF9393
-	.byte	0x8
+	.uleb128 0x33
+	.4byte	.LASF9409
+	.byte	0x9
 	.byte	0xa5
 	.byte	0xc
-	.4byte	0xd1
+	.4byte	0xe9
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -16
 	.byte	0
 	.uleb128 0x13
 	.byte	0x4
-	.4byte	0x1a9a
-	.uleb128 0x2f
-	.4byte	.LASF9394
-	.byte	0x8
+	.4byte	0x1bc1
+	.uleb128 0x31
+	.4byte	.LASF9410
+	.byte	0x9
 	.byte	0x82
 	.byte	0x14
 	.byte	0x1
 	.4byte	.LFB185
 	.4byte	.LFE185
-	.4byte	.LLST14
+	.4byte	.LLST16
 	.byte	0x1
-	.4byte	0x1f87
-	.uleb128 0x31
-	.4byte	.LASF9390
-	.byte	0x8
+	.4byte	0x21b4
+	.uleb128 0x33
+	.4byte	.LASF9406
+	.byte	0x9
 	.byte	0x82
 	.byte	0x43
-	.4byte	0x1f48
+	.4byte	0x2175
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -12
-	.uleb128 0x31
-	.4byte	.LASF9388
-	.byte	0x8
+	.uleb128 0x33
+	.4byte	.LASF9404
+	.byte	0x9
 	.byte	0x83
 	.byte	0x16
-	.4byte	0x1a08
+	.4byte	0x1b2f
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -13
 	.byte	0
-	.uleb128 0x2f
-	.4byte	.LASF9395
-	.byte	0x8
+	.uleb128 0x31
+	.4byte	.LASF9411
+	.byte	0x9
 	.byte	0x6c
 	.byte	0x14
 	.byte	0x1
 	.4byte	.LFB182
 	.4byte	.LFE182
-	.4byte	.LLST13
+	.4byte	.LLST15
 	.byte	0x1
-	.4byte	0x1fc0
-	.uleb128 0x31
-	.4byte	.LASF9390
-	.byte	0x8
+	.4byte	0x21ed
+	.uleb128 0x33
+	.4byte	.LASF9406
+	.byte	0x9
 	.byte	0x6c
 	.byte	0x41
-	.4byte	0x1f48
+	.4byte	0x2175
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -12
-	.uleb128 0x31
-	.4byte	.LASF9391
-	.byte	0x8
+	.uleb128 0x33
+	.4byte	.LASF9407
+	.byte	0x9
 	.byte	0x6d
 	.byte	0xc
-	.4byte	0xd1
+	.4byte	0xe9
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -16
 	.byte	0
-	.uleb128 0x2f
-	.4byte	.LASF9396
-	.byte	0x7
+	.uleb128 0x31
+	.4byte	.LASF9412
+	.byte	0x8
 	.byte	0xe4
 	.byte	0x14
 	.byte	0x1
 	.4byte	.LFB170
 	.4byte	.LFE170
-	.4byte	.LLST12
+	.4byte	.LLST14
 	.byte	0x1
-	.4byte	0x201c
+	.4byte	0x2249
 	.uleb128 0x22
-	.4byte	.LASF9397
-	.byte	0x7
+	.4byte	.LASF9413
+	.byte	0x8
 	.byte	0xe7
 	.byte	0x15
-	.4byte	0x1457
+	.4byte	0x157e
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -9
 	.uleb128 0x2e
-	.4byte	0x23c8
+	.4byte	0x264f
 	.4byte	.LBB19
 	.4byte	.LBE19
-	.byte	0x7
+	.byte	0x8
 	.byte	0xef
 	.byte	0x3
 	.uleb128 0x2e
-	.4byte	0x23bd
+	.4byte	0x2644
 	.4byte	.LBB21
 	.4byte	.LBE21
-	.byte	0x7
+	.byte	0x8
 	.byte	0xef
 	.byte	0x3
 	.uleb128 0x2d
 	.4byte	.LVL28
-	.4byte	0x201c
+	.4byte	0x2249
 	.uleb128 0x2d
 	.4byte	.LVL29
-	.4byte	0x2081
+	.4byte	0x22ae
 	.byte	0
-	.uleb128 0x34
-	.4byte	.LASF9405
-	.byte	0x7
+	.uleb128 0x35
+	.4byte	.LASF9424
+	.byte	0x8
 	.byte	0xc1
 	.byte	0x22
 	.byte	0x1
-	.4byte	0x1457
+	.4byte	0x157e
 	.4byte	.LFB169
 	.4byte	.LFE169
-	.4byte	.LLST11
+	.4byte	.LLST13
 	.byte	0x1
-	.4byte	0x2059
+	.4byte	0x2286
 	.uleb128 0x22
-	.4byte	.LASF9397
-	.byte	0x7
+	.4byte	.LASF9413
+	.byte	0x8
 	.byte	0xc3
 	.byte	0x15
-	.4byte	0x1457
+	.4byte	0x157e
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -9
 	.uleb128 0x22
-	.4byte	.LASF9398
-	.byte	0x7
+	.4byte	.LASF9414
+	.byte	0x8
 	.byte	0xc6
 	.byte	0xb
-	.4byte	0x1972
+	.4byte	0x1a99
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -16
 	.byte	0
-	.uleb128 0x2f
-	.4byte	.LASF9399
-	.byte	0x7
+	.uleb128 0x31
+	.4byte	.LASF9415
+	.byte	0x8
 	.byte	0x78
 	.byte	0x14
 	.byte	0x1
 	.4byte	.LFB166
 	.4byte	.LFE166
-	.4byte	.LLST10
+	.4byte	.LLST12
 	.byte	0x1
-	.4byte	0x2081
+	.4byte	0x22ae
 	.uleb128 0x2c
 	.ascii	"i\000"
-	.byte	0x7
+	.byte	0x8
 	.byte	0x7b
 	.byte	0xa
-	.4byte	0xa3
+	.4byte	0xaf
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -9
 	.byte	0
-	.uleb128 0x2f
-	.4byte	.LASF9400
-	.byte	0x4
+	.uleb128 0x31
+	.4byte	.LASF9416
+	.byte	0x5
 	.byte	0x70
 	.byte	0x14
 	.byte	0x1
 	.4byte	.LFB165
 	.4byte	.LFE165
-	.4byte	.LLST9
+	.4byte	.LLST11
 	.byte	0x1
-	.4byte	0x20d4
-	.uleb128 0x31
-	.4byte	.LASF9397
-	.byte	0x4
+	.4byte	0x2301
+	.uleb128 0x33
+	.4byte	.LASF9413
+	.byte	0x5
 	.byte	0x70
 	.byte	0x3c
-	.4byte	0x1494
+	.4byte	0x15bb
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -9
 	.uleb128 0x2e
-	.4byte	0x23b2
+	.4byte	0x2639
 	.4byte	.LBB15
 	.4byte	.LBE15
-	.byte	0x4
+	.byte	0x5
 	.byte	0x74
 	.byte	0x2
 	.uleb128 0x2e
-	.4byte	0x23c8
+	.4byte	0x264f
 	.4byte	.LBB17
 	.4byte	.LBE17
-	.byte	0x4
+	.byte	0x5
 	.byte	0x74
 	.byte	0x2
 	.uleb128 0x2d
 	.4byte	.LVL27
-	.4byte	0x24b4
+	.4byte	0x27b1
 	.byte	0
-	.uleb128 0x2f
-	.4byte	.LASF9401
+	.uleb128 0x31
+	.4byte	.LASF9417
+	.byte	0x4
+	.byte	0x8b
+	.byte	0x14
+	.byte	0x1
+	.4byte	.LFB135
+	.4byte	.LFE135
+	.4byte	.LLST10
+	.byte	0x1
+	.4byte	0x232b
+	.uleb128 0x33
+	.4byte	.LASF9418
+	.byte	0x4
+	.byte	0x8b
+	.byte	0x2d
+	.4byte	0x232b
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -12
+	.byte	0
+	.uleb128 0x13
+	.byte	0x4
+	.4byte	0xaed
+	.uleb128 0x31
+	.4byte	.LASF9419
+	.byte	0x4
+	.byte	0x69
+	.byte	0x14
+	.byte	0x1
+	.4byte	.LFB132
+	.4byte	.LFE132
+	.4byte	.LLST9
+	.byte	0x1
+	.4byte	0x235b
+	.uleb128 0x33
+	.4byte	.LASF9418
+	.byte	0x4
+	.byte	0x69
+	.byte	0x24
+	.4byte	0x232b
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -12
+	.byte	0
+	.uleb128 0x31
+	.4byte	.LASF9420
 	.byte	0x3
 	.byte	0xe2
 	.byte	0x14
@@ -6804,9 +7410,9 @@ main:
 	.4byte	.LFE81
 	.4byte	.LLST8
 	.byte	0x1
-	.4byte	0x2167
-	.uleb128 0x31
-	.4byte	.LASF9402
+	.4byte	0x23ee
+	.uleb128 0x33
+	.4byte	.LASF9421
 	.byte	0x3
 	.byte	0xe2
 	.byte	0x3c
@@ -6815,47 +7421,47 @@ main:
 	.byte	0x91
 	.sleb128 -28
 	.uleb128 0x22
-	.4byte	.LASF9403
+	.4byte	.LASF9422
 	.byte	0x3
 	.byte	0xe4
 	.byte	0x14
-	.4byte	0x13ef
+	.4byte	0x1516
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -20
 	.uleb128 0x2d
 	.4byte	.LVL17
-	.4byte	0x21a3
+	.4byte	0x242a
 	.uleb128 0x2d
 	.4byte	.LVL18
-	.4byte	0x2167
+	.4byte	0x23ee
 	.uleb128 0x2d
 	.4byte	.LVL19
-	.4byte	0x24c2
+	.4byte	0x27bf
 	.uleb128 0x2d
 	.4byte	.LVL20
-	.4byte	0x24d0
+	.4byte	0x27cd
 	.uleb128 0x2d
 	.4byte	.LVL21
-	.4byte	0x222b
+	.4byte	0x24b2
 	.uleb128 0x2d
 	.4byte	.LVL22
-	.4byte	0x24de
+	.4byte	0x27db
 	.uleb128 0x2d
 	.4byte	.LVL23
-	.4byte	0x2167
+	.4byte	0x23ee
 	.uleb128 0x2d
 	.4byte	.LVL24
-	.4byte	0x222b
+	.4byte	0x24b2
 	.uleb128 0x2d
 	.4byte	.LVL25
-	.4byte	0x21e3
+	.4byte	0x246a
 	.uleb128 0x2d
 	.4byte	.LVL26
-	.4byte	0x21a3
+	.4byte	0x242a
 	.byte	0
-	.uleb128 0x2f
-	.4byte	.LASF9404
+	.uleb128 0x31
+	.4byte	.LASF9423
 	.byte	0x3
 	.byte	0xd0
 	.byte	0x14
@@ -6864,53 +7470,53 @@ main:
 	.4byte	.LFE80
 	.4byte	.LLST7
 	.byte	0x1
-	.4byte	0x21a3
-	.uleb128 0x31
-	.4byte	.LASF9388
+	.4byte	0x242a
+	.uleb128 0x33
+	.4byte	.LASF9404
 	.byte	0x3
 	.byte	0xd0
 	.byte	0x36
-	.4byte	0x13b8
+	.4byte	0x14df
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -9
 	.uleb128 0x2d
 	.4byte	.LVL15
-	.4byte	0x2349
+	.4byte	0x25d0
 	.uleb128 0x2d
 	.4byte	.LVL16
-	.4byte	0x22a0
+	.4byte	0x2527
 	.byte	0
-	.uleb128 0x34
-	.4byte	.LASF9406
+	.uleb128 0x35
+	.4byte	.LASF9425
 	.byte	0x3
 	.byte	0xc5
 	.byte	0x18
 	.byte	0x1
-	.4byte	0xd1
+	.4byte	0xe9
 	.4byte	.LFB79
 	.4byte	.LFE79
 	.4byte	.LLST6
 	.byte	0x1
-	.4byte	0x21e3
-	.uleb128 0x31
-	.4byte	.LASF9402
+	.4byte	0x246a
+	.uleb128 0x33
+	.4byte	.LASF9421
 	.byte	0x3
 	.byte	0xc5
 	.byte	0x2f
-	.4byte	0xd1
+	.4byte	0xe9
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -12
 	.uleb128 0x2d
 	.4byte	.LVL13
-	.4byte	0x24ec
+	.4byte	0x27e9
 	.uleb128 0x2d
 	.4byte	.LVL14
-	.4byte	0x24fa
+	.4byte	0x27f7
 	.byte	0
-	.uleb128 0x2f
-	.4byte	.LASF9407
+	.uleb128 0x31
+	.4byte	.LASF9426
 	.byte	0x3
 	.byte	0xa9
 	.byte	0x14
@@ -6919,34 +7525,34 @@ main:
 	.4byte	.LFE77
 	.4byte	.LLST5
 	.byte	0x1
-	.4byte	0x2225
-	.uleb128 0x31
-	.4byte	.LASF9390
+	.4byte	0x24ac
+	.uleb128 0x33
+	.4byte	.LASF9406
 	.byte	0x3
 	.byte	0xa9
 	.byte	0x38
-	.4byte	0x2225
+	.4byte	0x24ac
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -12
-	.uleb128 0x31
-	.4byte	.LASF9402
+	.uleb128 0x33
+	.4byte	.LASF9421
 	.byte	0x3
 	.byte	0xaa
 	.byte	0xc
-	.4byte	0xd1
+	.4byte	0xe9
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -16
 	.uleb128 0x2d
 	.4byte	.LVL12
-	.4byte	0x2508
+	.4byte	0x2805
 	.byte	0
 	.uleb128 0x13
 	.byte	0x4
-	.4byte	0x140c
-	.uleb128 0x2f
-	.4byte	.LASF9408
+	.4byte	0x1533
+	.uleb128 0x31
+	.4byte	.LASF9427
 	.byte	0x3
 	.byte	0x71
 	.byte	0x14
@@ -6955,61 +7561,61 @@ main:
 	.4byte	.LFE74
 	.4byte	.LLST4
 	.byte	0x1
-	.4byte	0x229a
-	.uleb128 0x31
-	.4byte	.LASF9390
+	.4byte	0x2521
+	.uleb128 0x33
+	.4byte	.LASF9406
 	.byte	0x3
 	.byte	0x71
 	.byte	0x37
-	.4byte	0x229a
+	.4byte	0x2521
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -20
-	.uleb128 0x31
-	.4byte	.LASF9388
+	.uleb128 0x33
+	.4byte	.LASF9404
 	.byte	0x3
 	.byte	0x72
 	.byte	0x13
-	.4byte	0x13b8
+	.4byte	0x14df
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -21
-	.uleb128 0x31
-	.4byte	.LASF9409
+	.uleb128 0x33
+	.4byte	.LASF9428
 	.byte	0x3
 	.byte	0x72
 	.byte	0x23
-	.4byte	0xd1
+	.4byte	0xe9
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -28
-	.uleb128 0x31
-	.4byte	.LASF9410
+	.uleb128 0x33
+	.4byte	.LASF9429
 	.byte	0x3
 	.byte	0x72
 	.byte	0x34
-	.4byte	0xd1
+	.4byte	0xe9
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -32
 	.uleb128 0x22
-	.4byte	.LASF9411
+	.4byte	.LASF9430
 	.byte	0x3
 	.byte	0x74
 	.byte	0xb
-	.4byte	0xd1
+	.4byte	0xe9
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -12
 	.uleb128 0x2d
 	.4byte	.LVL11
-	.4byte	0x22d2
+	.4byte	0x2559
 	.byte	0
 	.uleb128 0x13
 	.byte	0x4
-	.4byte	0x13ef
-	.uleb128 0x2f
-	.4byte	.LASF9412
+	.4byte	0x1516
+	.uleb128 0x31
+	.4byte	.LASF9431
 	.byte	0x2
 	.byte	0xa1
 	.byte	0x14
@@ -7018,75 +7624,75 @@ main:
 	.4byte	.LFE73
 	.4byte	.LLST3
 	.byte	0x1
-	.4byte	0x22d2
-	.uleb128 0x30
+	.4byte	0x2559
+	.uleb128 0x32
 	.ascii	"id\000"
 	.byte	0x2
 	.byte	0xa1
 	.byte	0x2b
-	.4byte	0xa3
+	.4byte	0xaf
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -9
 	.uleb128 0x2d
 	.4byte	.LVL10
-	.4byte	0x2300
+	.4byte	0x2587
 	.byte	0
-	.uleb128 0x34
-	.4byte	.LASF9413
+	.uleb128 0x35
+	.4byte	.LASF9432
 	.byte	0x1
 	.byte	0xca
 	.byte	0x18
 	.byte	0x1
-	.4byte	0xd1
+	.4byte	0xe9
 	.4byte	.LFB72
 	.4byte	.LFE72
 	.4byte	.LLST2
 	.byte	0x1
-	.4byte	0x2300
-	.uleb128 0x31
-	.4byte	.LASF9391
+	.4byte	0x2587
+	.uleb128 0x33
+	.4byte	.LASF9407
 	.byte	0x1
 	.byte	0xca
 	.byte	0x2e
-	.4byte	0xd1
+	.4byte	0xe9
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -12
 	.byte	0
-	.uleb128 0x34
-	.4byte	.LASF9414
+	.uleb128 0x35
+	.4byte	.LASF9433
 	.byte	0x1
 	.byte	0xb3
 	.byte	0x14
 	.byte	0x1
-	.4byte	0x136e
+	.4byte	0x1495
 	.4byte	.LFB71
 	.4byte	.LFE71
 	.4byte	.LLST1
 	.byte	0x1
-	.4byte	0x2349
-	.uleb128 0x31
-	.4byte	.LASF9391
+	.4byte	0x25d0
+	.uleb128 0x33
+	.4byte	.LASF9407
 	.byte	0x1
 	.byte	0xb3
 	.byte	0x2a
-	.4byte	0xd1
+	.4byte	0xe9
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -12
 	.uleb128 0x2d
 	.4byte	.LVL7
-	.4byte	0x2516
+	.4byte	0x2813
 	.uleb128 0x2d
 	.4byte	.LVL8
-	.4byte	0x2524
+	.4byte	0x2821
 	.uleb128 0x2d
 	.4byte	.LVL9
-	.4byte	0x2532
+	.4byte	0x282f
 	.byte	0
-	.uleb128 0x2f
-	.4byte	.LASF9415
+	.uleb128 0x31
+	.4byte	.LASF9434
 	.byte	0x1
 	.byte	0x74
 	.byte	0x14
@@ -7095,296 +7701,360 @@ main:
 	.4byte	.LFE69
 	.4byte	.LLST0
 	.byte	0x1
-	.4byte	0x23b2
-	.uleb128 0x31
-	.4byte	.LASF9391
+	.4byte	0x2639
+	.uleb128 0x33
+	.4byte	.LASF9407
 	.byte	0x1
 	.byte	0x74
 	.byte	0x28
-	.4byte	0xd1
+	.4byte	0xe9
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -12
 	.uleb128 0x2d
 	.4byte	.LVL0
-	.4byte	0x2540
+	.4byte	0x283d
 	.uleb128 0x2d
 	.4byte	.LVL1
-	.4byte	0x2540
+	.4byte	0x283d
 	.uleb128 0x2d
 	.4byte	.LVL2
-	.4byte	0x254e
+	.4byte	0x284b
 	.uleb128 0x2d
 	.4byte	.LVL3
-	.4byte	0x254e
+	.4byte	0x284b
 	.uleb128 0x2d
 	.4byte	.LVL4
-	.4byte	0x254e
+	.4byte	0x284b
 	.uleb128 0x2d
 	.4byte	.LVL5
-	.4byte	0x255c
+	.4byte	0x2859
 	.uleb128 0x2d
 	.4byte	.LVL6
-	.4byte	0x256a
+	.4byte	0x2867
 	.byte	0
-	.uleb128 0x35
-	.4byte	.LASF9416
-	.byte	0x5
+	.uleb128 0x36
+	.4byte	.LASF9435
+	.byte	0x6
 	.2byte	0x146
 	.byte	0x39
 	.byte	0x1
 	.byte	0x3
-	.uleb128 0x35
-	.4byte	.LASF9417
-	.byte	0x5
+	.uleb128 0x36
+	.4byte	.LASF9436
+	.byte	0x6
 	.2byte	0x13b
 	.byte	0x39
 	.byte	0x1
 	.byte	0x3
-	.uleb128 0x35
-	.4byte	.LASF9418
-	.byte	0x6
+	.uleb128 0x36
+	.4byte	.LASF9437
+	.byte	0x7
 	.2byte	0x160
 	.byte	0x39
 	.byte	0x1
 	.byte	0x3
-	.uleb128 0x36
-	.byte	0x1
-	.byte	0x1
-	.4byte	.LASF9452
-	.4byte	.LASF9453
-	.byte	0x2d
-	.byte	0
 	.uleb128 0x37
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9419
-	.4byte	.LASF9419
-	.byte	0x25
-	.byte	0x7e
-	.byte	0xa
+	.4byte	.LASF9480
+	.4byte	.LASF9481
+	.byte	0x2f
+	.byte	0
 	.uleb128 0x38
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9420
-	.4byte	.LASF9420
-	.byte	0x26
+	.4byte	.LASF9438
+	.4byte	.LASF9438
+	.byte	0x27
+	.byte	0x7e
+	.byte	0xa
+	.uleb128 0x39
+	.byte	0x1
+	.byte	0x1
+	.4byte	.LASF9439
+	.4byte	.LASF9439
+	.byte	0x28
 	.2byte	0x167
 	.byte	0xd
-	.uleb128 0x37
+	.uleb128 0x38
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9421
-	.4byte	.LASF9421
-	.byte	0x27
+	.4byte	.LASF9440
+	.4byte	.LASF9440
+	.byte	0x29
 	.byte	0xb3
 	.byte	0x6
-	.uleb128 0x37
+	.uleb128 0x38
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9422
-	.4byte	.LASF9422
-	.byte	0x28
+	.4byte	.LASF9441
+	.4byte	.LASF9441
+	.byte	0x2a
 	.byte	0x30
 	.byte	0x6
 	.uleb128 0x38
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9423
-	.4byte	.LASF9423
-	.byte	0x29
-	.2byte	0x17b
-	.byte	0xd
-	.uleb128 0x37
-	.byte	0x1
-	.byte	0x1
-	.4byte	.LASF9424
-	.4byte	.LASF9424
-	.byte	0x23
-	.byte	0x70
-	.byte	0x6
-	.uleb128 0x37
-	.byte	0x1
-	.byte	0x1
-	.4byte	.LASF9425
-	.4byte	.LASF9425
-	.byte	0x2a
-	.byte	0xcf
-	.byte	0xa
-	.uleb128 0x37
-	.byte	0x1
-	.byte	0x1
-	.4byte	.LASF9426
-	.4byte	.LASF9426
-	.byte	0x19
+	.4byte	.LASF9442
+	.4byte	.LASF9442
+	.byte	0x1b
 	.byte	0xcb
 	.byte	0xa
-	.uleb128 0x37
+	.uleb128 0x38
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9427
-	.4byte	.LASF9427
-	.byte	0x19
+	.4byte	.LASF9443
+	.4byte	.LASF9443
+	.byte	0x1b
+	.byte	0xc3
+	.byte	0x6
+	.uleb128 0x38
+	.byte	0x1
+	.byte	0x1
+	.4byte	.LASF9444
+	.4byte	.LASF9444
+	.byte	0x1b
+	.byte	0xc4
+	.byte	0x6
+	.uleb128 0x39
+	.byte	0x1
+	.byte	0x1
+	.4byte	.LASF9445
+	.4byte	.LASF9445
+	.byte	0x4
+	.2byte	0x150
+	.byte	0x6
+	.uleb128 0x39
+	.byte	0x1
+	.byte	0x1
+	.4byte	.LASF9446
+	.4byte	.LASF9446
+	.byte	0x4
+	.2byte	0x1f6
+	.byte	0x9
+	.uleb128 0x39
+	.byte	0x1
+	.byte	0x1
+	.4byte	.LASF9447
+	.4byte	.LASF9447
+	.byte	0x4
+	.2byte	0x1f7
+	.byte	0x6
+	.uleb128 0x39
+	.byte	0x1
+	.byte	0x1
+	.4byte	.LASF9448
+	.4byte	.LASF9448
+	.byte	0x4
+	.2byte	0x1f0
+	.byte	0x6
+	.uleb128 0x39
+	.byte	0x1
+	.byte	0x1
+	.4byte	.LASF9449
+	.4byte	.LASF9449
+	.byte	0x4
+	.2byte	0x1f5
+	.byte	0x6
+	.uleb128 0x39
+	.byte	0x1
+	.byte	0x1
+	.4byte	.LASF9450
+	.4byte	.LASF9450
+	.byte	0x4
+	.2byte	0x1f2
+	.byte	0x6
+	.uleb128 0x39
+	.byte	0x1
+	.byte	0x1
+	.4byte	.LASF9451
+	.4byte	.LASF9451
+	.byte	0x2b
+	.2byte	0x17b
+	.byte	0xd
+	.uleb128 0x38
+	.byte	0x1
+	.byte	0x1
+	.4byte	.LASF9452
+	.4byte	.LASF9452
+	.byte	0x25
+	.byte	0x70
+	.byte	0x6
+	.uleb128 0x38
+	.byte	0x1
+	.byte	0x1
+	.4byte	.LASF9453
+	.4byte	.LASF9453
+	.byte	0x2c
 	.byte	0xcf
 	.byte	0xa
-	.uleb128 0x37
+	.uleb128 0x38
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9428
-	.4byte	.LASF9428
-	.byte	0x19
+	.4byte	.LASF9454
+	.4byte	.LASF9454
+	.byte	0x1b
+	.byte	0xcf
+	.byte	0xa
+	.uleb128 0x38
+	.byte	0x1
+	.byte	0x1
+	.4byte	.LASF9455
+	.4byte	.LASF9455
+	.byte	0x1b
 	.byte	0xa0
 	.byte	0x6
-	.uleb128 0x37
+	.uleb128 0x38
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9429
-	.4byte	.LASF9429
-	.byte	0x2b
+	.4byte	.LASF9456
+	.4byte	.LASF9456
+	.byte	0x2d
 	.byte	0x3a
 	.byte	0x6
-	.uleb128 0x37
+	.uleb128 0x38
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9430
-	.4byte	.LASF9430
-	.byte	0x2b
+	.4byte	.LASF9457
+	.4byte	.LASF9457
+	.byte	0x2d
 	.byte	0x3b
 	.byte	0x6
-	.uleb128 0x37
+	.uleb128 0x38
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9431
-	.4byte	.LASF9431
-	.byte	0x2b
+	.4byte	.LASF9458
+	.4byte	.LASF9458
+	.byte	0x2d
 	.byte	0x3c
 	.byte	0x6
-	.uleb128 0x37
+	.uleb128 0x38
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9432
-	.4byte	.LASF9432
-	.byte	0x2b
+	.4byte	.LASF9459
+	.4byte	.LASF9459
+	.byte	0x2d
 	.byte	0x3d
 	.byte	0x6
-	.uleb128 0x37
+	.uleb128 0x38
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9433
-	.4byte	.LASF9433
-	.byte	0x2a
+	.4byte	.LASF9460
+	.4byte	.LASF9460
+	.byte	0x2c
 	.byte	0xf5
 	.byte	0x6
-	.uleb128 0x37
+	.uleb128 0x38
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9434
-	.4byte	.LASF9434
-	.byte	0x2c
+	.4byte	.LASF9461
+	.4byte	.LASF9461
+	.byte	0x2e
 	.byte	0x6a
 	.byte	0x6
-	.uleb128 0x37
+	.uleb128 0x38
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9435
-	.4byte	.LASF9435
-	.byte	0x2a
+	.4byte	.LASF9462
+	.4byte	.LASF9462
+	.byte	0x2c
 	.byte	0xad
 	.byte	0x6
-	.uleb128 0x37
+	.uleb128 0x38
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9436
-	.4byte	.LASF9436
-	.byte	0x2a
+	.4byte	.LASF9463
+	.4byte	.LASF9463
+	.byte	0x2c
 	.byte	0xac
 	.byte	0xa
-	.uleb128 0x37
+	.uleb128 0x38
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9437
-	.4byte	.LASF9437
-	.byte	0x2a
+	.4byte	.LASF9464
+	.4byte	.LASF9464
+	.byte	0x2c
 	.byte	0xa7
 	.byte	0xa
-	.uleb128 0x37
+	.uleb128 0x38
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9438
-	.4byte	.LASF9438
-	.byte	0x2a
+	.4byte	.LASF9465
+	.4byte	.LASF9465
+	.byte	0x2c
 	.byte	0xb9
 	.byte	0xa
-	.uleb128 0x37
+	.uleb128 0x38
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9439
-	.4byte	.LASF9439
-	.byte	0x2a
+	.4byte	.LASF9466
+	.4byte	.LASF9466
+	.byte	0x2c
 	.byte	0xc4
 	.byte	0xa
-	.uleb128 0x37
+	.uleb128 0x38
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9440
-	.4byte	.LASF9440
-	.byte	0x2a
+	.4byte	.LASF9467
+	.4byte	.LASF9467
+	.byte	0x2c
 	.byte	0xb8
 	.byte	0x6
-	.uleb128 0x37
+	.uleb128 0x38
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9441
-	.4byte	.LASF9441
-	.byte	0x2a
+	.4byte	.LASF9468
+	.4byte	.LASF9468
+	.byte	0x2c
 	.byte	0x96
 	.byte	0xa
-	.uleb128 0x37
+	.uleb128 0x38
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9442
-	.4byte	.LASF9442
-	.byte	0x2a
+	.4byte	.LASF9469
+	.4byte	.LASF9469
+	.byte	0x2c
 	.byte	0xa3
 	.byte	0xa
-	.uleb128 0x37
+	.uleb128 0x38
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9443
-	.4byte	.LASF9443
-	.byte	0x2a
+	.4byte	.LASF9470
+	.4byte	.LASF9470
+	.byte	0x2c
 	.byte	0xa8
 	.byte	0xa
-	.uleb128 0x37
+	.uleb128 0x38
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9444
-	.4byte	.LASF9444
-	.byte	0x2a
+	.4byte	.LASF9471
+	.4byte	.LASF9471
+	.byte	0x2c
 	.byte	0x95
 	.byte	0x6
-	.uleb128 0x37
+	.uleb128 0x38
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9445
-	.4byte	.LASF9445
-	.byte	0x2a
+	.4byte	.LASF9472
+	.4byte	.LASF9472
+	.byte	0x2c
 	.byte	0xa1
 	.byte	0x6
-	.uleb128 0x37
+	.uleb128 0x38
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9446
-	.4byte	.LASF9446
-	.byte	0x2a
+	.4byte	.LASF9473
+	.4byte	.LASF9473
+	.byte	0x2c
 	.byte	0xa4
 	.byte	0x6
-	.uleb128 0x37
+	.uleb128 0x38
 	.byte	0x1
 	.byte	0x1
-	.4byte	.LASF9447
-	.4byte	.LASF9447
-	.byte	0x2a
+	.4byte	.LASF9474
+	.4byte	.LASF9474
+	.byte	0x2c
 	.byte	0xa5
 	.byte	0x6
 	.byte	0
@@ -8009,6 +8679,8 @@ main:
 	.uleb128 0x2f
 	.uleb128 0x2e
 	.byte	0x1
+	.uleb128 0x3f
+	.uleb128 0xc
 	.uleb128 0x3
 	.uleb128 0xe
 	.uleb128 0x3a
@@ -8032,6 +8704,46 @@ main:
 	.byte	0
 	.byte	0
 	.uleb128 0x30
+	.uleb128 0x34
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x39
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x31
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x39
+	.uleb128 0xb
+	.uleb128 0x27
+	.uleb128 0xc
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x1
+	.uleb128 0x40
+	.uleb128 0x6
+	.uleb128 0x2117
+	.uleb128 0xc
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x32
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x3
@@ -8048,7 +8760,7 @@ main:
 	.uleb128 0xa
 	.byte	0
 	.byte	0
-	.uleb128 0x31
+	.uleb128 0x33
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x3
@@ -8065,43 +8777,16 @@ main:
 	.uleb128 0xa
 	.byte	0
 	.byte	0
-	.uleb128 0x32
-	.uleb128 0x2e
-	.byte	0x1
-	.uleb128 0x3f
-	.uleb128 0xc
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x39
-	.uleb128 0xb
-	.uleb128 0x27
-	.uleb128 0xc
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x1
-	.uleb128 0x40
-	.uleb128 0x6
-	.uleb128 0x2117
-	.uleb128 0xc
-	.uleb128 0x1
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x33
-	.uleb128 0xb
-	.byte	0x1
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x1
-	.byte	0
-	.byte	0
 	.uleb128 0x34
+	.uleb128 0xb
+	.byte	0x1
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x1
+	.byte	0
+	.byte	0
+	.uleb128 0x35
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3
@@ -8128,7 +8813,7 @@ main:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x35
+	.uleb128 0x36
 	.uleb128 0x2e
 	.byte	0
 	.uleb128 0x3
@@ -8142,23 +8827,6 @@ main:
 	.uleb128 0x27
 	.uleb128 0xc
 	.uleb128 0x20
-	.uleb128 0xb
-	.byte	0
-	.byte	0
-	.uleb128 0x36
-	.uleb128 0x2e
-	.byte	0
-	.uleb128 0x3f
-	.uleb128 0xc
-	.uleb128 0x3c
-	.uleb128 0xc
-	.uleb128 0x2007
-	.uleb128 0xe
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
 	.uleb128 0xb
 	.byte	0
 	.byte	0
@@ -8177,11 +8845,28 @@ main:
 	.uleb128 0xb
 	.uleb128 0x3b
 	.uleb128 0xb
+	.byte	0
+	.byte	0
+	.uleb128 0x38
+	.uleb128 0x2e
+	.byte	0
+	.uleb128 0x3f
+	.uleb128 0xc
+	.uleb128 0x3c
+	.uleb128 0xc
+	.uleb128 0x2007
+	.uleb128 0xe
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
 	.uleb128 0x39
 	.uleb128 0xb
 	.byte	0
 	.byte	0
-	.uleb128 0x38
+	.uleb128 0x39
 	.uleb128 0x2e
 	.byte	0
 	.uleb128 0x3f
@@ -8203,409 +8888,513 @@ main:
 	.byte	0
 	.section	.debug_loc,"",%progbits
 .Ldebug_loc0:
-.LLST21:
-	.4byte	.LFB193
-	.4byte	.LCFI109
+.LLST24:
+	.4byte	.LFB194
+	.4byte	.LCFI126
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 0
-	.4byte	.LCFI109
-	.4byte	.LCFI110
+	.4byte	.LCFI126
+	.4byte	.LCFI127
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 8
-	.4byte	.LCFI110
-	.4byte	.LCFI111
+	.4byte	.LCFI127
+	.4byte	.LCFI128
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 32
-	.4byte	.LCFI111
+	.4byte	.LCFI128
+	.4byte	.LFE194
+	.2byte	0x2
+	.byte	0x77
+	.sleb128 32
+	.4byte	0
+	.4byte	0
+.LLST23:
+	.4byte	.LFB193
+	.4byte	.LCFI121
+	.2byte	0x2
+	.byte	0x7d
+	.sleb128 0
+	.4byte	.LCFI121
+	.4byte	.LCFI122
+	.2byte	0x2
+	.byte	0x7d
+	.sleb128 8
+	.4byte	.LCFI122
+	.4byte	.LCFI123
+	.2byte	0x2
+	.byte	0x7d
+	.sleb128 24
+	.4byte	.LCFI123
+	.4byte	.LCFI124
+	.2byte	0x2
+	.byte	0x77
+	.sleb128 24
+	.4byte	.LCFI124
+	.4byte	.LCFI125
+	.2byte	0x2
+	.byte	0x77
+	.sleb128 8
+	.4byte	.LCFI125
 	.4byte	.LFE193
 	.2byte	0x2
-	.byte	0x77
-	.sleb128 32
+	.byte	0x7d
+	.sleb128 8
 	.4byte	0
 	.4byte	0
-.LLST20:
+.LLST22:
 	.4byte	.LFB192
-	.4byte	.LCFI104
+	.4byte	.LCFI116
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 0
-	.4byte	.LCFI104
-	.4byte	.LCFI105
+	.4byte	.LCFI116
+	.4byte	.LCFI117
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 8
-	.4byte	.LCFI105
-	.4byte	.LCFI106
+	.4byte	.LCFI117
+	.4byte	.LCFI118
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 32
-	.4byte	.LCFI106
-	.4byte	.LCFI107
+	.4byte	.LCFI118
+	.4byte	.LCFI119
 	.2byte	0x2
 	.byte	0x77
 	.sleb128 32
-	.4byte	.LCFI107
-	.4byte	.LCFI108
+	.4byte	.LCFI119
+	.4byte	.LCFI120
 	.2byte	0x2
 	.byte	0x77
 	.sleb128 8
-	.4byte	.LCFI108
+	.4byte	.LCFI120
 	.4byte	.LFE192
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 8
 	.4byte	0
 	.4byte	0
-.LLST19:
+.LLST21:
 	.4byte	.LFB191
-	.4byte	.LCFI98
+	.4byte	.LCFI110
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 0
-	.4byte	.LCFI98
-	.4byte	.LCFI99
+	.4byte	.LCFI110
+	.4byte	.LCFI111
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 4
-	.4byte	.LCFI99
-	.4byte	.LCFI100
+	.4byte	.LCFI111
+	.4byte	.LCFI112
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 16
-	.4byte	.LCFI100
-	.4byte	.LCFI101
+	.4byte	.LCFI112
+	.4byte	.LCFI113
 	.2byte	0x2
 	.byte	0x77
 	.sleb128 16
-	.4byte	.LCFI101
-	.4byte	.LCFI102
+	.4byte	.LCFI113
+	.4byte	.LCFI114
 	.2byte	0x2
 	.byte	0x77
 	.sleb128 4
-	.4byte	.LCFI102
-	.4byte	.LCFI103
+	.4byte	.LCFI114
+	.4byte	.LCFI115
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 4
-	.4byte	.LCFI103
+	.4byte	.LCFI115
 	.4byte	.LFE191
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 0
 	.4byte	0
 	.4byte	0
-.LLST18:
+.LLST20:
 	.4byte	.LFB190
-	.4byte	.LCFI96
+	.4byte	.LCFI108
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 0
-	.4byte	.LCFI96
-	.4byte	.LCFI97
+	.4byte	.LCFI108
+	.4byte	.LCFI109
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 8
-	.4byte	.LCFI97
+	.4byte	.LCFI109
 	.4byte	.LFE190
 	.2byte	0x2
 	.byte	0x77
 	.sleb128 8
 	.4byte	0
 	.4byte	0
-.LLST17:
+.LLST19:
 	.4byte	.LFB189
-	.4byte	.LCFI91
+	.4byte	.LCFI103
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 0
-	.4byte	.LCFI91
-	.4byte	.LCFI92
+	.4byte	.LCFI103
+	.4byte	.LCFI104
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 8
-	.4byte	.LCFI92
-	.4byte	.LCFI93
+	.4byte	.LCFI104
+	.4byte	.LCFI105
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 16
-	.4byte	.LCFI93
-	.4byte	.LCFI94
+	.4byte	.LCFI105
+	.4byte	.LCFI106
 	.2byte	0x2
 	.byte	0x77
 	.sleb128 16
-	.4byte	.LCFI94
-	.4byte	.LCFI95
+	.4byte	.LCFI106
+	.4byte	.LCFI107
 	.2byte	0x2
 	.byte	0x77
 	.sleb128 8
-	.4byte	.LCFI95
+	.4byte	.LCFI107
 	.4byte	.LFE189
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 8
 	.4byte	0
 	.4byte	0
-.LLST16:
+.LLST18:
 	.4byte	.LFB187
-	.4byte	.LCFI86
+	.4byte	.LCFI98
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 0
-	.4byte	.LCFI86
-	.4byte	.LCFI87
+	.4byte	.LCFI98
+	.4byte	.LCFI99
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 8
-	.4byte	.LCFI87
-	.4byte	.LCFI88
+	.4byte	.LCFI99
+	.4byte	.LCFI100
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 16
-	.4byte	.LCFI88
-	.4byte	.LCFI89
+	.4byte	.LCFI100
+	.4byte	.LCFI101
 	.2byte	0x2
 	.byte	0x77
 	.sleb128 16
-	.4byte	.LCFI89
-	.4byte	.LCFI90
+	.4byte	.LCFI101
+	.4byte	.LCFI102
 	.2byte	0x2
 	.byte	0x77
 	.sleb128 8
-	.4byte	.LCFI90
+	.4byte	.LCFI102
 	.4byte	.LFE187
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 8
 	.4byte	0
 	.4byte	0
-.LLST15:
+.LLST17:
 	.4byte	.LFB186
-	.4byte	.LCFI80
+	.4byte	.LCFI92
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 0
-	.4byte	.LCFI80
-	.4byte	.LCFI81
+	.4byte	.LCFI92
+	.4byte	.LCFI93
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 4
-	.4byte	.LCFI81
-	.4byte	.LCFI82
+	.4byte	.LCFI93
+	.4byte	.LCFI94
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 16
-	.4byte	.LCFI82
-	.4byte	.LCFI83
+	.4byte	.LCFI94
+	.4byte	.LCFI95
 	.2byte	0x2
 	.byte	0x77
 	.sleb128 16
-	.4byte	.LCFI83
-	.4byte	.LCFI84
+	.4byte	.LCFI95
+	.4byte	.LCFI96
 	.2byte	0x2
 	.byte	0x77
 	.sleb128 4
-	.4byte	.LCFI84
-	.4byte	.LCFI85
+	.4byte	.LCFI96
+	.4byte	.LCFI97
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 4
-	.4byte	.LCFI85
+	.4byte	.LCFI97
 	.4byte	.LFE186
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 0
 	.4byte	0
 	.4byte	0
-.LLST14:
+.LLST16:
 	.4byte	.LFB185
-	.4byte	.LCFI74
+	.4byte	.LCFI86
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 0
-	.4byte	.LCFI74
-	.4byte	.LCFI75
+	.4byte	.LCFI86
+	.4byte	.LCFI87
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 4
-	.4byte	.LCFI75
-	.4byte	.LCFI76
+	.4byte	.LCFI87
+	.4byte	.LCFI88
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 16
-	.4byte	.LCFI76
-	.4byte	.LCFI77
+	.4byte	.LCFI88
+	.4byte	.LCFI89
 	.2byte	0x2
 	.byte	0x77
 	.sleb128 16
-	.4byte	.LCFI77
-	.4byte	.LCFI78
+	.4byte	.LCFI89
+	.4byte	.LCFI90
 	.2byte	0x2
 	.byte	0x77
 	.sleb128 4
-	.4byte	.LCFI78
-	.4byte	.LCFI79
+	.4byte	.LCFI90
+	.4byte	.LCFI91
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 4
-	.4byte	.LCFI79
+	.4byte	.LCFI91
 	.4byte	.LFE185
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 0
 	.4byte	0
 	.4byte	0
-.LLST13:
+.LLST15:
 	.4byte	.LFB182
-	.4byte	.LCFI68
+	.4byte	.LCFI80
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 0
-	.4byte	.LCFI68
-	.4byte	.LCFI69
+	.4byte	.LCFI80
+	.4byte	.LCFI81
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 4
-	.4byte	.LCFI69
-	.4byte	.LCFI70
+	.4byte	.LCFI81
+	.4byte	.LCFI82
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 16
-	.4byte	.LCFI70
-	.4byte	.LCFI71
+	.4byte	.LCFI82
+	.4byte	.LCFI83
 	.2byte	0x2
 	.byte	0x77
 	.sleb128 16
-	.4byte	.LCFI71
-	.4byte	.LCFI72
+	.4byte	.LCFI83
+	.4byte	.LCFI84
 	.2byte	0x2
 	.byte	0x77
 	.sleb128 4
-	.4byte	.LCFI72
-	.4byte	.LCFI73
+	.4byte	.LCFI84
+	.4byte	.LCFI85
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 4
-	.4byte	.LCFI73
+	.4byte	.LCFI85
 	.4byte	.LFE182
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 0
 	.4byte	0
 	.4byte	0
-.LLST12:
+.LLST14:
 	.4byte	.LFB170
-	.4byte	.LCFI63
+	.4byte	.LCFI75
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 0
-	.4byte	.LCFI63
-	.4byte	.LCFI64
+	.4byte	.LCFI75
+	.4byte	.LCFI76
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 8
-	.4byte	.LCFI64
-	.4byte	.LCFI65
+	.4byte	.LCFI76
+	.4byte	.LCFI77
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 16
-	.4byte	.LCFI65
-	.4byte	.LCFI66
+	.4byte	.LCFI77
+	.4byte	.LCFI78
 	.2byte	0x2
 	.byte	0x77
 	.sleb128 16
-	.4byte	.LCFI66
-	.4byte	.LCFI67
+	.4byte	.LCFI78
+	.4byte	.LCFI79
 	.2byte	0x2
 	.byte	0x77
 	.sleb128 8
-	.4byte	.LCFI67
+	.4byte	.LCFI79
 	.4byte	.LFE170
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 8
 	.4byte	0
 	.4byte	0
-.LLST11:
+.LLST13:
 	.4byte	.LFB169
-	.4byte	.LCFI57
+	.4byte	.LCFI69
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 0
-	.4byte	.LCFI57
-	.4byte	.LCFI58
+	.4byte	.LCFI69
+	.4byte	.LCFI70
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 4
-	.4byte	.LCFI58
-	.4byte	.LCFI59
+	.4byte	.LCFI70
+	.4byte	.LCFI71
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 16
-	.4byte	.LCFI59
-	.4byte	.LCFI60
+	.4byte	.LCFI71
+	.4byte	.LCFI72
 	.2byte	0x2
 	.byte	0x77
 	.sleb128 16
-	.4byte	.LCFI60
-	.4byte	.LCFI61
+	.4byte	.LCFI72
+	.4byte	.LCFI73
 	.2byte	0x2
 	.byte	0x77
 	.sleb128 4
-	.4byte	.LCFI61
-	.4byte	.LCFI62
+	.4byte	.LCFI73
+	.4byte	.LCFI74
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 4
-	.4byte	.LCFI62
+	.4byte	.LCFI74
 	.4byte	.LFE169
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 0
 	.4byte	0
 	.4byte	0
-.LLST10:
+.LLST12:
 	.4byte	.LFB166
-	.4byte	.LCFI51
+	.4byte	.LCFI63
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 0
-	.4byte	.LCFI51
-	.4byte	.LCFI52
+	.4byte	.LCFI63
+	.4byte	.LCFI64
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 4
-	.4byte	.LCFI52
-	.4byte	.LCFI53
+	.4byte	.LCFI64
+	.4byte	.LCFI65
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 16
-	.4byte	.LCFI53
-	.4byte	.LCFI54
+	.4byte	.LCFI65
+	.4byte	.LCFI66
 	.2byte	0x2
 	.byte	0x77
 	.sleb128 16
-	.4byte	.LCFI54
-	.4byte	.LCFI55
+	.4byte	.LCFI66
+	.4byte	.LCFI67
 	.2byte	0x2
 	.byte	0x77
 	.sleb128 4
-	.4byte	.LCFI55
-	.4byte	.LCFI56
+	.4byte	.LCFI67
+	.4byte	.LCFI68
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 4
-	.4byte	.LCFI56
+	.4byte	.LCFI68
 	.4byte	.LFE166
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 0
 	.4byte	0
 	.4byte	0
-.LLST9:
+.LLST11:
 	.4byte	.LFB165
+	.4byte	.LCFI58
+	.2byte	0x2
+	.byte	0x7d
+	.sleb128 0
+	.4byte	.LCFI58
+	.4byte	.LCFI59
+	.2byte	0x2
+	.byte	0x7d
+	.sleb128 8
+	.4byte	.LCFI59
+	.4byte	.LCFI60
+	.2byte	0x2
+	.byte	0x7d
+	.sleb128 16
+	.4byte	.LCFI60
+	.4byte	.LCFI61
+	.2byte	0x2
+	.byte	0x77
+	.sleb128 16
+	.4byte	.LCFI61
+	.4byte	.LCFI62
+	.2byte	0x2
+	.byte	0x77
+	.sleb128 8
+	.4byte	.LCFI62
+	.4byte	.LFE165
+	.2byte	0x2
+	.byte	0x7d
+	.sleb128 8
+	.4byte	0
+	.4byte	0
+.LLST10:
+	.4byte	.LFB135
+	.4byte	.LCFI52
+	.2byte	0x2
+	.byte	0x7d
+	.sleb128 0
+	.4byte	.LCFI52
+	.4byte	.LCFI53
+	.2byte	0x2
+	.byte	0x7d
+	.sleb128 4
+	.4byte	.LCFI53
+	.4byte	.LCFI54
+	.2byte	0x2
+	.byte	0x7d
+	.sleb128 16
+	.4byte	.LCFI54
+	.4byte	.LCFI55
+	.2byte	0x2
+	.byte	0x77
+	.sleb128 16
+	.4byte	.LCFI55
+	.4byte	.LCFI56
+	.2byte	0x2
+	.byte	0x77
+	.sleb128 4
+	.4byte	.LCFI56
+	.4byte	.LCFI57
+	.2byte	0x2
+	.byte	0x7d
+	.sleb128 4
+	.4byte	.LCFI57
+	.4byte	.LFE135
+	.2byte	0x2
+	.byte	0x7d
+	.sleb128 0
+	.4byte	0
+	.4byte	0
+.LLST9:
+	.4byte	.LFB132
 	.4byte	.LCFI46
 	.2byte	0x2
 	.byte	0x7d
@@ -8614,7 +9403,7 @@ main:
 	.4byte	.LCFI47
 	.2byte	0x2
 	.byte	0x7d
-	.sleb128 8
+	.sleb128 4
 	.4byte	.LCFI47
 	.4byte	.LCFI48
 	.2byte	0x2
@@ -8629,12 +9418,17 @@ main:
 	.4byte	.LCFI50
 	.2byte	0x2
 	.byte	0x77
-	.sleb128 8
+	.sleb128 4
 	.4byte	.LCFI50
-	.4byte	.LFE165
+	.4byte	.LCFI51
 	.2byte	0x2
 	.byte	0x7d
-	.sleb128 8
+	.sleb128 4
+	.4byte	.LCFI51
+	.4byte	.LFE132
+	.2byte	0x2
+	.byte	0x7d
+	.sleb128 0
 	.4byte	0
 	.4byte	0
 .LLST8:
@@ -8940,7 +9734,7 @@ main:
 	.4byte	0
 	.4byte	0
 	.section	.debug_aranges,"",%progbits
-	.4byte	0xc4
+	.4byte	0xdc
 	.2byte	0x2
 	.4byte	.Ldebug_info0
 	.byte	0x4
@@ -8965,6 +9759,10 @@ main:
 	.4byte	.LFE80-.LFB80
 	.4byte	.LFB81
 	.4byte	.LFE81-.LFB81
+	.4byte	.LFB132
+	.4byte	.LFE132-.LFB132
+	.4byte	.LFB135
+	.4byte	.LFE135-.LFB135
 	.4byte	.LFB165
 	.4byte	.LFE165-.LFB165
 	.4byte	.LFB166
@@ -8991,6 +9789,8 @@ main:
 	.4byte	.LFE192-.LFB192
 	.4byte	.LFB193
 	.4byte	.LFE193-.LFB193
+	.4byte	.LFB194
+	.4byte	.LFE194-.LFB194
 	.4byte	0
 	.4byte	0
 	.section	.debug_ranges,"",%progbits
@@ -9013,6 +9813,10 @@ main:
 	.4byte	.LFE80
 	.4byte	.LFB81
 	.4byte	.LFE81
+	.4byte	.LFB132
+	.4byte	.LFE132
+	.4byte	.LFB135
+	.4byte	.LFE135
 	.4byte	.LFB165
 	.4byte	.LFE165
 	.4byte	.LFB166
@@ -9039,6 +9843,8 @@ main:
 	.4byte	.LFE192
 	.4byte	.LFB193
 	.4byte	.LFE193
+	.4byte	.LFB194
+	.4byte	.LFE194
 	.4byte	0
 	.4byte	0
 	.section	.debug_macro,"",%progbits
@@ -9050,124 +9856,124 @@ main:
 	.4byte	.Ldebug_macro2
 	.byte	0x3
 	.uleb128 0
-	.uleb128 0x9
-	.file 46 ".././hal/sam3u1c/inc/asf.h"
+	.uleb128 0xa
+	.file 48 ".././hal/sam3u1c/inc/asf.h"
 	.byte	0x3
 	.uleb128 0x1
-	.uleb128 0x2e
+	.uleb128 0x30
 	.byte	0x5
 	.uleb128 0x2d
 	.4byte	.LASF460
-	.file 47 ".././hal/sam3u1c/inc/chipid.h"
+	.file 49 ".././hal/sam3u1c/inc/chipid.h"
 	.byte	0x3
 	.uleb128 0x38
-	.uleb128 0x2f
+	.uleb128 0x31
 	.byte	0x5
 	.uleb128 0x2d
 	.4byte	.LASF461
 	.byte	0x3
 	.uleb128 0x2f
-	.uleb128 0x18
+	.uleb128 0x1a
 	.byte	0x5
 	.uleb128 0x2d
 	.4byte	.LASF462
 	.byte	0x3
 	.uleb128 0x37
-	.uleb128 0x12
+	.uleb128 0x14
 	.byte	0x7
 	.4byte	.Ldebug_macro3
 	.byte	0x4
-	.file 48 ".././hal/sam3u1c/inc/parts.h"
+	.file 50 ".././hal/sam3u1c/inc/parts.h"
 	.byte	0x3
 	.uleb128 0x3d
-	.uleb128 0x30
+	.uleb128 0x32
 	.byte	0x7
 	.4byte	.Ldebug_macro4
 	.byte	0x4
-	.file 49 ".././hal/sam3u1c/inc/preprocessor.h"
+	.file 51 ".././hal/sam3u1c/inc/preprocessor.h"
 	.byte	0x3
 	.uleb128 0x3e
-	.uleb128 0x31
+	.uleb128 0x33
 	.byte	0x5
 	.uleb128 0x2d
 	.4byte	.LASF688
-	.file 50 ".././hal/sam3u1c/inc/tpaste.h"
+	.file 52 ".././hal/sam3u1c/inc/tpaste.h"
 	.byte	0x3
 	.uleb128 0x2f
-	.uleb128 0x32
+	.uleb128 0x34
 	.byte	0x7
 	.4byte	.Ldebug_macro5
 	.byte	0x4
-	.file 51 ".././hal/sam3u1c/inc/stringz.h"
+	.file 53 ".././hal/sam3u1c/inc/stringz.h"
 	.byte	0x3
 	.uleb128 0x30
-	.uleb128 0x33
+	.uleb128 0x35
 	.byte	0x7
 	.4byte	.Ldebug_macro6
 	.byte	0x4
-	.file 52 ".././hal/sam3u1c/inc/mrepeat.h"
+	.file 54 ".././hal/sam3u1c/inc/mrepeat.h"
 	.byte	0x3
 	.uleb128 0x31
-	.uleb128 0x34
+	.uleb128 0x36
 	.byte	0x5
 	.uleb128 0x2d
 	.4byte	.LASF711
 	.byte	0x3
 	.uleb128 0x37
-	.uleb128 0x31
+	.uleb128 0x33
 	.byte	0x4
 	.byte	0x7
 	.4byte	.Ldebug_macro7
 	.byte	0x4
 	.byte	0x4
-	.file 53 ".././hal/sam3u1c/inc/io.h"
+	.file 55 ".././hal/sam3u1c/inc/io.h"
 	.byte	0x3
 	.uleb128 0x40
-	.uleb128 0x35
+	.uleb128 0x37
 	.byte	0x5
 	.uleb128 0x2f
 	.4byte	.LASF971
-	.file 54 ".././hal/sam3u1c/inc/sam3u.h"
+	.file 56 ".././hal/sam3u1c/inc/sam3u.h"
 	.byte	0x3
 	.uleb128 0x3e
-	.uleb128 0x36
+	.uleb128 0x38
 	.byte	0x5
 	.uleb128 0x2b
 	.4byte	.LASF972
 	.byte	0x3
 	.uleb128 0x2e
-	.uleb128 0xc
+	.uleb128 0xd
 	.byte	0x5
 	.uleb128 0x2b
 	.4byte	.LASF973
-	.file 55 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\lib\\gcc\\arm-none-eabi\\9.3.1\\include\\stdint.h"
+	.file 57 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\lib\\gcc\\arm-none-eabi\\9.3.1\\include\\stdint.h"
 	.byte	0x3
 	.uleb128 0x3b
-	.uleb128 0x37
-	.file 56 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\stdint.h"
+	.uleb128 0x39
+	.file 58 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\stdint.h"
 	.byte	0x3
 	.uleb128 0x9
-	.uleb128 0x38
+	.uleb128 0x3a
 	.byte	0x5
 	.uleb128 0xa
 	.4byte	.LASF974
 	.byte	0x3
 	.uleb128 0xc
-	.uleb128 0xa
+	.uleb128 0xb
 	.byte	0x5
 	.uleb128 0x6
 	.4byte	.LASF975
-	.file 57 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\features.h"
+	.file 59 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\features.h"
 	.byte	0x3
 	.uleb128 0x8
-	.uleb128 0x39
+	.uleb128 0x3b
 	.byte	0x5
 	.uleb128 0x16
 	.4byte	.LASF976
-	.file 58 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\_newlib_version.h"
+	.file 60 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\_newlib_version.h"
 	.byte	0x3
 	.uleb128 0x1c
-	.uleb128 0x3a
+	.uleb128 0x3c
 	.byte	0x7
 	.4byte	.Ldebug_macro8
 	.byte	0x4
@@ -9177,16 +9983,16 @@ main:
 	.byte	0x7
 	.4byte	.Ldebug_macro10
 	.byte	0x4
-	.file 59 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_intsup.h"
+	.file 61 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_intsup.h"
 	.byte	0x3
 	.uleb128 0xd
-	.uleb128 0x3b
+	.uleb128 0x3d
 	.byte	0x7
 	.4byte	.Ldebug_macro11
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0xe
-	.uleb128 0xb
+	.uleb128 0xc
 	.byte	0x7
 	.4byte	.Ldebug_macro12
 	.byte	0x4
@@ -9201,18 +10007,18 @@ main:
 	.4byte	.Ldebug_macro14
 	.byte	0x3
 	.uleb128 0xe5
-	.uleb128 0xd
+	.uleb128 0xe
 	.byte	0x7
 	.4byte	.Ldebug_macro15
 	.byte	0x3
 	.uleb128 0x77
-	.uleb128 0x6
+	.uleb128 0x7
 	.byte	0x7
 	.4byte	.Ldebug_macro16
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0x78
-	.uleb128 0x5
+	.uleb128 0x6
 	.byte	0x5
 	.uleb128 0x19
 	.4byte	.LASF1148
@@ -9222,396 +10028,395 @@ main:
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0xe7
-	.uleb128 0xe
+	.uleb128 0xf
 	.byte	0x5
 	.uleb128 0x2e
 	.4byte	.LASF1552
 	.byte	0x3
 	.uleb128 0x39
-	.uleb128 0x18
+	.uleb128 0x1a
 	.byte	0x4
 	.byte	0x4
-	.file 60 ".././hal/sam3u1c/inc/component/component_adc.h"
+	.file 62 ".././hal/sam3u1c/inc/component/component_adc.h"
 	.byte	0x3
 	.uleb128 0xf2
-	.uleb128 0x3c
+	.uleb128 0x3e
 	.byte	0x7
 	.4byte	.Ldebug_macro18
 	.byte	0x4
-	.file 61 ".././hal/sam3u1c/inc/component/component_adc12b.h"
+	.file 63 ".././hal/sam3u1c/inc/component/component_adc12b.h"
 	.byte	0x3
 	.uleb128 0xf3
-	.uleb128 0x3d
+	.uleb128 0x3f
 	.byte	0x7
 	.4byte	.Ldebug_macro19
 	.byte	0x4
-	.file 62 ".././hal/sam3u1c/inc/component/component_chipid.h"
+	.file 64 ".././hal/sam3u1c/inc/component/component_chipid.h"
 	.byte	0x3
 	.uleb128 0xf4
-	.uleb128 0x3e
+	.uleb128 0x40
 	.byte	0x7
 	.4byte	.Ldebug_macro20
 	.byte	0x4
-	.file 63 ".././hal/sam3u1c/inc/component/component_dmac.h"
+	.file 65 ".././hal/sam3u1c/inc/component/component_dmac.h"
 	.byte	0x3
 	.uleb128 0xf5
-	.uleb128 0x3f
+	.uleb128 0x41
 	.byte	0x7
 	.4byte	.Ldebug_macro21
 	.byte	0x4
-	.file 64 ".././hal/sam3u1c/inc/component/component_efc.h"
+	.file 66 ".././hal/sam3u1c/inc/component/component_efc.h"
 	.byte	0x3
 	.uleb128 0xf6
-	.uleb128 0x40
+	.uleb128 0x42
 	.byte	0x7
 	.4byte	.Ldebug_macro22
 	.byte	0x4
-	.file 65 ".././hal/sam3u1c/inc/component/component_gpbr.h"
+	.file 67 ".././hal/sam3u1c/inc/component/component_gpbr.h"
 	.byte	0x3
 	.uleb128 0xf7
-	.uleb128 0x41
+	.uleb128 0x43
 	.byte	0x7
 	.4byte	.Ldebug_macro23
 	.byte	0x4
-	.file 66 ".././hal/sam3u1c/inc/component/component_hsmci.h"
+	.file 68 ".././hal/sam3u1c/inc/component/component_hsmci.h"
 	.byte	0x3
 	.uleb128 0xf8
-	.uleb128 0x42
+	.uleb128 0x44
 	.byte	0x7
 	.4byte	.Ldebug_macro24
 	.byte	0x4
-	.file 67 ".././hal/sam3u1c/inc/component/component_matrix.h"
+	.file 69 ".././hal/sam3u1c/inc/component/component_matrix.h"
 	.byte	0x3
 	.uleb128 0xf9
-	.uleb128 0x43
+	.uleb128 0x45
 	.byte	0x7
 	.4byte	.Ldebug_macro25
 	.byte	0x4
-	.file 68 ".././hal/sam3u1c/inc/component/component_pdc.h"
+	.file 70 ".././hal/sam3u1c/inc/component/component_pdc.h"
 	.byte	0x3
 	.uleb128 0xfa
-	.uleb128 0x44
+	.uleb128 0x46
 	.byte	0x7
 	.4byte	.Ldebug_macro26
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0xfb
-	.uleb128 0xf
+	.uleb128 0x10
 	.byte	0x7
 	.4byte	.Ldebug_macro27
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0xfc
-	.uleb128 0x10
+	.uleb128 0x11
 	.byte	0x7
 	.4byte	.Ldebug_macro28
 	.byte	0x4
-	.file 69 ".././hal/sam3u1c/inc/component/component_pwm.h"
+	.file 71 ".././hal/sam3u1c/inc/component/component_pwm.h"
 	.byte	0x3
 	.uleb128 0xfd
-	.uleb128 0x45
+	.uleb128 0x47
 	.byte	0x7
 	.4byte	.Ldebug_macro29
 	.byte	0x4
-	.file 70 ".././hal/sam3u1c/inc/component/component_rstc.h"
+	.file 72 ".././hal/sam3u1c/inc/component/component_rstc.h"
 	.byte	0x3
 	.uleb128 0xfe
-	.uleb128 0x46
+	.uleb128 0x48
 	.byte	0x7
 	.4byte	.Ldebug_macro30
 	.byte	0x4
-	.file 71 ".././hal/sam3u1c/inc/component/component_rtc.h"
+	.file 73 ".././hal/sam3u1c/inc/component/component_rtc.h"
 	.byte	0x3
 	.uleb128 0xff
-	.uleb128 0x47
+	.uleb128 0x49
 	.byte	0x7
 	.4byte	.Ldebug_macro31
 	.byte	0x4
-	.file 72 ".././hal/sam3u1c/inc/component/component_rtt.h"
+	.file 74 ".././hal/sam3u1c/inc/component/component_rtt.h"
 	.byte	0x3
 	.uleb128 0x100
-	.uleb128 0x48
+	.uleb128 0x4a
 	.byte	0x7
 	.4byte	.Ldebug_macro32
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0x101
-	.uleb128 0x11
+	.uleb128 0x12
 	.byte	0x7
 	.4byte	.Ldebug_macro33
 	.byte	0x4
-	.file 73 ".././hal/sam3u1c/inc/component/component_spi.h"
 	.byte	0x3
 	.uleb128 0x102
-	.uleb128 0x49
+	.uleb128 0x13
 	.byte	0x7
 	.4byte	.Ldebug_macro34
 	.byte	0x4
-	.file 74 ".././hal/sam3u1c/inc/component/component_ssc.h"
+	.file 75 ".././hal/sam3u1c/inc/component/component_ssc.h"
 	.byte	0x3
 	.uleb128 0x103
-	.uleb128 0x4a
+	.uleb128 0x4b
 	.byte	0x7
 	.4byte	.Ldebug_macro35
 	.byte	0x4
-	.file 75 ".././hal/sam3u1c/inc/component/component_supc.h"
+	.file 76 ".././hal/sam3u1c/inc/component/component_supc.h"
 	.byte	0x3
 	.uleb128 0x104
-	.uleb128 0x4b
+	.uleb128 0x4c
 	.byte	0x7
 	.4byte	.Ldebug_macro36
 	.byte	0x4
-	.file 76 ".././hal/sam3u1c/inc/component/component_tc.h"
+	.file 77 ".././hal/sam3u1c/inc/component/component_tc.h"
 	.byte	0x3
 	.uleb128 0x105
-	.uleb128 0x4c
+	.uleb128 0x4d
 	.byte	0x7
 	.4byte	.Ldebug_macro37
 	.byte	0x4
-	.file 77 ".././hal/sam3u1c/inc/component/component_twi.h"
+	.file 78 ".././hal/sam3u1c/inc/component/component_twi.h"
 	.byte	0x3
 	.uleb128 0x106
-	.uleb128 0x4d
+	.uleb128 0x4e
 	.byte	0x7
 	.4byte	.Ldebug_macro38
 	.byte	0x4
-	.file 78 ".././hal/sam3u1c/inc/component/component_uart.h"
+	.file 79 ".././hal/sam3u1c/inc/component/component_uart.h"
 	.byte	0x3
 	.uleb128 0x107
-	.uleb128 0x4e
+	.uleb128 0x4f
 	.byte	0x7
 	.4byte	.Ldebug_macro39
 	.byte	0x4
-	.file 79 ".././hal/sam3u1c/inc/component/component_udphs.h"
+	.file 80 ".././hal/sam3u1c/inc/component/component_udphs.h"
 	.byte	0x3
 	.uleb128 0x108
-	.uleb128 0x4f
+	.uleb128 0x50
 	.byte	0x7
 	.4byte	.Ldebug_macro40
 	.byte	0x4
-	.file 80 ".././hal/sam3u1c/inc/component/component_usart.h"
+	.file 81 ".././hal/sam3u1c/inc/component/component_usart.h"
 	.byte	0x3
 	.uleb128 0x109
-	.uleb128 0x50
+	.uleb128 0x51
 	.byte	0x7
 	.4byte	.Ldebug_macro41
 	.byte	0x4
-	.file 81 ".././hal/sam3u1c/inc/component/component_wdt.h"
+	.file 82 ".././hal/sam3u1c/inc/component/component_wdt.h"
 	.byte	0x3
 	.uleb128 0x10a
-	.uleb128 0x51
+	.uleb128 0x52
 	.byte	0x7
 	.4byte	.Ldebug_macro42
 	.byte	0x4
-	.file 82 ".././hal/sam3u1c/inc/instance/instance_hsmci.h"
+	.file 83 ".././hal/sam3u1c/inc/instance/instance_hsmci.h"
 	.byte	0x3
 	.uleb128 0x113
-	.uleb128 0x52
+	.uleb128 0x53
 	.byte	0x7
 	.4byte	.Ldebug_macro43
 	.byte	0x4
-	.file 83 ".././hal/sam3u1c/inc/instance/instance_ssc.h"
+	.file 84 ".././hal/sam3u1c/inc/instance/instance_ssc.h"
 	.byte	0x3
 	.uleb128 0x114
-	.uleb128 0x53
+	.uleb128 0x54
 	.byte	0x7
 	.4byte	.Ldebug_macro44
 	.byte	0x4
-	.file 84 ".././hal/sam3u1c/inc/instance/instance_spi.h"
+	.file 85 ".././hal/sam3u1c/inc/instance/instance_spi.h"
 	.byte	0x3
 	.uleb128 0x115
-	.uleb128 0x54
+	.uleb128 0x55
 	.byte	0x7
 	.4byte	.Ldebug_macro45
 	.byte	0x4
-	.file 85 ".././hal/sam3u1c/inc/instance/instance_tc0.h"
+	.file 86 ".././hal/sam3u1c/inc/instance/instance_tc0.h"
 	.byte	0x3
 	.uleb128 0x116
-	.uleb128 0x55
+	.uleb128 0x56
 	.byte	0x7
 	.4byte	.Ldebug_macro46
 	.byte	0x4
-	.file 86 ".././hal/sam3u1c/inc/instance/instance_twi0.h"
+	.file 87 ".././hal/sam3u1c/inc/instance/instance_twi0.h"
 	.byte	0x3
 	.uleb128 0x117
-	.uleb128 0x56
+	.uleb128 0x57
 	.byte	0x7
 	.4byte	.Ldebug_macro47
 	.byte	0x4
-	.file 87 ".././hal/sam3u1c/inc/instance/instance_twi1.h"
+	.file 88 ".././hal/sam3u1c/inc/instance/instance_twi1.h"
 	.byte	0x3
 	.uleb128 0x118
-	.uleb128 0x57
+	.uleb128 0x58
 	.byte	0x7
 	.4byte	.Ldebug_macro48
 	.byte	0x4
-	.file 88 ".././hal/sam3u1c/inc/instance/instance_pwm.h"
+	.file 89 ".././hal/sam3u1c/inc/instance/instance_pwm.h"
 	.byte	0x3
 	.uleb128 0x119
-	.uleb128 0x58
+	.uleb128 0x59
 	.byte	0x7
 	.4byte	.Ldebug_macro49
 	.byte	0x4
-	.file 89 ".././hal/sam3u1c/inc/instance/instance_usart0.h"
+	.file 90 ".././hal/sam3u1c/inc/instance/instance_usart0.h"
 	.byte	0x3
 	.uleb128 0x11a
-	.uleb128 0x59
+	.uleb128 0x5a
 	.byte	0x7
 	.4byte	.Ldebug_macro50
 	.byte	0x4
-	.file 90 ".././hal/sam3u1c/inc/instance/instance_usart1.h"
+	.file 91 ".././hal/sam3u1c/inc/instance/instance_usart1.h"
 	.byte	0x3
 	.uleb128 0x11b
-	.uleb128 0x5a
+	.uleb128 0x5b
 	.byte	0x7
 	.4byte	.Ldebug_macro51
 	.byte	0x4
-	.file 91 ".././hal/sam3u1c/inc/instance/instance_usart2.h"
+	.file 92 ".././hal/sam3u1c/inc/instance/instance_usart2.h"
 	.byte	0x3
 	.uleb128 0x11c
-	.uleb128 0x5b
+	.uleb128 0x5c
 	.byte	0x7
 	.4byte	.Ldebug_macro52
 	.byte	0x4
-	.file 92 ".././hal/sam3u1c/inc/instance/instance_udphs.h"
+	.file 93 ".././hal/sam3u1c/inc/instance/instance_udphs.h"
 	.byte	0x3
 	.uleb128 0x11d
-	.uleb128 0x5c
+	.uleb128 0x5d
 	.byte	0x7
 	.4byte	.Ldebug_macro53
 	.byte	0x4
-	.file 93 ".././hal/sam3u1c/inc/instance/instance_adc12b.h"
+	.file 94 ".././hal/sam3u1c/inc/instance/instance_adc12b.h"
 	.byte	0x3
 	.uleb128 0x11e
-	.uleb128 0x5d
+	.uleb128 0x5e
 	.byte	0x7
 	.4byte	.Ldebug_macro54
 	.byte	0x4
-	.file 94 ".././hal/sam3u1c/inc/instance/instance_adc.h"
+	.file 95 ".././hal/sam3u1c/inc/instance/instance_adc.h"
 	.byte	0x3
 	.uleb128 0x11f
-	.uleb128 0x5e
+	.uleb128 0x5f
 	.byte	0x7
 	.4byte	.Ldebug_macro55
 	.byte	0x4
-	.file 95 ".././hal/sam3u1c/inc/instance/instance_dmac.h"
+	.file 96 ".././hal/sam3u1c/inc/instance/instance_dmac.h"
 	.byte	0x3
 	.uleb128 0x120
-	.uleb128 0x5f
+	.uleb128 0x60
 	.byte	0x7
 	.4byte	.Ldebug_macro56
 	.byte	0x4
-	.file 96 ".././hal/sam3u1c/inc/instance/instance_smc.h"
+	.file 97 ".././hal/sam3u1c/inc/instance/instance_smc.h"
 	.byte	0x3
 	.uleb128 0x121
-	.uleb128 0x60
+	.uleb128 0x61
 	.byte	0x7
 	.4byte	.Ldebug_macro57
 	.byte	0x4
-	.file 97 ".././hal/sam3u1c/inc/instance/instance_matrix.h"
+	.file 98 ".././hal/sam3u1c/inc/instance/instance_matrix.h"
 	.byte	0x3
 	.uleb128 0x122
-	.uleb128 0x61
+	.uleb128 0x62
 	.byte	0x7
 	.4byte	.Ldebug_macro58
 	.byte	0x4
-	.file 98 ".././hal/sam3u1c/inc/instance/instance_pmc.h"
+	.file 99 ".././hal/sam3u1c/inc/instance/instance_pmc.h"
 	.byte	0x3
 	.uleb128 0x123
-	.uleb128 0x62
+	.uleb128 0x63
 	.byte	0x7
 	.4byte	.Ldebug_macro59
 	.byte	0x4
-	.file 99 ".././hal/sam3u1c/inc/instance/instance_uart.h"
+	.file 100 ".././hal/sam3u1c/inc/instance/instance_uart.h"
 	.byte	0x3
 	.uleb128 0x124
-	.uleb128 0x63
+	.uleb128 0x64
 	.byte	0x7
 	.4byte	.Ldebug_macro60
 	.byte	0x4
-	.file 100 ".././hal/sam3u1c/inc/instance/instance_chipid.h"
+	.file 101 ".././hal/sam3u1c/inc/instance/instance_chipid.h"
 	.byte	0x3
 	.uleb128 0x125
-	.uleb128 0x64
+	.uleb128 0x65
 	.byte	0x7
 	.4byte	.Ldebug_macro61
 	.byte	0x4
-	.file 101 ".././hal/sam3u1c/inc/instance/instance_efc0.h"
+	.file 102 ".././hal/sam3u1c/inc/instance/instance_efc0.h"
 	.byte	0x3
 	.uleb128 0x126
-	.uleb128 0x65
+	.uleb128 0x66
 	.byte	0x7
 	.4byte	.Ldebug_macro62
 	.byte	0x4
-	.file 102 ".././hal/sam3u1c/inc/instance/instance_efc1.h"
+	.file 103 ".././hal/sam3u1c/inc/instance/instance_efc1.h"
 	.byte	0x3
 	.uleb128 0x127
-	.uleb128 0x66
+	.uleb128 0x67
 	.byte	0x7
 	.4byte	.Ldebug_macro63
 	.byte	0x4
-	.file 103 ".././hal/sam3u1c/inc/instance/instance_pioa.h"
+	.file 104 ".././hal/sam3u1c/inc/instance/instance_pioa.h"
 	.byte	0x3
 	.uleb128 0x128
-	.uleb128 0x67
+	.uleb128 0x68
 	.byte	0x7
 	.4byte	.Ldebug_macro64
 	.byte	0x4
-	.file 104 ".././hal/sam3u1c/inc/instance/instance_piob.h"
+	.file 105 ".././hal/sam3u1c/inc/instance/instance_piob.h"
 	.byte	0x3
 	.uleb128 0x129
-	.uleb128 0x68
+	.uleb128 0x69
 	.byte	0x7
 	.4byte	.Ldebug_macro65
 	.byte	0x4
-	.file 105 ".././hal/sam3u1c/inc/instance/instance_rstc.h"
+	.file 106 ".././hal/sam3u1c/inc/instance/instance_rstc.h"
 	.byte	0x3
 	.uleb128 0x12a
-	.uleb128 0x69
+	.uleb128 0x6a
 	.byte	0x7
 	.4byte	.Ldebug_macro66
 	.byte	0x4
-	.file 106 ".././hal/sam3u1c/inc/instance/instance_supc.h"
+	.file 107 ".././hal/sam3u1c/inc/instance/instance_supc.h"
 	.byte	0x3
 	.uleb128 0x12b
-	.uleb128 0x6a
+	.uleb128 0x6b
 	.byte	0x7
 	.4byte	.Ldebug_macro67
 	.byte	0x4
-	.file 107 ".././hal/sam3u1c/inc/instance/instance_rtt.h"
+	.file 108 ".././hal/sam3u1c/inc/instance/instance_rtt.h"
 	.byte	0x3
 	.uleb128 0x12c
-	.uleb128 0x6b
+	.uleb128 0x6c
 	.byte	0x7
 	.4byte	.Ldebug_macro68
 	.byte	0x4
-	.file 108 ".././hal/sam3u1c/inc/instance/instance_wdt.h"
+	.file 109 ".././hal/sam3u1c/inc/instance/instance_wdt.h"
 	.byte	0x3
 	.uleb128 0x12d
-	.uleb128 0x6c
+	.uleb128 0x6d
 	.byte	0x7
 	.4byte	.Ldebug_macro69
 	.byte	0x4
-	.file 109 ".././hal/sam3u1c/inc/instance/instance_rtc.h"
+	.file 110 ".././hal/sam3u1c/inc/instance/instance_rtc.h"
 	.byte	0x3
 	.uleb128 0x12e
-	.uleb128 0x6d
+	.uleb128 0x6e
 	.byte	0x7
 	.4byte	.Ldebug_macro70
 	.byte	0x4
-	.file 110 ".././hal/sam3u1c/inc/instance/instance_gpbr.h"
+	.file 111 ".././hal/sam3u1c/inc/instance/instance_gpbr.h"
 	.byte	0x3
 	.uleb128 0x12f
-	.uleb128 0x6e
+	.uleb128 0x6f
 	.byte	0x7
 	.4byte	.Ldebug_macro71
 	.byte	0x4
 	.byte	0x7
 	.4byte	.Ldebug_macro72
-	.file 111 ".././hal/sam3u1c/inc/pio/pio_sam3u1c.h"
+	.file 112 ".././hal/sam3u1c/inc/pio/pio_sam3u1c.h"
 	.byte	0x3
 	.uleb128 0x1b3
-	.uleb128 0x6f
+	.uleb128 0x70
 	.byte	0x7
 	.4byte	.Ldebug_macro73
 	.byte	0x4
@@ -9620,38 +10425,38 @@ main:
 	.byte	0x4
 	.byte	0x4
 	.byte	0x4
-	.file 112 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\stdio.h"
+	.file 113 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\stdio.h"
 	.byte	0x3
 	.uleb128 0x46
-	.uleb128 0x70
+	.uleb128 0x71
 	.byte	0x5
 	.uleb128 0x1b
 	.4byte	.LASF7710
-	.file 113 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\_ansi.h"
+	.file 114 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\_ansi.h"
 	.byte	0x3
 	.uleb128 0x1d
-	.uleb128 0x71
+	.uleb128 0x72
 	.byte	0x5
 	.uleb128 0x8
 	.4byte	.LASF7711
-	.file 114 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\newlib.h"
+	.file 115 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\newlib.h"
 	.byte	0x3
 	.uleb128 0xa
-	.uleb128 0x72
+	.uleb128 0x73
 	.byte	0x7
 	.4byte	.Ldebug_macro75
 	.byte	0x4
-	.file 115 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\config.h"
+	.file 116 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\config.h"
 	.byte	0x3
 	.uleb128 0xb
-	.uleb128 0x73
+	.uleb128 0x74
 	.byte	0x5
 	.uleb128 0x2
 	.4byte	.LASF7728
-	.file 116 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\machine\\ieeefp.h"
+	.file 117 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\machine\\ieeefp.h"
 	.byte	0x3
 	.uleb128 0x4
-	.uleb128 0x74
+	.uleb128 0x75
 	.byte	0x7
 	.4byte	.Ldebug_macro76
 	.byte	0x4
@@ -9663,16 +10468,16 @@ main:
 	.byte	0x4
 	.byte	0x7
 	.4byte	.Ldebug_macro79
-	.file 117 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\cdefs.h"
+	.file 118 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\cdefs.h"
 	.byte	0x3
 	.uleb128 0x23
-	.uleb128 0x75
+	.uleb128 0x76
 	.byte	0x5
 	.uleb128 0x2b
 	.4byte	.LASF7750
 	.byte	0x3
 	.uleb128 0x2f
-	.uleb128 0x12
+	.uleb128 0x14
 	.byte	0x7
 	.4byte	.Ldebug_macro80
 	.byte	0x4
@@ -9681,15 +10486,15 @@ main:
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0x24
-	.uleb128 0x12
+	.uleb128 0x14
 	.byte	0x4
 	.byte	0x5
 	.uleb128 0x27
 	.4byte	.LASF7877
-	.file 118 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\lib\\gcc\\arm-none-eabi\\9.3.1\\include\\stdarg.h"
+	.file 119 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\lib\\gcc\\arm-none-eabi\\9.3.1\\include\\stdarg.h"
 	.byte	0x3
 	.uleb128 0x28
-	.uleb128 0x76
+	.uleb128 0x77
 	.byte	0x7
 	.4byte	.Ldebug_macro82
 	.byte	0x4
@@ -9698,33 +10503,33 @@ main:
 	.4byte	.LASF7880
 	.byte	0x3
 	.uleb128 0x3c
-	.uleb128 0x14
+	.uleb128 0x16
 	.byte	0x5
 	.uleb128 0xb
 	.4byte	.LASF7881
 	.byte	0x3
 	.uleb128 0xd
-	.uleb128 0x71
+	.uleb128 0x72
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0xe
-	.uleb128 0x12
+	.uleb128 0x14
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0xf
-	.uleb128 0x13
+	.uleb128 0x15
 	.byte	0x7
 	.4byte	.Ldebug_macro83
 	.byte	0x3
 	.uleb128 0x18
-	.uleb128 0x12
+	.uleb128 0x14
 	.byte	0x7
 	.4byte	.Ldebug_macro84
 	.byte	0x4
-	.file 119 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\machine\\_types.h"
+	.file 120 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\machine\\_types.h"
 	.byte	0x3
 	.uleb128 0x1b
-	.uleb128 0x77
+	.uleb128 0x78
 	.byte	0x5
 	.uleb128 0x6
 	.4byte	.LASF7886
@@ -9736,69 +10541,69 @@ main:
 	.4byte	.Ldebug_macro86
 	.byte	0x3
 	.uleb128 0x22
-	.uleb128 0x15
+	.uleb128 0x17
 	.byte	0x7
 	.4byte	.Ldebug_macro87
 	.byte	0x4
 	.byte	0x7
 	.4byte	.Ldebug_macro88
 	.byte	0x4
-	.file 120 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\types.h"
+	.file 121 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\types.h"
 	.byte	0x3
 	.uleb128 0x3d
-	.uleb128 0x78
+	.uleb128 0x79
 	.byte	0x7
 	.4byte	.Ldebug_macro89
-	.file 121 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\machine\\endian.h"
+	.file 122 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\machine\\endian.h"
 	.byte	0x3
 	.uleb128 0x31
-	.uleb128 0x79
+	.uleb128 0x7a
 	.byte	0x5
 	.uleb128 0x2
 	.4byte	.LASF7966
-	.file 122 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\machine\\_endian.h"
+	.file 123 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\machine\\_endian.h"
 	.byte	0x3
 	.uleb128 0x6
-	.uleb128 0x7a
+	.uleb128 0x7b
 	.byte	0x7
 	.4byte	.Ldebug_macro90
 	.byte	0x4
 	.byte	0x7
 	.4byte	.Ldebug_macro91
 	.byte	0x4
-	.file 123 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\select.h"
+	.file 124 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\select.h"
 	.byte	0x3
 	.uleb128 0x32
-	.uleb128 0x7b
+	.uleb128 0x7c
 	.byte	0x5
 	.uleb128 0x2
 	.4byte	.LASF7984
-	.file 124 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_sigset.h"
+	.file 125 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_sigset.h"
 	.byte	0x3
 	.uleb128 0xe
-	.uleb128 0x7c
+	.uleb128 0x7d
 	.byte	0x5
 	.uleb128 0x27
 	.4byte	.LASF7985
 	.byte	0x4
-	.file 125 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_timeval.h"
+	.file 126 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_timeval.h"
 	.byte	0x3
 	.uleb128 0xf
-	.uleb128 0x7d
+	.uleb128 0x7e
 	.byte	0x7
 	.4byte	.Ldebug_macro92
 	.byte	0x4
-	.file 126 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\timespec.h"
+	.file 127 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\timespec.h"
 	.byte	0x3
 	.uleb128 0x10
-	.uleb128 0x7e
+	.uleb128 0x7f
 	.byte	0x5
 	.uleb128 0x23
 	.4byte	.LASF7991
-	.file 127 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_timespec.h"
+	.file 128 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_timespec.h"
 	.byte	0x3
 	.uleb128 0x26
-	.uleb128 0x7f
+	.uleb128 0x80
 	.byte	0x5
 	.uleb128 0x25
 	.4byte	.LASF7992
@@ -9811,27 +10616,27 @@ main:
 	.byte	0x4
 	.byte	0x7
 	.4byte	.Ldebug_macro95
-	.file 128 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_pthreadtypes.h"
+	.file 129 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_pthreadtypes.h"
 	.byte	0x3
 	.uleb128 0xdf
-	.uleb128 0x80
+	.uleb128 0x81
 	.byte	0x5
 	.uleb128 0x13
 	.4byte	.LASF8037
-	.file 129 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\sched.h"
+	.file 130 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\sched.h"
 	.byte	0x3
 	.uleb128 0x17
-	.uleb128 0x81
+	.uleb128 0x82
 	.byte	0x7
 	.4byte	.Ldebug_macro96
 	.byte	0x4
 	.byte	0x7
 	.4byte	.Ldebug_macro97
 	.byte	0x4
-	.file 130 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\machine\\types.h"
+	.file 131 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\machine\\types.h"
 	.byte	0x3
 	.uleb128 0xe0
-	.uleb128 0x82
+	.uleb128 0x83
 	.byte	0x4
 	.byte	0x6
 	.uleb128 0xe4
@@ -9840,53 +10645,53 @@ main:
 	.byte	0x5
 	.uleb128 0x43
 	.4byte	.LASF8052
-	.file 131 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\stdio.h"
+	.file 132 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\stdio.h"
 	.byte	0x3
 	.uleb128 0x4f
-	.uleb128 0x83
+	.uleb128 0x84
 	.byte	0x7
 	.4byte	.Ldebug_macro98
 	.byte	0x4
 	.byte	0x7
 	.4byte	.Ldebug_macro99
 	.byte	0x4
-	.file 132 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\lib\\gcc\\arm-none-eabi\\9.3.1\\include\\stdbool.h"
+	.file 133 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\lib\\gcc\\arm-none-eabi\\9.3.1\\include\\stdbool.h"
 	.byte	0x3
 	.uleb128 0x47
-	.uleb128 0x84
+	.uleb128 0x85
 	.byte	0x7
 	.4byte	.Ldebug_macro100
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0x49
-	.uleb128 0x16
+	.uleb128 0x18
 	.byte	0x5
 	.uleb128 0x8
 	.4byte	.LASF8116
 	.byte	0x3
 	.uleb128 0xa
-	.uleb128 0x74
+	.uleb128 0x75
 	.byte	0x4
 	.byte	0x7
 	.4byte	.Ldebug_macro101
 	.byte	0x3
 	.uleb128 0x10
-	.uleb128 0x12
+	.uleb128 0x14
 	.byte	0x7
 	.4byte	.Ldebug_macro80
 	.byte	0x4
-	.file 133 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\machine\\stdlib.h"
+	.file 134 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\machine\\stdlib.h"
 	.byte	0x3
 	.uleb128 0x14
-	.uleb128 0x85
+	.uleb128 0x86
 	.byte	0x5
 	.uleb128 0x2
 	.4byte	.LASF8118
 	.byte	0x4
-	.file 134 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\alloca.h"
+	.file 135 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\alloca.h"
 	.byte	0x3
 	.uleb128 0x16
-	.uleb128 0x86
+	.uleb128 0x87
 	.byte	0x7
 	.4byte	.Ldebug_macro102
 	.byte	0x4
@@ -9895,16 +10700,16 @@ main:
 	.byte	0x4
 	.byte	0x7
 	.4byte	.Ldebug_macro104
-	.file 135 ".././hal/sam3u1c/inc/interrupt.h"
+	.file 136 ".././hal/sam3u1c/inc/interrupt.h"
 	.byte	0x3
 	.uleb128 0xf0
-	.uleb128 0x87
+	.uleb128 0x88
 	.byte	0x5
 	.uleb128 0x2c
 	.4byte	.LASF8145
 	.byte	0x3
 	.uleb128 0x35
-	.uleb128 0x17
+	.uleb128 0x19
 	.byte	0x7
 	.4byte	.Ldebug_macro105
 	.byte	0x4
@@ -9913,42 +10718,42 @@ main:
 	.4byte	.Ldebug_macro106
 	.byte	0x4
 	.byte	0x4
-	.file 136 ".././hal/sam3u1c/inc/status_codes.h"
+	.file 137 ".././hal/sam3u1c/inc/status_codes.h"
 	.byte	0x3
 	.uleb128 0x3c
-	.uleb128 0x88
+	.uleb128 0x89
 	.byte	0x5
 	.uleb128 0x30
 	.4byte	.LASF8293
 	.byte	0x4
-	.file 137 ".././hal/sam3u1c/inc/delay.h"
+	.file 138 ".././hal/sam3u1c/inc/delay.h"
 	.byte	0x3
 	.uleb128 0x3f
-	.uleb128 0x89
+	.uleb128 0x8a
 	.byte	0x5
 	.uleb128 0x2c
 	.4byte	.LASF8294
-	.file 138 ".././hal/sam3u1c/inc/sysclk.h"
+	.file 139 ".././hal/sam3u1c/inc/sysclk.h"
 	.byte	0x3
 	.uleb128 0x32
-	.uleb128 0x8a
+	.uleb128 0x8b
 	.byte	0x5
 	.uleb128 0x2c
 	.4byte	.LASF8295
 	.byte	0x3
 	.uleb128 0x2e
-	.uleb128 0x30
+	.uleb128 0x32
 	.byte	0x4
-	.file 139 "./conf_clock.h"
+	.file 140 "./conf_clock.h"
 	.byte	0x3
 	.uleb128 0x2f
-	.uleb128 0x8b
+	.uleb128 0x8c
 	.byte	0x7
 	.4byte	.Ldebug_macro107
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0x34
-	.uleb128 0x26
+	.uleb128 0x28
 	.byte	0x5
 	.uleb128 0x2d
 	.4byte	.LASF8302
@@ -9966,20 +10771,20 @@ main:
 	.4byte	.LASF8304
 	.byte	0x3
 	.uleb128 0x2f
-	.uleb128 0x29
+	.uleb128 0x2b
 	.byte	0x7
 	.4byte	.Ldebug_macro108
-	.file 140 ".././hal/sam3u1c/inc/cw521.h"
+	.file 141 ".././hal/sam3u1c/inc/cw521.h"
 	.byte	0x3
 	.uleb128 0x14a
-	.uleb128 0x8c
+	.uleb128 0x8d
 	.byte	0x5
 	.uleb128 0x2d
 	.4byte	.LASF8398
-	.file 141 ".././hal/sam3u1c/inc/exceptions.h"
+	.file 142 ".././hal/sam3u1c/inc/exceptions.h"
 	.byte	0x3
 	.uleb128 0x31
-	.uleb128 0x8d
+	.uleb128 0x8e
 	.byte	0x5
 	.uleb128 0x2d
 	.4byte	.LASF8399
@@ -9990,7 +10795,7 @@ main:
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0x30
-	.uleb128 0x2a
+	.uleb128 0x2c
 	.byte	0x7
 	.4byte	.Ldebug_macro110
 	.byte	0x4
@@ -9998,10 +10803,10 @@ main:
 	.4byte	.Ldebug_macro111
 	.byte	0x4
 	.byte	0x4
-	.file 142 ".././hal/sam3u1c/inc/pll.h"
+	.file 143 ".././hal/sam3u1c/inc/pll.h"
 	.byte	0x3
 	.uleb128 0x30
-	.uleb128 0x8e
+	.uleb128 0x8f
 	.byte	0x5
 	.uleb128 0x2c
 	.4byte	.LASF8563
@@ -10016,53 +10821,53 @@ main:
 	.4byte	.Ldebug_macro113
 	.byte	0x4
 	.byte	0x4
-	.file 143 ".././hal/sam3u1c/inc/sam/cycle_counter.h"
+	.file 144 ".././hal/sam3u1c/inc/sam/cycle_counter.h"
 	.byte	0x3
 	.uleb128 0x3b
-	.uleb128 0x8f
+	.uleb128 0x90
 	.byte	0x7
 	.4byte	.Ldebug_macro114
 	.byte	0x4
 	.byte	0x7
 	.4byte	.Ldebug_macro115
 	.byte	0x4
-	.file 144 ".././hal/sam3u1c/inc/efc.h"
+	.file 145 ".././hal/sam3u1c/inc/efc.h"
 	.byte	0x3
 	.uleb128 0x42
-	.uleb128 0x90
+	.uleb128 0x91
 	.byte	0x7
 	.4byte	.Ldebug_macro116
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0x45
-	.uleb128 0x25
+	.uleb128 0x27
 	.byte	0x5
 	.uleb128 0x2d
 	.4byte	.LASF8625
 	.byte	0x3
 	.uleb128 0x30
-	.uleb128 0x90
+	.uleb128 0x91
 	.byte	0x4
 	.byte	0x7
 	.4byte	.Ldebug_macro117
 	.byte	0x4
-	.file 145 ".././hal/sam3u1c/inc/gpio.h"
+	.file 146 ".././hal/sam3u1c/inc/gpio.h"
 	.byte	0x3
 	.uleb128 0x48
-	.uleb128 0x91
+	.uleb128 0x92
 	.byte	0x5
 	.uleb128 0x2c
 	.4byte	.LASF8628
-	.file 146 ".././hal/sam3u1c/inc/sam_gpio/sam_gpio.h"
+	.file 147 ".././hal/sam3u1c/inc/sam_gpio/sam_gpio.h"
 	.byte	0x3
 	.uleb128 0x31
-	.uleb128 0x92
+	.uleb128 0x93
 	.byte	0x5
 	.uleb128 0x2d
 	.4byte	.LASF8629
 	.byte	0x3
 	.uleb128 0x30
-	.uleb128 0x19
+	.uleb128 0x1b
 	.byte	0x7
 	.4byte	.Ldebug_macro118
 	.byte	0x4
@@ -10070,41 +10875,41 @@ main:
 	.4byte	.Ldebug_macro119
 	.byte	0x4
 	.byte	0x4
-	.file 147 ".././hal/sam3u1c/inc/ioport.h"
+	.file 148 ".././hal/sam3u1c/inc/ioport.h"
 	.byte	0x3
 	.uleb128 0x4e
-	.uleb128 0x93
+	.uleb128 0x94
 	.byte	0x5
 	.uleb128 0x2d
 	.4byte	.LASF8664
-	.file 148 ".././hal/sam3u1c/inc/sam/ioport_pio.h"
+	.file 149 ".././hal/sam3u1c/inc/sam/ioport_pio.h"
 	.byte	0x3
 	.uleb128 0x87
-	.uleb128 0x94
+	.uleb128 0x95
 	.byte	0x7
 	.4byte	.Ldebug_macro120
 	.byte	0x4
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0x51
-	.uleb128 0x87
+	.uleb128 0x88
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0x58
-	.uleb128 0x2c
+	.uleb128 0x2e
 	.byte	0x7
 	.4byte	.Ldebug_macro121
 	.byte	0x4
-	.file 149 ".././hal/sam3u1c/inc/led.h"
+	.file 150 ".././hal/sam3u1c/inc/led.h"
 	.byte	0x3
 	.uleb128 0x5e
-	.uleb128 0x95
+	.uleb128 0x96
 	.byte	0x5
 	.uleb128 0x2d
 	.4byte	.LASF8691
 	.byte	0x3
 	.uleb128 0x2f
-	.uleb128 0x91
+	.uleb128 0x92
 	.byte	0x4
 	.byte	0x5
 	.uleb128 0x47
@@ -10112,24 +10917,23 @@ main:
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0x61
-	.uleb128 0x8d
+	.uleb128 0x8e
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0x64
-	.uleb128 0x2b
+	.uleb128 0x2d
 	.byte	0x7
 	.4byte	.Ldebug_macro122
 	.byte	0x4
-	.file 150 ".././hal/sam3u1c/inc/spi.h"
 	.byte	0x3
 	.uleb128 0x67
-	.uleb128 0x96
+	.uleb128 0x4
 	.byte	0x7
 	.4byte	.Ldebug_macro123
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0x6a
-	.uleb128 0x4
+	.uleb128 0x5
 	.byte	0x5
 	.uleb128 0x2d
 	.4byte	.LASF8716
@@ -10143,13 +10947,13 @@ main:
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0x6b
-	.uleb128 0x7
+	.uleb128 0x8
 	.byte	0x5
 	.uleb128 0x2c
 	.4byte	.LASF8719
 	.byte	0x3
 	.uleb128 0x32
-	.uleb128 0x4
+	.uleb128 0x5
 	.byte	0x4
 	.byte	0x4
 	.file 152 ".././hal/sam3u1c/inc/tc.h"
@@ -10224,7 +11028,7 @@ main:
 	.4byte	.LASF8745
 	.byte	0x3
 	.uleb128 0x2f
-	.uleb128 0x88
+	.uleb128 0x89
 	.byte	0x4
 	.file 160 ".././hal/sam3u1c/inc/sam_uart/uart_serial.h"
 	.byte	0x3
@@ -10251,13 +11055,13 @@ main:
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0x86
-	.uleb128 0x27
+	.uleb128 0x29
 	.byte	0x5
 	.uleb128 0x2d
 	.4byte	.LASF8758
 	.byte	0x3
 	.uleb128 0x2f
-	.uleb128 0x1a
+	.uleb128 0x1c
 	.byte	0x7
 	.4byte	.Ldebug_macro131
 	.file 163 ".././hal/sam3u1c/inc/udi_vendor_conf.h"
@@ -10269,19 +11073,19 @@ main:
 	.4byte	.LASF8786
 	.byte	0x3
 	.uleb128 0x30
-	.uleb128 0x1a
+	.uleb128 0x1c
 	.byte	0x4
 	.byte	0x7
 	.4byte	.Ldebug_macro132
 	.byte	0x3
 	.uleb128 0x76
-	.uleb128 0x1f
+	.uleb128 0x21
 	.byte	0x5
 	.uleb128 0x2d
 	.4byte	.LASF8799
 	.byte	0x3
 	.uleb128 0x30
-	.uleb128 0x1b
+	.uleb128 0x1d
 	.byte	0x5
 	.uleb128 0x30
 	.4byte	.LASF8800
@@ -10304,19 +11108,19 @@ main:
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0x32
-	.uleb128 0x1e
+	.uleb128 0x20
 	.byte	0x5
 	.uleb128 0x2d
 	.4byte	.LASF8950
 	.byte	0x3
 	.uleb128 0x30
-	.uleb128 0x1d
+	.uleb128 0x1f
 	.byte	0x5
 	.uleb128 0x2d
 	.4byte	.LASF8951
 	.byte	0x3
 	.uleb128 0x31
-	.uleb128 0x1c
+	.uleb128 0x1e
 	.byte	0x5
 	.uleb128 0x2d
 	.4byte	.LASF8952
@@ -10333,7 +11137,7 @@ main:
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0xa0
-	.uleb128 0x28
+	.uleb128 0x2a
 	.byte	0x5
 	.uleb128 0x2d
 	.4byte	.LASF8974
@@ -10350,11 +11154,11 @@ main:
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0x87
-	.uleb128 0x1e
+	.uleb128 0x20
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0x8a
-	.uleb128 0x1f
+	.uleb128 0x21
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0x8d
@@ -10370,7 +11174,7 @@ main:
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0x91
-	.uleb128 0x8c
+	.uleb128 0x8d
 	.byte	0x4
 	.byte	0x4
 	.file 168 "conf_usb.h"
@@ -10380,7 +11184,7 @@ main:
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0x3
-	.uleb128 0x20
+	.uleb128 0x22
 	.byte	0x5
 	.uleb128 0x32
 	.4byte	.LASF8977
@@ -10391,32 +11195,32 @@ main:
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0x5
-	.uleb128 0x8
+	.uleb128 0x9
 	.byte	0x7
 	.4byte	.Ldebug_macro139
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0x6
-	.uleb128 0x21
+	.uleb128 0x23
 	.byte	0x5
 	.uleb128 0x6
 	.4byte	.LASF8982
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0x7
-	.uleb128 0x22
+	.uleb128 0x24
 	.byte	0x7
 	.4byte	.Ldebug_macro140
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0x8
-	.uleb128 0x23
+	.uleb128 0x25
 	.byte	0x7
 	.4byte	.Ldebug_macro141
 	.byte	0x4
 	.byte	0x3
 	.uleb128 0x9
-	.uleb128 0x24
+	.uleb128 0x26
 	.byte	0x7
 	.4byte	.Ldebug_macro142
 	.byte	0x4
@@ -10428,7 +11232,7 @@ main:
 	.4byte	.Ldebug_macro143
 	.byte	0x3
 	.uleb128 0x11
-	.uleb128 0x12
+	.uleb128 0x14
 	.byte	0x7
 	.4byte	.Ldebug_macro80
 	.byte	0x4
@@ -10454,6 +11258,12 @@ main:
 	.uleb128 0xac
 	.byte	0x4
 	.byte	0x4
+	.byte	0x5
+	.uleb128 0x55
+	.4byte	.LASF9016
+	.byte	0x5
+	.uleb128 0x56
+	.4byte	.LASF9017
 	.byte	0x4
 	.byte	0
 	.section	.debug_macro,"G",%progbits,wm4.0.84f01b7600eb36308f16331d3d2e9779,comdat
@@ -38124,7 +38934,7 @@ main:
 	.ascii	"PIO_CODR_P5 (0x1u << 5)\000"
 .LASF2335:
 	.ascii	"HSMCI_CSTOR_CSTOMUL_128 (0x2u << 4)\000"
-.LASF9220:
+.LASF9235:
 	.ascii	"_p5s\000"
 .LASF1773:
 	.ascii	"ADC12B_SR_OVRE2 (0x1u << 10)\000"
@@ -38170,8 +38980,8 @@ main:
 	.ascii	"HSMCI_WPSR_WP_VS_WRITE (0x1u << 0)\000"
 .LASF2878:
 	.ascii	"PIO_IFER_P1 (0x1u << 1)\000"
-.LASF3202:
-	.ascii	"PIO_ISR_P5 (0x1u << 5)\000"
+.LASF9444:
+	.ascii	"pio_set_pin_low\000"
 .LASF194:
 	.ascii	"__FLT32_MAX_EXP__ 128\000"
 .LASF5162:
@@ -38221,7 +39031,7 @@ main:
 	.ascii	"PMC_PCER0_PID12 (0x1u << 12)\000"
 .LASF8366:
 	.ascii	"SAM4C_EK 64\000"
-.LASF9165:
+.LASF9180:
 	.ascii	"_maxwds\000"
 .LASF985:
 	.ascii	"_DEFAULT_SOURCE 1\000"
@@ -38275,6 +39085,8 @@ main:
 	.ascii	"US_CSR_DSRIC (0x1u << 17)\000"
 .LASF111:
 	.ascii	"__INT_LEAST16_WIDTH__ 16\000"
+.LASF5681:
+	.ascii	"TC_CMR_ACPA_CLEAR (0x2u << 16)\000"
 .LASF1256:
 	.ascii	"SCB_HFSR_DEBUGEVT_Msk (1UL << SCB_HFSR_DEBUGEVT_Pos"
 	.ascii	")\000"
@@ -38282,7 +39094,7 @@ main:
 	.ascii	"__UDA_IBIT__ 32\000"
 .LASF2119:
 	.ascii	"DMAC_CTRLA_SCSIZE_CHK_128 (0x6u << 16)\000"
-.LASF9316:
+.LASF9331:
 	.ascii	"bNumConfigurations\000"
 .LASF320:
 	.ascii	"__ULACCUM_MIN__ 0.0ULK\000"
@@ -38300,7 +39112,7 @@ main:
 	.ascii	"PIO_HANDLER_H_INCLUDED \000"
 .LASF1163:
 	.ascii	"SCB_CPUID_REVISION_Pos 0\000"
-.LASF9156:
+.LASF9171:
 	.ascii	"__wch\000"
 .LASF3486:
 	.ascii	"PIO_DIFSR_P1 (0x1u << 1)\000"
@@ -38363,7 +39175,7 @@ main:
 	.ascii	"PIO_PA0B_NPCS1 (1u << 0)\000"
 .LASF8545:
 	.ascii	"PMC_PCK_2 2\000"
-.LASF9272:
+.LASF9287:
 	.ascii	"PLL_SRC_MAINCK_8M_RC\000"
 .LASF5869:
 	.ascii	"TWI_IER_NACK (0x1u << 8)\000"
@@ -38435,7 +39247,7 @@ main:
 	.ascii	"UDPHS_DMASTATUS_BUFF_COUNT_Pos 16\000"
 .LASF5471:
 	.ascii	"SUPC_WUIR_WKUPEN10_NOT_ENABLE (0x0u << 10)\000"
-.LASF9287:
+.LASF9302:
 	.ascii	"sleepmgr_mode\000"
 .LASF2169:
 	.ascii	"DMAC_CFG_DST_PER_Msk (0xfu << DMAC_CFG_DST_PER_Pos)"
@@ -38605,7 +39417,7 @@ main:
 	.ascii	"UDPHSDMA_NUMBER 6\000"
 .LASF3469:
 	.ascii	"PIO_SCIFSR_P16 (0x1u << 16)\000"
-.LASF9386:
+.LASF9402:
 	.ascii	"genclk_enable_config\000"
 .LASF6901:
 	.ascii	"REG_UDPHS_IEN (*(RwReg*)0x400A4010U)\000"
@@ -38633,7 +39445,7 @@ main:
 	.ascii	"US_MR_NBSTOP_1_5_BIT (0x1u << 12)\000"
 .LASF1023:
 	.ascii	"signed +0\000"
-.LASF9271:
+.LASF9286:
 	.ascii	"PLL_SRC_MAINCK_4M_RC\000"
 .LASF523:
 	.ascii	"UC3B0 ( AVR32_PART_IS_DEFINED(UC3B064) || AVR32_PAR"
@@ -38652,6 +39464,8 @@ main:
 	.ascii	"_TIMER_T_ unsigned long\000"
 .LASF5749:
 	.ascii	"TC_IER_CPAS (0x1u << 2)\000"
+.LASF8803:
+	.ascii	"USB_PID_ATMEL_MEGA_HIDGENERIC 0x2013\000"
 .LASF550:
 	.ascii	"XMEGA_B1 ( AVR8_PART_IS_DEFINED(ATxmega64B1) || AVR"
 	.ascii	"8_PART_IS_DEFINED(ATxmega128B1) )\000"
@@ -38676,7 +39490,7 @@ main:
 	.ascii	"PIO_PUSR_P10 (0x1u << 10)\000"
 .LASF165:
 	.ascii	"__DBL_MAX_EXP__ 1024\000"
-.LASF9321:
+.LASF9336:
 	.ascii	"bNumDeviceCaps\000"
 .LASF6493:
 	.ascii	"US_TTGR_TG(value) ((US_TTGR_TG_Msk & ((value) << US"
@@ -38708,7 +39522,7 @@ main:
 	.ascii	"SAM4CMS8 (SAM4CMS8_0 || SAM4CMS8_1)\000"
 .LASF135:
 	.ascii	"__UINT_FAST16_MAX__ 0xffffffffU\000"
-.LASF9033:
+.LASF9037:
 	.ascii	"RoReg\000"
 .LASF987:
 	.ascii	"_POSIX_SOURCE 1\000"
@@ -38766,6 +39580,8 @@ main:
 	.ascii	"UART_IER_ENDTX (0x1u << 4)\000"
 .LASF6199:
 	.ascii	"UDPHS_EPTCTLDIS_INTDIS_DMA (0x1u << 3)\000"
+.LASF9446:
+	.ascii	"spi_calc_baudrate_div\000"
 .LASF2354:
 	.ascii	"HSMCI_SR_MCI_SDIOIRQA (0x1u << 8)\000"
 .LASF7688:
@@ -38785,7 +39601,7 @@ main:
 	.ascii	"((value) << MATRIX_PRAS1_M2PR_Pos)))\000"
 .LASF4264:
 	.ascii	"PWM_IMR1_CHID1 (0x1u << 1)\000"
-.LASF9180:
+.LASF9195:
 	.ascii	"_fnargs\000"
 .LASF1610:
 	.ascii	"ADC_SR_EOC3 (0x1u << 3)\000"
@@ -38922,7 +39738,7 @@ main:
 	.ascii	"PIO_ESR_P6 (0x1u << 6)\000"
 .LASF3738:
 	.ascii	"PIO_AIMMR_P26 (0x1u << 26)\000"
-.LASF9102:
+.LASF9106:
 	.ascii	"PMC_MCKR\000"
 .LASF1590:
 	.ascii	"ADC_CHER_CH7 (0x1u << 7)\000"
@@ -38993,11 +39809,11 @@ main:
 	.ascii	"s)\000"
 .LASF8117:
 	.ascii	"__need_wchar_t \000"
-.LASF9335:
+.LASF9350:
 	.ascii	"desc\000"
 .LASF8991:
 	.ascii	"FPGA_PROG_USART USART0\000"
-.LASF9366:
+.LASF9381:
 	.ascii	"GENCLK_PCK_SRC_PLLBCK\000"
 .LASF2775:
 	.ascii	"PIO_PSR_P26 (0x1u << 26)\000"
@@ -39038,9 +39854,8 @@ main:
 	.ascii	"US_IER_RIIC (0x1u << 16)\000"
 .LASF1891:
 	.ascii	"CHIPID_CIDR_NVPSIZ_NONE (0x0u << 8)\000"
-.LASF1282:
-	.ascii	"SysTick_CTRL_CLKSOURCE_Msk (1UL << SysTick_CTRL_CLK"
-	.ascii	"SOURCE_Pos)\000"
+.LASF5126:
+	.ascii	"SPI_IER_UNDES (0x1u << 10)\000"
 .LASF157:
 	.ascii	"__FLT_DENORM_MIN__ 1.4012984643248171e-45F\000"
 .LASF8729:
@@ -39090,7 +39905,7 @@ main:
 	.ascii	"TC_CMR_BCPB_CLEAR (0x2u << 24)\000"
 .LASF6720:
 	.ascii	"REG_PWM_IMR1 (*(RoReg*)0x4008C018U)\000"
-.LASF9069:
+.LASF9073:
 	.ascii	"PIO_DIFSR\000"
 .LASF4847:
 	.ascii	"SMC_ECC_PR0_NPARITY_Pos 12\000"
@@ -39107,7 +39922,7 @@ main:
 	.ascii	"ITM_TCR_SYNCENA_Msk (1UL << ITM_TCR_SYNCENA_Pos)\000"
 .LASF6424:
 	.ascii	"US_IDR_RXBUFF (0x1u << 12)\000"
-.LASF9300:
+.LASF9315:
 	.ascii	"wIndex\000"
 .LASF1496:
 	.ascii	"CoreDebug_DHCSR_C_MASKINTS_Msk (1UL << CoreDebug_DH"
@@ -39149,7 +39964,7 @@ main:
 	.ascii	"PIO_DIFSR_P9 (0x1u << 9)\000"
 .LASF5956:
 	.ascii	"UART_MR_CHMODE_Msk (0x3u << UART_MR_CHMODE_Pos)\000"
-.LASF9096:
+.LASF9100:
 	.ascii	"PMC_PCDR0\000"
 .LASF1682:
 	.ascii	"ADC_IMR_OVRE5 (0x1u << 13)\000"
@@ -39165,6 +39980,8 @@ main:
 	.ascii	"EFAULT)\000"
 .LASF8185:
 	.ascii	"Min(a,b) (((a) < (b)) ? (a) : (b))\000"
+.LASF9443:
+	.ascii	"pio_set_pin_high\000"
 .LASF1172:
 	.ascii	"SCB_ICSR_PENDSTSET_Msk (1UL << SCB_ICSR_PENDSTSET_P"
 	.ascii	"os)\000"
@@ -39174,7 +39991,7 @@ main:
 	.ascii	"REG_PWM_CMPMUPD5 (*(WoReg*)0x4008C18CU)\000"
 .LASF7851:
 	.ascii	"__COPYRIGHT(s) struct __hack\000"
-.LASF9103:
+.LASF9107:
 	.ascii	"PMC_PCK\000"
 .LASF8163:
 	.ascii	"unlikely(exp) (exp)\000"
@@ -39197,7 +40014,7 @@ main:
 	.ascii	"_REENT_STDIO_STREAM(var,index) &(var)->__sf[index]\000"
 .LASF3876:
 	.ascii	"PIO_REHLSR_P4 (0x1u << 4)\000"
-.LASF9248:
+.LASF9263:
 	.ascii	"_signal_buf\000"
 .LASF6996:
 	.ascii	"REG_ADC12B_RPR (*(RwReg*)0x400A8100U)\000"
@@ -39205,13 +40022,13 @@ main:
 	.ascii	"REG_USART1_RHR (*(RoReg*)0x40094018U)\000"
 .LASF1906:
 	.ascii	"CHIPID_CIDR_NVPSIZ2_32K (0x3u << 12)\000"
-.LASF9084:
-	.ascii	"Reserved10\000"
 .LASF9088:
+	.ascii	"Reserved10\000"
+.LASF9092:
 	.ascii	"Reserved11\000"
 .LASF8802:
 	.ascii	"USB_VID_ATMEL 0x03EB\000"
-.LASF9382:
+.LASF9397:
 	.ascii	"divider\000"
 .LASF3239:
 	.ascii	"PIO_MDER_P10 (0x1u << 10)\000"
@@ -39240,7 +40057,7 @@ main:
 	.ascii	"os)\000"
 .LASF6459:
 	.ascii	"US_CSR_TIMEOUT (0x1u << 8)\000"
-.LASF9193:
+.LASF9208:
 	.ascii	"_lbfsize\000"
 .LASF5563:
 	.ascii	"SUPC_SR_WKUPIS0 (0x1u << 16)\000"
@@ -39252,7 +40069,7 @@ main:
 	.ascii	"TC_IMR_LOVRS (0x1u << 1)\000"
 .LASF8503:
 	.ascii	"PIN_EBI_NWE_PIO PIOB\000"
-.LASF9298:
+.LASF9313:
 	.ascii	"bRequest\000"
 .LASF3142:
 	.ascii	"PIO_IDR_P9 (0x1u << 9)\000"
@@ -39277,9 +40094,9 @@ main:
 	.ascii	"PIO_ABSR_P27 (0x1u << 27)\000"
 .LASF2968:
 	.ascii	"PIO_IFSR_P27 (0x1u << 27)\000"
-.LASF9129:
+.LASF9133:
 	.ascii	"SMC_ECC_SR1\000"
-.LASF9132:
+.LASF9136:
 	.ascii	"SMC_ECC_SR2\000"
 .LASF3254:
 	.ascii	"PIO_MDER_P25 (0x1u << 25)\000"
@@ -39296,7 +40113,7 @@ main:
 	.ascii	"ADC12B_CHDR_CH5 (0x1u << 5)\000"
 .LASF2848:
 	.ascii	"PIO_OSR_P3 (0x1u << 3)\000"
-.LASF9099:
+.LASF9103:
 	.ascii	"CKGR_MOR\000"
 .LASF8723:
 	.ascii	"TWI_TIMEOUT 15000\000"
@@ -39316,14 +40133,14 @@ main:
 	.ascii	"PMC_PCDR0_PID3 (0x1u << 3)\000"
 .LASF6557:
 	.ascii	"US_PTCR_TXTEN (0x1u << 8)\000"
-.LASF9337:
+.LASF9352:
 	.ascii	"udc_config_speed_t\000"
 .LASF545:
 	.ascii	"XMEGA_A4 ( AVR8_PART_IS_DEFINED(ATxmega16A4) || AVR"
 	.ascii	"8_PART_IS_DEFINED(ATxmega32A4) )\000"
 .LASF5792:
 	.ascii	"TC_BMR_INVA (0x1u << 13)\000"
-.LASF9178:
+.LASF9193:
 	.ascii	"__tm_isdst\000"
 .LASF5074:
 	.ascii	"SMC_KEY2_KEY2_Msk (0xffffffffu << SMC_KEY2_KEY2_Pos"
@@ -39332,10 +40149,8 @@ main:
 	.ascii	"LSW(u64) (((U32 *)&(u64))[0])\000"
 .LASF2986:
 	.ascii	"PIO_SODR_P13 (0x1u << 13)\000"
-.LASF9444:
+.LASF9471:
 	.ascii	"pmc_switch_sclk_to_32kxtal\000"
-.LASF665:
-	.ascii	"SAM3XA (SAM3X4 || SAM3X8 || SAM3A4 || SAM3A8)\000"
 .LASF2455:
 	.ascii	"HSMCI_DMA_ROPT (0x1u << 12)\000"
 .LASF6827:
@@ -39364,7 +40179,7 @@ main:
 .LASF2631:
 	.ascii	"MATRIX_PRAS9_M1PR(value) ((MATRIX_PRAS9_M1PR_Msk & "
 	.ascii	"((value) << MATRIX_PRAS9_M1PR_Pos)))\000"
-.LASF9020:
+.LASF9021:
 	.ascii	"__uint8_t\000"
 .LASF345:
 	.ascii	"__UHQ_FBIT__ 16\000"
@@ -39444,7 +40259,7 @@ main:
 .LASF2239:
 	.ascii	"HSMCI_MR_PWSDIV(value) ((HSMCI_MR_PWSDIV_Msk & ((va"
 	.ascii	"lue) << HSMCI_MR_PWSDIV_Pos)))\000"
-.LASF9215:
+.LASF9230:
 	.ascii	"_locale\000"
 .LASF920:
 	.ascii	"MREPEAT206(macro,data) MREPEAT205(macro, data) macr"
@@ -39480,8 +40295,8 @@ main:
 	.ascii	"56L3U) )\000"
 .LASF8499:
 	.ascii	"PIN_EBI_NRD_ATTR PIO_PULLUP\000"
-.LASF5772:
-	.ascii	"TC_BMR_TC0XC0S_Pos 0\000"
+.LASF9161:
+	.ascii	"SPI_SR\000"
 .LASF934:
 	.ascii	"MREPEAT220(macro,data) MREPEAT219(macro, data) macr"
 	.ascii	"o(219, data)\000"
@@ -39489,7 +40304,7 @@ main:
 	.ascii	"REG_SSC_RC0R (*(RwReg*)0x40004038U)\000"
 .LASF6564:
 	.ascii	"WDT_CR_KEY_Msk (0xffu << WDT_CR_KEY_Pos)\000"
-.LASF9299:
+.LASF9314:
 	.ascii	"wValue\000"
 .LASF7013:
 	.ascii	"REG_ADC_CDR (*(RoReg*)0x400AC030U)\000"
@@ -39501,6 +40316,8 @@ main:
 	.ascii	"UC3C2 ( AVR32_PART_IS_DEFINED(UC3C264C) || AVR32_PA"
 	.ascii	"RT_IS_DEFINED(UC3C2128C) || AVR32_PART_IS_DEFINED(U"
 	.ascii	"C3C2256C) || AVR32_PART_IS_DEFINED(UC3C2512C) )\000"
+.LASF9445:
+	.ascii	"spi_enable_clock\000"
 .LASF3587:
 	.ascii	"PIO_OWDR_P3 (0x1u << 3)\000"
 .LASF5435:
@@ -39513,11 +40330,11 @@ main:
 	.ascii	"DMAC_EBCIDR_BTC3 (0x1u << 3)\000"
 .LASF6178:
 	.ascii	"UDPHS_EPTCTLENB_INTDIS_DMA (0x1u << 3)\000"
-.LASF9227:
+.LASF9242:
 	.ascii	"__sglue\000"
 .LASF4145:
 	.ascii	"PMC_IDR_MCKRDY (0x1u << 3)\000"
-.LASF9401:
+.LASF9420:
 	.ascii	"pll_enable_config_defaults\000"
 .LASF7614:
 	.ascii	"PIO_PA23B_CTS1 (1u << 23)\000"
@@ -39542,7 +40359,7 @@ main:
 	.ascii	"R_VC_MMERR_Pos)\000"
 .LASF2729:
 	.ascii	"PIO_PDR_P12 (0x1u << 12)\000"
-.LASF9342:
+.LASF9357:
 	.ascii	"conf_hs\000"
 .LASF4205:
 	.ascii	"PMC_FSPR_FSTP9 (0x1u << 9)\000"
@@ -39557,7 +40374,7 @@ main:
 	.ascii	"lue) << TWI_TNCR_TXNCTR_Pos)))\000"
 .LASF7339:
 	.ascii	"TC0 ((Tc *)0x40080000U)\000"
-.LASF9056:
+.LASF9060:
 	.ascii	"PIO_IMR\000"
 .LASF7278:
 	.ascii	"REG_SUPC_SMMR (*(RwReg*)0x400E1214U)\000"
@@ -39629,8 +40446,6 @@ main:
 	.ascii	"UART_IMR_TXRDY (0x1u << 1)\000"
 .LASF2551:
 	.ascii	"MATRIX_PRAS4_M0PR_Pos 0\000"
-.LASF9106:
-	.ascii	"PMC_SR\000"
 .LASF4604:
 	.ascii	"RSTC_CR_KEY_Pos 24\000"
 .LASF8737:
@@ -39686,7 +40501,7 @@ main:
 	.ascii	"UC3C (UC3C0 || UC3C1 || UC3C2)\000"
 .LASF983:
 	.ascii	"__GNUC_PREREQ__(ma,mi) __GNUC_PREREQ(ma, mi)\000"
-.LASF9231:
+.LASF9246:
 	.ascii	"_niobs\000"
 .LASF3637:
 	.ascii	"PIO_OWSR_P21 (0x1u << 21)\000"
@@ -39696,7 +40511,7 @@ main:
 	.ascii	"_SIZE_T \000"
 .LASF2133:
 	.ascii	"DMAC_CTRLA_SRC_WIDTH_BYTE (0x0u << 24)\000"
-.LASF9302:
+.LASF9317:
 	.ascii	"usb_setup_req_t\000"
 .LASF199:
 	.ascii	"__FLT32_EPSILON__ 1.1920928955078125e-7F32\000"
@@ -39795,20 +40610,18 @@ main:
 	.ascii	"STK600_RCUC3A0 38\000"
 .LASF3112:
 	.ascii	"PIO_IER_P11 (0x1u << 11)\000"
-.LASF9236:
+.LASF9251:
 	.ascii	"_add\000"
-.LASF8537:
-	.ascii	"SUPC_CR_KEY_PASSWD SUPC_CR_KEY(0xA5U)\000"
 .LASF3466:
 	.ascii	"PIO_SCIFSR_P13 (0x1u << 13)\000"
 .LASF6322:
 	.ascii	"US_CR_SENDA (0x1u << 12)\000"
 .LASF8284:
 	.ascii	"LE64_TO_CPU_ENDIAN(x) (x)\000"
-.LASF9094:
+.LASF9098:
 	.ascii	"PMC_SCSR\000"
-.LASF5371:
-	.ascii	"SUPC_SMMR_SMTH_2_0V (0x1u << 0)\000"
+.LASF7818:
+	.ascii	"__pure __attribute__((__pure__))\000"
 .LASF8113:
 	.ascii	"true 1\000"
 .LASF8476:
@@ -39830,7 +40643,7 @@ main:
 	.ascii	"PIO_MDDR_P5 (0x1u << 5)\000"
 .LASF8843:
 	.ascii	"USB_PID_ATMEL_ASF_MSC_CDC 0x2424\000"
-.LASF9353:
+.LASF9368:
 	.ascii	"stdio_base\000"
 .LASF3828:
 	.ascii	"PIO_ELSR_P20 (0x1u << 20)\000"
@@ -39890,9 +40703,9 @@ main:
 	.ascii	"LSB1W(u32) MSB2W(u32)\000"
 .LASF8717:
 	.ascii	"CONF_SLEEPMGR_H \000"
-.LASF9030:
+.LASF9034:
 	.ascii	"uint16_t\000"
-.LASF9221:
+.LASF9236:
 	.ascii	"_freelist\000"
 .LASF3311:
 	.ascii	"PIO_MDSR_P18 (0x1u << 18)\000"
@@ -39970,6 +40783,8 @@ main:
 	.ascii	"PIO_OWDR_P28 (0x1u << 28)\000"
 .LASF2772:
 	.ascii	"PIO_PSR_P23 (0x1u << 23)\000"
+.LASF8415:
+	.ascii	"PINS_UART_FLAGS (PIO_PERIPH_A | PIO_DEFAULT)\000"
 .LASF4214:
 	.ascii	"PMC_WPMR_WPKEY_Pos 8\000"
 .LASF4353:
@@ -40001,7 +40816,7 @@ main:
 	.ascii	"__GCC_ATOMIC_CHAR32_T_LOCK_FREE 2\000"
 .LASF3030:
 	.ascii	"PIO_CODR_P25 (0x1u << 25)\000"
-.LASF9192:
+.LASF9207:
 	.ascii	"_file\000"
 .LASF3860:
 	.ascii	"PIO_FELLSR_P20 (0x1u << 20)\000"
@@ -40038,7 +40853,7 @@ main:
 .LASF4091:
 	.ascii	"CKGR_PLLAR_DIVA(value) ((CKGR_PLLAR_DIVA_Msk & ((va"
 	.ascii	"lue) << CKGR_PLLAR_DIVA_Pos)))\000"
-.LASF9200:
+.LASF9215:
 	.ascii	"_nbuf\000"
 .LASF8898:
 	.ascii	"USB_REQ_DIR_OUT (0<<7)\000"
@@ -40083,7 +40898,7 @@ main:
 	.ascii	"TPI_DEVID_PTINVALID_Pos 9\000"
 .LASF5122:
 	.ascii	"SPI_IER_MODF (0x1u << 2)\000"
-.LASF9277:
+.LASF9292:
 	.ascii	"pll_config\000"
 .LASF6778:
 	.ascii	"REG_PWM_CMPV7 (*(RwReg*)0x4008C1A0U)\000"
@@ -40123,7 +40938,7 @@ main:
 	.ascii	"inline__))\000"
 .LASF7030:
 	.ascii	"REG_DMAC_CHER (*(WoReg*)0x400B0028U)\000"
-.LASF9082:
+.LASF9086:
 	.ascii	"PIO_LSR\000"
 .LASF5410:
 	.ascii	"SUPC_MR_KEY_Msk (0xffu << SUPC_MR_KEY_Pos)\000"
@@ -40157,7 +40972,7 @@ main:
 .LASF4964:
 	.ascii	"SMC_ECC_PR10_BITADDR_Msk (0x7u << SMC_ECC_PR10_BITA"
 	.ascii	"DDR_Pos)\000"
-.LASF9381:
+.LASF9396:
 	.ascii	"serial_number\000"
 .LASF8214:
 	.ascii	"MSB2D(u64) (((U8 *)&(u64))[5])\000"
@@ -40186,7 +41001,7 @@ main:
 	.ascii	"SCB_SHCSR_MEMFAULTACT_Pos 0\000"
 .LASF3757:
 	.ascii	"PIO_ESR_P13 (0x1u << 13)\000"
-.LASF9311:
+.LASF9326:
 	.ascii	"idProduct\000"
 .LASF9:
 	.ascii	"__ATOMIC_RELAXED 0\000"
@@ -40332,8 +41147,6 @@ main:
 	.ascii	"PWM_CMPM_CPRCNT_Msk (0xfu << PWM_CMPM_CPRCNT_Pos)\000"
 .LASF6099:
 	.ascii	"UDPHS_CLRINT_ENDRESET (0x1u << 4)\000"
-.LASF7818:
-	.ascii	"__pure __attribute__((__pure__))\000"
 .LASF7010:
 	.ascii	"REG_ADC_IER (*(WoReg*)0x400AC024U)\000"
 .LASF7590:
@@ -40343,7 +41156,7 @@ main:
 .LASF8055:
 	.ascii	"_funlockfile(fp) (((fp)->_flags & __SSTR) ? 0 : __l"
 	.ascii	"ock_release_recursive((fp)->_lock))\000"
-.LASF9167:
+.LASF9182:
 	.ascii	"_wds\000"
 .LASF7938:
 	.ascii	"_REENT_RAND48_ADD(ptr) ((ptr)->_new._reent._r48._ad"
@@ -40375,7 +41188,7 @@ main:
 	.ascii	"SUPC_WUIR_WKUPEN3_ENABLE (0x1u << 3)\000"
 .LASF8187:
 	.ascii	"min(a,b) Min(a, b)\000"
-.LASF9421:
+.LASF9440:
 	.ascii	"udc_start\000"
 .LASF3052:
 	.ascii	"PIO_ODSR_P15 (0x1u << 15)\000"
@@ -40418,7 +41231,7 @@ main:
 	.ascii	"REG_RSTC_SR (*(RoReg*)0x400E1204U)\000"
 .LASF6030:
 	.ascii	"UART_TNCR_TXNCTR_Pos 0\000"
-.LASF9411:
+.LASF9430:
 	.ascii	"vco_hz\000"
 .LASF6377:
 	.ascii	"US_MR_MODE9 (0x1u << 17)\000"
@@ -40524,9 +41337,9 @@ main:
 	.ascii	"TWI_SR_GACC (0x1u << 5)\000"
 .LASF2083:
 	.ascii	"DMAC_CHSR_ENA0 (0x1u << 0)\000"
-.LASF9359:
+.LASF9374:
 	.ascii	"GENCLK_PCK_SRC_SLCK_BYPASS\000"
-.LASF9349:
+.LASF9364:
 	.ascii	"over_under_run\000"
 .LASF8354:
 	.ascii	"ATMEGA256RFR2_XPLAINED_PRO 52\000"
@@ -40546,7 +41359,7 @@ main:
 	.ascii	"PIO_PA23 (1u << 23)\000"
 .LASF472:
 	.ascii	"___int_ptrdiff_t_h \000"
-.LASF9400:
+.LASF9416:
 	.ascii	"sleepmgr_sleep\000"
 .LASF5320:
 	.ascii	"SSC_SR_OVRUN (0x1u << 5)\000"
@@ -40603,7 +41416,7 @@ main:
 .LASF7908:
 	.ascii	"__lock_release_recursive(lock) __retarget_lock_rele"
 	.ascii	"ase_recursive(lock)\000"
-.LASF9083:
+.LASF9087:
 	.ascii	"PIO_ELSR\000"
 .LASF633:
 	.ascii	"SAM4C16 (SAM4C16_0 || SAM4C16_1)\000"
@@ -40624,7 +41437,7 @@ main:
 	.ascii	"< PWM_FMR_FFIL_Pos)))\000"
 .LASF2416:
 	.ascii	"HSMCI_IDR_DMADONE (0x1u << 25)\000"
-.LASF9398:
+.LASF9414:
 	.ascii	"lock_ptr\000"
 .LASF8808:
 	.ascii	"USB_PID_ATMEL_MEGA_AUDIO_IN_OUT 0x201B\000"
@@ -40638,7 +41451,7 @@ main:
 	.ascii	"PIO_PDSR_P23 (0x1u << 23)\000"
 .LASF2930:
 	.ascii	"PIO_IFDR_P21 (0x1u << 21)\000"
-.LASF9263:
+.LASF9278:
 	.ascii	"suboptarg\000"
 .LASF8353:
 	.ascii	"SAM4E_EK 51\000"
@@ -40647,7 +41460,7 @@ main:
 	.ascii	"((value) << MATRIX_PRAS0_M3PR_Pos)))\000"
 .LASF3790:
 	.ascii	"PIO_LSR_P14 (0x1u << 14)\000"
-.LASF9110:
+.LASF9114:
 	.ascii	"PMC_FOCR\000"
 .LASF7570:
 	.ascii	"PIO_PC9B_PWML3 (1u << 9)\000"
@@ -40707,7 +41520,7 @@ main:
 	.ascii	"US_TPR_TXPTR_Pos 0\000"
 .LASF6945:
 	.ascii	"REG_UDPHS_EPTCTLENB5 (*(WoReg*)0x400A41A4U)\000"
-.LASF9137:
+.LASF9141:
 	.ascii	"SMC_ECC_PR6\000"
 .LASF1369:
 	.ascii	"DWT_FUNCTION_DATAVADDR0_Pos 12\000"
@@ -40789,6 +41602,8 @@ main:
 	.ascii	"__ARM_FEATURE_FMA\000"
 .LASF7750:
 	.ascii	"_SYS_CDEFS_H_ \000"
+.LASF9016:
+	.ascii	"ADC_SPI_CS PIO_PA3_IDX\000"
 .LASF4396:
 	.ascii	"PWM_OS_OSL2 (0x1u << 18)\000"
 .LASF4289:
@@ -40805,7 +41620,7 @@ main:
 	.ascii	"_SIZE_T_DEFINED_ \000"
 .LASF6679:
 	.ascii	"REG_TWI0_RHR (*(RoReg*)0x40084030U)\000"
-.LASF9039:
+.LASF9043:
 	.ascii	"PIO_PDR\000"
 .LASF528:
 	.ascii	"UC3D3 ( AVR32_PART_IS_DEFINED(UC64D3) || AVR32_PART"
@@ -40844,11 +41659,11 @@ main:
 	.ascii	"Pos)\000"
 .LASF3926:
 	.ascii	"PIO_FRLHSR_P22 (0x1u << 22)\000"
-.LASF9105:
+.LASF9109:
 	.ascii	"PMC_IDR\000"
 .LASF7:
 	.ascii	"__GNUC_PATCHLEVEL__ 1\000"
-.LASF9293:
+.LASF9308:
 	.ascii	"SLEEPMGR_BACKUP\000"
 .LASF5404:
 	.ascii	"SUPC_MR_BODDIS_DISABLE (0x1u << 13)\000"
@@ -40873,6 +41688,8 @@ main:
 	.ascii	"REG_UDPHS_EPTCTLENB4 (*(WoReg*)0x400A4184U)\000"
 .LASF1265:
 	.ascii	"SCB_DFSR_DWTTRAP_Pos 2\000"
+.LASF5179:
+	.ascii	"SSC_CR_SWRST (0x1u << 15)\000"
 .LASF3526:
 	.ascii	"PIO_IFDGSR_P9 (0x1u << 9)\000"
 .LASF6775:
@@ -40889,7 +41706,7 @@ main:
 	.ascii	"DMAC_CTRLB_SRC_INCR_FIXED (0x2u << 24)\000"
 .LASF289:
 	.ascii	"__ULLFRACT_IBIT__ 0\000"
-.LASF9038:
+.LASF9042:
 	.ascii	"PIO_PER\000"
 .LASF5508:
 	.ascii	"SUPC_WUIR_WKUPT6_LOW_TO_HIGH (0x1u << 22)\000"
@@ -40911,13 +41728,11 @@ main:
 	.ascii	"REG_USART0_RCR (*(RwReg*)0x40090104U)\000"
 .LASF6221:
 	.ascii	"UDPHS_EPTCTL_NYET_DIS (0x1u << 4)\000"
-.LASF4343:
-	.ascii	"PWM_IMR2_ENDTX (0x1u << 1)\000"
 .LASF6045:
 	.ascii	"UDPHS_CTRL_FADDR_EN (0x1u << 7)\000"
 .LASF4350:
 	.ascii	"PWM_IMR2_CMPM4 (0x1u << 12)\000"
-.LASF9238:
+.LASF9253:
 	.ascii	"_strtok_last\000"
 .LASF5605:
 	.ascii	"SUPC_SR_WKUPIS14 (0x1u << 30)\000"
@@ -40925,7 +41740,7 @@ main:
 	.ascii	"SCB_CCR_BFHFNMIGN_Pos 8\000"
 .LASF3976:
 	.ascii	"PMC_SCER_PCK0 (0x1u << 8)\000"
-.LASF9104:
+.LASF9108:
 	.ascii	"PMC_IER\000"
 .LASF3407:
 	.ascii	"PIO_PUSR_P18 (0x1u << 18)\000"
@@ -41043,17 +41858,17 @@ main:
 .LASF8001:
 	.ascii	"FD_SET(n,p) ((p)->fds_bits[(n)/NFDBITS] |= (1L << ("
 	.ascii	"(n) % NFDBITS)))\000"
-.LASF9356:
+.LASF9371:
 	.ascii	"genclk_source\000"
-.LASF9313:
+.LASF9328:
 	.ascii	"iManufacturer\000"
 .LASF2548:
 	.ascii	"MATRIX_PRAS3_M4PR_Pos 16\000"
 .LASF6784:
 	.ascii	"REG_PWM_CDTYUPD0 (*(WoReg*)0x4008C208U)\000"
-.LASF9327:
+.LASF9342:
 	.ascii	"bMaxPower\000"
-.LASF9301:
+.LASF9316:
 	.ascii	"wLength\000"
 .LASF558:
 	.ascii	"XMEGA_AU (XMEGA_A1U || XMEGA_A3U || XMEGA_A3BU || X"
@@ -41089,11 +41904,11 @@ main:
 	.ascii	"PIO_OSR_P28 (0x1u << 28)\000"
 .LASF3552:
 	.ascii	"PIO_OWER_P0 (0x1u << 0)\000"
-.LASF9379:
+.LASF9394:
 	.ascii	"USB_PWR_STATE\000"
 .LASF8443:
 	.ascii	"PIN_EBI_DATA_BUS_D6 PIO_PB15_IDX\000"
-.LASF9451:
+.LASF9478:
 	.ascii	"main\000"
 .LASF5363:
 	.ascii	"SUPC_CR_XTALSEL_NO_EFFECT (0x0u << 3)\000"
@@ -41123,11 +41938,9 @@ main:
 	.ascii	"STK600_MEGA_RF 46\000"
 .LASF7693:
 	.ascii	"IRAM1_ADDR (0x20080000u)\000"
-.LASF1720:
-	.ascii	"ADC12B_MR_TRGSEL_ADC_TRIG2 (0x2u << 1)\000"
 .LASF7656:
 	.ascii	"PIO_PB0_IDX 32\000"
-.LASF9319:
+.LASF9334:
 	.ascii	"usb_dev_qual_desc_t\000"
 .LASF7506:
 	.ascii	"PIO_PC12A_NCS1 (1u << 12)\000"
@@ -41164,7 +41977,7 @@ main:
 	.ascii	"PWM_IDR2_ENDTX (0x1u << 1)\000"
 .LASF4248:
 	.ascii	"PWM_IER1_CHID1 (0x1u << 1)\000"
-.LASF9394:
+.LASF9410:
 	.ascii	"genclk_config_set_source\000"
 .LASF8557:
 	.ascii	"OSC_SLCK_32K_BYPASS_HZ BOARD_FREQ_SLCK_BYPASS\000"
@@ -41254,9 +42067,9 @@ main:
 	.ascii	"__INT32_MAX__ 0x7fffffffL\000"
 .LASF2204:
 	.ascii	"EEFC_FMR_FRDY (0x1u << 0)\000"
-.LASF8415:
-	.ascii	"PINS_UART_FLAGS (PIO_PERIPH_A | PIO_DEFAULT)\000"
-.LASF9427:
+.LASF5682:
+	.ascii	"TC_CMR_ACPA_TOGGLE (0x3u << 16)\000"
+.LASF9454:
 	.ascii	"pio_configure_pin_group\000"
 .LASF2553:
 	.ascii	"MATRIX_PRAS4_M0PR(value) ((MATRIX_PRAS4_M0PR_Msk & "
@@ -41267,6 +42080,8 @@ main:
 .LASF517:
 	.ascii	"AVR32_PART_IS_DEFINED(part) (defined(__AT32 ## part"
 	.ascii	" ## __) || defined(__AVR32_ ## part ## __))\000"
+.LASF7995:
+	.ascii	"_SIGSET_T_DECLARED \000"
 .LASF605:
 	.ascii	"SAM4SA16 ( SAM_PART_IS_DEFINED(SAM4SA16B) || SAM_PA"
 	.ascii	"RT_IS_DEFINED(SAM4SA16C) )\000"
@@ -41312,7 +42127,7 @@ main:
 	.ascii	"DMAC_EBCISR_ERR2 (0x1u << 18)\000"
 .LASF3355:
 	.ascii	"PIO_PUDR_P30 (0x1u << 30)\000"
-.LASF9097:
+.LASF9101:
 	.ascii	"PMC_PCSR0\000"
 .LASF2206:
 	.ascii	"EEFC_FMR_FWS_Msk (0xfu << EEFC_FMR_FWS_Pos)\000"
@@ -41337,7 +42152,7 @@ main:
 	.ascii	"TR_Pos)\000"
 .LASF2787:
 	.ascii	"PIO_OER_P6 (0x1u << 6)\000"
-.LASF9452:
+.LASF9480:
 	.ascii	"sprintf\000"
 .LASF4732:
 	.ascii	"SMC_CFG_PAGESIZE_PS512_16 (0x0u << 0)\000"
@@ -41414,7 +42229,7 @@ main:
 	.ascii	"PMC_PCER0_PID22 (0x1u << 22)\000"
 .LASF7443:
 	.ascii	"PIO_PB3X1_AD12B2 (1u << 3)\000"
-.LASF9051:
+.LASF9055:
 	.ascii	"PIO_CODR\000"
 .LASF2388:
 	.ascii	"HSMCI_IER_DTOE (0x1u << 22)\000"
@@ -41450,6 +42265,9 @@ main:
 	.ascii	"__ULFRACT_MIN__ 0.0ULR\000"
 .LASF5843:
 	.ascii	"TWI_CWGR_CHDIV_Msk (0xffu << TWI_CWGR_CHDIV_Pos)\000"
+.LASF815:
+	.ascii	"MREPEAT101(macro,data) MREPEAT100(macro, data) macr"
+	.ascii	"o(100, data)\000"
 .LASF7961:
 	.ascii	"_REENT _impure_ptr\000"
 .LASF8450:
@@ -41478,9 +42296,9 @@ main:
 	.ascii	"PIO_SODR_P26 (0x1u << 26)\000"
 .LASF4137:
 	.ascii	"PMC_IER_PCKRDY0 (0x1u << 8)\000"
-.LASF9016:
+.LASF9018:
 	.ascii	"unsigned int\000"
-.LASF9225:
+.LASF9240:
 	.ascii	"_atexit0\000"
 .LASF1795:
 	.ascii	"ADC12B_IER_OVRE2 (0x1u << 10)\000"
@@ -41543,7 +42361,7 @@ main:
 	.ascii	"UDD_ENABLE 1\000"
 .LASF1033:
 	.ascii	"__INT8 \"hh\"\000"
-.LASF9170:
+.LASF9185:
 	.ascii	"__tm_sec\000"
 .LASF5336:
 	.ascii	"SSC_IDR_TXEMPTY (0x1u << 1)\000"
@@ -41584,7 +42402,7 @@ main:
 	.ascii	"TMP_MAX 26\000"
 .LASF7785:
 	.ascii	"__CC_SUPPORTS___INLINE 1\000"
-.LASF9239:
+.LASF9254:
 	.ascii	"_asctime_buf\000"
 .LASF6852:
 	.ascii	"REG_USART1_RTOR (*(RwReg*)0x40094024U)\000"
@@ -41619,7 +42437,7 @@ main:
 	.ascii	"irq_initialize_vectors() do { } while(0)\000"
 .LASF5464:
 	.ascii	"SUPC_WUIR_WKUPEN8 (0x1u << 8)\000"
-.LASF9093:
+.LASF9097:
 	.ascii	"PMC_SCDR\000"
 .LASF6644:
 	.ascii	"REG_TC0_CMR1 (*(RwReg*)0x40080044U)\000"
@@ -41646,7 +42464,7 @@ main:
 	.ascii	"ADC_IMR_EOC3 (0x1u << 3)\000"
 .LASF4258:
 	.ascii	"PWM_IDR1_CHID3 (0x1u << 3)\000"
-.LASF9358:
+.LASF9373:
 	.ascii	"GENCLK_PCK_SRC_SLCK_XTAL\000"
 .LASF2222:
 	.ascii	"EEFC_FRR_FVALUE_Pos 0\000"
@@ -41752,9 +42570,9 @@ main:
 	.ascii	")\000"
 .LASF5839:
 	.ascii	"TWI_CWGR_CLDIV_Pos 0\000"
-.LASF9135:
+.LASF9139:
 	.ascii	"SMC_ECC_PR4\000"
-.LASF9136:
+.LASF9140:
 	.ascii	"SMC_ECC_PR5\000"
 .LASF6949:
 	.ascii	"REG_UDPHS_EPTCLRSTA5 (*(WoReg*)0x400A41B8U)\000"
@@ -41778,7 +42596,7 @@ main:
 	.ascii	"SMC_SR_NFCBUSY (0x1u << 8)\000"
 .LASF6165:
 	.ascii	"UDPHS_EPTCFG_EPT_TYPE_INT (0x3u << 4)\000"
-.LASF9326:
+.LASF9341:
 	.ascii	"bmAttributes\000"
 .LASF7073:
 	.ascii	"REG_SMC_ECC_SR2 (*(RoReg*)0x400E0034U)\000"
@@ -41802,15 +42620,13 @@ main:
 	.ascii	"PMC_PCSR0_PID7 (0x1u << 7)\000"
 .LASF6066:
 	.ascii	"UDPHS_IEN_EPT_4 (0x1u << 12)\000"
-.LASF9392:
+.LASF9408:
 	.ascii	"genclk_config_set_divider\000"
-.LASF3100:
-	.ascii	"PIO_PDSR_P31 (0x1u << 31)\000"
 .LASF8079:
 	.ascii	"FILENAME_MAX 1024\000"
 .LASF3089:
 	.ascii	"PIO_PDSR_P20 (0x1u << 20)\000"
-.LASF9126:
+.LASF9130:
 	.ascii	"SMC_BANK\000"
 .LASF5552:
 	.ascii	"SUPC_SR_SMS_NO (0x0u << 5)\000"
@@ -41836,7 +42652,7 @@ main:
 	.ascii	"_SIZE_Pos)\000"
 .LASF3409:
 	.ascii	"PIO_PUSR_P20 (0x1u << 20)\000"
-.LASF9276:
+.LASF9291:
 	.ascii	"PLL_NR_SOURCES\000"
 .LASF2500:
 	.ascii	"MATRIX_PRAS0_M3PR_Pos 12\000"
@@ -41855,7 +42671,7 @@ main:
 .LASF725:
 	.ascii	"MREPEAT11(macro,data) MREPEAT10( macro, data) macro"
 	.ascii	"( 10, data)\000"
-.LASF9207:
+.LASF9222:
 	.ascii	"_reent\000"
 .LASF4271:
 	.ascii	"PWM_ISR1_CHID0 (0x1u << 0)\000"
@@ -41896,7 +42712,7 @@ main:
 	.ascii	"PIO_IFSR_P5 (0x1u << 5)\000"
 .LASF2120:
 	.ascii	"DMAC_CTRLA_SCSIZE_CHK_256 (0x7u << 16)\000"
-.LASF9198:
+.LASF9213:
 	.ascii	"_close\000"
 .LASF8909:
 	.ascii	"USB_REQ_RECIP_MASK (0x1F)\000"
@@ -41930,7 +42746,7 @@ main:
 .LASF2202:
 	.ascii	"DMAC_WPSR_WPVSRC_Msk (0xffffu << DMAC_WPSR_WPVSRC_P"
 	.ascii	"os)\000"
-.LASF9264:
+.LASF9279:
 	.ascii	"g_interrupt_enabled\000"
 .LASF6696:
 	.ascii	"REG_TWI1_CWGR (*(RwReg*)0x40088010U)\000"
@@ -41978,7 +42794,7 @@ main:
 	.ascii	"SSC_IDR_OVRUN (0x1u << 5)\000"
 .LASF6382:
 	.ascii	"US_MR_VAR_SYNC (0x1u << 22)\000"
-.LASF9330:
+.LASF9345:
 	.ascii	"disable\000"
 .LASF7331:
 	.ascii	"ID_PWM (25)\000"
@@ -41987,7 +42803,7 @@ main:
 .LASF756:
 	.ascii	"MREPEAT42(macro,data) MREPEAT41( macro, data) macro"
 	.ascii	"( 41, data)\000"
-.LASF9269:
+.LASF9284:
 	.ascii	"float\000"
 .LASF1925:
 	.ascii	"CHIPID_CIDR_SRAMSIZ_32K (0xAu << 16)\000"
@@ -41999,8 +42815,9 @@ main:
 	.ascii	"PIO_FELLSR_P3 (0x1u << 3)\000"
 .LASF368:
 	.ascii	"__UTA_IBIT__ 64\000"
-.LASF6811:
-	.ascii	"REG_PWM_CCNT3 (*(RoReg*)0x4008C274U)\000"
+.LASF1276:
+	.ascii	"SCnSCB_ACTLR_DISDEFWBUF_Msk (1UL << SCnSCB_ACTLR_DI"
+	.ascii	"SDEFWBUF_Pos)\000"
 .LASF2140:
 	.ascii	"DMAC_CTRLA_DST_WIDTH_WORD (0x2u << 28)\000"
 .LASF1209:
@@ -42035,7 +42852,7 @@ main:
 	.ascii	"alloca(size) __builtin_alloca(size)\000"
 .LASF6128:
 	.ascii	"UDPHS_IPFEATURES_DMA_FIFO_WORD_DEPTH_Pos 8\000"
-.LASF9181:
+.LASF9196:
 	.ascii	"_dso_handle\000"
 .LASF1537:
 	.ascii	"CoreDebug_BASE (0xE000EDF0UL)\000"
@@ -42052,7 +42869,7 @@ main:
 .LASF4231:
 	.ascii	"PWM_CLK_DIVB(value) ((PWM_CLK_DIVB_Msk & ((value) <"
 	.ascii	"< PWM_CLK_DIVB_Pos)))\000"
-.LASF9040:
+.LASF9044:
 	.ascii	"PIO_PSR\000"
 .LASF4954:
 	.ascii	"SMC_ECC_PR8_WORDADDR_Msk (0xffu << SMC_ECC_PR8_WORD"
@@ -42143,8 +42960,8 @@ main:
 	.ascii	"__need_NULL\000"
 .LASF6358:
 	.ascii	"US_MR_PAR_EVEN (0x0u << 9)\000"
-.LASF5664:
-	.ascii	"TC_CMR_EEVT_Pos 10\000"
+.LASF1428:
+	.ascii	"TPI_FIFO1_ITM1_Msk (0xFFUL << TPI_FIFO1_ITM1_Pos)\000"
 .LASF2910:
 	.ascii	"PIO_IFDR_P1 (0x1u << 1)\000"
 .LASF3352:
@@ -42252,14 +43069,14 @@ main:
 	.ascii	"((value) << ADC12B_MR_STARTUP_Pos)))\000"
 .LASF4872:
 	.ascii	"SMC_ECC_SR2_MULERR9 (0x1u << 6)\000"
-.LASF9101:
+.LASF9105:
 	.ascii	"CKGR_PLLAR\000"
 .LASF4562:
 	.ascii	"PWM_CMR_CPRE_MCK_DIV_128 (0x7u << 0)\000"
 .LASF1932:
 	.ascii	"CHIPID_CIDR_ARCH_Msk (0xffu << CHIPID_CIDR_ARCH_Pos"
 	.ascii	")\000"
-.LASF9333:
+.LASF9348:
 	.ascii	"sof_notify\000"
 .LASF2347:
 	.ascii	"HSMCI_TDR_DATA(value) ((HSMCI_TDR_DATA_Msk & ((valu"
@@ -42325,7 +43142,7 @@ main:
 	.ascii	"REG_HSMCI_RSPR (*(RoReg*)0x40000020U)\000"
 .LASF5342:
 	.ascii	"SSC_IDR_RXSYN (0x1u << 11)\000"
-.LASF9025:
+.LASF9028:
 	.ascii	"__uint32_t\000"
 .LASF2539:
 	.ascii	"MATRIX_PRAS3_M1PR_Pos 4\000"
@@ -42360,8 +43177,9 @@ main:
 	.ascii	"PIO_ODR_P13 (0x1u << 13)\000"
 .LASF2087:
 	.ascii	"DMAC_CHSR_SUSP0 (0x1u << 8)\000"
-.LASF7437:
-	.ascii	"PIO_PC29X1_AD5 (1u << 29)\000"
+.LASF1282:
+	.ascii	"SysTick_CTRL_CLKSOURCE_Msk (1UL << SysTick_CTRL_CLK"
+	.ascii	"SOURCE_Pos)\000"
 .LASF3980:
 	.ascii	"PMC_SCDR_PCK1 (0x1u << 9)\000"
 .LASF5913:
@@ -42385,7 +43203,7 @@ main:
 	.ascii	"o(244, data)\000"
 .LASF8624:
 	.ascii	"EFC_ACCESS_MODE_64 EEFC_FMR_FAM\000"
-.LASF9203:
+.LASF9218:
 	.ascii	"_data\000"
 .LASF375:
 	.ascii	"__GCC_HAVE_SYNC_COMPARE_AND_SWAP_2 1\000"
@@ -42409,7 +43227,7 @@ main:
 	.ascii	"PWM_IDR2_CMPU5 (0x1u << 21)\000"
 .LASF4001:
 	.ascii	"PMC_PCER0_PID19 (0x1u << 19)\000"
-.LASF9223:
+.LASF9238:
 	.ascii	"_cvtbuf\000"
 .LASF2646:
 	.ascii	"MATRIX_WPMR_WPEN (0x1u << 0)\000"
@@ -42453,7 +43271,7 @@ main:
 	.ascii	"PIO_PB23A_NWR0 (1u << 23)\000"
 .LASF7762:
 	.ascii	"__unbounded \000"
-.LASF9111:
+.LASF9115:
 	.ascii	"PMC_WPMR\000"
 .LASF6632:
 	.ascii	"_SAM3U_TC0_INSTANCE_ \000"
@@ -42474,12 +43292,12 @@ main:
 	.ascii	"US_MR_USART_MODE_RS485 (0x1u << 0)\000"
 .LASF5281:
 	.ascii	"SSC_TFMR_DATNB_Msk (0xfu << SSC_TFMR_DATNB_Pos)\000"
-.LASF9055:
+.LASF9059:
 	.ascii	"PIO_IDR\000"
 .LASF891:
 	.ascii	"MREPEAT177(macro,data) MREPEAT176(macro, data) macr"
 	.ascii	"o(176, data)\000"
-.LASF9029:
+.LASF9032:
 	.ascii	"uint8_t\000"
 .LASF602:
 	.ascii	"SAM4S4 ( SAM_PART_IS_DEFINED(SAM4S4A) || SAM_PART_I"
@@ -42523,7 +43341,7 @@ main:
 	.ascii	"ADC_IER_OVRE2 (0x1u << 10)\000"
 .LASF8226:
 	.ascii	"LSB1D(u64) MSB6D(u64)\000"
-.LASF9402:
+.LASF9421:
 	.ascii	"ul_pll_id\000"
 .LASF6930:
 	.ascii	"REG_UDPHS_EPTCFG3 (*(RwReg*)0x400A4160U)\000"
@@ -42552,7 +43370,7 @@ main:
 	.ascii	"EEFC_FMR_FAM (0x1u << 24)\000"
 .LASF6205:
 	.ascii	"UDPHS_EPTCTLDIS_TX_COMPLT (0x1u << 10)\000"
-.LASF9054:
+.LASF9058:
 	.ascii	"PIO_IER\000"
 .LASF4895:
 	.ascii	"SMC_ECC_PR2_NPARITY_Pos 12\000"
@@ -42566,7 +43384,7 @@ main:
 .LASF8797:
 	.ascii	"UDI_VENDOR_EP_NB_ISO ((UDI_VENDOR_EPS_SIZE_ISO_FS)?"
 	.ascii	"2:0)\000"
-.LASF9218:
+.LASF9233:
 	.ascii	"_result\000"
 .LASF2741:
 	.ascii	"PIO_PDR_P24 (0x1u << 24)\000"
@@ -42589,7 +43407,7 @@ main:
 	.ascii	"UDPHS_EPTCTLENB_BUSY_BANK (0x1u << 18)\000"
 .LASF7224:
 	.ascii	"REG_PIOA_FRLHSR (*(RoReg*)0x400E0CD8U)\000"
-.LASF9380:
+.LASF9395:
 	.ascii	"g_captureinprogress\000"
 .LASF2193:
 	.ascii	"DMAC_CFG_FIFOCFG_ALAP_CFG (0x0u << 28)\000"
@@ -42667,7 +43485,7 @@ main:
 .LASF941:
 	.ascii	"MREPEAT227(macro,data) MREPEAT226(macro, data) macr"
 	.ascii	"o(226, data)\000"
-.LASF9214:
+.LASF9229:
 	.ascii	"_unspecified_locale_info\000"
 .LASF7410:
 	.ascii	"PIO_PB3 (1u << 3)\000"
@@ -42737,7 +43555,7 @@ main:
 	.ascii	"ADC_RCR_RXCTR_Msk (0xffffu << ADC_RCR_RXCTR_Pos)\000"
 .LASF5405:
 	.ascii	"SUPC_MR_VDDIORDYONREG (0x1u << 14)\000"
-.LASF9244:
+.LASF9259:
 	.ascii	"_mblen_state\000"
 .LASF2998:
 	.ascii	"PIO_SODR_P25 (0x1u << 25)\000"
@@ -42750,7 +43568,7 @@ main:
 	.ascii	"SMC_SR_AWB (0x1u << 22)\000"
 .LASF6024:
 	.ascii	"UART_RNCR_RXNCTR_Pos 0\000"
-.LASF9176:
+.LASF9191:
 	.ascii	"__tm_wday\000"
 .LASF3225:
 	.ascii	"PIO_ISR_P28 (0x1u << 28)\000"
@@ -42814,9 +43632,8 @@ main:
 	.ascii	"TPI_SPPR_TXMODE_Msk (0x3UL << TPI_SPPR_TXMODE_Pos)\000"
 .LASF3272:
 	.ascii	"PIO_MDDR_P11 (0x1u << 11)\000"
-.LASF776:
-	.ascii	"MREPEAT62(macro,data) MREPEAT61( macro, data) macro"
-	.ascii	"( 61, data)\000"
+.LASF9479:
+	.ascii	"baud\000"
 .LASF926:
 	.ascii	"MREPEAT212(macro,data) MREPEAT211(macro, data) macr"
 	.ascii	"o(211, data)\000"
@@ -42828,13 +43645,13 @@ main:
 	.ascii	"SAMD11 (SAMD11C || SAMD11DS || SAMD11DM)\000"
 .LASF7347:
 	.ascii	"PDC_USART0 ((Pdc *)0x40090100U)\000"
-.LASF9130:
-	.ascii	"SMC_ECC_PR0\000"
-.LASF9131:
-	.ascii	"SMC_ECC_PR1\000"
-.LASF9133:
-	.ascii	"SMC_ECC_PR2\000"
 .LASF9134:
+	.ascii	"SMC_ECC_PR0\000"
+.LASF9135:
+	.ascii	"SMC_ECC_PR1\000"
+.LASF9137:
+	.ascii	"SMC_ECC_PR2\000"
+.LASF9138:
 	.ascii	"SMC_ECC_PR3\000"
 .LASF1638:
 	.ascii	"ADC_IER_OVRE1 (0x1u << 9)\000"
@@ -42842,11 +43659,11 @@ main:
 	.ascii	"PIO_PDSR_P17 (0x1u << 17)\000"
 .LASF5408:
 	.ascii	"SUPC_MR_OSCBYPASS_BYPASS (0x1u << 20)\000"
-.LASF9138:
+.LASF9142:
 	.ascii	"SMC_ECC_PR7\000"
-.LASF9139:
+.LASF9143:
 	.ascii	"SMC_ECC_PR8\000"
-.LASF9140:
+.LASF9144:
 	.ascii	"SMC_ECC_PR9\000"
 .LASF1181:
 	.ascii	"SCB_ICSR_RETTOBASE_Pos 11\000"
@@ -42966,7 +43783,7 @@ main:
 	.ascii	"o(122, data)\000"
 .LASF685:
 	.ascii	"SAMG (SAMG51 || SAMG53 || SAMG54)\000"
-.LASF9112:
+.LASF9116:
 	.ascii	"PMC_WPSR\000"
 .LASF3021:
 	.ascii	"PIO_CODR_P16 (0x1u << 16)\000"
@@ -43031,7 +43848,7 @@ main:
 .LASF2190:
 	.ascii	"DMAC_CFG_AHB_PROT(value) ((DMAC_CFG_AHB_PROT_Msk & "
 	.ascii	"((value) << DMAC_CFG_AHB_PROT_Pos)))\000"
-.LASF9118:
+.LASF9122:
 	.ascii	"SmcCs_number\000"
 .LASF1876:
 	.ascii	"ADC12B_PTSR_TXTEN (0x1u << 8)\000"
@@ -43102,19 +43919,18 @@ main:
 .LASF6028:
 	.ascii	"UART_TNPR_TXNPTR_Msk (0xffffffffu << UART_TNPR_TXNP"
 	.ascii	"TR_Pos)\000"
-.LASF8788:
-	.ascii	"UDI_VENDOR_EP_INTERRUPT_IN (3 | USB_EP_DIR_IN)\000"
+.LASF7429:
+	.ascii	"PIO_PB22 (1u << 22)\000"
 .LASF3153:
 	.ascii	"PIO_IDR_P20 (0x1u << 20)\000"
-.LASF2332:
-	.ascii	"HSMCI_CSTOR_CSTOMUL_Msk (0x7u << HSMCI_CSTOR_CSTOMU"
-	.ascii	"L_Pos)\000"
+.LASF7221:
+	.ascii	"REG_PIOA_ELSR (*(RoReg*)0x400E0CC8U)\000"
 .LASF822:
 	.ascii	"MREPEAT108(macro,data) MREPEAT107(macro, data) macr"
 	.ascii	"o(107, data)\000"
 .LASF8423:
 	.ascii	"PIN_USART0_TXD (PIO_PA18_IDX)\000"
-.LASF9388:
+.LASF9404:
 	.ascii	"e_src\000"
 .LASF2867:
 	.ascii	"PIO_OSR_P22 (0x1u << 22)\000"
@@ -43142,7 +43958,7 @@ main:
 	.ascii	"( 66, data)\000"
 .LASF5393:
 	.ascii	"SUPC_SMMR_SMRSTEN (0x1u << 12)\000"
-.LASF9018:
+.LASF9020:
 	.ascii	"unsigned char\000"
 .LASF6541:
 	.ascii	"US_TCR_TXCTR_Msk (0xffffu << US_TCR_TXCTR_Pos)\000"
@@ -43159,9 +43975,9 @@ main:
 	.ascii	"PIO_TYPE_Msk (0xFu << PIO_TYPE_Pos)\000"
 .LASF4166:
 	.ascii	"PMC_IMR_MOSCXTS (0x1u << 0)\000"
-.LASF9125:
+.LASF9129:
 	.ascii	"SMC_ADDR\000"
-.LASF9275:
+.LASF9290:
 	.ascii	"PLL_SRC_MAINCK_BYPASS\000"
 .LASF3906:
 	.ascii	"PIO_FRLHSR_P2 (0x1u << 2)\000"
@@ -43227,8 +44043,8 @@ main:
 	.ascii	"US_PTCR_RXTEN (0x1u << 0)\000"
 .LASF6509:
 	.ascii	"US_MAN_TX_PP_ZERO_ONE (0x2u << 8)\000"
-.LASF5686:
-	.ascii	"TC_CMR_ACPC_SET (0x1u << 18)\000"
+.LASF3382:
+	.ascii	"PIO_PUER_P25 (0x1u << 25)\000"
 .LASF816:
 	.ascii	"MREPEAT102(macro,data) MREPEAT101(macro, data) macr"
 	.ascii	"o(101, data)\000"
@@ -43248,7 +44064,7 @@ main:
 	.ascii	"TC_SR_ETRGS (0x1u << 7)\000"
 .LASF3959:
 	.ascii	"PIO_LOCKSR_P23 (0x1u << 23)\000"
-.LASF9188:
+.LASF9203:
 	.ascii	"_base\000"
 .LASF7081:
 	.ascii	"REG_SMC_ECC_PR9 (*(RoReg*)0x400E0054U)\000"
@@ -43313,7 +44129,7 @@ main:
 	.ascii	"SSC_TCMR_START_RF_FALLING (0x4u << 8)\000"
 .LASF8701:
 	.ascii	"NFCADDR_CMD_ACYCLE_THREE (0x3u << 19)\000"
-.LASF9259:
+.LASF9274:
 	.ascii	"__lock\000"
 .LASF8234:
 	.ascii	"be16_to_cpu(x) Swap16(x)\000"
@@ -43340,7 +44156,7 @@ main:
 	.ascii	"__TA_FBIT__ 63\000"
 .LASF6168:
 	.ascii	"UDPHS_EPTCFG_BK_NUMBER_0 (0x0u << 6)\000"
-.LASF9201:
+.LASF9216:
 	.ascii	"_blksize\000"
 .LASF5801:
 	.ascii	"TC_QIER_IDX (0x1u << 0)\000"
@@ -43507,8 +44323,8 @@ main:
 	.ascii	"SCB_SHCSR_BUSFAULTENA_Pos 17\000"
 .LASF8592:
 	.ascii	"SYSCLK_PRES_8 PMC_MCKR_PRES_CLK_8\000"
-.LASF4779:
-	.ascii	"SMC_IDR_RB_FALL (0x1u << 5)\000"
+.LASF1157:
+	.ascii	"SCB_CPUID_VARIANT_Pos 20\000"
 .LASF1459:
 	.ascii	"MPU_CTRL_HFNMIENA_Pos 1\000"
 .LASF7146:
@@ -43685,7 +44501,7 @@ main:
 	.ascii	"USB_LPM_ATTRIBUT_REMOTEWAKE_MASK (1 << 8)\000"
 .LASF8625:
 	.ascii	"FLASH_H_INCLUDED \000"
-.LASF9377:
+.LASF9392:
 	.ascii	"task_tickCnt\000"
 .LASF2993:
 	.ascii	"PIO_SODR_P20 (0x1u << 20)\000"
@@ -43698,7 +44514,7 @@ main:
 	.ascii	"REG_USART2_TTGR (*(RwReg*)0x40098028U)\000"
 .LASF4263:
 	.ascii	"PWM_IMR1_CHID0 (0x1u << 0)\000"
-.LASF9357:
+.LASF9372:
 	.ascii	"GENCLK_PCK_SRC_SLCK_RC\000"
 .LASF2324:
 	.ascii	"HSMCI_BLKR_BCNT_BLOCK (0x5u << 0)\000"
@@ -43712,8 +44528,6 @@ main:
 	.ascii	"PIO_PC3A_A5 (1u << 3)\000"
 .LASF4751:
 	.ascii	"SMC_CFG_DTOMUL_X65536 (0x6u << 20)\000"
-.LASF7221:
-	.ascii	"REG_PIOA_ELSR (*(RoReg*)0x400E0CC8U)\000"
 .LASF2182:
 	.ascii	"DMAC_CFG_LOCK_IF_ENABLE (0x1u << 20)\000"
 .LASF6089:
@@ -43762,7 +44576,7 @@ main:
 	.ascii	"__UINT_LEAST16_MAX__ 0xffff\000"
 .LASF8741:
 	.ascii	"UART_H_INCLUDED \000"
-.LASF9195:
+.LASF9210:
 	.ascii	"_read\000"
 .LASF780:
 	.ascii	"MREPEAT66(macro,data) MREPEAT65( macro, data) macro"
@@ -43771,7 +44585,7 @@ main:
 	.ascii	"REG_PWM_CMPV4 (*(RwReg*)0x4008C170U)\000"
 .LASF1605:
 	.ascii	"ADC_CHSR_CH6 (0x1u << 6)\000"
-.LASF9057:
+.LASF9061:
 	.ascii	"PIO_ISR\000"
 .LASF2407:
 	.ascii	"HSMCI_IDR_RINDE (0x1u << 16)\000"
@@ -43809,8 +44623,8 @@ main:
 	.ascii	"UART_SR_RXRDY (0x1u << 0)\000"
 .LASF1151:
 	.ascii	"__O volatile\000"
-.LASF1435:
-	.ascii	"TPI_DEVID_NRZVALID_Pos 11\000"
+.LASF1789:
+	.ascii	"ADC12B_IER_EOC4 (0x1u << 4)\000"
 .LASF4675:
 	.ascii	"RTC_CALALR_MONTH(value) ((RTC_CALALR_MONTH_Msk & (("
 	.ascii	"value) << RTC_CALALR_MONTH_Pos)))\000"
@@ -43828,7 +44642,7 @@ main:
 	.ascii	"PIO_IFSR_P30 (0x1u << 30)\000"
 .LASF8211:
 	.ascii	"LSH0(u64) MSH3(u64)\000"
-.LASF9410:
+.LASF9429:
 	.ascii	"ul_mul\000"
 .LASF3137:
 	.ascii	"PIO_IDR_P4 (0x1u << 4)\000"
@@ -43839,7 +44653,7 @@ main:
 	.ascii	"PDC_TWI0 ((Pdc *)0x40084100U)\000"
 .LASF4366:
 	.ascii	"PWM_ISR2_CMPM0 (0x1u << 8)\000"
-.LASF9048:
+.LASF9052:
 	.ascii	"PIO_IFSR\000"
 .LASF5165:
 	.ascii	"SPI_WPMR_WPEN (0x1u << 0)\000"
@@ -43850,7 +44664,7 @@ main:
 .LASF4898:
 	.ascii	"SMC_ECC_PR2_WORDADDR_W8BIT_Msk (0xffu << SMC_ECC_PR"
 	.ascii	"2_WORDADDR_W8BIT_Pos)\000"
-.LASF9273:
+.LASF9288:
 	.ascii	"PLL_SRC_MAINCK_12M_RC\000"
 .LASF1589:
 	.ascii	"ADC_CHER_CH6 (0x1u << 6)\000"
@@ -43858,6 +44672,8 @@ main:
 	.ascii	"__UFRACT_EPSILON__ 0x1P-16UR\000"
 .LASF7686:
 	.ascii	"IRAM1_SIZE (0x2000u)\000"
+.LASF8788:
+	.ascii	"UDI_VENDOR_EP_INTERRUPT_IN (3 | USB_EP_DIR_IN)\000"
 .LASF3083:
 	.ascii	"PIO_PDSR_P14 (0x1u << 14)\000"
 .LASF5726:
@@ -44000,7 +44816,7 @@ main:
 	.ascii	"ADC_SR_EOC6 (0x1u << 6)\000"
 .LASF6741:
 	.ascii	"REG_PWM_ELMR (*(RwReg*)0x4008C07CU)\000"
-.LASF9258:
+.LASF9273:
 	.ascii	"_unused\000"
 .LASF1927:
 	.ascii	"CHIPID_CIDR_SRAMSIZ_128K (0xCu << 16)\000"
@@ -44050,7 +44866,7 @@ main:
 	.ascii	"DMAC_CTRLA_DST_WIDTH_BYTE (0x0u << 28)\000"
 .LASF3644:
 	.ascii	"PIO_OWSR_P28 (0x1u << 28)\000"
-.LASF9267:
+.LASF9282:
 	.ascii	"cpu_irq_prev_interrupt_state\000"
 .LASF4744:
 	.ascii	"SMC_CFG_DTOMUL_Msk (0x7u << SMC_CFG_DTOMUL_Pos)\000"
@@ -44136,6 +44952,8 @@ main:
 	.ascii	"PIO_OSR_P19 (0x1u << 19)\000"
 .LASF7998:
 	.ascii	"NFDBITS (sizeof (fd_mask) * 8)\000"
+.LASF3202:
+	.ascii	"PIO_ISR_P5 (0x1u << 5)\000"
 .LASF5003:
 	.ascii	"SMC_SETUP_NCS_WR_SETUP_Msk (0x3fu << SMC_SETUP_NCS_"
 	.ascii	"WR_SETUP_Pos)\000"
@@ -44176,8 +44994,8 @@ main:
 	.ascii	"TC_IER_ETRGS (0x1u << 7)\000"
 .LASF7709:
 	.ascii	"CHIP_FREQ_FWS_3 (84000000UL)\000"
-.LASF4384:
-	.ascii	"PWM_OOV_OOVH2 (0x1u << 2)\000"
+.LASF9166:
+	.ascii	"SPI_WPMR\000"
 .LASF3816:
 	.ascii	"PIO_ELSR_P8 (0x1u << 8)\000"
 .LASF4012:
@@ -44221,10 +45039,10 @@ main:
 	.ascii	"PIO_LOCKSR_P20 (0x1u << 20)\000"
 .LASF3429:
 	.ascii	"PIO_ABSR_P8 (0x1u << 8)\000"
-.LASF9418:
+.LASF9437:
 	.ascii	"__DMB\000"
-.LASF8590:
-	.ascii	"SYSCLK_PRES_2 PMC_MCKR_PRES_CLK_2\000"
+.LASF9399:
+	.ascii	"enable_spi\000"
 .LASF4292:
 	.ascii	"PWM_SCUC_UPDULOCK (0x1u << 0)\000"
 .LASF7418:
@@ -44235,7 +45053,7 @@ main:
 	.ascii	"__EXP(x) __ ##x ##__\000"
 .LASF8531:
 	.ascii	"BOARD_NF_DATA_ADDR 0x61000000\000"
-.LASF9163:
+.LASF9178:
 	.ascii	"_flock_t\000"
 .LASF4800:
 	.ascii	"SMC_BANK_BANK_Msk (0x7u << SMC_BANK_BANK_Pos)\000"
@@ -44268,17 +45086,17 @@ main:
 	.ascii	"CT_Pos)\000"
 .LASF3647:
 	.ascii	"PIO_OWSR_P31 (0x1u << 31)\000"
-.LASF9154:
+.LASF9169:
 	.ascii	"_off_t\000"
 .LASF8724:
 	.ascii	"TWI_SUCCESS 0\000"
 .LASF1357:
 	.ascii	"DWT_SLEEPCNT_SLEEPCNT_Pos 0\000"
-.LASF9068:
+.LASF9072:
 	.ascii	"PIO_SCIFSR\000"
 .LASF1839:
 	.ascii	"ADC12B_IMR_OVRE6 (0x1u << 14)\000"
-.LASF9314:
+.LASF9329:
 	.ascii	"iProduct\000"
 .LASF2462:
 	.ascii	"HSMCI_WPMR_WP_KEY_Msk (0xffffffu << HSMCI_WPMR_WP_K"
@@ -44288,7 +45106,7 @@ main:
 	.ascii	"DDR_Pos)\000"
 .LASF4078:
 	.ascii	"CKGR_MOR_MOSCXTST_Pos 8\000"
-.LASF9422:
+.LASF9441:
 	.ascii	"ui_init\000"
 .LASF8999:
 	.ascii	"FPGA_NPROG_HIGH() gpio_set_pin_high(PIN_FPGA_PROGRA"
@@ -44299,7 +45117,7 @@ main:
 	.ascii	"PIO_AIMMR_P30 (0x1u << 30)\000"
 .LASF7025:
 	.ascii	"REG_DMAC_LAST (*(RwReg*)0x400B0010U)\000"
-.LASF9184:
+.LASF9199:
 	.ascii	"_atexit\000"
 .LASF4329:
 	.ascii	"PWM_IDR2_CMPM3 (0x1u << 11)\000"
@@ -44307,9 +45125,8 @@ main:
 	.ascii	"PIO_IDR_P8 (0x1u << 8)\000"
 .LASF2464:
 	.ascii	"HSMCI_WPSR_WP_VS_Pos 0\000"
-.LASF815:
-	.ascii	"MREPEAT101(macro,data) MREPEAT100(macro, data) macr"
-	.ascii	"o(100, data)\000"
+.LASF5655:
+	.ascii	"TC_CMR_LDRB_EDGE (0x3u << 18)\000"
 .LASF7392:
 	.ascii	"PIO_PA17 (1u << 17)\000"
 .LASF4095:
@@ -44318,7 +45135,7 @@ main:
 	.ascii	"_LONG_DOUBLE long double\000"
 .LASF3753:
 	.ascii	"PIO_ESR_P9 (0x1u << 9)\000"
-.LASF9324:
+.LASF9339:
 	.ascii	"bConfigurationValue\000"
 .LASF6307:
 	.ascii	"UDPHS_DMASTATUS_DESC_LDST (0x1u << 6)\000"
@@ -44328,7 +45145,7 @@ main:
 	.ascii	"SUPC_CR_KEY_Msk (0xffu << SUPC_CR_KEY_Pos)\000"
 .LASF6588:
 	.ascii	"REG_HSMCI_CSTOR (*(RwReg*)0x4000001CU)\000"
-.LASF9153:
+.LASF9168:
 	.ascii	"wint_t\000"
 .LASF5905:
 	.ascii	"TWI_RHR_RXDATA_Pos 0\000"
@@ -44376,8 +45193,6 @@ main:
 	.ascii	"SysTick_VAL_CURRENT_Pos 0\000"
 .LASF4053:
 	.ascii	"PMC_PCSR0_PID16 (0x1u << 16)\000"
-.LASF3382:
-	.ascii	"PIO_PUER_P25 (0x1u << 25)\000"
 .LASF4817:
 	.ascii	"SMC_ECC_SR1_ECCERR0_Msk (0x3u << SMC_ECC_SR1_ECCERR"
 	.ascii	"0_Pos)\000"
@@ -44432,7 +45247,7 @@ main:
 	.ascii	"{0}}, {0, {0}}, {0, {0}}, \"\", \"\", 0, {0, {0}}, "
 	.ascii	"{0, {0}}, {0, {0}}, {0, {0}}, {0, {0}} } }, _REENT_"
 	.ascii	"INIT_ATEXIT _NULL, {_NULL, 0, _NULL} }\000"
-.LASF9168:
+.LASF9183:
 	.ascii	"_Bigint\000"
 .LASF2303:
 	.ascii	"HSMCI_CMDR_TRDIR_READ (0x1u << 18)\000"
@@ -44493,7 +45308,7 @@ main:
 .LASF732:
 	.ascii	"MREPEAT18(macro,data) MREPEAT17( macro, data) macro"
 	.ascii	"( 17, data)\000"
-.LASF9230:
+.LASF9245:
 	.ascii	"_glue\000"
 .LASF4721:
 	.ascii	"RTT_AR_ALMV_Pos 0\000"
@@ -44512,8 +45327,8 @@ main:
 	.ascii	"SPI_IMR_TDRE (0x1u << 1)\000"
 .LASF3301:
 	.ascii	"PIO_MDSR_P8 (0x1u << 8)\000"
-.LASF4025:
-	.ascii	"PMC_PCDR0_PID15 (0x1u << 15)\000"
+.LASF8537:
+	.ascii	"SUPC_CR_KEY_PASSWD SUPC_CR_KEY(0xA5U)\000"
 .LASF4862:
 	.ascii	"SMC_ECC_PR1_NPARITY_W9BIT_Msk (0xfffu << SMC_ECC_PR"
 	.ascii	"1_NPARITY_W9BIT_Pos)\000"
@@ -44539,15 +45354,15 @@ main:
 	.ascii	"ferror_unlocked(p) __sferror(p)\000"
 .LASF8744:
 	.ascii	"UART_MCK_DIV_MAX_FACTOR 65535\000"
-.LASF309:
-	.ascii	"__UACCUM_IBIT__ 16\000"
-.LASF9026:
+.LASF1720:
+	.ascii	"ADC12B_MR_TRGSEL_ADC_TRIG2 (0x2u << 1)\000"
+.LASF9029:
 	.ascii	"long unsigned int\000"
 .LASF5867:
 	.ascii	"TWI_IER_GACC (0x1u << 5)\000"
-.LASF9212:
+.LASF9227:
 	.ascii	"_inc\000"
-.LASF9185:
+.LASF9200:
 	.ascii	"_ind\000"
 .LASF504:
 	.ascii	"_WCHAR_T_H \000"
@@ -44591,7 +45406,7 @@ main:
 	.ascii	"STK600_RCUC3L0 6\000"
 .LASF1131:
 	.ascii	"_GCC_WRAP_STDINT_H \000"
-.LASF9320:
+.LASF9335:
 	.ascii	"wTotalLength\000"
 .LASF2386:
 	.ascii	"HSMCI_IER_RTOE (0x1u << 20)\000"
@@ -44642,7 +45457,7 @@ main:
 	.ascii	"SPI_IDR_OVRES (0x1u << 3)\000"
 .LASF5049:
 	.ascii	"SMC_MODE_READ_MODE (0x1u << 0)\000"
-.LASF9242:
+.LASF9257:
 	.ascii	"_rand_next\000"
 .LASF2688:
 	.ascii	"PIO_PER_P3 (0x1u << 3)\000"
@@ -44672,7 +45487,7 @@ main:
 	.ascii	"SYSCLK_PRES_4 PMC_MCKR_PRES_CLK_4\000"
 .LASF114:
 	.ascii	"__INT_LEAST32_WIDTH__ 32\000"
-.LASF9121:
+.LASF9125:
 	.ascii	"SMC_SR\000"
 .LASF5769:
 	.ascii	"TC_IMR_LDRBS (0x1u << 6)\000"
@@ -44693,7 +45508,7 @@ main:
 	.ascii	"__FLT32_MANT_DIG__ 24\000"
 .LASF8295:
 	.ascii	"SYSCLK_H_INCLUDED \000"
-.LASF9399:
+.LASF9415:
 	.ascii	"sleepmgr_init\000"
 .LASF1215:
 	.ascii	"SCB_CCR_UNALIGN_TRP_Pos 3\000"
@@ -44725,8 +45540,10 @@ main:
 	.ascii	"PIO_SODR_P17 (0x1u << 17)\000"
 .LASF7196:
 	.ascii	"REG_PIOA_ODSR (*(RwReg*)0x400E0C38U)\000"
-.LASF9095:
+.LASF9099:
 	.ascii	"PMC_PCER0\000"
+.LASF9167:
+	.ascii	"SPI_WPSR\000"
 .LASF8250:
 	.ascii	"swap32(u32) ((U32)__builtin_bswap32((U32)(u32)))\000"
 .LASF9011:
@@ -44774,9 +45591,9 @@ main:
 .LASF5367:
 	.ascii	"SUPC_CR_KEY(value) ((SUPC_CR_KEY_Msk & ((value) << "
 	.ascii	"SUPC_CR_KEY_Pos)))\000"
-.LASF9085:
+.LASF9089:
 	.ascii	"PIO_FELLSR\000"
-.LASF9436:
+.LASF9463:
 	.ascii	"pmc_osc_is_ready_mainck\000"
 .LASF1241:
 	.ascii	"SCB_SHCSR_SVCALLACT_Pos 7\000"
@@ -44818,7 +45635,7 @@ main:
 	.ascii	"lue) << SSC_RCMR_STTDLY_Pos)))\000"
 .LASF6671:
 	.ascii	"REG_TWI0_MMR (*(RwReg*)0x40084004U)\000"
-.LASF9397:
+.LASF9413:
 	.ascii	"sleep_mode\000"
 .LASF827:
 	.ascii	"MREPEAT113(macro,data) MREPEAT112(macro, data) macr"
@@ -44918,8 +45735,6 @@ main:
 	.ascii	"DMAC_EBCIER_CBTC0 (0x1u << 8)\000"
 .LASF7402:
 	.ascii	"PIO_PA27 (1u << 27)\000"
-.LASF1428:
-	.ascii	"TPI_FIFO1_ITM1_Msk (0xFFUL << TPI_FIFO1_ITM1_Pos)\000"
 .LASF2928:
 	.ascii	"PIO_IFDR_P19 (0x1u << 19)\000"
 .LASF1410:
@@ -44940,7 +45755,7 @@ main:
 	.ascii	"o(151, data)\000"
 .LASF4146:
 	.ascii	"PMC_IDR_LOCKU (0x1u << 6)\000"
-.LASF9442:
+.LASF9469:
 	.ascii	"pmc_osc_is_ready_fastrc\000"
 .LASF5474:
 	.ascii	"SUPC_WUIR_WKUPEN11_NOT_ENABLE (0x0u << 11)\000"
@@ -45003,7 +45818,7 @@ main:
 	.ascii	"PWM_IDR1_FCHID0 (0x1u << 16)\000"
 .LASF1913:
 	.ascii	"CHIPID_CIDR_SRAMSIZ_Pos 16\000"
-.LASF9317:
+.LASF9332:
 	.ascii	"usb_dev_desc_t\000"
 .LASF7965:
 	.ascii	"_SYS_TYPES_H \000"
@@ -45035,7 +45850,7 @@ main:
 	.ascii	"MCR_VC_NOCPERR_Pos)\000"
 .LASF6732:
 	.ascii	"REG_PWM_OSS (*(WoReg*)0x4008C04CU)\000"
-.LASF9437:
+.LASF9464:
 	.ascii	"pmc_osc_is_bypassed_main_xtal\000"
 .LASF6604:
 	.ascii	"REG_SSC_RCMR (*(RwReg*)0x40004010U)\000"
@@ -45080,6 +45895,8 @@ main:
 	.ascii	"PIO_OWSR_P25 (0x1u << 25)\000"
 .LASF5626:
 	.ascii	"TC_CMR_CLKI (0x1u << 3)\000"
+.LASF6811:
+	.ascii	"REG_PWM_CCNT3 (*(RoReg*)0x4008C274U)\000"
 .LASF399:
 	.ascii	"__ARM_FEATURE_QRDMX\000"
 .LASF878:
@@ -45087,8 +45904,10 @@ main:
 	.ascii	"o(163, data)\000"
 .LASF8613:
 	.ascii	"EFC_FCMD_EA 0x05\000"
-.LASF3931:
-	.ascii	"PIO_FRLHSR_P27 (0x1u << 27)\000"
+.LASF6310:
+	.ascii	"UDPHS_DMASTATUS_BUFF_COUNT(value) ((UDPHS_DMASTATUS"
+	.ascii	"_BUFF_COUNT_Msk & ((value) << UDPHS_DMASTATUS_BUFF_"
+	.ascii	"COUNT_Pos)))\000"
 .LASF304:
 	.ascii	"__ACCUM_IBIT__ 16\000"
 .LASF6381:
@@ -45137,8 +45956,6 @@ main:
 	.ascii	"REG_PIOA_LOCKSR (*(RoReg*)0x400E0CE0U)\000"
 .LASF5878:
 	.ascii	"TWI_IDR_RXRDY (0x1u << 1)\000"
-.LASF3856:
-	.ascii	"PIO_FELLSR_P16 (0x1u << 16)\000"
 .LASF284:
 	.ascii	"__LLFRACT_IBIT__ 0\000"
 .LASF750:
@@ -45175,7 +45992,7 @@ main:
 .LASF7952:
 	.ascii	"_REENT_MBSRTOWCS_STATE(ptr) ((ptr)->_new._reent._mb"
 	.ascii	"srtowcs_state)\000"
-.LASF9249:
+.LASF9264:
 	.ascii	"_getdate_err\000"
 .LASF4903:
 	.ascii	"SMC_ECC_PR3_WORDADDR_Pos 3\000"
@@ -45231,22 +46048,22 @@ main:
 	.ascii	"SAM4E (SAM4E8 || SAM4E16)\000"
 .LASF4803:
 	.ascii	"SMC_ECC_CTRL_SWRST (0x1u << 1)\000"
-.LASF9369:
+.LASF9384:
 	.ascii	"GENCLK_PCK_PRES_1\000"
-.LASF9370:
+.LASF9385:
 	.ascii	"GENCLK_PCK_PRES_2\000"
 .LASF2612:
 	.ascii	"MATRIX_PRAS8_M0PR_Msk (0x3u << MATRIX_PRAS8_M0PR_Po"
 	.ascii	"s)\000"
-.LASF9217:
+.LASF9232:
 	.ascii	"__cleanup\000"
 .LASF988:
 	.ascii	"_POSIX_C_SOURCE\000"
-.LASF5757:
-	.ascii	"TC_IDR_CPAS (0x1u << 2)\000"
+.LASF9165:
+	.ascii	"SPI_CSR\000"
 .LASF2001:
 	.ascii	"DMAC_CREQ_SCREQ1 (0x1u << 2)\000"
-.LASF9107:
+.LASF9111:
 	.ascii	"PMC_IMR\000"
 .LASF8628:
 	.ascii	"_GPIO_H_ \000"
@@ -45333,8 +46150,8 @@ main:
 	.ascii	"ADC12B_CHSR_CH6 (0x1u << 6)\000"
 .LASF1078:
 	.ascii	"UINT_LEAST8_MAX (__UINT_LEAST8_MAX__)\000"
-.LASF7109:
-	.ascii	"REG_SMC_KEY1 (*(WoReg*)0x400E0114U)\000"
+.LASF3417:
+	.ascii	"PIO_PUSR_P28 (0x1u << 28)\000"
 .LASF2047:
 	.ascii	"DMAC_EBCIMR_ERR0 (0x1u << 16)\000"
 .LASF1324:
@@ -45439,10 +46256,10 @@ main:
 	.ascii	"DDR_Pos)\000"
 .LASF5734:
 	.ascii	"TC_RC_RC_Msk (0xffffffffu << TC_RC_RC_Pos)\000"
-.LASF9297:
+.LASF9312:
 	.ascii	"bmRequestType\000"
-.LASF1789:
-	.ascii	"ADC12B_IER_EOC4 (0x1u << 4)\000"
+.LASF665:
+	.ascii	"SAM3XA (SAM3X4 || SAM3X8 || SAM3A4 || SAM3A8)\000"
 .LASF6183:
 	.ascii	"UDPHS_EPTCTLENB_RX_BK_RDY (0x1u << 9)\000"
 .LASF6480:
@@ -45502,7 +46319,7 @@ main:
 	.ascii	"__LEAST16 \"h\"\000"
 .LASF6250:
 	.ascii	"UDPHS_EPTCLRSTA_NAK_IN (0x1u << 14)\000"
-.LASF9284:
+.LASF9299:
 	.ascii	"PIO_INPUT\000"
 .LASF6979:
 	.ascii	"REG_UDPHS_DMAADDRESS5 (*(RwReg*)0x400A4354U)\000"
@@ -45535,7 +46352,7 @@ main:
 	.ascii	"I_MR_PCS_Pos)))\000"
 .LASF6637:
 	.ascii	"REG_TC0_RB0 (*(RwReg*)0x40080018U)\000"
-.LASF9328:
+.LASF9343:
 	.ascii	"usb_conf_desc_t\000"
 .LASF2384:
 	.ascii	"HSMCI_IER_RCRCE (0x1u << 18)\000"
@@ -45550,7 +46367,7 @@ main:
 	.ascii	"os)\000"
 .LASF1766:
 	.ascii	"ADC12B_SR_EOC3 (0x1u << 3)\000"
-.LASF9159:
+.LASF9174:
 	.ascii	"__value\000"
 .LASF8169:
 	.ascii	"Set_bits(lvalue,mask) ((lvalue) |= (mask))\000"
@@ -45637,8 +46454,9 @@ main:
 	.ascii	"ADC_IMR_OVRE6 (0x1u << 14)\000"
 .LASF6237:
 	.ascii	"UDPHS_EPTCTL_BUSY_BANK (0x1u << 18)\000"
-.LASF5179:
-	.ascii	"SSC_CR_SWRST (0x1u << 15)\000"
+.LASF2332:
+	.ascii	"HSMCI_CSTOR_CSTOMUL_Msk (0x7u << HSMCI_CSTOR_CSTOMU"
+	.ascii	"L_Pos)\000"
 .LASF5138:
 	.ascii	"SPI_IMR_NSSR (0x1u << 8)\000"
 .LASF5995:
@@ -45687,8 +46505,6 @@ main:
 	.ascii	"TC_BMR_SWAP (0x1u << 16)\000"
 .LASF3240:
 	.ascii	"PIO_MDER_P11 (0x1u << 11)\000"
-.LASF8038:
-	.ascii	"_SYS_SCHED_H_ \000"
 .LASF3462:
 	.ascii	"PIO_SCIFSR_P9 (0x1u << 9)\000"
 .LASF1329:
@@ -45702,7 +46518,7 @@ main:
 .LASF5013:
 	.ascii	"SMC_PULSE_NWE_PULSE(value) ((SMC_PULSE_NWE_PULSE_Ms"
 	.ascii	"k & ((value) << SMC_PULSE_NWE_PULSE_Pos)))\000"
-.LASF9344:
+.LASF9359:
 	.ascii	"udc_config_t\000"
 .LASF8518:
 	.ascii	"LED_1_NAME \"red TX\"\000"
@@ -45747,7 +46563,7 @@ main:
 	.ascii	"ndingIRQ( (IRQn_Type)int_num); NVIC_SetPriority( (I"
 	.ascii	"RQn_Type)int_num, int_prio); NVIC_EnableIRQ( (IRQn_"
 	.ascii	"Type)int_num);\000"
-.LASF9292:
+.LASF9307:
 	.ascii	"SLEEPMGR_WAIT\000"
 .LASF2969:
 	.ascii	"PIO_IFSR_P28 (0x1u << 28)\000"
@@ -45763,7 +46579,7 @@ main:
 	.ascii	"UART_IMR_PARE (0x1u << 7)\000"
 .LASF7299:
 	.ascii	"REG_RTC_SR (*(RoReg*)0x400E1278U)\000"
-.LASF9438:
+.LASF9465:
 	.ascii	"pmc_is_locked_pllack\000"
 .LASF408:
 	.ascii	"__ARM_FEATURE_NUMERIC_MAXMIN\000"
@@ -45846,10 +46662,8 @@ main:
 	.ascii	"value) << MATRIX_MCFG_ULBT_Pos)))\000"
 .LASF6647:
 	.ascii	"REG_TC0_RB1 (*(RwReg*)0x40080058U)\000"
-.LASF6310:
-	.ascii	"UDPHS_DMASTATUS_BUFF_COUNT(value) ((UDPHS_DMASTATUS"
-	.ascii	"_BUFF_COUNT_Msk & ((value) << UDPHS_DMASTATUS_BUFF_"
-	.ascii	"COUNT_Pos)))\000"
+.LASF8038:
+	.ascii	"_SYS_SCHED_H_ \000"
 .LASF1308:
 	.ascii	"ITM_TCR_SWOENA_Msk (1UL << ITM_TCR_SWOENA_Pos)\000"
 .LASF1081:
@@ -45906,7 +46720,7 @@ main:
 .LASF904:
 	.ascii	"MREPEAT190(macro,data) MREPEAT189(macro, data) macr"
 	.ascii	"o(189, data)\000"
-.LASF9415:
+.LASF9434:
 	.ascii	"osc_enable\000"
 .LASF7433:
 	.ascii	"PIO_PB6X1_AD1 (1u << 6)\000"
@@ -45975,7 +46789,7 @@ main:
 	.ascii	"PIO_PB22A_A22 (1u << 22)\000"
 .LASF6756:
 	.ascii	"REG_PWM_CMPM1 (*(RwReg*)0x4008C148U)\000"
-.LASF9447:
+.LASF9474:
 	.ascii	"pmc_osc_bypass_main_xtal\000"
 .LASF6657:
 	.ascii	"REG_TC0_RB2 (*(RwReg*)0x40080098U)\000"
@@ -46022,7 +46836,7 @@ main:
 	.ascii	"COMPILER_PRAGMA(arg) _Pragma(#arg)\000"
 .LASF2234:
 	.ascii	"HSMCI_MR_CLKDIV_Pos 0\000"
-.LASF9070:
+.LASF9074:
 	.ascii	"PIO_IFDGSR\000"
 .LASF4902:
 	.ascii	"SMC_ECC_PR3_BITADDR_Msk (0x7u << SMC_ECC_PR3_BITADD"
@@ -46068,8 +46882,8 @@ main:
 	.ascii	"PIO_IFER_P17 (0x1u << 17)\000"
 .LASF5669:
 	.ascii	"TC_CMR_EEVT_XC2 (0x3u << 10)\000"
-.LASF2374:
-	.ascii	"HSMCI_IER_RXRDY (0x1u << 1)\000"
+.LASF7382:
+	.ascii	"PIO_PA7 (1u << 7)\000"
 .LASF4516:
 	.ascii	"PWM_PTCR_TXTDIS (0x1u << 9)\000"
 .LASF7799:
@@ -46105,7 +46919,7 @@ main:
 .LASF954:
 	.ascii	"MREPEAT240(macro,data) MREPEAT239(macro, data) macr"
 	.ascii	"o(239, data)\000"
-.LASF9443:
+.LASF9470:
 	.ascii	"pmc_osc_is_ready_main_xtal\000"
 .LASF7298:
 	.ascii	"REG_RTC_CALALR (*(RwReg*)0x400E1274U)\000"
@@ -46124,7 +46938,7 @@ main:
 .LASF6120:
 	.ascii	"UDPHS_IPNAME1_IP_NAME1_Msk (0xffffffffu << UDPHS_IP"
 	.ascii	"NAME1_IP_NAME1_Pos)\000"
-.LASF9361:
+.LASF9376:
 	.ascii	"GENCLK_PCK_SRC_MAINCK_8M_RC\000"
 .LASF7678:
 	.ascii	"PIO_PB22_IDX 54\000"
@@ -46139,7 +46953,7 @@ main:
 	.ascii	"PIO_OER_P1 (0x1u << 1)\000"
 .LASF6558:
 	.ascii	"US_PTCR_TXTDIS (0x1u << 9)\000"
-.LASF9376:
+.LASF9391:
 	.ascii	"genclk_config\000"
 .LASF6622:
 	.ascii	"REG_SPI_MR (*(RwReg*)0x40008004U)\000"
@@ -46194,8 +47008,8 @@ main:
 	.ascii	"DMAC_EBCISR_BTC0 (0x1u << 0)\000"
 .LASF7788:
 	.ascii	"__CC_SUPPORTS_WARNING 1\000"
-.LASF5668:
-	.ascii	"TC_CMR_EEVT_XC1 (0x2u << 10)\000"
+.LASF9456:
+	.ascii	"smc_set_setup_timing\000"
 .LASF275:
 	.ascii	"__LFRACT_MIN__ (-0.5LR-0.5LR)\000"
 .LASF632:
@@ -46206,9 +47020,8 @@ main:
 	.ascii	"_PTRDIFF_T_ \000"
 .LASF6887:
 	.ascii	"REG_USART2_WPSR (*(RoReg*)0x400980E8U)\000"
-.LASF823:
-	.ascii	"MREPEAT109(macro,data) MREPEAT108(macro, data) macr"
-	.ascii	"o(108, data)\000"
+.LASF3698:
+	.ascii	"PIO_AIMDR_P18 (0x1u << 18)\000"
 .LASF3096:
 	.ascii	"PIO_PDSR_P27 (0x1u << 27)\000"
 .LASF3219:
@@ -46256,7 +47069,7 @@ main:
 .LASF4080:
 	.ascii	"CKGR_MOR_MOSCXTST(value) ((CKGR_MOR_MOSCXTST_Msk & "
 	.ascii	"((value) << CKGR_MOR_MOSCXTST_Pos)))\000"
-.LASF9354:
+.LASF9369:
 	.ascii	"ptr_put\000"
 .LASF7220:
 	.ascii	"REG_PIOA_LSR (*(WoReg*)0x400E0CC4U)\000"
@@ -46301,7 +47114,7 @@ main:
 	.ascii	"UDPHS_IEN_DMA_2 (0x1u << 26)\000"
 .LASF3563:
 	.ascii	"PIO_OWER_P11 (0x1u << 11)\000"
-.LASF9346:
+.LASF9361:
 	.ascii	"payload\000"
 .LASF7459:
 	.ascii	"PIO_PC22A_A16 (1u << 22)\000"
@@ -46320,6 +47133,8 @@ main:
 	.ascii	"HSMCI_IMR_DMADONE (0x1u << 25)\000"
 .LASF3549:
 	.ascii	"PIO_SCDR_DIV_Pos 0\000"
+.LASF9159:
+	.ascii	"SPI_RDR\000"
 .LASF2170:
 	.ascii	"DMAC_CFG_DST_PER(value) ((DMAC_CFG_DST_PER_Msk & (("
 	.ascii	"value) << DMAC_CFG_DST_PER_Pos)))\000"
@@ -46367,7 +47182,7 @@ main:
 	.ascii	"o(201, data)\000"
 .LASF3950:
 	.ascii	"PIO_LOCKSR_P14 (0x1u << 14)\000"
-.LASF9266:
+.LASF9281:
 	.ascii	"cpu_irq_critical_section_counter\000"
 .LASF7062:
 	.ascii	"REG_SMC_SR (*(RoReg*)0x400E0008U)\000"
@@ -46435,7 +47250,7 @@ main:
 	.ascii	"PIO_OER_P5 (0x1u << 5)\000"
 .LASF2858:
 	.ascii	"PIO_OSR_P13 (0x1u << 13)\000"
-.LASF9310:
+.LASF9325:
 	.ascii	"idVendor\000"
 .LASF3736:
 	.ascii	"PIO_AIMMR_P24 (0x1u << 24)\000"
@@ -46459,7 +47274,7 @@ main:
 	.ascii	")\000"
 .LASF7514:
 	.ascii	"PIO_PC15A_NBS1 (1u << 15)\000"
-.LASF9281:
+.LASF9296:
 	.ascii	"PIO_NOT_A_PIN\000"
 .LASF4969:
 	.ascii	"SMC_ECC_PR11_BITADDR_Pos 0\000"
@@ -46481,7 +47296,7 @@ main:
 	.ascii	"MATRIX_PRAS7_M1PR_Pos 4\000"
 .LASF1054:
 	.ascii	"__int32_t_defined 1\000"
-.LASF9175:
+.LASF9190:
 	.ascii	"__tm_year\000"
 .LASF5918:
 	.ascii	"TWI_TPR_TXPTR(value) ((TWI_TPR_TXPTR_Msk & ((value)"
@@ -46543,7 +47358,7 @@ main:
 	.ascii	"REG_ADC12B_EMR (*(RwReg*)0x400A8068U)\000"
 .LASF7646:
 	.ascii	"PIO_PA22_IDX 22\000"
-.LASF9291:
+.LASF9306:
 	.ascii	"SLEEPMGR_WAIT_FAST\000"
 .LASF4270:
 	.ascii	"PWM_IMR1_FCHID3 (0x1u << 19)\000"
@@ -46576,7 +47391,7 @@ main:
 	.ascii	"US_MR_CHMODE_LOCAL_LOOPBACK (0x2u << 14)\000"
 .LASF7066:
 	.ascii	"REG_SMC_ADDR (*(RwReg*)0x400E0018U)\000"
-.LASF9190:
+.LASF9205:
 	.ascii	"__sFILE\000"
 .LASF6977:
 	.ascii	"REG_UDPHS_DMASTATUS4 (*(RwReg*)0x400A434CU)\000"
@@ -46692,10 +47507,12 @@ main:
 	.ascii	"PIO_IMR_P17 (0x1u << 17)\000"
 .LASF3886:
 	.ascii	"PIO_REHLSR_P14 (0x1u << 14)\000"
-.LASF9148:
+.LASF9152:
 	.ascii	"SMC_OCMS\000"
 .LASF4911:
 	.ascii	"SMC_ECC_PR4_BITADDR_Pos 0\000"
+.LASF9450:
+	.ascii	"spi_set_clock_phase\000"
 .LASF7854:
 	.ascii	"__DEQUALIFY(type,var) ((type)(__uintptr_t)(const vo"
 	.ascii	"latile void *)(var))\000"
@@ -46711,7 +47528,7 @@ main:
 	.ascii	"RSTC_CR_PERRST (0x1u << 2)\000"
 .LASF1751:
 	.ascii	"ADC12B_CHDR_CH4 (0x1u << 4)\000"
-.LASF9367:
+.LASF9382:
 	.ascii	"GENCLK_PCK_SRC_MCK\000"
 .LASF5085:
 	.ascii	"SPI_CR_SPIEN (0x1u << 0)\000"
@@ -46754,7 +47571,7 @@ main:
 	.ascii	"t)\000"
 .LASF3538:
 	.ascii	"PIO_IFDGSR_P21 (0x1u << 21)\000"
-.LASF9329:
+.LASF9344:
 	.ascii	"enable\000"
 .LASF8732:
 	.ascii	"TWI_BUSY 8\000"
@@ -46826,7 +47643,7 @@ main:
 	.ascii	"VR8_PART_IS_DEFINED(ATxmega32A4U) || AVR8_PART_IS_D"
 	.ascii	"EFINED(ATxmega64A4U) || AVR8_PART_IS_DEFINED(ATxmeg"
 	.ascii	"a128A4U) )\000"
-.LASF9364:
+.LASF9379:
 	.ascii	"GENCLK_PCK_SRC_MAINCK_BYPASS\000"
 .LASF721:
 	.ascii	"MREPEAT7(macro,data) MREPEAT6( macro, data) macro( "
@@ -46896,7 +47713,7 @@ main:
 	.ascii	"UDPHS_CTRL_DEV_ADDR_Pos 0\000"
 .LASF6175:
 	.ascii	"UDPHS_EPTCFG_EPT_MAPD (0x1u << 31)\000"
-.LASF9433:
+.LASF9460:
 	.ascii	"pmc_enable_pck\000"
 .LASF4704:
 	.ascii	"RTC_IMR_TIM (0x1u << 3)\000"
@@ -47038,7 +47855,7 @@ main:
 	.ascii	"REG_PIOA_IFSR (*(RoReg*)0x400E0C28U)\000"
 .LASF6449:
 	.ascii	"US_IMR_CTSIC (0x1u << 19)\000"
-.LASF9430:
+.LASF9457:
 	.ascii	"smc_set_pulse_timing\000"
 .LASF6298:
 	.ascii	"UDPHS_DMACONTROL_DESC_LD_IT (0x1u << 6)\000"
@@ -47097,6 +47914,8 @@ main:
 .LASF1702:
 	.ascii	"ADC_RNCR_RXNCTR(value) ((ADC_RNCR_RXNCTR_Msk & ((va"
 	.ascii	"lue) << ADC_RNCR_RXNCTR_Pos)))\000"
+.LASF9419:
+	.ascii	"spi_enable\000"
 .LASF2517:
 	.ascii	"MATRIX_PRAS1_M3PR(value) ((MATRIX_PRAS1_M3PR_Msk & "
 	.ascii	"((value) << MATRIX_PRAS1_M3PR_Pos)))\000"
@@ -47122,7 +47941,7 @@ main:
 	.ascii	"SAM4C8 (SAM4C8_0 || SAM4C8_1)\000"
 .LASF4453:
 	.ascii	"PWM_FPV_FPVL3 (0x1u << 19)\000"
-.LASF9414:
+.LASF9433:
 	.ascii	"osc_is_ready\000"
 .LASF455:
 	.ascii	"scanf iscanf\000"
@@ -47190,7 +48009,7 @@ main:
 	.ascii	"PIO_OWSR_P19 (0x1u << 19)\000"
 .LASF4168:
 	.ascii	"PMC_IMR_MCKRDY (0x1u << 3)\000"
-.LASF9420:
+.LASF9439:
 	.ascii	"sysclk_init\000"
 .LASF4426:
 	.ascii	"PWM_OSCUPD_OSCUPL0 (0x1u << 16)\000"
@@ -47329,9 +48148,9 @@ main:
 	.ascii	"PMC_FSMR_FSTT2 (0x1u << 2)\000"
 .LASF5600:
 	.ascii	"SUPC_SR_WKUPIS12_DIS (0x0u << 28)\000"
-.LASF9078:
+.LASF9082:
 	.ascii	"PIO_AIMDR\000"
-.LASF9445:
+.LASF9472:
 	.ascii	"pmc_osc_enable_fastrc\000"
 .LASF8213:
 	.ascii	"MSB1D(u64) (((U8 *)&(u64))[6])\000"
@@ -47410,6 +48229,8 @@ main:
 	.ascii	"CHIPID_CIDR_ARCH_CAP11 (0x3Bu << 20)\000"
 .LASF7967:
 	.ascii	"_LITTLE_ENDIAN 1234\000"
+.LASF5293:
+	.ascii	"SSC_TFMR_FSOS_TOGGLING (0x5u << 20)\000"
 .LASF5384:
 	.ascii	"SUPC_SMMR_SMTH_3_3V (0xEu << 0)\000"
 .LASF3413:
@@ -47419,9 +48240,9 @@ main:
 .LASF789:
 	.ascii	"MREPEAT75(macro,data) MREPEAT74( macro, data) macro"
 	.ascii	"( 74, data)\000"
-.LASF9209:
+.LASF9224:
 	.ascii	"_stdin\000"
-.LASF9077:
+.LASF9081:
 	.ascii	"PIO_AIMER\000"
 .LASF4938:
 	.ascii	"SMC_ECC_PR6_WORDADDR_W8BIT_Msk (0xffu << SMC_ECC_PR"
@@ -47504,7 +48325,7 @@ main:
 	.ascii	"Is_global_interrupt_enabled() cpu_irq_is_enabled()\000"
 .LASF5624:
 	.ascii	"TC_CMR_TCCLKS_XC1 (0x6u << 0)\000"
-.LASF9384:
+.LASF9400:
 	.ascii	"hacky_delay\000"
 .LASF7641:
 	.ascii	"PIO_PA17_IDX 17\000"
@@ -47570,13 +48391,15 @@ main:
 .LASF6545:
 	.ascii	"US_RNPR_RXNPTR(value) ((US_RNPR_RXNPTR_Msk & ((valu"
 	.ascii	"e) << US_RNPR_RXNPTR_Pos)))\000"
+.LASF7109:
+	.ascii	"REG_SMC_KEY1 (*(WoReg*)0x400E0114U)\000"
 .LASF1229:
 	.ascii	"SCB_SHCSR_BUSFAULTPENDED_Pos 14\000"
 .LASF7554:
 	.ascii	"PIO_PB25B_PWML0 (1u << 25)\000"
 .LASF4571:
 	.ascii	"PWM_CMR_DTE (0x1u << 16)\000"
-.LASF9208:
+.LASF9223:
 	.ascii	"_errno\000"
 .LASF3619:
 	.ascii	"PIO_OWSR_P3 (0x1u << 3)\000"
@@ -47648,7 +48471,7 @@ main:
 	.ascii	"RSTC_MR_KEY_Pos)))\000"
 .LASF3714:
 	.ascii	"PIO_AIMMR_P2 (0x1u << 2)\000"
-.LASF9123:
+.LASF9127:
 	.ascii	"SMC_IDR\000"
 .LASF8137:
 	.ascii	"__always_inline\000"
@@ -47660,17 +48483,14 @@ main:
 	.ascii	"SCS_BASE (0xE000E000UL)\000"
 .LASF3979:
 	.ascii	"PMC_SCDR_PCK0 (0x1u << 8)\000"
-.LASF7995:
-	.ascii	"_SIGSET_T_DECLARED \000"
+.LASF7714:
+	.ascii	"_WANT_IO_LONG_LONG 1\000"
 .LASF3806:
 	.ascii	"PIO_LSR_P30 (0x1u << 30)\000"
 .LASF7740:
 	.ascii	"_END_STD_C \000"
-.LASF610:
-	.ascii	"SAMD20J ( SAM_PART_IS_DEFINED(SAMD20J14) || SAM_PAR"
-	.ascii	"T_IS_DEFINED(SAMD20J15) || SAM_PART_IS_DEFINED(SAMD"
-	.ascii	"20J16) || SAM_PART_IS_DEFINED(SAMD20J17) || SAM_PAR"
-	.ascii	"T_IS_DEFINED(SAMD20J18) )\000"
+.LASF7008:
+	.ascii	"REG_ADC_SR (*(RoReg*)0x400AC01CU)\000"
 .LASF2634:
 	.ascii	"MATRIX_PRAS9_M2PR(value) ((MATRIX_PRAS9_M2PR_Msk & "
 	.ascii	"((value) << MATRIX_PRAS9_M2PR_Pos)))\000"
@@ -47735,7 +48555,7 @@ main:
 .LASF7905:
 	.ascii	"__lock_try_acquire(lock) __retarget_lock_try_acquir"
 	.ascii	"e(lock)\000"
-.LASF9122:
+.LASF9126:
 	.ascii	"SMC_IER\000"
 .LASF7380:
 	.ascii	"PIO_PA5 (1u << 5)\000"
@@ -47794,7 +48614,7 @@ main:
 	.ascii	"SAM4CMS16_1 ( SAM_PART_IS_DEFINED(SAM4CMS16C_1) )\000"
 .LASF3966:
 	.ascii	"PIO_LOCKSR_P30 (0x1u << 30)\000"
-.LASF9257:
+.LASF9272:
 	.ascii	"_nmalloc\000"
 .LASF520:
 	.ascii	"UC3A1 ( AVR32_PART_IS_DEFINED(UC3A1128) || AVR32_PA"
@@ -47821,7 +48641,7 @@ main:
 	.ascii	"__FLT64_MIN__ 2.2250738585072014e-308F64\000"
 .LASF3144:
 	.ascii	"PIO_IDR_P11 (0x1u << 11)\000"
-.LASF9036:
+.LASF9040:
 	.ascii	"ITM_RxBuffer\000"
 .LASF5855:
 	.ascii	"TWI_SR_NACK (0x1u << 8)\000"
@@ -47854,11 +48674,11 @@ main:
 .LASF551:
 	.ascii	"XMEGA_B3 ( AVR8_PART_IS_DEFINED(ATxmega64B3) || AVR"
 	.ascii	"8_PART_IS_DEFINED(ATxmega128B3) )\000"
-.LASF9296:
+.LASF9311:
 	.ascii	"usb_serial_number\000"
 .LASF5981:
 	.ascii	"UART_IMR_RXRDY (0x1u << 0)\000"
-.LASF9147:
+.LASF9151:
 	.ascii	"SMC_CS_NUMBER\000"
 .LASF5544:
 	.ascii	"SUPC_SR_SMWS_PRESENT (0x1u << 2)\000"
@@ -47922,7 +48742,7 @@ main:
 	.ascii	"ID_SPI (20)\000"
 .LASF2439:
 	.ascii	"HSMCI_IMR_CSTOE (0x1u << 23)\000"
-.LASF9362:
+.LASF9377:
 	.ascii	"GENCLK_PCK_SRC_MAINCK_12M_RC\000"
 .LASF6665:
 	.ascii	"REG_TC0_QIER (*(WoReg*)0x400800C8U)\000"
@@ -48014,7 +48834,7 @@ main:
 	.ascii	"SYSCLK_SRC_SLCK_XTAL 1\000"
 .LASF5852:
 	.ascii	"TWI_SR_SVACC (0x1u << 4)\000"
-.LASF9378:
+.LASF9393:
 	.ascii	"xram\000"
 .LASF4577:
 	.ascii	"PWM_CDTYUPD_CDTYUPD_Pos 0\000"
@@ -48043,7 +48863,10 @@ main:
 	.ascii	")\000"
 .LASF5144:
 	.ascii	"SPI_CSR_CSAAT (0x1u << 3)\000"
-.LASF9453:
+.LASF592:
+	.ascii	"SAM3N00 ( SAM_PART_IS_DEFINED(SAM3N00A) || SAM_PART"
+	.ascii	"_IS_DEFINED(SAM3N00B) )\000"
+.LASF9481:
 	.ascii	"__builtin_sprintf\000"
 .LASF1182:
 	.ascii	"SCB_ICSR_RETTOBASE_Msk (1UL << SCB_ICSR_RETTOBASE_P"
@@ -48052,7 +48875,7 @@ main:
 	.ascii	"SSC_IDR_CP0 (0x1u << 8)\000"
 .LASF62:
 	.ascii	"__UINT_FAST16_TYPE__ unsigned int\000"
-.LASF9127:
+.LASF9131:
 	.ascii	"SMC_ECC_CTRL\000"
 .LASF6895:
 	.ascii	"REG_USART2_TNCR (*(RwReg*)0x4009811CU)\000"
@@ -48079,13 +48902,13 @@ main:
 	.ascii	"os)\000"
 .LASF409:
 	.ascii	"__ARM_FEATURE_SIMD32\000"
-.LASF9143:
+.LASF9147:
 	.ascii	"SMC_ECC_PR12\000"
-.LASF9144:
+.LASF9148:
 	.ascii	"SMC_ECC_PR13\000"
-.LASF9145:
+.LASF9149:
 	.ascii	"SMC_ECC_PR14\000"
-.LASF9146:
+.LASF9150:
 	.ascii	"SMC_ECC_PR15\000"
 .LASF6092:
 	.ascii	"UDPHS_INTSTA_DMA_3 (0x1u << 27)\000"
@@ -48098,12 +48921,15 @@ main:
 	.ascii	"o(200, data)\000"
 .LASF1643:
 	.ascii	"ADC_IER_OVRE6 (0x1u << 14)\000"
-.LASF9079:
+.LASF9083:
 	.ascii	"PIO_AIMMR\000"
 .LASF2174:
 	.ascii	"DMAC_CFG_DST_H2SEL (0x1u << 13)\000"
-.LASF5682:
-	.ascii	"TC_CMR_ACPA_TOGGLE (0x3u << 16)\000"
+.LASF610:
+	.ascii	"SAMD20J ( SAM_PART_IS_DEFINED(SAMD20J14) || SAM_PAR"
+	.ascii	"T_IS_DEFINED(SAMD20J15) || SAM_PART_IS_DEFINED(SAMD"
+	.ascii	"20J16) || SAM_PART_IS_DEFINED(SAMD20J17) || SAM_PAR"
+	.ascii	"T_IS_DEFINED(SAMD20J18) )\000"
 .LASF5895:
 	.ascii	"TWI_IMR_GACC (0x1u << 5)\000"
 .LASF7898:
@@ -48130,6 +48956,8 @@ main:
 	.ascii	"SMC_CFG_DTOMUL_X4096 (0x5u << 20)\000"
 .LASF8319:
 	.ascii	"STK600_RCUC3C0 17\000"
+.LASF1245:
+	.ascii	"SCB_SHCSR_BUSFAULTACT_Pos 1\000"
 .LASF5559:
 	.ascii	"SUPC_SR_OSCSEL_CRYST (0x1u << 7)\000"
 .LASF7602:
@@ -48139,7 +48967,7 @@ main:
 .LASF4930:
 	.ascii	"SMC_ECC_PR5_NPARITY_W8BIT_Msk (0x7ffu << SMC_ECC_PR"
 	.ascii	"5_NPARITY_W8BIT_Pos)\000"
-.LASF9390:
+.LASF9406:
 	.ascii	"p_cfg\000"
 .LASF5308:
 	.ascii	"SSC_TSHR_TSDAT_Pos 0\000"
@@ -48147,9 +48975,8 @@ main:
 	.ascii	"WDT_MR_WDV_Pos 0\000"
 .LASF4654:
 	.ascii	"RTC_CALR_DAY_Pos 21\000"
-.LASF8095:
-	.ascii	"__sgetc_raw_r(__ptr,__f) (--(__f)->_r < 0 ? __srget"
-	.ascii	"_r(__ptr, __f) : (int)(*(__f)->_p++))\000"
+.LASF153:
+	.ascii	"__FLT_DECIMAL_DIG__ 9\000"
 .LASF6798:
 	.ascii	"REG_PWM_CMR2 (*(RwReg*)0x4008C240U)\000"
 .LASF6082:
@@ -48230,7 +49057,7 @@ main:
 .LASF4445:
 	.ascii	"PWM_FCR_FCLR(value) ((PWM_FCR_FCLR_Msk & ((value) <"
 	.ascii	"< PWM_FCR_FCLR_Pos)))\000"
-.LASF9424:
+.LASF9452:
 	.ascii	"fpga_program_init\000"
 .LASF6971:
 	.ascii	"REG_UDPHS_DMAADDRESS3 (*(RwReg*)0x400A4334U)\000"
@@ -48266,7 +49093,7 @@ main:
 	.ascii	"_Pos)\000"
 .LASF4308:
 	.ascii	"PWM_IER2_CMPM2 (0x1u << 10)\000"
-.LASF9371:
+.LASF9386:
 	.ascii	"GENCLK_PCK_PRES_4\000"
 .LASF7494:
 	.ascii	"PIO_PB12A_D3 (1u << 12)\000"
@@ -48277,7 +49104,7 @@ main:
 .LASF8491:
 	.ascii	"PIN_PDIC_IN_FLAGS (PIO_TYPE_PIO_INPUT | PIO_DEFAULT"
 	.ascii	")\000"
-.LASF9372:
+.LASF9387:
 	.ascii	"GENCLK_PCK_PRES_8\000"
 .LASF801:
 	.ascii	"MREPEAT87(macro,data) MREPEAT86( macro, data) macro"
@@ -48295,7 +49122,7 @@ main:
 	.ascii	" AVR8_PART_IS_DEFINED(ATmega168A) || AVR8_PART_IS_D"
 	.ascii	"EFINED(ATmega168PA) || AVR8_PART_IS_DEFINED(ATmega3"
 	.ascii	"28) || AVR8_PART_IS_DEFINED(ATmega328P) )\000"
-.LASF9186:
+.LASF9201:
 	.ascii	"_fns\000"
 .LASF4450:
 	.ascii	"PWM_FPV_FPVL0 (0x1u << 16)\000"
@@ -48314,7 +49141,7 @@ main:
 	.ascii	"PIO_PA16A_NPCS0 (1u << 16)\000"
 .LASF5979:
 	.ascii	"UART_IDR_TXBUFE (0x1u << 11)\000"
-.LASF9062:
+.LASF9066:
 	.ascii	"PIO_PUDR\000"
 .LASF3648:
 	.ascii	"PIO_AIMER_P0 (0x1u << 0)\000"
@@ -48359,7 +49186,7 @@ main:
 	.ascii	"PIO_REHLSR_P29 (0x1u << 29)\000"
 .LASF35:
 	.ascii	"__WINT_TYPE__ unsigned int\000"
-.LASF9448:
+.LASF9475:
 	.ascii	"GNU C99 9.3.1 20200408 (release) -mcpu=cortex-m3 -m"
 	.ascii	"long-calls -mfloat-abi=soft -mthumb -march=armv7-m "
 	.ascii	"-g3 -gdwarf-2 -O0 -std=gnu99 -fdata-sections -ffunc"
@@ -48393,7 +49220,7 @@ main:
 	.ascii	" XMEGA_D || XMEGA_E)\000"
 .LASF2518:
 	.ascii	"MATRIX_PRAS1_M4PR_Pos 16\000"
-.LASF9124:
+.LASF9128:
 	.ascii	"SMC_IMR\000"
 .LASF7175:
 	.ascii	"REG_EFC0_FMR (*(RwReg*)0x400E0800U)\000"
@@ -48408,7 +49235,7 @@ main:
 	.ascii	"LER_Pos)\000"
 .LASF7583:
 	.ascii	"PIO_PA15A_SPCK (1u << 15)\000"
-.LASF9063:
+.LASF9067:
 	.ascii	"PIO_PUER\000"
 .LASF7483:
 	.ascii	"PIO_PC6A_A8 (1u << 6)\000"
@@ -48482,13 +49309,11 @@ main:
 	.ascii	"AULTPENDED_Pos)\000"
 .LASF1118:
 	.ascii	"WCHAR_MAX (__WCHAR_MAX__)\000"
-.LASF2512:
-	.ascii	"MATRIX_PRAS1_M2PR_Pos 8\000"
 .LASF7039:
 	.ascii	"REG_DMAC_SADDR1 (*(RwReg*)0x400B0064U)\000"
 .LASF2056:
 	.ascii	"DMAC_EBCISR_CBTC1 (0x1u << 9)\000"
-.LASF9290:
+.LASF9305:
 	.ascii	"SLEEPMGR_SLEEP_WFI\000"
 .LASF7067:
 	.ascii	"REG_SMC_BANK (*(RwReg*)0x400E001CU)\000"
@@ -48580,7 +49405,7 @@ main:
 	.ascii	"__CHAR16_TYPE__ short unsigned int\000"
 .LASF3267:
 	.ascii	"PIO_MDDR_P6 (0x1u << 6)\000"
-.LASF9323:
+.LASF9338:
 	.ascii	"bNumInterfaces\000"
 .LASF5708:
 	.ascii	"TC_CMR_BCPC_Msk (0x3u << TC_CMR_BCPC_Pos)\000"
@@ -48619,6 +49444,8 @@ main:
 	.ascii	"PIO_LSR_P31 (0x1u << 31)\000"
 .LASF7177:
 	.ascii	"REG_EFC0_FSR (*(RoReg*)0x400E0808U)\000"
+.LASF9448:
+	.ascii	"spi_set_clock_polarity\000"
 .LASF5776:
 	.ascii	"TC_BMR_TC0XC0S_TIOA2 (0x3u << 0)\000"
 .LASF5101:
@@ -48677,7 +49504,7 @@ main:
 	.ascii	"__EXP\000"
 .LASF2767:
 	.ascii	"PIO_PSR_P18 (0x1u << 18)\000"
-.LASF9052:
+.LASF9056:
 	.ascii	"PIO_ODSR\000"
 .LASF6277:
 	.ascii	"UDPHS_EPTSTA_CONTROL_DIR_Msk (0x3u << UDPHS_EPTSTA_"
@@ -48754,8 +49581,8 @@ main:
 	.ascii	"PART_IS_DEFINED(SAM4C32E_1) )\000"
 .LASF6366:
 	.ascii	"US_MR_NBSTOP_1_BIT (0x0u << 12)\000"
-.LASF9429:
-	.ascii	"smc_set_setup_timing\000"
+.LASF4343:
+	.ascii	"PWM_IMR2_ENDTX (0x1u << 1)\000"
 .LASF4844:
 	.ascii	"SMC_ECC_PR0_BITADDR_W9BIT_Msk (0x7u << SMC_ECC_PR0_"
 	.ascii	"BITADDR_W9BIT_Pos)\000"
@@ -48767,23 +49594,23 @@ main:
 	.ascii	"PIO_IFDGSR_P15 (0x1u << 15)\000"
 .LASF2197:
 	.ascii	"DMAC_WPMR_WPKEY_Pos 8\000"
-.LASF9041:
-	.ascii	"Reserved1\000"
 .LASF9045:
-	.ascii	"Reserved2\000"
+	.ascii	"Reserved1\000"
 .LASF9049:
+	.ascii	"Reserved2\000"
+.LASF9053:
 	.ascii	"Reserved3\000"
-.LASF9061:
-	.ascii	"Reserved4\000"
 .LASF9065:
+	.ascii	"Reserved4\000"
+.LASF9069:
 	.ascii	"Reserved5\000"
-.LASF9067:
+.LASF9071:
 	.ascii	"Reserved6\000"
-.LASF9072:
-	.ascii	"Reserved7\000"
 .LASF9076:
-	.ascii	"Reserved8\000"
+	.ascii	"Reserved7\000"
 .LASF9080:
+	.ascii	"Reserved8\000"
+.LASF9084:
 	.ascii	"Reserved9\000"
 .LASF3963:
 	.ascii	"PIO_LOCKSR_P27 (0x1u << 27)\000"
@@ -48850,8 +49677,8 @@ main:
 	.ascii	"REG_TWI1_IADR (*(RwReg*)0x4008800CU)\000"
 .LASF1694:
 	.ascii	"ADC_RCR_RXCTR_Pos 0\000"
-.LASF5655:
-	.ascii	"TC_CMR_LDRB_EDGE (0x3u << 18)\000"
+.LASF1161:
+	.ascii	"SCB_CPUID_PARTNO_Pos 4\000"
 .LASF2444:
 	.ascii	"HSMCI_IMR_ACKRCV (0x1u << 28)\000"
 .LASF4358:
@@ -48864,11 +49691,13 @@ main:
 	.ascii	"SPI_CSR_BITS_14_BIT (0x6u << 4)\000"
 .LASF3200:
 	.ascii	"PIO_ISR_P3 (0x1u << 3)\000"
+.LASF7437:
+	.ascii	"PIO_PC29X1_AD5 (1u << 29)\000"
 .LASF6258:
 	.ascii	"UDPHS_EPTSTA_TOGGLESQ_STA_DATA2 (0x2u << 6)\000"
 .LASF7090:
 	.ascii	"REG_SMC_CYCLE0 (*(RwReg*)0x400E0078U)\000"
-.LASF9383:
+.LASF9398:
 	.ascii	"gcfg\000"
 .LASF5016:
 	.ascii	"SMC_PULSE_NCS_WR_PULSE(value) ((SMC_PULSE_NCS_WR_PU"
@@ -48917,6 +49746,8 @@ main:
 .LASF719:
 	.ascii	"MREPEAT5(macro,data) MREPEAT4( macro, data) macro( "
 	.ascii	"4, data)\000"
+.LASF9033:
+	.ascii	"int16_t\000"
 .LASF8082:
 	.ascii	"SEEK_SET 0\000"
 .LASF2242:
@@ -48930,7 +49761,7 @@ main:
 	.ascii	"CHIPID_CIDR_ARCH_SAM5A (0xA5u << 20)\000"
 .LASF7856:
 	.ascii	"_Nullable \000"
-.LASF9019:
+.LASF9023:
 	.ascii	"short int\000"
 .LASF8247:
 	.ascii	"Swap32(u32) ((U32)(((U32)Swap16((U32)(u32) >> 16)) "
@@ -48945,7 +49776,7 @@ main:
 	.ascii	"PIO_LOCKSR_P0 (0x1u << 0)\000"
 .LASF2720:
 	.ascii	"PIO_PDR_P3 (0x1u << 3)\000"
-.LASF9022:
+.LASF9025:
 	.ascii	"short unsigned int\000"
 .LASF6330:
 	.ascii	"US_CR_RTSDIS (0x1u << 19)\000"
@@ -48962,7 +49793,7 @@ main:
 	.ascii	"((value) << MATRIX_PRAS2_M0PR_Pos)))\000"
 .LASF1052:
 	.ascii	"_INT32_T_DECLARED \000"
-.LASF9441:
+.LASF9468:
 	.ascii	"pmc_osc_is_ready_32kxtal\000"
 .LASF6197:
 	.ascii	"UDPHS_EPTCTLDIS_EPT_DISABL (0x1u << 0)\000"
@@ -49073,7 +49904,7 @@ main:
 	.ascii	"_MACHINE__TYPES_H \000"
 .LASF5217:
 	.ascii	"SSC_RFMR_DATLEN_Pos 0\000"
-.LASF9023:
+.LASF9026:
 	.ascii	"__int32_t\000"
 .LASF6435:
 	.ascii	"US_IMR_ENDTX (0x1u << 4)\000"
@@ -49186,9 +50017,9 @@ main:
 	.ascii	"SSC_TFMR_FSLEN_Msk (0xfu << SSC_TFMR_FSLEN_Pos)\000"
 .LASF6209:
 	.ascii	"UDPHS_EPTCTLDIS_ERR_FL_ISO (0x1u << 12)\000"
-.LASF9141:
+.LASF9145:
 	.ascii	"SMC_ECC_PR10\000"
-.LASF9142:
+.LASF9146:
 	.ascii	"SMC_ECC_PR11\000"
 .LASF5958:
 	.ascii	"UART_MR_CHMODE_AUTOMATIC (0x1u << 14)\000"
@@ -49269,7 +50100,7 @@ main:
 	.ascii	"ADC12B_MR_TRGEN_DIS (0x0u << 0)\000"
 .LASF1115:
 	.ascii	"PTRDIFF_MAX (__PTRDIFF_MAX__)\000"
-.LASF9243:
+.LASF9258:
 	.ascii	"_r48\000"
 .LASF5439:
 	.ascii	"SUPC_WUMR_WKUPDBC_32768_SCLK (0x5u << 12)\000"
@@ -49293,7 +50124,7 @@ main:
 	.ascii	"MATRIX_PRAS6_M2PR_Pos 8\000"
 .LASF1988:
 	.ascii	"DMAC_GCFG_ARB_CFG_FIXED (0x0u << 4)\000"
-.LASF9396:
+.LASF9412:
 	.ascii	"sleepmgr_enter_sleep\000"
 .LASF893:
 	.ascii	"MREPEAT179(macro,data) MREPEAT178(macro, data) macr"
@@ -49329,11 +50160,11 @@ main:
 	.ascii	"USB_PID_ATMEL_DFU_ATXMEGA128B1 0x2FEA\000"
 .LASF7436:
 	.ascii	"PIO_PC28X1_AD4 (1u << 28)\000"
-.LASF9407:
+.LASF9426:
 	.ascii	"pll_enable\000"
 .LASF5874:
 	.ascii	"TWI_IER_ENDTX (0x1u << 13)\000"
-.LASF9171:
+.LASF9186:
 	.ascii	"__tm_min\000"
 .LASF7507:
 	.ascii	"PIO_PC16A_NCS2 (1u << 16)\000"
@@ -49392,7 +50223,7 @@ main:
 .LASF961:
 	.ascii	"MREPEAT247(macro,data) MREPEAT246(macro, data) macr"
 	.ascii	"o(246, data)\000"
-.LASF9435:
+.LASF9462:
 	.ascii	"pmc_mainck_osc_select\000"
 .LASF2589:
 	.ascii	"MATRIX_PRAS6_M2PR(value) ((MATRIX_PRAS6_M2PR_Msk & "
@@ -49445,7 +50276,7 @@ main:
 	.ascii	"PIO_AIMDR_P28 (0x1u << 28)\000"
 .LASF3784:
 	.ascii	"PIO_LSR_P8 (0x1u << 8)\000"
-.LASF9187:
+.LASF9202:
 	.ascii	"__sbuf\000"
 .LASF515:
 	.ascii	"ATMEL_PARTS_H \000"
@@ -49461,7 +50292,7 @@ main:
 	.ascii	"SUPC_SR_WKUPS_NO (0x0u << 1)\000"
 .LASF4499:
 	.ascii	"PWM_WPSR_WPVSRC_Pos 16\000"
-.LASF9405:
+.LASF9424:
 	.ascii	"sleepmgr_get_sleep_mode\000"
 .LASF6750:
 	.ascii	"REG_PWM_CMPV0 (*(RwReg*)0x4008C130U)\000"
@@ -49491,7 +50322,7 @@ main:
 .LASF5285:
 	.ascii	"SSC_TFMR_FSLEN(value) ((SSC_TFMR_FSLEN_Msk & ((valu"
 	.ascii	"e) << SSC_TFMR_FSLEN_Pos)))\000"
-.LASF9251:
+.LASF9266:
 	.ascii	"_mbrtowc_state\000"
 .LASF5575:
 	.ascii	"SUPC_SR_WKUPIS4 (0x1u << 20)\000"
@@ -49528,7 +50359,7 @@ main:
 	.ascii	"o(231, data)\000"
 .LASF3477:
 	.ascii	"PIO_SCIFSR_P24 (0x1u << 24)\000"
-.LASF9202:
+.LASF9217:
 	.ascii	"_offset\000"
 .LASF3314:
 	.ascii	"PIO_MDSR_P21 (0x1u << 21)\000"
@@ -49601,7 +50432,7 @@ main:
 	.ascii	"SMC_TIMINGS_TAR_Pos 8\000"
 .LASF7012:
 	.ascii	"REG_ADC_IMR (*(RoReg*)0x400AC02CU)\000"
-.LASF9199:
+.LASF9214:
 	.ascii	"_ubuf\000"
 .LASF5762:
 	.ascii	"TC_IDR_ETRGS (0x1u << 7)\000"
@@ -49664,7 +50495,7 @@ main:
 	.ascii	"SUPC_WUMR_FWUPDBC_32_SCLK (0x2u << 8)\000"
 .LASF8376:
 	.ascii	"SAMD11_XPLAINED_PRO 74\000"
-.LASF9278:
+.LASF9293:
 	.ascii	"ctrl\000"
 .LASF931:
 	.ascii	"MREPEAT217(macro,data) MREPEAT216(macro, data) macr"
@@ -49712,6 +50543,8 @@ main:
 .LASF860:
 	.ascii	"MREPEAT146(macro,data) MREPEAT145(macro, data) macr"
 	.ascii	"o(145, data)\000"
+.LASF7748:
+	.ascii	"__need_size_t \000"
 .LASF3852:
 	.ascii	"PIO_FELLSR_P12 (0x1u << 12)\000"
 .LASF7981:
@@ -49743,7 +50576,7 @@ main:
 .LASF863:
 	.ascii	"MREPEAT149(macro,data) MREPEAT148(macro, data) macr"
 	.ascii	"o(148, data)\000"
-.LASF9161:
+.LASF9176:
 	.ascii	"__ULong\000"
 .LASF6111:
 	.ascii	"UDPHS_TST_SPEED_CFG_Msk (0x3u << UDPHS_TST_SPEED_CF"
@@ -49759,7 +50592,7 @@ main:
 .LASF763:
 	.ascii	"MREPEAT49(macro,data) MREPEAT48( macro, data) macro"
 	.ascii	"( 48, data)\000"
-.LASF9064:
+.LASF9068:
 	.ascii	"PIO_PUSR\000"
 .LASF5380:
 	.ascii	"SUPC_SMMR_SMTH_2_9V (0xAu << 0)\000"
@@ -49821,11 +50654,11 @@ main:
 	.ascii	"UART_SR_RXBUFF (0x1u << 12)\000"
 .LASF3322:
 	.ascii	"PIO_MDSR_P29 (0x1u << 29)\000"
-.LASF9149:
+.LASF9153:
 	.ascii	"SMC_KEY1\000"
-.LASF9150:
+.LASF9154:
 	.ascii	"SMC_KEY2\000"
-.LASF9174:
+.LASF9189:
 	.ascii	"__tm_mon\000"
 .LASF2249:
 	.ascii	"HSMCI_DTOR_DTOMUL_1 (0x0u << 4)\000"
@@ -49866,8 +50699,8 @@ main:
 	.ascii	"SCB_AIRCR_VECTKEYSTAT_Pos 16\000"
 .LASF91:
 	.ascii	"__INTMAX_C(c) c ## LL\000"
-.LASF5681:
-	.ascii	"TC_CMR_ACPA_CLEAR (0x2u << 16)\000"
+.LASF4333:
+	.ascii	"PWM_IDR2_CMPM7 (0x1u << 15)\000"
 .LASF8769:
 	.ascii	"USB_DEVICE_GET_SERIAL_NAME_LENGTH 32\000"
 .LASF8035:
@@ -49945,8 +50778,8 @@ main:
 	.ascii	"SUPC_WUIR_WKUPT0_HIGH_TO_LOW (0x0u << 16)\000"
 .LASF2042:
 	.ascii	"DMAC_EBCIMR_BTC3 (0x1u << 3)\000"
-.LASF232:
-	.ascii	"__DEC32_MANT_DIG__ 7\000"
+.LASF2374:
+	.ascii	"HSMCI_IER_RXRDY (0x1u << 1)\000"
 .LASF5374:
 	.ascii	"SUPC_SMMR_SMTH_2_3V (0x4u << 0)\000"
 .LASF839:
@@ -49971,7 +50804,7 @@ main:
 	.ascii	"( 40, data)\000"
 .LASF2793:
 	.ascii	"PIO_OER_P12 (0x1u << 12)\000"
-.LASF9450:
+.LASF9477:
 	.ascii	"C:\\Users\\adewa\\Documents\\Atmel Studio\\7.0\\Chi"
 	.ascii	"pWhisperer-Husky\\ChipWhisperer-Husky\\src\000"
 .LASF3264:
@@ -50017,9 +50850,9 @@ main:
 	.ascii	"os)\000"
 .LASF5479:
 	.ascii	"SUPC_WUIR_WKUPEN13 (0x1u << 13)\000"
-.LASF9282:
+.LASF9297:
 	.ascii	"PIO_PERIPH_A\000"
-.LASF9283:
+.LASF9298:
 	.ascii	"PIO_PERIPH_B\000"
 .LASF299:
 	.ascii	"__USACCUM_IBIT__ 8\000"
@@ -50037,7 +50870,7 @@ main:
 	.ascii	"PIO_PB6A_TIOB1 (1u << 6)\000"
 .LASF335:
 	.ascii	"__HQ_FBIT__ 15\000"
-.LASF9332:
+.LASF9347:
 	.ascii	"getsetting\000"
 .LASF1345:
 	.ascii	"DWT_CTRL_CYCTAP_Pos 9\000"
@@ -50056,8 +50889,10 @@ main:
 	.ascii	"ID_TC0 (22)\000"
 .LASF7373:
 	.ascii	"GPBR ((Gpbr *)0x400E1290U)\000"
-.LASF9426:
+.LASF9442:
 	.ascii	"pio_configure_pin\000"
+.LASF9260:
+	.ascii	"_mbtowc_state\000"
 .LASF1434:
 	.ascii	"TPI_ITCTRL_Mode_Msk (0x1UL << TPI_ITCTRL_Mode_Pos)\000"
 .LASF3278:
@@ -50066,6 +50901,8 @@ main:
 	.ascii	"DMAC_EBCIDR_CBTC3 (0x1u << 11)\000"
 .LASF6911:
 	.ascii	"REG_UDPHS_EPTCTLDIS0 (*(WoReg*)0x400A4108U)\000"
+.LASF3384:
+	.ascii	"PIO_PUER_P27 (0x1u << 27)\000"
 .LASF5545:
 	.ascii	"SUPC_SR_BODRSTS (0x1u << 3)\000"
 .LASF1113:
@@ -50148,8 +50985,6 @@ main:
 	.ascii	"PIN_PDIDTX_GPIO (PIO_PA20_IDX)\000"
 .LASF6751:
 	.ascii	"REG_PWM_CMPVUPD0 (*(WoReg*)0x4008C134U)\000"
-.LASF3698:
-	.ascii	"PIO_AIMDR_P18 (0x1u << 18)\000"
 .LASF1260:
 	.ascii	"SCB_HFSR_VECTTBL_Msk (1UL << SCB_HFSR_VECTTBL_Pos)\000"
 .LASF2812:
@@ -50161,7 +50996,7 @@ main:
 	.ascii	"bit_reverse64(u64) ((U64)(((U64)bit_reverse32((U64)"
 	.ascii	"(u64) >> 32)) | ((U64)bit_reverse32((U64)(u64)) << "
 	.ascii	"32)))\000"
-.LASF9183:
+.LASF9198:
 	.ascii	"_is_cxa\000"
 .LASF8346:
 	.ascii	"STK600_RCUC3L3 44\000"
@@ -50295,7 +51130,7 @@ main:
 	.ascii	"___int_least16_t_defined 1\000"
 .LASF6015:
 	.ascii	"UART_TPR_TXPTR_Pos 0\000"
-.LASF9307:
+.LASF9322:
 	.ascii	"bDeviceSubClass\000"
 .LASF7645:
 	.ascii	"PIO_PA21_IDX 21\000"
@@ -50340,7 +51175,7 @@ main:
 	.ascii	"PIO_ISR_P11 (0x1u << 11)\000"
 .LASF3626:
 	.ascii	"PIO_OWSR_P10 (0x1u << 10)\000"
-.LASF9228:
+.LASF9243:
 	.ascii	"__sf\000"
 .LASF6779:
 	.ascii	"REG_PWM_CMPVUPD7 (*(WoReg*)0x4008C1A4U)\000"
@@ -50372,9 +51207,8 @@ main:
 .LASF5224:
 	.ascii	"SSC_RFMR_DATNB(value) ((SSC_RFMR_DATNB_Msk & ((valu"
 	.ascii	"e) << SSC_RFMR_DATNB_Pos)))\000"
-.LASF592:
-	.ascii	"SAM3N00 ( SAM_PART_IS_DEFINED(SAM3N00A) || SAM_PART"
-	.ascii	"_IS_DEFINED(SAM3N00B) )\000"
+.LASF258:
+	.ascii	"__USFRACT_FBIT__ 8\000"
 .LASF3084:
 	.ascii	"PIO_PDSR_P15 (0x1u << 15)\000"
 .LASF6693:
@@ -50419,7 +51253,7 @@ main:
 	.ascii	"PWM_CMPMUPD_CTRUPD_Pos 4\000"
 .LASF5822:
 	.ascii	"TWI_CR_SWRST (0x1u << 7)\000"
-.LASF9169:
+.LASF9184:
 	.ascii	"__tm\000"
 .LASF5672:
 	.ascii	"TC_CMR_WAVSEL_Msk (0x3u << TC_CMR_WAVSEL_Pos)\000"
@@ -50430,7 +51264,7 @@ main:
 	.ascii	"CLE_Pos)\000"
 .LASF3256:
 	.ascii	"PIO_MDER_P27 (0x1u << 27)\000"
-.LASF9270:
+.LASF9285:
 	.ascii	"double\000"
 .LASF4943:
 	.ascii	"SMC_ECC_PR7_WORDADDR_Pos 3\000"
@@ -50499,7 +51333,7 @@ main:
 	.ascii	"SPI_CSR_CPOL (0x1u << 0)\000"
 .LASF7578:
 	.ascii	"PIO_PA1B_NPCS2 (1u << 1)\000"
-.LASF9305:
+.LASF9320:
 	.ascii	"bcdUSB\000"
 .LASF4780:
 	.ascii	"SMC_IDR_XFRDONE (0x1u << 16)\000"
@@ -50509,7 +51343,7 @@ main:
 	.ascii	"SMC_SETUP_NCS_RD_SETUP_Pos 24\000"
 .LASF2683:
 	.ascii	"PERIPH_PTSR_TXTEN (0x1u << 8)\000"
-.LASF9237:
+.LASF9252:
 	.ascii	"_unused_rand\000"
 .LASF8720:
 	.ascii	"TC_H_INCLUDED \000"
@@ -50517,7 +51351,7 @@ main:
 	.ascii	"_stdout_r(x) ((x)->_stdout)\000"
 .LASF418:
 	.ascii	"__thumb__ 1\000"
-.LASF9247:
+.LASF9262:
 	.ascii	"_l64a_buf\000"
 .LASF5094:
 	.ascii	"SPI_MR_LLB (0x1u << 7)\000"
@@ -50593,9 +51427,9 @@ main:
 	.ascii	"ADC12B_MR_TRGSEL_ADC_TRIG3 (0x3u << 1)\000"
 .LASF75:
 	.ascii	"__WCHAR_MAX__ 0xffffffffU\000"
-.LASF9285:
+.LASF9300:
 	.ascii	"PIO_OUTPUT_0\000"
-.LASF9286:
+.LASF9301:
 	.ascii	"PIO_OUTPUT_1\000"
 .LASF8943:
 	.ascii	"USB_CONFIG_ATTR_SELF_POWERED (1 << 6)\000"
@@ -50731,7 +51565,7 @@ main:
 	.ascii	"p_us * slowck_freq / 8 / 1000000) : 0xFF)\000"
 .LASF7670:
 	.ascii	"PIO_PB14_IDX 46\000"
-.LASF9295:
+.LASF9310:
 	.ascii	"sleepmgr_locks\000"
 .LASF1784:
 	.ascii	"ADC12B_LCDR_LDATA_Msk (0xfffu << ADC12B_LCDR_LDATA_"
@@ -50751,7 +51585,7 @@ main:
 	.ascii	"DADDR_Pos)\000"
 .LASF6951:
 	.ascii	"REG_UDPHS_EPTCFG6 (*(RwReg*)0x400A41C0U)\000"
-.LASF9205:
+.LASF9220:
 	.ascii	"_mbstate\000"
 .LASF4088:
 	.ascii	"CKGR_MCFR_MAINFRDY (0x1u << 16)\000"
@@ -50786,7 +51620,7 @@ main:
 .LASF767:
 	.ascii	"MREPEAT53(macro,data) MREPEAT52( macro, data) macro"
 	.ascii	"( 52, data)\000"
-.LASF9343:
+.LASF9358:
 	.ascii	"conf_bos\000"
 .LASF3556:
 	.ascii	"PIO_OWER_P4 (0x1u << 4)\000"
@@ -50859,7 +51693,7 @@ main:
 	.ascii	"UART_PTSR_RXTEN (0x1u << 0)\000"
 .LASF6663:
 	.ascii	"REG_TC0_BCR (*(WoReg*)0x400800C0U)\000"
-.LASF9309:
+.LASF9324:
 	.ascii	"bMaxPacketSize0\000"
 .LASF5513:
 	.ascii	"SUPC_WUIR_WKUPT8_HIGH_TO_LOW (0x0u << 24)\000"
@@ -50905,15 +51739,15 @@ main:
 	.ascii	"PIO_PB10B_DSR0 (1u << 10)\000"
 .LASF163:
 	.ascii	"__DBL_MIN_EXP__ (-1021)\000"
-.LASF9155:
+.LASF9170:
 	.ascii	"_fpos_t\000"
 .LASF5486:
 	.ascii	"SUPC_WUIR_WKUPEN15_NOT_ENABLE (0x0u << 15)\000"
-.LASF9173:
+.LASF9188:
 	.ascii	"__tm_mday\000"
 .LASF978:
 	.ascii	"_NEWLIB_VERSION \"3.3.0\"\000"
-.LASF9197:
+.LASF9212:
 	.ascii	"_seek\000"
 .LASF1769:
 	.ascii	"ADC12B_SR_EOC6 (0x1u << 6)\000"
@@ -50931,7 +51765,7 @@ main:
 	.ascii	"PIO_MDSR_P26 (0x1u << 26)\000"
 .LASF235:
 	.ascii	"__DEC32_MIN__ 1E-95DF\000"
-.LASF9345:
+.LASF9360:
 	.ascii	"udc_config\000"
 .LASF7085:
 	.ascii	"REG_SMC_ECC_PR13 (*(RoReg*)0x400E0064U)\000"
@@ -50985,6 +51819,8 @@ main:
 	.ascii	"e) << DMAC_DSCR_DSCR_Pos)))\000"
 .LASF90:
 	.ascii	"__INTMAX_MAX__ 0x7fffffffffffffffLL\000"
+.LASF9449:
+	.ascii	"spi_set_bits_per_transfer\000"
 .LASF7999:
 	.ascii	"_howmany(x,y) (((x)+((y)-1))/(y))\000"
 .LASF8634:
@@ -51092,6 +51928,8 @@ main:
 .LASF5072:
 	.ascii	"SMC_KEY1_KEY1(value) ((SMC_KEY1_KEY1_Msk & ((value)"
 	.ascii	" << SMC_KEY1_KEY1_Pos)))\000"
+.LASF309:
+	.ascii	"__UACCUM_IBIT__ 16\000"
 .LASF5183:
 	.ascii	"SSC_RCMR_CKS_Pos 0\000"
 .LASF567:
@@ -51102,7 +51940,7 @@ main:
 	.ascii	"_DEFINED(ATmega644A) || AVR8_PART_IS_DEFINED(ATmega"
 	.ascii	"644PA) || AVR8_PART_IS_DEFINED(ATmega1284P) || AVR8"
 	.ascii	"_PART_IS_DEFINED(ATmega128RFA1) )\000"
-.LASF9274:
+.LASF9289:
 	.ascii	"PLL_SRC_MAINCK_XTAL\000"
 .LASF2840:
 	.ascii	"PIO_ODR_P27 (0x1u << 27)\000"
@@ -51157,7 +51995,7 @@ main:
 	.ascii	"PWM_IER2_ENDTX (0x1u << 1)\000"
 .LASF2085:
 	.ascii	"DMAC_CHSR_ENA2 (0x1u << 2)\000"
-.LASF9255:
+.LASF9270:
 	.ascii	"_h_errno\000"
 .LASF3550:
 	.ascii	"PIO_SCDR_DIV_Msk (0x3fffu << PIO_SCDR_DIV_Pos)\000"
@@ -51253,8 +52091,6 @@ main:
 	.ascii	")\000"
 .LASF7724:
 	.ascii	"_FSEEK_OPTIMIZATION 1\000"
-.LASF2682:
-	.ascii	"PERIPH_PTSR_RXTEN (0x1u << 0)\000"
 .LASF3765:
 	.ascii	"PIO_ESR_P21 (0x1u << 21)\000"
 .LASF6847:
@@ -51276,8 +52112,6 @@ main:
 	.ascii	"PIO_ODSR_P23 (0x1u << 23)\000"
 .LASF2940:
 	.ascii	"PIO_IFDR_P31 (0x1u << 31)\000"
-.LASF5126:
-	.ascii	"SPI_IER_UNDES (0x1u << 10)\000"
 .LASF5355:
 	.ascii	"SSC_WPSR_WPVS (0x1u << 0)\000"
 .LASF3881:
@@ -51289,7 +52123,7 @@ main:
 	.ascii	"SUPC_WUIR_WKUPEN2 (0x1u << 2)\000"
 .LASF7499:
 	.ascii	"PIO_PB25A_D8 (1u << 25)\000"
-.LASF9071:
+.LASF9075:
 	.ascii	"PIO_SCDR\000"
 .LASF3798:
 	.ascii	"PIO_LSR_P22 (0x1u << 22)\000"
@@ -51339,8 +52173,8 @@ main:
 	.ascii	"long\000"
 .LASF4274:
 	.ascii	"PWM_ISR1_CHID3 (0x1u << 3)\000"
-.LASF7748:
-	.ascii	"__need_size_t \000"
+.LASF1121:
+	.ascii	"INT8_C(x) __INT8_C(x)\000"
 .LASF1945:
 	.ascii	"CHIPID_CIDR_ARCH_AT91SAM7Sxx (0x70u << 20)\000"
 .LASF4253:
@@ -51362,9 +52196,9 @@ main:
 	.ascii	"STK600_RC044X 24\000"
 .LASF420:
 	.ascii	"__THUMBEL__ 1\000"
-.LASF9213:
+.LASF9228:
 	.ascii	"_emergency\000"
-.LASF9423:
+.LASF9451:
 	.ascii	"board_init\000"
 .LASF7461:
 	.ascii	"PIO_PC24A_A18 (1u << 24)\000"
@@ -51410,7 +52244,7 @@ main:
 	.ascii	"PIO_AIMER_P23 (0x1u << 23)\000"
 .LASF8410:
 	.ascii	"PINS_ADC12B_TRIG PIO_PA2_IDX\000"
-.LASF9224:
+.LASF9239:
 	.ascii	"_new\000"
 .LASF1521:
 	.ascii	"CoreDebug_DEMCR_VC_BUSERR_Pos 8\000"
@@ -51426,7 +52260,7 @@ main:
 	.ascii	"PIO_PC2A_A4 (1u << 2)\000"
 .LASF1786:
 	.ascii	"ADC12B_IER_EOC1 (0x1u << 1)\000"
-.LASF9304:
+.LASF9319:
 	.ascii	"bDescriptorType\000"
 .LASF2577:
 	.ascii	"MATRIX_PRAS5_M3PR(value) ((MATRIX_PRAS5_M3PR_Msk & "
@@ -51484,7 +52318,7 @@ main:
 	.ascii	"PIO_PA14 (1u << 14)\000"
 .LASF8110:
 	.ascii	"L_ctermid 16\000"
-.LASF9261:
+.LASF9276:
 	.ascii	"_impure_ptr\000"
 .LASF4594:
 	.ascii	"PWM_DTUPD_DTHUPD_Pos 0\000"
@@ -51505,13 +52339,13 @@ main:
 	.ascii	"( 33, data)\000"
 .LASF6047:
 	.ascii	"UDPHS_CTRL_DETACH (0x1u << 9)\000"
-.LASF9234:
+.LASF9249:
 	.ascii	"_seed\000"
 .LASF7573:
 	.ascii	"PIO_PA14A_MOSI (1u << 14)\000"
 .LASF1570:
 	.ascii	"ADC_MR_LOWRES_BITS_8 (0x1u << 4)\000"
-.LASF9419:
+.LASF9438:
 	.ascii	"flash_read_unique_id\000"
 .LASF3081:
 	.ascii	"PIO_PDSR_P12 (0x1u << 12)\000"
@@ -51564,7 +52398,7 @@ main:
 	.ascii	"PIO_PB21_IDX 53\000"
 .LASF1399:
 	.ascii	"TPI_TRIGGER_TRIGGER_Pos 0\000"
-.LASF9425:
+.LASF9453:
 	.ascii	"pmc_enable_periph_clk\000"
 .LASF2628:
 	.ascii	"MATRIX_PRAS9_M0PR(value) ((MATRIX_PRAS9_M0PR_Msk & "
@@ -51614,7 +52448,7 @@ main:
 	.ascii	"UTILS_INTERRUPT_H \000"
 .LASF4356:
 	.ascii	"PWM_IMR2_CMPU2 (0x1u << 18)\000"
-.LASF9385:
+.LASF9401:
 	.ascii	"phywhisperer_setup_pins\000"
 .LASF4256:
 	.ascii	"PWM_IDR1_CHID1 (0x1u << 1)\000"
@@ -51775,6 +52609,8 @@ main:
 	.ascii	"SUPC_WUIR_WKUPEN6 (0x1u << 6)\000"
 .LASF8338:
 	.ascii	"SAM3S_EK2 36\000"
+.LASF232:
+	.ascii	"__DEC32_MANT_DIG__ 7\000"
 .LASF8822:
 	.ascii	"USB_PID_ATMEL_UC3_MS 0x2301\000"
 .LASF5718:
@@ -51850,7 +52686,7 @@ main:
 	.ascii	"UC3B (UC3B0 || UC3B1)\000"
 .LASF7163:
 	.ascii	"REG_UART_TPR (*(RwReg*)0x400E0708U)\000"
-.LASF9294:
+.LASF9309:
 	.ascii	"SLEEPMGR_NR_OF_MODES\000"
 .LASF8525:
 	.ascii	"board_power(a) if (a){gpio_set_pin_high(PIN_PWRON_G"
@@ -51902,7 +52738,7 @@ main:
 	.ascii	"< PWM_FMR_FMOD_Pos)))\000"
 .LASF60:
 	.ascii	"__INT_FAST64_TYPE__ long long int\000"
-.LASF9157:
+.LASF9172:
 	.ascii	"__wchb\000"
 .LASF8698:
 	.ascii	"NFCADDR_CMD_ACYCLE_NONE (0x0u << 19)\000"
@@ -51943,9 +52779,6 @@ main:
 	.ascii	"RDADDR_Pos)\000"
 .LASF1815:
 	.ascii	"ADC12B_IDR_OVRE2 (0x1u << 10)\000"
-.LASF1504:
-	.ascii	"CoreDebug_DCRSR_REGWnR_Msk (1UL << CoreDebug_DCRSR_"
-	.ascii	"REGWnR_Pos)\000"
 .LASF5530:
 	.ascii	"SUPC_WUIR_WKUPT14 (0x1u << 30)\000"
 .LASF7383:
@@ -51954,7 +52787,7 @@ main:
 	.ascii	"NFCADDR_CMD_ACYCLE (0x7u << 19)\000"
 .LASF1061:
 	.ascii	"_UINTPTR_T_DECLARED \000"
-.LASF9113:
+.LASF9117:
 	.ascii	"SMC_SETUP\000"
 .LASF7921:
 	.ascii	"_REENT_ASCTIME_SIZE 26\000"
@@ -51963,7 +52796,7 @@ main:
 .LASF7873:
 	.ascii	"__requires_unlocked(...) __lock_annotate(locks_excl"
 	.ascii	"uded(__VA_ARGS__))\000"
-.LASF9037:
+.LASF9041:
 	.ascii	"SystemCoreClock\000"
 .LASF4873:
 	.ascii	"SMC_ECC_SR2_RECERR10 (0x1u << 8)\000"
@@ -51971,15 +52804,14 @@ main:
 	.ascii	"PIO_PC16X1_AD12B5 (1u << 16)\000"
 .LASF1809:
 	.ascii	"ADC12B_IDR_EOC4 (0x1u << 4)\000"
-.LASF9210:
+.LASF9225:
 	.ascii	"_stdout\000"
 .LASF5395:
 	.ascii	"SUPC_SMMR_SMRSTEN_ENABLE (0x1u << 12)\000"
 .LASF5712:
 	.ascii	"TC_CMR_BCPC_TOGGLE (0x3u << 26)\000"
-.LASF1276:
-	.ascii	"SCnSCB_ACTLR_DISDEFWBUF_Msk (1UL << SCnSCB_ACTLR_DI"
-	.ascii	"SDEFWBUF_Pos)\000"
+.LASF4384:
+	.ascii	"PWM_OOV_OOVH2 (0x1u << 2)\000"
 .LASF4682:
 	.ascii	"RTC_SR_ALARM (0x1u << 1)\000"
 .LASF4116:
@@ -52097,8 +52929,9 @@ main:
 	.ascii	"TC_CMR_ACPC_NONE (0x0u << 18)\000"
 .LASF976:
 	.ascii	"_SYS_FEATURES_H \000"
-.LASF6889:
-	.ascii	"REG_USART2_RCR (*(RwReg*)0x40098104U)\000"
+.LASF776:
+	.ascii	"MREPEAT62(macro,data) MREPEAT61( macro, data) macro"
+	.ascii	"( 61, data)\000"
 .LASF4487:
 	.ascii	"PWM_WPSR_WPSWS1 (0x1u << 1)\000"
 .LASF2309:
@@ -52163,7 +52996,7 @@ main:
 	.ascii	"PIO_IT_AIME (1u << 4)\000"
 .LASF1899:
 	.ascii	"CHIPID_CIDR_NVPSIZ_1024K (0xCu << 8)\000"
-.LASF9073:
+.LASF9077:
 	.ascii	"PIO_OWER\000"
 .LASF4808:
 	.ascii	"SMC_ECC_MD_ECC_PAGESIZE_PS2048_64 (0x2u << 0)\000"
@@ -52212,7 +53045,7 @@ main:
 	.ascii	"PIO_OWSR_P27 (0x1u << 27)\000"
 .LASF183:
 	.ascii	"__LDBL_MAX__ 1.7976931348623157e+308L\000"
-.LASF9241:
+.LASF9256:
 	.ascii	"_gamma_signgam\000"
 .LASF2685:
 	.ascii	"PIO_PER_P0 (0x1u << 0)\000"
@@ -52228,9 +53061,9 @@ main:
 	.ascii	"__INT_LEAST64_WIDTH__ 64\000"
 .LASF2430:
 	.ascii	"HSMCI_IMR_SDIOWAIT (0x1u << 12)\000"
-.LASF9031:
+.LASF9035:
 	.ascii	"int32_t\000"
-.LASF9334:
+.LASF9349:
 	.ascii	"udi_api_t\000"
 .LASF7032:
 	.ascii	"REG_DMAC_CHSR (*(RoReg*)0x400B0030U)\000"
@@ -52267,7 +53100,7 @@ main:
 	.ascii	"fast_putc(x,p) (--(p)->_w < 0 ? __swbuf_r(_REENT, ("
 	.ascii	"int)(x), p) == EOF : (*(p)->_p = (x), (p)->_p++, 0)"
 	.ascii	")\000"
-.LASF9417:
+.LASF9436:
 	.ascii	"__enable_irq\000"
 .LASF4475:
 	.ascii	"PWM_WPCR_WPCMD_Msk (0x3u << PWM_WPCR_WPCMD_Pos)\000"
@@ -52287,8 +53120,8 @@ main:
 	.ascii	"PIO_PA3B_PCK1 (1u << 3)\000"
 .LASF3260:
 	.ascii	"PIO_MDER_P31 (0x1u << 31)\000"
-.LASF1245:
-	.ascii	"SCB_SHCSR_BUSFAULTACT_Pos 1\000"
+.LASF4025:
+	.ascii	"PMC_PCDR0_PID15 (0x1u << 15)\000"
 .LASF4102:
 	.ascii	"PMC_MCKR_CSS_MAIN_CLK (0x1u << 0)\000"
 .LASF1478:
@@ -52326,7 +53159,7 @@ main:
 	.ascii	"PIN_EBI_ADDR_BUS_A4 PIO_PB2_IDX\000"
 .LASF1952:
 	.ascii	"CHIPID_CIDR_ARCH_SAM3UxE (0x81u << 20)\000"
-.LASF9089:
+.LASF9093:
 	.ascii	"PIO_LOCKSR\000"
 .LASF7731:
 	.ascii	"__OBSOLETE_MATH __OBSOLETE_MATH_DEFAULT\000"
@@ -52362,7 +53195,7 @@ main:
 	.ascii	"( 37, data)\000"
 .LASF6116:
 	.ascii	"UDPHS_TST_TST_K (0x1u << 3)\000"
-.LASF9253:
+.LASF9268:
 	.ascii	"_wcrtomb_state\000"
 .LASF694:
 	.ascii	"TPASTE6(a,b,c,d,e,f) a ##b ##c ##d ##e ##f\000"
@@ -52401,7 +53234,7 @@ main:
 	.ascii	"IRAM0_ADDR (0x20000000u)\000"
 .LASF2934:
 	.ascii	"PIO_IFDR_P25 (0x1u << 25)\000"
-.LASF9338:
+.LASF9353:
 	.ascii	"confdev_lsfs\000"
 .LASF647:
 	.ascii	"SAM4CMS8_1 ( SAM_PART_IS_DEFINED(SAM4CMS8C_1) )\000"
@@ -52576,7 +53409,7 @@ main:
 	.ascii	"PWM_SCM_UPDM_MODE1 (0x1u << 16)\000"
 .LASF2926:
 	.ascii	"PIO_IFDR_P17 (0x1u << 17)\000"
-.LASF9395:
+.LASF9411:
 	.ascii	"genclk_config_defaults\000"
 .LASF1405:
 	.ascii	"TPI_FIFO0_ETM_ATVALID_Pos 26\000"
@@ -52625,7 +53458,7 @@ main:
 	.ascii	"e) << RTC_WPMR_WPKEY_Pos)))\000"
 .LASF4307:
 	.ascii	"PWM_IER2_CMPM1 (0x1u << 9)\000"
-.LASF9368:
+.LASF9383:
 	.ascii	"genclk_divider\000"
 .LASF6532:
 	.ascii	"US_RPR_RXPTR_Msk (0xffffffffu << US_RPR_RXPTR_Pos)\000"
@@ -52633,15 +53466,13 @@ main:
 	.ascii	"SMC_WPSR_WP_VSRC_Pos 8\000"
 .LASF185:
 	.ascii	"__LDBL_EPSILON__ 2.2204460492503131e-16L\000"
-.LASF1157:
-	.ascii	"SCB_CPUID_VARIANT_Pos 20\000"
 .LASF7841:
 	.ascii	"__printf0like(fmtarg,firstvararg) \000"
 .LASF1854:
 	.ascii	"ADC12B_ACR_OFFSET (0x1u << 17)\000"
 .LASF7300:
 	.ascii	"REG_RTC_SCCR (*(WoReg*)0x400E127CU)\000"
-.LASF9091:
+.LASF9095:
 	.ascii	"PIO_WPSR\000"
 .LASF3667:
 	.ascii	"PIO_AIMER_P19 (0x1u << 19)\000"
@@ -52685,7 +53516,7 @@ main:
 	.ascii	"REG_SPI_WPMR (*(RwReg*)0x400080E4U)\000"
 .LASF566:
 	.ascii	"MEGA_XX0_1 (MEGA_XX0 || MEGA_XX1)\000"
-.LASF9350:
+.LASF9365:
 	.ascii	"udd_ctrl_request_t\000"
 .LASF1375:
 	.ascii	"DWT_FUNCTION_DATAVMATCH_Pos 8\000"
@@ -52703,7 +53534,7 @@ main:
 	.ascii	"PWM_SCM_UPDM_MODE0 (0x0u << 16)\000"
 .LASF8674:
 	.ascii	"IOPORT_PIOF 5\000"
-.LASF9086:
+.LASF9090:
 	.ascii	"PIO_REHLSR\000"
 .LASF4028:
 	.ascii	"PMC_PCDR0_PID19 (0x1u << 19)\000"
@@ -52728,7 +53559,7 @@ main:
 	.ascii	"delay_init(fcpu_hz) \000"
 .LASF4159:
 	.ascii	"PMC_SR_PCKRDY1 (0x1u << 9)\000"
-.LASF9318:
+.LASF9333:
 	.ascii	"bReserved\000"
 .LASF1848:
 	.ascii	"ADC12B_ACR_GAIN_Msk (0x3u << ADC12B_ACR_GAIN_Pos)\000"
@@ -52773,8 +53604,8 @@ main:
 .LASF4892:
 	.ascii	"SMC_ECC_PR2_BITADDR_Msk (0x7u << SMC_ECC_PR2_BITADD"
 	.ascii	"R_Pos)\000"
-.LASF3417:
-	.ascii	"PIO_PUSR_P28 (0x1u << 28)\000"
+.LASF3931:
+	.ascii	"PIO_FRLHSR_P27 (0x1u << 27)\000"
 .LASF5373:
 	.ascii	"SUPC_SMMR_SMTH_2_2V (0x3u << 0)\000"
 .LASF5985:
@@ -52866,6 +53697,8 @@ main:
 	.ascii	"UDPHS_EPTSTA_KILL_BANK (0x1u << 9)\000"
 .LASF1443:
 	.ascii	"TPI_DEVID_AsynClkIn_Pos 5\000"
+.LASF5686:
+	.ascii	"TC_CMR_ACPC_SET (0x1u << 18)\000"
 .LASF6009:
 	.ascii	"UART_RPR_RXPTR_Pos 0\000"
 .LASF7636:
@@ -52984,7 +53817,7 @@ main:
 .LASF1446:
 	.ascii	"TPI_DEVID_NrTraceInput_Msk (0x1FUL << TPI_DEVID_NrT"
 	.ascii	"raceInput_Pos)\000"
-.LASF9312:
+.LASF9327:
 	.ascii	"bcdDevice\000"
 .LASF7214:
 	.ascii	"REG_PIOA_OWDR (*(WoReg*)0x400E0CA4U)\000"
@@ -53020,7 +53853,7 @@ main:
 	.ascii	"PIO_PSR_P25 (0x1u << 25)\000"
 .LASF8365:
 	.ascii	"ATMEGARFX_RCB 63\000"
-.LASF9216:
+.LASF9231:
 	.ascii	"__sdidinit\000"
 .LASF7269:
 	.ascii	"REG_PIOB_LOCKSR (*(RoReg*)0x400E0EE0U)\000"
@@ -53084,7 +53917,7 @@ main:
 	.ascii	"SAM4N8 ( SAM_PART_IS_DEFINED(SAM4N8A) || SAM_PART_I"
 	.ascii	"S_DEFINED(SAM4N8B) || SAM_PART_IS_DEFINED(SAM4N8C) "
 	.ascii	")\000"
-.LASF9373:
+.LASF9388:
 	.ascii	"GENCLK_PCK_PRES_16\000"
 .LASF6635:
 	.ascii	"REG_TC0_CV0 (*(RoReg*)0x40080010U)\000"
@@ -53129,6 +53962,8 @@ main:
 	.ascii	"SAMD21_XPLAINED_PRO 69\000"
 .LASF126:
 	.ascii	"__INT_FAST8_MAX__ 0x7fffffff\000"
+.LASF9447:
+	.ascii	"spi_set_baudrate_div\000"
 .LASF1259:
 	.ascii	"SCB_HFSR_VECTTBL_Pos 1\000"
 .LASF97:
@@ -53216,6 +54051,8 @@ main:
 	.ascii	"__WCHAR_TYPE__ unsigned int\000"
 .LASF3404:
 	.ascii	"PIO_PUSR_P15 (0x1u << 15)\000"
+.LASF5670:
+	.ascii	"TC_CMR_ENETRG (0x1u << 12)\000"
 .LASF2177:
 	.ascii	"DMAC_CFG_SOD (0x1u << 16)\000"
 .LASF8391:
@@ -53232,7 +54069,7 @@ main:
 	.ascii	"SMC_WPCR_WP_KEY_Pos 8\000"
 .LASF207:
 	.ascii	"__FLT64_MIN_10_EXP__ (-307)\000"
-.LASF9340:
+.LASF9355:
 	.ascii	"confdev_hs\000"
 .LASF356:
 	.ascii	"__SA_IBIT__ 16\000"
@@ -53276,7 +54113,7 @@ main:
 	.ascii	"SAM4L_EK 45\000"
 .LASF8426:
 	.ascii	"PIN_USART1_RXD_FLAGS (PIO_PERIPH_A | PIO_DEFAULT)\000"
-.LASF9408:
+.LASF9427:
 	.ascii	"pll_config_init\000"
 .LASF3127:
 	.ascii	"PIO_IER_P26 (0x1u << 26)\000"
@@ -53296,8 +54133,8 @@ main:
 .LASF8485:
 	.ascii	"PIN_PDIDTX_USART_FLAGS (PIO_PERIPH_A | PIO_DEFAULT)"
 	.ascii	"\000"
-.LASF8803:
-	.ascii	"USB_PID_ATMEL_MEGA_HIDGENERIC 0x2013\000"
+.LASF5671:
+	.ascii	"TC_CMR_WAVSEL_Pos 13\000"
 .LASF8671:
 	.ascii	"IOPORT_PIOC 2\000"
 .LASF2422:
@@ -53313,7 +54150,7 @@ main:
 .LASF2532:
 	.ascii	"MATRIX_PRAS2_M3PR(value) ((MATRIX_PRAS2_M3PR_Msk & "
 	.ascii	"((value) << MATRIX_PRAS2_M3PR_Pos)))\000"
-.LASF9075:
+.LASF9079:
 	.ascii	"PIO_OWSR\000"
 .LASF7216:
 	.ascii	"REG_PIOA_AIMER (*(WoReg*)0x400E0CB0U)\000"
@@ -53378,14 +54215,16 @@ main:
 	.ascii	"HSMCI_IER_CSTOE (0x1u << 23)\000"
 .LASF1995:
 	.ascii	"DMAC_SREQ_SSREQ2 (0x1u << 4)\000"
-.LASF9374:
+.LASF9389:
 	.ascii	"GENCLK_PCK_PRES_32\000"
 .LASF2892:
 	.ascii	"PIO_IFER_P15 (0x1u << 15)\000"
-.LASF9348:
+.LASF9363:
 	.ascii	"callback\000"
 .LASF2965:
 	.ascii	"PIO_IFSR_P24 (0x1u << 24)\000"
+.LASF9017:
+	.ascii	"ADC_RESET PIO_PA4_IDX\000"
 .LASF3288:
 	.ascii	"PIO_MDDR_P27 (0x1u << 27)\000"
 .LASF7600:
@@ -53435,12 +54274,10 @@ main:
 	.ascii	")\000"
 .LASF3054:
 	.ascii	"PIO_ODSR_P17 (0x1u << 17)\000"
-.LASF9260:
+.LASF9275:
 	.ascii	"__locale_t\000"
 .LASF7406:
 	.ascii	"PIO_PA31 (1u << 31)\000"
-.LASF7621:
-	.ascii	"PIO_PA23A_RXD2 (1u << 23)\000"
 .LASF7941:
 	.ascii	"_REENT_MP_P5S(ptr) ((ptr)->_p5s)\000"
 .LASF483:
@@ -53474,6 +54311,8 @@ main:
 	.ascii	"PMC_FSMR_RTCAL (0x1u << 17)\000"
 .LASF7767:
 	.ascii	"__BEGIN_DECLS \000"
+.LASF4779:
+	.ascii	"SMC_IDR_RB_FALL (0x1u << 5)\000"
 .LASF8693:
 	.ascii	"SMC_H_INCLUDED \000"
 .LASF5698:
@@ -53482,11 +54321,11 @@ main:
 	.ascii	"DMAC_CTRLB_SRC_DSCR_FETCH_DISABLE (0x1u << 16)\000"
 .LASF5048:
 	.ascii	"SMC_TIMINGS_NFSEL (0x1u << 31)\000"
-.LASF9229:
+.LASF9244:
 	.ascii	"__FILE\000"
 .LASF3218:
 	.ascii	"PIO_ISR_P21 (0x1u << 21)\000"
-.LASF9196:
+.LASF9211:
 	.ascii	"_write\000"
 .LASF2879:
 	.ascii	"PIO_IFER_P2 (0x1u << 2)\000"
@@ -53510,7 +54349,7 @@ main:
 	.ascii	"((value) << MATRIX_PRAS4_M4PR_Pos)))\000"
 .LASF5295:
 	.ascii	"SSC_TFMR_FSEDGE (0x1u << 24)\000"
-.LASF9250:
+.LASF9265:
 	.ascii	"_mbrlen_state\000"
 .LASF2923:
 	.ascii	"PIO_IFDR_P14 (0x1u << 14)\000"
@@ -53518,7 +54357,7 @@ main:
 	.ascii	"__USAT(ARG1,ARG2) ({ uint32_t __RES, __ARG1 = (ARG1"
 	.ascii	"); __ASM (\"usat %0, %1, %2\" : \"=r\" (__RES) : \""
 	.ascii	"I\" (ARG2), \"r\" (__ARG1) ); __RES; })\000"
-.LASF9059:
+.LASF9063:
 	.ascii	"PIO_MDDR\000"
 .LASF5352:
 	.ascii	"SSC_WPMR_WPKEY_Pos 8\000"
@@ -53544,11 +54383,11 @@ main:
 	.ascii	"UDPHS_EPTSTA_ERR_FLUSH (0x1u << 14)\000"
 .LASF1979:
 	.ascii	"CHIPID_CIDR_NVPTYP_FLASH (0x2u << 28)\000"
-.LASF9182:
+.LASF9197:
 	.ascii	"_fntypes\000"
 .LASF8521:
 	.ascii	"LED1_ACTIVE_LEVEL 1\000"
-.LASF9115:
+.LASF9119:
 	.ascii	"SMC_CYCLE\000"
 .LASF3411:
 	.ascii	"PIO_PUSR_P22 (0x1u << 22)\000"
@@ -53566,7 +54405,7 @@ main:
 	.ascii	"PMC_PCSR0_PID4 (0x1u << 4)\000"
 .LASF7704:
 	.ascii	"CHIP_FREQ_XTAL_12M (12000000UL)\000"
-.LASF9428:
+.LASF9455:
 	.ascii	"pio_enable_output_write\000"
 .LASF8298:
 	.ascii	"CONFIG_SYSCLK_PRES SYSCLK_PRES_2\000"
@@ -53600,7 +54439,7 @@ main:
 	.ascii	"s)\000"
 .LASF2159:
 	.ascii	"DMAC_CTRLB_DST_INCR_Pos 28\000"
-.LASF9058:
+.LASF9062:
 	.ascii	"PIO_MDER\000"
 .LASF278:
 	.ascii	"__ULFRACT_FBIT__ 32\000"
@@ -53612,13 +54451,13 @@ main:
 	.ascii	"ADC12B_SR_GOVRE (0x1u << 17)\000"
 .LASF3011:
 	.ascii	"PIO_CODR_P6 (0x1u << 6)\000"
-.LASF9206:
+.LASF9221:
 	.ascii	"_flags2\000"
 .LASF1014:
 	.ascii	"_SYS__INTSUP_H \000"
 .LASF5390:
 	.ascii	"SUPC_SMMR_SMSMPL_32SLCK (0x2u << 8)\000"
-.LASF9363:
+.LASF9378:
 	.ascii	"GENCLK_PCK_SRC_MAINCK_XTAL\000"
 .LASF4175:
 	.ascii	"PMC_IMR_CFDEV (0x1u << 18)\000"
@@ -53626,7 +54465,7 @@ main:
 	.ascii	"PIO_PB7X1_AD2 (1u << 7)\000"
 .LASF1583:
 	.ascii	"ADC_CHER_CH0 (0x1u << 0)\000"
-.LASF9191:
+.LASF9206:
 	.ascii	"_flags\000"
 .LASF2392:
 	.ascii	"HSMCI_IER_FIFOEMPTY (0x1u << 26)\000"
@@ -53668,6 +54507,8 @@ main:
 	.ascii	"HSMCI_IER_RINDE (0x1u << 16)\000"
 .LASF8688:
 	.ascii	"SAM_PM_SMODE_WAIT 4\000"
+.LASF5664:
+	.ascii	"TC_CMR_EEVT_Pos 10\000"
 .LASF1226:
 	.ascii	"SCB_SHCSR_MEMFAULTENA_Msk (1UL << SCB_SHCSR_MEMFAUL"
 	.ascii	"TENA_Pos)\000"
@@ -53703,14 +54544,14 @@ main:
 	.ascii	"SCB_CCR_USERSETMPEND_Pos 1\000"
 .LASF7973:
 	.ascii	"LITTLE_ENDIAN _LITTLE_ENDIAN\000"
-.LASF9194:
+.LASF9209:
 	.ascii	"_cookie\000"
-.LASF9254:
+.LASF9269:
 	.ascii	"_wcsrtombs_state\000"
 .LASF5103:
 	.ascii	"SPI_RDR_PCS_Pos 16\000"
-.LASF9245:
-	.ascii	"_mbtowc_state\000"
+.LASF9110:
+	.ascii	"PMC_SR\000"
 .LASF4585:
 	.ascii	"PWM_CPRDUPD_CPRDUPD(value) ((PWM_CPRDUPD_CPRDUPD_Ms"
 	.ascii	"k & ((value) << PWM_CPRDUPD_CPRDUPD_Pos)))\000"
@@ -53779,11 +54620,11 @@ main:
 	.ascii	"ADC12B_RPR_RXPTR_Pos 0\000"
 .LASF6793:
 	.ascii	"REG_PWM_CPRD1 (*(RwReg*)0x4008C22CU)\000"
-.LASF9365:
+.LASF9380:
 	.ascii	"GENCLK_PCK_SRC_PLLACK\000"
 .LASF3810:
 	.ascii	"PIO_ELSR_P2 (0x1u << 2)\000"
-.LASF9120:
+.LASF9124:
 	.ascii	"SMC_CTRL\000"
 .LASF4737:
 	.ascii	"SMC_CFG_RSPARE (0x1u << 9)\000"
@@ -53810,13 +54651,13 @@ main:
 	.ascii	"UDPHS_EPTCFG_EPT_TYPE_ISO (0x1u << 4)\000"
 .LASF5580:
 	.ascii	"SUPC_SR_WKUPIS5_EN (0x1u << 21)\000"
-.LASF9028:
+.LASF9031:
 	.ascii	"long long unsigned int\000"
 .LASF2201:
 	.ascii	"DMAC_WPSR_WPVSRC_Pos 8\000"
 .LASF7034:
 	.ascii	"REG_DMAC_DADDR0 (*(RwReg*)0x400B0040U)\000"
-.LASF9404:
+.LASF9423:
 	.ascii	"pll_enable_source\000"
 .LASF3130:
 	.ascii	"PIO_IER_P29 (0x1u << 29)\000"
@@ -53879,7 +54720,7 @@ main:
 	.ascii	"ADC_IMR_OVRE0 (0x1u << 8)\000"
 .LASF128:
 	.ascii	"__INT_FAST16_MAX__ 0x7fffffff\000"
-.LASF9265:
+.LASF9280:
 	.ascii	"_Bool\000"
 .LASF2606:
 	.ascii	"MATRIX_PRAS7_M3PR_Msk (0x3u << MATRIX_PRAS7_M3PR_Po"
@@ -53919,7 +54760,7 @@ main:
 	.ascii	"TACT_Pos)\000"
 .LASF4821:
 	.ascii	"SMC_ECC_SR1_RECERR2 (0x1u << 8)\000"
-.LASF9434:
+.LASF9461:
 	.ascii	"pmc_sleep\000"
 .LASF7016:
 	.ascii	"REG_ADC_RNPR (*(RwReg*)0x400AC110U)\000"
@@ -54010,7 +54851,7 @@ main:
 	.ascii	"REG_PWM_CMPM5 (*(RwReg*)0x4008C188U)\000"
 .LASF5512:
 	.ascii	"SUPC_WUIR_WKUPT8 (0x1u << 24)\000"
-.LASF9232:
+.LASF9247:
 	.ascii	"_iobs\000"
 .LASF1502:
 	.ascii	"CoreDebug_DHCSR_C_DEBUGEN_Msk (1UL << CoreDebug_DHC"
@@ -54028,7 +54869,7 @@ main:
 	.ascii	"PIO_PER_P24 (0x1u << 24)\000"
 .LASF6918:
 	.ascii	"REG_UDPHS_EPTCTLDIS1 (*(WoReg*)0x400A4128U)\000"
-.LASF9360:
+.LASF9375:
 	.ascii	"GENCLK_PCK_SRC_MAINCK_4M_RC\000"
 .LASF5531:
 	.ascii	"SUPC_WUIR_WKUPT14_HIGH_TO_LOW (0x0u << 30)\000"
@@ -54098,7 +54939,7 @@ main:
 .LASF1488:
 	.ascii	"CoreDebug_DHCSR_S_SLEEP_Msk (1UL << CoreDebug_DHCSR"
 	.ascii	"_S_SLEEP_Pos)\000"
-.LASF9387:
+.LASF9403:
 	.ascii	"genclk_enable_source\000"
 .LASF2696:
 	.ascii	"PIO_PER_P11 (0x1u << 11)\000"
@@ -54110,8 +54951,6 @@ main:
 	.ascii	"DMAC_CHSR_SUSP2 (0x1u << 10)\000"
 .LASF2800:
 	.ascii	"PIO_OER_P19 (0x1u << 19)\000"
-.LASF7714:
-	.ascii	"_WANT_IO_LONG_LONG 1\000"
 .LASF8858:
 	.ascii	"USB_PID_ATMEL_DFU_ATXMEGA64A4U 0x2FDD\000"
 .LASF7444:
@@ -54147,7 +54986,7 @@ main:
 	.ascii	"XMEGA_RF233_ZIGBIT 56\000"
 .LASF188:
 	.ascii	"__LDBL_HAS_INFINITY__ 1\000"
-.LASF9114:
+.LASF9118:
 	.ascii	"SMC_PULSE\000"
 .LASF3873:
 	.ascii	"PIO_REHLSR_P1 (0x1u << 1)\000"
@@ -54167,7 +55006,7 @@ main:
 	.ascii	"s)\000"
 .LASF462:
 	.ascii	"UTILS_COMPILER_H \000"
-.LASF9179:
+.LASF9194:
 	.ascii	"_on_exit_args\000"
 .LASF7685:
 	.ascii	"IRAM0_SIZE (0x2000u)\000"
@@ -54203,6 +55042,8 @@ main:
 	.ascii	"CHIP_FREQ_SLCK_RC_MAX (44000UL)\000"
 .LASF3903:
 	.ascii	"PIO_REHLSR_P31 (0x1u << 31)\000"
+.LASF8590:
+	.ascii	"SYSCLK_PRES_2 PMC_MCKR_PRES_CLK_2\000"
 .LASF807:
 	.ascii	"MREPEAT93(macro,data) MREPEAT92( macro, data) macro"
 	.ascii	"( 92, data)\000"
@@ -54218,7 +55059,7 @@ main:
 	.ascii	"TPASTE7(a,b,c,d,e,f,g) a ##b ##c ##d ##e ##f ##g\000"
 .LASF8286:
 	.ascii	"CLE32_TO_CPU_ENDIAN(x) (x)\000"
-.LASF9034:
+.LASF9038:
 	.ascii	"WoReg\000"
 .LASF3357:
 	.ascii	"PIO_PUER_P0 (0x1u << 0)\000"
@@ -54332,7 +55173,7 @@ main:
 	.ascii	"PMC_MCKR_PRES_CLK_1 (0x0u << 4)\000"
 .LASF4372:
 	.ascii	"PWM_ISR2_CMPM6 (0x1u << 14)\000"
-.LASF9347:
+.LASF9362:
 	.ascii	"payload_size\000"
 .LASF7586:
 	.ascii	"PIO_PA29A_RK (1u << 29)\000"
@@ -54354,7 +55195,7 @@ main:
 	.ascii	"DMAC_CTRLA_SRC_WIDTH_Pos 24\000"
 .LASF6515:
 	.ascii	"US_MAN_RX_PP_Pos 24\000"
-.LASF9226:
+.LASF9241:
 	.ascii	"_sig_func\000"
 .LASF7129:
 	.ascii	"_SAM3U_PMC_INSTANCE_ \000"
@@ -54420,9 +55261,9 @@ main:
 	.ascii	"__u_int_defined \000"
 .LASF8388:
 	.ascii	"SENSORS_XPLAINED_PRESSURE_1 5\000"
-.LASF9160:
+.LASF9175:
 	.ascii	"_mbstate_t\000"
-.LASF9439:
+.LASF9466:
 	.ascii	"pmc_is_locked_upll\000"
 .LASF250:
 	.ascii	"__DEC128_MAX__ 9.999999999999999999999999999999999E"
@@ -54431,10 +55272,10 @@ main:
 	.ascii	"PIO_DELTA ((uint32_t) PIOB - (uint32_t) PIOA)\000"
 .LASF8308:
 	.ascii	"UC3C_EK 3\000"
-.LASF9087:
+.LASF9091:
 	.ascii	"PIO_FRLHSR\000"
-.LASF5293:
-	.ascii	"SSC_TFMR_FSOS_TOGGLING (0x5u << 20)\000"
+.LASF2512:
+	.ascii	"MATRIX_PRAS1_M2PR_Pos 8\000"
 .LASF4782:
 	.ascii	"SMC_IDR_DTOE (0x1u << 20)\000"
 .LASF1960:
@@ -54489,6 +55330,8 @@ main:
 	.ascii	"group(port_id,mask)\000"
 .LASF148:
 	.ascii	"__FLT_DIG__ 6\000"
+.LASF9160:
+	.ascii	"SPI_TDR\000"
 .LASF6907:
 	.ascii	"REG_UDPHS_IPNAME2 (*(RoReg*)0x400A40F4U)\000"
 .LASF4202:
@@ -54623,11 +55466,11 @@ main:
 .LASF6020:
 	.ascii	"UART_TCR_TXCTR(value) ((UART_TCR_TXCTR_Msk & ((valu"
 	.ascii	"e) << UART_TCR_TXCTR_Pos)))\000"
-.LASF9256:
+.LASF9271:
 	.ascii	"_nextf\000"
 .LASF8575:
 	.ascii	"CONFIG_PLL1_SOURCE PLL_SRC_MAINCK_XTAL\000"
-.LASF9412:
+.LASF9431:
 	.ascii	"osc_wait_ready\000"
 .LASF5052:
 	.ascii	"SMC_MODE_WRITE_MODE (0x1u << 1)\000"
@@ -54775,15 +55618,15 @@ main:
 	.ascii	"PIO_IFER_P31 (0x1u << 31)\000"
 .LASF645:
 	.ascii	"SAM4CMP32 (SAM4CMP32_0 || SAM4CMP32_1)\000"
-.LASF9060:
+.LASF9064:
 	.ascii	"PIO_MDSR\000"
 .LASF383:
 	.ascii	"__GCC_ATOMIC_INT_LOCK_FREE 2\000"
 .LASF6618:
 	.ascii	"REG_SSC_WPMR (*(RwReg*)0x400040E4U)\000"
-.LASF9074:
+.LASF9078:
 	.ascii	"PIO_OWDR\000"
-.LASF9336:
+.LASF9351:
 	.ascii	"udi_apis\000"
 .LASF1992:
 	.ascii	"DMAC_SREQ_DSREQ0 (0x1u << 1)\000"
@@ -54801,7 +55644,7 @@ main:
 	.ascii	"UDPHS_FNUM_FNUM_ERR (0x1u << 31)\000"
 .LASF1814:
 	.ascii	"ADC12B_IDR_OVRE1 (0x1u << 9)\000"
-.LASF9021:
+.LASF9024:
 	.ascii	"__uint16_t\000"
 .LASF296:
 	.ascii	"__SACCUM_MAX__ 0X7FFFP-7HK\000"
@@ -54855,8 +55698,8 @@ main:
 	.ascii	"SSC_TCMR_CKI (0x1u << 5)\000"
 .LASF7631:
 	.ascii	"PIO_PA7_IDX 7\000"
-.LASF5670:
-	.ascii	"TC_CMR_ENETRG (0x1u << 12)\000"
+.LASF3856:
+	.ascii	"PIO_FELLSR_P16 (0x1u << 16)\000"
 .LASF52:
 	.ascii	"__INT_LEAST64_TYPE__ long long int\000"
 .LASF5036:
@@ -54871,7 +55714,7 @@ main:
 	.ascii	"ADC12B_CHSR_CH0 (0x1u << 0)\000"
 .LASF7426:
 	.ascii	"PIO_PB19 (1u << 19)\000"
-.LASF9151:
+.LASF9155:
 	.ascii	"SMC_WPCR\000"
 .LASF1553:
 	.ascii	"_SAM3U_ADC_COMPONENT_ \000"
@@ -54929,7 +55772,7 @@ main:
 .LASF597:
 	.ascii	"SAM3X4 ( SAM_PART_IS_DEFINED(SAM3X4C) || SAM_PART_I"
 	.ascii	"S_DEFINED(SAM3X4E) )\000"
-.LASF9352:
+.LASF9367:
 	.ascii	"udi_api_vendor\000"
 .LASF5562:
 	.ascii	"SUPC_SR_FWUPIS_HIGH (0x1u << 12)\000"
@@ -54971,7 +55814,7 @@ main:
 	.ascii	"PIO_AIMMR_P19 (0x1u << 19)\000"
 .LASF7911:
 	.ascii	"_REENT_INIT_ATEXIT _NULL, _ATEXIT_INIT,\000"
-.LASF9119:
+.LASF9123:
 	.ascii	"SMC_CFG\000"
 .LASF5088:
 	.ascii	"SPI_CR_LASTXFER (0x1u << 24)\000"
@@ -55099,7 +55942,7 @@ main:
 	.ascii	"PIO_MDSR_P14 (0x1u << 14)\000"
 .LASF6198:
 	.ascii	"UDPHS_EPTCTLDIS_AUTO_VALID (0x1u << 1)\000"
-.LASF9416:
+.LASF9435:
 	.ascii	"__disable_irq\000"
 .LASF1441:
 	.ascii	"TPI_DEVID_MinBufSz_Pos 6\000"
@@ -55109,12 +55952,14 @@ main:
 	.ascii	"SSC_RFMR_FSLEN_Msk (0xfu << SSC_RFMR_FSLEN_Pos)\000"
 .LASF4909:
 	.ascii	"SMC_ECC_PR3_NPARITY_W8BIT_Pos 12\000"
-.LASF9325:
+.LASF9340:
 	.ascii	"iConfiguration\000"
 .LASF8287:
 	.ascii	"CLE64_TO_CPU_ENDIAN(x) (x)\000"
 .LASF2797:
 	.ascii	"PIO_OER_P16 (0x1u << 16)\000"
+.LASF365:
+	.ascii	"__UDA_FBIT__ 32\000"
 .LASF4924:
 	.ascii	"SMC_ECC_PR5_WORDADDR_Msk (0x1ffu << SMC_ECC_PR5_WOR"
 	.ascii	"DADDR_Pos)\000"
@@ -55154,7 +55999,7 @@ main:
 .LASF6008:
 	.ascii	"UART_BRGR_CD(value) ((UART_BRGR_CD_Msk & ((value) <"
 	.ascii	"< UART_BRGR_CD_Pos)))\000"
-.LASF9389:
+.LASF9405:
 	.ascii	"genclk_enable\000"
 .LASF2320:
 	.ascii	"HSMCI_BLKR_BCNT_Pos 0\000"
@@ -55165,7 +56010,7 @@ main:
 	.ascii	"Z_Pos)\000"
 .LASF203:
 	.ascii	"__FLT32_HAS_QUIET_NAN__ 1\000"
-.LASF9166:
+.LASF9181:
 	.ascii	"_sign\000"
 .LASF3608:
 	.ascii	"PIO_OWDR_P24 (0x1u << 24)\000"
@@ -55207,9 +56052,9 @@ main:
 	.ascii	"SSC_WPSR_WPVSRC_Pos 8\000"
 .LASF1710:
 	.ascii	"ADC12B_CR_SWRST (0x1u << 0)\000"
-.LASF9288:
+.LASF9303:
 	.ascii	"SLEEPMGR_ACTIVE\000"
-.LASF9189:
+.LASF9204:
 	.ascii	"_size\000"
 .LASF8596:
 	.ascii	"SYSCLK_PRES_3 PMC_MCKR_PRES_CLK_3\000"
@@ -55248,7 +56093,7 @@ main:
 	.ascii	"PMC_IDR_PCKRDY1 (0x1u << 9)\000"
 .LASF7311:
 	.ascii	"ID_RTT ( 3)\000"
-.LASF9090:
+.LASF9094:
 	.ascii	"PIO_WPMR\000"
 .LASF5365:
 	.ascii	"SUPC_CR_KEY_Pos 24\000"
@@ -55270,7 +56115,7 @@ main:
 	.ascii	"USB_PID_ATMEL_DFU_ATXMEGA64A1U 0x2FE8\000"
 .LASF7031:
 	.ascii	"REG_DMAC_CHDR (*(WoReg*)0x400B002CU)\000"
-.LASF9391:
+.LASF9407:
 	.ascii	"ul_id\000"
 .LASF4120:
 	.ascii	"PMC_PCK_CSS_MAIN_CLK (0x1u << 0)\000"
@@ -55324,7 +56169,7 @@ main:
 	.ascii	"__RAND_MAX 0x7fffffff\000"
 .LASF4369:
 	.ascii	"PWM_ISR2_CMPM3 (0x1u << 11)\000"
-.LASF9240:
+.LASF9255:
 	.ascii	"_localtime_buf\000"
 .LASF1764:
 	.ascii	"ADC12B_SR_EOC1 (0x1u << 1)\000"
@@ -55392,7 +56237,7 @@ main:
 	.ascii	"USB_PID_ATMEL_XMEGA_USB_ZIGBIT_2_4GHZ 0x214A\000"
 .LASF5157:
 	.ascii	"SPI_CSR_SCBR_Msk (0xffu << SPI_CSR_SCBR_Pos)\000"
-.LASF9279:
+.LASF9294:
 	.ascii	"pll_source\000"
 .LASF1787:
 	.ascii	"ADC12B_IER_EOC2 (0x1u << 2)\000"
@@ -55432,7 +56277,7 @@ main:
 	.ascii	"PINS_ADC_TRIG PIO_PA17_IDX\000"
 .LASF4828:
 	.ascii	"SMC_ECC_SR1_ECCERR4_Pos 17\000"
-.LASF9446:
+.LASF9473:
 	.ascii	"pmc_osc_enable_main_xtal\000"
 .LASF6244:
 	.ascii	"UDPHS_EPTCLRSTA_RX_BK_RDY (0x1u << 9)\000"
@@ -55445,7 +56290,7 @@ main:
 	.ascii	"PIO_PDR_P26 (0x1u << 26)\000"
 .LASF4003:
 	.ascii	"PMC_PCER0_PID21 (0x1u << 21)\000"
-.LASF9449:
+.LASF9476:
 	.ascii	"main.c\000"
 .LASF7931:
 	.ascii	"_REENT_CHECK_EMERGENCY(ptr) \000"
@@ -55494,6 +56339,8 @@ main:
 	.ascii	"US_BRGR_FP_Pos 16\000"
 .LASF3392:
 	.ascii	"PIO_PUSR_P3 (0x1u << 3)\000"
+.LASF9162:
+	.ascii	"SPI_IER\000"
 .LASF5638:
 	.ascii	"TC_CMR_ETRGEDG_RISING (0x1u << 8)\000"
 .LASF8469:
@@ -55579,7 +56426,7 @@ main:
 	.ascii	"PIO_PA25A_TWCK1 (1u << 25)\000"
 .LASF4302:
 	.ascii	"PWM_IER2_WRDY (0x1u << 0)\000"
-.LASF9289:
+.LASF9304:
 	.ascii	"SLEEPMGR_SLEEP_WFE\000"
 .LASF7809:
 	.ascii	"__alloc_align(x) __attribute__((__alloc_align__(x))"
@@ -55632,8 +56479,8 @@ main:
 	.ascii	"REG_PIOA_IMR (*(RoReg*)0x400E0C48U)\000"
 .LASF4415:
 	.ascii	"PWM_OSSUPD_OSSUPH1 (0x1u << 1)\000"
-.LASF1003:
-	.ascii	"__have_longlong64 1\000"
+.LASF1435:
+	.ascii	"TPI_DEVID_NRZVALID_Pos 11\000"
 .LASF4531:
 	.ascii	"PWM_CMPM_CPR_Pos 8\000"
 .LASF3460:
@@ -55672,11 +56519,11 @@ main:
 	.ascii	"US_IER_UNRE (0x1u << 10)\000"
 .LASF2961:
 	.ascii	"PIO_IFSR_P20 (0x1u << 20)\000"
-.LASF9047:
+.LASF9051:
 	.ascii	"PIO_IFDR\000"
 .LASF4957:
 	.ascii	"SMC_ECC_PR9_BITADDR_Pos 0\000"
-.LASF9043:
+.LASF9047:
 	.ascii	"PIO_ODR\000"
 .LASF1318:
 	.ascii	"DWT_CTRL_NUMCOMP_Msk (0xFUL << DWT_CTRL_NUMCOMP_Pos"
@@ -55739,7 +56586,7 @@ main:
 	.ascii	"SIG_ATOMIC_MAX (__STDINT_EXP(INT_MAX))\000"
 .LASF7917:
 	.ascii	"_RAND48_MULT_1 (0xdeec)\000"
-.LASF9204:
+.LASF9219:
 	.ascii	"_lock\000"
 .LASF5633:
 	.ascii	"TC_CMR_LDBSTOP (0x1u << 6)\000"
@@ -55760,18 +56607,18 @@ main:
 	.ascii	"REG_USART1_RCR (*(RwReg*)0x40094104U)\000"
 .LASF5398:
 	.ascii	"SUPC_SMMR_SMIEN_ENABLE (0x1u << 13)\000"
-.LASF153:
-	.ascii	"__FLT_DECIMAL_DIG__ 9\000"
+.LASF9417:
+	.ascii	"spi_set_master_mode\000"
 .LASF5019:
 	.ascii	"SMC_PULSE_NRD_PULSE(value) ((SMC_PULSE_NRD_PULSE_Ms"
 	.ascii	"k & ((value) << SMC_PULSE_NRD_PULSE_Pos)))\000"
 .LASF5548:
 	.ascii	"SUPC_SR_SMRSTS (0x1u << 4)\000"
-.LASF9046:
+.LASF9050:
 	.ascii	"PIO_IFER\000"
 .LASF3678:
 	.ascii	"PIO_AIMER_P30 (0x1u << 30)\000"
-.LASF9042:
+.LASF9046:
 	.ascii	"PIO_OER\000"
 .LASF7549:
 	.ascii	"PIO_PB3A_PWMH3 (1u << 3)\000"
@@ -55948,7 +56795,7 @@ main:
 	.ascii	"delay, f_cpu))\000"
 .LASF4558:
 	.ascii	"PWM_CMR_CPRE_MCK_DIV_8 (0x3u << 0)\000"
-.LASF9032:
+.LASF9036:
 	.ascii	"uint32_t\000"
 .LASF1266:
 	.ascii	"SCB_DFSR_DWTTRAP_Msk (1UL << SCB_DFSR_DWTTRAP_Pos)\000"
@@ -55958,9 +56805,9 @@ main:
 .LASF4093:
 	.ascii	"CKGR_PLLAR_PLLACOUNT_Msk (0x3fu << CKGR_PLLAR_PLLAC"
 	.ascii	"OUNT_Pos)\000"
-.LASF365:
-	.ascii	"__UDA_FBIT__ 32\000"
-.LASF9341:
+.LASF9157:
+	.ascii	"SPI_CR\000"
+.LASF9356:
 	.ascii	"qualifier\000"
 .LASF2821:
 	.ascii	"PIO_ODR_P8 (0x1u << 8)\000"
@@ -56092,11 +56939,11 @@ main:
 	.ascii	"PIO_LOCKSR_P25 (0x1u << 25)\000"
 .LASF271:
 	.ascii	"__UFRACT_MAX__ 0XFFFFP-16UR\000"
-.LASF7429:
-	.ascii	"PIO_PB22 (1u << 22)\000"
+.LASF5757:
+	.ascii	"TC_IDR_CPAS (0x1u << 2)\000"
 .LASF7334:
 	.ascii	"ID_DMAC (28)\000"
-.LASF9219:
+.LASF9234:
 	.ascii	"_result_k\000"
 .LASF5992:
 	.ascii	"UART_SR_TXRDY (0x1u << 1)\000"
@@ -56173,7 +57020,7 @@ main:
 	.ascii	"_SAM3U1C_PIO_ \000"
 .LASF1557:
 	.ascii	"ADC_MR_TRGEN_DIS (0x0u << 0)\000"
-.LASF9303:
+.LASF9318:
 	.ascii	"bLength\000"
 .LASF2319:
 	.ascii	"HSMCI_CMDR_BOOT_ACK (0x1u << 27)\000"
@@ -56223,7 +57070,7 @@ main:
 	.ascii	"SUPC_SR_SMWS (0x1u << 2)\000"
 .LASF8498:
 	.ascii	"PIN_EBI_NRD_TYPE PIO_PERIPH_A\000"
-.LASF9152:
+.LASF9156:
 	.ascii	"SMC_WPSR\000"
 .LASF209:
 	.ascii	"__FLT64_MAX_10_EXP__ 308\000"
@@ -56249,8 +57096,9 @@ main:
 	.ascii	"PIO_PDSR_P5 (0x1u << 5)\000"
 .LASF2809:
 	.ascii	"PIO_OER_P28 (0x1u << 28)\000"
-.LASF1161:
-	.ascii	"SCB_CPUID_PARTNO_Pos 4\000"
+.LASF1504:
+	.ascii	"CoreDebug_DCRSR_REGWnR_Msk (1UL << CoreDebug_DCRSR_"
+	.ascii	"REGWnR_Pos)\000"
 .LASF8765:
 	.ascii	"USB_DEVICE_ATTR (USB_CONFIG_ATTR_BUS_POWERED)\000"
 .LASF2124:
@@ -56266,8 +57114,8 @@ main:
 	.ascii	"_IOLBF 1\000"
 .LASF8489:
 	.ascii	"PIN_PDIC_GPIO (PIO_PA24_IDX)\000"
-.LASF3384:
-	.ascii	"PIO_PUER_P27 (0x1u << 27)\000"
+.LASF3328:
+	.ascii	"PIO_PUDR_P3 (0x1u << 3)\000"
 .LASF3530:
 	.ascii	"PIO_IFDGSR_P13 (0x1u << 13)\000"
 .LASF1139:
@@ -56279,15 +57127,15 @@ main:
 	.ascii	"PIO_PUSR_P7 (0x1u << 7)\000"
 .LASF2348:
 	.ascii	"HSMCI_SR_CMDRDY (0x1u << 0)\000"
-.LASF9222:
+.LASF9237:
 	.ascii	"_cvtlen\000"
 .LASF8188:
 	.ascii	"max(a,b) Max(a, b)\000"
 .LASF1737:
 	.ascii	"ADC12B_MR_SHTIM_Msk (0xfu << ADC12B_MR_SHTIM_Pos)\000"
-.LASF9017:
+.LASF9019:
 	.ascii	"signed char\000"
-.LASF9098:
+.LASF9102:
 	.ascii	"CKGR_UCKR\000"
 .LASF93:
 	.ascii	"__UINTMAX_C(c) c ## ULL\000"
@@ -56297,7 +57145,7 @@ main:
 	.ascii	"TC_BMR_QDEN (0x1u << 8)\000"
 .LASF7945:
 	.ascii	"_REENT_EMERGENCY(ptr) ((ptr)->_emergency)\000"
-.LASF9413:
+.LASF9432:
 	.ascii	"osc_get_rate\000"
 .LASF1561:
 	.ascii	"ADC_MR_TRGSEL(value) ((ADC_MR_TRGSEL_Msk & ((value)"
@@ -56326,6 +57174,8 @@ main:
 	.ascii	"o(224, data)\000"
 .LASF1907:
 	.ascii	"CHIPID_CIDR_NVPSIZ2_64K (0x5u << 12)\000"
+.LASF5772:
+	.ascii	"TC_BMR_TC0XC0S_Pos 0\000"
 .LASF6752:
 	.ascii	"REG_PWM_CMPM0 (*(RwReg*)0x4008C138U)\000"
 .LASF6437:
@@ -56391,7 +57241,7 @@ main:
 	.ascii	"UDI_VENDOR_DISABLE_EXT() main_vendor_disable()\000"
 .LASF8730:
 	.ascii	"TWI_SEND_OVERRUN 6\000"
-.LASF9128:
+.LASF9132:
 	.ascii	"SMC_ECC_MD\000"
 .LASF3930:
 	.ascii	"PIO_FRLHSR_P26 (0x1u << 26)\000"
@@ -56457,7 +57307,7 @@ main:
 	.ascii	"PWM_IER2_TXBUFE (0x1u << 2)\000"
 .LASF8144:
 	.ascii	"OPTIMIZE_HIGH __attribute__((optimize(\"s\")))\000"
-.LASF9053:
+.LASF9057:
 	.ascii	"PIO_PDSR\000"
 .LASF3119:
 	.ascii	"PIO_IER_P18 (0x1u << 18)\000"
@@ -56543,7 +57393,7 @@ main:
 	.ascii	"PWM_OOV_OOVL1 (0x1u << 17)\000"
 .LASF17:
 	.ascii	"__SIZEOF_LONG__ 4\000"
-.LASF9409:
+.LASF9428:
 	.ascii	"ul_div\000"
 .LASF260:
 	.ascii	"__USFRACT_MIN__ 0.0UHR\000"
@@ -56566,7 +57416,7 @@ main:
 	.ascii	"o(203, data)\000"
 .LASF6614:
 	.ascii	"REG_SSC_SR (*(RoReg*)0x40004040U)\000"
-.LASF9024:
+.LASF9027:
 	.ascii	"long int\000"
 .LASF5949:
 	.ascii	"UART_MR_PAR_Msk (0x7u << UART_MR_PAR_Pos)\000"
@@ -56645,7 +57495,7 @@ main:
 .LASF835:
 	.ascii	"MREPEAT121(macro,data) MREPEAT120(macro, data) macr"
 	.ascii	"o(120, data)\000"
-.LASF9235:
+.LASF9250:
 	.ascii	"_mult\000"
 .LASF7489:
 	.ascii	"PIO_PB29A_D12 (1u << 29)\000"
@@ -56673,13 +57523,15 @@ main:
 .LASF2327:
 	.ascii	"HSMCI_BLKR_BLKLEN(value) ((HSMCI_BLKR_BLKLEN_Msk & "
 	.ascii	"((value) << HSMCI_BLKR_BLKLEN_Pos)))\000"
+.LASF9022:
+	.ascii	"__int16_t\000"
 .LASF5394:
 	.ascii	"SUPC_SMMR_SMRSTEN_NOT_ENABLE (0x0u << 12)\000"
-.LASF9306:
+.LASF9321:
 	.ascii	"bDeviceClass\000"
 .LASF2844:
 	.ascii	"PIO_ODR_P31 (0x1u << 31)\000"
-.LASF9331:
+.LASF9346:
 	.ascii	"setup\000"
 .LASF838:
 	.ascii	"MREPEAT124(macro,data) MREPEAT123(macro, data) macr"
@@ -56699,7 +57551,7 @@ main:
 	.ascii	"EFC_FCMD_WPL 0x02\000"
 .LASF1749:
 	.ascii	"ADC12B_CHDR_CH2 (0x1u << 2)\000"
-.LASF9432:
+.LASF9459:
 	.ascii	"smc_set_mode\000"
 .LASF1303:
 	.ascii	"ITM_TCR_GTSFREQ_Pos 10\000"
@@ -56731,7 +57583,7 @@ main:
 	.ascii	"PWM_OSCUPD_OSCUPH2 (0x1u << 2)\000"
 .LASF5535:
 	.ascii	"SUPC_WUIR_WKUPT15_LOW_TO_HIGH (0x1u << 31)\000"
-.LASF9108:
+.LASF9112:
 	.ascii	"PMC_FSMR\000"
 .LASF829:
 	.ascii	"MREPEAT115(macro,data) MREPEAT114(macro, data) macr"
@@ -56749,6 +57601,8 @@ main:
 	.ascii	"DMAC_CHDR_RES0 (0x1u << 8)\000"
 .LASF2788:
 	.ascii	"PIO_OER_P7 (0x1u << 7)\000"
+.LASF1003:
+	.ascii	"__have_longlong64 1\000"
 .LASF1722:
 	.ascii	"ADC12B_MR_TRGSEL_ADC_TRIG4 (0x4u << 1)\000"
 .LASF1171:
@@ -56771,6 +57625,8 @@ main:
 .LASF832:
 	.ascii	"MREPEAT118(macro,data) MREPEAT117(macro, data) macr"
 	.ascii	"o(117, data)\000"
+.LASF9418:
+	.ascii	"p_spi\000"
 .LASF7484:
 	.ascii	"PIO_PC7A_A9 (1u << 7)\000"
 .LASF6234:
@@ -56786,7 +57642,7 @@ main:
 .LASF6051:
 	.ascii	"UDPHS_FNUM_MICRO_FRAME_NUM_Msk (0x7u << UDPHS_FNUM_"
 	.ascii	"MICRO_FRAME_NUM_Pos)\000"
-.LASF9035:
+.LASF9039:
 	.ascii	"RwReg\000"
 .LASF3044:
 	.ascii	"PIO_ODSR_P7 (0x1u << 7)\000"
@@ -56802,8 +57658,9 @@ main:
 	.ascii	"PERIPH_TNPR_TXNPTR_Pos 0\000"
 .LASF6805:
 	.ascii	"REG_PWM_DTUPD2 (*(WoReg*)0x4008C25CU)\000"
-.LASF4333:
-	.ascii	"PWM_IDR2_CMPM7 (0x1u << 15)\000"
+.LASF823:
+	.ascii	"MREPEAT109(macro,data) MREPEAT108(macro, data) macr"
+	.ascii	"o(108, data)\000"
 .LASF2902:
 	.ascii	"PIO_IFER_P25 (0x1u << 25)\000"
 .LASF5622:
@@ -56834,6 +57691,8 @@ main:
 	.ascii	"PIO_IER_P25 (0x1u << 25)\000"
 .LASF709:
 	.ascii	"STRINGZ(x) #x\000"
+.LASF9158:
+	.ascii	"SPI_MR\000"
 .LASF1150:
 	.ascii	"__I volatile const\000"
 .LASF4498:
@@ -56890,7 +57749,7 @@ main:
 .LASF2493:
 	.ascii	"MATRIX_PRAS0_M0PR(value) ((MATRIX_PRAS0_M0PR_Msk & "
 	.ascii	"((value) << MATRIX_PRAS0_M0PR_Pos)))\000"
-.LASF9172:
+.LASF9187:
 	.ascii	"__tm_hour\000"
 .LASF86:
 	.ascii	"__WCHAR_WIDTH__ 32\000"
@@ -56907,7 +57766,7 @@ main:
 	.ascii	"PWM_DIS_CHID0 (0x1u << 0)\000"
 .LASF5268:
 	.ascii	"SSC_TCMR_START_CMP_0 (0x8u << 8)\000"
-.LASF9233:
+.LASF9248:
 	.ascii	"_rand48\000"
 .LASF3646:
 	.ascii	"PIO_OWSR_P30 (0x1u << 30)\000"
@@ -56962,13 +57821,13 @@ main:
 	.ascii	"UINT_FAST8_MAX (__UINT_FAST8_MAX__)\000"
 .LASF2869:
 	.ascii	"PIO_OSR_P24 (0x1u << 24)\000"
-.LASF9109:
+.LASF9113:
 	.ascii	"PMC_FSPR\000"
 .LASF3802:
 	.ascii	"PIO_LSR_P26 (0x1u << 26)\000"
 .LASF5826:
 	.ascii	"TWI_MMR_IADRSZ_1_BYTE (0x1u << 8)\000"
-.LASF9044:
+.LASF9048:
 	.ascii	"PIO_OSR\000"
 .LASF2125:
 	.ascii	"DMAC_CTRLA_DCSIZE_CHK_8 (0x2u << 20)\000"
@@ -56993,7 +57852,7 @@ main:
 	.ascii	"ile char *)__x - __offsetof(s, m));})\000"
 .LASF1753:
 	.ascii	"ADC12B_CHDR_CH6 (0x1u << 6)\000"
-.LASF9211:
+.LASF9226:
 	.ascii	"_stderr\000"
 .LASF2408:
 	.ascii	"HSMCI_IDR_RDIRE (0x1u << 17)\000"
@@ -57015,8 +57874,8 @@ main:
 .LASF2465:
 	.ascii	"HSMCI_WPSR_WP_VS_Msk (0xfu << HSMCI_WPSR_WP_VS_Pos)"
 	.ascii	"\000"
-.LASF5671:
-	.ascii	"TC_CMR_WAVSEL_Pos 13\000"
+.LASF3100:
+	.ascii	"PIO_PDSR_P31 (0x1u << 31)\000"
 .LASF294:
 	.ascii	"__SACCUM_IBIT__ 8\000"
 .LASF4486:
@@ -57029,7 +57888,7 @@ main:
 	.ascii	"PIO_IER_P20 (0x1u << 20)\000"
 .LASF1802:
 	.ascii	"ADC12B_IER_GOVRE (0x1u << 17)\000"
-.LASF9081:
+.LASF9085:
 	.ascii	"PIO_ESR\000"
 .LASF162:
 	.ascii	"__DBL_DIG__ 15\000"
@@ -57116,9 +57975,11 @@ main:
 	.ascii	"INT_LEAST64_MIN (-__INT_LEAST64_MAX__ - 1)\000"
 .LASF4176:
 	.ascii	"PMC_FSMR_FSTT0 (0x1u << 0)\000"
+.LASF9163:
+	.ascii	"SPI_IDR\000"
 .LASF4410:
 	.ascii	"PWM_OSC_OSCL0 (0x1u << 16)\000"
-.LASF9164:
+.LASF9179:
 	.ascii	"_next\000"
 .LASF8341:
 	.ascii	"STK600_MEGA 39\000"
@@ -57147,7 +58008,7 @@ main:
 	.ascii	"R_Pos)\000"
 .LASF4281:
 	.ascii	"PWM_SCM_SYNC2 (0x1u << 2)\000"
-.LASF9050:
+.LASF9054:
 	.ascii	"PIO_SODR\000"
 .LASF4656:
 	.ascii	"RTC_CALR_DAY(value) ((RTC_CALR_DAY_Msk & ((value) <"
@@ -57217,13 +58078,13 @@ main:
 	.ascii	"TWI_PTCR_RXTDIS (0x1u << 1)\000"
 .LASF6801:
 	.ascii	"REG_PWM_CPRD2 (*(RwReg*)0x4008C24CU)\000"
-.LASF9308:
+.LASF9323:
 	.ascii	"bDeviceProtocol\000"
 .LASF1819:
 	.ascii	"ADC12B_IDR_OVRE6 (0x1u << 14)\000"
 .LASF4677:
 	.ascii	"RTC_CALALR_DATE_Pos 24\000"
-.LASF9431:
+.LASF9458:
 	.ascii	"smc_set_cycle_timing\000"
 .LASF824:
 	.ascii	"MREPEAT110(macro,data) MREPEAT109(macro, data) macr"
@@ -57262,7 +58123,7 @@ main:
 	.ascii	"SSC ((Ssc *)0x40004000U)\000"
 .LASF8620:
 	.ascii	"EFC_FCMD_STUI 0x0E\000"
-.LASF9339:
+.LASF9354:
 	.ascii	"conf_lsfs\000"
 .LASF1637:
 	.ascii	"ADC_IER_OVRE0 (0x1u << 8)\000"
@@ -57283,9 +58144,9 @@ main:
 	.ascii	"L) / CONFIG_PLL ##pll_id ##_DIV)\000"
 .LASF374:
 	.ascii	"__GCC_HAVE_SYNC_COMPARE_AND_SWAP_1 1\000"
-.LASF9268:
+.LASF9283:
 	.ascii	"le16_t\000"
-.LASF9262:
+.LASF9277:
 	.ascii	"_global_impure_ptr\000"
 .LASF1285:
 	.ascii	"SysTick_CTRL_ENABLE_Pos 0\000"
@@ -57316,7 +58177,7 @@ main:
 	.ascii	"( 47, data)\000"
 .LASF5334:
 	.ascii	"SSC_IER_RXSYN (0x1u << 11)\000"
-.LASF9403:
+.LASF9422:
 	.ascii	"pllcfg\000"
 .LASF160:
 	.ascii	"__FLT_HAS_QUIET_NAN__ 1\000"
@@ -57360,7 +58221,7 @@ main:
 	.ascii	"PWM_IDR2_CMPU7 (0x1u << 23)\000"
 .LASF298:
 	.ascii	"__USACCUM_FBIT__ 8\000"
-.LASF9066:
+.LASF9070:
 	.ascii	"PIO_ABSR\000"
 .LASF1918:
 	.ascii	"CHIPID_CIDR_SRAMSIZ_6K (0x3u << 16)\000"
@@ -57370,7 +58231,7 @@ main:
 	.ascii	"TC_QISR_DIR (0x1u << 8)\000"
 .LASF8336:
 	.ascii	"SAM3X_EK 34\000"
-.LASF9322:
+.LASF9337:
 	.ascii	"usb_dev_bos_desc_t\000"
 .LASF5506:
 	.ascii	"SUPC_WUIR_WKUPT6 (0x1u << 22)\000"
@@ -57403,8 +58264,8 @@ main:
 .LASF1867:
 	.ascii	"ADC12B_RNPR_RXNPTR(value) ((ADC12B_RNPR_RXNPTR_Msk "
 	.ascii	"& ((value) << ADC12B_RNPR_RXNPTR_Pos)))\000"
-.LASF7008:
-	.ascii	"REG_ADC_SR (*(RoReg*)0x400AC01CU)\000"
+.LASF7621:
+	.ascii	"PIO_PA23A_RXD2 (1u << 23)\000"
 .LASF5017:
 	.ascii	"SMC_PULSE_NRD_PULSE_Pos 16\000"
 .LASF8728:
@@ -57422,9 +58283,9 @@ main:
 	.ascii	"PIO_REHLSR_P22 (0x1u << 22)\000"
 .LASF1625:
 	.ascii	"ADC_SR_ENDRX (0x1u << 18)\000"
-.LASF9117:
+.LASF9121:
 	.ascii	"SMC_MODE\000"
-.LASF9252:
+.LASF9267:
 	.ascii	"_mbsrtowcs_state\000"
 .LASF8260:
 	.ascii	"memcpy_code2ram memcpy\000"
@@ -57449,6 +58310,8 @@ main:
 .LASF793:
 	.ascii	"MREPEAT79(macro,data) MREPEAT78( macro, data) macro"
 	.ascii	"( 78, data)\000"
+.LASF5668:
+	.ascii	"TC_CMR_EEVT_XC1 (0x2u << 10)\000"
 .LASF7807:
 	.ascii	"__alloc_size(x) __attribute__((__alloc_size__(x)))\000"
 .LASF1993:
@@ -57484,11 +58347,11 @@ main:
 	.ascii	"PIO_PA22X1_AD12B0 (1u << 22)\000"
 .LASF4423:
 	.ascii	"PWM_OSCUPD_OSCUPH1 (0x1u << 1)\000"
-.LASF9351:
+.LASF9366:
 	.ascii	"udd_g_ctrlreq\000"
 .LASF8558:
 	.ascii	"OSC_MAINCK_4M_RC_HZ CHIP_FREQ_MAINCK_RC_4MHZ\000"
-.LASF9375:
+.LASF9390:
 	.ascii	"GENCLK_PCK_PRES_64\000"
 .LASF2841:
 	.ascii	"PIO_ODR_P28 (0x1u << 28)\000"
@@ -57527,7 +58390,7 @@ main:
 .LASF1984:
 	.ascii	"CHIPID_EXID_EXID_Msk (0xffffffffu << CHIPID_EXID_EX"
 	.ascii	"ID_Pos)\000"
-.LASF9280:
+.LASF9295:
 	.ascii	"_pio_type\000"
 .LASF8763:
 	.ascii	"USB_DEVICE_MINOR_VERSION 0\000"
@@ -57557,7 +58420,7 @@ main:
 	.ascii	"R12_Pos)\000"
 .LASF8063:
 	.ascii	"__SMBF 0x0080\000"
-.LASF9177:
+.LASF9192:
 	.ascii	"__tm_yday\000"
 .LASF1272:
 	.ascii	"SCnSCB_ICTR_INTLINESNUM_Msk (0xFUL << SCnSCB_ICTR_I"
@@ -57598,7 +58461,7 @@ main:
 .LASF6161:
 	.ascii	"UDPHS_EPTCFG_EPT_TYPE_Msk (0x3u << UDPHS_EPTCFG_EPT"
 	.ascii	"_TYPE_Pos)\000"
-.LASF9162:
+.LASF9177:
 	.ascii	"_LOCK_T\000"
 .LASF4030:
 	.ascii	"PMC_PCDR0_PID21 (0x1u << 21)\000"
@@ -57622,7 +58485,7 @@ main:
 	.ascii	"REG_USART1_TCR (*(RwReg*)0x4009410CU)\000"
 .LASF5193:
 	.ascii	"SSC_RCMR_CKI (0x1u << 5)\000"
-.LASF9246:
+.LASF9261:
 	.ascii	"_wctomb_state\000"
 .LASF4761:
 	.ascii	"SMC_SR_NFCSID_Msk (0x7u << SMC_SR_NFCSID_Pos)\000"
@@ -57665,7 +58528,7 @@ main:
 .LASF785:
 	.ascii	"MREPEAT71(macro,data) MREPEAT70( macro, data) macro"
 	.ascii	"( 70, data)\000"
-.LASF9158:
+.LASF9173:
 	.ascii	"__count\000"
 .LASF1531:
 	.ascii	"CoreDebug_DEMCR_VC_CORERESET_Pos 0\000"
@@ -57721,7 +58584,7 @@ main:
 	.ascii	"((value) << MATRIX_PRAS6_M3PR_Pos)))\000"
 .LASF4947:
 	.ascii	"SMC_ECC_PR7_WORDADDR_W8BIT_Pos 3\000"
-.LASF9315:
+.LASF9330:
 	.ascii	"iSerialNumber\000"
 .LASF2911:
 	.ascii	"PIO_IFDR_P2 (0x1u << 2)\000"
@@ -57739,7 +58602,7 @@ main:
 	.ascii	"PIO_PB6B_D15 (1u << 6)\000"
 .LASF5139:
 	.ascii	"SPI_IMR_TXEMPTY (0x1u << 9)\000"
-.LASF9116:
+.LASF9120:
 	.ascii	"SMC_TIMINGS\000"
 .LASF3683:
 	.ascii	"PIO_AIMDR_P3 (0x1u << 3)\000"
@@ -57862,6 +58725,8 @@ main:
 	.ascii	"_SSIZE_T_DECLARED \000"
 .LASF984:
 	.ascii	"_DEFAULT_SOURCE\000"
+.LASF9164:
+	.ascii	"SPI_IMR\000"
 .LASF8076:
 	.ascii	"EOF (-1)\000"
 .LASF7296:
@@ -57877,7 +58742,7 @@ main:
 	.ascii	"UINT32_MAX (__UINT32_MAX__)\000"
 .LASF4951:
 	.ascii	"SMC_ECC_PR8_BITADDR_Pos 0\000"
-.LASF9092:
+.LASF9096:
 	.ascii	"PMC_SCER\000"
 .LASF2339:
 	.ascii	"HSMCI_CSTOR_CSTOMUL_65536 (0x6u << 4)\000"
@@ -57915,6 +58780,9 @@ main:
 	.ascii	"\000"
 .LASF4386:
 	.ascii	"PWM_OOV_OOVL0 (0x1u << 16)\000"
+.LASF8095:
+	.ascii	"__sgetc_raw_r(__ptr,__f) (--(__f)->_r < 0 ? __srget"
+	.ascii	"_r(__ptr, __f) : (int)(*(__f)->_p++))\000"
 .LASF8100:
 	.ascii	"__sfileno(p) ((p)->_file)\000"
 .LASF410:
@@ -57983,8 +58851,6 @@ main:
 .LASF2226:
 	.ascii	"SYS_GPBR_GPBR_VALUE_Msk (0xffffffffu << SYS_GPBR_GP"
 	.ascii	"BR_VALUE_Pos)\000"
-.LASF3328:
-	.ascii	"PIO_PUDR_P3 (0x1u << 3)\000"
 .LASF6749:
 	.ascii	"REG_PWM_PTSR (*(RoReg*)0x4008C124U)\000"
 .LASF4743:
@@ -58002,6 +58868,8 @@ main:
 	.ascii	")\000"
 .LASF2750:
 	.ascii	"PIO_PSR_P1 (0x1u << 1)\000"
+.LASF6889:
+	.ascii	"REG_USART2_RCR (*(RwReg*)0x40098104U)\000"
 .LASF6352:
 	.ascii	"US_MR_CHRL_7_BIT (0x2u << 6)\000"
 .LASF4357:
@@ -58016,8 +58884,8 @@ main:
 	.ascii	"HSMCI_IER_CSRCV (0x1u << 13)\000"
 .LASF4111:
 	.ascii	"PMC_MCKR_PRES_CLK_16 (0x4u << 4)\000"
-.LASF1121:
-	.ascii	"INT8_C(x) __INT8_C(x)\000"
+.LASF2682:
+	.ascii	"PERIPH_PTSR_RXTEN (0x1u << 0)\000"
 .LASF8293:
 	.ascii	"STATUS_CODES_H_INCLUDED \000"
 .LASF3118:
@@ -58071,8 +58939,6 @@ main:
 	.ascii	"__LDBL_HAS_DENORM__ 1\000"
 .LASF4865:
 	.ascii	"SMC_ECC_PR1_NPARITY_W8BIT_Pos 12\000"
-.LASF7382:
-	.ascii	"PIO_PA7 (1u << 7)\000"
 .LASF3834:
 	.ascii	"PIO_ELSR_P26 (0x1u << 26)\000"
 .LASF3006:
@@ -58249,7 +59115,7 @@ main:
 	.ascii	"BER)\000"
 .LASF5900:
 	.ascii	"TWI_IMR_EOSACC (0x1u << 11)\000"
-.LASF9100:
+.LASF9104:
 	.ascii	"CKGR_MCFR\000"
 .LASF1646:
 	.ascii	"ADC_IER_GOVRE (0x1u << 17)\000"
@@ -58290,7 +59156,7 @@ main:
 	.ascii	"ADC_IMR_EOC7 (0x1u << 7)\000"
 .LASF1987:
 	.ascii	"DMAC_GCFG_ARB_CFG (0x1u << 4)\000"
-.LASF9406:
+.LASF9425:
 	.ascii	"pll_is_locked\000"
 .LASF7733:
 	.ascii	"__RAND_MAX\000"
@@ -58334,7 +59200,7 @@ main:
 	.ascii	"_Alignas(x) __aligned(x)\000"
 .LASF254:
 	.ascii	"__SFRACT_IBIT__ 0\000"
-.LASF9027:
+.LASF9030:
 	.ascii	"long long int\000"
 .LASF7943:
 	.ascii	"_REENT_ASCTIME_BUF(ptr) ((ptr)->_new._reent._asctim"
@@ -58366,7 +59232,7 @@ main:
 .LASF1250:
 	.ascii	"SCB_CFSR_USGFAULTSR_Msk (0xFFFFUL << SCB_CFSR_USGFA"
 	.ascii	"ULTSR_Pos)\000"
-.LASF9440:
+.LASF9467:
 	.ascii	"pmc_disable_pllack\000"
 .LASF6231:
 	.ascii	"UDPHS_EPTCTL_STALL_SNT (0x1u << 13)\000"
@@ -58445,7 +59311,7 @@ main:
 .LASF7834:
 	.ascii	"__rangeof(type,start,end) (__offsetof(type, end) - "
 	.ascii	"__offsetof(type, start))\000"
-.LASF9393:
+.LASF9409:
 	.ascii	"e_divider\000"
 .LASF8922:
 	.ascii	"BESL_3000_US 8\000"
@@ -58500,7 +59366,7 @@ main:
 	.ascii	"ADC12B_IDR_OVRE3 (0x1u << 11)\000"
 .LASF498:
 	.ascii	"_T_WCHAR \000"
-.LASF9355:
+.LASF9370:
 	.ascii	"ptr_get\000"
 .LASF797:
 	.ascii	"MREPEAT83(macro,data) MREPEAT82( macro, data) macro"
@@ -58519,8 +59385,8 @@ main:
 	.ascii	"SCB_AIRCR_VECTCLRACTIVE_Pos 1\000"
 .LASF4765:
 	.ascii	"SMC_SR_UNDEF (0x1u << 21)\000"
-.LASF258:
-	.ascii	"__USFRACT_FBIT__ 8\000"
+.LASF5371:
+	.ascii	"SUPC_SMMR_SMTH_2_0V (0x1u << 0)\000"
 .LASF2703:
 	.ascii	"PIO_PER_P18 (0x1u << 18)\000"
 .LASF7944:

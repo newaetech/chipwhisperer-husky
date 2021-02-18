@@ -989,7 +989,7 @@
   47:usb.c         **** #define REQ_CC_PROGRAM 0x23
   48:usb.c         **** #define REQ_CHANGE_PWR 0x24
   49:usb.c         **** #define REQ_FPGA_RESET 0x25
-  50:usb.c         **** #define REQ_SPI 0x26
+  50:usb.c         **** #define REQ_SPI_ADC 0x26
   51:usb.c         **** 
   52:usb.c         **** #define USART_TARGET USART0
   53:usb.c         **** #define PIN_USART0_RXD	         (PIO_PA19_IDX)
@@ -2229,16 +2229,16 @@
  1376 0050 00000000 	 .word usart_driver_putchar
  1377              	 .cfi_endproc
  1378              	.LFE203:
- 1380              	 .section .text.ctrl_spi_cb,"ax",%progbits
+ 1380              	 .section .text.spi_adc_cb,"ax",%progbits
  1381              	 .align 1
  1382              	 .syntax unified
  1383              	 .thumb
  1384              	 .thumb_func
  1385              	 .fpu softvfp
- 1387              	ctrl_spi_cb:
+ 1387              	spi_adc_cb:
  1388              	.LFB204:
  306:usb.c         **** 
- 307:usb.c         **** static void ctrl_spi_cb(void)
+ 307:usb.c         **** static void spi_adc_cb(void)
  308:usb.c         **** {
  1389              	 .loc 4 308 1
  1390              	 .cfi_startproc
@@ -2252,1071 +2252,1142 @@
  1398 0002 00AF     	 add r7,sp,#0
  1399              	.LCFI63:
  1400              	 .cfi_def_cfa_register 7
- 309:usb.c         ****     ctrl_spi(SPI, false);
- 1401              	 .loc 4 309 5
- 1402 0004 0021     	 movs r1,#0
- 1403 0006 0248     	 ldr r0,.L105
- 1404 0008 024B     	 ldr r3,.L105+4
- 1405 000a 9847     	 blx r3
- 1406              	.LVL46:
- 310:usb.c         **** }
- 1407              	 .loc 4 310 1
- 1408 000c 00BF     	 nop
- 1409 000e 80BD     	 pop {r7,pc}
- 1410              	.L106:
- 1411              	 .align 2
- 1412              	.L105:
- 1413 0010 00800040 	 .word 1073774592
- 1414 0014 00000000 	 .word ctrl_spi
- 1415              	 .cfi_endproc
- 1416              	.LFE204:
- 1418              	 .section .text.ctrl_xmega_program_void,"ax",%progbits
- 1419              	 .align 1
- 1420              	 .global ctrl_xmega_program_void
- 1421              	 .syntax unified
- 1422              	 .thumb
- 1423              	 .thumb_func
- 1424              	 .fpu softvfp
- 1426              	ctrl_xmega_program_void:
- 1427              	.LFB205:
- 311:usb.c         **** 
- 312:usb.c         **** void ctrl_xmega_program_void(void)
- 313:usb.c         **** {
- 1428              	 .loc 4 313 1
- 1429              	 .cfi_startproc
- 1430              	 
- 1431              	 
- 1432 0000 80B5     	 push {r7,lr}
- 1433              	.LCFI64:
- 1434              	 .cfi_def_cfa_offset 8
- 1435              	 .cfi_offset 7,-8
- 1436              	 .cfi_offset 14,-4
- 1437 0002 00AF     	 add r7,sp,#0
- 1438              	.LCFI65:
- 1439              	 .cfi_def_cfa_register 7
- 314:usb.c         **** 	XPROGProtocol_Command();
- 1440              	 .loc 4 314 2
- 1441 0004 014B     	 ldr r3,.L108
- 1442 0006 9847     	 blx r3
- 1443              	.LVL47:
- 315:usb.c         **** }
- 1444              	 .loc 4 315 1
- 1445 0008 00BF     	 nop
- 1446 000a 80BD     	 pop {r7,pc}
- 1447              	.L109:
- 1448              	 .align 2
- 1449              	.L108:
- 1450 000c 00000000 	 .word XPROGProtocol_Command
- 1451              	 .cfi_endproc
- 1452              	.LFE205:
- 1454              	 .section .text.ctrl_avr_program_void,"ax",%progbits
- 1455              	 .align 1
- 1456              	 .global ctrl_avr_program_void
- 1457              	 .syntax unified
- 1458              	 .thumb
- 1459              	 .thumb_func
- 1460              	 .fpu softvfp
- 1462              	ctrl_avr_program_void:
- 1463              	.LFB206:
- 316:usb.c         **** 
- 317:usb.c         **** void ctrl_avr_program_void(void)
- 318:usb.c         **** {
- 1464              	 .loc 4 318 1
- 1465              	 .cfi_startproc
- 1466              	 
- 1467              	 
- 1468 0000 80B5     	 push {r7,lr}
- 1469              	.LCFI66:
- 1470              	 .cfi_def_cfa_offset 8
- 1471              	 .cfi_offset 7,-8
- 1472              	 .cfi_offset 14,-4
- 1473 0002 00AF     	 add r7,sp,#0
- 1474              	.LCFI67:
- 1475              	 .cfi_def_cfa_register 7
- 319:usb.c         **** 	V2Protocol_ProcessCommand();
- 1476              	 .loc 4 319 2
- 1477 0004 014B     	 ldr r3,.L111
- 1478 0006 9847     	 blx r3
- 1479              	.LVL48:
- 320:usb.c         **** }
- 1480              	 .loc 4 320 1
- 1481 0008 00BF     	 nop
- 1482 000a 80BD     	 pop {r7,pc}
- 1483              	.L112:
- 1484              	 .align 2
- 1485              	.L111:
- 1486 000c 00000000 	 .word V2Protocol_ProcessCommand
- 1487              	 .cfi_endproc
- 1488              	.LFE206:
- 1490              	 .section .text.main_setup_out_received,"ax",%progbits
- 1491              	 .align 1
- 1492              	 .global main_setup_out_received
- 1493              	 .syntax unified
- 1494              	 .thumb
- 1495              	 .thumb_func
- 1496              	 .fpu softvfp
- 1498              	main_setup_out_received:
- 1499              	.LFB207:
- 321:usb.c         **** 
- 322:usb.c         **** bool main_setup_out_received(void)
- 323:usb.c         **** {
- 1500              	 .loc 4 323 1
- 1501              	 .cfi_startproc
- 1502              	 
- 1503              	 
- 1504 0000 80B5     	 push {r7,lr}
- 1505              	.LCFI68:
- 1506              	 .cfi_def_cfa_offset 8
- 1507              	 .cfi_offset 7,-8
- 1508              	 .cfi_offset 14,-4
- 1509 0002 00AF     	 add r7,sp,#0
- 1510              	.LCFI69:
- 1511              	 .cfi_def_cfa_register 7
- 324:usb.c         ****     //Add buffer if used
- 325:usb.c         ****     udd_g_ctrlreq.payload = ctrlbuffer;
- 1512              	 .loc 4 325 27
- 1513 0004 4C4B     	 ldr r3,.L136
- 1514 0006 4D4A     	 ldr r2,.L136+4
- 1515 0008 9A60     	 str r2,[r3,#8]
- 326:usb.c         ****     udd_g_ctrlreq.payload_size = min(udd_g_ctrlreq.req.wLength,	sizeof(ctrlbuffer));
- 1516              	 .loc 4 326 34
- 1517 000a 4B4B     	 ldr r3,.L136
- 1518 000c DB88     	 ldrh r3,[r3,#6]
- 1519 000e 402B     	 cmp r3,#64
- 1520 0010 28BF     	 it cs
- 1521 0012 4023     	 movcs r3,#64
- 1522 0014 9AB2     	 uxth r2,r3
- 1523              	 .loc 4 326 32
- 1524 0016 484B     	 ldr r3,.L136
- 1525 0018 9A81     	 strh r2,[r3,#12]
- 327:usb.c         **** 
- 328:usb.c         ****     blockendpoint_usage = bep_emem;
- 1526              	 .loc 4 328 25
- 1527 001a 494B     	 ldr r3,.L136+8
- 1528 001c 0022     	 movs r2,#0
- 1529 001e 1A70     	 strb r2,[r3]
- 329:usb.c         ****     static uint8_t  respbuf[128];
- 330:usb.c         ****     switch(udd_g_ctrlreq.req.bRequest){
- 1530              	 .loc 4 330 29
- 1531 0020 454B     	 ldr r3,.L136
- 1532 0022 5B78     	 ldrb r3,[r3,#1]
- 1533 0024 103B     	 subs r3,r3,#16
- 1534 0026 162B     	 cmp r3,#22
- 1535 0028 7AD8     	 bhi .L114
- 1536 002a 01A2     	 adr r2,.L116
- 1537 002c 52F823F0 	 ldr pc,[r2,r3,lsl#2]
- 1538              	 .p2align 2
- 1539              	.L116:
- 1540 0030 8D000000 	 .word .L125+1
- 1541 0034 B9000000 	 .word .L124+1
- 1542 0038 A3000000 	 .word .L123+1
- 1543 003c CF000000 	 .word .L122+1
- 1544 0040 21010000 	 .word .L114+1
- 1545 0044 21010000 	 .word .L114+1
- 1546 0048 F9000000 	 .word .L121+1
- 1547 004c 21010000 	 .word .L114+1
- 1548 0050 21010000 	 .word .L114+1
- 1549 0054 21010000 	 .word .L114+1
- 1550 0058 EF000000 	 .word .L120+1
- 1551 005c E5000000 	 .word .L119+1
- 1552 0060 21010000 	 .word .L114+1
- 1553 0064 21010000 	 .word .L114+1
- 1554 0068 21010000 	 .word .L114+1
- 1555 006c 21010000 	 .word .L114+1
- 1556 0070 21010000 	 .word .L114+1
- 1557 0074 21010000 	 .word .L114+1
- 1558 0078 03010000 	 .word .L118+1
- 1559 007c 21010000 	 .word .L114+1
- 1560 0080 21010000 	 .word .L114+1
- 1561 0084 0D010000 	 .word .L117+1
- 1562 0088 17010000 	 .word .L115+1
- 1563              	 .p2align 1
- 1564              	.L125:
- 331:usb.c         ****         /* Memory Read */
- 332:usb.c         ****     case REQ_MEMREAD_BULK:
- 333:usb.c         ****         if (FPGA_setlock(fpga_usblocked)){
- 1565              	 .loc 4 333 13
- 1566 008c 0620     	 movs r0,#6
- 1567 008e 2D4B     	 ldr r3,.L136+12
- 1568 0090 9847     	 blx r3
- 1569              	.LVL49:
- 1570 0092 0346     	 mov r3,r0
- 1571              	 .loc 4 333 12
- 1572 0094 002B     	 cmp r3,#0
- 1573 0096 45D0     	 beq .L132
- 334:usb.c         ****             udd_g_ctrlreq.callback = ctrl_readmem_bulk;
- 1574              	 .loc 4 334 36
- 1575 0098 274B     	 ldr r3,.L136
- 1576 009a 2B4A     	 ldr r2,.L136+16
- 1577 009c 1A61     	 str r2,[r3,#16]
- 335:usb.c         ****             return true;
- 1578              	 .loc 4 335 20
- 1579 009e 0123     	 movs r3,#1
- 1580 00a0 48E0     	 b .L127
- 1581              	.L123:
- 336:usb.c         ****         }
- 337:usb.c         ****         break;
- 338:usb.c         ****     case REQ_MEMREAD_CTRL:
- 339:usb.c         ****         if (FPGA_setlock(fpga_usblocked)){
- 1582              	 .loc 4 339 13
- 1583 00a2 0620     	 movs r0,#6
- 1584 00a4 274B     	 ldr r3,.L136+12
- 1585 00a6 9847     	 blx r3
- 1586              	.LVL50:
- 1587 00a8 0346     	 mov r3,r0
- 1588              	 .loc 4 339 12
- 1589 00aa 002B     	 cmp r3,#0
- 1590 00ac 3CD0     	 beq .L133
- 340:usb.c         ****             udd_g_ctrlreq.callback = ctrl_readmem_ctrl;
- 1591              	 .loc 4 340 36
- 1592 00ae 224B     	 ldr r3,.L136
- 1593 00b0 264A     	 ldr r2,.L136+20
- 1594 00b2 1A61     	 str r2,[r3,#16]
- 341:usb.c         ****             return true;
- 1595              	 .loc 4 341 20
- 1596 00b4 0123     	 movs r3,#1
- 1597 00b6 3DE0     	 b .L127
- 1598              	.L124:
- 342:usb.c         ****         }
- 343:usb.c         ****         break;
- 344:usb.c         **** 
- 345:usb.c         **** 
- 346:usb.c         ****         /* Memory Write */
- 347:usb.c         ****     case REQ_MEMWRITE_BULK:
- 348:usb.c         ****         if (FPGA_setlock(fpga_usblocked)){
- 1599              	 .loc 4 348 13
- 1600 00b8 0620     	 movs r0,#6
- 1601 00ba 224B     	 ldr r3,.L136+12
- 1602 00bc 9847     	 blx r3
- 1603              	.LVL51:
- 1604 00be 0346     	 mov r3,r0
- 1605              	 .loc 4 348 12
- 1606 00c0 002B     	 cmp r3,#0
- 1607 00c2 33D0     	 beq .L134
- 349:usb.c         ****             udd_g_ctrlreq.callback = ctrl_writemem_bulk;
- 1608              	 .loc 4 349 36
- 1609 00c4 1C4B     	 ldr r3,.L136
- 1610 00c6 224A     	 ldr r2,.L136+24
- 1611 00c8 1A61     	 str r2,[r3,#16]
- 350:usb.c         ****             return true;
- 1612              	 .loc 4 350 20
- 1613 00ca 0123     	 movs r3,#1
- 1614 00cc 32E0     	 b .L127
- 1615              	.L122:
- 351:usb.c         ****         }
- 352:usb.c         ****         break;
- 353:usb.c         ****     // case REQ_XMEGA_PROGRAM:
- 354:usb.c         ****     //     /*
- 355:usb.c         ****     //     udd_g_ctrlreq.payload = xmegabuffer;
- 356:usb.c         ****     //     udd_g_ctrlreq.payload_size = min(udd_g_ctrlreq.req.wLength,	sizeof(xmegabuffer));
- 357:usb.c         ****     //     */
- 358:usb.c         ****     //     udd_g_ctrlreq.callback = ctrl_xmega_program_void;
- 359:usb.c         ****     //     return true;
- 360:usb.c         **** 
- 361:usb.c         ****     // /* AVR Programming */
- 362:usb.c         ****     // case REQ_AVR_PROGRAM:
- 363:usb.c         ****     //     udd_g_ctrlreq.callback = ctrl_avr_program_void;
- 364:usb.c         ****     //     return true;
- 365:usb.c         **** 
- 366:usb.c         **** 
- 367:usb.c         ****     case REQ_MEMWRITE_CTRL:
- 368:usb.c         ****         if (FPGA_setlock(fpga_usblocked)){
- 1616              	 .loc 4 368 13
- 1617 00ce 0620     	 movs r0,#6
- 1618 00d0 1C4B     	 ldr r3,.L136+12
- 1619 00d2 9847     	 blx r3
- 1620              	.LVL52:
- 1621 00d4 0346     	 mov r3,r0
- 1622              	 .loc 4 368 12
- 1623 00d6 002B     	 cmp r3,#0
- 1624 00d8 2AD0     	 beq .L135
- 369:usb.c         ****             udd_g_ctrlreq.callback = ctrl_writemem_ctrl;
- 1625              	 .loc 4 369 36
- 1626 00da 174B     	 ldr r3,.L136
- 1627 00dc 1D4A     	 ldr r2,.L136+28
- 1628 00de 1A61     	 str r2,[r3,#16]
- 370:usb.c         ****             return true;
- 1629              	 .loc 4 370 20
- 1630 00e0 0123     	 movs r3,#1
- 1631 00e2 27E0     	 b .L127
- 1632              	.L119:
- 371:usb.c         ****         }
- 372:usb.c         ****         break;
- 373:usb.c         **** 
- 374:usb.c         **** 		/* Target serial */
- 375:usb.c         ****     case REQ_USART0_CONFIG:
- 376:usb.c         ****         udd_g_ctrlreq.callback = ctrl_usart_cb;
- 1633              	 .loc 4 376 32
- 1634 00e4 144B     	 ldr r3,.L136
- 1635 00e6 1C4A     	 ldr r2,.L136+32
- 1636 00e8 1A61     	 str r2,[r3,#16]
- 377:usb.c         ****         return true;
- 1637              	 .loc 4 377 16
- 1638 00ea 0123     	 movs r3,#1
- 1639 00ec 22E0     	 b .L127
- 1640              	.L120:
- 378:usb.c         ****         
- 379:usb.c         ****     case REQ_USART0_DATA:
- 380:usb.c         ****         udd_g_ctrlreq.callback = ctrl_usart_cb_data;
- 1641              	 .loc 4 380 32
- 1642 00ee 124B     	 ldr r3,.L136
- 1643 00f0 1A4A     	 ldr r2,.L136+36
- 1644 00f2 1A61     	 str r2,[r3,#16]
+ 309:usb.c         **** 	//Just do single byte writes for now
+ 310:usb.c         **** 	if (udd_g_ctrlreq.req.wLength > 2){
+ 1401              	 .loc 4 310 23
+ 1402 0004 094B     	 ldr r3,.L108
+ 1403 0006 DB88     	 ldrh r3,[r3,#6]
+ 1404              	 .loc 4 310 5
+ 1405 0008 022B     	 cmp r3,#2
+ 1406 000a 0CD8     	 bhi .L107
+ 311:usb.c         **** 		return;
+ 312:usb.c         **** 	}
+ 313:usb.c         ****     write_spi_adc(udd_g_ctrlreq.payload[0], udd_g_ctrlreq.payload[1]);
+ 1407              	 .loc 4 313 32
+ 1408 000c 074B     	 ldr r3,.L108
+ 1409 000e 9B68     	 ldr r3,[r3,#8]
+ 1410              	 .loc 4 313 40
+ 1411 0010 1B78     	 ldrb r3,[r3]
+ 1412              	 .loc 4 313 5
+ 1413 0012 1A46     	 mov r2,r3
+ 1414              	 .loc 4 313 58
+ 1415 0014 054B     	 ldr r3,.L108
+ 1416 0016 9B68     	 ldr r3,[r3,#8]
+ 1417              	 .loc 4 313 66
+ 1418 0018 0133     	 adds r3,r3,#1
+ 1419 001a 1B78     	 ldrb r3,[r3]
+ 1420              	 .loc 4 313 5
+ 1421 001c 1946     	 mov r1,r3
+ 1422 001e 1046     	 mov r0,r2
+ 1423 0020 034B     	 ldr r3,.L108+4
+ 1424 0022 9847     	 blx r3
+ 1425              	.LVL46:
+ 1426 0024 00E0     	 b .L104
+ 1427              	.L107:
+ 311:usb.c         **** 		return;
+ 1428              	 .loc 4 311 3
+ 1429 0026 00BF     	 nop
+ 1430              	.L104:
+ 314:usb.c         **** }
+ 1431              	 .loc 4 314 1
+ 1432 0028 80BD     	 pop {r7,pc}
+ 1433              	.L109:
+ 1434 002a 00BF     	 .align 2
+ 1435              	.L108:
+ 1436 002c 00000000 	 .word udd_g_ctrlreq
+ 1437 0030 00000000 	 .word write_spi_adc
+ 1438              	 .cfi_endproc
+ 1439              	.LFE204:
+ 1441              	 .section .text.ctrl_xmega_program_void,"ax",%progbits
+ 1442              	 .align 1
+ 1443              	 .global ctrl_xmega_program_void
+ 1444              	 .syntax unified
+ 1445              	 .thumb
+ 1446              	 .thumb_func
+ 1447              	 .fpu softvfp
+ 1449              	ctrl_xmega_program_void:
+ 1450              	.LFB205:
+ 315:usb.c         **** 
+ 316:usb.c         **** void ctrl_xmega_program_void(void)
+ 317:usb.c         **** {
+ 1451              	 .loc 4 317 1
+ 1452              	 .cfi_startproc
+ 1453              	 
+ 1454              	 
+ 1455 0000 80B5     	 push {r7,lr}
+ 1456              	.LCFI64:
+ 1457              	 .cfi_def_cfa_offset 8
+ 1458              	 .cfi_offset 7,-8
+ 1459              	 .cfi_offset 14,-4
+ 1460 0002 00AF     	 add r7,sp,#0
+ 1461              	.LCFI65:
+ 1462              	 .cfi_def_cfa_register 7
+ 318:usb.c         **** 	XPROGProtocol_Command();
+ 1463              	 .loc 4 318 2
+ 1464 0004 014B     	 ldr r3,.L111
+ 1465 0006 9847     	 blx r3
+ 1466              	.LVL47:
+ 319:usb.c         **** }
+ 1467              	 .loc 4 319 1
+ 1468 0008 00BF     	 nop
+ 1469 000a 80BD     	 pop {r7,pc}
+ 1470              	.L112:
+ 1471              	 .align 2
+ 1472              	.L111:
+ 1473 000c 00000000 	 .word XPROGProtocol_Command
+ 1474              	 .cfi_endproc
+ 1475              	.LFE205:
+ 1477              	 .section .text.ctrl_avr_program_void,"ax",%progbits
+ 1478              	 .align 1
+ 1479              	 .global ctrl_avr_program_void
+ 1480              	 .syntax unified
+ 1481              	 .thumb
+ 1482              	 .thumb_func
+ 1483              	 .fpu softvfp
+ 1485              	ctrl_avr_program_void:
+ 1486              	.LFB206:
+ 320:usb.c         **** 
+ 321:usb.c         **** void ctrl_avr_program_void(void)
+ 322:usb.c         **** {
+ 1487              	 .loc 4 322 1
+ 1488              	 .cfi_startproc
+ 1489              	 
+ 1490              	 
+ 1491 0000 80B5     	 push {r7,lr}
+ 1492              	.LCFI66:
+ 1493              	 .cfi_def_cfa_offset 8
+ 1494              	 .cfi_offset 7,-8
+ 1495              	 .cfi_offset 14,-4
+ 1496 0002 00AF     	 add r7,sp,#0
+ 1497              	.LCFI67:
+ 1498              	 .cfi_def_cfa_register 7
+ 323:usb.c         **** 	V2Protocol_ProcessCommand();
+ 1499              	 .loc 4 323 2
+ 1500 0004 014B     	 ldr r3,.L114
+ 1501 0006 9847     	 blx r3
+ 1502              	.LVL48:
+ 324:usb.c         **** }
+ 1503              	 .loc 4 324 1
+ 1504 0008 00BF     	 nop
+ 1505 000a 80BD     	 pop {r7,pc}
+ 1506              	.L115:
+ 1507              	 .align 2
+ 1508              	.L114:
+ 1509 000c 00000000 	 .word V2Protocol_ProcessCommand
+ 1510              	 .cfi_endproc
+ 1511              	.LFE206:
+ 1513              	 .section .text.main_setup_out_received,"ax",%progbits
+ 1514              	 .align 1
+ 1515              	 .global main_setup_out_received
+ 1516              	 .syntax unified
+ 1517              	 .thumb
+ 1518              	 .thumb_func
+ 1519              	 .fpu softvfp
+ 1521              	main_setup_out_received:
+ 1522              	.LFB207:
+ 325:usb.c         **** 
+ 326:usb.c         **** bool main_setup_out_received(void)
+ 327:usb.c         **** {
+ 1523              	 .loc 4 327 1
+ 1524              	 .cfi_startproc
+ 1525              	 
+ 1526              	 
+ 1527 0000 80B5     	 push {r7,lr}
+ 1528              	.LCFI68:
+ 1529              	 .cfi_def_cfa_offset 8
+ 1530              	 .cfi_offset 7,-8
+ 1531              	 .cfi_offset 14,-4
+ 1532 0002 00AF     	 add r7,sp,#0
+ 1533              	.LCFI69:
+ 1534              	 .cfi_def_cfa_register 7
+ 328:usb.c         ****     //Add buffer if used
+ 329:usb.c         ****     udd_g_ctrlreq.payload = ctrlbuffer;
+ 1535              	 .loc 4 329 27
+ 1536 0004 4C4B     	 ldr r3,.L139
+ 1537 0006 4D4A     	 ldr r2,.L139+4
+ 1538 0008 9A60     	 str r2,[r3,#8]
+ 330:usb.c         ****     udd_g_ctrlreq.payload_size = min(udd_g_ctrlreq.req.wLength,	sizeof(ctrlbuffer));
+ 1539              	 .loc 4 330 34
+ 1540 000a 4B4B     	 ldr r3,.L139
+ 1541 000c DB88     	 ldrh r3,[r3,#6]
+ 1542 000e 402B     	 cmp r3,#64
+ 1543 0010 28BF     	 it cs
+ 1544 0012 4023     	 movcs r3,#64
+ 1545 0014 9AB2     	 uxth r2,r3
+ 1546              	 .loc 4 330 32
+ 1547 0016 484B     	 ldr r3,.L139
+ 1548 0018 9A81     	 strh r2,[r3,#12]
+ 331:usb.c         **** 
+ 332:usb.c         ****     blockendpoint_usage = bep_emem;
+ 1549              	 .loc 4 332 25
+ 1550 001a 494B     	 ldr r3,.L139+8
+ 1551 001c 0022     	 movs r2,#0
+ 1552 001e 1A70     	 strb r2,[r3]
+ 333:usb.c         ****     static uint8_t  respbuf[128];
+ 334:usb.c         ****     switch(udd_g_ctrlreq.req.bRequest){
+ 1553              	 .loc 4 334 29
+ 1554 0020 454B     	 ldr r3,.L139
+ 1555 0022 5B78     	 ldrb r3,[r3,#1]
+ 1556 0024 103B     	 subs r3,r3,#16
+ 1557 0026 162B     	 cmp r3,#22
+ 1558 0028 7AD8     	 bhi .L117
+ 1559 002a 01A2     	 adr r2,.L119
+ 1560 002c 52F823F0 	 ldr pc,[r2,r3,lsl#2]
+ 1561              	 .p2align 2
+ 1562              	.L119:
+ 1563 0030 8D000000 	 .word .L128+1
+ 1564 0034 B9000000 	 .word .L127+1
+ 1565 0038 A3000000 	 .word .L126+1
+ 1566 003c CF000000 	 .word .L125+1
+ 1567 0040 21010000 	 .word .L117+1
+ 1568 0044 21010000 	 .word .L117+1
+ 1569 0048 F9000000 	 .word .L124+1
+ 1570 004c 21010000 	 .word .L117+1
+ 1571 0050 21010000 	 .word .L117+1
+ 1572 0054 21010000 	 .word .L117+1
+ 1573 0058 EF000000 	 .word .L123+1
+ 1574 005c E5000000 	 .word .L122+1
+ 1575 0060 21010000 	 .word .L117+1
+ 1576 0064 21010000 	 .word .L117+1
+ 1577 0068 21010000 	 .word .L117+1
+ 1578 006c 21010000 	 .word .L117+1
+ 1579 0070 21010000 	 .word .L117+1
+ 1580 0074 21010000 	 .word .L117+1
+ 1581 0078 03010000 	 .word .L121+1
+ 1582 007c 21010000 	 .word .L117+1
+ 1583 0080 21010000 	 .word .L117+1
+ 1584 0084 0D010000 	 .word .L120+1
+ 1585 0088 17010000 	 .word .L118+1
+ 1586              	 .p2align 1
+ 1587              	.L128:
+ 335:usb.c         ****         /* Memory Read */
+ 336:usb.c         ****     case REQ_MEMREAD_BULK:
+ 337:usb.c         ****         if (FPGA_setlock(fpga_usblocked)){
+ 1588              	 .loc 4 337 13
+ 1589 008c 0620     	 movs r0,#6
+ 1590 008e 2D4B     	 ldr r3,.L139+12
+ 1591 0090 9847     	 blx r3
+ 1592              	.LVL49:
+ 1593 0092 0346     	 mov r3,r0
+ 1594              	 .loc 4 337 12
+ 1595 0094 002B     	 cmp r3,#0
+ 1596 0096 45D0     	 beq .L135
+ 338:usb.c         ****             udd_g_ctrlreq.callback = ctrl_readmem_bulk;
+ 1597              	 .loc 4 338 36
+ 1598 0098 274B     	 ldr r3,.L139
+ 1599 009a 2B4A     	 ldr r2,.L139+16
+ 1600 009c 1A61     	 str r2,[r3,#16]
+ 339:usb.c         ****             return true;
+ 1601              	 .loc 4 339 20
+ 1602 009e 0123     	 movs r3,#1
+ 1603 00a0 48E0     	 b .L130
+ 1604              	.L126:
+ 340:usb.c         ****         }
+ 341:usb.c         ****         break;
+ 342:usb.c         ****     case REQ_MEMREAD_CTRL:
+ 343:usb.c         ****         if (FPGA_setlock(fpga_usblocked)){
+ 1605              	 .loc 4 343 13
+ 1606 00a2 0620     	 movs r0,#6
+ 1607 00a4 274B     	 ldr r3,.L139+12
+ 1608 00a6 9847     	 blx r3
+ 1609              	.LVL50:
+ 1610 00a8 0346     	 mov r3,r0
+ 1611              	 .loc 4 343 12
+ 1612 00aa 002B     	 cmp r3,#0
+ 1613 00ac 3CD0     	 beq .L136
+ 344:usb.c         ****             udd_g_ctrlreq.callback = ctrl_readmem_ctrl;
+ 1614              	 .loc 4 344 36
+ 1615 00ae 224B     	 ldr r3,.L139
+ 1616 00b0 264A     	 ldr r2,.L139+20
+ 1617 00b2 1A61     	 str r2,[r3,#16]
+ 345:usb.c         ****             return true;
+ 1618              	 .loc 4 345 20
+ 1619 00b4 0123     	 movs r3,#1
+ 1620 00b6 3DE0     	 b .L130
+ 1621              	.L127:
+ 346:usb.c         ****         }
+ 347:usb.c         ****         break;
+ 348:usb.c         **** 
+ 349:usb.c         **** 
+ 350:usb.c         ****         /* Memory Write */
+ 351:usb.c         ****     case REQ_MEMWRITE_BULK:
+ 352:usb.c         ****         if (FPGA_setlock(fpga_usblocked)){
+ 1622              	 .loc 4 352 13
+ 1623 00b8 0620     	 movs r0,#6
+ 1624 00ba 224B     	 ldr r3,.L139+12
+ 1625 00bc 9847     	 blx r3
+ 1626              	.LVL51:
+ 1627 00be 0346     	 mov r3,r0
+ 1628              	 .loc 4 352 12
+ 1629 00c0 002B     	 cmp r3,#0
+ 1630 00c2 33D0     	 beq .L137
+ 353:usb.c         ****             udd_g_ctrlreq.callback = ctrl_writemem_bulk;
+ 1631              	 .loc 4 353 36
+ 1632 00c4 1C4B     	 ldr r3,.L139
+ 1633 00c6 224A     	 ldr r2,.L139+24
+ 1634 00c8 1A61     	 str r2,[r3,#16]
+ 354:usb.c         ****             return true;
+ 1635              	 .loc 4 354 20
+ 1636 00ca 0123     	 movs r3,#1
+ 1637 00cc 32E0     	 b .L130
+ 1638              	.L125:
+ 355:usb.c         ****         }
+ 356:usb.c         ****         break;
+ 357:usb.c         ****     // case REQ_XMEGA_PROGRAM:
+ 358:usb.c         ****     //     /*
+ 359:usb.c         ****     //     udd_g_ctrlreq.payload = xmegabuffer;
+ 360:usb.c         ****     //     udd_g_ctrlreq.payload_size = min(udd_g_ctrlreq.req.wLength,	sizeof(xmegabuffer));
+ 361:usb.c         ****     //     */
+ 362:usb.c         ****     //     udd_g_ctrlreq.callback = ctrl_xmega_program_void;
+ 363:usb.c         ****     //     return true;
+ 364:usb.c         **** 
+ 365:usb.c         ****     // /* AVR Programming */
+ 366:usb.c         ****     // case REQ_AVR_PROGRAM:
+ 367:usb.c         ****     //     udd_g_ctrlreq.callback = ctrl_avr_program_void;
+ 368:usb.c         ****     //     return true;
+ 369:usb.c         **** 
+ 370:usb.c         **** 
+ 371:usb.c         ****     case REQ_MEMWRITE_CTRL:
+ 372:usb.c         ****         if (FPGA_setlock(fpga_usblocked)){
+ 1639              	 .loc 4 372 13
+ 1640 00ce 0620     	 movs r0,#6
+ 1641 00d0 1C4B     	 ldr r3,.L139+12
+ 1642 00d2 9847     	 blx r3
+ 1643              	.LVL52:
+ 1644 00d4 0346     	 mov r3,r0
+ 1645              	 .loc 4 372 12
+ 1646 00d6 002B     	 cmp r3,#0
+ 1647 00d8 2AD0     	 beq .L138
+ 373:usb.c         ****             udd_g_ctrlreq.callback = ctrl_writemem_ctrl;
+ 1648              	 .loc 4 373 36
+ 1649 00da 174B     	 ldr r3,.L139
+ 1650 00dc 1D4A     	 ldr r2,.L139+28
+ 1651 00de 1A61     	 str r2,[r3,#16]
+ 374:usb.c         ****             return true;
+ 1652              	 .loc 4 374 20
+ 1653 00e0 0123     	 movs r3,#1
+ 1654 00e2 27E0     	 b .L130
+ 1655              	.L122:
+ 375:usb.c         ****         }
+ 376:usb.c         ****         break;
+ 377:usb.c         **** 
+ 378:usb.c         **** 		/* Target serial */
+ 379:usb.c         ****     case REQ_USART0_CONFIG:
+ 380:usb.c         ****         udd_g_ctrlreq.callback = ctrl_usart_cb;
+ 1656              	 .loc 4 380 32
+ 1657 00e4 144B     	 ldr r3,.L139
+ 1658 00e6 1C4A     	 ldr r2,.L139+32
+ 1659 00e8 1A61     	 str r2,[r3,#16]
  381:usb.c         ****         return true;
- 1645              	 .loc 4 381 16
- 1646 00f4 0123     	 movs r3,#1
- 1647 00f6 1DE0     	 b .L127
- 1648              	.L121:
- 382:usb.c         **** 
- 383:usb.c         ****     case REQ_FPGA_PROGRAM:
- 384:usb.c         ****         udd_g_ctrlreq.callback = ctrl_progfpga_bulk;
- 1649              	 .loc 4 384 32
- 1650 00f8 0F4B     	 ldr r3,.L136
- 1651 00fa 194A     	 ldr r2,.L136+40
- 1652 00fc 1A61     	 str r2,[r3,#16]
+ 1660              	 .loc 4 381 16
+ 1661 00ea 0123     	 movs r3,#1
+ 1662 00ec 22E0     	 b .L130
+ 1663              	.L123:
+ 382:usb.c         ****         
+ 383:usb.c         ****     case REQ_USART0_DATA:
+ 384:usb.c         ****         udd_g_ctrlreq.callback = ctrl_usart_cb_data;
+ 1664              	 .loc 4 384 32
+ 1665 00ee 124B     	 ldr r3,.L139
+ 1666 00f0 1A4A     	 ldr r2,.L139+36
+ 1667 00f2 1A61     	 str r2,[r3,#16]
  385:usb.c         ****         return true;
- 1653              	 .loc 4 385 16
- 1654 00fe 0123     	 movs r3,#1
- 1655 0100 18E0     	 b .L127
- 1656              	.L118:
+ 1668              	 .loc 4 385 16
+ 1669 00f4 0123     	 movs r3,#1
+ 1670 00f6 1DE0     	 b .L130
+ 1671              	.L124:
  386:usb.c         **** 
- 387:usb.c         ****     case REQ_SAM3U_CFG:
- 388:usb.c         ****         udd_g_ctrlreq.callback = ctrl_sam3ucfg_cb;
- 1657              	 .loc 4 388 32
- 1658 0102 0D4B     	 ldr r3,.L136
- 1659 0104 174A     	 ldr r2,.L136+44
- 1660 0106 1A61     	 str r2,[r3,#16]
+ 387:usb.c         ****     case REQ_FPGA_PROGRAM:
+ 388:usb.c         ****         udd_g_ctrlreq.callback = ctrl_progfpga_bulk;
+ 1672              	 .loc 4 388 32
+ 1673 00f8 0F4B     	 ldr r3,.L139
+ 1674 00fa 194A     	 ldr r2,.L139+40
+ 1675 00fc 1A61     	 str r2,[r3,#16]
  389:usb.c         ****         return true;
- 1661              	 .loc 4 389 16
- 1662 0108 0123     	 movs r3,#1
- 1663 010a 13E0     	 b .L127
- 1664              	.L117:
+ 1676              	 .loc 4 389 16
+ 1677 00fe 0123     	 movs r3,#1
+ 1678 0100 18E0     	 b .L130
+ 1679              	.L121:
  390:usb.c         **** 
- 391:usb.c         ****     case REQ_FPGA_RESET:
- 392:usb.c         ****         udd_g_ctrlreq.callback = ctrl_fpga_reset;
- 1665              	 .loc 4 392 32
- 1666 010c 0A4B     	 ldr r3,.L136
- 1667 010e 164A     	 ldr r2,.L136+48
- 1668 0110 1A61     	 str r2,[r3,#16]
+ 391:usb.c         ****     case REQ_SAM3U_CFG:
+ 392:usb.c         ****         udd_g_ctrlreq.callback = ctrl_sam3ucfg_cb;
+ 1680              	 .loc 4 392 32
+ 1681 0102 0D4B     	 ldr r3,.L139
+ 1682 0104 174A     	 ldr r2,.L139+44
+ 1683 0106 1A61     	 str r2,[r3,#16]
  393:usb.c         ****         return true;
- 1669              	 .loc 4 393 16
- 1670 0112 0123     	 movs r3,#1
- 1671 0114 0EE0     	 b .L127
- 1672              	.L115:
- 394:usb.c         ****     case REQ_SPI:
- 395:usb.c         ****         udd_g_ctrlreq.callback = ctrl_spi_cb;
- 1673              	 .loc 4 395 32
- 1674 0116 084B     	 ldr r3,.L136
- 1675 0118 144A     	 ldr r2,.L136+52
- 1676 011a 1A61     	 str r2,[r3,#16]
- 396:usb.c         ****         return true;
- 1677              	 .loc 4 396 16
- 1678 011c 0123     	 movs r3,#1
- 1679 011e 09E0     	 b .L127
- 1680              	.L114:
- 397:usb.c         ****     default:
- 398:usb.c         ****         return false;
- 1681              	 .loc 4 398 16
- 1682 0120 0023     	 movs r3,#0
- 1683 0122 07E0     	 b .L127
- 1684              	.L132:
- 337:usb.c         ****     case REQ_MEMREAD_CTRL:
- 1685              	 .loc 4 337 9
- 1686 0124 00BF     	 nop
- 1687 0126 04E0     	 b .L128
- 1688              	.L133:
- 343:usb.c         **** 
- 1689              	 .loc 4 343 9
- 1690 0128 00BF     	 nop
- 1691 012a 02E0     	 b .L128
- 1692              	.L134:
- 352:usb.c         ****     // case REQ_XMEGA_PROGRAM:
- 1693              	 .loc 4 352 9
- 1694 012c 00BF     	 nop
- 1695 012e 00E0     	 b .L128
- 1696              	.L135:
- 372:usb.c         **** 
- 1697              	 .loc 4 372 9
- 1698 0130 00BF     	 nop
- 1699              	.L128:
- 399:usb.c         ****     }
- 400:usb.c         **** 
- 401:usb.c         ****     return false;
- 1700              	 .loc 4 401 12
- 1701 0132 0023     	 movs r3,#0
- 1702              	.L127:
- 402:usb.c         **** }
- 1703              	 .loc 4 402 1
- 1704 0134 1846     	 mov r0,r3
- 1705 0136 80BD     	 pop {r7,pc}
- 1706              	.L137:
- 1707              	 .align 2
- 1708              	.L136:
- 1709 0138 00000000 	 .word udd_g_ctrlreq
- 1710 013c 00000000 	 .word ctrlbuffer
- 1711 0140 00000000 	 .word blockendpoint_usage
- 1712 0144 00000000 	 .word FPGA_setlock
- 1713 0148 00000000 	 .word ctrl_readmem_bulk
- 1714 014c 00000000 	 .word ctrl_readmem_ctrl
- 1715 0150 00000000 	 .word ctrl_writemem_bulk
- 1716 0154 00000000 	 .word ctrl_writemem_ctrl
- 1717 0158 00000000 	 .word ctrl_usart_cb
- 1718 015c 00000000 	 .word ctrl_usart_cb_data
- 1719 0160 00000000 	 .word ctrl_progfpga_bulk
- 1720 0164 00000000 	 .word ctrl_sam3ucfg_cb
- 1721 0168 00000000 	 .word ctrl_fpga_reset
- 1722 016c 00000000 	 .word ctrl_spi_cb
- 1723              	 .cfi_endproc
- 1724              	.LFE207:
- 1726              	 .section .text.main_setup_in_received,"ax",%progbits
- 1727              	 .align 1
- 1728              	 .global main_setup_in_received
- 1729              	 .syntax unified
- 1730              	 .thumb
- 1731              	 .thumb_func
- 1732              	 .fpu softvfp
- 1734              	main_setup_in_received:
- 1735              	.LFB208:
- 403:usb.c         **** 
+ 1684              	 .loc 4 393 16
+ 1685 0108 0123     	 movs r3,#1
+ 1686 010a 13E0     	 b .L130
+ 1687              	.L120:
+ 394:usb.c         **** 
+ 395:usb.c         ****     case REQ_FPGA_RESET:
+ 396:usb.c         ****         udd_g_ctrlreq.callback = ctrl_fpga_reset;
+ 1688              	 .loc 4 396 32
+ 1689 010c 0A4B     	 ldr r3,.L139
+ 1690 010e 164A     	 ldr r2,.L139+48
+ 1691 0110 1A61     	 str r2,[r3,#16]
+ 397:usb.c         ****         return true;
+ 1692              	 .loc 4 397 16
+ 1693 0112 0123     	 movs r3,#1
+ 1694 0114 0EE0     	 b .L130
+ 1695              	.L118:
+ 398:usb.c         ****     case REQ_SPI_ADC:
+ 399:usb.c         ****         udd_g_ctrlreq.callback = spi_adc_cb;
+ 1696              	 .loc 4 399 32
+ 1697 0116 084B     	 ldr r3,.L139
+ 1698 0118 144A     	 ldr r2,.L139+52
+ 1699 011a 1A61     	 str r2,[r3,#16]
+ 400:usb.c         ****         return true;
+ 1700              	 .loc 4 400 16
+ 1701 011c 0123     	 movs r3,#1
+ 1702 011e 09E0     	 b .L130
+ 1703              	.L117:
+ 401:usb.c         ****     default:
+ 402:usb.c         ****         return false;
+ 1704              	 .loc 4 402 16
+ 1705 0120 0023     	 movs r3,#0
+ 1706 0122 07E0     	 b .L130
+ 1707              	.L135:
+ 341:usb.c         ****     case REQ_MEMREAD_CTRL:
+ 1708              	 .loc 4 341 9
+ 1709 0124 00BF     	 nop
+ 1710 0126 04E0     	 b .L131
+ 1711              	.L136:
+ 347:usb.c         **** 
+ 1712              	 .loc 4 347 9
+ 1713 0128 00BF     	 nop
+ 1714 012a 02E0     	 b .L131
+ 1715              	.L137:
+ 356:usb.c         ****     // case REQ_XMEGA_PROGRAM:
+ 1716              	 .loc 4 356 9
+ 1717 012c 00BF     	 nop
+ 1718 012e 00E0     	 b .L131
+ 1719              	.L138:
+ 376:usb.c         **** 
+ 1720              	 .loc 4 376 9
+ 1721 0130 00BF     	 nop
+ 1722              	.L131:
+ 403:usb.c         ****     }
  404:usb.c         **** 
- 405:usb.c         **** /*
- 406:usb.c         ****   udd_g_ctrlreq.req.bRequest == 0
- 407:usb.c         ****   && (udd_g_ctrlreq.req.bRequest == 0)
- 408:usb.c         ****   && (0 != udd_g_ctrlreq.req.wLength)
- 409:usb.c         **** */
- 410:usb.c         **** 
- 411:usb.c         **** bool main_setup_in_received(void)
- 412:usb.c         **** {
- 1736              	 .loc 4 412 1
- 1737              	 .cfi_startproc
- 1738              	 
- 1739              	 
- 1740 0000 80B5     	 push {r7,lr}
- 1741              	.LCFI70:
- 1742              	 .cfi_def_cfa_offset 8
- 1743              	 .cfi_offset 7,-8
- 1744              	 .cfi_offset 14,-4
- 1745 0002 82B0     	 sub sp,sp,#8
- 1746              	.LCFI71:
- 1747              	 .cfi_def_cfa_offset 16
- 1748 0004 00AF     	 add r7,sp,#0
- 1749              	.LCFI72:
- 1750              	 .cfi_def_cfa_register 7
- 413:usb.c         ****     /*
- 414:usb.c         ****       udd_g_ctrlreq.payload = main_buf_loopback;
- 415:usb.c         ****       udd_g_ctrlreq.payload_size =
- 416:usb.c         ****       min( udd_g_ctrlreq.req.wLength,
- 417:usb.c         ****       sizeof(main_buf_loopback) );
- 418:usb.c         ****     */
- 419:usb.c         **** 
- 420:usb.c         ****     static uint8_t  respbuf[64];
- 421:usb.c         ****     unsigned int cnt;
- 422:usb.c         **** 
- 423:usb.c         ****     switch(udd_g_ctrlreq.req.bRequest){
- 1751              	 .loc 4 423 29
- 1752 0006 484B     	 ldr r3,.L150
- 1753 0008 5B78     	 ldrb r3,[r3,#1]
- 1754 000a 123B     	 subs r3,r3,#18
- 1755 000c 092B     	 cmp r3,#9
- 1756 000e 00F28580 	 bhi .L139
- 1757 0012 01A2     	 adr r2,.L141
- 1758 0014 52F823F0 	 ldr pc,[r2,r3,lsl#2]
- 1759              	 .p2align 2
- 1760              	.L141:
- 1761 0018 41000000 	 .word .L145+1
- 1762 001c 1D010000 	 .word .L139+1
- 1763 0020 1D010000 	 .word .L139+1
- 1764 0024 E3000000 	 .word .L144+1
- 1765 0028 1D010000 	 .word .L139+1
- 1766 002c C1000000 	 .word .L143+1
- 1767 0030 1D010000 	 .word .L139+1
- 1768 0034 1D010000 	 .word .L139+1
- 1769 0038 83000000 	 .word .L142+1
- 1770 003c 6D000000 	 .word .L140+1
- 1771              	 .p2align 1
- 1772              	.L145:
- 1773              	.LBB5:
- 424:usb.c         ****     case REQ_MEMREAD_CTRL:
- 425:usb.c         ****         udd_g_ctrlreq.payload = ctrlmemread_buf;
- 1774              	 .loc 4 425 31
- 1775 0040 3A4B     	 ldr r3,.L150+4
- 1776 0042 1B68     	 ldr r3,[r3]
- 1777 0044 384A     	 ldr r2,.L150
- 1778 0046 9360     	 str r3,[r2,#8]
- 426:usb.c         ****         udd_g_ctrlreq.payload_size = ctrlmemread_size;
- 1779              	 .loc 4 426 36
- 1780 0048 394B     	 ldr r3,.L150+8
- 1781 004a 1B68     	 ldr r3,[r3]
- 1782 004c 9AB2     	 uxth r2,r3
- 1783 004e 364B     	 ldr r3,.L150
- 1784 0050 9A81     	 strh r2,[r3,#12]
- 427:usb.c         ****         ctrlmemread_size = 0;
- 1785              	 .loc 4 427 26
- 1786 0052 374B     	 ldr r3,.L150+8
- 1787 0054 0022     	 movs r2,#0
- 1788 0056 1A60     	 str r2,[r3]
- 428:usb.c         **** 
- 429:usb.c         ****         if (FPGA_lockstatus() == fpga_ctrlmem){
- 1789              	 .loc 4 429 13
- 1790 0058 364B     	 ldr r3,.L150+12
- 1791 005a 9847     	 blx r3
- 1792              	.LVL53:
- 1793 005c 0346     	 mov r3,r0
- 1794              	 .loc 4 429 12
- 1795 005e 052B     	 cmp r3,#5
- 1796 0060 02D1     	 bne .L146
- 430:usb.c         ****             FPGA_setlock(fpga_unlocked);
- 1797              	 .loc 4 430 13
- 1798 0062 0020     	 movs r0,#0
- 1799 0064 344B     	 ldr r3,.L150+16
- 1800 0066 9847     	 blx r3
- 1801              	.LVL54:
- 1802              	.L146:
- 431:usb.c         ****         }
+ 405:usb.c         ****     return false;
+ 1723              	 .loc 4 405 12
+ 1724 0132 0023     	 movs r3,#0
+ 1725              	.L130:
+ 406:usb.c         **** }
+ 1726              	 .loc 4 406 1
+ 1727 0134 1846     	 mov r0,r3
+ 1728 0136 80BD     	 pop {r7,pc}
+ 1729              	.L140:
+ 1730              	 .align 2
+ 1731              	.L139:
+ 1732 0138 00000000 	 .word udd_g_ctrlreq
+ 1733 013c 00000000 	 .word ctrlbuffer
+ 1734 0140 00000000 	 .word blockendpoint_usage
+ 1735 0144 00000000 	 .word FPGA_setlock
+ 1736 0148 00000000 	 .word ctrl_readmem_bulk
+ 1737 014c 00000000 	 .word ctrl_readmem_ctrl
+ 1738 0150 00000000 	 .word ctrl_writemem_bulk
+ 1739 0154 00000000 	 .word ctrl_writemem_ctrl
+ 1740 0158 00000000 	 .word ctrl_usart_cb
+ 1741 015c 00000000 	 .word ctrl_usart_cb_data
+ 1742 0160 00000000 	 .word ctrl_progfpga_bulk
+ 1743 0164 00000000 	 .word ctrl_sam3ucfg_cb
+ 1744 0168 00000000 	 .word ctrl_fpga_reset
+ 1745 016c 00000000 	 .word spi_adc_cb
+ 1746              	 .cfi_endproc
+ 1747              	.LFE207:
+ 1749              	 .section .text.main_setup_in_received,"ax",%progbits
+ 1750              	 .align 1
+ 1751              	 .global main_setup_in_received
+ 1752              	 .syntax unified
+ 1753              	 .thumb
+ 1754              	 .thumb_func
+ 1755              	 .fpu softvfp
+ 1757              	main_setup_in_received:
+ 1758              	.LFB208:
+ 407:usb.c         **** 
+ 408:usb.c         **** 
+ 409:usb.c         **** /*
+ 410:usb.c         ****   udd_g_ctrlreq.req.bRequest == 0
+ 411:usb.c         ****   && (udd_g_ctrlreq.req.bRequest == 0)
+ 412:usb.c         ****   && (0 != udd_g_ctrlreq.req.wLength)
+ 413:usb.c         **** */
+ 414:usb.c         **** 
+ 415:usb.c         **** bool main_setup_in_received(void)
+ 416:usb.c         **** {
+ 1759              	 .loc 4 416 1
+ 1760              	 .cfi_startproc
+ 1761              	 
+ 1762              	 
+ 1763 0000 80B5     	 push {r7,lr}
+ 1764              	.LCFI70:
+ 1765              	 .cfi_def_cfa_offset 8
+ 1766              	 .cfi_offset 7,-8
+ 1767              	 .cfi_offset 14,-4
+ 1768 0002 82B0     	 sub sp,sp,#8
+ 1769              	.LCFI71:
+ 1770              	 .cfi_def_cfa_offset 16
+ 1771 0004 00AF     	 add r7,sp,#0
+ 1772              	.LCFI72:
+ 1773              	 .cfi_def_cfa_register 7
+ 417:usb.c         ****     /*
+ 418:usb.c         ****       udd_g_ctrlreq.payload = main_buf_loopback;
+ 419:usb.c         ****       udd_g_ctrlreq.payload_size =
+ 420:usb.c         ****       min( udd_g_ctrlreq.req.wLength,
+ 421:usb.c         ****       sizeof(main_buf_loopback) );
+ 422:usb.c         ****     */
+ 423:usb.c         **** 
+ 424:usb.c         ****     static uint8_t  respbuf[64];
+ 425:usb.c         ****     unsigned int cnt;
+ 426:usb.c         **** 
+ 427:usb.c         ****     switch(udd_g_ctrlreq.req.bRequest){
+ 1774              	 .loc 4 427 29
+ 1775 0006 5C4B     	 ldr r3,.L154
+ 1776 0008 5B78     	 ldrb r3,[r3,#1]
+ 1777 000a 123B     	 subs r3,r3,#18
+ 1778 000c 142B     	 cmp r3,#20
+ 1779 000e 00F2AD80 	 bhi .L142
+ 1780 0012 01A2     	 adr r2,.L144
+ 1781 0014 52F823F0 	 ldr pc,[r2,r3,lsl#2]
+ 1782              	 .p2align 2
+ 1783              	.L144:
+ 1784 0018 6D000000 	 .word .L149+1
+ 1785 001c 6D010000 	 .word .L142+1
+ 1786 0020 6D010000 	 .word .L142+1
+ 1787 0024 0F010000 	 .word .L148+1
+ 1788 0028 6D010000 	 .word .L142+1
+ 1789 002c ED000000 	 .word .L147+1
+ 1790 0030 6D010000 	 .word .L142+1
+ 1791 0034 6D010000 	 .word .L142+1
+ 1792 0038 AF000000 	 .word .L146+1
+ 1793 003c 99000000 	 .word .L145+1
+ 1794 0040 6D010000 	 .word .L142+1
+ 1795 0044 6D010000 	 .word .L142+1
+ 1796 0048 6D010000 	 .word .L142+1
+ 1797 004c 6D010000 	 .word .L142+1
+ 1798 0050 6D010000 	 .word .L142+1
+ 1799 0054 6D010000 	 .word .L142+1
+ 1800 0058 6D010000 	 .word .L142+1
+ 1801 005c 6D010000 	 .word .L142+1
+ 1802 0060 6D010000 	 .word .L142+1
+ 1803 0064 6D010000 	 .word .L142+1
+ 1804 0068 49010000 	 .word .L143+1
+ 1805              	 .p2align 1
+ 1806              	.L149:
+ 1807              	.LBB5:
+ 428:usb.c         ****     case REQ_MEMREAD_CTRL:
+ 429:usb.c         ****         udd_g_ctrlreq.payload = ctrlmemread_buf;
+ 1808              	 .loc 4 429 31
+ 1809 006c 434B     	 ldr r3,.L154+4
+ 1810 006e 1B68     	 ldr r3,[r3]
+ 1811 0070 414A     	 ldr r2,.L154
+ 1812 0072 9360     	 str r3,[r2,#8]
+ 430:usb.c         ****         udd_g_ctrlreq.payload_size = ctrlmemread_size;
+ 1813              	 .loc 4 430 36
+ 1814 0074 424B     	 ldr r3,.L154+8
+ 1815 0076 1B68     	 ldr r3,[r3]
+ 1816 0078 9AB2     	 uxth r2,r3
+ 1817 007a 3F4B     	 ldr r3,.L154
+ 1818 007c 9A81     	 strh r2,[r3,#12]
+ 431:usb.c         ****         ctrlmemread_size = 0;
+ 1819              	 .loc 4 431 26
+ 1820 007e 404B     	 ldr r3,.L154+8
+ 1821 0080 0022     	 movs r2,#0
+ 1822 0082 1A60     	 str r2,[r3]
  432:usb.c         **** 
- 433:usb.c         ****         return true;
- 1803              	 .loc 4 433 16
- 1804 0068 0123     	 movs r3,#1
- 1805 006a 58E0     	 b .L147
- 1806              	.L140:
- 434:usb.c         ****         break;
- 435:usb.c         **** 
- 436:usb.c         ****     // case REQ_XMEGA_PROGRAM:
- 437:usb.c         ****     //     return XPROGProtocol_Command();
- 438:usb.c         ****     //     break;
- 439:usb.c         ****         
- 440:usb.c         ****     // case REQ_AVR_PROGRAM:
- 441:usb.c         ****     //     return V2Protocol_ProcessCommand();
+ 433:usb.c         ****         if (FPGA_lockstatus() == fpga_ctrlmem){
+ 1823              	 .loc 4 433 13
+ 1824 0084 3F4B     	 ldr r3,.L154+12
+ 1825 0086 9847     	 blx r3
+ 1826              	.LVL53:
+ 1827 0088 0346     	 mov r3,r0
+ 1828              	 .loc 4 433 12
+ 1829 008a 052B     	 cmp r3,#5
+ 1830 008c 02D1     	 bne .L150
+ 434:usb.c         ****             FPGA_setlock(fpga_unlocked);
+ 1831              	 .loc 4 434 13
+ 1832 008e 0020     	 movs r0,#0
+ 1833 0090 3D4B     	 ldr r3,.L154+16
+ 1834 0092 9847     	 blx r3
+ 1835              	.LVL54:
+ 1836              	.L150:
+ 435:usb.c         ****         }
+ 436:usb.c         **** 
+ 437:usb.c         ****         return true;
+ 1837              	 .loc 4 437 16
+ 1838 0094 0123     	 movs r3,#1
+ 1839 0096 6AE0     	 b .L151
+ 1840              	.L145:
+ 438:usb.c         ****         break;
+ 439:usb.c         **** 
+ 440:usb.c         ****     // case REQ_XMEGA_PROGRAM:
+ 441:usb.c         ****     //     return XPROGProtocol_Command();
  442:usb.c         ****     //     break;
  443:usb.c         ****         
- 444:usb.c         ****         
- 445:usb.c         ****     case REQ_USART0_CONFIG:
- 446:usb.c         ****         return ctrl_usart(USART_TARGET, true);
- 1807              	 .loc 4 446 16
- 1808 006c 0121     	 movs r1,#1
- 1809 006e 3348     	 ldr r0,.L150+20
- 1810 0070 334B     	 ldr r3,.L150+24
- 1811 0072 9847     	 blx r3
- 1812              	.LVL55:
- 1813 0074 0346     	 mov r3,r0
- 1814 0076 002B     	 cmp r3,#0
- 1815 0078 14BF     	 ite ne
- 1816 007a 0123     	 movne r3,#1
- 1817 007c 0023     	 moveq r3,#0
- 1818 007e DBB2     	 uxtb r3,r3
- 1819 0080 4DE0     	 b .L147
- 1820              	.L142:
- 447:usb.c         ****         break;
+ 444:usb.c         ****     // case REQ_AVR_PROGRAM:
+ 445:usb.c         ****     //     return V2Protocol_ProcessCommand();
+ 446:usb.c         ****     //     break;
+ 447:usb.c         ****         
  448:usb.c         ****         
- 449:usb.c         ****     case REQ_USART0_DATA:						
- 450:usb.c         ****         for(cnt = 0; cnt < udd_g_ctrlreq.req.wLength; cnt++){
- 1821              	 .loc 4 450 17
- 1822 0082 0023     	 movs r3,#0
- 1823 0084 7B60     	 str r3,[r7,#4]
- 1824              	 .loc 4 450 9
- 1825 0086 0CE0     	 b .L148
- 1826              	.L149:
- 1827              	.LBB6:
- 451:usb.c         ****             respbuf[cnt] = usart_driver_getchar(USART_TARGET);
- 1828              	 .loc 4 451 28 discriminator 3
- 1829 0088 2C48     	 ldr r0,.L150+20
- 1830 008a 2E4B     	 ldr r3,.L150+28
- 1831 008c 9847     	 blx r3
- 1832              	.LVL56:
- 1833 008e 0346     	 mov r3,r0
- 1834              	 .loc 4 451 26 discriminator 3
- 1835 0090 D9B2     	 uxtb r1,r3
- 1836 0092 2D4A     	 ldr r2,.L150+32
- 1837 0094 7B68     	 ldr r3,[r7,#4]
- 1838 0096 1344     	 add r3,r3,r2
- 1839 0098 0A46     	 mov r2,r1
- 1840 009a 1A70     	 strb r2,[r3]
- 1841              	.LBE6:
- 450:usb.c         ****             respbuf[cnt] = usart_driver_getchar(USART_TARGET);
- 1842              	 .loc 4 450 58 discriminator 3
- 1843 009c 7B68     	 ldr r3,[r7,#4]
- 1844 009e 0133     	 adds r3,r3,#1
- 1845 00a0 7B60     	 str r3,[r7,#4]
- 1846              	.L148:
- 450:usb.c         ****             respbuf[cnt] = usart_driver_getchar(USART_TARGET);
- 1847              	 .loc 4 450 45 discriminator 1
- 1848 00a2 214B     	 ldr r3,.L150
- 1849 00a4 DB88     	 ldrh r3,[r3,#6]
- 1850 00a6 1A46     	 mov r2,r3
- 450:usb.c         ****             respbuf[cnt] = usart_driver_getchar(USART_TARGET);
- 1851              	 .loc 4 450 9 discriminator 1
- 1852 00a8 7B68     	 ldr r3,[r7,#4]
- 1853 00aa 9342     	 cmp r3,r2
- 1854 00ac ECD3     	 bcc .L149
- 452:usb.c         ****         }
- 453:usb.c         ****         udd_g_ctrlreq.payload = respbuf;
- 1855              	 .loc 4 453 31
- 1856 00ae 1E4B     	 ldr r3,.L150
- 1857 00b0 254A     	 ldr r2,.L150+32
- 1858 00b2 9A60     	 str r2,[r3,#8]
- 454:usb.c         ****         udd_g_ctrlreq.payload_size = cnt;
- 1859              	 .loc 4 454 36
- 1860 00b4 7B68     	 ldr r3,[r7,#4]
- 1861 00b6 9AB2     	 uxth r2,r3
- 1862 00b8 1B4B     	 ldr r3,.L150
- 1863 00ba 9A81     	 strh r2,[r3,#12]
- 455:usb.c         ****         return true;
- 1864              	 .loc 4 455 16
- 1865 00bc 0123     	 movs r3,#1
- 1866 00be 2EE0     	 b .L147
- 1867              	.L143:
- 456:usb.c         ****         break;
- 457:usb.c         ****     case REQ_FW_VERSION:
- 458:usb.c         ****         respbuf[0] = FW_VER_MAJOR;
- 1868              	 .loc 4 458 20
- 1869 00c0 214B     	 ldr r3,.L150+32
- 1870 00c2 0122     	 movs r2,#1
- 1871 00c4 1A70     	 strb r2,[r3]
- 459:usb.c         ****         respbuf[1] = FW_VER_MINOR;
- 1872              	 .loc 4 459 20
- 1873 00c6 204B     	 ldr r3,.L150+32
- 1874 00c8 0122     	 movs r2,#1
- 1875 00ca 5A70     	 strb r2,[r3,#1]
- 460:usb.c         ****         respbuf[2] = FW_VER_DEBUG;
- 1876              	 .loc 4 460 20
- 1877 00cc 1E4B     	 ldr r3,.L150+32
- 1878 00ce 0022     	 movs r2,#0
- 1879 00d0 9A70     	 strb r2,[r3,#2]
- 461:usb.c         ****         udd_g_ctrlreq.payload = respbuf;
- 1880              	 .loc 4 461 31
- 1881 00d2 154B     	 ldr r3,.L150
- 1882 00d4 1C4A     	 ldr r2,.L150+32
- 1883 00d6 9A60     	 str r2,[r3,#8]
- 462:usb.c         ****         udd_g_ctrlreq.payload_size = 3;
- 1884              	 .loc 4 462 36
- 1885 00d8 134B     	 ldr r3,.L150
- 1886 00da 0322     	 movs r2,#3
- 1887 00dc 9A81     	 strh r2,[r3,#12]
- 463:usb.c         ****         return true;
- 1888              	 .loc 4 463 16
- 1889 00de 0123     	 movs r3,#1
- 1890 00e0 1DE0     	 b .L147
- 1891              	.L144:
- 464:usb.c         ****         break;
- 465:usb.c         **** 
- 466:usb.c         ****     case REQ_FPGA_STATUS:
- 467:usb.c         ****         respbuf[0] = FPGA_ISDONE();
- 1892              	 .loc 4 467 22
- 1893 00e2 0720     	 movs r0,#7
- 1894 00e4 194B     	 ldr r3,.L150+36
- 1895 00e6 9847     	 blx r3
- 1896              	.LVL57:
- 1897 00e8 0346     	 mov r3,r0
- 1898 00ea 002B     	 cmp r3,#0
- 1899 00ec 14BF     	 ite ne
- 1900 00ee 0123     	 movne r3,#1
- 1901 00f0 0023     	 moveq r3,#0
- 1902 00f2 DBB2     	 uxtb r3,r3
- 1903 00f4 1A46     	 mov r2,r3
- 1904              	 .loc 4 467 20
- 1905 00f6 144B     	 ldr r3,.L150+32
- 1906 00f8 1A70     	 strb r2,[r3]
- 468:usb.c         ****         respbuf[1] = 0;
- 1907              	 .loc 4 468 20
- 1908 00fa 134B     	 ldr r3,.L150+32
- 1909 00fc 0022     	 movs r2,#0
- 1910 00fe 5A70     	 strb r2,[r3,#1]
- 469:usb.c         ****         respbuf[2] = 0;
- 1911              	 .loc 4 469 20
- 1912 0100 114B     	 ldr r3,.L150+32
- 1913 0102 0022     	 movs r2,#0
- 1914 0104 9A70     	 strb r2,[r3,#2]
- 470:usb.c         ****         respbuf[3] = 0;
- 1915              	 .loc 4 470 20
- 1916 0106 104B     	 ldr r3,.L150+32
- 1917 0108 0022     	 movs r2,#0
- 1918 010a DA70     	 strb r2,[r3,#3]
- 471:usb.c         ****         udd_g_ctrlreq.payload = respbuf;
- 1919              	 .loc 4 471 31
- 1920 010c 064B     	 ldr r3,.L150
- 1921 010e 0E4A     	 ldr r2,.L150+32
- 1922 0110 9A60     	 str r2,[r3,#8]
- 472:usb.c         ****         udd_g_ctrlreq.payload_size = 4;
- 1923              	 .loc 4 472 36
- 1924 0112 054B     	 ldr r3,.L150
- 1925 0114 0422     	 movs r2,#4
- 1926 0116 9A81     	 strh r2,[r3,#12]
- 473:usb.c         ****         return true;
- 1927              	 .loc 4 473 16
- 1928 0118 0123     	 movs r3,#1
- 1929 011a 00E0     	 b .L147
- 1930              	.L139:
- 474:usb.c         ****         break;
- 475:usb.c         ****     default:
- 476:usb.c         ****         return false;
- 1931              	 .loc 4 476 16
- 1932 011c 0023     	 movs r3,#0
- 1933              	.L147:
- 1934              	.LBE5:
- 477:usb.c         ****     }
- 478:usb.c         ****     return false;
- 479:usb.c         **** }
- 1935              	 .loc 4 479 1
- 1936 011e 1846     	 mov r0,r3
- 1937 0120 0837     	 adds r7,r7,#8
- 1938              	.LCFI73:
- 1939              	 .cfi_def_cfa_offset 8
- 1940 0122 BD46     	 mov sp,r7
- 1941              	.LCFI74:
- 1942              	 .cfi_def_cfa_register 13
- 1943              	 
- 1944 0124 80BD     	 pop {r7,pc}
- 1945              	.L151:
- 1946 0126 00BF     	 .align 2
- 1947              	.L150:
- 1948 0128 00000000 	 .word udd_g_ctrlreq
- 1949 012c 00000000 	 .word ctrlmemread_buf
- 1950 0130 00000000 	 .word ctrlmemread_size
- 1951 0134 00000000 	 .word FPGA_lockstatus
- 1952 0138 00000000 	 .word FPGA_setlock
- 1953 013c 00000940 	 .word 1074331648
- 1954 0140 00000000 	 .word ctrl_usart
- 1955 0144 00000000 	 .word usart_driver_getchar
- 1956 0148 00000000 	 .word respbuf.9303
- 1957 014c 00000000 	 .word pio_get_pin_value
- 1958              	 .cfi_endproc
- 1959              	.LFE208:
- 1961              	 .section .text.main_vendor_bulk_in_received,"ax",%progbits
- 1962              	 .align 1
- 1963              	 .global main_vendor_bulk_in_received
- 1964              	 .syntax unified
- 1965              	 .thumb
- 1966              	 .thumb_func
- 1967              	 .fpu softvfp
- 1969              	main_vendor_bulk_in_received:
- 1970              	.LFB209:
- 480:usb.c         **** 
- 481:usb.c         **** void main_vendor_bulk_in_received(udd_ep_status_t status,
- 482:usb.c         ****                                   iram_size_t nb_transfered, udd_ep_id_t ep)
- 483:usb.c         **** {
- 1971              	 .loc 4 483 1
- 1972              	 .cfi_startproc
- 1973              	 
- 1974              	 
- 1975 0000 80B5     	 push {r7,lr}
- 1976              	.LCFI75:
- 1977              	 .cfi_def_cfa_offset 8
- 1978              	 .cfi_offset 7,-8
- 1979              	 .cfi_offset 14,-4
- 1980 0002 82B0     	 sub sp,sp,#8
- 1981              	.LCFI76:
- 1982              	 .cfi_def_cfa_offset 16
- 1983 0004 00AF     	 add r7,sp,#0
- 1984              	.LCFI77:
- 1985              	 .cfi_def_cfa_register 7
- 1986 0006 0346     	 mov r3,r0
- 1987 0008 3960     	 str r1,[r7]
- 1988 000a FB71     	 strb r3,[r7,#7]
- 1989 000c 1346     	 mov r3,r2
- 1990 000e BB71     	 strb r3,[r7,#6]
- 484:usb.c         ****     UNUSED(nb_transfered);
- 485:usb.c         ****     UNUSED(ep);
- 486:usb.c         ****     if (UDD_EP_TRANSFER_OK != status) {
- 1991              	 .loc 4 486 8
- 1992 0010 FB79     	 ldrb r3,[r7,#7]
- 1993 0012 002B     	 cmp r3,#0
- 1994 0014 08D1     	 bne .L155
- 487:usb.c         ****         return; // Transfer aborted/error
- 488:usb.c         ****     }
- 489:usb.c         **** 
- 490:usb.c         ****     if (FPGA_lockstatus() == fpga_blockin){
- 1995              	 .loc 4 490 9
- 1996 0016 064B     	 ldr r3,.L156
- 1997 0018 9847     	 blx r3
- 1998              	.LVL58:
- 1999 001a 0346     	 mov r3,r0
- 2000              	 .loc 4 490 8
- 2001 001c 022B     	 cmp r3,#2
- 2002 001e 04D1     	 bne .L152
- 491:usb.c         ****         FPGA_setlock(fpga_unlocked);
- 2003              	 .loc 4 491 9
- 2004 0020 0020     	 movs r0,#0
- 2005 0022 044B     	 ldr r3,.L156+4
- 2006 0024 9847     	 blx r3
- 2007              	.LVL59:
- 2008 0026 00E0     	 b .L152
- 2009              	.L155:
- 487:usb.c         ****         return; // Transfer aborted/error
- 2010              	 .loc 4 487 9
- 2011 0028 00BF     	 nop
- 2012              	.L152:
- 492:usb.c         ****     }
- 493:usb.c         **** }
- 2013              	 .loc 4 493 1
- 2014 002a 0837     	 adds r7,r7,#8
- 2015              	.LCFI78:
- 2016              	 .cfi_def_cfa_offset 8
- 2017 002c BD46     	 mov sp,r7
- 2018              	.LCFI79:
- 2019              	 .cfi_def_cfa_register 13
- 2020              	 
- 2021 002e 80BD     	 pop {r7,pc}
- 2022              	.L157:
- 2023              	 .align 2
- 2024              	.L156:
- 2025 0030 00000000 	 .word FPGA_lockstatus
- 2026 0034 00000000 	 .word FPGA_setlock
- 2027              	 .cfi_endproc
- 2028              	.LFE209:
- 2030              	 .section .text.main_vendor_bulk_out_received,"ax",%progbits
- 2031              	 .align 1
- 2032              	 .global main_vendor_bulk_out_received
- 2033              	 .syntax unified
- 2034              	 .thumb
- 2035              	 .thumb_func
- 2036              	 .fpu softvfp
- 2038              	main_vendor_bulk_out_received:
- 2039              	.LFB210:
- 494:usb.c         **** 
- 495:usb.c         **** void main_vendor_bulk_out_received(udd_ep_status_t status,
- 496:usb.c         ****                                    iram_size_t nb_transfered, udd_ep_id_t ep)
- 497:usb.c         **** {
- 2040              	 .loc 4 497 1
- 2041              	 .cfi_startproc
- 2042              	 
- 2043              	 
- 2044 0000 80B5     	 push {r7,lr}
- 2045              	.LCFI80:
- 2046              	 .cfi_def_cfa_offset 8
- 2047              	 .cfi_offset 7,-8
- 2048              	 .cfi_offset 14,-4
- 2049 0002 84B0     	 sub sp,sp,#16
- 2050              	.LCFI81:
- 2051              	 .cfi_def_cfa_offset 24
- 2052 0004 00AF     	 add r7,sp,#0
- 2053              	.LCFI82:
- 2054              	 .cfi_def_cfa_register 7
- 2055 0006 0346     	 mov r3,r0
- 2056 0008 3960     	 str r1,[r7]
- 2057 000a FB71     	 strb r3,[r7,#7]
- 2058 000c 1346     	 mov r3,r2
- 2059 000e BB71     	 strb r3,[r7,#6]
- 498:usb.c         ****     UNUSED(ep);
- 499:usb.c         ****     if (UDD_EP_TRANSFER_OK != status) {
- 2060              	 .loc 4 499 8
- 2061 0010 FB79     	 ldrb r3,[r7,#7]
- 2062 0012 002B     	 cmp r3,#0
- 2063 0014 06D0     	 beq .L159
- 500:usb.c         ****         // Transfer aborted
- 501:usb.c         **** 
- 502:usb.c         ****         //restart
- 503:usb.c         ****         udi_vendor_bulk_out_run(
- 2064              	 .loc 4 503 9
- 2065 0016 224A     	 ldr r2,.L167
- 2066 0018 4FF48061 	 mov r1,#1024
- 2067 001c 2148     	 ldr r0,.L167+4
- 2068 001e 224B     	 ldr r3,.L167+8
- 2069 0020 9847     	 blx r3
- 2070              	.LVL60:
- 504:usb.c         ****             main_buf_loopback,
- 505:usb.c         ****             sizeof(main_buf_loopback),
- 506:usb.c         ****             main_vendor_bulk_out_received);
- 507:usb.c         **** 
- 508:usb.c         ****         return;
- 2071              	 .loc 4 508 9
- 2072 0022 39E0     	 b .L158
- 2073              	.L159:
- 509:usb.c         ****     }
- 510:usb.c         **** 
- 511:usb.c         ****     if (blockendpoint_usage == bep_emem){
- 2074              	 .loc 4 511 29
- 2075 0024 214B     	 ldr r3,.L167+12
- 2076 0026 1B78     	 ldrb r3,[r3]
- 2077              	 .loc 4 511 8
- 2078 0028 002B     	 cmp r3,#0
- 2079 002a 1AD1     	 bne .L161
- 2080              	.LBB7:
- 512:usb.c         ****         for(unsigned int i = 0; i < nb_transfered; i++){
- 2081              	 .loc 4 512 26
- 2082 002c 0023     	 movs r3,#0
- 2083 002e FB60     	 str r3,[r7,#12]
- 2084              	 .loc 4 512 9
- 2085 0030 0BE0     	 b .L162
- 2086              	.L163:
- 513:usb.c         ****             xram[i] = main_buf_loopback[i];
- 2087              	 .loc 4 513 17 discriminator 3
- 2088 0032 1F4B     	 ldr r3,.L167+16
- 2089 0034 1A68     	 ldr r2,[r3]
- 2090 0036 FB68     	 ldr r3,[r7,#12]
- 2091 0038 1344     	 add r3,r3,r2
- 2092              	 .loc 4 513 40 discriminator 3
- 2093 003a 1A49     	 ldr r1,.L167+4
- 2094 003c FA68     	 ldr r2,[r7,#12]
- 2095 003e 0A44     	 add r2,r2,r1
- 2096 0040 1278     	 ldrb r2,[r2]
- 2097              	 .loc 4 513 21 discriminator 3
- 2098 0042 1A70     	 strb r2,[r3]
- 512:usb.c         ****         for(unsigned int i = 0; i < nb_transfered; i++){
- 2099              	 .loc 4 512 53 discriminator 3
- 2100 0044 FB68     	 ldr r3,[r7,#12]
- 2101 0046 0133     	 adds r3,r3,#1
- 2102 0048 FB60     	 str r3,[r7,#12]
- 2103              	.L162:
- 512:usb.c         ****         for(unsigned int i = 0; i < nb_transfered; i++){
- 2104              	 .loc 4 512 9 discriminator 1
- 2105 004a FA68     	 ldr r2,[r7,#12]
- 2106 004c 3B68     	 ldr r3,[r7]
- 2107 004e 9A42     	 cmp r2,r3
- 2108 0050 EFD3     	 bcc .L163
- 2109              	.LBE7:
- 514:usb.c         ****         }
- 515:usb.c         **** 
- 516:usb.c         ****         if (FPGA_lockstatus() == fpga_blockout){
- 2110              	 .loc 4 516 13
- 2111 0052 184B     	 ldr r3,.L167+20
- 2112 0054 9847     	 blx r3
- 2113              	.LVL61:
- 2114 0056 0346     	 mov r3,r0
- 2115              	 .loc 4 516 12
- 2116 0058 042B     	 cmp r3,#4
- 2117 005a 17D1     	 bne .L164
- 517:usb.c         ****             FPGA_releaselock();
- 2118              	 .loc 4 517 13
- 2119 005c 164B     	 ldr r3,.L167+24
- 2120 005e 9847     	 blx r3
- 2121              	.LVL62:
- 2122 0060 14E0     	 b .L164
- 2123              	.L161:
- 518:usb.c         ****         }
- 519:usb.c         ****     } else if (blockendpoint_usage == bep_fpgabitstream){
- 2124              	 .loc 4 519 36
- 2125 0062 124B     	 ldr r3,.L167+12
- 2126 0064 1B78     	 ldrb r3,[r3]
- 2127              	 .loc 4 519 15
- 2128 0066 0A2B     	 cmp r3,#10
- 2129 0068 10D1     	 bne .L164
- 2130              	.LBB8:
+ 449:usb.c         ****     case REQ_USART0_CONFIG:
+ 450:usb.c         ****         return ctrl_usart(USART_TARGET, true);
+ 1841              	 .loc 4 450 16
+ 1842 0098 0121     	 movs r1,#1
+ 1843 009a 3C48     	 ldr r0,.L154+20
+ 1844 009c 3C4B     	 ldr r3,.L154+24
+ 1845 009e 9847     	 blx r3
+ 1846              	.LVL55:
+ 1847 00a0 0346     	 mov r3,r0
+ 1848 00a2 002B     	 cmp r3,#0
+ 1849 00a4 14BF     	 ite ne
+ 1850 00a6 0123     	 movne r3,#1
+ 1851 00a8 0023     	 moveq r3,#0
+ 1852 00aa DBB2     	 uxtb r3,r3
+ 1853 00ac 5FE0     	 b .L151
+ 1854              	.L146:
+ 451:usb.c         ****         break;
+ 452:usb.c         ****         
+ 453:usb.c         ****     case REQ_USART0_DATA:						
+ 454:usb.c         ****         for(cnt = 0; cnt < udd_g_ctrlreq.req.wLength; cnt++){
+ 1855              	 .loc 4 454 17
+ 1856 00ae 0023     	 movs r3,#0
+ 1857 00b0 7B60     	 str r3,[r7,#4]
+ 1858              	 .loc 4 454 9
+ 1859 00b2 0CE0     	 b .L152
+ 1860              	.L153:
+ 1861              	.LBB6:
+ 455:usb.c         ****             respbuf[cnt] = usart_driver_getchar(USART_TARGET);
+ 1862              	 .loc 4 455 28 discriminator 3
+ 1863 00b4 3548     	 ldr r0,.L154+20
+ 1864 00b6 374B     	 ldr r3,.L154+28
+ 1865 00b8 9847     	 blx r3
+ 1866              	.LVL56:
+ 1867 00ba 0346     	 mov r3,r0
+ 1868              	 .loc 4 455 26 discriminator 3
+ 1869 00bc D9B2     	 uxtb r1,r3
+ 1870 00be 364A     	 ldr r2,.L154+32
+ 1871 00c0 7B68     	 ldr r3,[r7,#4]
+ 1872 00c2 1344     	 add r3,r3,r2
+ 1873 00c4 0A46     	 mov r2,r1
+ 1874 00c6 1A70     	 strb r2,[r3]
+ 1875              	.LBE6:
+ 454:usb.c         ****             respbuf[cnt] = usart_driver_getchar(USART_TARGET);
+ 1876              	 .loc 4 454 58 discriminator 3
+ 1877 00c8 7B68     	 ldr r3,[r7,#4]
+ 1878 00ca 0133     	 adds r3,r3,#1
+ 1879 00cc 7B60     	 str r3,[r7,#4]
+ 1880              	.L152:
+ 454:usb.c         ****             respbuf[cnt] = usart_driver_getchar(USART_TARGET);
+ 1881              	 .loc 4 454 45 discriminator 1
+ 1882 00ce 2A4B     	 ldr r3,.L154
+ 1883 00d0 DB88     	 ldrh r3,[r3,#6]
+ 1884 00d2 1A46     	 mov r2,r3
+ 454:usb.c         ****             respbuf[cnt] = usart_driver_getchar(USART_TARGET);
+ 1885              	 .loc 4 454 9 discriminator 1
+ 1886 00d4 7B68     	 ldr r3,[r7,#4]
+ 1887 00d6 9342     	 cmp r3,r2
+ 1888 00d8 ECD3     	 bcc .L153
+ 456:usb.c         ****         }
+ 457:usb.c         ****         udd_g_ctrlreq.payload = respbuf;
+ 1889              	 .loc 4 457 31
+ 1890 00da 274B     	 ldr r3,.L154
+ 1891 00dc 2E4A     	 ldr r2,.L154+32
+ 1892 00de 9A60     	 str r2,[r3,#8]
+ 458:usb.c         ****         udd_g_ctrlreq.payload_size = cnt;
+ 1893              	 .loc 4 458 36
+ 1894 00e0 7B68     	 ldr r3,[r7,#4]
+ 1895 00e2 9AB2     	 uxth r2,r3
+ 1896 00e4 244B     	 ldr r3,.L154
+ 1897 00e6 9A81     	 strh r2,[r3,#12]
+ 459:usb.c         ****         return true;
+ 1898              	 .loc 4 459 16
+ 1899 00e8 0123     	 movs r3,#1
+ 1900 00ea 40E0     	 b .L151
+ 1901              	.L147:
+ 460:usb.c         ****         break;
+ 461:usb.c         ****     case REQ_FW_VERSION:
+ 462:usb.c         ****         respbuf[0] = FW_VER_MAJOR;
+ 1902              	 .loc 4 462 20
+ 1903 00ec 2A4B     	 ldr r3,.L154+32
+ 1904 00ee 0122     	 movs r2,#1
+ 1905 00f0 1A70     	 strb r2,[r3]
+ 463:usb.c         ****         respbuf[1] = FW_VER_MINOR;
+ 1906              	 .loc 4 463 20
+ 1907 00f2 294B     	 ldr r3,.L154+32
+ 1908 00f4 0122     	 movs r2,#1
+ 1909 00f6 5A70     	 strb r2,[r3,#1]
+ 464:usb.c         ****         respbuf[2] = FW_VER_DEBUG;
+ 1910              	 .loc 4 464 20
+ 1911 00f8 274B     	 ldr r3,.L154+32
+ 1912 00fa 0022     	 movs r2,#0
+ 1913 00fc 9A70     	 strb r2,[r3,#2]
+ 465:usb.c         ****         udd_g_ctrlreq.payload = respbuf;
+ 1914              	 .loc 4 465 31
+ 1915 00fe 1E4B     	 ldr r3,.L154
+ 1916 0100 254A     	 ldr r2,.L154+32
+ 1917 0102 9A60     	 str r2,[r3,#8]
+ 466:usb.c         ****         udd_g_ctrlreq.payload_size = 3;
+ 1918              	 .loc 4 466 36
+ 1919 0104 1C4B     	 ldr r3,.L154
+ 1920 0106 0322     	 movs r2,#3
+ 1921 0108 9A81     	 strh r2,[r3,#12]
+ 467:usb.c         ****         return true;
+ 1922              	 .loc 4 467 16
+ 1923 010a 0123     	 movs r3,#1
+ 1924 010c 2FE0     	 b .L151
+ 1925              	.L148:
+ 468:usb.c         ****         break;
+ 469:usb.c         **** 
+ 470:usb.c         ****     case REQ_FPGA_STATUS:
+ 471:usb.c         ****         respbuf[0] = FPGA_ISDONE();
+ 1926              	 .loc 4 471 22
+ 1927 010e 0720     	 movs r0,#7
+ 1928 0110 224B     	 ldr r3,.L154+36
+ 1929 0112 9847     	 blx r3
+ 1930              	.LVL57:
+ 1931 0114 0346     	 mov r3,r0
+ 1932 0116 002B     	 cmp r3,#0
+ 1933 0118 14BF     	 ite ne
+ 1934 011a 0123     	 movne r3,#1
+ 1935 011c 0023     	 moveq r3,#0
+ 1936 011e DBB2     	 uxtb r3,r3
+ 1937 0120 1A46     	 mov r2,r3
+ 1938              	 .loc 4 471 20
+ 1939 0122 1D4B     	 ldr r3,.L154+32
+ 1940 0124 1A70     	 strb r2,[r3]
+ 472:usb.c         ****         respbuf[1] = 0;
+ 1941              	 .loc 4 472 20
+ 1942 0126 1C4B     	 ldr r3,.L154+32
+ 1943 0128 0022     	 movs r2,#0
+ 1944 012a 5A70     	 strb r2,[r3,#1]
+ 473:usb.c         ****         respbuf[2] = 0;
+ 1945              	 .loc 4 473 20
+ 1946 012c 1A4B     	 ldr r3,.L154+32
+ 1947 012e 0022     	 movs r2,#0
+ 1948 0130 9A70     	 strb r2,[r3,#2]
+ 474:usb.c         ****         respbuf[3] = 0;
+ 1949              	 .loc 4 474 20
+ 1950 0132 194B     	 ldr r3,.L154+32
+ 1951 0134 0022     	 movs r2,#0
+ 1952 0136 DA70     	 strb r2,[r3,#3]
+ 475:usb.c         ****         udd_g_ctrlreq.payload = respbuf;
+ 1953              	 .loc 4 475 31
+ 1954 0138 0F4B     	 ldr r3,.L154
+ 1955 013a 174A     	 ldr r2,.L154+32
+ 1956 013c 9A60     	 str r2,[r3,#8]
+ 476:usb.c         ****         udd_g_ctrlreq.payload_size = 4;
+ 1957              	 .loc 4 476 36
+ 1958 013e 0E4B     	 ldr r3,.L154
+ 1959 0140 0422     	 movs r2,#4
+ 1960 0142 9A81     	 strh r2,[r3,#12]
+ 477:usb.c         ****         return true;
+ 1961              	 .loc 4 477 16
+ 1962 0144 0123     	 movs r3,#1
+ 1963 0146 12E0     	 b .L151
+ 1964              	.L143:
+ 478:usb.c         ****         break;
+ 479:usb.c         ****     case REQ_SPI_ADC:
+ 480:usb.c         ****         respbuf[0] = read_spi_adc(udd_g_ctrlreq.req.wValue & 0xFF);
+ 1965              	 .loc 4 480 52
+ 1966 0148 0B4B     	 ldr r3,.L154
+ 1967 014a 5B88     	 ldrh r3,[r3,#2]
+ 1968              	 .loc 4 480 22
+ 1969 014c DBB2     	 uxtb r3,r3
+ 1970 014e 1846     	 mov r0,r3
+ 1971 0150 134B     	 ldr r3,.L154+40
+ 1972 0152 9847     	 blx r3
+ 1973              	.LVL58:
+ 1974 0154 0346     	 mov r3,r0
+ 1975              	 .loc 4 480 20
+ 1976 0156 DAB2     	 uxtb r2,r3
+ 1977 0158 0F4B     	 ldr r3,.L154+32
+ 1978 015a 1A70     	 strb r2,[r3]
+ 481:usb.c         ****         udd_g_ctrlreq.payload = respbuf;
+ 1979              	 .loc 4 481 31
+ 1980 015c 064B     	 ldr r3,.L154
+ 1981 015e 0E4A     	 ldr r2,.L154+32
+ 1982 0160 9A60     	 str r2,[r3,#8]
+ 482:usb.c         ****         udd_g_ctrlreq.payload_size = 1;
+ 1983              	 .loc 4 482 36
+ 1984 0162 054B     	 ldr r3,.L154
+ 1985 0164 0122     	 movs r2,#1
+ 1986 0166 9A81     	 strh r2,[r3,#12]
+ 483:usb.c         ****         return true;
+ 1987              	 .loc 4 483 16
+ 1988 0168 0123     	 movs r3,#1
+ 1989 016a 00E0     	 b .L151
+ 1990              	.L142:
+ 484:usb.c         ****         break;
+ 485:usb.c         ****     default:
+ 486:usb.c         ****         return false;
+ 1991              	 .loc 4 486 16
+ 1992 016c 0023     	 movs r3,#0
+ 1993              	.L151:
+ 1994              	.LBE5:
+ 487:usb.c         ****     }
+ 488:usb.c         ****     return false;
+ 489:usb.c         **** }
+ 1995              	 .loc 4 489 1
+ 1996 016e 1846     	 mov r0,r3
+ 1997 0170 0837     	 adds r7,r7,#8
+ 1998              	.LCFI73:
+ 1999              	 .cfi_def_cfa_offset 8
+ 2000 0172 BD46     	 mov sp,r7
+ 2001              	.LCFI74:
+ 2002              	 .cfi_def_cfa_register 13
+ 2003              	 
+ 2004 0174 80BD     	 pop {r7,pc}
+ 2005              	.L155:
+ 2006 0176 00BF     	 .align 2
+ 2007              	.L154:
+ 2008 0178 00000000 	 .word udd_g_ctrlreq
+ 2009 017c 00000000 	 .word ctrlmemread_buf
+ 2010 0180 00000000 	 .word ctrlmemread_size
+ 2011 0184 00000000 	 .word FPGA_lockstatus
+ 2012 0188 00000000 	 .word FPGA_setlock
+ 2013 018c 00000940 	 .word 1074331648
+ 2014 0190 00000000 	 .word ctrl_usart
+ 2015 0194 00000000 	 .word usart_driver_getchar
+ 2016 0198 00000000 	 .word respbuf.9303
+ 2017 019c 00000000 	 .word pio_get_pin_value
+ 2018 01a0 00000000 	 .word read_spi_adc
+ 2019              	 .cfi_endproc
+ 2020              	.LFE208:
+ 2022              	 .section .text.main_vendor_bulk_in_received,"ax",%progbits
+ 2023              	 .align 1
+ 2024              	 .global main_vendor_bulk_in_received
+ 2025              	 .syntax unified
+ 2026              	 .thumb
+ 2027              	 .thumb_func
+ 2028              	 .fpu softvfp
+ 2030              	main_vendor_bulk_in_received:
+ 2031              	.LFB209:
+ 490:usb.c         **** 
+ 491:usb.c         **** void main_vendor_bulk_in_received(udd_ep_status_t status,
+ 492:usb.c         ****                                   iram_size_t nb_transfered, udd_ep_id_t ep)
+ 493:usb.c         **** {
+ 2032              	 .loc 4 493 1
+ 2033              	 .cfi_startproc
+ 2034              	 
+ 2035              	 
+ 2036 0000 80B5     	 push {r7,lr}
+ 2037              	.LCFI75:
+ 2038              	 .cfi_def_cfa_offset 8
+ 2039              	 .cfi_offset 7,-8
+ 2040              	 .cfi_offset 14,-4
+ 2041 0002 82B0     	 sub sp,sp,#8
+ 2042              	.LCFI76:
+ 2043              	 .cfi_def_cfa_offset 16
+ 2044 0004 00AF     	 add r7,sp,#0
+ 2045              	.LCFI77:
+ 2046              	 .cfi_def_cfa_register 7
+ 2047 0006 0346     	 mov r3,r0
+ 2048 0008 3960     	 str r1,[r7]
+ 2049 000a FB71     	 strb r3,[r7,#7]
+ 2050 000c 1346     	 mov r3,r2
+ 2051 000e BB71     	 strb r3,[r7,#6]
+ 494:usb.c         ****     UNUSED(nb_transfered);
+ 495:usb.c         ****     UNUSED(ep);
+ 496:usb.c         ****     if (UDD_EP_TRANSFER_OK != status) {
+ 2052              	 .loc 4 496 8
+ 2053 0010 FB79     	 ldrb r3,[r7,#7]
+ 2054 0012 002B     	 cmp r3,#0
+ 2055 0014 08D1     	 bne .L159
+ 497:usb.c         ****         return; // Transfer aborted/error
+ 498:usb.c         ****     }
+ 499:usb.c         **** 
+ 500:usb.c         ****     if (FPGA_lockstatus() == fpga_blockin){
+ 2056              	 .loc 4 500 9
+ 2057 0016 064B     	 ldr r3,.L160
+ 2058 0018 9847     	 blx r3
+ 2059              	.LVL59:
+ 2060 001a 0346     	 mov r3,r0
+ 2061              	 .loc 4 500 8
+ 2062 001c 022B     	 cmp r3,#2
+ 2063 001e 04D1     	 bne .L156
+ 501:usb.c         ****         FPGA_setlock(fpga_unlocked);
+ 2064              	 .loc 4 501 9
+ 2065 0020 0020     	 movs r0,#0
+ 2066 0022 044B     	 ldr r3,.L160+4
+ 2067 0024 9847     	 blx r3
+ 2068              	.LVL60:
+ 2069 0026 00E0     	 b .L156
+ 2070              	.L159:
+ 497:usb.c         ****         return; // Transfer aborted/error
+ 2071              	 .loc 4 497 9
+ 2072 0028 00BF     	 nop
+ 2073              	.L156:
+ 502:usb.c         ****     }
+ 503:usb.c         **** }
+ 2074              	 .loc 4 503 1
+ 2075 002a 0837     	 adds r7,r7,#8
+ 2076              	.LCFI78:
+ 2077              	 .cfi_def_cfa_offset 8
+ 2078 002c BD46     	 mov sp,r7
+ 2079              	.LCFI79:
+ 2080              	 .cfi_def_cfa_register 13
+ 2081              	 
+ 2082 002e 80BD     	 pop {r7,pc}
+ 2083              	.L161:
+ 2084              	 .align 2
+ 2085              	.L160:
+ 2086 0030 00000000 	 .word FPGA_lockstatus
+ 2087 0034 00000000 	 .word FPGA_setlock
+ 2088              	 .cfi_endproc
+ 2089              	.LFE209:
+ 2091              	 .section .text.main_vendor_bulk_out_received,"ax",%progbits
+ 2092              	 .align 1
+ 2093              	 .global main_vendor_bulk_out_received
+ 2094              	 .syntax unified
+ 2095              	 .thumb
+ 2096              	 .thumb_func
+ 2097              	 .fpu softvfp
+ 2099              	main_vendor_bulk_out_received:
+ 2100              	.LFB210:
+ 504:usb.c         **** 
+ 505:usb.c         **** void main_vendor_bulk_out_received(udd_ep_status_t status,
+ 506:usb.c         ****                                    iram_size_t nb_transfered, udd_ep_id_t ep)
+ 507:usb.c         **** {
+ 2101              	 .loc 4 507 1
+ 2102              	 .cfi_startproc
+ 2103              	 
+ 2104              	 
+ 2105 0000 80B5     	 push {r7,lr}
+ 2106              	.LCFI80:
+ 2107              	 .cfi_def_cfa_offset 8
+ 2108              	 .cfi_offset 7,-8
+ 2109              	 .cfi_offset 14,-4
+ 2110 0002 84B0     	 sub sp,sp,#16
+ 2111              	.LCFI81:
+ 2112              	 .cfi_def_cfa_offset 24
+ 2113 0004 00AF     	 add r7,sp,#0
+ 2114              	.LCFI82:
+ 2115              	 .cfi_def_cfa_register 7
+ 2116 0006 0346     	 mov r3,r0
+ 2117 0008 3960     	 str r1,[r7]
+ 2118 000a FB71     	 strb r3,[r7,#7]
+ 2119 000c 1346     	 mov r3,r2
+ 2120 000e BB71     	 strb r3,[r7,#6]
+ 508:usb.c         ****     UNUSED(ep);
+ 509:usb.c         ****     if (UDD_EP_TRANSFER_OK != status) {
+ 2121              	 .loc 4 509 8
+ 2122 0010 FB79     	 ldrb r3,[r7,#7]
+ 2123 0012 002B     	 cmp r3,#0
+ 2124 0014 06D0     	 beq .L163
+ 510:usb.c         ****         // Transfer aborted
+ 511:usb.c         **** 
+ 512:usb.c         ****         //restart
+ 513:usb.c         ****         udi_vendor_bulk_out_run(
+ 2125              	 .loc 4 513 9
+ 2126 0016 224A     	 ldr r2,.L171
+ 2127 0018 4FF48061 	 mov r1,#1024
+ 2128 001c 2148     	 ldr r0,.L171+4
+ 2129 001e 224B     	 ldr r3,.L171+8
+ 2130 0020 9847     	 blx r3
+ 2131              	.LVL61:
+ 514:usb.c         ****             main_buf_loopback,
+ 515:usb.c         ****             sizeof(main_buf_loopback),
+ 516:usb.c         ****             main_vendor_bulk_out_received);
+ 517:usb.c         **** 
+ 518:usb.c         ****         return;
+ 2132              	 .loc 4 518 9
+ 2133 0022 39E0     	 b .L162
+ 2134              	.L163:
+ 519:usb.c         ****     }
  520:usb.c         **** 
- 521:usb.c         ****         /* Send byte to FPGA - this could eventually be done via SPI */
- 522:usb.c         ****         // TODO: is this dangerous?
- 523:usb.c         ****         for(unsigned int i = 0; i < nb_transfered; i++){
- 2131              	 .loc 4 523 26
- 2132 006a 0023     	 movs r3,#0
- 2133 006c BB60     	 str r3,[r7,#8]
- 2134              	 .loc 4 523 9
- 2135 006e 09E0     	 b .L165
- 2136              	.L166:
- 524:usb.c         ****             fpga_program_sendbyte(main_buf_loopback[i]);
- 2137              	 .loc 4 524 13 discriminator 3
- 2138 0070 0C4A     	 ldr r2,.L167+4
- 2139 0072 BB68     	 ldr r3,[r7,#8]
- 2140 0074 1344     	 add r3,r3,r2
- 2141 0076 1B78     	 ldrb r3,[r3]
- 2142 0078 1846     	 mov r0,r3
- 2143 007a 104B     	 ldr r3,.L167+28
- 2144 007c 9847     	 blx r3
- 2145              	.LVL63:
- 523:usb.c         ****             fpga_program_sendbyte(main_buf_loopback[i]);
- 2146              	 .loc 4 523 53 discriminator 3
- 2147 007e BB68     	 ldr r3,[r7,#8]
- 2148 0080 0133     	 adds r3,r3,#1
- 2149 0082 BB60     	 str r3,[r7,#8]
- 2150              	.L165:
- 523:usb.c         ****             fpga_program_sendbyte(main_buf_loopback[i]);
- 2151              	 .loc 4 523 9 discriminator 1
- 2152 0084 BA68     	 ldr r2,[r7,#8]
- 2153 0086 3B68     	 ldr r3,[r7]
- 2154 0088 9A42     	 cmp r2,r3
- 2155 008a F1D3     	 bcc .L166
- 2156              	.L164:
- 2157              	.LBE8:
- 525:usb.c         ****         }
- 526:usb.c         **** #if FPGA_USE_BITBANG
- 527:usb.c         ****         FPGA_CCLK_LOW();
- 528:usb.c         **** #endif
- 529:usb.c         ****     }
+ 521:usb.c         ****     if (blockendpoint_usage == bep_emem){
+ 2135              	 .loc 4 521 29
+ 2136 0024 214B     	 ldr r3,.L171+12
+ 2137 0026 1B78     	 ldrb r3,[r3]
+ 2138              	 .loc 4 521 8
+ 2139 0028 002B     	 cmp r3,#0
+ 2140 002a 1AD1     	 bne .L165
+ 2141              	.LBB7:
+ 522:usb.c         ****         for(unsigned int i = 0; i < nb_transfered; i++){
+ 2142              	 .loc 4 522 26
+ 2143 002c 0023     	 movs r3,#0
+ 2144 002e FB60     	 str r3,[r7,#12]
+ 2145              	 .loc 4 522 9
+ 2146 0030 0BE0     	 b .L166
+ 2147              	.L167:
+ 523:usb.c         ****             xram[i] = main_buf_loopback[i];
+ 2148              	 .loc 4 523 17 discriminator 3
+ 2149 0032 1F4B     	 ldr r3,.L171+16
+ 2150 0034 1A68     	 ldr r2,[r3]
+ 2151 0036 FB68     	 ldr r3,[r7,#12]
+ 2152 0038 1344     	 add r3,r3,r2
+ 2153              	 .loc 4 523 40 discriminator 3
+ 2154 003a 1A49     	 ldr r1,.L171+4
+ 2155 003c FA68     	 ldr r2,[r7,#12]
+ 2156 003e 0A44     	 add r2,r2,r1
+ 2157 0040 1278     	 ldrb r2,[r2]
+ 2158              	 .loc 4 523 21 discriminator 3
+ 2159 0042 1A70     	 strb r2,[r3]
+ 522:usb.c         ****         for(unsigned int i = 0; i < nb_transfered; i++){
+ 2160              	 .loc 4 522 53 discriminator 3
+ 2161 0044 FB68     	 ldr r3,[r7,#12]
+ 2162 0046 0133     	 adds r3,r3,#1
+ 2163 0048 FB60     	 str r3,[r7,#12]
+ 2164              	.L166:
+ 522:usb.c         ****         for(unsigned int i = 0; i < nb_transfered; i++){
+ 2165              	 .loc 4 522 9 discriminator 1
+ 2166 004a FA68     	 ldr r2,[r7,#12]
+ 2167 004c 3B68     	 ldr r3,[r7]
+ 2168 004e 9A42     	 cmp r2,r3
+ 2169 0050 EFD3     	 bcc .L167
+ 2170              	.LBE7:
+ 524:usb.c         ****         }
+ 525:usb.c         **** 
+ 526:usb.c         ****         if (FPGA_lockstatus() == fpga_blockout){
+ 2171              	 .loc 4 526 13
+ 2172 0052 184B     	 ldr r3,.L171+20
+ 2173 0054 9847     	 blx r3
+ 2174              	.LVL62:
+ 2175 0056 0346     	 mov r3,r0
+ 2176              	 .loc 4 526 12
+ 2177 0058 042B     	 cmp r3,#4
+ 2178 005a 17D1     	 bne .L168
+ 527:usb.c         ****             FPGA_releaselock();
+ 2179              	 .loc 4 527 13
+ 2180 005c 164B     	 ldr r3,.L171+24
+ 2181 005e 9847     	 blx r3
+ 2182              	.LVL63:
+ 2183 0060 14E0     	 b .L168
+ 2184              	.L165:
+ 528:usb.c         ****         }
+ 529:usb.c         ****     } else if (blockendpoint_usage == bep_fpgabitstream){
+ 2185              	 .loc 4 529 36
+ 2186 0062 124B     	 ldr r3,.L171+12
+ 2187 0064 1B78     	 ldrb r3,[r3]
+ 2188              	 .loc 4 529 15
+ 2189 0066 0A2B     	 cmp r3,#10
+ 2190 0068 10D1     	 bne .L168
+ 2191              	.LBB8:
  530:usb.c         **** 
- 531:usb.c         ****     //printf("BULKOUT: %d bytes\n", (int)nb_transfered);
- 532:usb.c         **** 
- 533:usb.c         ****     udi_vendor_bulk_out_run(
- 2158              	 .loc 4 533 5
- 2159 008c 044A     	 ldr r2,.L167
- 2160 008e 4FF48061 	 mov r1,#1024
- 2161 0092 0448     	 ldr r0,.L167+4
- 2162 0094 044B     	 ldr r3,.L167+8
- 2163 0096 9847     	 blx r3
- 2164              	.LVL64:
- 2165              	.L158:
- 534:usb.c         ****         main_buf_loopback,
- 535:usb.c         ****         sizeof(main_buf_loopback),
- 536:usb.c         ****         main_vendor_bulk_out_received);
- 537:usb.c         **** }
- 2166              	 .loc 4 537 1
- 2167 0098 1037     	 adds r7,r7,#16
- 2168              	.LCFI83:
- 2169              	 .cfi_def_cfa_offset 8
- 2170 009a BD46     	 mov sp,r7
- 2171              	.LCFI84:
- 2172              	 .cfi_def_cfa_register 13
- 2173              	 
- 2174 009c 80BD     	 pop {r7,pc}
- 2175              	.L168:
- 2176 009e 00BF     	 .align 2
- 2177              	.L167:
- 2178 00a0 00000000 	 .word main_vendor_bulk_out_received
- 2179 00a4 00000000 	 .word main_buf_loopback
- 2180 00a8 00000000 	 .word udi_vendor_bulk_out_run
- 2181 00ac 00000000 	 .word blockendpoint_usage
- 2182 00b0 00000000 	 .word xram
- 2183 00b4 00000000 	 .word FPGA_lockstatus
- 2184 00b8 00000000 	 .word FPGA_releaselock
- 2185 00bc 00000000 	 .word fpga_program_sendbyte
- 2186              	 .cfi_endproc
- 2187              	.LFE210:
- 2189              	 .section .bss.respbuf.9287,"aw",%nobits
- 2190              	 .align 2
- 2193              	respbuf.9287:
- 2194 0000 00000000 	 .space 128
- 2194      00000000 
- 2194      00000000 
- 2194      00000000 
- 2194      00000000 
- 2195              	 .section .bss.respbuf.9303,"aw",%nobits
- 2196              	 .align 2
- 2199              	respbuf.9303:
- 2200 0000 00000000 	 .space 64
- 2200      00000000 
- 2200      00000000 
- 2200      00000000 
- 2200      00000000 
- 2201              	 .text
- 2202              	.Letext0:
- 2203              	 .file 5 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\machine\\_default_types.h"
- 2204              	 .file 6 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_stdint.h"
- 2205              	 .file 7 ".././hal/sam3u1c/inc/sam3u1c.h"
- 2206              	 .file 8 ".././hal/sam3u1c/inc/core_cm3.h"
- 2207              	 .file 9 ".././hal/sam3u1c/inc/system_sam3u.h"
- 2208              	 .file 10 ".././hal/sam3u1c/inc/component/component_efc.h"
- 2209              	 .file 11 ".././hal/sam3u1c/inc/component/component_rstc.h"
- 2210              	 .file 12 ".././hal/sam3u1c/inc/component/component_spi.h"
- 2211              	 .file 13 ".././hal/sam3u1c/inc/component/component_usart.h"
- 2212              	 .file 14 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\lib\\gcc\\arm-none-eabi\\9.3.1\\include\\stddef.h"
- 2213              	 .file 15 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_types.h"
- 2214              	 .file 16 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\reent.h"
- 2215              	 .file 17 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\lock.h"
- 2216              	 .file 18 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\stdlib.h"
- 2217              	 .file 19 ".././hal/sam3u1c/inc/interrupt/interrupt_sam_nvic.h"
- 2218              	 .file 20 ".././hal/sam3u1c/inc/compiler.h"
- 2219              	 .file 21 ".././hal/sam3u1c/inc/sam/sleepmgr.h"
- 2220              	 .file 22 "./conf_usb.h"
- 2221              	 .file 23 ".././hal/sam3u1c/inc/usb_protocol.h"
- 2222              	 .file 24 ".././hal/sam3u1c/inc/udi.h"
- 2223              	 .file 25 ".././hal/sam3u1c/inc/udc_desc.h"
- 2224              	 .file 26 ".././hal/sam3u1c/inc/udd.h"
- 2225              	 .file 27 ".././hal/sam3u1c/inc/udi_vendor.h"
- 2226              	 .file 28 ".././hal/sam3u1c/inc/stdio_serial.h"
- 2227              	 .file 29 ".././hal/sam3u1c/inc/usb.h"
- 2228              	 .file 30 "usb_xmem.h"
- 2229              	 .file 31 "fpga_program.h"
- 2230              	 .file 32 ".././hal/sam3u1c/inc/pio.h"
- 2231              	 .file 33 ".././hal/sam3u1c/inc/pmc.h"
- 2232              	 .file 34 ".././hal/sam3u1c/inc/efc.h"
- 2233              	 .file 35 ".././hal/sam3u1c/inc/ui.h"
+ 531:usb.c         ****         /* Send byte to FPGA - this could eventually be done via SPI */
+ 532:usb.c         ****         // TODO: is this dangerous?
+ 533:usb.c         ****         for(unsigned int i = 0; i < nb_transfered; i++){
+ 2192              	 .loc 4 533 26
+ 2193 006a 0023     	 movs r3,#0
+ 2194 006c BB60     	 str r3,[r7,#8]
+ 2195              	 .loc 4 533 9
+ 2196 006e 09E0     	 b .L169
+ 2197              	.L170:
+ 534:usb.c         ****             fpga_program_sendbyte(main_buf_loopback[i]);
+ 2198              	 .loc 4 534 13 discriminator 3
+ 2199 0070 0C4A     	 ldr r2,.L171+4
+ 2200 0072 BB68     	 ldr r3,[r7,#8]
+ 2201 0074 1344     	 add r3,r3,r2
+ 2202 0076 1B78     	 ldrb r3,[r3]
+ 2203 0078 1846     	 mov r0,r3
+ 2204 007a 104B     	 ldr r3,.L171+28
+ 2205 007c 9847     	 blx r3
+ 2206              	.LVL64:
+ 533:usb.c         ****             fpga_program_sendbyte(main_buf_loopback[i]);
+ 2207              	 .loc 4 533 53 discriminator 3
+ 2208 007e BB68     	 ldr r3,[r7,#8]
+ 2209 0080 0133     	 adds r3,r3,#1
+ 2210 0082 BB60     	 str r3,[r7,#8]
+ 2211              	.L169:
+ 533:usb.c         ****             fpga_program_sendbyte(main_buf_loopback[i]);
+ 2212              	 .loc 4 533 9 discriminator 1
+ 2213 0084 BA68     	 ldr r2,[r7,#8]
+ 2214 0086 3B68     	 ldr r3,[r7]
+ 2215 0088 9A42     	 cmp r2,r3
+ 2216 008a F1D3     	 bcc .L170
+ 2217              	.L168:
+ 2218              	.LBE8:
+ 535:usb.c         ****         }
+ 536:usb.c         **** #if FPGA_USE_BITBANG
+ 537:usb.c         ****         FPGA_CCLK_LOW();
+ 538:usb.c         **** #endif
+ 539:usb.c         ****     }
+ 540:usb.c         **** 
+ 541:usb.c         ****     //printf("BULKOUT: %d bytes\n", (int)nb_transfered);
+ 542:usb.c         **** 
+ 543:usb.c         ****     udi_vendor_bulk_out_run(
+ 2219              	 .loc 4 543 5
+ 2220 008c 044A     	 ldr r2,.L171
+ 2221 008e 4FF48061 	 mov r1,#1024
+ 2222 0092 0448     	 ldr r0,.L171+4
+ 2223 0094 044B     	 ldr r3,.L171+8
+ 2224 0096 9847     	 blx r3
+ 2225              	.LVL65:
+ 2226              	.L162:
+ 544:usb.c         ****         main_buf_loopback,
+ 545:usb.c         ****         sizeof(main_buf_loopback),
+ 546:usb.c         ****         main_vendor_bulk_out_received);
+ 547:usb.c         **** }
+ 2227              	 .loc 4 547 1
+ 2228 0098 1037     	 adds r7,r7,#16
+ 2229              	.LCFI83:
+ 2230              	 .cfi_def_cfa_offset 8
+ 2231 009a BD46     	 mov sp,r7
+ 2232              	.LCFI84:
+ 2233              	 .cfi_def_cfa_register 13
+ 2234              	 
+ 2235 009c 80BD     	 pop {r7,pc}
+ 2236              	.L172:
+ 2237 009e 00BF     	 .align 2
+ 2238              	.L171:
+ 2239 00a0 00000000 	 .word main_vendor_bulk_out_received
+ 2240 00a4 00000000 	 .word main_buf_loopback
+ 2241 00a8 00000000 	 .word udi_vendor_bulk_out_run
+ 2242 00ac 00000000 	 .word blockendpoint_usage
+ 2243 00b0 00000000 	 .word xram
+ 2244 00b4 00000000 	 .word FPGA_lockstatus
+ 2245 00b8 00000000 	 .word FPGA_releaselock
+ 2246 00bc 00000000 	 .word fpga_program_sendbyte
+ 2247              	 .cfi_endproc
+ 2248              	.LFE210:
+ 2250              	 .section .bss.respbuf.9287,"aw",%nobits
+ 2251              	 .align 2
+ 2254              	respbuf.9287:
+ 2255 0000 00000000 	 .space 128
+ 2255      00000000 
+ 2255      00000000 
+ 2255      00000000 
+ 2255      00000000 
+ 2256              	 .section .bss.respbuf.9303,"aw",%nobits
+ 2257              	 .align 2
+ 2260              	respbuf.9303:
+ 2261 0000 00000000 	 .space 64
+ 2261      00000000 
+ 2261      00000000 
+ 2261      00000000 
+ 2261      00000000 
+ 2262              	 .text
+ 2263              	.Letext0:
+ 2264              	 .file 5 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 2265              	 .file 6 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 2266              	 .file 7 ".././hal/sam3u1c/inc/sam3u1c.h"
+ 2267              	 .file 8 ".././hal/sam3u1c/inc/core_cm3.h"
+ 2268              	 .file 9 ".././hal/sam3u1c/inc/system_sam3u.h"
+ 2269              	 .file 10 ".././hal/sam3u1c/inc/component/component_efc.h"
+ 2270              	 .file 11 ".././hal/sam3u1c/inc/component/component_rstc.h"
+ 2271              	 .file 12 ".././hal/sam3u1c/inc/component/component_usart.h"
+ 2272              	 .file 13 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\lib\\gcc\\arm-none-eabi\\9.3.1\\include\\stddef.h"
+ 2273              	 .file 14 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\_types.h"
+ 2274              	 .file 15 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\reent.h"
+ 2275              	 .file 16 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\sys\\lock.h"
+ 2276              	 .file 17 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\stdlib.h"
+ 2277              	 .file 18 ".././hal/sam3u1c/inc/interrupt/interrupt_sam_nvic.h"
+ 2278              	 .file 19 ".././hal/sam3u1c/inc/compiler.h"
+ 2279              	 .file 20 ".././hal/sam3u1c/inc/sam/sleepmgr.h"
+ 2280              	 .file 21 "./conf_usb.h"
+ 2281              	 .file 22 ".././hal/sam3u1c/inc/usb_protocol.h"
+ 2282              	 .file 23 ".././hal/sam3u1c/inc/udi.h"
+ 2283              	 .file 24 ".././hal/sam3u1c/inc/udc_desc.h"
+ 2284              	 .file 25 ".././hal/sam3u1c/inc/udd.h"
+ 2285              	 .file 26 ".././hal/sam3u1c/inc/udi_vendor.h"
+ 2286              	 .file 27 ".././hal/sam3u1c/inc/stdio_serial.h"
+ 2287              	 .file 28 ".././hal/sam3u1c/inc/usb.h"
+ 2288              	 .file 29 "usb_xmem.h"
+ 2289              	 .file 30 "fpga_program.h"
+ 2290              	 .file 31 ".././hal/sam3u1c/inc/pio.h"
+ 2291              	 .file 32 ".././hal/sam3u1c/inc/pmc.h"
+ 2292              	 .file 33 ".././hal/sam3u1c/inc/efc.h"
+ 2293              	 .file 34 ".././hal/sam3u1c/inc/ui.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 usb.c
     {standard input}:16     .bss.cpu_irq_critical_section_counter:00000000 $d
@@ -3359,7 +3430,7 @@ DEFINED SYMBOLS
     {standard input}:513    .text.main_vendor_enable:00000000 $t
     {standard input}:520    .text.main_vendor_enable:00000000 main_vendor_enable
     {standard input}:557    .text.main_vendor_enable:00000024 $d
-    {standard input}:2038   .text.main_vendor_bulk_out_received:00000000 main_vendor_bulk_out_received
+    {standard input}:2099   .text.main_vendor_bulk_out_received:00000000 main_vendor_bulk_out_received
     {standard input}:566    .text.main_vendor_disable:00000000 $t
     {standard input}:573    .text.main_vendor_disable:00000000 main_vendor_disable
     {standard input}:605    .text.main_vendor_disable:00000014 $d
@@ -3374,7 +3445,7 @@ DEFINED SYMBOLS
     {standard input}:633    .text.ctrl_readmem_bulk:00000000 $t
     {standard input}:640    .text.ctrl_readmem_bulk:00000000 ctrl_readmem_bulk
     {standard input}:711    .text.ctrl_readmem_bulk:00000044 $d
-    {standard input}:1969   .text.main_vendor_bulk_in_received:00000000 main_vendor_bulk_in_received
+    {standard input}:2030   .text.main_vendor_bulk_in_received:00000000 main_vendor_bulk_in_received
     {standard input}:721    .text.ctrl_readmem_ctrl:00000000 $t
     {standard input}:728    .text.ctrl_readmem_ctrl:00000000 ctrl_readmem_ctrl
     {standard input}:800    .text.ctrl_readmem_ctrl:00000044 $d
@@ -3403,33 +3474,33 @@ DEFINED SYMBOLS
     {standard input}:1288   .text.ctrl_usart_cb_data:00000000 $t
     {standard input}:1294   .text.ctrl_usart_cb_data:00000000 ctrl_usart_cb_data
     {standard input}:1374   .text.ctrl_usart_cb_data:00000048 $d
-    {standard input}:1381   .text.ctrl_spi_cb:00000000 $t
-    {standard input}:1387   .text.ctrl_spi_cb:00000000 ctrl_spi_cb
-    {standard input}:1413   .text.ctrl_spi_cb:00000010 $d
-    {standard input}:1419   .text.ctrl_xmega_program_void:00000000 $t
-    {standard input}:1426   .text.ctrl_xmega_program_void:00000000 ctrl_xmega_program_void
-    {standard input}:1450   .text.ctrl_xmega_program_void:0000000c $d
-    {standard input}:1455   .text.ctrl_avr_program_void:00000000 $t
-    {standard input}:1462   .text.ctrl_avr_program_void:00000000 ctrl_avr_program_void
-    {standard input}:1486   .text.ctrl_avr_program_void:0000000c $d
-    {standard input}:1491   .text.main_setup_out_received:00000000 $t
-    {standard input}:1498   .text.main_setup_out_received:00000000 main_setup_out_received
-    {standard input}:1540   .text.main_setup_out_received:00000030 $d
-    {standard input}:1563   .text.main_setup_out_received:0000008c $t
-    {standard input}:1709   .text.main_setup_out_received:00000138 $d
-    {standard input}:1727   .text.main_setup_in_received:00000000 $t
-    {standard input}:1734   .text.main_setup_in_received:00000000 main_setup_in_received
-    {standard input}:1761   .text.main_setup_in_received:00000018 $d
-    {standard input}:1771   .text.main_setup_in_received:00000040 $t
-    {standard input}:1948   .text.main_setup_in_received:00000128 $d
-    {standard input}:2199   .bss.respbuf.9303:00000000 respbuf.9303
-    {standard input}:1962   .text.main_vendor_bulk_in_received:00000000 $t
-    {standard input}:2025   .text.main_vendor_bulk_in_received:00000030 $d
-    {standard input}:2031   .text.main_vendor_bulk_out_received:00000000 $t
-    {standard input}:2178   .text.main_vendor_bulk_out_received:000000a0 $d
-    {standard input}:2190   .bss.respbuf.9287:00000000 $d
-    {standard input}:2193   .bss.respbuf.9287:00000000 respbuf.9287
-    {standard input}:2196   .bss.respbuf.9303:00000000 $d
+    {standard input}:1381   .text.spi_adc_cb:00000000 $t
+    {standard input}:1387   .text.spi_adc_cb:00000000 spi_adc_cb
+    {standard input}:1436   .text.spi_adc_cb:0000002c $d
+    {standard input}:1442   .text.ctrl_xmega_program_void:00000000 $t
+    {standard input}:1449   .text.ctrl_xmega_program_void:00000000 ctrl_xmega_program_void
+    {standard input}:1473   .text.ctrl_xmega_program_void:0000000c $d
+    {standard input}:1478   .text.ctrl_avr_program_void:00000000 $t
+    {standard input}:1485   .text.ctrl_avr_program_void:00000000 ctrl_avr_program_void
+    {standard input}:1509   .text.ctrl_avr_program_void:0000000c $d
+    {standard input}:1514   .text.main_setup_out_received:00000000 $t
+    {standard input}:1521   .text.main_setup_out_received:00000000 main_setup_out_received
+    {standard input}:1563   .text.main_setup_out_received:00000030 $d
+    {standard input}:1586   .text.main_setup_out_received:0000008c $t
+    {standard input}:1732   .text.main_setup_out_received:00000138 $d
+    {standard input}:1750   .text.main_setup_in_received:00000000 $t
+    {standard input}:1757   .text.main_setup_in_received:00000000 main_setup_in_received
+    {standard input}:1784   .text.main_setup_in_received:00000018 $d
+    {standard input}:1805   .text.main_setup_in_received:0000006c $t
+    {standard input}:2008   .text.main_setup_in_received:00000178 $d
+    {standard input}:2260   .bss.respbuf.9303:00000000 respbuf.9303
+    {standard input}:2023   .text.main_vendor_bulk_in_received:00000000 $t
+    {standard input}:2086   .text.main_vendor_bulk_in_received:00000030 $d
+    {standard input}:2092   .text.main_vendor_bulk_out_received:00000000 $t
+    {standard input}:2239   .text.main_vendor_bulk_out_received:000000a0 $d
+    {standard input}:2251   .bss.respbuf.9287:00000000 $d
+    {standard input}:2254   .bss.respbuf.9287:00000000 respbuf.9287
+    {standard input}:2257   .bss.respbuf.9303:00000000 $d
                            .group:00000000 wm4.0.84f01b7600eb36308f16331d3d2e9779
                            .group:00000000 wm4.stddef.h.39.27677723d43e5b5a7afdf8d798429f1d
                            .group:00000000 wm4.parts.h.45.afc900689b2c82332e69d798acedc875
@@ -3602,10 +3673,11 @@ pio_set_pin_high
 pio_set_pin_low
 ctrl_usart
 usart_driver_putchar
-ctrl_spi
+write_spi_adc
 XPROGProtocol_Command
 V2Protocol_ProcessCommand
 FPGA_lockstatus
 usart_driver_getchar
 pio_get_pin_value
+read_spi_adc
 fpga_program_sendbyte

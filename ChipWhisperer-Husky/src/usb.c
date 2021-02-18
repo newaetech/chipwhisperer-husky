@@ -47,7 +47,7 @@
 #define REQ_CC_PROGRAM 0x23
 #define REQ_CHANGE_PWR 0x24
 #define REQ_FPGA_RESET 0x25
-#define REQ_SPI 0x26
+#define REQ_SPI_ADC 0x26
 
 #define USART_TARGET USART0
 #define PIN_USART0_RXD	         (PIO_PA19_IDX)
@@ -304,9 +304,13 @@ static void ctrl_usart_cb_data(void)
 	}
 }
 
-static void ctrl_spi_cb(void)
+static void spi_adc_cb(void)
 {
-    ctrl_spi(SPI, false);
+	//Just do single byte writes for now
+	if (udd_g_ctrlreq.req.wLength > 2){
+		return;
+	}
+    write_spi_adc(udd_g_ctrlreq.payload[0], udd_g_ctrlreq.payload[1]);
 }
 
 void ctrl_xmega_program_void(void)
@@ -391,8 +395,8 @@ bool main_setup_out_received(void)
     case REQ_FPGA_RESET:
         udd_g_ctrlreq.callback = ctrl_fpga_reset;
         return true;
-    case REQ_SPI:
-        udd_g_ctrlreq.callback = ctrl_spi_cb;
+    case REQ_SPI_ADC:
+        udd_g_ctrlreq.callback = spi_adc_cb;
         return true;
     default:
         return false;
@@ -470,6 +474,12 @@ bool main_setup_in_received(void)
         respbuf[3] = 0;
         udd_g_ctrlreq.payload = respbuf;
         udd_g_ctrlreq.payload_size = 4;
+        return true;
+        break;
+    case REQ_SPI_ADC:
+        respbuf[0] = read_spi_adc(udd_g_ctrlreq.req.wValue & 0xFF);
+        udd_g_ctrlreq.payload = respbuf;
+        udd_g_ctrlreq.payload_size = 1;
         return true;
         break;
     default:
