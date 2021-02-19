@@ -23,6 +23,7 @@
 
 from .interface import naeusb as NAE
 from .interface import program_fpga as LLINT
+from .interface.serial import USART
 
 class Husky:
     """PhyWhisperer-USB Interface"""
@@ -53,6 +54,11 @@ class Husky:
 
         with open(bsfile,"rb") as bitstream:
             self._llint.FPGAProgram(bitstream) 
+
+        # for cw.target()
+        self.usart = USART(self.usb)
+        self._cwusb = self.usb
+
 
     def adc_reset(self):
         self.adc_reg_write(0x00, 0x02)
@@ -90,4 +96,6 @@ class Husky:
 
         self.usb.close()
 
+    def serial(self):
+        return self.usart
 
