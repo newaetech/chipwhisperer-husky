@@ -39,6 +39,8 @@ void phywhisperer_setup_pins(void)
     gpio_configure_group(FPGA_ADDR_PORT, FPGA_ADDR_PINS, (PIO_TYPE_PIO_OUTPUT_0 | PIO_DEFAULT));
     pio_enable_output_write(FPGA_ADDR_PORT, FPGA_ADDR_PINS);
 
+    //We don't use address peripheral anymore
+/*
     gpio_configure_pin(PIN_EBI_ADDR_BUS_A0, PIN_EBI_ADDR_BUS_FLAG1);
     gpio_configure_pin(PIN_EBI_ADDR_BUS_A1, PIN_EBI_ADDR_BUS_FLAG1);
     gpio_configure_pin(PIN_EBI_ADDR_BUS_A2, PIN_EBI_ADDR_BUS_FLAG1);
@@ -47,10 +49,26 @@ void phywhisperer_setup_pins(void)
     gpio_configure_pin(PIN_EBI_ADDR_BUS_A5, PIN_EBI_ADDR_BUS_FLAG1);
     gpio_configure_pin(PIN_EBI_ADDR_BUS_A6, PIN_EBI_ADDR_BUS_FLAG1);
     gpio_configure_pin(PIN_EBI_ADDR_BUS_A7, PIN_EBI_ADDR_BUS_FLAG1);
-
+*/
     gpio_configure_pin(PIN_EBI_USB_SPARE0, PIN_EBI_USB_SPARE0_FLAGS);
     gpio_configure_pin(PIN_EBI_USB_SPARE1, PIN_EBI_USB_SPARE1_FLAGS);
 
+    //Slow "known to work" timing
+    smc_set_setup_timing(SMC, 0, SMC_SETUP_NWE_SETUP(0)
+                         | SMC_SETUP_NCS_WR_SETUP(1)
+                         | SMC_SETUP_NRD_SETUP(1)
+                         | SMC_SETUP_NCS_RD_SETUP(1));
+    smc_set_pulse_timing(SMC, 0, SMC_PULSE_NWE_PULSE(1)
+                         | SMC_PULSE_NCS_WR_PULSE(1)
+                         | SMC_PULSE_NRD_PULSE(3)
+                         | SMC_PULSE_NCS_RD_PULSE(1));
+    smc_set_cycle_timing(SMC, 0, SMC_CYCLE_NWE_CYCLE(2)
+                         | SMC_CYCLE_NRD_CYCLE(4));
+    smc_set_mode(SMC, 0, SMC_MODE_READ_MODE | SMC_MODE_WRITE_MODE
+                 | SMC_MODE_DBW_BIT_8);
+    
+    //Fast timing for full data transfer speeds - required for streaming mode?
+/*
     smc_set_setup_timing(SMC, 0, SMC_SETUP_NWE_SETUP(0)
                          | SMC_SETUP_NCS_WR_SETUP(0)
                          | SMC_SETUP_NRD_SETUP(0)
@@ -63,6 +81,7 @@ void phywhisperer_setup_pins(void)
                          | SMC_CYCLE_NRD_CYCLE(1));
     smc_set_mode(SMC, 0, SMC_MODE_READ_MODE | SMC_MODE_WRITE_MODE
                  | SMC_MODE_DBW_BIT_8);
+*/
 }
 
 void hacky_delay(void)
