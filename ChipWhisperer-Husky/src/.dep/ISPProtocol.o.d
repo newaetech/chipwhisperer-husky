@@ -80,25 +80,17 @@ objdir/ISPProtocol.o.s: ISPProtocol.c ISPProtocol.h \
  .././hal/sam3u1c/inc/smc.h .././hal/sam3u1c/inc/spi.h \
  .././hal/sam3u1c/inc/sam/sleepmgr.h conf_sleepmgr.h \
  .././hal/sam3u1c/inc/sleepmgr.h .././hal/sam3u1c/inc/sam/sleepmgr.h \
- .././hal/sam3u1c/inc/tc.h .././hal/sam3u1c/inc/sam_twi/twi_master.h \
- .././hal/sam3u1c/inc/twi.h .././hal/sam3u1c/inc/sam_twi/twi_slave.h \
- .././hal/sam3u1c/inc/twi_master.h \
- .././hal/sam3u1c/inc/sam_twi/twi_master.h \
- .././hal/sam3u1c/inc/twi_slave.h \
- .././hal/sam3u1c/inc/sam_twi/twi_slave.h .././hal/sam3u1c/inc/uart.h \
- .././hal/sam3u1c/inc/serial.h .././hal/sam3u1c/inc/status_codes.h \
- .././hal/sam3u1c/inc/sam_uart/uart_serial.h .././hal/sam3u1c/inc/usart.h \
- conf_uart_serial.h .././hal/sam3u1c/inc/udc.h conf_usb.h \
- .././hal/sam3u1c/inc/udi_vendor_conf.h .././hal/sam3u1c/inc/udi_vendor.h \
+ scard/iso7816.h .././hal/sam3u1c/inc/usart.h .././hal/sam3u1c/inc/tc.h \
+ .././hal/sam3u1c/inc/usb_protocol_cdc.h .././hal/sam3u1c/inc/udi_cdc.h \
+ conf_usb.h .././hal/sam3u1c/inc/udi_vendor.h \
  .././hal/sam3u1c/inc/usb_protocol.h .././hal/sam3u1c/inc/usb_atmel.h \
  .././hal/sam3u1c/inc/usb_protocol_vendor.h .././hal/sam3u1c/inc/udd.h \
  .././hal/sam3u1c/inc/udc_desc.h .././hal/sam3u1c/inc/udi.h \
- .././hal/sam3u1c/inc/ui.h .././hal/sam3u1c/inc/main.h \
- .././hal/sam3u1c/inc/udd.h .././hal/sam3u1c/inc/udi_vendor.h \
- .././hal/sam3u1c/inc/usb_protocol_vendor.h \
- .././hal/sam3u1c/inc/pio_handler.h .././hal/sam3u1c/inc/cw521.h \
- V2Protocol.h V2ProtocolConstants.h V2ProtocolParams.h ISPTarget.h \
- XPROGTimeout.h
+ .././hal/sam3u1c/inc/usb_protocol_cdc.h .././hal/sam3u1c/inc/udc.h \
+ .././hal/sam3u1c/inc/udd.h .././hal/sam3u1c/inc/usb_protocol_vendor.h \
+ .././hal/sam3u1c/inc/pio_handler.h V2Protocol.h V2ProtocolConstants.h \
+ V2ProtocolParams.h ISPTarget.h XPROGTimeout.h \
+ .././hal/sam3u1c/inc/cw521.h
 
 ISPProtocol.h:
 
@@ -316,39 +308,17 @@ conf_sleepmgr.h:
 
 .././hal/sam3u1c/inc/sam/sleepmgr.h:
 
-.././hal/sam3u1c/inc/tc.h:
-
-.././hal/sam3u1c/inc/sam_twi/twi_master.h:
-
-.././hal/sam3u1c/inc/twi.h:
-
-.././hal/sam3u1c/inc/sam_twi/twi_slave.h:
-
-.././hal/sam3u1c/inc/twi_master.h:
-
-.././hal/sam3u1c/inc/sam_twi/twi_master.h:
-
-.././hal/sam3u1c/inc/twi_slave.h:
-
-.././hal/sam3u1c/inc/sam_twi/twi_slave.h:
-
-.././hal/sam3u1c/inc/uart.h:
-
-.././hal/sam3u1c/inc/serial.h:
-
-.././hal/sam3u1c/inc/status_codes.h:
-
-.././hal/sam3u1c/inc/sam_uart/uart_serial.h:
+scard/iso7816.h:
 
 .././hal/sam3u1c/inc/usart.h:
 
-conf_uart_serial.h:
+.././hal/sam3u1c/inc/tc.h:
 
-.././hal/sam3u1c/inc/udc.h:
+.././hal/sam3u1c/inc/usb_protocol_cdc.h:
+
+.././hal/sam3u1c/inc/udi_cdc.h:
 
 conf_usb.h:
-
-.././hal/sam3u1c/inc/udi_vendor_conf.h:
 
 .././hal/sam3u1c/inc/udi_vendor.h:
 
@@ -364,19 +334,15 @@ conf_usb.h:
 
 .././hal/sam3u1c/inc/udi.h:
 
-.././hal/sam3u1c/inc/ui.h:
+.././hal/sam3u1c/inc/usb_protocol_cdc.h:
 
-.././hal/sam3u1c/inc/main.h:
+.././hal/sam3u1c/inc/udc.h:
 
 .././hal/sam3u1c/inc/udd.h:
-
-.././hal/sam3u1c/inc/udi_vendor.h:
 
 .././hal/sam3u1c/inc/usb_protocol_vendor.h:
 
 .././hal/sam3u1c/inc/pio_handler.h:
-
-.././hal/sam3u1c/inc/cw521.h:
 
 V2Protocol.h:
 
@@ -387,3 +353,5 @@ V2ProtocolParams.h:
 ISPTarget.h:
 
 XPROGTimeout.h:
+
+.././hal/sam3u1c/inc/cw521.h:

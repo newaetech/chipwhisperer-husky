@@ -47,7 +47,7 @@
   59              	 .thumb_func
   60              	 .fpu softvfp
   62              	XPROGProtocol_Command:
-  63              	.LFB181:
+  63              	.LFB175:
   64              	 .file 1 "XPROGNewAE.c"
    1:XPROGNewAE.c  **** /*
    2:XPROGNewAE.c  ****      PDI Programming
@@ -458,12 +458,12 @@
  333 0192 00BF     	 .align 2
  334              	.L17:
  335 0194 00000000 	 .word udd_g_ctrlreq
- 336 0198 00000000 	 .word status_payload.9087
+ 336 0198 00000000 	 .word status_payload.9056
  337 019c 00000000 	 .word start_timeoutcnt
  338 01a0 00000000 	 .word XPROGProtocol_EnterXPROGMode
  339 01a4 00000000 	 .word XPROGProtocol_LeaveXPROGMode
  340 01a8 00000000 	 .word XPROGProtocol_Erase
- 341 01ac 00000000 	 .word xprog_rambuf.9088
+ 341 01ac 00000000 	 .word xprog_rambuf.9057
  342 01b0 00000000 	 .word XPROGProtocol_WriteMemory
  343 01b4 00000000 	 .word XPROGProtocol_ReadMemory
  344 01b8 00000000 	 .word XPROGProtocol_SetParam
@@ -472,7 +472,7 @@
  347 01c4 00000000 	 .word TimeoutTicksRemaining
  348 01c8 00000000 	 .word stop_timeoutcnt
  349              	 .cfi_endproc
- 350              	.LFE181:
+ 350              	.LFE175:
  352              	 .section .text.XPROGProtocol_EnterXPROGMode,"ax",%progbits
  353              	 .align 1
  354              	 .syntax unified
@@ -480,7 +480,7 @@
  356              	 .thumb_func
  357              	 .fpu softvfp
  359              	XPROGProtocol_EnterXPROGMode:
- 360              	.LFB182:
+ 360              	.LFB176:
  139:XPROGNewAE.c  **** /** Handler for the XPROG ENTER_PROGMODE command to establish a connection with the attached device
  140:XPROGNewAE.c  **** static void XPROGProtocol_EnterXPROGMode(void)
  141:XPROGNewAE.c  **** {	
@@ -532,7 +532,7 @@
  403 0024 00000000 	 .word XMEGANVM_EnablePDI
  404 0028 00000000 	 .word XPROG_Status
  405              	 .cfi_endproc
- 406              	.LFE182:
+ 406              	.LFE176:
  408              	 .section .text.XPROGProtocol_LeaveXPROGMode,"ax",%progbits
  409              	 .align 1
  410              	 .syntax unified
@@ -540,7 +540,7 @@
  412              	 .thumb_func
  413              	 .fpu softvfp
  415              	XPROGProtocol_LeaveXPROGMode:
- 416              	.LFB183:
+ 416              	.LFB177:
  145:XPROGNewAE.c  **** 
  146:XPROGNewAE.c  **** /** Handler for the XPROG LEAVE_PROGMODE command to terminate the PDI programming connection with
  147:XPROGNewAE.c  ****  *  the attached device.
@@ -579,7 +579,7 @@
  443 0014 00000000 	 .word XMEGANVM_DisablePDI
  444 0018 00000000 	 .word XPROG_Status
  445              	 .cfi_endproc
- 446              	.LFE183:
+ 446              	.LFE177:
  448              	 .section .text.XPROGProtocol_Erase,"ax",%progbits
  449              	 .align 1
  450              	 .syntax unified
@@ -587,7 +587,7 @@
  452              	 .thumb_func
  453              	 .fpu softvfp
  455              	XPROGProtocol_Erase:
- 456              	.LFB184:
+ 456              	.LFB178:
  154:XPROGNewAE.c  **** 
  155:XPROGNewAE.c  **** /** Handler for the XPRG ERASE command to erase a specific memory address space in the attached dev
  156:XPROGNewAE.c  **** static void XPROGProtocol_Erase(void)
@@ -825,7 +825,7 @@
  638 00dc 00000000 	 .word udd_g_ctrlreq
  639 00e0 00000000 	 .word XMEGANVM_EraseMemory
  640              	 .cfi_endproc
- 641              	.LFE184:
+ 641              	.LFE178:
  643              	 .section .text.XPROGProtocol_WriteMemory,"ax",%progbits
  644              	 .align 1
  645              	 .syntax unified
@@ -833,7 +833,7 @@
  647              	 .thumb_func
  648              	 .fpu softvfp
  650              	XPROGProtocol_WriteMemory:
- 651              	.LFB185:
+ 651              	.LFB179:
  207:XPROGNewAE.c  **** 
  208:XPROGNewAE.c  **** /** Handler for the XPROG WRITE_MEMORY command to write to a specific memory space within the attac
  209:XPROGNewAE.c  **** static void XPROGProtocol_WriteMemory(uint8_t * outbuf)
@@ -1157,7 +1157,7 @@
  911 0158 00000000 	 .word XMEGANVM_WritePageMemory
  912 015c 00000000 	 .word XMEGANVM_WriteByteMemory
  913              	 .cfi_endproc
- 914              	.LFE185:
+ 914              	.LFE179:
  916              	 .section .text.XPROGProtocol_ReadMemory,"ax",%progbits
  917              	 .align 1
  918              	 .syntax unified
@@ -1165,7 +1165,7 @@
  920              	 .thumb_func
  921              	 .fpu softvfp
  923              	XPROGProtocol_ReadMemory:
- 924              	.LFB186:
+ 924              	.LFB180:
  267:XPROGNewAE.c  **** 
  268:XPROGNewAE.c  **** 
  269:XPROGNewAE.c  **** 
@@ -1314,7 +1314,7 @@
  1046 0090 00000000 	 .word udd_g_ctrlreq
  1047 0094 00000000 	 .word XMEGANVM_ReadMemory
  1048              	 .cfi_endproc
- 1049              	.LFE186:
+ 1049              	.LFE180:
  1051              	 .section .text.XPROGProtocol_SetParam,"ax",%progbits
  1052              	 .align 1
  1053              	 .syntax unified
@@ -1322,7 +1322,7 @@
  1055              	 .thumb_func
  1056              	 .fpu softvfp
  1058              	XPROGProtocol_SetParam:
- 1059              	.LFB187:
+ 1059              	.LFB181:
  291:XPROGNewAE.c  **** 
  292:XPROGNewAE.c  **** 
  293:XPROGNewAE.c  **** static void XPROGProtocol_SetParam(void)
@@ -1631,14 +1631,14 @@
  1313 0148 00000000 	 .word XPROG_Param_NVMCSRRegAddr
  1314 014c 00000000 	 .word set_timeout
  1315              	 .cfi_endproc
- 1316              	.LFE187:
- 1318              	 .section .bss.status_payload.9087,"aw",%nobits
+ 1316              	.LFE181:
+ 1318              	 .section .bss.status_payload.9056,"aw",%nobits
  1319              	 .align 2
- 1322              	status_payload.9087:
+ 1322              	status_payload.9056:
  1323 0000 00000000 	 .space 4
- 1324              	 .section .bss.xprog_rambuf.9088,"aw",%nobits
+ 1324              	 .section .bss.xprog_rambuf.9057,"aw",%nobits
  1325              	 .align 2
- 1328              	xprog_rambuf.9088:
+ 1328              	xprog_rambuf.9057:
  1329 0000 00000000 	 .space 256
  1329      00000000 
  1329      00000000 
@@ -1664,10 +1664,11 @@
  1347              	 .file 17 ".././hal/sam3u1c/inc/udc_desc.h"
  1348              	 .file 18 ".././hal/sam3u1c/inc/udd.h"
  1349              	 .file 19 ".././hal/sam3u1c/inc/udi_vendor.h"
- 1350              	 .file 20 "XPROGTimeout.h"
- 1351              	 .file 21 "XPROGNewAE.h"
- 1352              	 .file 22 "XMEGANVM.h"
- 1353              	 .file 23 "<built-in>"
+ 1350              	 .file 20 ".././hal/sam3u1c/inc/udi_cdc.h"
+ 1351              	 .file 21 "XPROGTimeout.h"
+ 1352              	 .file 22 "XPROGNewAE.h"
+ 1353              	 .file 23 "XMEGANVM.h"
+ 1354              	 .file 24 "<built-in>"
 DEFINED SYMBOLS
                             *ABS*:00000000 XPROGNewAE.c
     {standard input}:16     .bss.cpu_irq_critical_section_counter:00000000 $d
@@ -1686,11 +1687,11 @@ DEFINED SYMBOLS
     {standard input}:97     .text.XPROGProtocol_Command:00000024 $d
     {standard input}:131    .text.XPROGProtocol_Command:000000ac $t
     {standard input}:335    .text.XPROGProtocol_Command:00000194 $d
-    {standard input}:1322   .bss.status_payload.9087:00000000 status_payload.9087
+    {standard input}:1322   .bss.status_payload.9056:00000000 status_payload.9056
     {standard input}:359    .text.XPROGProtocol_EnterXPROGMode:00000000 XPROGProtocol_EnterXPROGMode
     {standard input}:415    .text.XPROGProtocol_LeaveXPROGMode:00000000 XPROGProtocol_LeaveXPROGMode
     {standard input}:455    .text.XPROGProtocol_Erase:00000000 XPROGProtocol_Erase
-    {standard input}:1328   .bss.xprog_rambuf.9088:00000000 xprog_rambuf.9088
+    {standard input}:1328   .bss.xprog_rambuf.9057:00000000 xprog_rambuf.9057
     {standard input}:650    .text.XPROGProtocol_WriteMemory:00000000 XPROGProtocol_WriteMemory
     {standard input}:923    .text.XPROGProtocol_ReadMemory:00000000 XPROGProtocol_ReadMemory
     {standard input}:1058   .text.XPROGProtocol_SetParam:00000000 XPROGProtocol_SetParam
@@ -1712,8 +1713,8 @@ DEFINED SYMBOLS
     {standard input}:1107   .text.XPROGProtocol_SetParam:00000034 $d
     {standard input}:1115   .text.XPROGProtocol_SetParam:00000054 $t
     {standard input}:1308   .text.XPROGProtocol_SetParam:00000134 $d
-    {standard input}:1319   .bss.status_payload.9087:00000000 $d
-    {standard input}:1325   .bss.xprog_rambuf.9088:00000000 $d
+    {standard input}:1319   .bss.status_payload.9056:00000000 $d
+    {standard input}:1325   .bss.xprog_rambuf.9057:00000000 $d
                            .group:00000000 wm4.0.84f01b7600eb36308f16331d3d2e9779
                            .group:00000000 wm4.stddef.h.39.27677723d43e5b5a7afdf8d798429f1d
                            .group:00000000 wm4.parts.h.45.afc900689b2c82332e69d798acedc875
@@ -1837,20 +1838,16 @@ DEFINED SYMBOLS
                            .group:00000000 wm4.smc.h.45.17a94aa976bb62b1109d03e8a314a569
                            .group:00000000 wm4.spi.h.45.712c66be09ffbac297c2e00923077297
                            .group:00000000 wm4.conf_sleepmgr.h.44.d825b913294720022fefe7201514fca3
-                           .group:00000000 wm4.twi.h.45.ba70de99d200dafba570ce8f7058737a
-                           .group:00000000 wm4.twi_master.h.90.08c062d0fa8f8aeea342ceeb79263395
-                           .group:00000000 wm4.twi_slave.h.45.8b3d1a3d2e43ebc7d0161f4142989871
-                           .group:00000000 wm4.uart.h.45.a5af743b8064bd84d1a6438457096e18
                            .group:00000000 wm4.usart.h.46.eae6fe592b7ea0768efef8d312e7f44f
-                           .group:00000000 wm4.conf_uart_serial.h.45.245cdceaa1a3811fd043bf660ce38054
-                           .group:00000000 wm4.conf_usb.h.45.2f7207bed7467dcf9cb11fbc6ebe572c
-                           .group:00000000 wm4.udi_vendor_conf.h.56.4348c8e521d040f44df868219dae6785
+                           .group:00000000 wm4.usb_protocol_cdc.h.37.f6a736c1ba557ae596ae60fafc889d06
+                           .group:00000000 wm4.conf_usb.h.38.caec09ff3c405b5325f1f32790b86cb2
                            .group:00000000 wm4.usb_atmel.h.45.c31b525dbe01f8d9e2022a03356ec174
                            .group:00000000 wm4.usb_protocol.h.63.850c58f3469fce50a9ac9a6854f7594b
                            .group:00000000 wm4.usb_protocol_vendor.h.45.83dfe073428ff799abc3ed1c7b04c77d
                            .group:00000000 wm4.udc_desc.h.77.5fec235bd7553e7256e345e020840072
                            .group:00000000 wm4.udd.h.103.3ccc59b50c14ec70568e6136eeb22d56
                            .group:00000000 wm4.udi_vendor.h.125.7b9085237d4d4a9757f4c148fba1918d
+                           .group:00000000 wm4.udi_cdc.h.116.611453a0c813c5f2b6cd437c48e7eee8
                            .group:00000000 wm4.XPROGTarget.h.37.f13be92b4fed79a57f759fbcfb772a0c
                            .group:00000000 wm4.XMEGANVM.h.48.e7b2897ef70272e11c75543118cf4de6
                            .group:00000000 wm4.XPROGNewAE.h.44.1fab8fec0bc3c46aa52d18726018ea35

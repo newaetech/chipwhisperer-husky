@@ -106,35 +106,29 @@
 #include <sam/sleepmgr.h>
 #include <sleepmgr.h>
 
+// From module: Smart Card - ISO7816 smart card using GPIO
+#include "scard/iso7816.h"
+
 // From module: System Clock Control - SAM3U implementation
 #include <sysclk.h>
 
 // From module: TC - Timer Counter
 #include <tc.h>
 
-// From module: TWI - Two-Wire Interface - SAM implementation
-#include <sam_twi/twi_master.h>
-#include <sam_twi/twi_slave.h>
-#include <twi_master.h>
-#include <twi_slave.h>
-
-// From module: TWI - Two-wire Interface
-#include <twi.h>
-
-// From module: UART - Univ. Async Rec/Trans
-#include <uart.h>
-
-// From module: USART - Serial interface - SAM implementation for devices with both UART and USART
-#include <serial.h>
-
 // From module: USART - Univ. Syn Async Rec/Trans
 #include <usart.h>
+
+// From module: USB CDC Protocol
+#include <usb_protocol_cdc.h>
+
+// From module: USB Device CDC (Composite Device)
+#include <udi_cdc.h>
 
 // From module: USB Device Stack Core (Common API)
 #include <udc.h>
 #include <udd.h>
 
-// From module: USB Device Vendor Class (Single Interface Device)
+// From module: USB Device Vendor Class (Composite Device)
 #include <udi_vendor.h>
 
 // From module: USB Vendor Protocol
@@ -142,5 +136,5 @@
 
 // From module: pio_handler support enabled
 #include <pio_handler.h>
-#include <cw521.h>
+
 #endif // ASF_H

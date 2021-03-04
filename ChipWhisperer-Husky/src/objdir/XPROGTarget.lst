@@ -832,7 +832,7 @@
  271              	 .thumb_func
  272              	 .fpu softvfp
  274              	XPROGTarget_EnableTargetPDI:
- 275              	.LFB181:
+ 275              	.LFB175:
  276              	 .file 3 "XPROGTarget.c"
    1:XPROGTarget.c **** /*
    2:XPROGTarget.c ****              LUFA Library
@@ -1046,7 +1046,7 @@
  395 00ac 00000000 	 .word usart_init_sync_master
  396 00b0 00000000 	 .word XPROGTarget_SendIdle
  397              	 .cfi_endproc
- 398              	.LFE181:
+ 398              	.LFE175:
  400              	 .section .text.XPROGTarget_DisableTargetPDI,"ax",%progbits
  401              	 .align 1
  402              	 .global XPROGTarget_DisableTargetPDI
@@ -1055,7 +1055,7 @@
  405              	 .thumb_func
  406              	 .fpu softvfp
  408              	XPROGTarget_DisableTargetPDI:
- 409              	.LFB182:
+ 409              	.LFB176:
   92:XPROGTarget.c **** 
   93:XPROGTarget.c **** /** Disables the target's PDI interface, exits programming mode and starts the target's application
   94:XPROGTarget.c **** void XPROGTarget_DisableTargetPDI(void)
@@ -1151,7 +1151,7 @@
  477 0058 00000000 	 .word pio_configure_pin
  478 005c 00000000 	 .word sysclk_disable_peripheral_clock
  479              	 .cfi_endproc
- 480              	.LFE182:
+ 480              	.LFE176:
  482              	 .section .text.XPROGTarget_SendByte,"ax",%progbits
  483              	 .align 1
  484              	 .global XPROGTarget_SendByte
@@ -1160,7 +1160,7 @@
  487              	 .thumb_func
  488              	 .fpu softvfp
  490              	XPROGTarget_SendByte:
- 491              	.LFB183:
+ 491              	.LFB177:
  117:XPROGTarget.c **** 
  118:XPROGTarget.c **** /** Sends a byte via the USART.
  119:XPROGTarget.c ****  *
@@ -1230,7 +1230,7 @@
  544 0038 00400940 	 .word 1074348032
  545 003c 00000000 	 .word usart_putchar
  546              	 .cfi_endproc
- 547              	.LFE183:
+ 547              	.LFE177:
  549              	 .section .text.XPROGTarget_ReceiveByte,"ax",%progbits
  550              	 .align 1
  551              	 .global XPROGTarget_ReceiveByte
@@ -1239,7 +1239,7 @@
  554              	 .thumb_func
  555              	 .fpu softvfp
  557              	XPROGTarget_ReceiveByte:
- 558              	.LFB184:
+ 558              	.LFB178:
  131:XPROGTarget.c **** 
  132:XPROGTarget.c **** /** Receives a byte via the hardware USART, blocking until data is received or timeout expired.
  133:XPROGTarget.c ****  *
@@ -1327,7 +1327,7 @@
  624 0044 00000000 	 .word usart_read
  625 0048 00000000 	 .word TimeoutTicksRemaining
  626              	 .cfi_endproc
- 627              	.LFE184:
+ 627              	.LFE178:
  629              	 .section .text.XPROGTarget_SendIdle,"ax",%progbits
  630              	 .align 1
  631              	 .global XPROGTarget_SendIdle
@@ -1336,7 +1336,7 @@
  634              	 .thumb_func
  635              	 .fpu softvfp
  637              	XPROGTarget_SendIdle:
- 638              	.LFB185:
+ 638              	.LFB179:
  150:XPROGTarget.c **** 
  151:XPROGTarget.c **** /** Sends an IDLE via the USART to the attached target, consisting of a full frame of idle bits. */
  152:XPROGTarget.c **** void XPROGTarget_SendIdle(void)
@@ -1474,7 +1474,7 @@
  754 0080 00000000 	 .word pio_get_pin_value
  755 0084 00000000 	 .word TimeoutTicksRemaining
  756              	 .cfi_endproc
- 757              	.LFE185:
+ 757              	.LFE179:
  759              	 .section .text.XPROGTarget_SetTxMode,"ax",%progbits
  760              	 .align 1
  761              	 .syntax unified
@@ -1482,7 +1482,7 @@
  763              	 .thumb_func
  764              	 .fpu softvfp
  766              	XPROGTarget_SetTxMode:
- 767              	.LFB186:
+ 767              	.LFB180:
  167:XPROGTarget.c **** 
  168:XPROGTarget.c **** static void XPROGTarget_SetTxMode(void)
  169:XPROGTarget.c **** {
@@ -1602,7 +1602,7 @@
  865 007c 00000000 	 .word pio_configure_pin
  866 0080 00000000 	 .word IsSending
  867              	 .cfi_endproc
- 868              	.LFE186:
+ 868              	.LFE180:
  870              	 .section .text.XPROGTarget_SetRxMode,"ax",%progbits
  871              	 .align 1
  872              	 .syntax unified
@@ -1610,7 +1610,7 @@
  874              	 .thumb_func
  875              	 .fpu softvfp
  877              	XPROGTarget_SetRxMode:
- 878              	.LFB187:
+ 878              	.LFB181:
  186:XPROGTarget.c **** 
  187:XPROGTarget.c **** static void XPROGTarget_SetRxMode(void)
  188:XPROGTarget.c **** {
@@ -1684,7 +1684,7 @@
  933 0044 00000000 	 .word pio_configure_pin
  934 0048 00000000 	 .word IsSending
  935              	 .cfi_endproc
- 936              	.LFE187:
+ 936              	.LFE181:
  938              	 .text
  939              	.Letext0:
  940              	 .file 4 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\machine\\_default_types.h"
@@ -1710,10 +1710,11 @@
  960              	 .file 24 ".././hal/sam3u1c/inc/udc_desc.h"
  961              	 .file 25 ".././hal/sam3u1c/inc/udd.h"
  962              	 .file 26 ".././hal/sam3u1c/inc/udi_vendor.h"
- 963              	 .file 27 "XPROGTimeout.h"
- 964              	 .file 28 "XPROGNewAE.h"
- 965              	 .file 29 ".././hal/sam3u1c/inc/sam/cycle_counter.h"
- 966              	 .file 30 ".././hal/sam3u1c/inc/pmc.h"
+ 963              	 .file 27 ".././hal/sam3u1c/inc/udi_cdc.h"
+ 964              	 .file 28 "XPROGTimeout.h"
+ 965              	 .file 29 "XPROGNewAE.h"
+ 966              	 .file 30 ".././hal/sam3u1c/inc/sam/cycle_counter.h"
+ 967              	 .file 31 ".././hal/sam3u1c/inc/pmc.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 XPROGTarget.c
     {standard input}:16     .bss.cpu_irq_critical_section_counter:00000000 $d
@@ -1880,20 +1881,16 @@ DEFINED SYMBOLS
                            .group:00000000 wm4.smc.h.45.17a94aa976bb62b1109d03e8a314a569
                            .group:00000000 wm4.spi.h.45.712c66be09ffbac297c2e00923077297
                            .group:00000000 wm4.conf_sleepmgr.h.44.d825b913294720022fefe7201514fca3
-                           .group:00000000 wm4.twi.h.45.ba70de99d200dafba570ce8f7058737a
-                           .group:00000000 wm4.twi_master.h.90.08c062d0fa8f8aeea342ceeb79263395
-                           .group:00000000 wm4.twi_slave.h.45.8b3d1a3d2e43ebc7d0161f4142989871
-                           .group:00000000 wm4.uart.h.45.a5af743b8064bd84d1a6438457096e18
                            .group:00000000 wm4.usart.h.46.eae6fe592b7ea0768efef8d312e7f44f
-                           .group:00000000 wm4.conf_uart_serial.h.45.245cdceaa1a3811fd043bf660ce38054
-                           .group:00000000 wm4.conf_usb.h.45.2f7207bed7467dcf9cb11fbc6ebe572c
-                           .group:00000000 wm4.udi_vendor_conf.h.56.4348c8e521d040f44df868219dae6785
+                           .group:00000000 wm4.usb_protocol_cdc.h.37.f6a736c1ba557ae596ae60fafc889d06
+                           .group:00000000 wm4.conf_usb.h.38.caec09ff3c405b5325f1f32790b86cb2
                            .group:00000000 wm4.usb_atmel.h.45.c31b525dbe01f8d9e2022a03356ec174
                            .group:00000000 wm4.usb_protocol.h.63.850c58f3469fce50a9ac9a6854f7594b
                            .group:00000000 wm4.usb_protocol_vendor.h.45.83dfe073428ff799abc3ed1c7b04c77d
                            .group:00000000 wm4.udc_desc.h.77.5fec235bd7553e7256e345e020840072
                            .group:00000000 wm4.udd.h.103.3ccc59b50c14ec70568e6136eeb22d56
                            .group:00000000 wm4.udi_vendor.h.125.7b9085237d4d4a9757f4c148fba1918d
+                           .group:00000000 wm4.udi_cdc.h.116.611453a0c813c5f2b6cd437c48e7eee8
                            .group:00000000 wm4.XMEGANVM.h.48.e7b2897ef70272e11c75543118cf4de6
                            .group:00000000 wm4.XPROGNewAE.h.44.1fab8fec0bc3c46aa52d18726018ea35
                            .group:00000000 wm4.XPROGTarget.h.45.eb85550bbf14ee8938dd582a0f86a3dd

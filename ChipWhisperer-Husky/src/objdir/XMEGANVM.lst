@@ -27,7 +27,7 @@
   31              	 .thumb_func
   32              	 .fpu softvfp
   34              	XMEGANVM_SendAddress:
-  35              	.LFB181:
+  35              	.LFB175:
   36              	 .file 1 "XMEGANVM.c"
    1:XMEGANVM.c    **** /*
    2:XMEGANVM.c    ****              LUFA Library
@@ -145,7 +145,7 @@
   99              	.L2:
  100 0040 00000000 	 .word XPROGTarget_SendByte
  101              	 .cfi_endproc
- 102              	.LFE181:
+ 102              	.LFE175:
  104              	 .section .text.XMEGANVM_SendNVMRegAddress,"ax",%progbits
  105              	 .align 1
  106              	 .syntax unified
@@ -153,7 +153,7 @@
  108              	 .thumb_func
  109              	 .fpu softvfp
  111              	XMEGANVM_SendNVMRegAddress:
- 112              	.LFB182:
+ 112              	.LFB176:
   52:XMEGANVM.c    **** 
   53:XMEGANVM.c    **** /** Sends the given NVM register address to the target.
   54:XMEGANVM.c    ****  *
@@ -212,7 +212,7 @@
  155 0024 00000000 	 .word XPROG_Param_NVMBase
  156 0028 00000000 	 .word XMEGANVM_SendAddress
  157              	 .cfi_endproc
- 158              	.LFE182:
+ 158              	.LFE176:
  160              	 .section .text.XMEGANVM_WaitWhileNVMBusBusy,"ax",%progbits
  161              	 .align 1
  162              	 .global XMEGANVM_WaitWhileNVMBusBusy
@@ -221,7 +221,7 @@
  165              	 .thumb_func
  166              	 .fpu softvfp
  168              	XMEGANVM_WaitWhileNVMBusBusy:
- 169              	.LFB183:
+ 169              	.LFB177:
   65:XMEGANVM.c    **** 
   66:XMEGANVM.c    **** /** Busy-waits while the NVM controller is busy performing a NVM operation, such as a FLASH page re
   67:XMEGANVM.c    ****  *  calculation.
@@ -314,7 +314,7 @@
  232 0038 00000000 	 .word XPROGTarget_ReceiveByte
  233 003c 00000000 	 .word TimeoutTicksRemaining
  234              	 .cfi_endproc
- 235              	.LFE183:
+ 235              	.LFE177:
  237              	 .section .text.XMEGANVM_WaitWhileNVMControllerBusy,"ax",%progbits
  238              	 .align 1
  239              	 .global XMEGANVM_WaitWhileNVMControllerBusy
@@ -323,7 +323,7 @@
  242              	 .thumb_func
  243              	 .fpu softvfp
  245              	XMEGANVM_WaitWhileNVMControllerBusy:
- 246              	.LFB184:
+ 246              	.LFB178:
   92:XMEGANVM.c    **** 
   93:XMEGANVM.c    **** /** Waits while the target's NVM controller is busy performing an operation, exiting if the
   94:XMEGANVM.c    ****  *  timeout period expires.
@@ -430,7 +430,7 @@
  319 0048 00000000 	 .word XPROGTarget_ReceiveByte
  320 004c 00000000 	 .word TimeoutTicksRemaining
  321              	 .cfi_endproc
- 322              	.LFE184:
+ 322              	.LFE178:
  324              	 .section .rodata
  325              	 .align 2
  326              	.LC0:
@@ -450,7 +450,7 @@
  340              	 .thumb_func
  341              	 .fpu softvfp
  343              	XMEGANVM_EnablePDI:
- 344              	.LFB185:
+ 344              	.LFB179:
  123:XMEGANVM.c    **** 
  124:XMEGANVM.c    **** /** Enables the physical PDI interface on the target and enables access to the internal NVM control
  125:XMEGANVM.c    ****  *
@@ -581,7 +581,7 @@
  444 0070 00000000 	 .word .LC0
  445 0074 00000000 	 .word XMEGANVM_WaitWhileNVMBusBusy
  446              	 .cfi_endproc
- 447              	.LFE185:
+ 447              	.LFE179:
  449              	 .section .text.XMEGANVM_DisablePDI,"ax",%progbits
  450              	 .align 1
  451              	 .global XMEGANVM_DisablePDI
@@ -590,7 +590,7 @@
  454              	 .thumb_func
  455              	 .fpu softvfp
  457              	XMEGANVM_DisablePDI:
- 458              	.LFB186:
+ 458              	.LFB180:
  149:XMEGANVM.c    **** 
  150:XMEGANVM.c    **** /** Removes access to the target's NVM controller and physically disables the target's physical PDI
  151:XMEGANVM.c    **** void XMEGANVM_DisablePDI(void)
@@ -674,7 +674,7 @@
  518 0040 00000000 	 .word TimeoutTicksRemaining
  519 0044 00000000 	 .word XPROGTarget_DisableTargetPDI
  520              	 .cfi_endproc
- 521              	.LFE186:
+ 521              	.LFE180:
  523              	 .section .text.XMEGANVM_GetMemoryCRC,"ax",%progbits
  524              	 .align 1
  525              	 .global XMEGANVM_GetMemoryCRC
@@ -683,7 +683,7 @@
  528              	 .thumb_func
  529              	 .fpu softvfp
  531              	XMEGANVM_GetMemoryCRC:
- 532              	.LFB187:
+ 532              	.LFB181:
  170:XMEGANVM.c    **** 
  171:XMEGANVM.c    **** /** Retrieves the CRC value of the given memory space.
  172:XMEGANVM.c    ****  *
@@ -917,7 +917,7 @@
  711 00d8 00000000 	 .word XPROGTarget_ReceiveByte
  712 00dc 00000000 	 .word TimeoutTicksRemaining
  713              	 .cfi_endproc
- 714              	.LFE187:
+ 714              	.LFE181:
  716              	 .section .text.XMEGANVM_ReadMemory,"ax",%progbits
  717              	 .align 1
  718              	 .global XMEGANVM_ReadMemory
@@ -926,7 +926,7 @@
  721              	 .thumb_func
  722              	 .fpu softvfp
  724              	XMEGANVM_ReadMemory:
- 725              	.LFB188:
+ 725              	.LFB182:
  220:XMEGANVM.c    **** 
  221:XMEGANVM.c    **** /** Reads memory from the target's memory spaces.
  222:XMEGANVM.c    ****  *
@@ -1140,7 +1140,7 @@
  886 00c4 00000000 	 .word XPROGTarget_ReceiveByte
  887 00c8 00000000 	 .word TimeoutTicksRemaining
  888              	 .cfi_endproc
- 889              	.LFE188:
+ 889              	.LFE182:
  891              	 .section .text.XMEGANVM_WriteByteMemory,"ax",%progbits
  892              	 .align 1
  893              	 .global XMEGANVM_WriteByteMemory
@@ -1149,7 +1149,7 @@
  896              	 .thumb_func
  897              	 .fpu softvfp
  899              	XMEGANVM_WriteByteMemory:
- 900              	.LFB189:
+ 900              	.LFB183:
  267:XMEGANVM.c    **** 
  268:XMEGANVM.c    **** /** Writes byte addressed memory to the target's memory spaces.
  269:XMEGANVM.c    ****  *
@@ -1267,7 +1267,7 @@
  986 0060 00000000 	 .word XMEGANVM_SendNVMRegAddress
  987 0064 00000000 	 .word XMEGANVM_SendAddress
  988              	 .cfi_endproc
- 989              	.LFE189:
+ 989              	.LFE183:
  991              	 .section .text.XMEGANVM_WritePageMemory,"ax",%progbits
  992              	 .align 1
  993              	 .global XMEGANVM_WritePageMemory
@@ -1276,7 +1276,7 @@
  996              	 .thumb_func
  997              	 .fpu softvfp
  999              	XMEGANVM_WritePageMemory:
- 1000              	.LFB190:
+ 1000              	.LFB184:
  296:XMEGANVM.c    **** 
  297:XMEGANVM.c    **** /** Writes page addressed memory to the target's memory spaces.
  298:XMEGANVM.c    ****  *
@@ -1602,7 +1602,7 @@
  1239 0128 00000000 	 .word XMEGANVM_SendNVMRegAddress
  1240 012c 00000000 	 .word XMEGANVM_SendAddress
  1241              	 .cfi_endproc
- 1242              	.LFE190:
+ 1242              	.LFE184:
  1244              	 .section .text.XMEGANVM_EraseMemory,"ax",%progbits
  1245              	 .align 1
  1246              	 .global XMEGANVM_EraseMemory
@@ -1611,7 +1611,7 @@
  1249              	 .thumb_func
  1250              	 .fpu softvfp
  1252              	XMEGANVM_EraseMemory:
- 1253              	.LFB191:
+ 1253              	.LFB185:
  378:XMEGANVM.c    **** 
  379:XMEGANVM.c    **** /** Erases a specific memory space of the target.
  380:XMEGANVM.c    ****  *
@@ -2000,7 +2000,7 @@
  1544 0160 00000000 	 .word XPROG_Param_EEPageSize
  1545 0164 00000000 	 .word XMEGANVM_WaitWhileNVMBusBusy
  1546              	 .cfi_endproc
- 1547              	.LFE191:
+ 1547              	.LFE185:
  1549              	 .text
  1550              	.Letext0:
  1551              	 .file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\machine\\_default_types.h"
@@ -2021,9 +2021,10 @@
  1566              	 .file 17 ".././hal/sam3u1c/inc/udc_desc.h"
  1567              	 .file 18 ".././hal/sam3u1c/inc/udd.h"
  1568              	 .file 19 ".././hal/sam3u1c/inc/udi_vendor.h"
- 1569              	 .file 20 "XPROGNewAE.h"
- 1570              	 .file 21 "XPROGTimeout.h"
- 1571              	 .file 22 "XPROGTarget.h"
+ 1569              	 .file 20 ".././hal/sam3u1c/inc/udi_cdc.h"
+ 1570              	 .file 21 "XPROGNewAE.h"
+ 1571              	 .file 22 "XPROGTimeout.h"
+ 1572              	 .file 23 "XPROGTarget.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 XMEGANVM.c
     {standard input}:16     .bss.cpu_irq_critical_section_counter:00000000 $d
@@ -2187,20 +2188,16 @@ DEFINED SYMBOLS
                            .group:00000000 wm4.smc.h.45.17a94aa976bb62b1109d03e8a314a569
                            .group:00000000 wm4.spi.h.45.712c66be09ffbac297c2e00923077297
                            .group:00000000 wm4.conf_sleepmgr.h.44.d825b913294720022fefe7201514fca3
-                           .group:00000000 wm4.twi.h.45.ba70de99d200dafba570ce8f7058737a
-                           .group:00000000 wm4.twi_master.h.90.08c062d0fa8f8aeea342ceeb79263395
-                           .group:00000000 wm4.twi_slave.h.45.8b3d1a3d2e43ebc7d0161f4142989871
-                           .group:00000000 wm4.uart.h.45.a5af743b8064bd84d1a6438457096e18
                            .group:00000000 wm4.usart.h.46.eae6fe592b7ea0768efef8d312e7f44f
-                           .group:00000000 wm4.conf_uart_serial.h.45.245cdceaa1a3811fd043bf660ce38054
-                           .group:00000000 wm4.conf_usb.h.45.2f7207bed7467dcf9cb11fbc6ebe572c
-                           .group:00000000 wm4.udi_vendor_conf.h.56.4348c8e521d040f44df868219dae6785
+                           .group:00000000 wm4.usb_protocol_cdc.h.37.f6a736c1ba557ae596ae60fafc889d06
+                           .group:00000000 wm4.conf_usb.h.38.caec09ff3c405b5325f1f32790b86cb2
                            .group:00000000 wm4.usb_atmel.h.45.c31b525dbe01f8d9e2022a03356ec174
                            .group:00000000 wm4.usb_protocol.h.63.850c58f3469fce50a9ac9a6854f7594b
                            .group:00000000 wm4.usb_protocol_vendor.h.45.83dfe073428ff799abc3ed1c7b04c77d
                            .group:00000000 wm4.udc_desc.h.77.5fec235bd7553e7256e345e020840072
                            .group:00000000 wm4.udd.h.103.3ccc59b50c14ec70568e6136eeb22d56
                            .group:00000000 wm4.udi_vendor.h.125.7b9085237d4d4a9757f4c148fba1918d
+                           .group:00000000 wm4.udi_cdc.h.116.611453a0c813c5f2b6cd437c48e7eee8
                            .group:00000000 wm4.XPROGNewAE.h.44.1fab8fec0bc3c46aa52d18726018ea35
                            .group:00000000 wm4.XPROGTarget.h.37.f13be92b4fed79a57f759fbcfb772a0c
                            .group:00000000 wm4.XMEGANVM.h.48.e7b2897ef70272e11c75543118cf4de6

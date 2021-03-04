@@ -493,7 +493,7 @@
   89              	 .thumb_func
   90              	 .fpu softvfp
   92              	ISPTarget_SendByte:
-  93              	.LFB181:
+  93              	.LFB175:
   94              	 .file 2 "ISPTarget.h"
    1:ISPTarget.h   **** /* This file is based on the excellent LUFA Library, which is:
    2:ISPTarget.h   ****   Copyright (C) Dean Camera, 2013. See www.lufa-lib.org
@@ -623,7 +623,7 @@
  135 0020 00800040 	 .word 1073774592
  136 0024 00000000 	 .word spi_write
  137              	 .cfi_endproc
- 138              	.LFE181:
+ 138              	.LFE175:
  140              	 .section .text.ISPTarget_ReceiveByte,"ax",%progbits
  141              	 .align 1
  142              	 .syntax unified
@@ -631,7 +631,7 @@
  144              	 .thumb_func
  145              	 .fpu softvfp
  147              	ISPTarget_ReceiveByte:
- 148              	.LFB182:
+ 148              	.LFB176:
   86:ISPTarget.h   **** 
   87:ISPTarget.h   **** 		/** DO NOT USE DIRECTLY - USE ISPTarget_TransferByte() INSTEAD. This will return
   88:ISPTarget.h   **** 		 *  the last read byte, which is probably not what you intended.
@@ -696,7 +696,7 @@
  188 0020 00800040 	 .word 1073774592
  189 0024 00000000 	 .word spi_read
  190              	 .cfi_endproc
- 191              	.LFE182:
+ 191              	.LFE176:
  193              	 .section .text.ISPTarget_TransferByte,"ax",%progbits
  194              	 .align 1
  195              	 .syntax unified
@@ -704,7 +704,7 @@
  197              	 .thumb_func
  198              	 .fpu softvfp
  200              	ISPTarget_TransferByte:
- 201              	.LFB183:
+ 201              	.LFB177:
  108:ISPTarget.h   **** 
  109:ISPTarget.h   **** 		/** Sends and receives a byte of ISP data to and from the attached target, using the
  110:ISPTarget.h   **** 		 *  appropriate SPI hardware or software routines depending on the selected ISP speed.
@@ -781,7 +781,7 @@
  257 0038 00000000 	 .word spi_is_tx_empty
  258 003c 00000000 	 .word ISPTarget_ReceiveByte
  259              	 .cfi_endproc
- 260              	.LFE183:
+ 260              	.LFE177:
  262              	 .section .rodata
  263              	 .align 2
  264              	.LC0:
@@ -805,7 +805,7 @@
  274              	 .thumb_func
  275              	 .fpu softvfp
  277              	ISPProtocol_EnterISPMode:
- 278              	.LFB184:
+ 278              	.LFB178:
  279              	 .file 3 "ISPProtocol.c"
    1:ISPProtocol.c **** /* This file is based on the excellent LUFA Library, which is:
    2:ISPProtocol.c ****   Copyright (C) Dean Camera, 2013. See www.lufa-lib.org
@@ -1150,7 +1150,7 @@
  503 0130 00000000 	 .word avrisp_status_payload
  504 0134 00000000 	 .word avrisp_status_payload_size
  505              	 .cfi_endproc
- 506              	.LFE184:
+ 506              	.LFE178:
  508              	 .section .text.ISPProtocol_LeaveISPMode,"ax",%progbits
  509              	 .align 1
  510              	 .global ISPProtocol_LeaveISPMode
@@ -1159,7 +1159,7 @@
  513              	 .thumb_func
  514              	 .fpu softvfp
  516              	ISPProtocol_LeaveISPMode:
- 517              	.LFB185:
+ 517              	.LFB179:
  112:ISPProtocol.c **** 
  113:ISPProtocol.c **** /** Handler for the CMD_LEAVE_ISP command, which releases the target from programming mode. */
  114:ISPProtocol.c **** void ISPProtocol_LeaveISPMode(void)
@@ -1281,7 +1281,7 @@
  609 0070 00000000 	 .word avrisp_status_payload
  610 0074 00000000 	 .word avrisp_status_payload_size
  611              	 .cfi_endproc
- 612              	.LFE185:
+ 612              	.LFE179:
  614              	 .section .text.ISPProtocol_ProgramMemory,"ax",%progbits
  615              	 .align 1
  616              	 .global ISPProtocol_ProgramMemory
@@ -1290,7 +1290,7 @@
  619              	 .thumb_func
  620              	 .fpu softvfp
  622              	ISPProtocol_ProgramMemory:
- 623              	.LFB186:
+ 623              	.LFB180:
  139:ISPProtocol.c **** 
  140:ISPProtocol.c **** /** Handler for the CMD_PROGRAM_FLASH_ISP and CMD_PROGRAM_EEPROM_ISP commands, writing out bytes,
  141:ISPProtocol.c ****  *  words or pages of data to the attached device.
@@ -1855,7 +1855,7 @@
  1046 025c 00000000 	 .word ISPTarget_SendByte
  1047 0260 00000000 	 .word ISPTarget_WaitForProgComplete
  1048              	 .cfi_endproc
- 1049              	.LFE186:
+ 1049              	.LFE180:
  1051              	 .section .rodata
  1052 0039 000000   	 .align 2
  1053              	.LC2:
@@ -1872,7 +1872,7 @@
  1060              	 .thumb_func
  1061              	 .fpu softvfp
  1063              	ISPProtocol_ReadMemory:
- 1064              	.LFB187:
+ 1064              	.LFB181:
  274:ISPProtocol.c **** 
  275:ISPProtocol.c **** /** Handler for the CMD_READ_FLASH_ISP and CMD_READ_EEPROM_ISP commands, reading in bytes,
  276:ISPProtocol.c ****  *  words or pages of data from the attached device.
@@ -2158,7 +2158,7 @@
  1271 0114 00000000 	 .word CurrentAddress
  1272 0118 00000000 	 .word ISPTarget_TransferByte
  1273              	 .cfi_endproc
- 1274              	.LFE187:
+ 1274              	.LFE181:
  1276              	 .section .rodata
  1277 0061 000000   	 .align 2
  1278              	.LC3:
@@ -2175,7 +2175,7 @@
  1285              	 .thumb_func
  1286              	 .fpu softvfp
  1288              	ISPProtocol_ChipErase:
- 1289              	.LFB188:
+ 1289              	.LFB182:
  346:ISPProtocol.c **** 
  347:ISPProtocol.c **** /** Handler for the CMD_CHI_ERASE_ISP command, clearing the target's FLASH memory. */
  348:ISPProtocol.c **** void ISPProtocol_ChipErase(void)
@@ -2340,7 +2340,7 @@
  1411 009c 00000000 	 .word avrisp_status_payload
  1412 00a0 00000000 	 .word avrisp_status_payload_size
  1413              	 .cfi_endproc
- 1414              	.LFE188:
+ 1414              	.LFE182:
  1416              	 .section .text.ISPProtocol_ReadFuseLockSigOSCCAL,"ax",%progbits
  1417              	 .align 1
  1418              	 .global ISPProtocol_ReadFuseLockSigOSCCAL
@@ -2349,7 +2349,7 @@
  1421              	 .thumb_func
  1422              	 .fpu softvfp
  1424              	ISPProtocol_ReadFuseLockSigOSCCAL:
- 1425              	.LFB189:
+ 1425              	.LFB183:
  384:ISPProtocol.c **** 
  385:ISPProtocol.c **** /** Handler for the CMD_READ_FUSE_ISP, CMD_READ_LOCK_ISP, CMD_READ_SIGNATURE_ISP and CMD_READ_OSCCA
  386:ISPProtocol.c ****  *  reading the requested configuration byte from the device.
@@ -2512,7 +2512,7 @@
  1549 00a4 00000000 	 .word avrisp_status_payload
  1550 00a8 00000000 	 .word avrisp_status_payload_size
  1551              	 .cfi_endproc
- 1552              	.LFE189:
+ 1552              	.LFE183:
  1554              	 .section .text.ISPProtocol_WriteFuseLock,"ax",%progbits
  1555              	 .align 1
  1556              	 .global ISPProtocol_WriteFuseLock
@@ -2521,7 +2521,7 @@
  1559              	 .thumb_func
  1560              	 .fpu softvfp
  1562              	ISPProtocol_WriteFuseLock:
- 1563              	.LFB190:
+ 1563              	.LFB184:
  418:ISPProtocol.c **** 
  419:ISPProtocol.c **** /** Handler for the CMD_WRITE_FUSE_ISP and CMD_WRITE_LOCK_ISP commands, writing the requested confi
  420:ISPProtocol.c ****  *  byte to the device.
@@ -2654,7 +2654,7 @@
  1659 0074 00000000 	 .word avrisp_status_payload
  1660 0078 00000000 	 .word avrisp_status_payload_size
  1661              	 .cfi_endproc
- 1662              	.LFE190:
+ 1662              	.LFE184:
  1664              	 .section .text.ISPProtocol_SPIMulti,"ax",%progbits
  1665              	 .align 1
  1666              	 .global ISPProtocol_SPIMulti
@@ -2663,7 +2663,7 @@
  1669              	 .thumb_func
  1670              	 .fpu softvfp
  1672              	ISPProtocol_SPIMulti:
- 1673              	.LFB191:
+ 1673              	.LFB185:
  450:ISPProtocol.c **** 
  451:ISPProtocol.c **** /** Handler for the CMD_SPI_MULTI command, writing and reading arbitrary SPI data to and from the a
  452:ISPProtocol.c **** void ISPProtocol_SPIMulti(void)
@@ -2695,7 +2695,7 @@
  1695              	 .cfi_def_cfa_offset 0
  1696 000a 7047     	 bx lr
  1697              	 .cfi_endproc
- 1698              	.LFE191:
+ 1698              	.LFE185:
  1700              	 .global __aeabi_uldivmod
  1701              	 .section .text.ISPProtocol_DelayMS,"ax",%progbits
  1702              	 .align 1
@@ -2705,7 +2705,7 @@
  1706              	 .thumb_func
  1707              	 .fpu softvfp
  1709              	ISPProtocol_DelayMS:
- 1710              	.LFB192:
+ 1710              	.LFB186:
  457:ISPProtocol.c **** 
  458:ISPProtocol.c **** /** Blocking delay for a given number of milliseconds. This provides a simple wrapper around
  459:ISPProtocol.c ****  *  the avr-libc provided delay function, so that the delay function can be called with a
@@ -2809,7 +2809,7 @@
  1800 00a0 00000000 	 .word __aeabi_uldivmod
  1801 00a4 00000000 	 .word portable_delay_cycles
  1802              	 .cfi_endproc
- 1803              	.LFE192:
+ 1803              	.LFE186:
  1805              	 .text
  1806              	.Letext0:
  1807              	 .file 4 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\machine\\_default_types.h"
@@ -2832,11 +2832,12 @@
  1824              	 .file 21 ".././hal/sam3u1c/inc/udc_desc.h"
  1825              	 .file 22 ".././hal/sam3u1c/inc/udd.h"
  1826              	 .file 23 ".././hal/sam3u1c/inc/udi_vendor.h"
- 1827              	 .file 24 "XPROGTimeout.h"
- 1828              	 .file 25 "V2Protocol.h"
- 1829              	 .file 26 ".././hal/sam3u1c/inc/sam/cycle_counter.h"
- 1830              	 .file 27 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\stdio.h"
- 1831              	 .file 28 "<built-in>"
+ 1827              	 .file 24 ".././hal/sam3u1c/inc/udi_cdc.h"
+ 1828              	 .file 25 "XPROGTimeout.h"
+ 1829              	 .file 26 "V2Protocol.h"
+ 1830              	 .file 27 ".././hal/sam3u1c/inc/sam/cycle_counter.h"
+ 1831              	 .file 28 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\stdio.h"
+ 1832              	 .file 29 "<built-in>"
 DEFINED SYMBOLS
                             *ABS*:00000000 ISPProtocol.c
     {standard input}:16     .bss.cpu_irq_critical_section_counter:00000000 $d
@@ -3004,20 +3005,16 @@ DEFINED SYMBOLS
                            .group:00000000 wm4.smc.h.45.17a94aa976bb62b1109d03e8a314a569
                            .group:00000000 wm4.spi.h.45.712c66be09ffbac297c2e00923077297
                            .group:00000000 wm4.conf_sleepmgr.h.44.d825b913294720022fefe7201514fca3
-                           .group:00000000 wm4.twi.h.45.ba70de99d200dafba570ce8f7058737a
-                           .group:00000000 wm4.twi_master.h.90.08c062d0fa8f8aeea342ceeb79263395
-                           .group:00000000 wm4.twi_slave.h.45.8b3d1a3d2e43ebc7d0161f4142989871
-                           .group:00000000 wm4.uart.h.45.a5af743b8064bd84d1a6438457096e18
                            .group:00000000 wm4.usart.h.46.eae6fe592b7ea0768efef8d312e7f44f
-                           .group:00000000 wm4.conf_uart_serial.h.45.245cdceaa1a3811fd043bf660ce38054
-                           .group:00000000 wm4.conf_usb.h.45.2f7207bed7467dcf9cb11fbc6ebe572c
-                           .group:00000000 wm4.udi_vendor_conf.h.56.4348c8e521d040f44df868219dae6785
+                           .group:00000000 wm4.usb_protocol_cdc.h.37.f6a736c1ba557ae596ae60fafc889d06
+                           .group:00000000 wm4.conf_usb.h.38.caec09ff3c405b5325f1f32790b86cb2
                            .group:00000000 wm4.usb_atmel.h.45.c31b525dbe01f8d9e2022a03356ec174
                            .group:00000000 wm4.usb_protocol.h.63.850c58f3469fce50a9ac9a6854f7594b
                            .group:00000000 wm4.usb_protocol_vendor.h.45.83dfe073428ff799abc3ed1c7b04c77d
                            .group:00000000 wm4.udc_desc.h.77.5fec235bd7553e7256e345e020840072
                            .group:00000000 wm4.udd.h.103.3ccc59b50c14ec70568e6136eeb22d56
                            .group:00000000 wm4.udi_vendor.h.125.7b9085237d4d4a9757f4c148fba1918d
+                           .group:00000000 wm4.udi_cdc.h.116.611453a0c813c5f2b6cd437c48e7eee8
                            .group:00000000 wm4.V2ProtocolConstants.h.37.9bf16fd2ae5d223b4504404f34063b2d
                            .group:00000000 wm4.ISPTarget.h.50.523ab5c75c84ecee1eba3c8576d9b11a
                            .group:00000000 wm4.V2ProtocolParams.h.47.77ffe24f39fdee76136b1a6cd17622ea

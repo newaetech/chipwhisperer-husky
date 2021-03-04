@@ -30,7 +30,7 @@
 
 # Target file name (without extension).
 # This is the base name of the compiled .hex file.
-TARGET = phywhisperer
+TARGET = ChipWhisperer-Husky
 
 # List C source files here.
 # Header files (.h) are automatically pulled in.

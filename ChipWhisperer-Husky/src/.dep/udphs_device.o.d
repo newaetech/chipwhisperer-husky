@@ -62,19 +62,20 @@ objdir/udphs_device.o.s: .././hal/sam3u1c/udphs_device.c conf_usb.h \
  .././hal/sam3u1c/inc/instance/instance_gpbr.h \
  .././hal/sam3u1c/inc/pio/pio_sam3u1c.h .././hal/sam3u1c/inc/interrupt.h \
  .././hal/sam3u1c/inc/interrupt/interrupt_sam_nvic.h \
- .././hal/sam3u1c/inc/udi_vendor_conf.h .././hal/sam3u1c/inc/udi_vendor.h \
- .././hal/sam3u1c/inc/usb_protocol.h .././hal/sam3u1c/inc/usb_atmel.h \
+ .././hal/sam3u1c/inc/usb_protocol_cdc.h .././hal/sam3u1c/inc/compiler.h \
+ .././hal/sam3u1c/inc/udi_vendor.h .././hal/sam3u1c/inc/usb_protocol.h \
+ .././hal/sam3u1c/inc/usb_atmel.h \
  .././hal/sam3u1c/inc/usb_protocol_vendor.h .././hal/sam3u1c/inc/udd.h \
  .././hal/sam3u1c/inc/udc_desc.h .././hal/sam3u1c/inc/udi.h \
- .././hal/sam3u1c/inc/ui.h .././hal/sam3u1c/inc/main.h \
+ .././hal/sam3u1c/inc/udi_cdc.h .././hal/sam3u1c/inc/usb_protocol_cdc.h \
  .././hal/sam3u1c/inc/sysclk.h .././hal/sam3u1c/inc/parts.h conf_clock.h \
  .././hal/sam3u1c/inc/sam3u/sysclk.h .././hal/sam3u1c/inc/osc.h \
  .././hal/sam3u1c/inc/sam3u/osc.h .././hal/sam3u1c/inc/board.h \
- .././hal/sam3u1c/inc/compiler.h .././hal/sam3u1c/inc/cw521.h \
- .././hal/sam3u1c/inc/exceptions.h .././hal/sam3u1c/inc/pmc.h \
- .././hal/sam3u1c/inc/pll.h .././hal/sam3u1c/inc/sam3u/pll.h \
- .././hal/sam3u1c/inc/udd.h .././hal/sam3u1c/inc/udphs_device.h \
- conf_board.h .././hal/sam3u1c/inc/board.h .././hal/sam3u1c/inc/ioport.h \
+ .././hal/sam3u1c/inc/cw521.h .././hal/sam3u1c/inc/exceptions.h \
+ .././hal/sam3u1c/inc/pmc.h .././hal/sam3u1c/inc/pll.h \
+ .././hal/sam3u1c/inc/sam3u/pll.h .././hal/sam3u1c/inc/udd.h \
+ .././hal/sam3u1c/inc/udphs_device.h conf_board.h \
+ .././hal/sam3u1c/inc/board.h .././hal/sam3u1c/inc/ioport.h \
  .././hal/sam3u1c/inc/sam/ioport_pio.h .././hal/sam3u1c/inc/pio.h \
  .././hal/sam3u1c/inc/pio_handler.h .././hal/sam3u1c/inc/sleep.h \
  .././hal/sam3u1c/inc/sleepmgr.h .././hal/sam3u1c/inc/sam/sleepmgr.h \
@@ -222,7 +223,9 @@ conf_usb.h:
 
 .././hal/sam3u1c/inc/interrupt/interrupt_sam_nvic.h:
 
-.././hal/sam3u1c/inc/udi_vendor_conf.h:
+.././hal/sam3u1c/inc/usb_protocol_cdc.h:
+
+.././hal/sam3u1c/inc/compiler.h:
 
 .././hal/sam3u1c/inc/udi_vendor.h:
 
@@ -238,9 +241,9 @@ conf_usb.h:
 
 .././hal/sam3u1c/inc/udi.h:
 
-.././hal/sam3u1c/inc/ui.h:
+.././hal/sam3u1c/inc/udi_cdc.h:
 
-.././hal/sam3u1c/inc/main.h:
+.././hal/sam3u1c/inc/usb_protocol_cdc.h:
 
 .././hal/sam3u1c/inc/sysclk.h:
 
@@ -255,8 +258,6 @@ conf_clock.h:
 .././hal/sam3u1c/inc/sam3u/osc.h:
 
 .././hal/sam3u1c/inc/board.h:
-
-.././hal/sam3u1c/inc/compiler.h:
 
 .././hal/sam3u1c/inc/cw521.h:
 

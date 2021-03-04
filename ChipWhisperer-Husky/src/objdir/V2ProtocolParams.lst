@@ -61,7 +61,7 @@
   67              	 .thumb_func
   68              	 .fpu softvfp
   70              	V2Params_GetParameterPrivileges:
-  71              	.LFB184:
+  71              	.LFB178:
   72              	 .file 1 "V2ProtocolParams.c"
    1:V2ProtocolParams.c **** /* This file is based on the excellent LUFA Library, which is:
    2:V2ProtocolParams.c ****   Copyright (C) Dean Camera, 2013. See www.lufa-lib.org
@@ -222,7 +222,7 @@
  121              	.L4:
  122 002c 00000000 	 .word V2Params_GetParamFromTable
  123              	 .cfi_endproc
- 124              	.LFE184:
+ 124              	.LFE178:
  126              	 .section .text.V2Params_GetParameterValue,"ax",%progbits
  127              	 .align 1
  128              	 .global V2Params_GetParameterValue
@@ -231,7 +231,7 @@
  131              	 .thumb_func
  132              	 .fpu softvfp
  134              	V2Params_GetParameterValue:
- 135              	.LFB185:
+ 135              	.LFB179:
  109:V2ProtocolParams.c **** 
  110:V2ProtocolParams.c **** /** Retrieves the current value for a given parameter in the parameter table.
  111:V2ProtocolParams.c ****  *
@@ -303,7 +303,7 @@
  184              	.L9:
  185 002c 00000000 	 .word V2Params_GetParamFromTable
  186              	 .cfi_endproc
- 187              	.LFE185:
+ 187              	.LFE179:
  189              	 .section .text.V2Params_SetParameterValue,"ax",%progbits
  190              	 .align 1
  191              	 .global V2Params_SetParameterValue
@@ -312,7 +312,7 @@
  194              	 .thumb_func
  195              	 .fpu softvfp
  197              	V2Params_SetParameterValue:
- 198              	.LFB186:
+ 198              	.LFB180:
  129:V2ProtocolParams.c **** 
  130:V2ProtocolParams.c **** /** Sets the value for a given parameter in the parameter table.
  131:V2ProtocolParams.c ****  *
@@ -390,7 +390,7 @@
  250              	.L15:
  251 0030 00000000 	 .word V2Params_GetParamFromTable
  252              	 .cfi_endproc
- 253              	.LFE186:
+ 253              	.LFE180:
  255              	 .section .text.V2Params_GetParamFromTable,"ax",%progbits
  256              	 .align 1
  257              	 .syntax unified
@@ -398,7 +398,7 @@
  259              	 .thumb_func
  260              	 .fpu softvfp
  262              	V2Params_GetParamFromTable:
- 263              	.LFB187:
+ 263              	.LFB181:
  151:V2ProtocolParams.c **** 
  152:V2ProtocolParams.c **** /** Retrieves a parameter entry (including ID, value and privileges) from the parameter table that 
  153:V2ProtocolParams.c ****  *  parameter ID.
@@ -498,7 +498,7 @@
  335              	.L22:
  336 0040 00000000 	 .word ParameterTable
  337              	 .cfi_endproc
- 338              	.LFE187:
+ 338              	.LFE181:
  340              	 .text
  341              	.Letext0:
  342              	 .file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\machine\\_default_types.h"
@@ -519,9 +519,10 @@
  357              	 .file 17 ".././hal/sam3u1c/inc/udc_desc.h"
  358              	 .file 18 ".././hal/sam3u1c/inc/udd.h"
  359              	 .file 19 ".././hal/sam3u1c/inc/udi_vendor.h"
- 360              	 .file 20 "XPROGTimeout.h"
- 361              	 .file 21 "V2Protocol.h"
- 362              	 .file 22 "V2ProtocolParams.h"
+ 360              	 .file 20 ".././hal/sam3u1c/inc/udi_cdc.h"
+ 361              	 .file 21 "XPROGTimeout.h"
+ 362              	 .file 22 "V2Protocol.h"
+ 363              	 .file 23 "V2ProtocolParams.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 V2ProtocolParams.c
     {standard input}:16     .bss.cpu_irq_critical_section_counter:00000000 $d
@@ -665,20 +666,16 @@ DEFINED SYMBOLS
                            .group:00000000 wm4.smc.h.45.17a94aa976bb62b1109d03e8a314a569
                            .group:00000000 wm4.spi.h.45.712c66be09ffbac297c2e00923077297
                            .group:00000000 wm4.conf_sleepmgr.h.44.d825b913294720022fefe7201514fca3
-                           .group:00000000 wm4.twi.h.45.ba70de99d200dafba570ce8f7058737a
-                           .group:00000000 wm4.twi_master.h.90.08c062d0fa8f8aeea342ceeb79263395
-                           .group:00000000 wm4.twi_slave.h.45.8b3d1a3d2e43ebc7d0161f4142989871
-                           .group:00000000 wm4.uart.h.45.a5af743b8064bd84d1a6438457096e18
                            .group:00000000 wm4.usart.h.46.eae6fe592b7ea0768efef8d312e7f44f
-                           .group:00000000 wm4.conf_uart_serial.h.45.245cdceaa1a3811fd043bf660ce38054
-                           .group:00000000 wm4.conf_usb.h.45.2f7207bed7467dcf9cb11fbc6ebe572c
-                           .group:00000000 wm4.udi_vendor_conf.h.56.4348c8e521d040f44df868219dae6785
+                           .group:00000000 wm4.usb_protocol_cdc.h.37.f6a736c1ba557ae596ae60fafc889d06
+                           .group:00000000 wm4.conf_usb.h.38.caec09ff3c405b5325f1f32790b86cb2
                            .group:00000000 wm4.usb_atmel.h.45.c31b525dbe01f8d9e2022a03356ec174
                            .group:00000000 wm4.usb_protocol.h.63.850c58f3469fce50a9ac9a6854f7594b
                            .group:00000000 wm4.usb_protocol_vendor.h.45.83dfe073428ff799abc3ed1c7b04c77d
                            .group:00000000 wm4.udc_desc.h.77.5fec235bd7553e7256e345e020840072
                            .group:00000000 wm4.udd.h.103.3ccc59b50c14ec70568e6136eeb22d56
                            .group:00000000 wm4.udi_vendor.h.125.7b9085237d4d4a9757f4c148fba1918d
+                           .group:00000000 wm4.udi_cdc.h.116.611453a0c813c5f2b6cd437c48e7eee8
                            .group:00000000 wm4.V2ProtocolConstants.h.37.9bf16fd2ae5d223b4504404f34063b2d
                            .group:00000000 wm4.ISPProtocol.h.47.c4612f03402c6c8309b10b8bfa8458bb
                            .group:00000000 wm4.V2Protocol.h.50.00f5564fabc070724b66bfdabab7441a

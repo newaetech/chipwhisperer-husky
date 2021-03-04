@@ -30,7 +30,7 @@
   34              	 .thumb_func
   35              	 .fpu softvfp
   37              	V2Protocol_Init:
-  38              	.LFB184:
+  38              	.LFB178:
   39              	 .file 1 "V2Protocol.c"
    1:V2Protocol.c  **** /* This file is based on the excellent LUFA Library, which is:
    2:V2Protocol.c  ****   Copyright (C) Dean Camera, 2013. See www.lufa-lib.org
@@ -110,7 +110,7 @@
   61              	 .cfi_def_cfa_offset 0
   62 000a 7047     	 bx lr
   63              	 .cfi_endproc
-  64              	.LFE184:
+  64              	.LFE178:
   66              	 .section .bss.status_payload,"aw",%nobits
   67              	 .align 2
   70              	status_payload:
@@ -129,7 +129,7 @@
   79              	 .thumb_func
   80              	 .fpu softvfp
   82              	V2Protocol_ProcessCommand:
-  83              	.LFB185:
+  83              	.LFB179:
   55:V2Protocol.c  **** 
   56:V2Protocol.c  **** static uint8_t status_payload[32];
   57:V2Protocol.c  **** 
@@ -541,7 +541,7 @@
  381 01c0 00000000 	 .word V2Protocol_ResetProtection
  382 01c4 00000000 	 .word ISPProtocol_EnterISPMode
  383 01c8 00000000 	 .word ISPProtocol_LeaveISPMode
- 384 01cc 00000000 	 .word avr_rambuf.9107
+ 384 01cc 00000000 	 .word avr_rambuf.9076
  385 01d0 00000000 	 .word ISPProtocol_ProgramMemory
  386 01d4 00000000 	 .word ISPProtocol_ReadMemory
  387 01d8 00000000 	 .word ISPProtocol_ChipErase
@@ -553,7 +553,7 @@
  393 01f0 00000000 	 .word memcpy
  394 01f4 00000000 	 .word V2Protocol_UnknownCommand
  395              	 .cfi_endproc
- 396              	.LFE185:
+ 396              	.LFE179:
  398              	 .section .text.V2Protocol_UnknownCommand,"ax",%progbits
  399              	 .align 1
  400              	 .syntax unified
@@ -561,7 +561,7 @@
  402              	 .thumb_func
  403              	 .fpu softvfp
  405              	V2Protocol_UnknownCommand:
- 406              	.LFB186:
+ 406              	.LFB180:
  166:V2Protocol.c  **** 
  167:V2Protocol.c  **** /** Handler for unknown V2 protocol commands. This discards all sent data and returns a
  168:V2Protocol.c  ****  *  STATUS_CMD_UNKNOWN status back to the host.
@@ -618,7 +618,7 @@
  449 0020 00000000 	 .word avrisp_status_payload
  450 0024 00000000 	 .word avrisp_status_payload_size
  451              	 .cfi_endproc
- 452              	.LFE186:
+ 452              	.LFE180:
  454              	 .section .rodata
  455              	 .align 2
  456              	.LC0:
@@ -633,7 +633,7 @@
  462              	 .thumb_func
  463              	 .fpu softvfp
  465              	V2Protocol_SignOn:
- 466              	.LFB187:
+ 466              	.LFB181:
  177:V2Protocol.c  **** 
  178:V2Protocol.c  **** /** Handler for the CMD_SIGN_ON command, returning the programmer ID string to the host. */
  179:V2Protocol.c  **** static void V2Protocol_SignOn(void)
@@ -692,7 +692,7 @@
  512 0038 00000000 	 .word memcpy
  513 003c 00000000 	 .word udd_g_ctrlreq
  514              	 .cfi_endproc
- 515              	.LFE187:
+ 515              	.LFE181:
  517              	 .section .text.V2Protocol_ResetProtection,"ax",%progbits
  518              	 .align 1
  519              	 .syntax unified
@@ -700,7 +700,7 @@
  521              	 .thumb_func
  522              	 .fpu softvfp
  524              	V2Protocol_ResetProtection:
- 525              	.LFB188:
+ 525              	.LFB182:
  187:V2Protocol.c  **** 
  188:V2Protocol.c  **** /** Handler for the CMD_RESET_PROTECTION command, implemented as a dummy ACK function as
  189:V2Protocol.c  ****  *  no target short-circuit protection is currently implemented.
@@ -747,7 +747,7 @@
  560 0018 00000000 	 .word avrisp_status_payload
  561 001c 00000000 	 .word avrisp_status_payload_size
  562              	 .cfi_endproc
- 563              	.LFE188:
+ 563              	.LFE182:
  565              	 .section .text.V2Protocol_GetSetParam,"ax",%progbits
  566              	 .align 1
  567              	 .syntax unified
@@ -755,7 +755,7 @@
  569              	 .thumb_func
  570              	 .fpu softvfp
  572              	V2Protocol_GetSetParam:
- 573              	.LFB189:
+ 573              	.LFB183:
  196:V2Protocol.c  **** 
  197:V2Protocol.c  **** 
  198:V2Protocol.c  **** /** Handler for the CMD_SET_PARAMETER and CMD_GET_PARAMETER commands from the host, setting or
@@ -922,7 +922,7 @@
  701 00ac 00000000 	 .word V2Params_SetParameterValue
  702 00b0 00000000 	 .word V2Params_GetParameterValue
  703              	 .cfi_endproc
- 704              	.LFE189:
+ 704              	.LFE183:
  706              	 .section .rodata
  707 000e 0000     	 .align 2
  708              	.LC1:
@@ -938,7 +938,7 @@
  714              	 .thumb_func
  715              	 .fpu softvfp
  717              	V2Protocol_LoadAddress:
- 718              	.LFB190:
+ 718              	.LFB184:
  232:V2Protocol.c  **** 
  233:V2Protocol.c  **** /** Handler for the CMD_LOAD_ADDRESS command, loading the given device address into a
  234:V2Protocol.c  ****  *  global storage variable for later use, and issuing LOAD EXTENDED ADDRESS commands
@@ -1048,10 +1048,10 @@
  808 0074 00000000 	 .word avrisp_status_payload
  809 0078 00000000 	 .word avrisp_status_payload_size
  810              	 .cfi_endproc
- 811              	.LFE190:
- 813              	 .section .bss.avr_rambuf.9107,"aw",%nobits
+ 811              	.LFE184:
+ 813              	 .section .bss.avr_rambuf.9076,"aw",%nobits
  814              	 .align 2
- 817              	avr_rambuf.9107:
+ 817              	avr_rambuf.9076:
  818 0000 00000000 	 .space 256
  818      00000000 
  818      00000000 
@@ -1077,12 +1077,13 @@
  836              	 .file 17 ".././hal/sam3u1c/inc/udc_desc.h"
  837              	 .file 18 ".././hal/sam3u1c/inc/udd.h"
  838              	 .file 19 ".././hal/sam3u1c/inc/udi_vendor.h"
- 839              	 .file 20 "XPROGTimeout.h"
- 840              	 .file 21 "V2Protocol.h"
- 841              	 .file 22 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\stdio.h"
- 842              	 .file 23 "V2ProtocolParams.h"
- 843              	 .file 24 "ISPProtocol.h"
- 844              	 .file 25 "<built-in>"
+ 839              	 .file 20 ".././hal/sam3u1c/inc/udi_cdc.h"
+ 840              	 .file 21 "XPROGTimeout.h"
+ 841              	 .file 22 "V2Protocol.h"
+ 842              	 .file 23 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\stdio.h"
+ 843              	 .file 24 "V2ProtocolParams.h"
+ 844              	 .file 25 "ISPProtocol.h"
+ 845              	 .file 26 "<built-in>"
 DEFINED SYMBOLS
                             *ABS*:00000000 V2Protocol.c
     {standard input}:16     .bss.cpu_irq_critical_section_counter:00000000 $d
@@ -1106,7 +1107,7 @@ DEFINED SYMBOLS
     {standard input}:572    .text.V2Protocol_GetSetParam:00000000 V2Protocol_GetSetParam
     {standard input}:717    .text.V2Protocol_LoadAddress:00000000 V2Protocol_LoadAddress
     {standard input}:524    .text.V2Protocol_ResetProtection:00000000 V2Protocol_ResetProtection
-    {standard input}:817    .bss.avr_rambuf.9107:00000000 avr_rambuf.9107
+    {standard input}:817    .bss.avr_rambuf.9076:00000000 avr_rambuf.9076
     {standard input}:405    .text.V2Protocol_UnknownCommand:00000000 V2Protocol_UnknownCommand
     {standard input}:399    .text.V2Protocol_UnknownCommand:00000000 $t
     {standard input}:449    .text.V2Protocol_UnknownCommand:00000020 $d
@@ -1119,7 +1120,7 @@ DEFINED SYMBOLS
     {standard input}:697    .text.V2Protocol_GetSetParam:0000009c $d
     {standard input}:711    .text.V2Protocol_LoadAddress:00000000 $t
     {standard input}:803    .text.V2Protocol_LoadAddress:00000060 $d
-    {standard input}:814    .bss.avr_rambuf.9107:00000000 $d
+    {standard input}:814    .bss.avr_rambuf.9076:00000000 $d
                            .group:00000000 wm4.0.84f01b7600eb36308f16331d3d2e9779
                            .group:00000000 wm4.stddef.h.39.27677723d43e5b5a7afdf8d798429f1d
                            .group:00000000 wm4.parts.h.45.afc900689b2c82332e69d798acedc875
@@ -1243,20 +1244,16 @@ DEFINED SYMBOLS
                            .group:00000000 wm4.smc.h.45.17a94aa976bb62b1109d03e8a314a569
                            .group:00000000 wm4.spi.h.45.712c66be09ffbac297c2e00923077297
                            .group:00000000 wm4.conf_sleepmgr.h.44.d825b913294720022fefe7201514fca3
-                           .group:00000000 wm4.twi.h.45.ba70de99d200dafba570ce8f7058737a
-                           .group:00000000 wm4.twi_master.h.90.08c062d0fa8f8aeea342ceeb79263395
-                           .group:00000000 wm4.twi_slave.h.45.8b3d1a3d2e43ebc7d0161f4142989871
-                           .group:00000000 wm4.uart.h.45.a5af743b8064bd84d1a6438457096e18
                            .group:00000000 wm4.usart.h.46.eae6fe592b7ea0768efef8d312e7f44f
-                           .group:00000000 wm4.conf_uart_serial.h.45.245cdceaa1a3811fd043bf660ce38054
-                           .group:00000000 wm4.conf_usb.h.45.2f7207bed7467dcf9cb11fbc6ebe572c
-                           .group:00000000 wm4.udi_vendor_conf.h.56.4348c8e521d040f44df868219dae6785
+                           .group:00000000 wm4.usb_protocol_cdc.h.37.f6a736c1ba557ae596ae60fafc889d06
+                           .group:00000000 wm4.conf_usb.h.38.caec09ff3c405b5325f1f32790b86cb2
                            .group:00000000 wm4.usb_atmel.h.45.c31b525dbe01f8d9e2022a03356ec174
                            .group:00000000 wm4.usb_protocol.h.63.850c58f3469fce50a9ac9a6854f7594b
                            .group:00000000 wm4.usb_protocol_vendor.h.45.83dfe073428ff799abc3ed1c7b04c77d
                            .group:00000000 wm4.udc_desc.h.77.5fec235bd7553e7256e345e020840072
                            .group:00000000 wm4.udd.h.103.3ccc59b50c14ec70568e6136eeb22d56
                            .group:00000000 wm4.udi_vendor.h.125.7b9085237d4d4a9757f4c148fba1918d
+                           .group:00000000 wm4.udi_cdc.h.116.611453a0c813c5f2b6cd437c48e7eee8
                            .group:00000000 wm4.V2ProtocolConstants.h.37.9bf16fd2ae5d223b4504404f34063b2d
                            .group:00000000 wm4.ISPProtocol.h.38.e5e0dd312bebbc8df11522adb3decb21
                            .group:00000000 wm4.ISPTarget.h.50.523ab5c75c84ecee1eba3c8576d9b11a

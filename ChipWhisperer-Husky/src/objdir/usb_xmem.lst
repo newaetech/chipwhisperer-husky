@@ -36,7 +36,7 @@
   44              	 .thumb_func
   45              	 .fpu softvfp
   47              	FPGA_setlock:
-  48              	.LFB181:
+  48              	.LFB175:
   49              	 .file 1 "usb_xmem.c"
    1:usb_xmem.c    **** /*
    2:usb_xmem.c    ****  Copyright (c) 2015 NewAE Technology Inc. All rights reserved.
@@ -137,7 +137,7 @@
  109 0038 00000000 	 .word _fpga_locked
  110 003c 00000000 	 .word cpu_irq_leave_critical
  111              	 .cfi_endproc
- 112              	.LFE181:
+ 112              	.LFE175:
  114              	 .section .text.FPGA_releaselock,"ax",%progbits
  115              	 .align 1
  116              	 .global FPGA_releaselock
@@ -146,7 +146,7 @@
  119              	 .thumb_func
  120              	 .fpu softvfp
  122              	FPGA_releaselock:
- 123              	.LFB182:
+ 123              	.LFB176:
   38:usb_xmem.c    **** 
   39:usb_xmem.c    **** void FPGA_releaselock(void)
   40:usb_xmem.c    **** {
@@ -184,7 +184,7 @@
  153              	.L7:
  154 0014 00000000 	 .word _fpga_locked
  155              	 .cfi_endproc
- 156              	.LFE182:
+ 156              	.LFE176:
  158              	 .section .text.FPGA_lockstatus,"ax",%progbits
  159              	 .align 1
  160              	 .global FPGA_lockstatus
@@ -193,7 +193,7 @@
  163              	 .thumb_func
  164              	 .fpu softvfp
  166              	FPGA_lockstatus:
- 167              	.LFB183:
+ 167              	.LFB177:
   43:usb_xmem.c    **** 
   44:usb_xmem.c    **** fpga_lockstatus_t FPGA_lockstatus(void)
   45:usb_xmem.c    **** {
@@ -231,7 +231,7 @@
  197              	.L11:
  198 0014 00000000 	 .word _fpga_locked
  199              	 .cfi_endproc
- 200              	.LFE183:
+ 200              	.LFE177:
  202              	 .section .text.try_enter_cs,"ax",%progbits
  203              	 .align 1
  204              	 .global try_enter_cs
@@ -240,7 +240,7 @@
  207              	 .thumb_func
  208              	 .fpu softvfp
  210              	try_enter_cs:
- 211              	.LFB184:
+ 211              	.LFB178:
   48:usb_xmem.c    **** 
   49:usb_xmem.c    **** int try_enter_cs(void)
   50:usb_xmem.c    **** {
@@ -299,7 +299,7 @@
  255 0028 00000000 	 .word FPGA_setlock
  256 002c 00000000 	 .word cpu_irq_leave_critical
  257              	 .cfi_endproc
- 258              	.LFE184:
+ 258              	.LFE178:
  260              	 .section .text.exit_cs,"ax",%progbits
  261              	 .align 1
  262              	 .global exit_cs
@@ -308,7 +308,7 @@
  265              	 .thumb_func
  266              	 .fpu softvfp
  268              	exit_cs:
- 269              	.LFB185:
+ 269              	.LFB179:
   60:usb_xmem.c    **** 
   61:usb_xmem.c    **** void exit_cs(void)
   62:usb_xmem.c    **** {
@@ -344,7 +344,7 @@
  296 0010 00000000 	 .word FPGA_releaselock
  297 0014 00000000 	 .word cpu_irq_leave_critical
  298              	 .cfi_endproc
- 299              	.LFE185:
+ 299              	.LFE179:
  301              	 .section .text.FPGA_setaddr,"ax",%progbits
  302              	 .align 1
  303              	 .global FPGA_setaddr
@@ -353,7 +353,7 @@
  306              	 .thumb_func
  307              	 .fpu softvfp
  309              	FPGA_setaddr:
- 310              	.LFB186:
+ 310              	.LFB180:
   66:usb_xmem.c    **** 
   67:usb_xmem.c    **** void FPGA_setaddr(uint32_t addr)
   68:usb_xmem.c    **** {
@@ -424,7 +424,7 @@
  371 0040 00000000 	 .word pio_set_pin_low
  372 0044 00000000 	 .word pio_set_pin_high
  373              	 .cfi_endproc
- 374              	.LFE186:
+ 374              	.LFE180:
  376              	 .section .text.unsafe_readuint32,"ax",%progbits
  377              	 .align 1
  378              	 .global unsafe_readuint32
@@ -433,7 +433,7 @@
  381              	 .thumb_func
  382              	 .fpu softvfp
  384              	unsafe_readuint32:
- 385              	.LFB187:
+ 385              	.LFB181:
   73:usb_xmem.c    **** 
   74:usb_xmem.c    **** /*
   75:usb_xmem.c    **** Read four bytes from a given register, return as 32-bit number.
@@ -541,7 +541,7 @@
  473 0064 00000000 	 .word FPGA_setaddr
  474 0068 00000000 	 .word xram
  475              	 .cfi_endproc
- 476              	.LFE187:
+ 476              	.LFE181:
  478              	 .section .text.safe_readuint32,"ax",%progbits
  479              	 .align 1
  480              	 .global safe_readuint32
@@ -550,7 +550,7 @@
  483              	 .thumb_func
  484              	 .fpu softvfp
  486              	safe_readuint32:
- 487              	.LFB188:
+ 487              	.LFB182:
   90:usb_xmem.c    **** 
   91:usb_xmem.c    **** uint32_t safe_readuint32(uint16_t fpgaaddr)
   92:usb_xmem.c    **** {
@@ -691,7 +691,7 @@
  606 0090 00000000 	 .word xram
  607 0094 00000000 	 .word exit_cs
  608              	 .cfi_endproc
- 609              	.LFE188:
+ 609              	.LFE182:
  611              	 .section .text.unsafe_readbytes,"ax",%progbits
  612              	 .align 1
  613              	 .global unsafe_readbytes
@@ -700,7 +700,7 @@
  616              	 .thumb_func
  617              	 .fpu softvfp
  619              	unsafe_readbytes:
- 620              	.LFB189:
+ 620              	.LFB183:
  109:usb_xmem.c    **** 
  110:usb_xmem.c    **** 
  111:usb_xmem.c    **** 
@@ -790,7 +790,7 @@
  692 0048 00000000 	 .word FPGA_setaddr
  693 004c 00000000 	 .word xram
  694              	 .cfi_endproc
- 695              	.LFE189:
+ 695              	.LFE183:
  697              	 .section .text.safe_readbytes,"ax",%progbits
  698              	 .align 1
  699              	 .global safe_readbytes
@@ -799,7 +799,7 @@
  702              	 .thumb_func
  703              	 .fpu softvfp
  705              	safe_readbytes:
- 706              	.LFB190:
+ 706              	.LFB184:
  122:usb_xmem.c    **** 
  123:usb_xmem.c    **** // Safely read bytes from memory by disabling interrupts first
  124:usb_xmem.c    **** // Blocks until able to read
@@ -928,7 +928,7 @@
  810 0074 00000000 	 .word xram
  811 0078 00000000 	 .word exit_cs
  812              	 .cfi_endproc
- 813              	.LFE190:
+ 813              	.LFE184:
  815              	 .section .text.unsafe_writebytes,"ax",%progbits
  816              	 .align 1
  817              	 .global unsafe_writebytes
@@ -937,7 +937,7 @@
  820              	 .thumb_func
  821              	 .fpu softvfp
  823              	unsafe_writebytes:
- 824              	.LFB191:
+ 824              	.LFB185:
  142:usb_xmem.c    **** 
  143:usb_xmem.c    **** // Write 4 bytes to memory
  144:usb_xmem.c    **** void unsafe_writebytes(uint16_t fpgaaddr, uint8_t* data, int numBytes)
@@ -1024,7 +1024,7 @@
  895 0048 00000000 	 .word FPGA_setaddr
  896 004c 00000000 	 .word xram
  897              	 .cfi_endproc
- 898              	.LFE191:
+ 898              	.LFE185:
  900              	 .section .text.smc_normaltiming,"ax",%progbits
  901              	 .align 1
  902              	 .global smc_normaltiming
@@ -1033,7 +1033,7 @@
  905              	 .thumb_func
  906              	 .fpu softvfp
  908              	smc_normaltiming:
- 909              	.LFB192:
+ 909              	.LFB186:
  153:usb_xmem.c    **** 
  154:usb_xmem.c    **** //Set timing for normal mode
  155:usb_xmem.c    **** void smc_normaltiming(void){
@@ -1116,7 +1116,7 @@
  961 0048 00000000 	 .word smc_set_cycle_timing
  962 004c 00000000 	 .word smc_set_mode
  963              	 .cfi_endproc
- 964              	.LFE192:
+ 964              	.LFE186:
  966              	 .section .text.smc_fasttiming,"ax",%progbits
  967              	 .align 1
  968              	 .global smc_fasttiming
@@ -1125,7 +1125,7 @@
  971              	 .thumb_func
  972              	 .fpu softvfp
  974              	smc_fasttiming:
- 975              	.LFB193:
+ 975              	.LFB187:
  181:usb_xmem.c    **** 
  182:usb_xmem.c    **** void smc_fasttiming(void){
  976              	 .loc 1 182 26
@@ -1209,7 +1209,7 @@
  1027 0048 00000000 	 .word smc_set_cycle_timing
  1028 004c 00000000 	 .word smc_set_mode
  1029              	 .cfi_endproc
- 1030              	.LFE193:
+ 1030              	.LFE187:
  1032              	 .text
  1033              	.Letext0:
  1034              	 .file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\machine\\_default_types.h"
@@ -1233,9 +1233,10 @@
  1052              	 .file 20 ".././hal/sam3u1c/inc/udc_desc.h"
  1053              	 .file 21 ".././hal/sam3u1c/inc/udd.h"
  1054              	 .file 22 ".././hal/sam3u1c/inc/udi_vendor.h"
- 1055              	 .file 23 "usb_xmem.h"
- 1056              	 .file 24 ".././hal/sam3u1c/inc/smc.h"
- 1057              	 .file 25 ".././hal/sam3u1c/inc/pio.h"
+ 1055              	 .file 23 ".././hal/sam3u1c/inc/udi_cdc.h"
+ 1056              	 .file 24 "usb_xmem.h"
+ 1057              	 .file 25 ".././hal/sam3u1c/inc/smc.h"
+ 1058              	 .file 26 ".././hal/sam3u1c/inc/pio.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 usb_xmem.c
     {standard input}:16     .bss.cpu_irq_critical_section_counter:00000000 $d
@@ -1408,20 +1409,16 @@ DEFINED SYMBOLS
                            .group:00000000 wm4.smc.h.45.17a94aa976bb62b1109d03e8a314a569
                            .group:00000000 wm4.spi.h.45.712c66be09ffbac297c2e00923077297
                            .group:00000000 wm4.conf_sleepmgr.h.44.d825b913294720022fefe7201514fca3
-                           .group:00000000 wm4.twi.h.45.ba70de99d200dafba570ce8f7058737a
-                           .group:00000000 wm4.twi_master.h.90.08c062d0fa8f8aeea342ceeb79263395
-                           .group:00000000 wm4.twi_slave.h.45.8b3d1a3d2e43ebc7d0161f4142989871
-                           .group:00000000 wm4.uart.h.45.a5af743b8064bd84d1a6438457096e18
                            .group:00000000 wm4.usart.h.46.eae6fe592b7ea0768efef8d312e7f44f
-                           .group:00000000 wm4.conf_uart_serial.h.45.245cdceaa1a3811fd043bf660ce38054
-                           .group:00000000 wm4.conf_usb.h.45.2f7207bed7467dcf9cb11fbc6ebe572c
-                           .group:00000000 wm4.udi_vendor_conf.h.56.4348c8e521d040f44df868219dae6785
+                           .group:00000000 wm4.usb_protocol_cdc.h.37.f6a736c1ba557ae596ae60fafc889d06
+                           .group:00000000 wm4.conf_usb.h.38.caec09ff3c405b5325f1f32790b86cb2
                            .group:00000000 wm4.usb_atmel.h.45.c31b525dbe01f8d9e2022a03356ec174
                            .group:00000000 wm4.usb_protocol.h.63.850c58f3469fce50a9ac9a6854f7594b
                            .group:00000000 wm4.usb_protocol_vendor.h.45.83dfe073428ff799abc3ed1c7b04c77d
                            .group:00000000 wm4.udc_desc.h.77.5fec235bd7553e7256e345e020840072
                            .group:00000000 wm4.udd.h.103.3ccc59b50c14ec70568e6136eeb22d56
                            .group:00000000 wm4.udi_vendor.h.125.7b9085237d4d4a9757f4c148fba1918d
+                           .group:00000000 wm4.udi_cdc.h.116.611453a0c813c5f2b6cd437c48e7eee8
                            .group:00000000 wm4.usb_xmem.h.16.2bfdefafb315212fe60310212368ffbb
 
 UNDEFINED SYMBOLS

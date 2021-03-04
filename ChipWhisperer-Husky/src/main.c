@@ -8,6 +8,7 @@
 #include "fpga_program.h"
 #include "usb.h"
 #include "sysclk.h"
+#include "circbuffer.h"
 #include <string.h>
 
 //Serial Number - will be read by device ID
@@ -143,7 +144,18 @@ int main(void)
     udc_start();
 
     ui_init();
-    while(1) {
-        sleepmgr_enter_sleep();
-    }
+	extern volatile bool enable_cdc_transfer[2];
+	extern volatile bool usart_x_enabled[4];
+	extern tcirc_buf usb_usart_circ_buf;
+	init_circ_buf(&usb_usart_circ_buf);
+	while (true) {
+		sleepmgr_enter_sleep();
+		if (enable_cdc_transfer[0] && usart_x_enabled[0]) {
+			while (circ_buf_has_char(&usb_usart_circ_buf)) {
+				udi_cdc_multi_putc(0, get_from_circ_buf(&usb_usart_circ_buf));
+			}
+				//
+		}
+		
+	}
 }

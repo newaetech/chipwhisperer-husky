@@ -1458,7 +1458,7 @@
  549              	 .thumb_func
  550              	 .fpu softvfp
  552              	ISPTarget_SendByte:
- 553              	.LFB181:
+ 553              	.LFB175:
  554              	 .file 4 "ISPTarget.h"
    1:ISPTarget.h   **** /* This file is based on the excellent LUFA Library, which is:
    2:ISPTarget.h   ****   Copyright (C) Dean Camera, 2013. See www.lufa-lib.org
@@ -1588,7 +1588,7 @@
  595 0020 00800040 	 .word 1073774592
  596 0024 00000000 	 .word spi_write
  597              	 .cfi_endproc
- 598              	.LFE181:
+ 598              	.LFE175:
  600              	 .section .text.ISPTarget_ReceiveByte,"ax",%progbits
  601              	 .align 1
  602              	 .syntax unified
@@ -1596,7 +1596,7 @@
  604              	 .thumb_func
  605              	 .fpu softvfp
  607              	ISPTarget_ReceiveByte:
- 608              	.LFB182:
+ 608              	.LFB176:
   86:ISPTarget.h   **** 
   87:ISPTarget.h   **** 		/** DO NOT USE DIRECTLY - USE ISPTarget_TransferByte() INSTEAD. This will return
   88:ISPTarget.h   **** 		 *  the last read byte, which is probably not what you intended.
@@ -1661,7 +1661,7 @@
  648 0020 00800040 	 .word 1073774592
  649 0024 00000000 	 .word spi_read
  650              	 .cfi_endproc
- 651              	.LFE182:
+ 651              	.LFE176:
  653              	 .section .text.ISPTarget_TransferByte,"ax",%progbits
  654              	 .align 1
  655              	 .syntax unified
@@ -1669,7 +1669,7 @@
  657              	 .thumb_func
  658              	 .fpu softvfp
  660              	ISPTarget_TransferByte:
- 661              	.LFB183:
+ 661              	.LFB177:
  108:ISPTarget.h   **** 
  109:ISPTarget.h   **** 		/** Sends and receives a byte of ISP data to and from the attached target, using the
  110:ISPTarget.h   **** 		 *  appropriate SPI hardware or software routines depending on the selected ISP speed.
@@ -1746,7 +1746,7 @@
  717 0038 00000000 	 .word spi_is_tx_empty
  718 003c 00000000 	 .word ISPTarget_ReceiveByte
  719              	 .cfi_endproc
- 720              	.LFE183:
+ 720              	.LFE177:
  722              	 .global avrispmkIIfreqs
  723              	 .section .data.avrispmkIIfreqs,"aw"
  724              	 .align 2
@@ -1923,7 +1923,7 @@
  897              	 .thumb_func
  898              	 .fpu softvfp
  900              	ISPTarget_EnableTargetISP:
- 901              	.LFB184:
+ 901              	.LFB178:
  902              	 .file 5 "ISPTarget.c"
    1:ISPTarget.c   **** /* This file is based on the excellent LUFA Library, which is:
    2:ISPTarget.c   ****   Copyright (C) Dean Camera, 2013. See www.lufa-lib.org
@@ -2180,7 +2180,7 @@
  1046 00d8 00000000 	 .word spi_enable
  1047 00dc 00000000 	 .word pio_configure_pin
  1048              	 .cfi_endproc
- 1049              	.LFE184:
+ 1049              	.LFE178:
  1051              	 .section .text.ISPTarget_DisableTargetISP,"ax",%progbits
  1052              	 .align 1
  1053              	 .global ISPTarget_DisableTargetISP
@@ -2189,7 +2189,7 @@
  1056              	 .thumb_func
  1057              	 .fpu softvfp
  1059              	ISPTarget_DisableTargetISP:
- 1060              	.LFB185:
+ 1060              	.LFB179:
  110:ISPTarget.c   **** 
  111:ISPTarget.c   **** /** Shuts down the current selected SPI driver (hardware or software, depending on the selected ISP
  112:ISPTarget.c   ****  *  further communications can occur until the driver is re-initialized.
@@ -2237,7 +2237,7 @@
  1090 0018 00000000 	 .word spi_disable
  1091 001c 00000000 	 .word spi_disable_clock
  1092              	 .cfi_endproc
- 1093              	.LFE185:
+ 1093              	.LFE179:
  1095              	 .section .text.ISPTarget_ChangeTargetResetLine,"ax",%progbits
  1096              	 .align 1
  1097              	 .global ISPTarget_ChangeTargetResetLine
@@ -2246,7 +2246,7 @@
  1100              	 .thumb_func
  1101              	 .fpu softvfp
  1103              	ISPTarget_ChangeTargetResetLine:
- 1104              	.LFB186:
+ 1104              	.LFB180:
  125:ISPTarget.c   **** 
  126:ISPTarget.c   **** /** Asserts or deasserts the target's reset line, using the correct polarity as set by the host usi
  127:ISPTarget.c   ****  *  When not asserted, the line is tristated so as not to interfere with normal device operation.
@@ -2349,7 +2349,7 @@
  1179 0050 00000000 	 .word pio_set_pin_high
  1180 0054 00000000 	 .word pio_set_pin_low
  1181              	 .cfi_endproc
- 1182              	.LFE186:
+ 1182              	.LFE180:
  1184              	 .section .text.ISPTarget_WaitWhileTargetBusy,"ax",%progbits
  1185              	 .align 1
  1186              	 .global ISPTarget_WaitWhileTargetBusy
@@ -2358,7 +2358,7 @@
  1189              	 .thumb_func
  1190              	 .fpu softvfp
  1192              	ISPTarget_WaitWhileTargetBusy:
- 1193              	.LFB187:
+ 1193              	.LFB181:
  148:ISPTarget.c   **** 
  149:ISPTarget.c   **** /** Waits until the target has completed the last operation, by continuously polling the device's
  150:ISPTarget.c   ****  *  BUSY flag until it is cleared, or until the command timeout period has expired.
@@ -2445,7 +2445,7 @@
  1259 0044 00000000 	 .word ISPTarget_TransferByte
  1260 0048 00000000 	 .word TimeoutTicksRemaining
  1261              	 .cfi_endproc
- 1262              	.LFE187:
+ 1262              	.LFE181:
  1264              	 .section .text.ISPTarget_LoadExtendedAddress,"ax",%progbits
  1265              	 .align 1
  1266              	 .global ISPTarget_LoadExtendedAddress
@@ -2454,7 +2454,7 @@
  1269              	 .thumb_func
  1270              	 .fpu softvfp
  1272              	ISPTarget_LoadExtendedAddress:
- 1273              	.LFB188:
+ 1273              	.LFB182:
  166:ISPTarget.c   **** 
  167:ISPTarget.c   **** /** Sends a low-level LOAD EXTENDED ADDRESS command to the target, for addressing of memory beyond 
  168:ISPTarget.c   ****  *  64KB boundary. This sends the command with the correct address as indicated by the current addr
@@ -2513,7 +2513,7 @@
  1317 0028 00000000 	 .word ISPTarget_SendByte
  1318 002c 00000000 	 .word CurrentAddress
  1319              	 .cfi_endproc
- 1320              	.LFE188:
+ 1320              	.LFE182:
  1322              	 .section .text.ISPTarget_WaitForProgComplete,"ax",%progbits
  1323              	 .align 1
  1324              	 .global ISPTarget_WaitForProgComplete
@@ -2522,7 +2522,7 @@
  1327              	 .thumb_func
  1328              	 .fpu softvfp
  1330              	ISPTarget_WaitForProgComplete:
- 1331              	.LFB189:
+ 1331              	.LFB183:
  178:ISPTarget.c   **** 
  179:ISPTarget.c   **** /** Waits until the last issued target memory programming command has completed, via the check mode
  180:ISPTarget.c   ****  *  the given parameters.
@@ -2760,7 +2760,7 @@
  1512 013c 00000000 	 .word TimeoutTicksRemaining
  1513 0140 00000000 	 .word ISPTarget_WaitWhileTargetBusy
  1514              	 .cfi_endproc
- 1515              	.LFE189:
+ 1515              	.LFE183:
  1517              	 .text
  1518              	.Letext0:
  1519              	 .file 6 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\machine\\_default_types.h"
@@ -2785,10 +2785,11 @@
  1538              	 .file 25 ".././hal/sam3u1c/inc/udc_desc.h"
  1539              	 .file 26 ".././hal/sam3u1c/inc/udd.h"
  1540              	 .file 27 ".././hal/sam3u1c/inc/udi_vendor.h"
- 1541              	 .file 28 "XPROGTimeout.h"
- 1542              	 .file 29 "V2Protocol.h"
- 1543              	 .file 30 "ISPProtocol.h"
- 1544              	 .file 31 "V2ProtocolParams.h"
+ 1541              	 .file 28 ".././hal/sam3u1c/inc/udi_cdc.h"
+ 1542              	 .file 29 "XPROGTimeout.h"
+ 1543              	 .file 30 "V2Protocol.h"
+ 1544              	 .file 31 "ISPProtocol.h"
+ 1545              	 .file 32 "V2ProtocolParams.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 ISPTarget.c
     {standard input}:16     .bss.cpu_irq_critical_section_counter:00000000 $d
@@ -2974,20 +2975,16 @@ DEFINED SYMBOLS
                            .group:00000000 wm4.smc.h.45.17a94aa976bb62b1109d03e8a314a569
                            .group:00000000 wm4.spi.h.45.712c66be09ffbac297c2e00923077297
                            .group:00000000 wm4.conf_sleepmgr.h.44.d825b913294720022fefe7201514fca3
-                           .group:00000000 wm4.twi.h.45.ba70de99d200dafba570ce8f7058737a
-                           .group:00000000 wm4.twi_master.h.90.08c062d0fa8f8aeea342ceeb79263395
-                           .group:00000000 wm4.twi_slave.h.45.8b3d1a3d2e43ebc7d0161f4142989871
-                           .group:00000000 wm4.uart.h.45.a5af743b8064bd84d1a6438457096e18
                            .group:00000000 wm4.usart.h.46.eae6fe592b7ea0768efef8d312e7f44f
-                           .group:00000000 wm4.conf_uart_serial.h.45.245cdceaa1a3811fd043bf660ce38054
-                           .group:00000000 wm4.conf_usb.h.45.2f7207bed7467dcf9cb11fbc6ebe572c
-                           .group:00000000 wm4.udi_vendor_conf.h.56.4348c8e521d040f44df868219dae6785
+                           .group:00000000 wm4.usb_protocol_cdc.h.37.f6a736c1ba557ae596ae60fafc889d06
+                           .group:00000000 wm4.conf_usb.h.38.caec09ff3c405b5325f1f32790b86cb2
                            .group:00000000 wm4.usb_atmel.h.45.c31b525dbe01f8d9e2022a03356ec174
                            .group:00000000 wm4.usb_protocol.h.63.850c58f3469fce50a9ac9a6854f7594b
                            .group:00000000 wm4.usb_protocol_vendor.h.45.83dfe073428ff799abc3ed1c7b04c77d
                            .group:00000000 wm4.udc_desc.h.77.5fec235bd7553e7256e345e020840072
                            .group:00000000 wm4.udd.h.103.3ccc59b50c14ec70568e6136eeb22d56
                            .group:00000000 wm4.udi_vendor.h.125.7b9085237d4d4a9757f4c148fba1918d
+                           .group:00000000 wm4.udi_cdc.h.116.611453a0c813c5f2b6cd437c48e7eee8
                            .group:00000000 wm4.V2ProtocolConstants.h.37.9bf16fd2ae5d223b4504404f34063b2d
                            .group:00000000 wm4.V2ProtocolParams.h.47.77ffe24f39fdee76136b1a6cd17622ea
                            .group:00000000 wm4.ISPProtocol.h.38.e5e0dd312bebbc8df11522adb3decb21

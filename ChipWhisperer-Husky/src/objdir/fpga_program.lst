@@ -810,7 +810,7 @@
  257              	 .thumb_func
  258              	 .fpu softvfp
  260              	fpga_program_init:
- 261              	.LFB181:
+ 261              	.LFB175:
  262              	 .file 3 "fpga_program.c"
    1:fpga_program.c **** /*
    2:fpga_program.c ****   Xilinx Spartan 6 FPGA Programming Routines
@@ -872,7 +872,7 @@
  292 0018 00000000 	 .word pio_configure_pin
  293 001c 00000000 	 .word pio_set_pin_high
  294              	 .cfi_endproc
- 295              	.LFE181:
+ 295              	.LFE175:
  297              	 .section .text.fpga_program_setup1,"ax",%progbits
  298              	 .align 1
  299              	 .global fpga_program_setup1
@@ -881,7 +881,7 @@
  302              	 .thumb_func
  303              	 .fpu softvfp
  305              	fpga_program_setup1:
- 306              	.LFB182:
+ 306              	.LFB176:
   29:fpga_program.c **** 
   30:fpga_program.c **** /* FPGA Programming Step 1: Erase FPGA, setup SPI interface */
   31:fpga_program.c **** void fpga_program_setup1(void)
@@ -997,7 +997,7 @@
  397 0078 000C0E40 	 .word 1074662400
  398 007c 00000000 	 .word usart_enable_tx
  399              	 .cfi_endproc
- 400              	.LFE182:
+ 400              	.LFE176:
  402              	 .section .text.fpga_program_setup2,"ax",%progbits
  403              	 .align 1
  404              	 .global fpga_program_setup2
@@ -1006,7 +1006,7 @@
  407              	 .thumb_func
  408              	 .fpu softvfp
  410              	fpga_program_setup2:
- 411              	.LFB183:
+ 411              	.LFB177:
   51:fpga_program.c **** 
   52:fpga_program.c **** /* FPGA Programming Step 2: Prepare FPGA for receiving programming data */
   53:fpga_program.c **** void fpga_program_setup2(void)
@@ -1038,7 +1038,7 @@
  434              	.L33:
  435 0010 00000000 	 .word pio_set_pin_high
  436              	 .cfi_endproc
- 437              	.LFE183:
+ 437              	.LFE177:
  439              	 .section .text.fpga_program_sendbyte,"ax",%progbits
  440              	 .align 1
  441              	 .global fpga_program_sendbyte
@@ -1047,7 +1047,7 @@
  444              	 .thumb_func
  445              	 .fpu softvfp
  447              	fpga_program_sendbyte:
- 448              	.LFB184:
+ 448              	.LFB178:
   57:fpga_program.c **** 
   58:fpga_program.c **** //For debug only
   59:fpga_program.c **** //uint32_t fpga_total_bs_len;
@@ -1099,7 +1099,7 @@
  486 001c 00000940 	 .word 1074331648
  487 0020 00000000 	 .word usart_putchar
  488              	 .cfi_endproc
- 489              	.LFE184:
+ 489              	.LFE178:
  491              	 .text
  492              	.Letext0:
  493              	 .file 4 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\include\\machine\\_default_types.h"
@@ -1126,8 +1126,9 @@
  514              	 .file 25 ".././hal/sam3u1c/inc/udc_desc.h"
  515              	 .file 26 ".././hal/sam3u1c/inc/udd.h"
  516              	 .file 27 ".././hal/sam3u1c/inc/udi_vendor.h"
- 517              	 .file 28 "fpga_program.h"
- 518              	 .file 29 ".././hal/sam3u1c/inc/pmc.h"
+ 517              	 .file 28 ".././hal/sam3u1c/inc/udi_cdc.h"
+ 518              	 .file 29 "fpga_program.h"
+ 519              	 .file 30 ".././hal/sam3u1c/inc/pmc.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 fpga_program.c
     {standard input}:16     .bss.cpu_irq_critical_section_counter:00000000 $d
@@ -1283,20 +1284,16 @@ DEFINED SYMBOLS
                            .group:00000000 wm4.smc.h.45.17a94aa976bb62b1109d03e8a314a569
                            .group:00000000 wm4.spi.h.45.712c66be09ffbac297c2e00923077297
                            .group:00000000 wm4.conf_sleepmgr.h.44.d825b913294720022fefe7201514fca3
-                           .group:00000000 wm4.twi.h.45.ba70de99d200dafba570ce8f7058737a
-                           .group:00000000 wm4.twi_master.h.90.08c062d0fa8f8aeea342ceeb79263395
-                           .group:00000000 wm4.twi_slave.h.45.8b3d1a3d2e43ebc7d0161f4142989871
-                           .group:00000000 wm4.uart.h.45.a5af743b8064bd84d1a6438457096e18
                            .group:00000000 wm4.usart.h.46.eae6fe592b7ea0768efef8d312e7f44f
-                           .group:00000000 wm4.conf_uart_serial.h.45.245cdceaa1a3811fd043bf660ce38054
-                           .group:00000000 wm4.conf_usb.h.45.2f7207bed7467dcf9cb11fbc6ebe572c
-                           .group:00000000 wm4.udi_vendor_conf.h.56.4348c8e521d040f44df868219dae6785
+                           .group:00000000 wm4.usb_protocol_cdc.h.37.f6a736c1ba557ae596ae60fafc889d06
+                           .group:00000000 wm4.conf_usb.h.38.caec09ff3c405b5325f1f32790b86cb2
                            .group:00000000 wm4.usb_atmel.h.45.c31b525dbe01f8d9e2022a03356ec174
                            .group:00000000 wm4.usb_protocol.h.63.850c58f3469fce50a9ac9a6854f7594b
                            .group:00000000 wm4.usb_protocol_vendor.h.45.83dfe073428ff799abc3ed1c7b04c77d
                            .group:00000000 wm4.udc_desc.h.77.5fec235bd7553e7256e345e020840072
                            .group:00000000 wm4.udd.h.103.3ccc59b50c14ec70568e6136eeb22d56
                            .group:00000000 wm4.udi_vendor.h.125.7b9085237d4d4a9757f4c148fba1918d
+                           .group:00000000 wm4.udi_cdc.h.116.611453a0c813c5f2b6cd437c48e7eee8
                            .group:00000000 wm4.fpga_program.h.36.190ebe3d8947892068b52cb69c85273d
 
 UNDEFINED SYMBOLS
