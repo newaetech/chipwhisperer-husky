@@ -2,13 +2,6 @@
 /ChipWhisperer-Husky/src/.dep/
 /ChipWhisperer-Husky/src/.dep/*
 /ChipWhisperer-Husky/src/objdir/*
-*.hex
-*.elf
-*.eep
-*.lss
-*.bin
-*.map
-*.sym
 *.d
 *.o
 *.o.s
