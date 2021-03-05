@@ -119,7 +119,6 @@ void enable_spi(void)
     gpio_set_pin_low(ADC_RESET);
     for (volatile uint32_t i = 0; i < 500; i++);
 
-    uint32_t baud;
     spi_enable_clock(SPI);
     int16_t div = spi_calc_baudrate_div(960E3, 96E6); //960kHz
     spi_set_baudrate_div(SPI, 0, div);

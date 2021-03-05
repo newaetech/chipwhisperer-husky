@@ -9,6 +9,13 @@
 *.bin
 *.map
 *.sym
-*.d
+/ChipWhisperer-Husky/.hex
+/ChipWhisperer-Husky/.elf
+/ChipWhisperer-Husky/.eep
+/ChipWhisperer-Husky/.lss
+/ChipWhisperer-Husky/.bin
+/ChipWhisperer-Husky/.map
+/ChipWhisperer-Husky/.sym
+/ChipWhisperer-Husky/.d
 *.o
 *.o.s

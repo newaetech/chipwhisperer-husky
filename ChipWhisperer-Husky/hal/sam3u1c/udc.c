@@ -1258,7 +1258,6 @@ static bool udc_req_ep(void)
  *
  * \return true if the request is supported, else the request is stalled by UDD
  */
-static uint8_t null_mem[64] = {0};
 bool udc_process_setup(void)
 {
 	// By default no data (receive/send) and no callbacks registered

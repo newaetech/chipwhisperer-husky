@@ -19,7 +19,7 @@ NM = arm-none-eabi-nm
 FORMAT = binary
 CFLAGS += -fdata-sections -ffunction-sections -mlong-calls -g3 -Wall -pipe -fno-strict-aliasing -Wall -Wstrict-prototypes -Wmissing-prototypes -Wchar-subscripts -Wcomment -Wformat=2 --param max-inline-insns-single=500
 
-CFLAGS += -DDEBUG -D__SAM3U1C__ -DARM_MATH_CM3=true -Dprintf=iprintf -DUDD_ENABLE -DBOARD=CW1190 -Dscanf=iscanf -DPLATFORMCW1190=1
+CFLAGS += -DDEBUG -D__SAM3U1C__ -DARM_MATH_CM3=true -Dprintf=iprintf -DUDD_ENABLE -Dscanf=iscanf -DPLATFORMCW1190=1
 
 LDFLAGS += -mthumb -Wl,--start-group -L $(HALPATH)/sam3u1c/ -lm -Wl,--end-group   -T $(LINKERFILE) -Wl,--gc-sections -Wl,--entry=Reset_Handler -Wl,--cref -mthumb
 

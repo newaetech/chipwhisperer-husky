@@ -163,7 +163,9 @@ extern "C" {
 #define SECURITY_XPLAINED           12  //!< Xplained ATSHA204 board
 #define USER_EXT_BOARD              99  //!< User-reserved extension board (if any).
 //! @}
+#ifndef BOARD
 #define BOARD CW521
+#endif
 
 #if BOARD == EVK1100
 #  include "evk1100/evk1100.h"

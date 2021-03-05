@@ -21,6 +21,7 @@
 #include "usb_xmem.h"
 #include "fpga_program.h"
 #include "circbuffer.h"
+#include "usart_driver.h"
 #include <string.h>
 #include <cw521.h>
 
@@ -619,6 +620,7 @@ void my_callback_rx_notify(uint8_t port)
 
 extern tcirc_buf rx0buf, tx0buf;
 extern tcirc_buf usb_usart_circ_buf;
+extern volatile bool usart_x_enabled[4];
 
 void my_callback_config(uint8_t port, usb_cdc_line_coding_t * cfg)
 {
@@ -666,6 +668,7 @@ void my_callback_config(uint8_t port, usb_cdc_line_coding_t * cfg)
 			
 			usart_enable_rx(USART0);
 			usart_enable_tx(USART0);
+            usart_x_enabled[0] = true;
 			
 			usart_enable_interrupt(USART0, UART_IER_RXRDY);
 			
