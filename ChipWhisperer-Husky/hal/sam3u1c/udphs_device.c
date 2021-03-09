@@ -221,7 +221,7 @@
 #endif
 
 #ifndef UDD_BULK_NB_BANK
-# define UDD_BULK_NB_BANK(ep) ((ep < 3) ? 2: 1)
+# define UDD_BULK_NB_BANK(ep) (((ep == 5) || (ep == 0x85)) ? 3: (ep == 6) ? 2 : 1)
 #else
 # if UDD_BULK_NB_BANK_ERROR
 #  error UDD_BULK_NB_BANK must be define with 1 or 2.

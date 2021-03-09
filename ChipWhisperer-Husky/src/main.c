@@ -61,10 +61,10 @@ void phywhisperer_setup_pins(void)
                          | SMC_SETUP_NCS_RD_SETUP(1));
     smc_set_pulse_timing(SMC, 0, SMC_PULSE_NWE_PULSE(1)
                          | SMC_PULSE_NCS_WR_PULSE(1)
-                         | SMC_PULSE_NRD_PULSE(3)
+                         | SMC_PULSE_NRD_PULSE(1)
                          | SMC_PULSE_NCS_RD_PULSE(1));
     smc_set_cycle_timing(SMC, 0, SMC_CYCLE_NWE_CYCLE(2)
-                         | SMC_CYCLE_NRD_CYCLE(4));
+                         | SMC_CYCLE_NRD_CYCLE(2));
     smc_set_mode(SMC, 0, SMC_MODE_READ_MODE | SMC_MODE_WRITE_MODE
                  | SMC_MODE_DBW_BIT_8);
     
