@@ -232,8 +232,8 @@ extern void my_callback_config(uint8_t port, usb_cdc_line_coding_t * cfg);
  * @{
  */
 //! Endpoints' numbers used by single or first CDC port
-#define  UDI_CDC_DATA_EP_IN_0          (5 | USB_EP_DIR_IN)  // TX
-#define  UDI_CDC_DATA_EP_OUT_0         (6 | USB_EP_DIR_OUT) // RX
+#define  UDI_CDC_DATA_EP_IN_0          (2 | USB_EP_DIR_IN)  // TX
+#define  UDI_CDC_DATA_EP_OUT_0         (1 | USB_EP_DIR_OUT) // RX
 #define  UDI_CDC_COMM_EP_0             (3 | USB_EP_DIR_IN)  // Notify endpoint
 
 //! Interface numbers used by single or first CDC port
@@ -270,8 +270,8 @@ bool main_setup_in_received(void);
 #define UDI_VENDOR_EPS_SIZE_ISO_HS    0 /*64*/
 
 //! Endpoint numbers definition
-#define  UDI_VENDOR_EP_BULK_IN       (0x01 | USB_EP_DIR_IN)
-#define  UDI_VENDOR_EP_BULK_OUT      (0x02 | USB_EP_DIR_OUT)
+#define  UDI_VENDOR_EP_BULK_IN       (0x05 | USB_EP_DIR_IN)
+#define  UDI_VENDOR_EP_BULK_OUT      (0x06 | USB_EP_DIR_OUT)
 
 /**
  * \name UDD Configuration
