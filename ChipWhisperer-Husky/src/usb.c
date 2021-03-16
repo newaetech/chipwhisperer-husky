@@ -68,6 +68,10 @@ static uint8_t main_buf_loopback[MAIN_LOOPBACK_SIZE];
 
 void main_vendor_bulk_in_received(udd_ep_status_t status,
                                   iram_size_t nb_transfered, udd_ep_id_t ep);
+
+void stream_vendor_bulk_in_received(udd_ep_status_t status,
+                                  iram_size_t nb_transfered, udd_ep_id_t ep);
+
 void main_vendor_bulk_out_received(udd_ep_status_t status,
                                    iram_size_t nb_transfered, udd_ep_id_t ep);
 
@@ -136,7 +140,8 @@ void ctrl_writemem_bulk(void);
 void ctrl_writemem_ctrl(void);
 void ctrl_progfpga_bulk(void);
 
-
+#define  udd_ack_nak_in(ep)                       (UDPHS->UDPHS_EPT[ep].UDPHS_EPTCLRSTA = UDPHS_EPTCLRSTA_NAK_IN)
+volatile uint8_t read_blocker = 0;
 void ctrl_readmem_bulk(void){
     uint32_t buflen = *(CTRLBUFFER_WORDPTR);
     uint32_t address = *(CTRLBUFFER_WORDPTR + 1);
@@ -145,12 +150,26 @@ void ctrl_readmem_bulk(void){
     while(!FPGA_setlock(fpga_blockin));
 
     FPGA_setaddr(address);
-
-    /* Do memory read */
     udi_vendor_bulk_in_run(
         (uint8_t *) PSRAM_BASE_ADDRESS,
         buflen,
         main_vendor_bulk_in_received
+        );
+    FPGA_releaselock();
+}
+void ctrl_streammode(void) {
+    uint32_t buflen = *(CTRLBUFFER_WORDPTR);
+    uint32_t address = *(CTRLBUFFER_WORDPTR + 1);
+
+    FPGA_releaselock();
+    while(!FPGA_setlock(fpga_blockin));
+
+    FPGA_setaddr(address);
+
+    udi_vendor_bulk_in_run(
+        (uint8_t *) PSRAM_BASE_ADDRESS,
+        buflen,
+        stream_vendor_bulk_in_received
         );
     FPGA_releaselock();
 }
@@ -348,6 +367,12 @@ bool main_setup_out_received(void)
         }
         break;
 
+    case REQ_MEMSTREAM:
+        if (FPGA_setlock(fpga_usblocked)){
+                udd_g_ctrlreq.callback = ctrl_streammode;
+                return true;
+        }
+        break;
 
         /* Memory Write */
     case REQ_MEMWRITE_BULK:
@@ -490,6 +515,34 @@ bool main_setup_in_received(void)
     return false;
 }
 
+void stream_vendor_bulk_in_received(udd_ep_status_t status,
+                                  iram_size_t nb_transfered, udd_ep_id_t ep)
+{
+    if (UDD_EP_TRANSFER_OK != status) {
+        return; // Transfer aborted/error
+    }
+
+    // if (FPGA_lockstatus() == fpga_blockin){
+    //     FPGA_setlock(fpga_unlocked);
+    // }
+
+    uint32_t buflen = *(CTRLBUFFER_WORDPTR);
+    uint32_t address = *(CTRLBUFFER_WORDPTR + 1);
+
+    FPGA_releaselock();
+    while(!FPGA_setlock(fpga_blockin));
+
+    FPGA_setaddr(address);
+
+    /* Do memory read */
+    udi_vendor_bulk_in_run(
+        (uint8_t *) PSRAM_BASE_ADDRESS,
+        buflen,
+        stream_vendor_bulk_in_received
+        );
+    FPGA_releaselock();
+
+}
 void main_vendor_bulk_in_received(udd_ep_status_t status,
                                   iram_size_t nb_transfered, udd_ep_id_t ep)
 {
