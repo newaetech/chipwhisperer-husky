@@ -50,6 +50,7 @@
 #define REQ_CHANGE_PWR 0x24
 #define REQ_FPGA_RESET 0x25
 #define REQ_SPI_ADC 0x26
+#define REQ_FAST_FIFO_READS 0x27
 
 #define USART_TARGET USART0
 #define PIN_USART0_RXD	         (PIO_PA19_IDX)
@@ -334,6 +335,17 @@ static void spi_adc_cb(void)
     write_spi_adc(udd_g_ctrlreq.payload[0], udd_g_ctrlreq.payload[1]);
 }
 
+static void fast_fifo_reads_cb(void)
+{
+    if (udd_g_ctrlreq.payload[0] == 0) {
+       smc_normaltiming();
+    }
+    else {
+       smc_fasttiming();
+    }
+}
+
+
 void ctrl_xmega_program_void(void)
 {
 	XPROGProtocol_Command();
@@ -422,9 +434,16 @@ bool main_setup_out_received(void)
     case REQ_FPGA_RESET:
         udd_g_ctrlreq.callback = ctrl_fpga_reset;
         return true;
+
     case REQ_SPI_ADC:
         udd_g_ctrlreq.callback = spi_adc_cb;
         return true;
+
+    case REQ_FAST_FIFO_READS:
+        udd_g_ctrlreq.callback = fast_fifo_reads_cb;
+        return true;
+
+
     default:
         return false;
     }
@@ -485,6 +504,7 @@ bool main_setup_in_received(void)
         udd_g_ctrlreq.payload_size = cnt;
         return true;
         break;
+
     case REQ_FW_VERSION:
         respbuf[0] = FW_VER_MAJOR;
         respbuf[1] = FW_VER_MINOR;
@@ -503,14 +523,17 @@ bool main_setup_in_received(void)
         udd_g_ctrlreq.payload_size = 4;
         return true;
         break;
+
     case REQ_SPI_ADC:
         respbuf[0] = read_spi_adc(udd_g_ctrlreq.req.wValue & 0xFF);
         udd_g_ctrlreq.payload = respbuf;
         udd_g_ctrlreq.payload_size = 1;
         return true;
         break;
+
     default:
         return false;
+
     }
     return false;
 }
