@@ -24,6 +24,7 @@
 #include "usart_driver.h"
 #include <string.h>
 #include <cw521.h>
+#include "cdci6214.h"
 
 #define FW_VER_MAJOR 1
 #define FW_VER_MINOR 1
@@ -51,6 +52,7 @@
 #define REQ_FPGA_RESET 0x25
 #define REQ_SPI_ADC 0x26
 #define REQ_FAST_FIFO_READS 0x27
+#define REQ_CDC_SETTINGS_EN 0x31
 
 #define USART_TARGET USART0
 #define PIN_USART0_RXD	         (PIO_PA19_IDX)
@@ -61,6 +63,7 @@ volatile bool g_captureinprogress = true;
 
 static volatile bool main_b_vendor_enable = true;
 static bool active = false;
+static volatile bool cdc_settings_change[2] = {true, true};
 
 uint8_t USB_PWR_STATE = 0;
 
@@ -238,6 +241,20 @@ void ctrl_writemem_bulk(void){
     FPGA_releaselock();
 }
 
+static void ctrl_cdc_settings_cb(void)
+{
+    if (udd_g_ctrlreq.req.wValue & 0x01) {
+        cdc_settings_change[0] = 1;
+    } else {
+        cdc_settings_change[0] = 0;
+    }
+    if (udd_g_ctrlreq.req.wValue & 0x02) {
+        cdc_settings_change[1] = 1;
+    } else {
+        cdc_settings_change[1] = 0;
+    }
+}
+
 static void ctrl_sam3ucfg_cb(void)
 {
     switch(udd_g_ctrlreq.req.wValue & 0xFF)
@@ -273,6 +290,16 @@ static void ctrl_sam3ucfg_cb(void)
         /* Disconnect USB (will kill stuff) */
 
         /* Make the jump */
+        break;
+    case 0x10:
+        udc_detach();
+        while (RSTC->RSTC_SR & RSTC_SR_SRCMP);
+        RSTC->RSTC_CR |= RSTC_CR_KEY(0xA5) | RSTC_CR_PERRST | RSTC_CR_PROCRST;
+        while(1);
+        break;
+        
+    case 0x11: // use in case of pipe error emergency
+        FPGA_releaselock();
         break;
 
         /* Oh well, sucks to be you */
@@ -443,6 +470,9 @@ bool main_setup_out_received(void)
         udd_g_ctrlreq.callback = fast_fifo_reads_cb;
         return true;
 
+    case REQ_CDC_SETTINGS_EN:
+        udd_g_ctrlreq.callback = ctrl_cdc_settings_cb;
+        return true;
 
     default:
         return false;
@@ -528,6 +558,14 @@ bool main_setup_in_received(void)
         respbuf[0] = read_spi_adc(udd_g_ctrlreq.req.wValue & 0xFF);
         udd_g_ctrlreq.payload = respbuf;
         udd_g_ctrlreq.payload_size = 1;
+        return true;
+        break;
+
+    case REQ_CDC_SETTINGS_EN:
+        respbuf[0] = cdc_settings_change[0];
+        respbuf[1] = cdc_settings_change[1];
+        udd_g_ctrlreq.payload = respbuf;
+        udd_g_ctrlreq.payload_size = 2;
         return true;
         break;
 
@@ -700,7 +738,10 @@ extern volatile bool usart_x_enabled[4];
 
 void my_callback_config(uint8_t port, usb_cdc_line_coding_t * cfg)
 {
-	if (enable_cdc_transfer[port] && usart_x_enabled[0]) {
+    if (port > 0)
+        return;
+	if (enable_cdc_transfer[port] && cdc_settings_change[port]) {
+        usart_x_enabled[port] = true;
 		sam_usart_opt_t usartopts;
 		if (port != 0){
 			return;
@@ -744,7 +785,6 @@ void my_callback_config(uint8_t port, usb_cdc_line_coding_t * cfg)
 			
 			usart_enable_rx(USART0);
 			usart_enable_tx(USART0);
-            usart_x_enabled[0] = true;
 			
 			usart_enable_interrupt(USART0, UART_IER_RXRDY);
 			
@@ -755,4 +795,3 @@ void my_callback_config(uint8_t port, usb_cdc_line_coding_t * cfg)
 	}
 		
 }
-
