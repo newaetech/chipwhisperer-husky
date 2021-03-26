@@ -34,9 +34,9 @@ TARGET = ChipWhisperer-Husky
 
 # List C source files here.
 # Header files (.h) are automatically pulled in.
-SRC += main.c usb.c usb_xmem.c fpga_program.c usart_driver.c V2Protocol.c V2ProtocolParams.c XMEGANVM.c XPROGNewAE.c XPROGTarget.c ISPProtocol.c ISPTarget.c spi_driver.c
+SRC += main.c usb.c usb_xmem.c fpga_program.c usart_driver.c V2Protocol.c V2ProtocolParams.c XMEGANVM.c XPROGNewAE.c XPROGTarget.c ISPProtocol.c ISPTarget.c spi_driver.c cdci6214.c
 # -----------------------------------------------------------------------------
-OPT=2
+OPT=g
 
 PLATFORM=SAM3U1C
 

@@ -131,6 +131,9 @@
 // From module: USB Device Vendor Class (Composite Device)
 #include <udi_vendor.h>
 
+#include <twi.h>
+#include <twi_master.h>
+
 // From module: USB Vendor Protocol
 #include <usb_protocol_vendor.h>
 
