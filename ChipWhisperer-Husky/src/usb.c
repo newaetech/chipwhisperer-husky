@@ -52,6 +52,8 @@
 #define REQ_FPGA_RESET 0x25
 #define REQ_SPI_ADC 0x26
 #define REQ_FAST_FIFO_READS 0x27
+#define REQ_CDCI6214_ADDR 0x28
+#define REQ_CDCI6214_DATA 0x29
 #define REQ_CDC_SETTINGS_EN 0x31
 
 #define USART_TARGET USART0
@@ -383,6 +385,23 @@ void ctrl_avr_program_void(void)
 	V2Protocol_ProcessCommand();
 }
 
+volatile uint16_t cdci6214_addr = 0x00;
+void cdci6214_addr_cb(void)
+{
+	if (udd_g_ctrlreq.req.wLength != 2){
+		return;
+	}
+    cdci6214_addr = udd_g_ctrlreq.payload[0] | (udd_g_ctrlreq.payload[1] << 8);
+}
+
+void cdci6214_data_cb(void)
+{
+	if (udd_g_ctrlreq.req.wLength != 2){
+		return;
+	}
+    cdci6214_write(cdci6214_addr, cdci6214_addr = udd_g_ctrlreq.payload[0] | (udd_g_ctrlreq.payload[1] << 8));
+}
+
 bool main_setup_out_received(void)
 {
     //Add buffer if used
@@ -472,6 +491,14 @@ bool main_setup_out_received(void)
 
     case REQ_CDC_SETTINGS_EN:
         udd_g_ctrlreq.callback = ctrl_cdc_settings_cb;
+        return true;
+
+    case REQ_CDCI6214_ADDR:
+        udd_g_ctrlreq.callback = cdci6214_addr_cb;
+        return true;
+
+    case REQ_CDCI6214_DATA:
+        udd_g_ctrlreq.callback = cdci6214_data_cb;
         return true;
 
     default:
@@ -564,6 +591,27 @@ bool main_setup_in_received(void)
     case REQ_CDC_SETTINGS_EN:
         respbuf[0] = cdc_settings_change[0];
         respbuf[1] = cdc_settings_change[1];
+        udd_g_ctrlreq.payload = respbuf;
+        udd_g_ctrlreq.payload_size = 2;
+        return true;
+        break;
+
+    case REQ_CDCI6214_ADDR:
+        respbuf[0] = cdci6214_addr & 0xFF;
+        respbuf[1] = cdci6214_addr >> 8;
+        udd_g_ctrlreq.payload = respbuf;
+        udd_g_ctrlreq.payload_size = 2;
+        return true;
+        break;
+
+    case REQ_CDCI6214_DATA:
+        0;
+        uint16_t tmp;
+        if (cdci6214_read(cdci6214_addr, &tmp) != true) {
+            return false;
+        }
+        respbuf[0] = tmp & 0xFF;
+        respbuf[1] = tmp >> 8;
         udd_g_ctrlreq.payload = respbuf;
         udd_g_ctrlreq.payload_size = 2;
         return true;
