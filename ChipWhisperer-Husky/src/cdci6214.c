@@ -57,7 +57,7 @@ bool cdci6214_write(uint16_t addr, uint16_t data)
     tmp[1] = data & 0xFF;
 	twi_package_t packet_write = {
 		.addr         = {addr >> 8, addr & 0xFF},      // TWI slave memory address data
-		.addr_length  = 1,    // TWI slave memory address data size
+		.addr_length  = 2,    // TWI slave memory address data size
 		.chip         = CDCI6214_ADDR,      // TWI slave bus address
 		.buffer       = tmp, // transfer data source buffer
 		.length       = 2  // transfer data size (bytes)

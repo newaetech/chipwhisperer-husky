@@ -608,7 +608,6 @@ bool main_setup_in_received(void)
         0;
         uint16_t tmp;
         if (cdci6214_read(cdci6214_addr, &tmp) != true) {
-            return false;
         }
         respbuf[0] = tmp & 0xFF;
         respbuf[1] = tmp >> 8;
