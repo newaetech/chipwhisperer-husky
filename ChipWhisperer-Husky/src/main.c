@@ -130,7 +130,7 @@ int main(void)
 	usb_serial_number[32] = 0;
 
     genclk_enable_config(GENCLK_PCK_1, GENCLK_PCK_SRC_MCK, GENCLK_PCK_PRES_1);
-    enable_spi();
+    // enable_spi();
 	cdci6214_init();
     udc_start();
 
