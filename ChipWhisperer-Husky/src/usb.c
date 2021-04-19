@@ -385,21 +385,30 @@ void ctrl_avr_program_void(void)
 	V2Protocol_ProcessCommand();
 }
 
-volatile uint16_t cdci6214_addr = 0x00;
-void cdci6214_addr_cb(void)
-{
-	if (udd_g_ctrlreq.req.wLength != 2){
-		return;
-	}
-    cdci6214_addr = udd_g_ctrlreq.payload[0] | (udd_g_ctrlreq.payload[1] << 8);
-}
+
+uint8_t cdci_status[3] = {0,0,0};
 
 void cdci6214_data_cb(void)
 {
-	if (udd_g_ctrlreq.req.wLength != 2){
+	if (udd_g_ctrlreq.req.wLength != 5){
 		return;
 	}
-    cdci6214_write(cdci6214_addr, cdci6214_addr = udd_g_ctrlreq.payload[0] | (udd_g_ctrlreq.payload[1] << 8));
+	
+	uint16_t cdci6214_addr = udd_g_ctrlreq.payload[1] | (udd_g_ctrlreq.payload[2] << 8);
+	uint16_t data;
+	
+	if (udd_g_ctrlreq.payload[0]) { // WRITE
+		data = udd_g_ctrlreq.payload[3] | (udd_g_ctrlreq.payload[4] << 8);
+		cdci_status[0] = cdci6214_write(cdci6214_addr, data) + 1;
+		cdci_status[1] = udd_g_ctrlreq.payload[3];
+		cdci_status[2] = udd_g_ctrlreq.payload[4];
+	} else { //READ
+		cdci_status[0] = cdci6214_read(cdci6214_addr, &data) + 1;
+		cdci_status[1] = data & 0xff;
+		cdci_status[2] = data >> 8;
+	}
+	
+	//cdci_status[0]: 1 == failed, 2 == ok, 0 == not done yet
 }
 
 bool main_setup_out_received(void)
@@ -493,10 +502,6 @@ bool main_setup_out_received(void)
         udd_g_ctrlreq.callback = ctrl_cdc_settings_cb;
         return true;
 
-    case REQ_CDCI6214_ADDR:
-        udd_g_ctrlreq.callback = cdci6214_addr_cb;
-        return true;
-
     case REQ_CDCI6214_DATA:
         udd_g_ctrlreq.callback = cdci6214_data_cb;
         return true;
@@ -507,7 +512,6 @@ bool main_setup_out_received(void)
 
     return false;
 }
-
 
 /*
   udd_g_ctrlreq.req.bRequest == 0
@@ -596,23 +600,20 @@ bool main_setup_in_received(void)
         return true;
         break;
 
-    case REQ_CDCI6214_ADDR:
-        respbuf[0] = cdci6214_addr & 0xFF;
-        respbuf[1] = cdci6214_addr >> 8;
+    case REQ_CDCI6214_DATA:		
+		//0 means nothing new? Shouldn't be called then
+		if (cdci_status[0] == 0) {
+			return false;
+		}
+		respbuf[0] = cdci_status[0];
+		respbuf[1] = cdci_status[1];
+		respbuf[2] = cdci_status[2];
+		
+		cdci_status[0] = 0;
+		cdci_status[1] = 0;
+		cdci_status[2] = 0;        
         udd_g_ctrlreq.payload = respbuf;
-        udd_g_ctrlreq.payload_size = 2;
-        return true;
-        break;
-
-    case REQ_CDCI6214_DATA:
-        0;
-        uint16_t tmp;
-        if (cdci6214_read(cdci6214_addr, &tmp) != true) {
-        }
-        respbuf[0] = tmp & 0xFF;
-        respbuf[1] = tmp >> 8;
-        udd_g_ctrlreq.payload = respbuf;
-        udd_g_ctrlreq.payload_size = 2;
+        udd_g_ctrlreq.payload_size = 3;
         return true;
         break;
 
