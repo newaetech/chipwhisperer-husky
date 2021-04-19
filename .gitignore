@@ -2,11 +2,11 @@
 /ChipWhisperer-Husky/src/.dep/
 /ChipWhisperer-Husky/src/.dep/*
 /ChipWhisperer-Husky/src/objdir/*
+/ChipWhisperer-Husky/*.bin
 *.hex
 *.elf
 *.eep
 *.lss
-*.bin
 *.map
 *.sym
 /ChipWhisperer-Husky/.hex
