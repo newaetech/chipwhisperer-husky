@@ -318,7 +318,7 @@ ALL_ASFLAGS = $(MCU_FLAGS) -I. -x assembler-with-cpp $(ASFLAGS)
 
 
 # Default target.
-all: .dep begin gccversion build sizeafter end
+all: .dep begin gccversion build sizeafter copybinary end
 
 # Change the build target to build a HEX file or a library.
 build: elf hex eep lss sym bin
@@ -362,6 +362,10 @@ sizeafter: build
 	@echo $(MSG_SIZE_AFTER)
 	@$(ELFSIZE)
 
+copybinary: build
+	@$(COPY) ChipWhisperer-Husky-SAM3U1C.elf ChipWhisperer-Husky.elf
+	@$(COPY) ChipWhisperer-Husky-SAM3U1C.bin ../ChipWhisperer-Husky-SAM3U1C.bin
+
 $(OBJDIR):
 	mkdir $(OBJDIR)
 
@@ -372,11 +376,6 @@ $(OBJDIR):
 gccversion :
 	@$(CC) --version
 
-
-
-# Program the device.  
-program: $(TARGET-PLAT).hex $(TARGET-PLAT).eep
-	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_WRITE_FLASH) $(AVRDUDE_WRITE_EEPROM)
 
 
 # Generate avr-gdb config/init file which does the following:
@@ -568,7 +567,8 @@ clean_list :
 # Listing of phony targets.
 .PHONY : all begin finish end sizeafter gccversion \
 build elf hex eep lss sym coff extcoff \
-clean clean_list clean_print clean_objs program debug gdb-config
+clean clean_list clean_print clean_objs program debug gdb-config \
+copybinary
 
 # saveplatform: Save the platform into the file Makefile.target
 saveplatform:
