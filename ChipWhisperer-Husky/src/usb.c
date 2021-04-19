@@ -403,12 +403,14 @@ void cdci6214_data_cb(void)
 	uint16_t cdci6214_addr = udd_g_ctrlreq.payload[1] | (udd_g_ctrlreq.payload[2] << 8);
 	uint16_t data;
 	
-	if (udd_g_ctrlreq.payload[0]) { // WRITE
+	if (udd_g_ctrlreq.payload[0]) {
+		// WRITE request
 		data = udd_g_ctrlreq.payload[3] | (udd_g_ctrlreq.payload[4] << 8);
 		cdci_status[0] = cdci6214_write(cdci6214_addr, data) + 1;
 		cdci_status[1] = udd_g_ctrlreq.payload[3];
 		cdci_status[2] = udd_g_ctrlreq.payload[4];
-	} else { //READ
+	} else {
+		//READ request
 		cdci_status[0] = cdci6214_read(cdci6214_addr, &data) + 1;
 		cdci_status[1] = data & 0xff;
 		cdci_status[2] = data >> 8;
@@ -618,9 +620,9 @@ bool main_setup_in_received(void)
 
     case REQ_CDCI6214_DATA:		
 		//0 means nothing new? Shouldn't be called then
-		if (cdci_status[0] == 0) {
-			return false;
-		}
+		//if (cdci_status[0] == 0) {
+		//	return false;
+		//}
 		respbuf[0] = cdci_status[0];
 		respbuf[1] = cdci_status[1];
 		respbuf[2] = cdci_status[2];
