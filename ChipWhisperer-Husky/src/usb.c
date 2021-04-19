@@ -50,9 +50,9 @@
 #define REQ_CC_PROGRAM 0x23
 #define REQ_CHANGE_PWR 0x24
 #define REQ_FPGA_RESET 0x25
-#define REQ_SPI_ADC 0x26
+#define REQ_SPI_ADC 0x26 /* Not used - implemented in FPGA */
 #define REQ_FAST_FIFO_READS 0x27
-#define REQ_CDCI6214_ADDR 0x28
+#define REQ_CDCI6214_ADDR 0x28 /* Not used anymore */
 #define REQ_CDCI6214_DATA 0x29
 #define REQ_CDC_SETTINGS_EN 0x31
 
@@ -355,6 +355,11 @@ static void ctrl_usart_cb_data(void)
 	}
 }
 
+/*
+  Implemented in FPGA - if this feature is needed in the future need to make it
+  like I2C/PLL code, where both read & write are in this function to avoid
+  too much delay in USB response time.
+/*
 static void spi_adc_cb(void)
 {
 	//Just do single byte writes for now
@@ -363,6 +368,7 @@ static void spi_adc_cb(void)
 	}
     write_spi_adc(udd_g_ctrlreq.payload[0], udd_g_ctrlreq.payload[1]);
 }
+*/
 
 static void fast_fifo_reads_cb(void)
 {
@@ -491,8 +497,12 @@ bool main_setup_out_received(void)
         return true;
 
     case REQ_SPI_ADC:
+		/* Not needed as implemented in FPGA instead. */
+		/*
         udd_g_ctrlreq.callback = spi_adc_cb;
         return true;
+		*/
+		return false;
 
     case REQ_FAST_FIFO_READS:
         udd_g_ctrlreq.callback = fast_fifo_reads_cb;
@@ -586,10 +596,16 @@ bool main_setup_in_received(void)
         break;
 
     case REQ_SPI_ADC:
+		return false;
+		/* This should be done in the callback, but
+		   we didn't fix at as the SPI comms were implemented
+		   in the FPGA so this wasn't needed in the end.
+		/*
         respbuf[0] = read_spi_adc(udd_g_ctrlreq.req.wValue & 0xFF);
         udd_g_ctrlreq.payload = respbuf;
         udd_g_ctrlreq.payload_size = 1;
         return true;
+		*/
         break;
 
     case REQ_CDC_SETTINGS_EN:
