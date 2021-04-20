@@ -156,11 +156,13 @@ void ctrl_readmem_bulk(void){
     while(!FPGA_setlock(fpga_blockin));
 
     FPGA_setaddr(address);
-    udi_vendor_bulk_in_run(
+    if  (!udi_vendor_bulk_in_run(
         (uint8_t *) PSRAM_BASE_ADDRESS,
         buflen,
         main_vendor_bulk_in_received
-        );
+        )) {
+            //abort
+        }
     FPGA_releaselock();
 }
 void ctrl_streammode(void) {

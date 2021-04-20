@@ -1062,7 +1062,7 @@ udi_cdc_putc_process_one_byte:
 		if (!udi_cdc_data_running) {
 			return false;
 		}
-		goto udi_cdc_putc_process_one_byte;
+		return false;
 	}
 
 	// Write value

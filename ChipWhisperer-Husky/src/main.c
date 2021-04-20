@@ -140,7 +140,7 @@ int main(void)
 	extern tcirc_buf usb_usart_circ_buf;
 	init_circ_buf(&usb_usart_circ_buf);
 	while (true) {
-		sleepmgr_enter_sleep();
+		// sleepmgr_enter_sleep();
 		if (enable_cdc_transfer[0] && usart_x_enabled[0]) {
 			while (circ_buf_has_char(&usb_usart_circ_buf)) {
 				udi_cdc_multi_putc(0, get_from_circ_buf(&usb_usart_circ_buf));
