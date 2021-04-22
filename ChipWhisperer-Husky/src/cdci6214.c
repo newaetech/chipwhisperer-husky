@@ -46,8 +46,10 @@ bool cdci6214_init(void)
 		return true;
 	}
 
+
 	return false;
 }
+
 
 
 bool cdci6214_write(uint16_t addr, uint16_t data)

@@ -25,6 +25,8 @@
 #include <string.h>
 #include <cw521.h>
 #include "cdci6214.h"
+#include "twi.h"
+#include "twi_master.h"
 
 #define FW_VER_MAJOR 1
 #define FW_VER_MINOR 1
@@ -401,6 +403,7 @@ void cdci6214_data_cb(void)
 	if (udd_g_ctrlreq.req.wLength != 5){
 		return;
 	}
+    twi_enable_master_mode(TWI0);
 	
 	uint16_t cdci6214_addr = udd_g_ctrlreq.payload[1] | (udd_g_ctrlreq.payload[2] << 8);
 	uint16_t data;
@@ -417,6 +420,8 @@ void cdci6214_data_cb(void)
 		cdci_status[1] = data & 0xff;
 		cdci_status[2] = data >> 8;
 	}
+
+    twi_disable_master_mode(TWI0);
 	
 	//cdci_status[0]: 1 == failed, 2 == ok, 0 == not done yet
 }

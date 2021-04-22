@@ -361,8 +361,8 @@ void generic_isr(Usart * usart, tcirc_buf * rxbuf, tcirc_buf * txbuf)
 		uint32_t temp;
 		temp = usart->US_RHR & US_RHR_RXCHR_Msk;
 		add_to_circ_buf(rxbuf, temp, false);
-		add_to_circ_buf(&usb_usart_circ_buf, temp, false);
-		//udi_cdc_multi_putc(0, temp);
+		//add_to_circ_buf(&usb_usart_circ_buf, temp, false);
+		udi_cdc_multi_putc(0, temp);
 	}
 	
 	if (status & US_CSR_TXRDY){
