@@ -167,15 +167,38 @@ void ctrl_readmem_bulk(void){
         }
     FPGA_releaselock();
 }
+
+
+void stream_mode_ready_handler(const uint32_t id, const uint32_t index)
+{
+    if (pio_get(PIN_EBI_USB_SPARE0_PORT, PIO_INPUT, 
+                    PIN_EBI_USB_SPARE0_PIN)){
+
+        pio_disable_interrupt(PIN_EBI_USB_SPARE0_PORT, PIN_EBI_USB_SPARE0_PIN);
+        pio_configure_pin(LED1_GPIO, PIO_TYPE_PIO_OUTPUT_1 | PIO_DEFAULT);
+    }
+}
+
+volatile uint32_t stream_buflen = 0;
+volatile uint32_t stream_addr = 0;
 void ctrl_streammode(void) {
     uint32_t buflen = *(CTRLBUFFER_WORDPTR);
     uint32_t address = *(CTRLBUFFER_WORDPTR + 1);
+
+    stream_buflen = buflen;
+    stream_addr = address;
 
     FPGA_releaselock();
     while(!FPGA_setlock(fpga_blockin));
 
     FPGA_setaddr(address);
 
+    if (!pio_get(PIN_EBI_USB_SPARE0_PORT, PIO_INPUT, 
+                    PIN_EBI_USB_SPARE0_PIN)) {
+        buflen = 0;
+        // pio_enable_interrupt(PIN_EBI_USB_SPARE0_PORT, PIN_EBI_USB_SPARE0_PIN);
+
+    }
     udi_vendor_bulk_in_run(
         (uint8_t *) PSRAM_BASE_ADDRESS,
         buflen,
@@ -653,21 +676,29 @@ void stream_vendor_bulk_in_received(udd_ep_status_t status,
                                   iram_size_t nb_transfered, udd_ep_id_t ep)
 {
     if (UDD_EP_TRANSFER_OK != status) {
-        return; // Transfer aborted/error
+        //return; // Transfer aborted/error
     }
 
     // if (FPGA_lockstatus() == fpga_blockin){
     //     FPGA_setlock(fpga_unlocked);
     // }
 
-    uint32_t buflen = *(CTRLBUFFER_WORDPTR);
-    uint32_t address = *(CTRLBUFFER_WORDPTR + 1);
+    // stream_buflen = buflen;
+    // stream_addr = address;
+    uint32_t buflen = stream_buflen;
+    uint32_t address = stream_addr;
 
     FPGA_releaselock();
     while(!FPGA_setlock(fpga_blockin));
 
     FPGA_setaddr(address);
 
+    if (!pio_get(PIN_EBI_USB_SPARE0_PORT, PIO_INPUT, 
+                    PIN_EBI_USB_SPARE0_PIN)) {
+        buflen = 0;
+        // pio_enable_interrupt(PIN_EBI_USB_SPARE0_PORT, PIN_EBI_USB_SPARE0_PIN);
+
+    }
     /* Do memory read */
     udi_vendor_bulk_in_run(
         (uint8_t *) PSRAM_BASE_ADDRESS,

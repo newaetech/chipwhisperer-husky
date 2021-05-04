@@ -104,6 +104,7 @@ void enable_spi(void)
 }
 
 
+void stream_mode_ready_handler(const uint32_t id, const uint32_t index);
 int main(void)
 {
     uint32_t serial_number[4];
@@ -130,8 +131,15 @@ int main(void)
 	usb_serial_number[32] = 0;
 
     genclk_enable_config(GENCLK_PCK_1, GENCLK_PCK_SRC_MCK, GENCLK_PCK_PRES_1);
+
+    pio_configure_pin_group(PIN_EBI_USB_SPARE0_PORT, 
+        PIN_EBI_USB_SPARE0_PIN, PIN_EBI_USB_SPARE0_FLAGS);
     // enable_spi();
 	cdci6214_init();
+    // pio_handler_set(PIN_EBI_USB_SPARE0_PORT, ID_PIOB, PIN_EBI_USB_SPARE0_PIN,
+    //                 PIO_IT_RISE_EDGE, stream_mode_ready_handler);
+    // pio_disable_interrupt(PIN_EBI_USB_SPARE0_PORT, PIN_EBI_USB_SPARE0_PIN);
+    // NVIC_EnableIRQ(PIOB_IRQn);
     udc_start();
 
     ui_init();
