@@ -136,10 +136,10 @@ int main(void)
         PIN_EBI_USB_SPARE0_PIN, PIN_EBI_USB_SPARE0_FLAGS);
     // enable_spi();
 	cdci6214_init();
-    // pio_handler_set(PIN_EBI_USB_SPARE0_PORT, ID_PIOB, PIN_EBI_USB_SPARE0_PIN,
-    //                 PIO_IT_RISE_EDGE, stream_mode_ready_handler);
-    // pio_disable_interrupt(PIN_EBI_USB_SPARE0_PORT, PIN_EBI_USB_SPARE0_PIN);
-    // NVIC_EnableIRQ(PIOB_IRQn);
+    pio_handler_set(PIN_EBI_USB_SPARE0_PORT, ID_PIOB, PIN_EBI_USB_SPARE0_PIN,
+                    PIO_IT_RISE_EDGE, stream_mode_ready_handler);
+    pio_enable_interrupt(PIN_EBI_USB_SPARE0_PORT, PIN_EBI_USB_SPARE0_PIN);
+    NVIC_EnableIRQ(PIOB_IRQn);
     udc_start();
 
     ui_init();

@@ -169,6 +169,13 @@ void ctrl_readmem_bulk(void){
 }
 
 
+
+volatile uint32_t stream_buflen = 0;
+volatile uint32_t stream_addr = 0;
+volatile uint32_t stream_total_len = 0;
+
+volatile uint32_t usb_spare_interrupted = 0;
+
 void stream_mode_ready_handler(const uint32_t id, const uint32_t index)
 {
     if (pio_get(PIN_EBI_USB_SPARE0_PORT, PIO_INPUT, 
@@ -176,17 +183,21 @@ void stream_mode_ready_handler(const uint32_t id, const uint32_t index)
 
         pio_disable_interrupt(PIN_EBI_USB_SPARE0_PORT, PIN_EBI_USB_SPARE0_PIN);
         pio_configure_pin(LED1_GPIO, PIO_TYPE_PIO_OUTPUT_1 | PIO_DEFAULT);
+        usb_spare_interrupted = 1;
+    } else {
+        pio_configure_pin(LED1_GPIO, PIO_TYPE_PIO_OUTPUT_0 | PIO_DEFAULT);
+
     }
 }
 
-volatile uint32_t stream_buflen = 0;
-volatile uint32_t stream_addr = 0;
 void ctrl_streammode(void) {
     volatile uint32_t buflen = *(CTRLBUFFER_WORDPTR);
     uint32_t address = *(CTRLBUFFER_WORDPTR + 1);
+    stream_total_len = *(CTRLBUFFER_WORDPTR + 2);
 
     stream_buflen = buflen;
     stream_addr = address;
+
 
     FPGA_releaselock();
     while(!FPGA_setlock(fpga_blockin));
@@ -196,9 +207,10 @@ void ctrl_streammode(void) {
     if (!pio_get(PIN_EBI_USB_SPARE0_PORT, PIO_INPUT, 
                     PIN_EBI_USB_SPARE0_PIN)) {
         buflen = 0;
-        // pio_enable_interrupt(PIN_EBI_USB_SPARE0_PORT, PIN_EBI_USB_SPARE0_PIN);
+        pio_enable_interrupt(PIN_EBI_USB_SPARE0_PORT, PIN_EBI_USB_SPARE0_PIN);
 
-    }
+    }     
+    
     udi_vendor_bulk_in_run(
         (uint8_t *) PSRAM_BASE_ADDRESS,
         buflen,
@@ -361,8 +373,8 @@ void ctrl_progfpga_bulk(void){
 }
 
 void ctrl_fpga_reset(void) {
-  gpio_set_pin_high(PIN_EBI_USB_SPARE0);
-  gpio_set_pin_low(PIN_EBI_USB_SPARE0);
+//   gpio_set_pin_high(PIN_EBI_USB_SPARE0);
+//   gpio_set_pin_low(PIN_EBI_USB_SPARE0);
 }
 
 static void ctrl_usart_cb(void)
@@ -672,11 +684,12 @@ bool main_setup_in_received(void)
     return false;
 }
 
+volatile uint8_t started_read = 0;
 void stream_vendor_bulk_in_received(udd_ep_status_t status,
                                   iram_size_t nb_transfered, udd_ep_id_t ep)
 {
     if (UDD_EP_TRANSFER_OK != status) {
-        //return; // Transfer aborted/error
+        return; // Transfer aborted/error
     }
 
     // if (FPGA_lockstatus() == fpga_blockin){
@@ -693,18 +706,43 @@ void stream_vendor_bulk_in_received(udd_ep_status_t status,
 
     FPGA_setaddr(address);
 
+    int i = 0;
+    //check for a bit to make sure it doesn't go high after
     if (!pio_get(PIN_EBI_USB_SPARE0_PORT, PIO_INPUT, 
                     PIN_EBI_USB_SPARE0_PIN)) {
-        buflen = 0;
+        if (usb_spare_interrupted) {
+        } else {
+            buflen = 0;
+        }
+        // if (i++ > 100000) {
+        //     buflen = 0;
+        //     break;
+        // }
+        //volatile Pio *get_port = PIN_EBI_USB_SPARE0_PORT;
         // pio_enable_interrupt(PIN_EBI_USB_SPARE0_PORT, PIN_EBI_USB_SPARE0_PIN);
 
+    }     /* Do memory read */
+    usb_spare_interrupted = 0;
+
+    // if (buflen != 0) {
+    //     started_read = 1;
+    // }
+
+    if (stream_total_len > buflen) {
+        stream_total_len -= nb_transfered;
+        udi_vendor_bulk_in_run(
+            (uint8_t *) PSRAM_BASE_ADDRESS,
+            buflen,
+            stream_vendor_bulk_in_received
+            );
+    } else {
+        udi_vendor_bulk_in_run(
+            (uint8_t *) PSRAM_BASE_ADDRESS,
+            buflen,
+            main_vendor_bulk_in_received
+            );
+
     }
-    /* Do memory read */
-    udi_vendor_bulk_in_run(
-        (uint8_t *) PSRAM_BASE_ADDRESS,
-        buflen,
-        stream_vendor_bulk_in_received
-        );
     FPGA_releaselock();
 
 }

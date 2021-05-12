@@ -79,7 +79,7 @@ void ui_process(uint16_t framenumber)
 	}
 	
 	if ((framenumber % 512) == 0) {
-		LED_Off(LED1_GPIO);
+		// LED_Off(LED1_GPIO);
 		//LED_Off(LED2_GPIO);
 	}
 }
