@@ -13,6 +13,7 @@
 */
 
 #include <asf.h>
+#include <string.h>
 #include "conf_usb.h"
 #include "stdio_serial.h"
 #include "ui.h"
@@ -29,7 +30,7 @@
 #include "twi_master.h"
 
 #define FW_VER_MAJOR 1
-#define FW_VER_MINOR 1
+#define FW_VER_MINOR 10
 #define FW_VER_DEBUG 0
 
 #define REQ_MEMREAD_BULK 0x10
@@ -58,6 +59,8 @@
 #define REQ_CDCI6214_DATA 0x29
 #define REQ_CDC_SETTINGS_EN 0x31
 
+#define REQ_BUILD_DATE 0x40
+
 #define USART_TARGET USART0
 #define PIN_USART0_RXD	         (PIO_PA19_IDX)
 #define PIN_USART0_RXD_FLAGS      (PIO_PERIPH_A | PIO_DEFAULT)
@@ -68,6 +71,8 @@ volatile bool g_captureinprogress = true;
 static volatile bool main_b_vendor_enable = true;
 static bool active = false;
 static volatile bool cdc_settings_change[2] = {true, true};
+
+static const char BUILD_DATE[] = __DATE__;
 
 uint8_t USB_PWR_STATE = 0;
 
@@ -656,6 +661,14 @@ bool main_setup_in_received(void)
         respbuf[2] = FW_VER_DEBUG;
         udd_g_ctrlreq.payload = respbuf;
         udd_g_ctrlreq.payload_size = 3;
+        return true;
+        break;
+
+    case REQ_BUILD_DATE:
+        0;
+        strncpy(respbuf, BUILD_DATE, 100);
+        udd_g_ctrlreq.payload = respbuf;
+        udd_g_ctrlreq.payload_size = strlen(respbuf);
         return true;
         break;
 
