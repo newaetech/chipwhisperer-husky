@@ -173,7 +173,8 @@ void ctrl_readmem_bulk(void){
 
 volatile uint32_t stream_buflen = 0;
 volatile uint32_t stream_addr = 0;
-volatile uint32_t stream_total_len = 0;
+static volatile int32_t stream_total_len = 0;
+static volatile int32_t stream_total_len2 = 0;
 volatile uint32_t current_transfer_len = 1;
 
 volatile uint32_t usb_spare_interrupted = 0;
@@ -182,10 +183,14 @@ void stream_mode_ready_handler(const uint32_t id, const uint32_t index)
 {
     if (pio_get(PIN_EBI_USB_SPARE0_PORT, PIO_INPUT, 
                     PIN_EBI_USB_SPARE0_PIN)){
+        pio_disable_interrupt(PIN_EBI_USB_SPARE0_PORT, PIN_EBI_USB_SPARE0_PIN);
         current_transfer_len = stream_buflen;
         FPGA_releaselock();
         while(!FPGA_setlock(fpga_blockin));
-        if (stream_total_len < current_transfer_len) {
+        if (stream_total_len < 0) {
+            stream_total_len = 0;
+        }
+        if (stream_total_len <= current_transfer_len) {
             current_transfer_len = stream_total_len;
             udi_vendor_bulk_in_run(
                 (uint8_t *) PSRAM_BASE_ADDRESS,
@@ -205,19 +210,6 @@ void stream_mode_ready_handler(const uint32_t id, const uint32_t index)
             );
         FPGA_releaselock();
         return;
-
-        if (started_read == 0) {
-            if (started_read) {
-                pio_configure_pin(LED1_GPIO, PIO_TYPE_PIO_OUTPUT_1 | PIO_DEFAULT);
-                started_read = 0;
-            } else {
-                pio_configure_pin(LED1_GPIO, PIO_TYPE_PIO_OUTPUT_0 | PIO_DEFAULT);
-                started_read = 1;
-            }
-            // pio_disable_interrupt(PIN_EBI_USB_SPARE0_PORT, PIN_EBI_USB_SPARE0_PIN);
-            // udd_ep_abort(UDI_VENDOR_EP_BULK_IN);
-        }
-
     } else {
         pio_configure_pin(LED1_GPIO, PIO_TYPE_PIO_OUTPUT_0 | PIO_DEFAULT);
 
@@ -765,11 +757,9 @@ void stream_vendor_bulk_in_received(udd_ep_status_t status,
             stream_vendor_bulk_in_received
             );
     } else {
-        uint32_t tmp = stream_total_len;
-        // stream_total_len = 0;
         udi_vendor_bulk_in_run(
             (uint8_t *) PSRAM_BASE_ADDRESS,
-            tmp,
+            stream_total_len,
             main_vendor_bulk_in_received
             );
 
