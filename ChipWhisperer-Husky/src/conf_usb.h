@@ -68,8 +68,8 @@ extern char usb_serial_number[33];
 #define  USB_DEVICE_GET_SERIAL_NAME_POINTER usb_serial_number
 #define  USB_DEVICE_GET_SERIAL_NAME_LENGTH 32
 
-#define FW_VER_MAJOR 0
-#define FW_VER_MINOR 1
+#define FW_VER_MAJOR 1
+#define FW_VER_MINOR 10
 #define FW_VER_DEBUG 0
 
 //! To authorize the High speed
