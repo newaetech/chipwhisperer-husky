@@ -67,63 +67,16 @@ extern char usb_serial_number[33];
 #define  USB_DEVICE_PRODUCT_NAME          "ChipWhisperer Husky"
 #define  USB_DEVICE_GET_SERIAL_NAME_POINTER usb_serial_number
 #define  USB_DEVICE_GET_SERIAL_NAME_LENGTH 32
-// (USB_CONFIG_ATTR_REMOTE_WAKEUP|USB_CONFIG_ATTR_SELF_POWERED)
-// (USB_CONFIG_ATTR_REMOTE_WAKEUP|USB_CONFIG_ATTR_BUS_POWERED)
 
-//! USB Device string definitions (Optional)
-// #define  USB_DEVICE_MANUFACTURE_NAME      "Manufacture name"
-// #define  USB_DEVICE_PRODUCT_NAME          "Product name"
-// #define  USB_DEVICE_SERIAL_NAME           "12...EF" // Disk SN for MSC
-
-/**
- * Device speeds support
- * @{
- */
-//! To define a Low speed device
-//#define  USB_DEVICE_LOW_SPEED
+#define FW_VER_MAJOR 0
+#define FW_VER_MINOR 1
+#define FW_VER_DEBUG 0
 
 //! To authorize the High speed
 #if (UC3A3||UC3A4)
 //#define  USB_DEVICE_HS_SUPPORT
 #endif
-//@}
-#if 0
-#define UDI_VENDOR_STRING_ID     0x10
-#define UDI_CDC_COMM_STRING_ID_0 0x11
-//#define UDI_CDC_COMM_STRING_ID_1 0x12
 
-
-#define VENDOR_STRING "CWLite Interface"
-#define CDC_DATA_STRING_0 "CWLite USART"
-//#define CDC_DATA_STRING_1 "CW310 USART Debug Interface"
-
-static inline const char *get_extra_str(uint8_t id)
-{
-	if (id == UDI_VENDOR_STRING_ID)
-	return VENDOR_STRING;
-	if (id == UDI_CDC_COMM_STRING_ID_0)
-	return CDC_DATA_STRING_0;
-	//if (id == UDI_CDC_COMM_STRING_ID_1)
-	//return CDC_DATA_STRING_1;
-	return NULL;
-	
-}
-
-static inline uint8_t get_extra_str_length(uint8_t id)
-{
-	if (id == UDI_VENDOR_STRING_ID)
-	return sizeof(VENDOR_STRING)-1;
-	if (id == UDI_CDC_COMM_STRING_ID_0)
-	return sizeof(CDC_DATA_STRING_0)-1;
-	//if (id == UDI_CDC_COMM_STRING_ID_1)
-	//return sizeof(CDC_DATA_STRING_1)-1;
-	return 0;
-	
-}
-
-#define UDC_GET_EXTRA_STRING() (str_length = get_extra_str_length(udd_g_ctrlreq.req.wValue & 0xff), str = get_extra_str(udd_g_ctrlreq.req.wValue & 0xff))
-
-#endif
 /**
  * USB Device Callbacks definitions (Optional)
  * @{

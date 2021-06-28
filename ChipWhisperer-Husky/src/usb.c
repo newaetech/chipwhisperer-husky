@@ -33,33 +33,33 @@
 #define FW_VER_MINOR 10
 #define FW_VER_DEBUG 0
 
-#define REQ_MEMREAD_BULK 0x10
-#define REQ_MEMWRITE_BULK 0x11
-#define REQ_MEMREAD_CTRL 0x12
-#define REQ_MEMWRITE_CTRL 0x13
-#define REQ_MEMSTREAM 0x14
-#define REQ_FPGA_STATUS 0x15
-#define REQ_FPGA_PROGRAM 0x16
-#define REQ_FW_VERSION 0x17
-#define REQ_USART0_DATA 0x1A
-#define REQ_USART0_CONFIG 0x1B
-#define REQ_SCARD_DATA 0x1C
-#define REQ_SCARD_CONFIG 0x1D
-#define REQ_SCARD_AUX 0x1E
-#define REQ_USART2DUMP_ENABLE 0x1F
-#define REQ_XMEGA_PROGRAM 0x20
-#define REQ_AVR_PROGRAM 0x21
-#define REQ_SAM3U_CFG 0x22
-#define REQ_CC_PROGRAM 0x23
-#define REQ_CHANGE_PWR 0x24
-#define REQ_FPGA_RESET 0x25
-#define REQ_SPI_ADC 0x26 /* Not used - implemented in FPGA */
-#define REQ_FAST_FIFO_READS 0x27
-#define REQ_CDCI6214_ADDR 0x28 /* Not used anymore */
-#define REQ_CDCI6214_DATA 0x29
-#define REQ_CDC_SETTINGS_EN 0x31
+// #define REQ_MEMREAD_BULK 0x10
+// #define REQ_MEMWRITE_BULK 0x11
+// #define REQ_MEMREAD_CTRL 0x12
+// #define REQ_MEMWRITE_CTRL 0x13
+// #define REQ_MEMSTREAM 0x14
+// #define REQ_FPGA_STATUS 0x15
+// #define REQ_FPGA_PROGRAM 0x16
+// #define REQ_FW_VERSION 0x17
+// #define REQ_USART0_DATA 0x1A
+// #define REQ_USART0_CONFIG 0x1B
+// #define REQ_SCARD_DATA 0x1C
+// #define REQ_SCARD_CONFIG 0x1D
+// #define REQ_SCARD_AUX 0x1E
+// #define REQ_USART2DUMP_ENABLE 0x1F
+// #define REQ_XMEGA_PROGRAM 0x20
+// #define REQ_AVR_PROGRAM 0x21
+// #define REQ_SAM3U_CFG 0x22
+// #define REQ_CC_PROGRAM 0x23
+// #define REQ_CHANGE_PWR 0x24
+// #define REQ_FPGA_RESET 0x25
+// #define REQ_SPI_ADC 0x26 /* Not used - implemented in FPGA */
+// #define REQ_FAST_FIFO_READS 0x27
+// #define REQ_CDCI6214_ADDR 0x28 /* Not used anymore */
+// #define REQ_CDCI6214_DATA 0x29
+// #define REQ_CDC_SETTINGS_EN 0x31
 
-#define REQ_BUILD_DATE 0x40
+// #define REQ_BUILD_DATE 0x40
 
 #define USART_TARGET USART0
 #define PIN_USART0_RXD	         (PIO_PA19_IDX)
@@ -154,7 +154,6 @@ void ctrl_writemem_bulk(void);
 void ctrl_writemem_ctrl(void);
 void ctrl_progfpga_bulk(void);
 
-#define  udd_ack_nak_in(ep)                       (UDPHS->UDPHS_EPT[ep].UDPHS_EPTCLRSTA = UDPHS_EPTCLRSTA_NAK_IN)
 volatile uint8_t read_blocker = 0;
 void ctrl_readmem_bulk(void){
     uint32_t buflen = *(CTRLBUFFER_WORDPTR);
