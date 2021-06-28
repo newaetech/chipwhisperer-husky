@@ -45,5 +45,6 @@ OPT=g
 PLATFORM=SAM3U1C
 
 FIRMWAREPATH = ../.
+EXTRAINCDIRS += ./naeusb
 include $(FIRMWAREPATH)/Makefile.inc
 

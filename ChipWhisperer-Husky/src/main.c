@@ -10,10 +10,11 @@
 #include "sysclk.h"
 #include "circbuffer.h"
 #include <string.h>
-#include "naeusb/naeusb_default.h"
-#include "naeusb/naeusb_openadc.h"
-#include "naeusb/naeusb_usart.h"
+#include "naeusb_default.h"
+#include "naeusb_openadc.h"
+#include "naeusb_usart.h"
 #include "naeusb_husky.h"
+#include "cdci6214.h"
 
 //Serial Number - will be read by device ID
 char usb_serial_number[33] = "000000000000DEADBEEF";

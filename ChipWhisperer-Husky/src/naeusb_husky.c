@@ -1,4 +1,6 @@
 #include "naeusb_husky.h"
+#include "cdci6214.h"
+#include "spi_driver.h"
 void stream_vendor_bulk_in_received(udd_ep_status_t status,
                                   iram_size_t nb_transfered, udd_ep_id_t ep);
 
