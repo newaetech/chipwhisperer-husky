@@ -65,7 +65,6 @@ void husky_streammode(void) {
         // buflen = 0;
         // started_read = 0;
         pio_enable_interrupt(PIN_EBI_USB_SPARE0_PORT, PIN_EBI_USB_SPARE0_PIN);
-        FPGA_releaselock();
         return;
 
     }     
@@ -76,12 +75,12 @@ void husky_streammode(void) {
         buflen,
         stream_vendor_bulk_in_received
         );
-    FPGA_releaselock();
 }
 
 void stream_vendor_bulk_in_received(udd_ep_status_t status,
                                   iram_size_t nb_transfered, udd_ep_id_t ep)
 {
+    FPGA_releaselock();
     if (UDD_EP_TRANSFER_OK != status) {
         return; // Transfer aborted/error
     }

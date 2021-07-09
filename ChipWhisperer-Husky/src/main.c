@@ -148,16 +148,13 @@ int main(void)
     udc_start();
 
     ui_init();
-	extern volatile bool enable_cdc_transfer[2];
-	extern volatile bool usart_x_enabled[4];
-	extern tcirc_buf usb_usart_circ_buf;
     naeusb_register_handlers();
     naeusart_register_handlers();
     openadc_register_handlers();
     husky_register_handlers();
 
-	init_circ_buf(&usb_usart_circ_buf);
 	while (true) {
+        cdc_send_to_pc();
 		// sleepmgr_enter_sleep();
 		// if (enable_cdc_transfer[0] && usart_x_enabled[0]) {
 		// 	while (circ_buf_has_char(&usb_usart_circ_buf)) {
