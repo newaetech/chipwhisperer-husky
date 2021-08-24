@@ -1,3 +1,4 @@
+#pragma once
 #include "naeusb/naeusb.h"
 #include "naeusb/naeusb_openadc.h"
 

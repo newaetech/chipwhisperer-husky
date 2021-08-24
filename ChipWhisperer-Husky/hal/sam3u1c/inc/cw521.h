@@ -64,6 +64,9 @@
 #define BOARD_FREQ_MAINCK_XTAL      (12000000U)
 #define BOARD_FREQ_MAINCK_BYPASS    (12000000U)
 
+#define CW_PROG_XMEGA
+#define CW_PROG_AVR
+
 /** Master clock frequency */
 #define BOARD_MCK                   CHIP_FREQ_CPU_MAX
 
@@ -122,6 +125,8 @@
 #define FPGA_ADDR_PORT PIOB
 
 #define CW_USE_USART0
+#define CW_PROG_XMEGA 1
+#define CW_PROG_AVR 1
 
 #define PIN_USART0_RXD	         (PIO_PA19_IDX)
 #define PIN_USART0_RXD_FLAGS      (PIO_PERIPH_A | PIO_DEFAULT)
@@ -174,7 +179,7 @@
 #define USART_PDI                 USART1
 #define USART_PDI_ID              ID_USART1
 
-#define PIN_TARG_NRST_GPIO      PIO_PA17_IDX
+#define PIN_TARG_NRST_GPIO      PIO_PB6_IDX
 /** SPI MISO pin definition */
 #define SPI_MISO_GPIO       (PIO_PA13_IDX)
 #define SPI_MISO_FLAGS (PIO_PERIPH_A | PIO_DEFAULT)

@@ -51,6 +51,16 @@ void husky_streammode(void) {
     uint32_t address = *(CTRLBUFFER_WORDPTR + 1);
     stream_total_len = *(CTRLBUFFER_WORDPTR + 2);
 
+    udd_ep_abort(UDI_VENDOR_EP_BULK_IN);
+    if (buflen == 0) {
+        //disable stream mode
+        pio_disable_interrupt(PIN_EBI_USB_SPARE0_PORT, PIN_EBI_USB_SPARE0_PIN);
+        stream_buflen = 0;
+        stream_total_len = 0;
+        FPGA_releaselock();
+        return;
+    }
+
     stream_buflen = buflen;
     stream_addr = address;
 
