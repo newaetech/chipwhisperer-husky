@@ -10,6 +10,11 @@
 #include "sysclk.h"
 #include "circbuffer.h"
 #include <string.h>
+#include "naeusb_default.h"
+#include "naeusb_openadc.h"
+#include "naeusb_usart.h"
+#include "naeusb_husky.h"
+#include "cdci6214.h"
 
 //Serial Number - will be read by device ID
 char usb_serial_number[33] = "000000000000DEADBEEF";
@@ -143,18 +148,12 @@ int main(void)
     udc_start();
 
     ui_init();
-	extern volatile bool enable_cdc_transfer[2];
-	extern volatile bool usart_x_enabled[4];
-	extern tcirc_buf usb_usart_circ_buf;
-	init_circ_buf(&usb_usart_circ_buf);
+    naeusb_register_handlers();
+    naeusart_register_handlers();
+    openadc_register_handlers();
+    husky_register_handlers();
+
 	while (true) {
-		// sleepmgr_enter_sleep();
-		// if (enable_cdc_transfer[0] && usart_x_enabled[0]) {
-		// 	while (circ_buf_has_char(&usb_usart_circ_buf)) {
-		// 		udi_cdc_multi_putc(0, get_from_circ_buf(&usb_usart_circ_buf));
-		// 	}
-		// 		//
-		// }
-		
+        cdc_send_to_pc();
 	}
 }

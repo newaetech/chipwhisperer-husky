@@ -1,0 +1,3 @@
+[submodule "ChipWhisperer-Husky/src/naeusb"]
+	path = ChipWhisperer-Husky/src/naeusb
+	url = https://github.com/newaetech/naeusb

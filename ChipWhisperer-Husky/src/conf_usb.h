@@ -67,63 +67,16 @@ extern char usb_serial_number[33];
 #define  USB_DEVICE_PRODUCT_NAME          "ChipWhisperer Husky"
 #define  USB_DEVICE_GET_SERIAL_NAME_POINTER usb_serial_number
 #define  USB_DEVICE_GET_SERIAL_NAME_LENGTH 32
-// (USB_CONFIG_ATTR_REMOTE_WAKEUP|USB_CONFIG_ATTR_SELF_POWERED)
-// (USB_CONFIG_ATTR_REMOTE_WAKEUP|USB_CONFIG_ATTR_BUS_POWERED)
 
-//! USB Device string definitions (Optional)
-// #define  USB_DEVICE_MANUFACTURE_NAME      "Manufacture name"
-// #define  USB_DEVICE_PRODUCT_NAME          "Product name"
-// #define  USB_DEVICE_SERIAL_NAME           "12...EF" // Disk SN for MSC
-
-/**
- * Device speeds support
- * @{
- */
-//! To define a Low speed device
-//#define  USB_DEVICE_LOW_SPEED
+#define FW_VER_MAJOR 1
+#define FW_VER_MINOR 10
+#define FW_VER_DEBUG 0
 
 //! To authorize the High speed
 #if (UC3A3||UC3A4)
 //#define  USB_DEVICE_HS_SUPPORT
 #endif
-//@}
-#if 0
-#define UDI_VENDOR_STRING_ID     0x10
-#define UDI_CDC_COMM_STRING_ID_0 0x11
-//#define UDI_CDC_COMM_STRING_ID_1 0x12
 
-
-#define VENDOR_STRING "CWLite Interface"
-#define CDC_DATA_STRING_0 "CWLite USART"
-//#define CDC_DATA_STRING_1 "CW310 USART Debug Interface"
-
-static inline const char *get_extra_str(uint8_t id)
-{
-	if (id == UDI_VENDOR_STRING_ID)
-	return VENDOR_STRING;
-	if (id == UDI_CDC_COMM_STRING_ID_0)
-	return CDC_DATA_STRING_0;
-	//if (id == UDI_CDC_COMM_STRING_ID_1)
-	//return CDC_DATA_STRING_1;
-	return NULL;
-	
-}
-
-static inline uint8_t get_extra_str_length(uint8_t id)
-{
-	if (id == UDI_VENDOR_STRING_ID)
-	return sizeof(VENDOR_STRING)-1;
-	if (id == UDI_CDC_COMM_STRING_ID_0)
-	return sizeof(CDC_DATA_STRING_0)-1;
-	//if (id == UDI_CDC_COMM_STRING_ID_1)
-	//return sizeof(CDC_DATA_STRING_1)-1;
-	return 0;
-	
-}
-
-#define UDC_GET_EXTRA_STRING() (str_length = get_extra_str_length(udd_g_ctrlreq.req.wValue & 0xff), str = get_extra_str(udd_g_ctrlreq.req.wValue & 0xff))
-
-#endif
 /**
  * USB Device Callbacks definitions (Optional)
  * @{
@@ -156,6 +109,14 @@ void main_suspend_action(void);
 //! Control endpoint size
 #define  USB_DEVICE_EP_CTRL_SIZE       64
 
+//! Number of interfaces for this device
+#define  USB_DEVICE_NB_INTERFACE       3 // 1 or more
+
+//! Total endpoint used by all interfaces
+//! Note:
+//! It is possible to define an IN and OUT endpoints with the same number on XMEGA product only
+//! E.g. MSC class can be have IN endpoint 0x81 and OUT endpoint 0x01
+#define  USB_DEVICE_MAX_EP             6 // 0 to max endpoint requested by interfaces
 //@}
 
 //@}
@@ -171,6 +132,8 @@ void main_suspend_action(void);
  * @{
  */
 
+//! Number of communication port used (1 to 3)
+#define  UDI_CDC_PORT_NB 1
 
 bool cdc_enable(uint8_t port);
 void cdc_disable(uint8_t port);
@@ -223,8 +186,8 @@ extern void my_callback_config(uint8_t port, usb_cdc_line_coding_t * cfg);
  * @{
  */
 //! Endpoints' numbers used by single or first CDC port
-#define  UDI_CDC_DATA_EP_IN_0          (2 | USB_EP_DIR_IN)  // TX
-#define  UDI_CDC_DATA_EP_OUT_0         (1 | USB_EP_DIR_OUT) // RX
+#define  UDI_CDC_DATA_EP_IN_0          (1 | USB_EP_DIR_IN)  // TX
+#define  UDI_CDC_DATA_EP_OUT_0         (2 | USB_EP_DIR_OUT) // RX
 #define  UDI_CDC_COMM_EP_0             (3 | USB_EP_DIR_IN)  // Notify endpoint
 
 //! Interface numbers used by single or first CDC port
@@ -272,18 +235,7 @@ bool main_setup_in_received(void);
 #define UDI_VENDOR_EP_NB_INT  ((UDI_VENDOR_EPS_SIZE_INT_FS)?2:0)
 #define UDI_VENDOR_EP_NB_BULK ((UDI_VENDOR_EPS_SIZE_BULK_FS)?2:0)
 #define UDI_VENDOR_EP_NB_ISO  ((UDI_VENDOR_EPS_SIZE_ISO_FS)?2:0)
-#define CW_USE_CDC
-#ifdef CW_USE_CDC
-//! Number of communication port used (1 to 3)
-#define  UDI_CDC_PORT_NB 1
-//! Number of interfaces for this device
-#define  USB_DEVICE_NB_INTERFACE       3 // 1 or more
 
-//! Total endpoint used by all interfaces
-//! Note:
-//! It is possible to define an IN and OUT endpoints with the same number on XMEGA product only
-//! E.g. MSC class can be have IN endpoint 0x81 and OUT endpoint 0x01
-#define  USB_DEVICE_MAX_EP             6 // 0 to max endpoint requested by interfaces
 //! Interface number
 #define  UDI_VENDOR_IFACE_NUMBER     0
 
@@ -316,38 +268,6 @@ udi_cdc_data_desc_t udi_cdc_data;
  * @{
  */
 //@}
-#else
-//! Number of communication port used (1 to 3)
-//! Number of interfaces for this device
-#define  USB_DEVICE_NB_INTERFACE       1 // 1 or more
-
-//! Total endpoint used by all interfaces
-//! Note:
-//! It is possible to define an IN and OUT endpoints with the same number on XMEGA product only
-//! E.g. MSC class can be have IN endpoint 0x81 and OUT endpoint 0x01
-#define  USB_DEVICE_MAX_EP             6 // 0 to max endpoint requested by interfaces
-//! Interface number
-#define  UDI_VENDOR_IFACE_NUMBER     0
-
-#define UDI_COMPOSITE_DESC_T \
-udi_vendor_desc_t udi_vendor; 
-
-
-//! USB Interfaces descriptor value for Full Speed
-#define UDI_COMPOSITE_DESC_FS \
-.udi_vendor = UDI_VENDOR_DESC_FS,
-
-#define UDI_COMPOSITE_DESC_HS \
-.udi_vendor = UDI_VENDOR_DESC_HS,
-
-//! USB Interface APIs
-#define UDI_COMPOSITE_API &udi_api_vendor, 
-/**
- * USB Device Driver Configuration
- * @{
- */
-//@}
-#endif
 
 //! The includes of classes and other headers must be done at the end of this file to avoid compile error
 #include "udi_vendor.h"
