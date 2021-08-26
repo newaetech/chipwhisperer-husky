@@ -122,6 +122,8 @@
 #define FPGA_ADDR_PORT PIOB
 
 #define CW_USE_USART0
+#define CW_PROG_XMEGA
+#define CW_PROG_AVR
 
 #define PIN_USART0_RXD	         (PIO_PA19_IDX)
 #define PIN_USART0_RXD_FLAGS      (PIO_PERIPH_A | PIO_DEFAULT)
@@ -174,7 +176,7 @@
 #define USART_PDI                 USART1
 #define USART_PDI_ID              ID_USART1
 
-#define PIN_TARG_NRST_GPIO      PIO_PA17_IDX
+#define PIN_TARG_NRST_GPIO   PIO_PB6_IDX
 /** SPI MISO pin definition */
 #define SPI_MISO_GPIO       (PIO_PA13_IDX)
 #define SPI_MISO_FLAGS (PIO_PERIPH_A | PIO_DEFAULT)
@@ -302,5 +304,6 @@
 
 /** Address for transferring data bytes to the nandflash. */
 #define BOARD_NF_DATA_ADDR      0x61000000
+
 
 #endif  // _SAM3U_EK_H_
