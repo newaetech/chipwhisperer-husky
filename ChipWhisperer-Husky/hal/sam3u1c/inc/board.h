@@ -62,6 +62,11 @@
 extern "C" {
 #endif
 
+#ifdef printf
+#undef printf
+#define printf(...)
+#endif
+
 
 /*! \name Base Boards
  */

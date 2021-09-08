@@ -64,9 +64,6 @@
 #define BOARD_FREQ_MAINCK_XTAL      (12000000U)
 #define BOARD_FREQ_MAINCK_BYPASS    (12000000U)
 
-#define CW_PROG_XMEGA
-#define CW_PROG_AVR
-
 /** Master clock frequency */
 #define BOARD_MCK                   CHIP_FREQ_CPU_MAX
 
@@ -307,5 +304,6 @@
 
 /** Address for transferring data bytes to the nandflash. */
 #define BOARD_NF_DATA_ADDR      0x61000000
+
 
 #endif  // _SAM3U_EK_H_
