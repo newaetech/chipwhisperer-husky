@@ -5,7 +5,7 @@ SRC += $(subst $(HALPATH)/sam3u1c/,,$(TMPSRC))
 $(info SRC is $(SRC))
 EXTRAINCDIRS += $(HALPATH)/sam3u1c $(HALPATH)/sam3u1c/inc $(HALPATH)/sam3u1c/inc/sam $(HALPATH)/sam3u1c/inc/sam_twi
 
-LINKERFILE = $(HALPATH)/sam3u1c/flash.ld
+LINKERFILE ?= $(HALPATH)/sam3u1c/flash.ld
 
 MCU_FLAGS = -mcpu=cortex-m3
 CC = arm-none-eabi-gcc
