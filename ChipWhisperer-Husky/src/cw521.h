@@ -190,6 +190,7 @@
 
 #define SPI_CS_GPIO (PIO_PA16_IDX)
 #define SPI_CS_FLAGS (PIO_TYPE_PIO_OUTPUT_0 | PIO_DEFAULT)
+
 /* NBS0 = A0 = LB# */
 /* NBS1      = UB# */
 #define PIN_EBI_ADDR_BUS_NBS0 PIO_PB7_IDX
@@ -306,5 +307,13 @@
 /** Address for transferring data bytes to the nandflash. */
 #define BOARD_NF_DATA_ADDR      0x61000000
 
+// MPSSE definitions
+#define MPSSE_DOUT_GPIO SPI_MOSI_GPIO
+#define MPSSE_DIN_GPIO SPI_MISO_GPIO
+#define MPSSE_SCK_GPIO SPI_SPCK_GPIO
+#define MPSSE_TMS_GPIO PIN_PDIDTX_GPIO
+#define MPSSE_GPIOL0 PIN_PDIC_GPIO
+
+#define MPSSE_SWD_SUPPORT 1
 
 #endif  // _SAM3U_EK_H_

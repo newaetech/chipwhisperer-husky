@@ -152,8 +152,10 @@ int main(void)
     naeusart_register_handlers();
     openadc_register_handlers();
     husky_register_handlers();
+	mpsse_register_handlers();
 
 	while (true) {
         cdc_send_to_pc();
+		MPSSE_main_sendrecv_byte();
 	}
 }

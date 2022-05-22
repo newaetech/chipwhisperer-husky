@@ -41,6 +41,26 @@
 
 //#warning You must refill the following definitions with a correct values
 
+#define NAEUSB_MPSSE_SUPPORT 1
+
+#if NAEUSB_MPSSE_SUPPORT == 1
+#define  UDI_MPSSE_EP_BULK_IN		 (0x01 | USB_EP_DIR_IN)
+#define  UDI_MPSSE_EP_BULK_OUT		 (0x02 | USB_EP_DIR_OUT)
+
+#define UDI_COMPOSITE_DESC_T \
+	udi_vendor_desc_t udi_vendor; \
+union { \
+struct { \
+	usb_iad_desc_t udi_iad;\
+	udi_cdc_comm_desc_t udi_cdc_comm; \
+	udi_cdc_data_desc_t udi_cdc_data; \
+};\
+struct {\
+	udi_vendor_desc_t udi_vendor_mpsse; \
+};\
+};
+#endif
+
 
 /**
  * USB Device Configuration
@@ -50,7 +70,7 @@
 #define  USB_DEVICE_VENDOR_ID             0x2B3E
 #define  USB_DEVICE_PRODUCT_ID            0xACE5
 
-#define  USB_DEVICE_MAJOR_VERSION         1
+#define  USB_DEVICE_MAJOR_VERSION         9
 #define  USB_DEVICE_MINOR_VERSION         0
 #define  USB_DEVICE_POWER                 500 // Consumption on Vbus line (mA)
 #define  USB_DEVICE_ATTR                \
@@ -69,7 +89,7 @@ extern char usb_serial_number[33];
 #define  USB_DEVICE_GET_SERIAL_NAME_LENGTH 32
 
 #define FW_VER_MAJOR 1
-#define FW_VER_MINOR 10
+#define FW_VER_MINOR 3
 #define FW_VER_DEBUG 0
 
 //! To authorize the High speed
@@ -239,11 +259,13 @@ bool main_setup_in_received(void);
 //! Interface number
 #define  UDI_VENDOR_IFACE_NUMBER     0
 
+#ifndef UDI_COMPOSITE_DESC_T
 #define UDI_COMPOSITE_DESC_T \
 udi_vendor_desc_t udi_vendor; \
 usb_iad_desc_t udi_iad;\
 udi_cdc_comm_desc_t udi_cdc_comm; \
 udi_cdc_data_desc_t udi_cdc_data; 
+#endif
 
 
 //! USB Interfaces descriptor value for Full Speed
