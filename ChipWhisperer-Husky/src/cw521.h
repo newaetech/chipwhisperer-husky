@@ -124,6 +124,7 @@
 #define CW_USE_USART0
 #define CW_PROG_XMEGA 1
 #define CW_PROG_AVR 1
+#define CW_TARGET_SPI 1
 
 #define PIN_USART0_RXD	         (PIO_PA19_IDX)
 #define PIN_USART0_RXD_FLAGS      (PIO_PERIPH_A | PIO_DEFAULT)
