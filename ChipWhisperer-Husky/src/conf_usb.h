@@ -90,7 +90,7 @@ extern char usb_serial_number[33];
 
 #define FW_VER_MAJOR 1
 #define FW_VER_MINOR 3
-#define FW_VER_DEBUG 0
+#define FW_VER_DEBUG 1
 
 //! To authorize the High speed
 #if (UC3A3||UC3A4)

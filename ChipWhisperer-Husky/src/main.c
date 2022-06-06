@@ -19,6 +19,8 @@
 //Serial Number - will be read by device ID
 char usb_serial_number[33] = "000000000000DEADBEEF";
 
+extern volatile uint32_t current_transfer_len;
+
 
 void phywhisperer_setup_pins(void)
 {
@@ -155,7 +157,9 @@ int main(void)
 	mpsse_register_handlers();
 
 	while (true) {
-        cdc_send_to_pc();
-		MPSSE_main_sendrecv_byte();
+        if (current_transfer_len == 0) {
+            cdc_send_to_pc();
+            MPSSE_main_sendrecv_byte();
+        }
 	}
 }
