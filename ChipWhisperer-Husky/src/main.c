@@ -69,16 +69,16 @@ void hacky_delay(void)
     for (volatile uint32_t i = 0; i < 250000; i++);
 }
 
-static inline void genclk_enable_config(unsigned int id, enum genclk_source src, unsigned int divider)
-{
-    struct genclk_config gcfg;
+// static inline void genclk_enable_config(unsigned int id, enum genclk_source src, unsigned int divider)
+// {
+//     struct genclk_config gcfg;
 
-    genclk_config_defaults(&gcfg, id);
-    genclk_enable_source(src);
-    genclk_config_set_source(&gcfg, src);
-    genclk_config_set_divider(&gcfg, divider);
-    genclk_enable(&gcfg, id);
-}
+//     genclk_config_defaults(&gcfg, id);
+//     genclk_enable_source(src);
+//     genclk_config_set_source(&gcfg, src);
+//     genclk_config_set_divider(&gcfg, divider);
+//     genclk_enable(&gcfg, id);
+// }
 #include <spi.h>
 
 #define ADC_SPI_CS PIO_PA3_IDX
