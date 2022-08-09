@@ -50,6 +50,7 @@ void ui_init(void)
 	// Initialize LEDs
 	LED_Off(LED0_GPIO);
 	LED_Off(LED1_GPIO);
+	board_power(1);
 	//LED_Off(LED2_GPIO);
 }
 
@@ -58,6 +59,7 @@ void ui_powerdown(void)
 {
 	LED_Off(LED0_GPIO);
 	LED_Off(LED1_GPIO);
+	board_power(0);
 	
 	// Power off FPGA
 	//board_sram_pwroff();
@@ -66,6 +68,7 @@ void ui_powerdown(void)
 void ui_wakeup(void)
 {
 	LED_On(LED0_GPIO);
+	board_power(1);
 	//board_sram_pwron();
 }
 
