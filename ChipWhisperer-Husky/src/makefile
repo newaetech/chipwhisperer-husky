@@ -34,19 +34,15 @@ TARGET = ChipWhisperer-Husky
 
 # List C source files here.
 # Header files (.h) are automatically pulled in.
-SRC += main.c naeusb/usb_xmem.c naeusb/fpga_program.c naeusb/V2Protocol.c naeusb/V2ProtocolParams.c 
+SRC += main.c naeusb/usb_xmem.c naeusb/fpga_program.c naeusb/V2Protocol.c naeusb/V2ProtocolParams.c  ui.c
 SRC += naeusb/XMEGANVM.c naeusb/XPROGNewAE.c naeusb/XPROGTarget.c naeusb/ISPProtocol.c naeusb/ISPTarget.c 
 SRC += naeusb/XPROGTimeout.c naeusb/circbuffer.c
 SRC += spi_driver.c cdci6214.c naeusb/udc.c
 SRC += naeusb/naeusb.c naeusb/naeusb_default.c naeusb/naeusb_openadc.c naeusb/naeusb_usart.c naeusb_husky.c
-SRC += naeusb/naeusb_mpsse.c naeusb/udi_composite_desc.c
+SRC += naeusb/naeusb_mpsse.c
 LINKERFILE = naeusb/flash_sam3u4.ld
 # -----------------------------------------------------------------------------
-OPT=g
+OPT=2
 
-PLATFORM=SAM3U1C
-
-FIRMWAREPATH = ../.
-EXTRAINCDIRS += ./naeusb
-include $(FIRMWAREPATH)/Makefile.inc
+include naeusb/makefile.cw
 

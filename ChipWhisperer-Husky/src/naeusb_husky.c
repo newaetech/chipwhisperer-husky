@@ -7,7 +7,7 @@ void stream_vendor_bulk_in_received(udd_ep_status_t status,
 volatile uint32_t stream_buflen = 0;
 volatile uint32_t stream_addr = 0;
 static volatile int32_t stream_total_len = 0;
-volatile uint32_t current_transfer_len = 1;
+volatile uint32_t current_transfer_len = 0;
 
 void stream_mode_ready_handler(const uint32_t id, const uint32_t index)
 {
