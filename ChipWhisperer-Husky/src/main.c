@@ -14,6 +14,7 @@
 #include "naeusb_openadc.h"
 #include "naeusb_usart.h"
 #include "naeusb_husky.h"
+#include "naeusb_mpsse.h"
 #include "cdci6214.h"
 
 //Serial Number - will be read by device ID
@@ -121,6 +122,11 @@ int main(void)
 
     irq_initialize_vectors();
     cpu_irq_enable();
+
+    //high-z, since they're hooked up to 20pin plus FPGA
+	gpio_configure_pin(PIN_USART1_RXD, PIO_DEFAULT | PIO_INPUT);
+	gpio_configure_pin(PIN_USART1_TXD, PIO_DEFAULT | PIO_INPUT);
+	gpio_configure_pin(PIN_USART1_SCK, PIO_DEFAULT | PIO_INPUT);
 
     // Initialize the sleep manager
     sleepmgr_init();
