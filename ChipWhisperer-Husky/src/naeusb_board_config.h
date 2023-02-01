@@ -283,13 +283,13 @@
 //! LED #0 pin definition
 #define LED_0_NAME    "green LEDHB"
 #define LED0_GPIO     (PIO_PA29_IDX)
-#define LED0_FLAGS    (PIO_TYPE_PIO_OUTPUT_1 | PIO_DEFAULT)
+#define LED0_FLAGS    (PIO_TYPE_PIO_OUTPUT_0 | PIO_DEFAULT)
 #define LED0_ACTIVE_LEVEL 1
 
 //! LED #1 pin definition
 #define LED_1_NAME    "red TX"
 #define LED1_GPIO     (PIO_PA31_IDX)
-#define LED1_FLAGS    (PIO_TYPE_PIO_OUTPUT_1 | PIO_DEFAULT)
+#define LED1_FLAGS    (PIO_TYPE_PIO_OUTPUT_0 | PIO_DEFAULT)
 #define LED1_ACTIVE_LEVEL 1
 
 // //! LED #1 pin definition
