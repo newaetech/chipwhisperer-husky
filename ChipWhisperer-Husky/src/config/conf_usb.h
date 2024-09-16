@@ -68,6 +68,7 @@ struct {\
  */
 
 #define  USB_DEVICE_VENDOR_ID             0x2B3E
+#define  USB_DEVICE_PRODUCT_ID            0xACE5
 
 #define  USB_DEVICE_MAJOR_VERSION         9
 #define  USB_DEVICE_MINOR_VERSION         0
@@ -83,22 +84,13 @@ struct {\
 extern char usb_serial_number[33];
 
 #define  USB_DEVICE_MANUFACTURE_NAME      "NewAE Technology Inc."
+#define  USB_DEVICE_PRODUCT_NAME          "ChipWhisperer Husky"
 #define  USB_DEVICE_GET_SERIAL_NAME_POINTER usb_serial_number
 #define  USB_DEVICE_GET_SERIAL_NAME_LENGTH 32
 
-#ifdef ChipWhisperer_Husky
-#define  USB_DEVICE_PRODUCT_NAME          "ChipWhisperer Husky"
 #define FW_VER_MAJOR 1
 #define FW_VER_MINOR 5
 #define FW_VER_DEBUG 0
-#define  USB_DEVICE_PRODUCT_ID            0xACE5
-#elif ChipWhisperer_Husky_Plus
-#define  USB_DEVICE_PRODUCT_NAME          "ChipWhisperer Husky Plus"
-#define FW_VER_MAJOR 1
-#define FW_VER_MINOR 0
-#define FW_VER_DEBUG 0
-#define  USB_DEVICE_PRODUCT_ID            0xACE6
-#endif
 
 //! To authorize the High speed
 #if (UC3A3||UC3A4)

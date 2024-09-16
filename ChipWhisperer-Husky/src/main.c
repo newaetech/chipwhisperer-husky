@@ -164,7 +164,6 @@ int main(void)
 
 	while (true) {
         if (current_transfer_len == 0) {
-            cdc_send_to_pc();
             MPSSE_main_sendrecv_byte();
         }
 	}
