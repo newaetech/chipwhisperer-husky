@@ -1,4 +1,4 @@
-name: Build Firmware
+name: Build Husky Plus Firmware
 
 # Controls when the workflow will run
 on: [push, pull_request]
