@@ -19,15 +19,15 @@ jobs:
       - name: Install compilers
         run: >- 
           sudo apt install -y make build-essential gcc-arm-none-eabi
-      - name: Build capture firmware
+      - name: Build plus capture firmware
         run: |
           cd ChipWhisperer-Husky/src/
           git submodule update --init naeusb
-          make -j
+          make TARGET=ChipWhisperer-Husky-Plus -j
       - name: Upload binaries and versions
         uses: actions/upload-artifact@v4
         with:
-          name: Husky binary
+          name: Husky Plus binary
           path: |
             ChipWhisperer-Husky/src/ChipWhisperer-Husky.bin
             ChipWhisperer-Husky/src/version.txt
