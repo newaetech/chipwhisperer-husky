@@ -33,5 +33,5 @@ jobs:
         with:
           name: Husky Plus binary
           path: |
-            ChipWhisperer-Husky/src/ChipWhisperer-Husky.bin
+            ChipWhisperer-Husky/src/ChipWhisperer-Husky-Plus.bin
             ChipWhisperer-Husky/src/version.txt
