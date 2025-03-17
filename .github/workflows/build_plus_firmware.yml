@@ -1,7 +1,11 @@
 name: Build Husky Plus Firmware
 
 # Controls when the workflow will run
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 0 1 * *'
   # Triggers the workflow on push or pull request events but only for the develop branch
 
 
@@ -15,7 +19,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Install compilers
         run: >- 
           sudo apt install -y make build-essential gcc-arm-none-eabi
