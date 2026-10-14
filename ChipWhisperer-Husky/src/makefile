@@ -35,6 +35,7 @@ TARGET = ChipWhisperer-Husky
 # List C source files here.
 # Header files (.h) are automatically pulled in.
 SRC += main.c naeusb/usb_xmem.c naeusb/fpga_program.c naeusb/V2Protocol.c naeusb/V2ProtocolParams.c  ui.c
+SRC += main.c naeusb/naeusb_usart_dma.c naeusb/naeusb_usart_spi.c naeusb/naeusb_usart_util.c
 SRC += naeusb/XMEGANVM.c naeusb/XPROGNewAE.c naeusb/XPROGTarget.c naeusb/ISPProtocol.c naeusb/ISPTarget.c 
 SRC += naeusb/XPROGTimeout.c naeusb/circbuffer.c
 SRC += spi_driver.c cdci6214.c naeusb/udc.c
