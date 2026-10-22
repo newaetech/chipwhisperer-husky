@@ -43,7 +43,7 @@ SRC += naeusb/naeusb.c naeusb/naeusb_default.c naeusb/naeusb_openadc.c naeusb/na
 SRC += naeusb/naeusb_mpsse.c
 LINKERFILE = naeusb/flash_sam3u4.ld
 # -----------------------------------------------------------------------------
-OPT=2
+OPT=0
 
 include naeusb/makefile.cw
 

@@ -1,5 +1,5 @@
 # 0 "./config/conf_usb.h"
-# 1 "/home/jpnewae/git/chipwhisperer-husky/ChipWhisperer-Husky/src//"
+# 1 "/home/adewar/code/chipwhisperer-husky/ChipWhisperer-Husky/src//"
 # 0 "<built-in>"
 #define __STDC__ 1
 # 0 "<built-in>"
@@ -938,13 +938,13 @@
 # 45 "naeusb/sam3u_hal/inc/compiler.h"
 #define UTILS_COMPILER_H 
 # 55 "naeusb/sam3u_hal/inc/compiler.h"
-# 1 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 1 3 4
-# 39 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
+# 1 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 1 3 4
+# 39 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
 #define _STDDEF_H 
 #define _STDDEF_H_ 
 
 #define _ANSI_STDDEF_H 
-# 132 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
+# 132 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
 #define _PTRDIFF_T 
 #define _T_PTRDIFF_ 
 #define _T_PTRDIFF 
@@ -959,11 +959,11 @@
 
 
 
-# 145 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
+# 145 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
 typedef int ptrdiff_t;
-# 158 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
+# 158 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
 #undef __need_ptrdiff_t
-# 185 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
+# 185 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
 #define __size_t__ 
 #define __SIZE_T__ 
 #define _SIZE_T 
@@ -994,9 +994,9 @@ typedef int ptrdiff_t;
 
 
 typedef unsigned int size_t;
-# 237 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
+# 237 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
 #undef __need_size_t
-# 267 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
+# 267 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
 #define __wchar_t__ 
 #define __WCHAR_T__ 
 #define _WCHAR_T 
@@ -1013,13 +1013,13 @@ typedef unsigned int size_t;
 #define _GCC_WCHAR_T 
 #define _WCHAR_T_DECLARED 
 #define __DEFINED_wchar_t 
-# 295 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
+# 295 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
 #undef _BSD_WCHAR_T_
-# 329 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
+# 329 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
 typedef unsigned int wchar_t;
-# 349 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
+# 349 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
 #undef __need_wchar_t
-# 399 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
+# 399 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
 #undef NULL
 
 
@@ -2015,238 +2015,600 @@ typedef unsigned int wchar_t;
 # 43 "naeusb/sam3u_hal/inc/sam3u2c.h"
 #define _SAM3U2C_ 
 # 59 "naeusb/sam3u_hal/inc/sam3u2c.h"
-# 1 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stdint.h" 1 3 4
-# 29 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stdint.h" 3 4
-#define _GCC_STDINT_H 
+# 1 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stdint.h" 1 3 4
+# 9 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stdint.h" 3 4
+# 1 "/usr/share/cwgcc/arm-none-eabi/include/stdint.h" 1 3 4
+# 10 "/usr/share/cwgcc/arm-none-eabi/include/stdint.h" 3 4
+#define _STDINT_H 
 
+# 1 "/usr/share/cwgcc/arm-none-eabi/include/machine/_default_types.h" 1 3 4
 
 
 
-typedef signed char int8_t;
 
 
-typedef short int int16_t;
+#define _MACHINE__DEFAULT_TYPES_H 
 
+# 1 "/usr/share/cwgcc/arm-none-eabi/include/sys/features.h" 1 3 4
+# 22 "/usr/share/cwgcc/arm-none-eabi/include/sys/features.h" 3 4
+#define _SYS_FEATURES_H 
 
-typedef long int int32_t;
 
 
-typedef long long int int64_t;
 
 
-typedef unsigned char uint8_t;
+# 1 "/usr/share/cwgcc/arm-none-eabi/include/_newlib_version.h" 1 3 4
 
 
-typedef short unsigned int uint16_t;
 
+#define _NEWLIB_VERSION_H__ 1
 
-typedef long unsigned int uint32_t;
+#define _NEWLIB_VERSION "4.3.0"
+#define __NEWLIB__ 4
+#define __NEWLIB_MINOR__ 3
+#define __NEWLIB_PATCHLEVEL__ 0
+# 29 "/usr/share/cwgcc/arm-none-eabi/include/sys/features.h" 2 3 4
 
 
-typedef long long unsigned int uint64_t;
 
 
+#define __GNUC_PREREQ(maj,min) ((__GNUC__ << 16) + __GNUC_MINOR__ >= ((maj) << 16) + (min))
 
 
-typedef signed char int_least8_t;
-typedef short int int_least16_t;
-typedef long int int_least32_t;
-typedef long long int int_least64_t;
-typedef unsigned char uint_least8_t;
-typedef short unsigned int uint_least16_t;
-typedef long unsigned int uint_least32_t;
-typedef long long unsigned int uint_least64_t;
 
 
 
-typedef int int_fast8_t;
-typedef int int_fast16_t;
-typedef int int_fast32_t;
-typedef long long int int_fast64_t;
-typedef unsigned int uint_fast8_t;
-typedef unsigned int uint_fast16_t;
-typedef unsigned int uint_fast32_t;
-typedef long long unsigned int uint_fast64_t;
 
+#define __GNUC_PREREQ__(ma,mi) __GNUC_PREREQ(ma, mi)
+# 136 "/usr/share/cwgcc/arm-none-eabi/include/sys/features.h" 3 4
+#undef _DEFAULT_SOURCE
+#define _DEFAULT_SOURCE 1
 
 
 
-typedef int intptr_t;
+#undef _POSIX_SOURCE
+#define _POSIX_SOURCE 1
+#undef _POSIX_C_SOURCE
+#define _POSIX_C_SOURCE 200809L
+# 163 "/usr/share/cwgcc/arm-none-eabi/include/sys/features.h" 3 4
+#undef _ATFILE_SOURCE
+#define _ATFILE_SOURCE 1
+# 257 "/usr/share/cwgcc/arm-none-eabi/include/sys/features.h" 3 4
+#define __ATFILE_VISIBLE 1
 
 
-typedef unsigned int uintptr_t;
 
 
 
+#define __BSD_VISIBLE 1
 
-typedef long long int intmax_t;
-typedef long long unsigned int uintmax_t;
 
 
 
 
 
 
+#define __GNU_VISIBLE 0
+# 282 "/usr/share/cwgcc/arm-none-eabi/include/sys/features.h" 3 4
+#define __ISO_C_VISIBLE 1999
 
-#undef INT8_MAX
-#define INT8_MAX __INT8_MAX__
-#undef INT8_MIN
-#define INT8_MIN (-INT8_MAX - 1)
 
 
-#undef UINT8_MAX
-#define UINT8_MAX __UINT8_MAX__
 
 
-#undef INT16_MAX
-#define INT16_MAX __INT16_MAX__
-#undef INT16_MIN
-#define INT16_MIN (-INT16_MAX - 1)
 
 
-#undef UINT16_MAX
-#define UINT16_MAX __UINT16_MAX__
+#define __LARGEFILE_VISIBLE 0
 
 
-#undef INT32_MAX
-#define INT32_MAX __INT32_MAX__
-#undef INT32_MIN
-#define INT32_MIN (-INT32_MAX - 1)
 
+#define __MISC_VISIBLE 1
 
-#undef UINT32_MAX
-#define UINT32_MAX __UINT32_MAX__
-
-
-#undef INT64_MAX
-#define INT64_MAX __INT64_MAX__
-#undef INT64_MIN
-#define INT64_MIN (-INT64_MAX - 1)
-
-
-#undef UINT64_MAX
-#define UINT64_MAX __UINT64_MAX__
-
-
-#undef INT_LEAST8_MAX
-#define INT_LEAST8_MAX __INT_LEAST8_MAX__
-#undef INT_LEAST8_MIN
-#define INT_LEAST8_MIN (-INT_LEAST8_MAX - 1)
-#undef UINT_LEAST8_MAX
-#define UINT_LEAST8_MAX __UINT_LEAST8_MAX__
-#undef INT_LEAST16_MAX
-#define INT_LEAST16_MAX __INT_LEAST16_MAX__
-#undef INT_LEAST16_MIN
-#define INT_LEAST16_MIN (-INT_LEAST16_MAX - 1)
-#undef UINT_LEAST16_MAX
-#define UINT_LEAST16_MAX __UINT_LEAST16_MAX__
-#undef INT_LEAST32_MAX
-#define INT_LEAST32_MAX __INT_LEAST32_MAX__
-#undef INT_LEAST32_MIN
-#define INT_LEAST32_MIN (-INT_LEAST32_MAX - 1)
-#undef UINT_LEAST32_MAX
-#define UINT_LEAST32_MAX __UINT_LEAST32_MAX__
-#undef INT_LEAST64_MAX
-#define INT_LEAST64_MAX __INT_LEAST64_MAX__
-#undef INT_LEAST64_MIN
-#define INT_LEAST64_MIN (-INT_LEAST64_MAX - 1)
-#undef UINT_LEAST64_MAX
-#define UINT_LEAST64_MAX __UINT_LEAST64_MAX__
-
-#undef INT_FAST8_MAX
-#define INT_FAST8_MAX __INT_FAST8_MAX__
-#undef INT_FAST8_MIN
-#define INT_FAST8_MIN (-INT_FAST8_MAX - 1)
-#undef UINT_FAST8_MAX
-#define UINT_FAST8_MAX __UINT_FAST8_MAX__
-#undef INT_FAST16_MAX
-#define INT_FAST16_MAX __INT_FAST16_MAX__
-#undef INT_FAST16_MIN
-#define INT_FAST16_MIN (-INT_FAST16_MAX - 1)
-#undef UINT_FAST16_MAX
-#define UINT_FAST16_MAX __UINT_FAST16_MAX__
-#undef INT_FAST32_MAX
-#define INT_FAST32_MAX __INT_FAST32_MAX__
-#undef INT_FAST32_MIN
-#define INT_FAST32_MIN (-INT_FAST32_MAX - 1)
-#undef UINT_FAST32_MAX
-#define UINT_FAST32_MAX __UINT_FAST32_MAX__
-#undef INT_FAST64_MAX
-#define INT_FAST64_MAX __INT_FAST64_MAX__
-#undef INT_FAST64_MIN
-#define INT_FAST64_MIN (-INT_FAST64_MAX - 1)
-#undef UINT_FAST64_MAX
-#define UINT_FAST64_MAX __UINT_FAST64_MAX__
-
-
-#undef INTPTR_MAX
-#define INTPTR_MAX __INTPTR_MAX__
-#undef INTPTR_MIN
-#define INTPTR_MIN (-INTPTR_MAX - 1)
-
-
-#undef UINTPTR_MAX
-#define UINTPTR_MAX __UINTPTR_MAX__
-
-
-#undef INTMAX_MAX
-#define INTMAX_MAX __INTMAX_MAX__
-#undef INTMAX_MIN
+
+
+
+
+#define __POSIX_VISIBLE 200809
+# 316 "/usr/share/cwgcc/arm-none-eabi/include/sys/features.h" 3 4
+#define __SVID_VISIBLE 1
+# 332 "/usr/share/cwgcc/arm-none-eabi/include/sys/features.h" 3 4
+#define __XSI_VISIBLE 0
+# 344 "/usr/share/cwgcc/arm-none-eabi/include/sys/features.h" 3 4
+#define __SSP_FORTIFY_LEVEL 0
+# 9 "/usr/share/cwgcc/arm-none-eabi/include/machine/_default_types.h" 2 3 4
+
+
+
+
+
+
+#define __EXP(x) __ ##x ##__
+# 26 "/usr/share/cwgcc/arm-none-eabi/include/machine/_default_types.h" 3 4
+#define __have_longlong64 1
+
+
+
+
+
+
+#define __have_long32 1
+
+
+
+
+
+
+
+typedef signed char __int8_t;
+
+typedef unsigned char __uint8_t;
+
+
+
+#define ___int8_t_defined 1
+
+
+
+
+
+
+
+typedef short int __int16_t;
+
+typedef short unsigned int __uint16_t;
+
+
+
+#define ___int16_t_defined 1
+# 77 "/usr/share/cwgcc/arm-none-eabi/include/machine/_default_types.h" 3 4
+typedef long int __int32_t;
+
+typedef long unsigned int __uint32_t;
+
+
+
+#define ___int32_t_defined 1
+# 103 "/usr/share/cwgcc/arm-none-eabi/include/machine/_default_types.h" 3 4
+typedef long long int __int64_t;
+
+typedef long long unsigned int __uint64_t;
+
+
+
+#define ___int64_t_defined 1
+# 134 "/usr/share/cwgcc/arm-none-eabi/include/machine/_default_types.h" 3 4
+typedef signed char __int_least8_t;
+
+typedef unsigned char __uint_least8_t;
+
+
+
+#define ___int_least8_t_defined 1
+# 160 "/usr/share/cwgcc/arm-none-eabi/include/machine/_default_types.h" 3 4
+typedef short int __int_least16_t;
+
+typedef short unsigned int __uint_least16_t;
+
+
+
+#define ___int_least16_t_defined 1
+# 182 "/usr/share/cwgcc/arm-none-eabi/include/machine/_default_types.h" 3 4
+typedef long int __int_least32_t;
+
+typedef long unsigned int __uint_least32_t;
+
+
+
+#define ___int_least32_t_defined 1
+# 200 "/usr/share/cwgcc/arm-none-eabi/include/machine/_default_types.h" 3 4
+typedef long long int __int_least64_t;
+
+typedef long long unsigned int __uint_least64_t;
+
+
+
+#define ___int_least64_t_defined 1
+
+
+
+
+
+
+
+typedef long long int __intmax_t;
+
+
+
+
+
+
+
+typedef long long unsigned int __uintmax_t;
+
+
+
+
+
+
+
+typedef int __intptr_t;
+
+typedef unsigned int __uintptr_t;
+# 244 "/usr/share/cwgcc/arm-none-eabi/include/machine/_default_types.h" 3 4
+#undef __EXP
+# 13 "/usr/share/cwgcc/arm-none-eabi/include/stdint.h" 2 3 4
+# 1 "/usr/share/cwgcc/arm-none-eabi/include/sys/_intsup.h" 1 3 4
+# 10 "/usr/share/cwgcc/arm-none-eabi/include/sys/_intsup.h" 3 4
+#define _SYS__INTSUP_H 
+
+
+
+
+
+#define __STDINT_EXP(x) __ ##x ##__
+# 35 "/usr/share/cwgcc/arm-none-eabi/include/sys/_intsup.h" 3 4
+       
+       
+       
+       
+       
+       
+       
+       
+#undef signed
+#undef unsigned
+#undef char
+#undef short
+#undef int
+#undef __int20
+#undef __int20__
+#undef long
+#define signed +0
+#define unsigned +0
+#define char +0
+#define short +1
+#define __int20 +2
+#define __int20__ +2
+#define int +2
+#define long +4
+# 67 "/usr/share/cwgcc/arm-none-eabi/include/sys/_intsup.h" 3 4
+#define _INTPTR_EQ_INT 
+
+
+
+
+
+
+#define _INT32_EQ_LONG 
+
+
+
+
+
+
+
+#define __INT8 "hh"
+# 93 "/usr/share/cwgcc/arm-none-eabi/include/sys/_intsup.h" 3 4
+#define __INT16 "h"
+# 104 "/usr/share/cwgcc/arm-none-eabi/include/sys/_intsup.h" 3 4
+#define __INT32 "l"
+# 113 "/usr/share/cwgcc/arm-none-eabi/include/sys/_intsup.h" 3 4
+#define __INT64 "ll"
+
+
+
+
+
+
+#define __FAST8 
+# 129 "/usr/share/cwgcc/arm-none-eabi/include/sys/_intsup.h" 3 4
+#define __FAST16 
+
+
+
+
+
+
+#define __FAST32 
+# 147 "/usr/share/cwgcc/arm-none-eabi/include/sys/_intsup.h" 3 4
+#define __FAST64 "ll"
+
+
+
+#define __LEAST8 "hh"
+# 162 "/usr/share/cwgcc/arm-none-eabi/include/sys/_intsup.h" 3 4
+#define __LEAST16 "h"
+# 173 "/usr/share/cwgcc/arm-none-eabi/include/sys/_intsup.h" 3 4
+#define __LEAST32 "l"
+# 182 "/usr/share/cwgcc/arm-none-eabi/include/sys/_intsup.h" 3 4
+#define __LEAST64 "ll"
+
+#undef signed
+#undef unsigned
+#undef char
+#undef short
+#undef int
+#undef long
+       
+       
+       
+       
+       
+# 194 "/usr/share/cwgcc/arm-none-eabi/include/sys/_intsup.h" 3 4
+#undef __int20
+       
+# 195 "/usr/share/cwgcc/arm-none-eabi/include/sys/_intsup.h" 3 4
+#undef __int20__
+       
+       
+# 14 "/usr/share/cwgcc/arm-none-eabi/include/stdint.h" 2 3 4
+# 1 "/usr/share/cwgcc/arm-none-eabi/include/sys/_stdint.h" 1 3 4
+# 10 "/usr/share/cwgcc/arm-none-eabi/include/sys/_stdint.h" 3 4
+#define _SYS__STDINT_H 
+# 20 "/usr/share/cwgcc/arm-none-eabi/include/sys/_stdint.h" 3 4
+typedef __int8_t int8_t ;
+#define _INT8_T_DECLARED 
+
+
+typedef __uint8_t uint8_t ;
+#define _UINT8_T_DECLARED 
+
+#define __int8_t_defined 1
+
+
+
+
+typedef __int16_t int16_t ;
+#define _INT16_T_DECLARED 
+
+
+typedef __uint16_t uint16_t ;
+#define _UINT16_T_DECLARED 
+
+#define __int16_t_defined 1
+
+
+
+
+typedef __int32_t int32_t ;
+#define _INT32_T_DECLARED 
+
+
+typedef __uint32_t uint32_t ;
+#define _UINT32_T_DECLARED 
+
+#define __int32_t_defined 1
+
+
+
+
+typedef __int64_t int64_t ;
+#define _INT64_T_DECLARED 
+
+
+typedef __uint64_t uint64_t ;
+#define _UINT64_T_DECLARED 
+
+#define __int64_t_defined 1
+
+
+
+typedef __intmax_t intmax_t;
+#define _INTMAX_T_DECLARED 
+
+
+
+typedef __uintmax_t uintmax_t;
+#define _UINTMAX_T_DECLARED 
+
+
+
+typedef __intptr_t intptr_t;
+#define _INTPTR_T_DECLARED 
+
+
+
+typedef __uintptr_t uintptr_t;
+#define _UINTPTR_T_DECLARED 
+# 15 "/usr/share/cwgcc/arm-none-eabi/include/stdint.h" 2 3 4
+
+
+
+
+
+
+typedef __int_least8_t int_least8_t;
+typedef __uint_least8_t uint_least8_t;
+#define __int_least8_t_defined 1
+
+
+
+typedef __int_least16_t int_least16_t;
+typedef __uint_least16_t uint_least16_t;
+#define __int_least16_t_defined 1
+
+
+
+typedef __int_least32_t int_least32_t;
+typedef __uint_least32_t uint_least32_t;
+#define __int_least32_t_defined 1
+
+
+
+typedef __int_least64_t int_least64_t;
+typedef __uint_least64_t uint_least64_t;
+#define __int_least64_t_defined 1
+# 51 "/usr/share/cwgcc/arm-none-eabi/include/stdint.h" 3 4
+  typedef int int_fast8_t;
+  typedef unsigned int uint_fast8_t;
+#define __int_fast8_t_defined 1
+
+
+
+
+
+
+
+  typedef int int_fast16_t;
+  typedef unsigned int uint_fast16_t;
+#define __int_fast16_t_defined 1
+
+
+
+
+
+
+
+  typedef int int_fast32_t;
+  typedef unsigned int uint_fast32_t;
+#define __int_fast32_t_defined 1
+
+
+
+
+
+
+
+  typedef long long int int_fast64_t;
+  typedef long long unsigned int uint_fast64_t;
+#define __int_fast64_t_defined 1
+# 128 "/usr/share/cwgcc/arm-none-eabi/include/stdint.h" 3 4
+#define INTPTR_MIN (-__INTPTR_MAX__ - 1)
+#define INTPTR_MAX (__INTPTR_MAX__)
+#define UINTPTR_MAX (__UINTPTR_MAX__)
+# 152 "/usr/share/cwgcc/arm-none-eabi/include/stdint.h" 3 4
+#define INT8_MIN (-__INT8_MAX__ - 1)
+#define INT8_MAX (__INT8_MAX__)
+#define UINT8_MAX (__UINT8_MAX__)
+
+
+
+
+
+
+
+#define INT_LEAST8_MIN (-__INT_LEAST8_MAX__ - 1)
+#define INT_LEAST8_MAX (__INT_LEAST8_MAX__)
+#define UINT_LEAST8_MAX (__UINT_LEAST8_MAX__)
+# 174 "/usr/share/cwgcc/arm-none-eabi/include/stdint.h" 3 4
+#define INT16_MIN (-__INT16_MAX__ - 1)
+#define INT16_MAX (__INT16_MAX__)
+#define UINT16_MAX (__UINT16_MAX__)
+
+
+
+
+
+
+
+#define INT_LEAST16_MIN (-__INT_LEAST16_MAX__ - 1)
+#define INT_LEAST16_MAX (__INT_LEAST16_MAX__)
+#define UINT_LEAST16_MAX (__UINT_LEAST16_MAX__)
+# 196 "/usr/share/cwgcc/arm-none-eabi/include/stdint.h" 3 4
+#define INT32_MIN (-__INT32_MAX__ - 1)
+#define INT32_MAX (__INT32_MAX__)
+#define UINT32_MAX (__UINT32_MAX__)
+# 212 "/usr/share/cwgcc/arm-none-eabi/include/stdint.h" 3 4
+#define INT_LEAST32_MIN (-__INT_LEAST32_MAX__ - 1)
+#define INT_LEAST32_MAX (__INT_LEAST32_MAX__)
+#define UINT_LEAST32_MAX (__UINT_LEAST32_MAX__)
+# 230 "/usr/share/cwgcc/arm-none-eabi/include/stdint.h" 3 4
+#define INT64_MIN (-__INT64_MAX__ - 1)
+#define INT64_MAX (__INT64_MAX__)
+#define UINT64_MAX (__UINT64_MAX__)
+# 246 "/usr/share/cwgcc/arm-none-eabi/include/stdint.h" 3 4
+#define INT_LEAST64_MIN (-__INT_LEAST64_MAX__ - 1)
+#define INT_LEAST64_MAX (__INT_LEAST64_MAX__)
+#define UINT_LEAST64_MAX (__UINT_LEAST64_MAX__)
+# 262 "/usr/share/cwgcc/arm-none-eabi/include/stdint.h" 3 4
+#define INT_FAST8_MIN (-__INT_FAST8_MAX__ - 1)
+#define INT_FAST8_MAX (__INT_FAST8_MAX__)
+#define UINT_FAST8_MAX (__UINT_FAST8_MAX__)
+# 278 "/usr/share/cwgcc/arm-none-eabi/include/stdint.h" 3 4
+#define INT_FAST16_MIN (-__INT_FAST16_MAX__ - 1)
+#define INT_FAST16_MAX (__INT_FAST16_MAX__)
+#define UINT_FAST16_MAX (__UINT_FAST16_MAX__)
+# 294 "/usr/share/cwgcc/arm-none-eabi/include/stdint.h" 3 4
+#define INT_FAST32_MIN (-__INT_FAST32_MAX__ - 1)
+#define INT_FAST32_MAX (__INT_FAST32_MAX__)
+#define UINT_FAST32_MAX (__UINT_FAST32_MAX__)
+# 310 "/usr/share/cwgcc/arm-none-eabi/include/stdint.h" 3 4
+#define INT_FAST64_MIN (-__INT_FAST64_MAX__ - 1)
+#define INT_FAST64_MAX (__INT_FAST64_MAX__)
+#define UINT_FAST64_MAX (__UINT_FAST64_MAX__)
+# 326 "/usr/share/cwgcc/arm-none-eabi/include/stdint.h" 3 4
+#define INTMAX_MAX (__INTMAX_MAX__)
 #define INTMAX_MIN (-INTMAX_MAX - 1)
-#undef UINTMAX_MAX
-#define UINTMAX_MAX __UINTMAX_MAX__
 
 
 
-#undef PTRDIFF_MAX
-#define PTRDIFF_MAX __PTRDIFF_MAX__
-#undef PTRDIFF_MIN
+
+
+
+
+#define UINTMAX_MAX (__UINTMAX_MAX__)
+
+
+
+
+
+
+
+#define SIZE_MAX (__SIZE_MAX__)
+
+
+
+
+
+#define SIG_ATOMIC_MIN (-__STDINT_EXP(INT_MAX) - 1)
+#define SIG_ATOMIC_MAX (__STDINT_EXP(INT_MAX))
+
+
+
+#define PTRDIFF_MAX (__PTRDIFF_MAX__)
+
+
+
 #define PTRDIFF_MIN (-PTRDIFF_MAX - 1)
 
-#undef SIG_ATOMIC_MAX
-#define SIG_ATOMIC_MAX __SIG_ATOMIC_MAX__
-#undef SIG_ATOMIC_MIN
-#define SIG_ATOMIC_MIN __SIG_ATOMIC_MIN__
 
-#undef SIZE_MAX
-#define SIZE_MAX __SIZE_MAX__
 
-#undef WCHAR_MAX
-#define WCHAR_MAX __WCHAR_MAX__
-#undef WCHAR_MIN
-#define WCHAR_MIN __WCHAR_MIN__
 
-#undef WINT_MAX
-#define WINT_MAX __WINT_MAX__
-#undef WINT_MIN
-#define WINT_MIN __WINT_MIN__
+#define WCHAR_MIN (__WCHAR_MIN__)
+# 374 "/usr/share/cwgcc/arm-none-eabi/include/stdint.h" 3 4
+#define WCHAR_MAX (__WCHAR_MAX__)
+# 384 "/usr/share/cwgcc/arm-none-eabi/include/stdint.h" 3 4
+#define WINT_MAX (__WINT_MAX__)
+
+
+
+
+#define WINT_MIN (__WINT_MIN__)
 
 
 
 
 
 
+#define INT8_C(x) __INT8_C(x)
+#define UINT8_C(x) __UINT8_C(x)
+# 408 "/usr/share/cwgcc/arm-none-eabi/include/stdint.h" 3 4
+#define INT16_C(x) __INT16_C(x)
+#define UINT16_C(x) __UINT16_C(x)
+# 420 "/usr/share/cwgcc/arm-none-eabi/include/stdint.h" 3 4
+#define INT32_C(x) __INT32_C(x)
+#define UINT32_C(x) __UINT32_C(x)
+# 433 "/usr/share/cwgcc/arm-none-eabi/include/stdint.h" 3 4
+#define INT64_C(x) __INT64_C(x)
+#define UINT64_C(x) __UINT64_C(x)
+# 449 "/usr/share/cwgcc/arm-none-eabi/include/stdint.h" 3 4
+#define INTMAX_C(x) __INTMAX_C(x)
+#define UINTMAX_C(x) __UINTMAX_C(x)
+# 10 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stdint.h" 2 3 4
 
-#undef INT8_C
-#define INT8_C(c) __INT8_C(c)
-#undef INT16_C
-#define INT16_C(c) __INT16_C(c)
-#undef INT32_C
-#define INT32_C(c) __INT32_C(c)
-#undef INT64_C
-#define INT64_C(c) __INT64_C(c)
-#undef UINT8_C
-#define UINT8_C(c) __UINT8_C(c)
-#undef UINT16_C
-#define UINT16_C(c) __UINT16_C(c)
-#undef UINT32_C
-#define UINT32_C(c) __UINT32_C(c)
-#undef UINT64_C
-#define UINT64_C(c) __UINT64_C(c)
-#undef INTMAX_C
-#define INTMAX_C(c) __INTMAX_C(c)
-#undef UINTMAX_C
-#define UINTMAX_C(c) __UINTMAX_C(c)
+
+
+#define _GCC_WRAP_STDINT_H 
 # 60 "naeusb/sam3u_hal/inc/sam3u2c.h" 2
 
 
@@ -11277,11 +11639,11 @@ typedef struct {
 
 
 
-# 1 "/usr/include/newlib/stdio.h" 1 3
-# 27 "/usr/include/newlib/stdio.h" 3
+# 1 "/usr/share/cwgcc/arm-none-eabi/include/stdio.h" 1 3
+# 27 "/usr/share/cwgcc/arm-none-eabi/include/stdio.h" 3
 #define _STDIO_H_ 
 
-# 1 "/usr/include/newlib/_ansi.h" 1 3
+# 1 "/usr/share/cwgcc/arm-none-eabi/include/_ansi.h" 1 3
 
 
 
@@ -11291,7 +11653,7 @@ typedef struct {
 
 #define _ANSIDECL_H_ 
 
-# 1 "/usr/include/newlib/newlib.h" 1 3
+# 1 "/usr/share/cwgcc/arm-none-eabi/include/newlib.h" 1 3
 
 
 
@@ -11299,20 +11661,7 @@ typedef struct {
 
 
 #define __NEWLIB_H__ 1
-
-
-# 1 "/usr/include/newlib/_newlib_version.h" 1 3
-
-
-
-#define _NEWLIB_VERSION_H__ 1
-
-#define _NEWLIB_VERSION "4.4.0"
-#define __NEWLIB__ 4
-#define __NEWLIB_MINOR__ 4
-#define __NEWLIB_PATCHLEVEL__ 0
-# 11 "/usr/include/newlib/newlib.h" 2 3
-# 27 "/usr/include/newlib/newlib.h" 3
+# 27 "/usr/share/cwgcc/arm-none-eabi/include/newlib.h" 3
 #define _ATEXIT_DYNAMIC_ALLOC 1
 
 
@@ -11333,21 +11682,38 @@ typedef struct {
 
 
 #define _HAVE_LONG_DOUBLE 1
-# 355 "/usr/include/newlib/newlib.h" 3
+# 355 "/usr/share/cwgcc/arm-none-eabi/include/newlib.h" 3
 #define _LDBL_EQ_DBL 1
-# 364 "/usr/include/newlib/newlib.h" 3
-#define _MB_LEN_MAX 1
-# 375 "/usr/include/newlib/newlib.h" 3
+
+
+
+
+
+#define _MB_CAPABLE 1
+
+
+#define _MB_LEN_MAX 8
+# 373 "/usr/share/cwgcc/arm-none-eabi/include/newlib.h" 3
 #define _REENT_CHECK_VERIFY 1
 
 
-
+#define _RETARGETABLE_LOCKING 1
 
 
 #define _UNBUF_STREAM_OPT 1
-# 393 "/usr/include/newlib/newlib.h" 3
+
+
+
+#define _WANT_IO_C99_FORMATS 1
+
+
+
+
+
+
+
 #define _WANT_IO_LONG_LONG 1
-# 410 "/usr/include/newlib/newlib.h" 3
+# 408 "/usr/share/cwgcc/arm-none-eabi/include/newlib.h" 3
 #define _WANT_REGISTER_FINI 1
 
 
@@ -11358,92 +11724,24 @@ typedef struct {
 
 
 #define _WIDE_ORIENT 1
-# 11 "/usr/include/newlib/_ansi.h" 2 3
-# 1 "/usr/include/newlib/sys/config.h" 1 3
+# 11 "/usr/share/cwgcc/arm-none-eabi/include/_ansi.h" 2 3
+# 1 "/usr/share/cwgcc/arm-none-eabi/include/sys/config.h" 1 3
 
 #define __SYS_CONFIG_H__ 
 
-# 1 "/usr/include/newlib/machine/ieeefp.h" 1 3
-# 77 "/usr/include/newlib/machine/ieeefp.h" 3
+# 1 "/usr/share/cwgcc/arm-none-eabi/include/machine/ieeefp.h" 1 3
+# 77 "/usr/share/cwgcc/arm-none-eabi/include/machine/ieeefp.h" 3
 #define __IEEE_LITTLE_ENDIAN 
-# 98 "/usr/include/newlib/machine/ieeefp.h" 3
+# 98 "/usr/share/cwgcc/arm-none-eabi/include/machine/ieeefp.h" 3
 #define __DOUBLE_TYPE double
 #define __FLOAT_TYPE float
-# 519 "/usr/include/newlib/machine/ieeefp.h" 3
+# 519 "/usr/share/cwgcc/arm-none-eabi/include/machine/ieeefp.h" 3
 #define __OBSOLETE_MATH_DEFAULT 1
 
 
 #define __OBSOLETE_MATH __OBSOLETE_MATH_DEFAULT
-# 5 "/usr/include/newlib/sys/config.h" 2 3
-# 1 "/usr/include/newlib/sys/features.h" 1 3
-# 22 "/usr/include/newlib/sys/features.h" 3
-#define _SYS_FEATURES_H 
-# 33 "/usr/include/newlib/sys/features.h" 3
-#define __GNUC_PREREQ(maj,min) ((__GNUC__ << 16) + __GNUC_MINOR__ >= ((maj) << 16) + (min))
-
-
-
-
-
-
-#define __GNUC_PREREQ__(ma,mi) __GNUC_PREREQ(ma, mi)
-# 136 "/usr/include/newlib/sys/features.h" 3
-#undef _DEFAULT_SOURCE
-#define _DEFAULT_SOURCE 1
-
-
-
-#undef _POSIX_SOURCE
-#define _POSIX_SOURCE 1
-#undef _POSIX_C_SOURCE
-#define _POSIX_C_SOURCE 200809L
-# 163 "/usr/include/newlib/sys/features.h" 3
-#undef _ATFILE_SOURCE
-#define _ATFILE_SOURCE 1
-# 257 "/usr/include/newlib/sys/features.h" 3
-#define __ATFILE_VISIBLE 1
-
-
-
-
-
-#define __BSD_VISIBLE 1
-
-
-
-
-
-
-
-#define __GNU_VISIBLE 0
-# 282 "/usr/include/newlib/sys/features.h" 3
-#define __ISO_C_VISIBLE 1999
-
-
-
-
-
-
-
-#define __LARGEFILE_VISIBLE 0
-
-
-
-#define __MISC_VISIBLE 1
-
-
-
-
-
-#define __POSIX_VISIBLE 200809
-# 316 "/usr/include/newlib/sys/features.h" 3
-#define __SVID_VISIBLE 1
-# 332 "/usr/include/newlib/sys/features.h" 3
-#define __XSI_VISIBLE 0
-# 344 "/usr/include/newlib/sys/features.h" 3
-#define __SSP_FORTIFY_LEVEL 0
-# 6 "/usr/include/newlib/sys/config.h" 2 3
-# 224 "/usr/include/newlib/sys/config.h" 3
+# 5 "/usr/share/cwgcc/arm-none-eabi/include/sys/config.h" 2 3
+# 224 "/usr/share/cwgcc/arm-none-eabi/include/sys/config.h" 3
 #define _POINTER_INT long
 
 
@@ -11455,7 +11753,7 @@ typedef struct {
 
 
 #define __RAND_MAX 0x7fffffff
-# 248 "/usr/include/newlib/sys/config.h" 3
+# 248 "/usr/share/cwgcc/arm-none-eabi/include/sys/config.h" 3
 #define __EXPORT 
 
 
@@ -11474,10 +11772,10 @@ typedef struct {
 
 
 #define _READ_WRITE_BUFSIZE_TYPE int
-# 290 "/usr/include/newlib/sys/config.h" 3
+# 290 "/usr/share/cwgcc/arm-none-eabi/include/sys/config.h" 3
 #define _USE_GDTOA 
-# 12 "/usr/include/newlib/_ansi.h" 2 3
-# 31 "/usr/include/newlib/_ansi.h" 3
+# 12 "/usr/share/cwgcc/arm-none-eabi/include/_ansi.h" 2 3
+# 31 "/usr/share/cwgcc/arm-none-eabi/include/_ansi.h" 3
 #define _BEGIN_STD_C 
 #define _END_STD_C 
 #define _NOTHROW 
@@ -11491,157 +11789,33 @@ typedef struct {
 
 
 #define _ATTRIBUTE(attrs) __attribute__ (attrs)
-# 69 "/usr/include/newlib/_ansi.h" 3
+# 69 "/usr/share/cwgcc/arm-none-eabi/include/_ansi.h" 3
 #define _ELIDABLE_INLINE static __inline__
 
 
 
 #define _NOINLINE __attribute__ ((__noinline__))
 #define _NOINLINE_STATIC _NOINLINE static
-# 30 "/usr/include/newlib/stdio.h" 2 3
+# 30 "/usr/share/cwgcc/arm-none-eabi/include/stdio.h" 2 3
 
 #define _FSTDIO 
 
 #define __need_size_t 
 #define __need_NULL 
-# 1 "/usr/include/newlib/sys/cdefs.h" 1 3
-# 43 "/usr/include/newlib/sys/cdefs.h" 3
+# 1 "/usr/share/cwgcc/arm-none-eabi/include/sys/cdefs.h" 1 3
+# 43 "/usr/share/cwgcc/arm-none-eabi/include/sys/cdefs.h" 3
 #define _SYS_CDEFS_H_ 
 
-# 1 "/usr/include/newlib/machine/_default_types.h" 1 3
 
 
-
-
-
-#define _MACHINE__DEFAULT_TYPES_H 
-# 15 "/usr/include/newlib/machine/_default_types.h" 3
-#define __EXP(x) __ ##x ##__
-# 26 "/usr/include/newlib/machine/_default_types.h" 3
-#define __have_longlong64 1
-
-
-
-
-
-
-#define __have_long32 1
-
-
-
-
-
-
-
-
-# 41 "/usr/include/newlib/machine/_default_types.h" 3
-typedef signed char __int8_t;
-
-typedef unsigned char __uint8_t;
-
-
-
-#define ___int8_t_defined 1
-
-
-
-
-
-
-
-typedef short int __int16_t;
-
-typedef short unsigned int __uint16_t;
-
-
-
-#define ___int16_t_defined 1
-# 77 "/usr/include/newlib/machine/_default_types.h" 3
-typedef long int __int32_t;
-
-typedef long unsigned int __uint32_t;
-
-
-
-#define ___int32_t_defined 1
-# 103 "/usr/include/newlib/machine/_default_types.h" 3
-typedef long long int __int64_t;
-
-typedef long long unsigned int __uint64_t;
-
-
-
-#define ___int64_t_defined 1
-# 134 "/usr/include/newlib/machine/_default_types.h" 3
-typedef signed char __int_least8_t;
-
-typedef unsigned char __uint_least8_t;
-
-
-
-#define ___int_least8_t_defined 1
-# 160 "/usr/include/newlib/machine/_default_types.h" 3
-typedef short int __int_least16_t;
-
-typedef short unsigned int __uint_least16_t;
-
-
-
-#define ___int_least16_t_defined 1
-# 182 "/usr/include/newlib/machine/_default_types.h" 3
-typedef long int __int_least32_t;
-
-typedef long unsigned int __uint_least32_t;
-
-
-
-#define ___int_least32_t_defined 1
-# 200 "/usr/include/newlib/machine/_default_types.h" 3
-typedef long long int __int_least64_t;
-
-typedef long long unsigned int __uint_least64_t;
-
-
-
-#define ___int_least64_t_defined 1
-
-
-
-
-
-
-
-typedef long long int __intmax_t;
-
-
-
-
-
-
-
-typedef long long unsigned int __uintmax_t;
-
-
-
-
-
-
-
-typedef int __intptr_t;
-
-typedef unsigned int __uintptr_t;
-# 244 "/usr/include/newlib/machine/_default_types.h" 3
-#undef __EXP
-# 46 "/usr/include/newlib/sys/cdefs.h" 2 3
-
-# 1 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 1 3 4
-# 158 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
+# 1 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 1 3 4
+# 158 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
 #undef __need_ptrdiff_t
-# 237 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
+# 237 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
 #undef __need_size_t
-# 349 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
+# 349 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
 #undef __need_wchar_t
-# 399 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
+# 399 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
 #undef NULL
 
 
@@ -11660,7 +11834,7 @@ typedef unsigned int __uintptr_t;
 
 #undef offsetof
 #define offsetof(TYPE,MEMBER) __builtin_offsetof (TYPE, MEMBER)
-# 48 "/usr/include/newlib/sys/cdefs.h" 2 3
+# 48 "/usr/share/cwgcc/arm-none-eabi/include/sys/cdefs.h" 2 3
 
 #define __PMT(args) args
 #define __DOTS , ...
@@ -11682,15 +11856,15 @@ typedef unsigned int __uintptr_t;
 #define __bounded 
 #define __unbounded 
 #define __ptrvalue 
-# 78 "/usr/include/newlib/sys/cdefs.h" 3
+# 78 "/usr/share/cwgcc/arm-none-eabi/include/sys/cdefs.h" 3
 #define __has_extension __has_feature
 
 
 #define __has_feature(x) 0
-# 94 "/usr/include/newlib/sys/cdefs.h" 3
+# 94 "/usr/share/cwgcc/arm-none-eabi/include/sys/cdefs.h" 3
 #define __BEGIN_DECLS 
 #define __END_DECLS 
-# 107 "/usr/include/newlib/sys/cdefs.h" 3
+# 107 "/usr/share/cwgcc/arm-none-eabi/include/sys/cdefs.h" 3
 #define __GNUCLIKE_ASM 3
 #define __GNUCLIKE_MATH_BUILTIN_CONSTANTS 
 
@@ -11732,7 +11906,7 @@ typedef unsigned int __uintptr_t;
 #define __CC_SUPPORTS_VARADIC_XXX 1
 
 #define __CC_SUPPORTS_DYNAMIC_ARRAY_INIT 1
-# 164 "/usr/include/newlib/sys/cdefs.h" 3
+# 164 "/usr/share/cwgcc/arm-none-eabi/include/sys/cdefs.h" 3
 #define __P(protos) protos
 #define __CONCAT1(x,y) x ## y
 #define __CONCAT(x,y) __CONCAT1(x,y)
@@ -11742,9 +11916,9 @@ typedef unsigned int __uintptr_t;
 #define __const const
 #define __signed signed
 #define __volatile volatile
-# 217 "/usr/include/newlib/sys/cdefs.h" 3
+# 217 "/usr/share/cwgcc/arm-none-eabi/include/sys/cdefs.h" 3
 #define __weak_symbol __attribute__((__weak__))
-# 230 "/usr/include/newlib/sys/cdefs.h" 3
+# 230 "/usr/share/cwgcc/arm-none-eabi/include/sys/cdefs.h" 3
 #define __dead2 __attribute__((__noreturn__))
 #define __pure2 __attribute__((__const__))
 #define __unused __attribute__((__unused__))
@@ -11762,7 +11936,7 @@ typedef unsigned int __uintptr_t;
 
 
 #define __alloc_align(x) __attribute__((__alloc_align__(x)))
-# 267 "/usr/include/newlib/sys/cdefs.h" 3
+# 267 "/usr/share/cwgcc/arm-none-eabi/include/sys/cdefs.h" 3
 #define _Alignas(x) __aligned(x)
 
 
@@ -11771,13 +11945,13 @@ typedef unsigned int __uintptr_t;
 
 
 #define _Alignof(x) __alignof(x)
-# 289 "/usr/include/newlib/sys/cdefs.h" 3
+# 289 "/usr/share/cwgcc/arm-none-eabi/include/sys/cdefs.h" 3
 #define _Noreturn __dead2
-# 318 "/usr/include/newlib/sys/cdefs.h" 3
+# 318 "/usr/share/cwgcc/arm-none-eabi/include/sys/cdefs.h" 3
 #define _Thread_local __thread
-# 341 "/usr/include/newlib/sys/cdefs.h" 3
+# 341 "/usr/share/cwgcc/arm-none-eabi/include/sys/cdefs.h" 3
 #define __generic(expr,t,yes,no) __builtin_choose_expr( __builtin_types_compatible_p(__typeof((0, (expr))), t), yes, no)
-# 356 "/usr/include/newlib/sys/cdefs.h" 3
+# 356 "/usr/share/cwgcc/arm-none-eabi/include/sys/cdefs.h" 3
 #define __min_size(x) static (x)
 
 
@@ -11827,11 +12001,11 @@ typedef unsigned int __uintptr_t;
 
 
 #define __unreachable() __builtin_unreachable()
-# 421 "/usr/include/newlib/sys/cdefs.h" 3
+# 421 "/usr/share/cwgcc/arm-none-eabi/include/sys/cdefs.h" 3
 #define __restrict restrict
-# 434 "/usr/include/newlib/sys/cdefs.h" 3
+# 434 "/usr/share/cwgcc/arm-none-eabi/include/sys/cdefs.h" 3
 #define __restrict_arr restrict
-# 468 "/usr/include/newlib/sys/cdefs.h" 3
+# 468 "/usr/share/cwgcc/arm-none-eabi/include/sys/cdefs.h" 3
 #define __predict_true(exp) __builtin_expect((exp), 1)
 #define __predict_false(exp) __builtin_expect((exp), 0)
 
@@ -11845,12 +12019,12 @@ typedef unsigned int __uintptr_t;
 
 
 #define __hidden __attribute__((__visibility__("hidden")))
-# 490 "/usr/include/newlib/sys/cdefs.h" 3
+# 490 "/usr/share/cwgcc/arm-none-eabi/include/sys/cdefs.h" 3
 #define __offsetof(type,field) offsetof(type, field)
 #define __rangeof(type,start,end) (__offsetof(type, end) - __offsetof(type, start))
-# 501 "/usr/include/newlib/sys/cdefs.h" 3
+# 501 "/usr/share/cwgcc/arm-none-eabi/include/sys/cdefs.h" 3
 #define __containerof(x,s,m) ({ const volatile __typeof(((s *)0)->m) *__x = (x); __DEQUALIFY(s *, (const volatile char *)__x - __offsetof(s, m));})
-# 523 "/usr/include/newlib/sys/cdefs.h" 3
+# 523 "/usr/share/cwgcc/arm-none-eabi/include/sys/cdefs.h" 3
 #define __printflike(fmtarg,firstvararg) __attribute__((__format__ (__printf__, fmtarg, firstvararg)))
 
 #define __scanflike(fmtarg,firstvararg) __attribute__((__format__ (__scanf__, fmtarg, firstvararg)))
@@ -11859,7 +12033,7 @@ typedef unsigned int __uintptr_t;
 #define __strfmonlike(fmtarg,firstvararg) __attribute__((__format__ (__strfmon__, fmtarg, firstvararg)))
 
 #define __strftimelike(fmtarg,firstvararg) __attribute__((__format__ (__strftime__, fmtarg, firstvararg)))
-# 540 "/usr/include/newlib/sys/cdefs.h" 3
+# 540 "/usr/share/cwgcc/arm-none-eabi/include/sys/cdefs.h" 3
 #define __printf0like(fmtarg,firstvararg) 
 
 
@@ -11878,7 +12052,7 @@ typedef unsigned int __uintptr_t;
 #define __sym_compat(sym,impl,verid) __asm__(".symver " #impl ", " #sym "@" #verid)
 
 #define __sym_default(sym,impl,verid) __asm__(".symver " #impl ", " #sym "@@" #verid)
-# 592 "/usr/include/newlib/sys/cdefs.h" 3
+# 592 "/usr/share/cwgcc/arm-none-eabi/include/sys/cdefs.h" 3
 #define __FBSDID(s) struct __hack
 
 
@@ -11919,10 +12093,10 @@ typedef unsigned int __uintptr_t;
 #define _Null_unspecified 
 #define __NULLABILITY_PRAGMA_PUSH 
 #define __NULLABILITY_PRAGMA_POP 
-# 652 "/usr/include/newlib/sys/cdefs.h" 3
+# 652 "/usr/share/cwgcc/arm-none-eabi/include/sys/cdefs.h" 3
 #define __arg_type_tag(arg_kind,arg_idx,type_tag_idx) 
 #define __datatype_type_tag(kind,type) 
-# 671 "/usr/include/newlib/sys/cdefs.h" 3
+# 671 "/usr/share/cwgcc/arm-none-eabi/include/sys/cdefs.h" 3
 #define __lock_annotate(x) 
 
 
@@ -11962,7 +12136,7 @@ typedef unsigned int __uintptr_t;
 
 
 #define __no_lock_analysis __lock_annotate(no_thread_safety_analysis)
-# 726 "/usr/include/newlib/sys/cdefs.h" 3
+# 726 "/usr/share/cwgcc/arm-none-eabi/include/sys/cdefs.h" 3
 #define __nosanitizeaddress 
 #define __nosanitizememory 
 #define __nosanitizethread 
@@ -11990,22 +12164,24 @@ typedef unsigned int __uintptr_t;
 #define __align_up(x,y) __builtin_align_up(x, y)
 #define __align_down(x,y) __builtin_align_down(x, y)
 #define __is_aligned(x,y) __builtin_is_aligned(x, y)
-# 36 "/usr/include/newlib/stdio.h" 2 3
-# 1 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 1 3 4
-# 37 "/usr/include/newlib/stdio.h" 2 3
+# 36 "/usr/share/cwgcc/arm-none-eabi/include/stdio.h" 2 3
+# 1 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 1 3 4
+# 37 "/usr/share/cwgcc/arm-none-eabi/include/stdio.h" 2 3
 
 
 #define __need___va_list 
-# 1 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stdarg.h" 1 3 4
-# 34 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stdarg.h" 3 4
+# 1 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stdarg.h" 1 3 4
+# 34 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stdarg.h" 3 4
 #undef __need___va_list
 
 
 
 
 #define __GNUC_VA_LIST 
+
+# 40 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stdarg.h" 3 4
 typedef __builtin_va_list __gnuc_va_list;
-# 41 "/usr/include/newlib/stdio.h" 2 3
+# 41 "/usr/share/cwgcc/arm-none-eabi/include/stdio.h" 2 3
 
 
 
@@ -12013,28 +12189,28 @@ typedef __builtin_va_list __gnuc_va_list;
 
 typedef __gnuc_va_list va_list;
 #define _VA_LIST_DEFINED 
-# 60 "/usr/include/newlib/stdio.h" 3
-# 1 "/usr/include/newlib/sys/reent.h" 1 3
-# 11 "/usr/include/newlib/sys/reent.h" 3
+# 60 "/usr/share/cwgcc/arm-none-eabi/include/stdio.h" 3
+# 1 "/usr/share/cwgcc/arm-none-eabi/include/sys/reent.h" 1 3
+# 11 "/usr/share/cwgcc/arm-none-eabi/include/sys/reent.h" 3
 #define _SYS_REENT_H_ 
 
-# 1 "/usr/include/newlib/_ansi.h" 1 3
-# 14 "/usr/include/newlib/sys/reent.h" 2 3
-# 1 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 1 3 4
-# 15 "/usr/include/newlib/sys/reent.h" 2 3
+# 1 "/usr/share/cwgcc/arm-none-eabi/include/_ansi.h" 1 3
+# 14 "/usr/share/cwgcc/arm-none-eabi/include/sys/reent.h" 2 3
+# 1 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 1 3 4
+# 15 "/usr/share/cwgcc/arm-none-eabi/include/sys/reent.h" 2 3
 
-# 1 "/usr/include/newlib/sys/_types.h" 1 3
-# 20 "/usr/include/newlib/sys/_types.h" 3
+# 1 "/usr/share/cwgcc/arm-none-eabi/include/sys/_types.h" 1 3
+# 20 "/usr/share/cwgcc/arm-none-eabi/include/sys/_types.h" 3
 #define _SYS__TYPES_H 
 
 #define __need_size_t 
 #define __need_wint_t 
-# 1 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 1 3 4
-# 158 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
+# 1 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 1 3 4
+# 158 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
 #undef __need_ptrdiff_t
-# 237 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
+# 237 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
 #undef __need_size_t
-# 349 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
+# 349 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
 #undef __need_wchar_t
 
 
@@ -12048,7 +12224,7 @@ typedef __gnuc_va_list va_list;
 typedef unsigned int wint_t;
 
 #undef __need_wint_t
-# 399 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
+# 399 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
 #undef NULL
 
 
@@ -12067,17 +12243,17 @@ typedef unsigned int wint_t;
 
 #undef offsetof
 #define offsetof(TYPE,MEMBER) __builtin_offsetof (TYPE, MEMBER)
-# 25 "/usr/include/newlib/sys/_types.h" 2 3
+# 25 "/usr/share/cwgcc/arm-none-eabi/include/sys/_types.h" 2 3
 
 
-# 1 "/usr/include/newlib/machine/_types.h" 1 3
+# 1 "/usr/share/cwgcc/arm-none-eabi/include/machine/_types.h" 1 3
 
 
 
 
 
 #define _MACHINE__TYPES_H 
-# 28 "/usr/include/newlib/sys/_types.h" 2 3
+# 28 "/usr/share/cwgcc/arm-none-eabi/include/sys/_types.h" 2 3
 
 
 typedef long __blkcnt_t;
@@ -12126,7 +12302,7 @@ typedef __uint32_t __id_t;
 
 
 typedef unsigned short __ino_t;
-# 90 "/usr/include/newlib/sys/_types.h" 3
+# 90 "/usr/share/cwgcc/arm-none-eabi/include/sys/_types.h" 3
 typedef __uint32_t __mode_t;
 
 
@@ -12154,17 +12330,17 @@ typedef long __key_t;
 
 
 typedef long _fpos_t;
-# 127 "/usr/include/newlib/sys/_types.h" 3
+# 127 "/usr/share/cwgcc/arm-none-eabi/include/sys/_types.h" 3
 #undef __size_t
 
 
 
 typedef unsigned int __size_t;
-# 146 "/usr/include/newlib/sys/_types.h" 3
+# 146 "/usr/share/cwgcc/arm-none-eabi/include/sys/_types.h" 3
 #define unsigned signed
 typedef signed int _ssize_t;
 #undef unsigned
-# 158 "/usr/include/newlib/sys/_types.h" 3
+# 158 "/usr/share/cwgcc/arm-none-eabi/include/sys/_types.h" 3
 typedef _ssize_t __ssize_t;
 
 
@@ -12231,7 +12407,7 @@ typedef unsigned long __useconds_t;
 
 
 typedef __builtin_va_list __va_list;
-# 17 "/usr/include/newlib/sys/reent.h" 2 3
+# 17 "/usr/share/cwgcc/arm-none-eabi/include/sys/reent.h" 2 3
 
 #define _NULL 0
 
@@ -12239,28 +12415,42 @@ typedef __builtin_va_list __va_list;
 
 #define __Long long
 typedef unsigned long __ULong;
-# 35 "/usr/include/newlib/sys/reent.h" 3
-# 1 "/usr/include/newlib/sys/lock.h" 1 3
+# 35 "/usr/share/cwgcc/arm-none-eabi/include/sys/reent.h" 3
+# 1 "/usr/share/cwgcc/arm-none-eabi/include/sys/lock.h" 1 3
 
 #define __SYS_LOCK_H__ 
-# 11 "/usr/include/newlib/sys/lock.h" 3
-typedef int _LOCK_T;
-typedef int _LOCK_RECURSIVE_T;
+# 33 "/usr/share/cwgcc/arm-none-eabi/include/sys/lock.h" 3
+struct __lock;
+typedef struct __lock * _LOCK_T;
+#define _LOCK_RECURSIVE_T _LOCK_T
 
-#define __LOCK_INIT(class,lock) static int lock = 0;
-#define __LOCK_INIT_RECURSIVE(class,lock) static int lock = 0;
-#define __lock_init(lock) ((void) 0)
-#define __lock_init_recursive(lock) ((void) 0)
-#define __lock_close(lock) ((void) 0)
-#define __lock_close_recursive(lock) ((void) 0)
-#define __lock_acquire(lock) ((void) 0)
-#define __lock_acquire_recursive(lock) ((void) 0)
-#define __lock_try_acquire(lock) ((void) 0)
-#define __lock_try_acquire_recursive(lock) ((void) 0)
-#define __lock_release(lock) ((void) 0)
-#define __lock_release_recursive(lock) ((void) 0)
-# 36 "/usr/include/newlib/sys/reent.h" 2 3
-typedef _LOCK_RECURSIVE_T _flock_t;
+#define __LOCK_INIT(class,lock) extern struct __lock __lock_ ## lock; class _LOCK_T lock = &__lock_ ## lock
+
+#define __LOCK_INIT_RECURSIVE(class,lock) __LOCK_INIT(class,lock)
+
+extern void __retarget_lock_init(_LOCK_T *lock);
+#define __lock_init(lock) __retarget_lock_init(&lock)
+extern void __retarget_lock_init_recursive(_LOCK_T *lock);
+#define __lock_init_recursive(lock) __retarget_lock_init_recursive(&lock)
+extern void __retarget_lock_close(_LOCK_T lock);
+#define __lock_close(lock) __retarget_lock_close(lock)
+extern void __retarget_lock_close_recursive(_LOCK_T lock);
+#define __lock_close_recursive(lock) __retarget_lock_close_recursive(lock)
+extern void __retarget_lock_acquire(_LOCK_T lock);
+#define __lock_acquire(lock) __retarget_lock_acquire(lock)
+extern void __retarget_lock_acquire_recursive(_LOCK_T lock);
+#define __lock_acquire_recursive(lock) __retarget_lock_acquire_recursive(lock)
+extern int __retarget_lock_try_acquire(_LOCK_T lock);
+#define __lock_try_acquire(lock) __retarget_lock_try_acquire(lock)
+extern int __retarget_lock_try_acquire_recursive(_LOCK_T lock);
+#define __lock_try_acquire_recursive(lock) __retarget_lock_try_acquire_recursive(lock)
+
+extern void __retarget_lock_release(_LOCK_T lock);
+#define __lock_release(lock) __retarget_lock_release(lock)
+extern void __retarget_lock_release_recursive(_LOCK_T lock);
+#define __lock_release_recursive(lock) __retarget_lock_release_recursive(lock)
+# 36 "/usr/share/cwgcc/arm-none-eabi/include/sys/reent.h" 2 3
+typedef _LOCK_T _flock_t;
 
 
 
@@ -12313,7 +12503,7 @@ struct _on_exit_args {
 
  __ULong _is_cxa;
 };
-# 99 "/usr/include/newlib/sys/reent.h" 3
+# 99 "/usr/share/cwgcc/arm-none-eabi/include/sys/reent.h" 3
 struct _atexit {
  struct _atexit *_next;
  int _ind;
@@ -12322,12 +12512,12 @@ struct _atexit {
         struct _on_exit_args _on_exit_args;
 };
 #define _ATEXIT_INIT {_NULL, 0, {_NULL}, {{_NULL}, {_NULL}, 0, 0}}
-# 116 "/usr/include/newlib/sys/reent.h" 3
+# 116 "/usr/share/cwgcc/arm-none-eabi/include/sys/reent.h" 3
 struct __sbuf {
  unsigned char *_base;
  int _size;
 };
-# 146 "/usr/include/newlib/sys/reent.h" 3
+# 146 "/usr/share/cwgcc/arm-none-eabi/include/sys/reent.h" 3
 #define _REENT_SMALL_CHECK_INIT(ptr) 
 
 
@@ -12385,7 +12575,7 @@ struct __sFILE {
   _mbstate_t _mbstate;
   int _flags2;
 };
-# 270 "/usr/include/newlib/sys/reent.h" 3
+# 270 "/usr/share/cwgcc/arm-none-eabi/include/sys/reent.h" 3
 typedef struct __sFILE __FILE;
 
 
@@ -12400,7 +12590,7 @@ struct _glue
 };
 
 extern struct _glue __sglue;
-# 299 "/usr/include/newlib/sys/reent.h" 3
+# 299 "/usr/share/cwgcc/arm-none-eabi/include/sys/reent.h" 3
 #define _RAND48_SEED_0 (0x330e)
 #define _RAND48_SEED_1 (0xabcd)
 #define _RAND48_SEED_2 (0x1234)
@@ -12422,13 +12612,13 @@ struct _rand48 {
 #define _REENT_EMERGENCY_SIZE 25
 #define _REENT_ASCTIME_SIZE 26
 #define _REENT_SIGNAL_SIZE 24
-# 330 "/usr/include/newlib/sys/reent.h" 3
+# 330 "/usr/share/cwgcc/arm-none-eabi/include/sys/reent.h" 3
 #define _REENT_INIT_RESERVED_0 
 #define _REENT_INIT_RESERVED_1 
 #define _REENT_INIT_RESERVED_2 
 #define _REENT_INIT_RESERVED_6_7 
 #define _REENT_INIT_RESERVED_8 
-# 568 "/usr/include/newlib/sys/reent.h" 3
+# 568 "/usr/share/cwgcc/arm-none-eabi/include/sys/reent.h" 3
 struct _reent
 {
   int _errno;
@@ -12487,7 +12677,7 @@ struct _reent
           _mbstate_t _wcrtomb_state;
           _mbstate_t _wcsrtombs_state;
    int _h_errno;
-# 634 "/usr/include/newlib/sys/reent.h" 3
+# 634 "/usr/share/cwgcc/arm-none-eabi/include/sys/reent.h" 3
         } _reent;
 
 
@@ -12508,9 +12698,9 @@ struct _reent
 };
 
 #define _REENT_INIT(var) { 0, &__sf[0], &__sf[1], &__sf[2], 0, "", _REENT_INIT_RESERVED_1 _NULL, _REENT_INIT_RESERVED_0 _NULL, _NULL, 0, _NULL, _NULL, 0, _NULL, { { _REENT_INIT_RESERVED_2 _NULL, "", {0, 0, 0, 0, 0, 0, 0, 0, 0}, 0, 1, { {_RAND48_SEED_0, _RAND48_SEED_1, _RAND48_SEED_2}, {_RAND48_MULT_0, _RAND48_MULT_1, _RAND48_MULT_2}, _RAND48_ADD }, {0, {0}}, {0, {0}}, {0, {0}}, "", "", 0, {0, {0}}, {0, {0}}, {0, {0}}, {0, {0}}, {0, {0}} } }, _REENT_INIT_RESERVED_6_7 _NULL }
-# 700 "/usr/include/newlib/sys/reent.h" 3
+# 700 "/usr/share/cwgcc/arm-none-eabi/include/sys/reent.h" 3
 #define _REENT_INIT_PTR_ZEROED(var) { (var)->_stdin = &__sf[0]; (var)->_stdout = &__sf[1]; (var)->_stderr = &__sf[2]; (var)->_new._reent._rand_next = 1; (var)->_new._reent._r48._seed[0] = _RAND48_SEED_0; (var)->_new._reent._r48._seed[1] = _RAND48_SEED_1; (var)->_new._reent._r48._seed[2] = _RAND48_SEED_2; (var)->_new._reent._r48._mult[0] = _RAND48_MULT_0; (var)->_new._reent._r48._mult[1] = _RAND48_MULT_1; (var)->_new._reent._r48._mult[2] = _RAND48_MULT_2; (var)->_new._reent._r48._add = _RAND48_ADD; }
-# 714 "/usr/include/newlib/sys/reent.h" 3
+# 714 "/usr/share/cwgcc/arm-none-eabi/include/sys/reent.h" 3
 #define _REENT_CHECK_RAND48(ptr) 
 #define _REENT_CHECK_MP(ptr) 
 #define _REENT_CHECK_TM(ptr) 
@@ -12539,7 +12729,7 @@ struct _reent
 #define _REENT_MBSRTOWCS_STATE(ptr) ((ptr)->_new._reent._mbsrtowcs_state)
 #define _REENT_WCRTOMB_STATE(ptr) ((ptr)->_new._reent._wcrtomb_state)
 #define _REENT_WCSRTOMBS_STATE(ptr) ((ptr)->_new._reent._wcsrtombs_state)
-# 750 "/usr/include/newlib/sys/reent.h" 3
+# 750 "/usr/share/cwgcc/arm-none-eabi/include/sys/reent.h" 3
 #define _REENT_L64A_BUF(ptr) ((ptr)->_new._reent._l64a_buf)
 #define _REENT_SIGNAL_BUF(ptr) ((ptr)->_new._reent._signal_buf)
 #define _REENT_GETDATE_ERR_P(ptr) (&((ptr)->_new._reent._getdate_err))
@@ -12559,7 +12749,7 @@ struct _reent
 #define _REENT_STDERR(_ptr) ((_ptr)->_stderr)
 
 #define _REENT_INIT_PTR(var) { memset((var), 0, sizeof(*(var))); _REENT_INIT_PTR_ZEROED(var); }
-# 779 "/usr/include/newlib/sys/reent.h" 3
+# 779 "/usr/share/cwgcc/arm-none-eabi/include/sys/reent.h" 3
 #define __ATTRIBUTE_IMPURE_PTR__ 
 
 
@@ -12570,14 +12760,14 @@ extern struct _reent *_impure_ptr ;
 
 
 extern struct _reent _impure_data ;
-# 798 "/usr/include/newlib/sys/reent.h" 3
+# 798 "/usr/share/cwgcc/arm-none-eabi/include/sys/reent.h" 3
 #define _REENT _impure_ptr
 
 
 #define _REENT_IS_NULL(_ptr) ((_ptr) == NULL)
 
 #define _GLOBAL_REENT (&_impure_data)
-# 898 "/usr/include/newlib/sys/reent.h" 3
+# 898 "/usr/share/cwgcc/arm-none-eabi/include/sys/reent.h" 3
 #define _Kmax (sizeof (size_t) << 3)
 
 extern struct _atexit *__atexit;
@@ -12589,7 +12779,7 @@ void _reclaim_reent (struct _reent *);
 
 extern int _fwalk_sglue (struct _reent *, int (*)(struct _reent *, __FILE *),
     struct _glue *);
-# 61 "/usr/include/newlib/stdio.h" 2 3
+# 61 "/usr/share/cwgcc/arm-none-eabi/include/stdio.h" 2 3
 
 
 
@@ -12614,10 +12804,10 @@ typedef _ssize_t ssize_t;
 #define _SSIZE_T_DECLARED 
 
 
-# 1 "/usr/include/newlib/sys/stdio.h" 1 3
+# 1 "/usr/share/cwgcc/arm-none-eabi/include/sys/stdio.h" 1 3
 
 #define _NEWLIB_STDIO_H 
-# 13 "/usr/include/newlib/sys/stdio.h" 3
+# 13 "/usr/share/cwgcc/arm-none-eabi/include/sys/stdio.h" 3
 #define _flockfile(fp) (((fp)->_flags & __SSTR) ? 0 : __lock_acquire_recursive((fp)->_lock))
 
 
@@ -12627,7 +12817,7 @@ typedef _ssize_t ssize_t;
 
 
 #define _funlockfile(fp) (((fp)->_flags & __SSTR) ? 0 : __lock_release_recursive((fp)->_lock))
-# 86 "/usr/include/newlib/stdio.h" 2 3
+# 86 "/usr/share/cwgcc/arm-none-eabi/include/stdio.h" 2 3
 
 #define __SLBF 0x0001
 #define __SNBF 0x0002
@@ -12652,7 +12842,7 @@ typedef _ssize_t ssize_t;
 
 #define __SNLK 0x0001
 #define __SWID 0x2000
-# 120 "/usr/include/newlib/stdio.h" 3
+# 120 "/usr/share/cwgcc/arm-none-eabi/include/stdio.h" 3
 #define _IOFBF 0
 #define _IOLBF 1
 #define _IONBF 2
@@ -12740,15 +12930,15 @@ int fprintf (FILE *restrict, const char *restrict, ...)
 int fscanf (FILE *restrict, const char *restrict, ...)
                __attribute__ ((__format__ (__scanf__, 2, 3)));
 int 
-# 206 "/usr/include/newlib/stdio.h"
+# 206 "/usr/share/cwgcc/arm-none-eabi/include/stdio.h"
    iprintf 
-# 206 "/usr/include/newlib/stdio.h" 3
+# 206 "/usr/share/cwgcc/arm-none-eabi/include/stdio.h" 3
           (const char *restrict, ...)
                __attribute__ ((__format__ (__printf__, 1, 2)));
 int 
-# 208 "/usr/include/newlib/stdio.h"
+# 208 "/usr/share/cwgcc/arm-none-eabi/include/stdio.h"
    iscanf 
-# 208 "/usr/include/newlib/stdio.h" 3
+# 208 "/usr/share/cwgcc/arm-none-eabi/include/stdio.h" 3
          (const char *restrict, ...)
                __attribute__ ((__format__ (__scanf__, 1, 2)));
 int sscanf (const char *restrict, const char *restrict, ...)
@@ -12795,7 +12985,7 @@ int sprintf (char *restrict, const char *restrict, ...)
                __attribute__ ((__format__ (__printf__, 2, 3)));
 int remove (const char *);
 int rename (const char *, const char *);
-# 263 "/usr/include/newlib/stdio.h" 3
+# 263 "/usr/share/cwgcc/arm-none-eabi/include/stdio.h" 3
 int fseeko (FILE *, off_t, int);
 off_t ftello (FILE *);
 
@@ -12815,7 +13005,7 @@ int vscanf (const char *, __gnuc_va_list)
                __attribute__ ((__format__ (__scanf__, 1, 0)));
 int vsscanf (const char *restrict, const char *restrict, __gnuc_va_list)
                __attribute__ ((__format__ (__scanf__, 2, 0)));
-# 290 "/usr/include/newlib/stdio.h" 3
+# 290 "/usr/share/cwgcc/arm-none-eabi/include/stdio.h" 3
 int asiprintf (char **, const char *, ...)
                __attribute__ ((__format__ (__printf__, 2, 3)));
 char * asniprintf (char *, size_t *, const char *, ...)
@@ -12862,7 +13052,7 @@ int vsiscanf (const char *, const char *, __gnuc_va_list)
                __attribute__ ((__format__ (__scanf__, 2, 0)));
 int vsniprintf (char *, size_t, const char *, __gnuc_va_list)
                __attribute__ ((__format__ (__printf__, 3, 0)));
-# 345 "/usr/include/newlib/stdio.h" 3
+# 345 "/usr/share/cwgcc/arm-none-eabi/include/stdio.h" 3
 FILE * fdopen (int, const char *);
 
 int fileno (FILE *);
@@ -12889,7 +13079,7 @@ int ftrylockfile (FILE *);
 void funlockfile (FILE *);
 int putc_unlocked (int, FILE *);
 int putchar_unlocked (int);
-# 380 "/usr/include/newlib/stdio.h" 3
+# 380 "/usr/share/cwgcc/arm-none-eabi/include/stdio.h" 3
 int dprintf (int, const char *restrict, ...)
                __attribute__ ((__format__ (__printf__, 2, 3)));
 
@@ -12903,7 +13093,7 @@ int vdprintf (int, const char *restrict, __gnuc_va_list)
 
 
 int renameat (int, const char *, int, const char *);
-# 402 "/usr/include/newlib/stdio.h" 3
+# 402 "/usr/share/cwgcc/arm-none-eabi/include/stdio.h" 3
 int _asiprintf_r (struct _reent *, char **, const char *, ...)
                __attribute__ ((__format__ (__printf__, 3, 4)));
 char * _asniprintf_r (struct _reent *, char *, size_t *, const char *, ...)
@@ -13052,10 +13242,10 @@ int fgetc_unlocked (FILE *);
 int fputc_unlocked (int, FILE *);
 size_t fread_unlocked (void *restrict, size_t _size, size_t _n, FILE *restrict);
 size_t fwrite_unlocked (const void *restrict , size_t _size, size_t _n, FILE *);
-# 583 "/usr/include/newlib/stdio.h" 3
+# 583 "/usr/share/cwgcc/arm-none-eabi/include/stdio.h" 3
 int __srget_r (struct _reent *, FILE *);
 int __swbuf_r (struct _reent *, int, FILE *);
-# 607 "/usr/include/newlib/stdio.h" 3
+# 607 "/usr/share/cwgcc/arm-none-eabi/include/stdio.h" 3
 FILE *funopen (const void *__cookie,
   int (*__readfn)(void *__cookie, char *__buf,
     int __n),
@@ -13074,9 +13264,9 @@ FILE *_funopen_r (struct _reent *, const void *__cookie,
 
 #define fropen(__cookie,__fn) funopen(__cookie, __fn, NULL, NULL, NULL)
 #define fwopen(__cookie,__fn) funopen(__cookie, NULL, __fn, NULL, NULL)
-# 658 "/usr/include/newlib/stdio.h" 3
+# 658 "/usr/share/cwgcc/arm-none-eabi/include/stdio.h" 3
 #define __sgetc_raw_r(__ptr,__f) (--(__f)->_r < 0 ? __srget_r(__ptr, __f) : (int)(*(__f)->_p++))
-# 687 "/usr/include/newlib/stdio.h" 3
+# 687 "/usr/share/cwgcc/arm-none-eabi/include/stdio.h" 3
 #define __sgetc_r(__ptr,__p) __sgetc_raw_r(__ptr, __p)
 
 
@@ -13091,7 +13281,7 @@ static __inline__ int __sputc_r(struct _reent *_ptr, int _c, FILE *_p) {
  else
   return (__swbuf_r(_ptr, _c, _p));
 }
-# 723 "/usr/include/newlib/stdio.h" 3
+# 723 "/usr/share/cwgcc/arm-none-eabi/include/stdio.h" 3
 #define __sfeof(p) ((int)(((p)->_flags & __SEOF) != 0))
 #define __sferror(p) ((int)(((p)->_flags & __SERR) != 0))
 #define __sclearerr(p) ((void)((p)->_flags &= ~(__SERR|__SEOF)))
@@ -13131,7 +13321,7 @@ _putchar_unlocked(int _c)
  _ptr = _impure_ptr;
  return (__sputc_r(_ptr, _c, ((_ptr)->_stdout)));
 }
-# 771 "/usr/include/newlib/stdio.h" 3
+# 771 "/usr/share/cwgcc/arm-none-eabi/include/stdio.h" 3
 #define getchar_unlocked() _getchar_unlocked()
 #define putchar_unlocked(_c) _putchar_unlocked(_c)
 
@@ -13148,11 +13338,11 @@ _putchar_unlocked(int _c)
 
 
 #define L_ctermid 16
-# 801 "/usr/include/newlib/stdio.h" 3
+# 801 "/usr/share/cwgcc/arm-none-eabi/include/stdio.h" 3
 
 # 71 "naeusb/sam3u_hal/inc/compiler.h" 2
-# 1 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stdbool.h" 1 3 4
-# 29 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stdbool.h" 3 4
+# 1 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stdbool.h" 1 3 4
+# 29 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stdbool.h" 3 4
 #define _STDBOOL_H 
 
 
@@ -13163,11 +13353,11 @@ _putchar_unlocked(int _c)
 #define bool _Bool
 #define true 1
 #define false 0
-# 49 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stdbool.h" 3 4
+# 49 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stdbool.h" 3 4
 #define __bool_true_false_are_defined 1
 # 72 "naeusb/sam3u_hal/inc/compiler.h" 2
 
-# 1 "/usr/include/newlib/stdlib.h" 1 3
+# 1 "/usr/share/cwgcc/arm-none-eabi/include/stdlib.h" 1 3
 
 
 
@@ -13177,21 +13367,21 @@ _putchar_unlocked(int _c)
 
 #define _STDLIB_H_ 
 
-# 1 "/usr/include/newlib/machine/ieeefp.h" 1 3
-# 11 "/usr/include/newlib/stdlib.h" 2 3
+# 1 "/usr/share/cwgcc/arm-none-eabi/include/machine/ieeefp.h" 1 3
+# 11 "/usr/share/cwgcc/arm-none-eabi/include/stdlib.h" 2 3
 
 
 #define __need_size_t 
 #define __need_wchar_t 
 #define __need_NULL 
-# 1 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 1 3 4
-# 158 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
+# 1 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 1 3 4
+# 158 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
 #undef __need_ptrdiff_t
-# 237 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
+# 237 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
 #undef __need_size_t
-# 349 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
+# 349 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
 #undef __need_wchar_t
-# 399 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
+# 399 "/usr/share/cwgcc/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h" 3 4
 #undef NULL
 
 
@@ -13210,16 +13400,16 @@ _putchar_unlocked(int _c)
 
 #undef offsetof
 #define offsetof(TYPE,MEMBER) __builtin_offsetof (TYPE, MEMBER)
-# 17 "/usr/include/newlib/stdlib.h" 2 3
+# 17 "/usr/share/cwgcc/arm-none-eabi/include/stdlib.h" 2 3
 
 
 
-# 1 "/usr/include/newlib/machine/stdlib.h" 1 3
+# 1 "/usr/share/cwgcc/arm-none-eabi/include/machine/stdlib.h" 1 3
 
 #define _MACHSTDLIB_H_ 
-# 21 "/usr/include/newlib/stdlib.h" 2 3
+# 21 "/usr/share/cwgcc/arm-none-eabi/include/stdlib.h" 2 3
 
-# 1 "/usr/include/newlib/alloca.h" 1 3
+# 1 "/usr/share/cwgcc/arm-none-eabi/include/alloca.h" 1 3
 
 
 
@@ -13236,8 +13426,8 @@ _putchar_unlocked(int _c)
 
 
 #define alloca(size) __builtin_alloca(size)
-# 23 "/usr/include/newlib/stdlib.h" 2 3
-# 33 "/usr/include/newlib/stdlib.h" 3
+# 23 "/usr/share/cwgcc/arm-none-eabi/include/stdlib.h" 2 3
+# 33 "/usr/share/cwgcc/arm-none-eabi/include/stdlib.h" 3
 
 
 typedef struct
@@ -13380,7 +13570,7 @@ long strtol (const char *restrict __n, char **restrict __end_PTR, int __base);
 long _strtol_r (struct _reent *,const char *restrict __n, char **restrict __end_PTR, int __base);
 unsigned long strtoul (const char *restrict __n, char **restrict __end_PTR, int __base);
 unsigned long _strtoul_r (struct _reent *,const char *restrict __n, char **restrict __end_PTR, int __base);
-# 191 "/usr/include/newlib/stdlib.h" 3
+# 191 "/usr/share/cwgcc/arm-none-eabi/include/stdlib.h" 3
 int system (const char *__string);
 
 
@@ -13403,7 +13593,7 @@ void * _reallocf_r (struct _reent *, void *, size_t);
 int setenv (const char *__string, const char *__value, int __overwrite);
 
 int _setenv_r (struct _reent *, const char *__string, const char *__value, int __overwrite);
-# 224 "/usr/include/newlib/stdlib.h" 3
+# 224 "/usr/share/cwgcc/arm-none-eabi/include/stdlib.h" 3
 char * __itoa (int, char *, int);
 char * __utoa (unsigned, char *, int);
 
@@ -13483,14 +13673,14 @@ void _mstats_r (struct _reent *, char *);
 int _system_r (struct _reent *, const char *);
 
 void __eprintf (const char *, const char *, unsigned int, const char *);
-# 312 "/usr/include/newlib/stdlib.h" 3
+# 312 "/usr/share/cwgcc/arm-none-eabi/include/stdlib.h" 3
 void qsort_r (void *__base, size_t __nmemb, size_t __size, void *__thunk, int (*_compar)(void *, const void *, const void *))
              __asm__ ("" "__bsd_qsort_r");
-# 322 "/usr/include/newlib/stdlib.h" 3
+# 322 "/usr/share/cwgcc/arm-none-eabi/include/stdlib.h" 3
 extern long double _strtold_r (struct _reent *, const char *restrict, char **restrict);
 
 extern long double strtold (const char *restrict, char **restrict);
-# 339 "/usr/include/newlib/stdlib.h" 3
+# 339 "/usr/share/cwgcc/arm-none-eabi/include/stdlib.h" 3
 
 # 74 "naeusb/sam3u_hal/inc/compiler.h" 2
 # 88 "naeusb/sam3u_hal/inc/compiler.h"

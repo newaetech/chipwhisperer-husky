@@ -164,7 +164,7 @@ int main(void)
 
 	while (true) {
         if (current_transfer_len == 0) {
-            MPSSE_main_sendrecv_byte();
+            // MPSSE_main_sendrecv_byte();
         }
 	}
 }
