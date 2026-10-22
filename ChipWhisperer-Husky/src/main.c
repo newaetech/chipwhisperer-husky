@@ -17,6 +17,9 @@
 #include "naeusb_mpsse.h"
 #include "cdci6214.h"
 
+#include "naeusb_usart_util.h"
+#include "naeusb_usart_dma.h"
+
 //Serial Number - will be read by device ID
 char usb_serial_number[33] = "000000000000DEADBEEF";
 
@@ -162,9 +165,37 @@ int main(void)
     husky_register_handlers();
 	mpsse_register_handlers();
 
+    uint8_t cdctmp[128];
 	while (true) {
         if (current_transfer_len == 0) {
             // MPSSE_main_sendrecv_byte();
+            for (uint8_t i = 0; i < 4; i++) {
+
+                // note: be very careful here, these calls could do weird things
+                // need to test well, esp with stream mode
+                struct usart_state *driver = get_nth_available_driver(i);
+                if (!driver) continue;
+                if (!driver->cdc_supported) continue;
+                if (!driver->cdc_os_enabled) continue;
+                if (!driver->cdc_enabled) continue;
+
+                // minimum between chars available, free tx space, and size of cdctmp buf
+                volatile iram_size_t num_tx = min(min(udi_cdc_multi_get_nb_received_data(i), 
+                                                    usart_free_space(&driver->tx_st)), sizeof(cdctmp));
+                if (num_tx) {
+                    udi_cdc_multi_read_buf(i, cdctmp, num_tx);
+                    usart_dma_write(driver, cdctmp, num_tx);
+                }
+
+                // minimum between chars available, free CDC txt space, and size of cdctmp buf
+                volatile iram_size_t num_rx = min(min(usart_inwait(&driver->rx_st), 
+                                                    udi_cdc_multi_get_free_tx_buffer(i)), sizeof(cdctmp));
+                if (num_rx) {
+                    usart_dma_read(driver, cdctmp, num_rx);
+                    udi_cdc_multi_write_buf(i, cdctmp, num_rx);
+                }
+            }
+
         }
 	}
 }
