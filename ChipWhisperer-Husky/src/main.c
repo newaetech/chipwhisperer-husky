@@ -165,7 +165,7 @@ int main(void)
     husky_register_handlers();
 	mpsse_register_handlers();
 
-    uint8_t cdctmp[128];
+    uint8_t cdctmp[512];
 	while (true) {
         if (current_transfer_len == 0) {
             // MPSSE_main_sendrecv_byte();
@@ -178,6 +178,14 @@ int main(void)
                 if (!driver->cdc_supported) continue;
                 if (!driver->cdc_os_enabled) continue;
                 if (!driver->cdc_enabled) continue;
+                // for (; i < 1000; i++);
+                // minimum between chars available, free CDC txt space, and size of cdctmp buf
+                volatile iram_size_t num_rx = min(min(usart_inwait(&driver->rx_st), 
+                                                    udi_cdc_multi_get_free_tx_buffer(i)), sizeof(cdctmp));
+                if (num_rx) {
+                    usart_dma_read(driver, cdctmp, num_rx);
+                    udi_cdc_multi_write_buf(i, cdctmp, num_rx);
+                }
 
                 // minimum between chars available, free tx space, and size of cdctmp buf
                 volatile iram_size_t num_tx = min(min(udi_cdc_multi_get_nb_received_data(i), 
@@ -187,13 +195,9 @@ int main(void)
                     usart_dma_write(driver, cdctmp, num_tx);
                 }
 
-                // minimum between chars available, free CDC txt space, and size of cdctmp buf
-                volatile iram_size_t num_rx = min(min(usart_inwait(&driver->rx_st), 
-                                                    udi_cdc_multi_get_free_tx_buffer(i)), sizeof(cdctmp));
-                if (num_rx) {
-                    usart_dma_read(driver, cdctmp, num_rx);
-                    udi_cdc_multi_write_buf(i, cdctmp, num_rx);
-                }
+
+                volatile uint32_t i = 0;
+                for (; i < 5000; i++);
             }
 
         }
