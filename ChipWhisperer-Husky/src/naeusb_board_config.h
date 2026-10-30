@@ -337,4 +337,6 @@
 
 #define MPSSE_SWD_SUPPORT 1
 
+#define USART_SW_FLOW_CONTROL 1
+
 #endif  // _SAM3U_EK_H_

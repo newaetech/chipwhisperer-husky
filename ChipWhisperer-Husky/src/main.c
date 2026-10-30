@@ -17,7 +17,7 @@
 #include "naeusb_mpsse.h"
 #include "cdci6214.h"
 
-#include "naeusb_usart_util.h"
+#include "naeusb_usart_impl.h"
 #include "naeusb_usart_dma.h"
 
 //Serial Number - will be read by device ID
@@ -174,11 +174,11 @@ int main(void)
                 // note: be very careful here, these calls could do weird things
                 // need to test well, esp with stream mode
                 struct usart_state *driver = get_nth_available_driver(i);
-                if (!driver) continue;
-                if (!driver->cdc_supported) continue;
-                if (!driver->cdc_os_enabled) continue;
-                if (!driver->cdc_enabled) continue;
-                // for (; i < 1000; i++);
+                if (!driver) continue; // skip if driver doesn't exist
+                if (!driver->cdc_supported) continue; //skip if CDC not supported
+                if (!driver->cdc_os_enabled) continue; //skip if OS isn't expecting CDC to work
+                if (!driver->cdc_enabled) continue; //skip if CDC mode not enabled
+
                 // minimum between chars available, free CDC txt space, and size of cdctmp buf
                 volatile iram_size_t num_rx = min(min(usart_inwait(&driver->rx_st), 
                                                     udi_cdc_multi_get_free_tx_buffer(i)), sizeof(cdctmp));
@@ -196,9 +196,27 @@ int main(void)
                 }
 
 
+
+
                 volatile uint32_t i = 0;
                 for (; i < 5000; i++);
             }
+
+            #ifdef USART_SW_FLOW_CONTROL
+            for (uint8_t i = 0; i < 4; i++) {
+                struct usart_state *driver = get_nth_available_driver(i);
+                if (!driver) continue; // skip if driver doesn't exist
+                if (!driver->xonxoff_enabled) continue;
+                /*
+                if (cur_buf_ptr != last_ptr)  {
+                    check_characters_between();
+                    if (XOFF or XON in character_between) {
+                        do_xoffxon();
+                    }
+                }
+                */
+            }
+            #endif
 
         }
 	}
