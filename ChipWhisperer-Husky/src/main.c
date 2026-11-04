@@ -114,7 +114,6 @@ void enable_spi(void)
     spi_enable(SPI);
 }
 
-
 void stream_mode_ready_handler(const uint32_t id, const uint32_t index);
 int main(void)
 {
@@ -181,23 +180,33 @@ int main(void)
 
                 uint16_t num_rx = usart_inwait(&driver->rx_st);
 
+                /*
+                    NOTE: For RX, doing usart_dma_read() at higher baud rates can cause us to miss characters
+                    This is because that function disables the DMA while we do stuff to the register, meaning
+                    if we get more than one character in that time, it will be lost
+
+                    There should be some sort of tradeoff between the length of this delay and characters lost,
+                    where longer delays will perform better up to a point
+                */
                 // minimum between chars available, free CDC txt space, and size of cdctmp buf
                 if (num_rx) {
-                    num_rx = min(num_rx, min(udi_cdc_multi_get_free_tx_buffer(i), sizeof(cdctmp)));
+                    for (volatile uint32_t i = 0; i < 10000; i++);
+                    num_rx = min(usart_inwait(&driver->rx_st), min(udi_cdc_multi_get_free_tx_buffer(i), sizeof(cdctmp)));
                     usart_dma_read(driver, cdctmp, num_rx);
                     udi_cdc_multi_write_buf(i, cdctmp, num_rx);
                 }
 
-                // minimum between chars available, free tx space, and size of cdctmp buf
-                uint16_t num_tx = usart_inwait(&driver->tx_st);
+                // minimum between chars free, free tx space, and size of cdctmp buf
+                uint16_t num_tx = udi_cdc_multi_get_nb_received_data(i);
                 if (num_tx) {
-                    num_tx = min(num_tx, min(udi_cdc_multi_get_nb_received_data(i), sizeof(cdctmp)));
+                    for (volatile uint32_t i = 0; i < 5000; i++);
+                    num_tx = min(udi_cdc_multi_get_nb_received_data(i), min(usart_free_space(&driver->tx_st), sizeof(cdctmp)));
                     udi_cdc_multi_read_buf(i, cdctmp, num_tx);
                     usart_dma_write(driver, cdctmp, num_tx);
                 }
 
-                volatile uint32_t i = 0;
-                for (; i < 5000; i++);
+                // volatile uint32_t i = 0;
+                // for (; i < 5000; i++);
             }
 
             #ifdef USART_SW_FLOW_CONTROL
