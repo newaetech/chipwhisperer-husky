@@ -164,79 +164,11 @@ int main(void)
     husky_register_handlers();
 	mpsse_register_handlers();
 
-    uint8_t cdctmp[512];
 	while (true) {
         if (current_transfer_len == 0) {
             // MPSSE_main_sendrecv_byte();
-            for (uint8_t i = 0; i < 4; i++) {
-
-                // note: be very careful here, these calls could do weird things
-                // need to test well, esp with stream mode
-                struct usart_state *driver = get_nth_available_driver(i);
-                if (!driver) continue; // skip if driver doesn't exist
-                if (!driver->cdc_supported) continue; //skip if CDC not supported
-                if (!driver->cdc_os_enabled) continue; //skip if OS isn't expecting CDC to work
-                if (!driver->cdc_enabled) continue; //skip if CDC mode not enabled
-
-                uint16_t num_rx = usart_inwait(&driver->rx_st);
-
-                /*
-                    NOTE: For RX, doing usart_dma_read() at higher baud rates can cause us to miss characters
-                    This is because that function disables the DMA while we do stuff to the register, meaning
-                    if we get more than one character in that time, it will be lost
-
-                    There should be some sort of tradeoff between the length of this delay and characters lost,
-                    where longer delays will perform better up to a point
-                */
-                // minimum between chars available, free CDC txt space, and size of cdctmp buf
-                if (num_rx) {
-                    for (volatile uint32_t i = 0; i < 10000; i++);
-                    num_rx = min(usart_inwait(&driver->rx_st), min(udi_cdc_multi_get_free_tx_buffer(i), sizeof(cdctmp)));
-                    usart_dma_read(driver, cdctmp, num_rx);
-                    udi_cdc_multi_write_buf(i, cdctmp, num_rx);
-                }
-
-                // minimum between chars free, free tx space, and size of cdctmp buf
-                uint16_t num_tx = udi_cdc_multi_get_nb_received_data(i);
-                if (num_tx) {
-                    for (volatile uint32_t i = 0; i < 5000; i++);
-                    num_tx = min(udi_cdc_multi_get_nb_received_data(i), min(usart_free_space(&driver->tx_st), sizeof(cdctmp)));
-                    udi_cdc_multi_read_buf(i, cdctmp, num_tx);
-                    usart_dma_write(driver, cdctmp, num_tx);
-                }
-
-                // volatile uint32_t i = 0;
-                // for (; i < 5000; i++);
-            }
-
-            #ifdef USART_SW_FLOW_CONTROL
-            for (uint8_t i = 0; i < 4; i++) {
-                struct usart_state *driver = get_nth_available_driver(i);
-                if (!driver) continue; // skip if driver doesn't exist
-                if (!driver->xonxoff_enabled) continue;
-
-
-                uint32_t rx_ptr = usart_dma_ptr(&driver->rx_st);
-                while (driver->xonxoff_last_rx != rx_ptr) {
-
-                    uint8_t cur_char = *driver->xonxoff_last_rx_ptr;
-                    if (cur_char == USART_XON) {
-                        //doxon
-                        pdc_enable_transfer(driver->pdc, PERIPH_PTCR_TXTEN);
-                        driver->currently_xoff = 0;
-                    } else if (cur_char == USART_XOFF) {
-                        // doxoff
-                        pdc_disable_transfer(driver->pdc, PERIPH_PTCR_TXTDIS);
-                        driver->currently_xoff = 1;
-                    }
-
-                    if (driver->xonxoff_last_rx++ > driver->rx_st.buf_end) {
-                        driver->xonxoff_last_rx = driver->rx_st.buf_st;
-                    }
-                }
-            }
-            #endif
-
+            handle_cdc_txrx();
+            handle_sw_flow_control();
         }
 	}
 }
