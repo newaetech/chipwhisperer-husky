@@ -95,7 +95,7 @@ extern char usb_serial_number[33];
 #elif ChipWhisperer_Husky_Plus
 #define  USB_DEVICE_PRODUCT_NAME          "ChipWhisperer Husky Plus"
 #define FW_VER_MAJOR 1
-#define FW_VER_MINOR 3
+#define FW_VER_MINOR 4
 #define FW_VER_DEBUG 0
 #define  USB_DEVICE_PRODUCT_ID            0xACE6
 #endif
