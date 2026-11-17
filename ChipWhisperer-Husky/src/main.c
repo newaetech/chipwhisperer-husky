@@ -165,10 +165,10 @@ int main(void)
 	mpsse_register_handlers();
 
 	while (true) {
-        if (current_transfer_len == 0) {
+        // if (current_transfer_len == 0) {
             // MPSSE_main_sendrecv_byte();
             handle_cdc_txrx();
             handle_sw_flow_control();
-        }
+        // }
 	}
 }
